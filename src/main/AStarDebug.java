@@ -1,3 +1,4 @@
+package main;
 /** TODO make this less terrible
  * 
  * @author Connor Flanigan

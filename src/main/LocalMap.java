@@ -1,7 +1,9 @@
+package main;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 /** TODO write this
  * 
@@ -9,7 +11,8 @@ import java.io.ObjectOutputStream;
  *
  */
 
-public class LocalMap {
+@SuppressWarnings("serial")
+public class LocalMap implements Serializable{
 	
 	private MapNode[] mapNodes;
 	private String mapImage;
@@ -24,7 +27,7 @@ public class LocalMap {
 	 */
 	public void saveMap(String fileName) {
 		
-		if(! fileName.contains(".")){
+		if(fileName.contains(".")){
 			System.out.println("The input for DeveloperGUIBackend.saveMap(fileName) should not have an extension or period...exiting");
 			System.exit(1);
 		}
@@ -36,6 +39,8 @@ public class LocalMap {
 			fileOut = new FileOutputStream(fileName);
 			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
 			objOut.writeObject(this);
+			
+			objOut.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -58,5 +63,15 @@ public class LocalMap {
 	public void delinkNodes(int nodeID1, int nodeID2) {
 		
 	}
+
+	public int getMapID() {
+		return mapID;
+	}
+
+	public void setMapID(int mapID) {
+		this.mapID = mapID;
+	}
+	
+	
 
 }

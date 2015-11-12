@@ -1,7 +1,9 @@
+package main;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 
 /** TODO write this
  * 
@@ -9,7 +11,7 @@ import java.io.ObjectInputStream;
  *
  */
 
-public class GUIBackend {
+public class GUIBackend implements Serializable {
 	
 	private LocalMap localMap;
 	private MapNode[] path;
@@ -60,5 +62,15 @@ public class GUIBackend {
 	public void runAStar() {
 		
 	}
+
+	public LocalMap getLocalMap() {
+		return localMap;
+	}
+
+	public void setLocalMap(LocalMap localMap) {
+		this.localMap = localMap;
+	}
+	
+	
 
 }
