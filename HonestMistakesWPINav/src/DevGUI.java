@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -13,7 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,7 +29,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
@@ -91,20 +90,22 @@ public class DevGUI extends JFrame {
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 
-		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon("testmap.png"));
-		lblNewLabel.addMouseListener(new MouseAdapter() {
+	//	JLabel lblNewLabel = new JLabel(); Don't put this back in! Fairly certain it should be a JPanel! Just leaving this for a little bit longer commented out.
+	//	lblNewLabel.setIcon(new ImageIcon("testmap.png"));
+		JPanel mapPanel = new JPanel();
+		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
 				if(rdbtnPlaceNode.isSelected()){
 					Point p = me.getLocationOnScreen();
 					MapNode n = new MapNode(p.x, p.y, nodeCounter); // make a new mapnode with those points
 					nodeCounter++;
-					Graphics g = getGraphics();
+				//	Graphics g = getGraphics();
 					points.add(n);
 					//nodeImage.paintIcon(lblNewLabel, g, (int)n.getxPos()+ 5, (int)n.getyPos() + 5);
-					g.setColor(Color.blue);
-					g.fillOval((int) n.getxPos() + 4, (int) n.getyPos() + 4, circleSize, circleSize);
+				//	g.setColor(Color.blue);
+				//	g.fillOval((int) n.getxPos() + 4, (int) n.getyPos() + 4, circleSize, circleSize);
+				//	Graphics2D g2d = new Graphics2d();
 					xPosField.setText(""+n.getxPos());
 					yPosField.setText(""+n.getyPos());
 					zPosField.setText(""+n.getzPos());
@@ -159,7 +160,7 @@ public class DevGUI extends JFrame {
 				}
 			}
 		});
-		lblNewLabel.setBackground(Color.WHITE);
+		mapPanel.setBackground(Color.WHITE);
 		
 		JMenuItem mntmLoadMap = new JMenuItem("Load Map");
 		mntmLoadMap.addActionListener(new ActionListener() {
@@ -174,10 +175,10 @@ public class DevGUI extends JFrame {
 				localMap.put("firstValue", points);
 				
 				Graphics g = getGraphics();
-				for(MapNode n : points){
-					nodeImage.paintIcon(lblNewLabel, g, (int)n.getxPos(), (int)n.getyPos());
-					
-				}
+		//		for(MapNode n : points){
+		//			nodeImage.paintIcon(lblNewLabel, g, (int)n.getxPos(), (int)n.getyPos());
+		//			
+		//		}
 			}
 		});
 		
@@ -372,7 +373,7 @@ public class DevGUI extends JFrame {
 		buttonGroup.add(rdbtnMakeEdge);
 		
 		panel.setLayout(new BorderLayout(0, 0));
-		panel.add(lblNewLabel);
+		panel.add(mapPanel);
 		getContentPane().setLayout(groupLayout);
 	}
 }
