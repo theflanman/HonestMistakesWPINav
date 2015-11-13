@@ -73,8 +73,14 @@ public class GUIBackend implements Serializable {
 		
 	}
 	
+	/**@author Andrew Petit
+	 * 
+	 * @description runs the astar algorithm on the start and end nodes selected by the user
+	 */
 	public void runAStar() {
-		
+		//initiate a new astar class with the starting node and ending node of local map 
+		Astar astar = new Astar(this.startNode, this.endNode);
+		astar.runAlgorithm();
 	}
 
 	public LocalMap getLocalMap() {

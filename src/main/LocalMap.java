@@ -60,12 +60,40 @@ public class LocalMap implements Serializable{
 		
 	}
 	
+	/**
+	 * @author Andrew Petit
+	 * 
+	 * @description adds a link between a pair of nodes
+	 */
 	public void linkNodes(int nodeID1, int nodeID2) {
-		
+		//Unless nodeID's definitely correspond to an idex of an array we need to actually check every node in the list to get the node
+		for (MapNode mapNode: this.mapNodes){
+			if (mapNode.nodeID == nodeID1) {
+				MapNode mapNode1 = mapNode;
+			} else if (mapNode.nodeID == nodeID2){
+				MapNode mapNode2 = mapNode;
+			}
+		}
+		//if the link is already established do nothing 
+		if (mapNode1.getNeighbors.contains(mapNode2) && mapNode1.getNeighbors.contains(mapNode1)){
+		} //if a node is a neighbor to another node, but that other node is not a neighbor to the initial node 
+		else if ((mapNode1.getNeighbors.contains(mapNode2) && !mapNode2.getNeighbors.contains(mapNode1)) || (mapNode2.getNeighbors.contains(mapNode1) && !mapNode1.neighbors.contains(mapNode2)){
+			//need to return some error value as map nodes should not appear in neighbors without a link
+		} else { // add the link between the two nodes
+			mapNode1.addNeighbor(mapNode2);
+			mapNode2.addNeighbor(mapNode1);
+		}
 	}
 	
 	public void delinkNodes(int nodeID1, int nodeID2) {
-		
+		/*for (MapNode mapNode: this.mapNodes){
+			if (mapNode.nodeID == nodeID1){
+				MapNode mapNode1 = mapNode;
+			} else if (mapNode.nodeID == nodeID2){
+				MapNode mapNode2 = mapNode;
+			}
+		}
+		mapNode1.neighbors.*/
 	}
 
 	public int getMapID() {
