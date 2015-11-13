@@ -10,13 +10,27 @@ import java.io.Serializable;
  * @author Connor Flanigan
  *
  */
-
 public class GUIBackend implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private LocalMap localMap;
 	private MapNode[] path;
 	private MapNode startNode;
 	private MapNode endNode;
+	
+	/**
+	 * Constructor: Initializes Backend fields to the default map to be loaded.
+	 * TODO: Change to Campus Map when it is complete
+	 */
+	public GUIBackend(){
+		this.localMap = new LocalMap();
+		this.path = null;
+		this.startNode = null;
+		this.endNode = null;
+	}
 		
 	/**
 	 * loads a LocalMap into this class
@@ -32,7 +46,7 @@ public class GUIBackend implements Serializable {
 		
 		FileInputStream fileIn;
 		try {
-			fileIn = new FileInputStream(fileName);
+			fileIn = new FileInputStream("src/localmaps/" + fileName);
 			ObjectInputStream objIn = new ObjectInputStream(fileIn);
 			this.localMap = (LocalMap) objIn.readObject();
 

@@ -4,6 +4,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 
 /** TODO write this
  * 
@@ -14,7 +17,8 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class LocalMap implements Serializable{
 	
-	private MapNode[] mapNodes;
+	private static final long serialVersionUID = 1L;
+	private ArrayList<MapNode> mapNodes;
 	private String mapImage;
 	private float mapScale;
 	private int mapID;
@@ -25,8 +29,7 @@ public class LocalMap implements Serializable{
 	 * 
 	 * @param fileName is name of file that stores the object data without the extension
 	 */
-	public void saveMap(String fileName) {
-		
+	public void saveMap(String fileName) {		
 		if(fileName.contains(".")){
 			System.out.println("The input for DeveloperGUIBackend.saveMap(fileName) should not have an extension or period...exiting");
 			System.exit(1);
@@ -36,7 +39,7 @@ public class LocalMap implements Serializable{
 		
 		FileOutputStream fileOut;
 		try {
-			fileOut = new FileOutputStream(fileName);
+			fileOut = new FileOutputStream("src/localmaps/" + fileName);
 			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
 			objOut.writeObject(this);
 			
@@ -47,6 +50,7 @@ public class LocalMap implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public void addNode() {
 		
@@ -70,6 +74,21 @@ public class LocalMap implements Serializable{
 
 	public void setMapID(int mapID) {
 		this.mapID = mapID;
+	}
+	
+	public void setMapImage(String imageName){
+		this.mapImage = imageName;
+	}
+	public String getMapImage(){
+		return this.mapImage;
+	}
+	
+	public void setMapNodes(ArrayList<MapNode> nodes){
+		this.mapNodes = nodes;
+	}
+	
+	public ArrayList<MapNode> getMapNodes(){
+		return this.mapNodes;
 	}
 	
 	
