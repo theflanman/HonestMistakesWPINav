@@ -160,19 +160,20 @@ public class MainGUI extends JFrame {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		
+		//adds the distance label to the map interface
+		JLabel lblDistance = new JLabel("");
+		panel_1.add(lblDistance);
 		
+		//Code for button - if it is pressed allow the program to draw the line on the map
 		JButton btnCalculateRoute = new JButton("Calculate Route");
 		btnCalculateRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				backend.runAStar();
 				drawLine = true;
+				lblDistance.setText(backend.getDistance());
 			}
 		});
 		panel_2.add(btnCalculateRoute);
-		
-		JLabel lblDistance = new JLabel("");
-		panel_1.add(lblDistance);
-		lblDistance.setText(backend.getDistance());
 		
 		// Creates a new DrawingPanel object which will display the map image 
 		DrawingPanel panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map);
@@ -229,6 +230,7 @@ public class MainGUI extends JFrame {
 	        	g.fillOval((int)n.getX(), (int)n.getY(), 10, 10);
 	        }
 	        
+	        //essentially draws the line on the screen - will need to add a way to remove this line later on
 	        if(MainGUI.drawLine = true){
 	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
 					float x1 = backend.getCoordinates().get(i)[0];
