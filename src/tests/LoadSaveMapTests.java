@@ -3,6 +3,7 @@ package tests;
 import main.DeveloperGUIBackend;
 import main.GUIBackend;
 import main.LocalMap;
+import main.MapNode;
 import junit.framework.TestCase;
 
 public class LoadSaveMapTests extends TestCase {
@@ -51,5 +52,4 @@ public class LoadSaveMapTests extends TestCase {
 		
 		assertEquals(guiBack1.getLocalMap().getMapID(), 3); // check to see if the data are the same
 	}
-
 }

@@ -7,8 +7,8 @@ package main;
 
 public class MapNode {
 	
-	private float xPos;
-	private float yPos;
+	private double xPos;
+	private double yPos;
 	private float zPos;
 	private int nodeID;
 	private MapNode[] neighbors;
@@ -20,10 +20,31 @@ public class MapNode {
 	private LocalMap localMap;
 	//private Attributes attributes
 	
-	public float calcDistance(MapNode toNode) {
+	
+	public double getXPos() {
+		return this.xPos;
+	}
+	
+	public void setXPos(double xPos) {
+		this.xPos = xPos;
+	}
+	
+	public double getYPos() {
+		return this.yPos;
+	}
+	
+	public void setYPos(double yPos) {
+		this.yPos = yPos;
+	}
+	
+	public double calcDistance(MapNode toNode) {
+		double distance = 0;
+		double distanceXLeg = toNode.getXPos() - this.getXPos();
+		double distanceYLeg = toNode.getYPos() - this.getYPos();
 		
-		return 0;
+		distance = Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg));
 		
+		return distance;
 	}
 	
 	public void addNeighbor(MapNode node) {
