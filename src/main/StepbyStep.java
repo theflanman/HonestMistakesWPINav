@@ -25,10 +25,18 @@ public class StepbyStep {
 	 * @param node 1
 	 * @param node 2
 	 * 
-	 * @ return float distance between nodes
+	 * @ return double of the total distance for the directions
 	 */
-	public double calculateDistance(MapNode node1, MapNode node2) {
-		return node1.calcDistance(node2);
+	public double calculateTotalDistance() {
+		double totalDistance = 0;
+		MapNode node1 = null;
+		MapNode node2 = null;
+		for(int i = 0; i < instructionList.length - 1; i++){
+			node1 = instructionList[i];
+			node2 = instructionList[i+1];
+			totalDistance += node1.calcDistance(node2);
+		}
+		return totalDistance;
 	}
 	
 	public void printDirection() {
