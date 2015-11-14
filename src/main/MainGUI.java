@@ -3,6 +3,7 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 /**
@@ -23,12 +26,12 @@ import javax.swing.border.EmptyBorder;
  * functionality such as drawing the route.
  * @author Trevor
  */
+@SuppressWarnings("serial")
 public class MainGUI extends JFrame {
 
-	private static final long serialVersionUID = 1L; // Serial Version ID
 	private static GUIBackend backend;
 	private static GlobalMap globalMap;
-	// private ImageIcon nodeImage = new ImageIcon("src\\images\\node.png");
+	boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	
 	private JPanel contentPane;
 	
@@ -46,14 +49,11 @@ public class MainGUI extends JFrame {
 		
 		LocalMap[] tmpListLocal = new LocalMap[numLocalMaps]; // temporary list of LocalMaps to be initialized
 		for(int i = 0; i < numLocalMaps; i++){		
-			System.out.println(localMapFilenames[i].getName());
 			backend.loadLocalMap(localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "localmaps" folder
 			tmpListLocal[i] = backend.getLocalMap();
 		}
 		globalMap.setLocalMaps(tmpListLocal);
 		backend.setLocalMap(tmpListLocal[0]);
-		
-		System.out.println(backend.getLocalMap().getMapImage());
 		
 		// add the collection of nodes to the ArrayList of GlobalMap
 		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
@@ -82,6 +82,40 @@ public class MainGUI extends JFrame {
 		
 		// SwingBuilder Code related to the JLayeredPane() 
 		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent me) {
+				Graphics g = layeredPane.getGraphics();
+				
+				// Only add new points if you haven't set an End Node yet
+				if(!setEnd){
+					
+					Point p = me.getLocationOnScreen();
+					System.out.println("Clicked at: " + p.getX() + "\t" + p.getY());
+					
+					// If you've set a start node already, set the end node
+					if(setStart){
+						g.setColor(Color.BLUE);
+						g.fillOval((int)p.getX(), (int)p.getY() - 10, 10, 10);
+						setEnd = true;
+						MapNode newNode = new MapNode((float)p.x, (float)p.y);
+						backend.setEndNode(newNode);
+					} else {
+						g.setColor(Color.RED);
+						g.fillOval(p.x, p.y - 10, 10, 10);
+						setStart = true;
+						MapNode newNode = new MapNode((float)p.x, (float)p.y);
+						backend.setStartNode(newNode);
+					}
+					
+				
+				// Prohibit any new points for now
+				} else {
+					System.out.println("You've already selected two points");
+				}
+				
+			}
+		});
 		layeredPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

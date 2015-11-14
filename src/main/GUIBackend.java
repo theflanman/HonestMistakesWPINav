@@ -1,5 +1,4 @@
 package main;
-import java.awt.Graphics;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,12 +11,9 @@ import java.util.ArrayList;
  * @author Connor Flanigan
  *
  */
+@SuppressWarnings("serial")
 public class GUIBackend implements Serializable {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private LocalMap localMap;
 	private MapNode[] path;
 	private MapNode startNode;
@@ -116,6 +112,12 @@ public class GUIBackend implements Serializable {
 		this.localMap = localMap;
 	}
 	
+	public void setStartNode(MapNode startNode){
+		this.startNode = startNode;
+	}
+	public void setEndNode(MapNode endNode){
+		this.endNode = endNode;
+	}
 	
 
 }
