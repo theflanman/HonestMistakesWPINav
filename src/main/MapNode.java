@@ -40,26 +40,34 @@ public class MapNode {
 		this.yPos = yPos;
 	}
 	
-	/**
-	 * @return the cameFrom
-	 */
 	public MapNode getCameFrom() {
 		return cameFrom;
 	}
 	
-	public double calcDistance(MapNode toNode) {
+	public void setCameFrom(MapNode cameFrom){
+		this.cameFrom = cameFrom;		
+	}
+	
+	/**
+	 * @author Nick Gigliotti
+	 * 
+	 * @param the node to calculate the distance
+	 * @return int distance between nodes
+	 */
+	public int calcDistance(MapNode toNode) {
 		double distance = 0;
 		double distanceXLeg = toNode.getXPos() - this.getXPos();
 		double distanceYLeg = toNode.getYPos() - this.getYPos();
 		
 		distance = Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg));
-		
-		return distance;
+		distance = Math.round(distance);
+		return (int)distance;
 	}
 		
 	/**
+	 * @author Rayan Alsoby
+	 * 
 	 * function to calculate the angle needed to turn from the current to be facing the target node 
-	 * @param currentNode the current map node to make the turn on
 	 * @param nextNode the target node to turn towards
 	 * @return the angle needed to turn in order to be facing the next node
 	 * 90 degrees is left, 270 degrees is right, 180 degrees is forward, 0 degrees is backwards (hope we don't get the last one)

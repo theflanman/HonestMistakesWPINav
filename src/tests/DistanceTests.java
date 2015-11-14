@@ -1,5 +1,7 @@
 package tests;
 
+import java.util.ArrayList;
+
 import junit.framework.TestCase;
 import main.MapNode;
 import main.StepbyStep;
@@ -14,7 +16,7 @@ public class DistanceTests extends TestCase{
 		node2.setXPos(1);
 		node2.setYPos(0);
 		
-		assertEquals(node1.calcDistance(node2), Math.sqrt(25)); 
+		assertEquals(node1.calcDistance(node2), 5); 
 	}
 	
 	public void testNodeDistanceNegative() {
@@ -26,7 +28,7 @@ public class DistanceTests extends TestCase{
 		node2.setXPos(1);
 		node2.setYPos(-4);
 		
-		assertEquals(node1.calcDistance(node2), Math.sqrt(153)); 
+		assertEquals(node1.calcDistance(node2), 12); 
 	}
 	
 	public void testNodeDistanceDecimal() {
@@ -38,11 +40,10 @@ public class DistanceTests extends TestCase{
 		node2.setXPos(.5);
 		node2.setYPos(2.1);
 		
-		assertEquals(node1.calcDistance(node2), Math.sqrt(7.78)); 
+		assertEquals(node1.calcDistance(node2), 3); 
 	}
 	
-	/*
-	 * public void testTotalDistance() {
+	public void testTotalDistance() {
 	 
 		MapNode node1 = new MapNode();
 		node1.setXPos(3);
@@ -60,11 +61,15 @@ public class DistanceTests extends TestCase{
 		node4.setXPos(7);
 		node4.setYPos(-3);
 		
-		MapNode[] instructionList1 = {node1, node2, node3, node4};
+		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
+		instructionList1.add(node4);
+		instructionList1.add(node3);
+		instructionList1.add(node2);
+		instructionList1.add(node1);
 		
 		StepbyStep stepByStep1 = new StepbyStep(instructionList1);
 		
-		assertEquals(stepByStep1.calculateTotalDistance() = 10);
+		assertEquals(stepByStep1.calculateTotalDistance(), 16);
 	}
-	 */
+	 
 }
