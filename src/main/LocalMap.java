@@ -18,7 +18,6 @@ import javax.swing.ImageIcon;
 @SuppressWarnings("serial")
 public class LocalMap implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
 	private ArrayList<MapNode> mapNodes;
 	private String mapImage;
 	private float mapScale;

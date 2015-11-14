@@ -95,7 +95,7 @@ public class DeveloperGUIBackend implements Serializable  {
 	}
 	
 	public void selectNode() {
-		
+	
 	}
 
 	public LocalMap getLocalMap() {

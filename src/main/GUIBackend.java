@@ -1,5 +1,4 @@
 package main;
-import java.awt.Graphics;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,12 +11,9 @@ import java.util.LinkedList;
  * @author Connor Flanigan
  *
  */
+@SuppressWarnings("serial")
 public class GUIBackend implements Serializable {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private LocalMap localMap;
 	private LinkedList<MapNode> path;
 	private MapNode startNode;
@@ -63,8 +59,9 @@ public class GUIBackend implements Serializable {
 
 	}
 	/**@author Andrew Petit
-	 * @description basically used by drawpath function in mainGui as it needs the list of ordered pairs for each map node
-	 * @return ArrayList<float[]> - the array of coordinate pairs
+	 * 
+	 * @description basically used by drawLine function in mainGui to draw a line between two nodes one at a time
+	 * 
 	 */
 	
 	public LinkedList<float[]> getCoordinates(){
@@ -80,7 +77,7 @@ public class GUIBackend implements Serializable {
 	}
 	
 	/**@author Andrew Petit
-	 * @description just gets the distance so mainGui can display it on a label  
+	 * @description just gets the distance so mainGui can display it on a label  -- will need to be updated when I understand what score to use for this value
 	 * @return
 	 */
 	
@@ -116,6 +113,12 @@ public class GUIBackend implements Serializable {
 		this.localMap = localMap;
 	}
 	
+	public void setStartNode(MapNode startNode){
+		this.startNode = startNode;
+	}
+	public void setEndNode(MapNode endNode){
+		this.endNode = endNode;
+	}
 	public LinkedList<MapNode> getPath(){
 		return this.path;
 	}
