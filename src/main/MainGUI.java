@@ -165,15 +165,25 @@ public class MainGUI extends JFrame {
 		panel_1.add(lblDistance);
 		
 		//Code for button - if it is pressed allow the program to draw the line on the map
+		/**TODO
+		 * going to need to add functionality to change button title to remove line when user has drawn the line on screen
+		 */
 		JButton btnCalculateRoute = new JButton("Calculate Route");
-		btnCalculateRoute.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				backend.runAStar();
-				drawLine = true;
-				lblDistance.setText(backend.getDistance());
-			}
-		});
 		panel_2.add(btnCalculateRoute);
+		btnCalculateRoute.setEnabled(false);
+		
+		//need to remember to make sure the user can actually press the button
+		if (!(backend.getStartNode().equals(null)) && !(backend.getEndNode().equals(null))){
+			btnCalculateRoute.setEnabled(true);
+			btnCalculateRoute.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					backend.runAStar();
+					drawLine = true;
+					//this should only display when the user calculates the astar algorithm
+					lblDistance.setText(backend.getDistance());
+				}
+			});
+		}
 		
 		// Creates a new DrawingPanel object which will display the map image 
 		DrawingPanel panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map);

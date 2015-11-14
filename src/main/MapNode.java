@@ -35,15 +35,11 @@ public class MapNode implements Serializable{
 		return 0;
 		
 	}
-	/**@author Andrew Petit
-	 * @param node
-	 */
+	
 	public void addNeighbor(MapNode node) {
 		this.neighbors.add(node);
 	}
-	/**@author Andrew Petit
-	 * @param node
-	 */
+
 	public void deleteNeighborLink(MapNode node){
 		this.neighbors.remove(node);
 	}
