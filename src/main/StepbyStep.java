@@ -44,7 +44,7 @@ public class StepbyStep {
 			return resultAngle;
 	}
 	
-	public void calculateDistance() {
+	public void calculateTotalDistance() {
 		
 	}
 	
