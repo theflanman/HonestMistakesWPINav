@@ -20,6 +20,28 @@ public class MapNode {
 	private LocalMap localMap;
 	//private Attributes attributes
 	
+	/**
+	 * @return the cameFrom
+	 */
+	public MapNode getCameFrom() {
+		return cameFrom;
+	}
+	/**
+	 * 
+	 * @return the x position
+	 */
+	public float getXPos(){
+		return xPos;	
+	}
+	
+	/**
+	 * 
+	 * @return the y position
+	 */
+	public float getYPos(){
+		return yPos;	
+	}
+
 	public float calcDistance(MapNode toNode) {
 		
 		return 0;
