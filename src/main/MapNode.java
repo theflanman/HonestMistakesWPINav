@@ -1,6 +1,7 @@
 package main;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 
 /** TODO write this
  * 
@@ -14,7 +15,7 @@ public class MapNode implements Serializable{
 	private float yPos;
 	private float zPos;
 	private int nodeID;
-	private MapNode[] neighbors;
+	private LinkedList<MapNode> neighbors;
 	private float fScore;
 	private float gScore;
 	private float hScore;
@@ -34,9 +35,17 @@ public class MapNode implements Serializable{
 		return 0;
 		
 	}
-	
+	/**@author Andrew Petit
+	 * @param node
+	 */
 	public void addNeighbor(MapNode node) {
-		
+		this.neighbors.add(node);
+	}
+	/**@author Andrew Petit
+	 * @param node
+	 */
+	public void deleteNeighborLink(MapNode node){
+		this.neighbors.remove(node);
 	}
 	
 	public float getX(){
@@ -44,6 +53,12 @@ public class MapNode implements Serializable{
 	}
 	public float getY(){
 		return this.yPos;
+	}
+	public int getNodeID(){
+		return this.nodeID;
+	}
+	public LinkedList<MapNode> getNeighbors(){
+		return this.neighbors;
 	}
 
 }

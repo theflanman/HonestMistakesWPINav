@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 
@@ -66,34 +67,51 @@ public class LocalMap implements Serializable{
 	 * @description adds a link between a pair of nodes
 	 */
 	public void linkNodes(int nodeID1, int nodeID2) {
+		MapNode mapNode1 = null;
+		MapNode mapNode2 = null;
 		//Unless nodeID's definitely correspond to an idex of an array we need to actually check every node in the list to get the node
 		for (MapNode mapNode: this.mapNodes){
-			if (mapNode.nodeID == nodeID1) {
-				MapNode mapNode1 = mapNode;
-			} else if (mapNode.nodeID == nodeID2){
-				MapNode mapNode2 = mapNode;
+			if (mapNode.getNodeID() == nodeID1) {
+				mapNode1 = mapNode;
+			} else if (mapNode.getNodeID() == nodeID2){
+				mapNode2 = mapNode;
 			}
 		}
-		//if the link is already established do nothing 
-		if (mapNode1.getNeighbors.contains(mapNode2) && mapNode1.getNeighbors.contains(mapNode1)){
-		} //if a node is a neighbor to another node, but that other node is not a neighbor to the initial node 
-		else if ((mapNode1.getNeighbors.contains(mapNode2) && !mapNode2.getNeighbors.contains(mapNode1)) || (mapNode2.getNeighbors.contains(mapNode1) && !mapNode1.neighbors.contains(mapNode2)){
+		if(mapNode1.equals(null) || mapNode2.equals(null)){
+			//return new exception as both nodes need to exist in the local maps list of nodes to link the nodes
+		}
+		if (Arrays.asList(mapNode1.getNeighbors()).contains(mapNode2) && Arrays.asList(mapNode2.getNeighbors()).contains(mapNode1)){
+			//if the link is already established do nothing
+		} else if ((Arrays.asList(mapNode1.getNeighbors()).contains(mapNode2) && !Arrays.asList(mapNode2.getNeighbors()).contains(mapNode1)) || (Arrays.asList(mapNode2.getNeighbors()).contains(mapNode1) && !Arrays.asList(mapNode1.getNeighbors()).contains(mapNode2))){
+			//if a node is a neighbor to another node, but that other node is not a neighbor to the initial node
 			//need to return some error value as map nodes should not appear in neighbors without a link
-		} else { // add the link between the two nodes
+		} else { 
+			// add the link between the two nodes as conditions are met to warrant the change
 			mapNode1.addNeighbor(mapNode2);
 			mapNode2.addNeighbor(mapNode1);
 		}
 	}
 	
 	public void delinkNodes(int nodeID1, int nodeID2) {
-		/*for (MapNode mapNode: this.mapNodes){
-			if (mapNode.nodeID == nodeID1){
-				MapNode mapNode1 = mapNode;
-			} else if (mapNode.nodeID == nodeID2){
-				MapNode mapNode2 = mapNode;
+		MapNode mapNode1 = null;
+		MapNode mapNode2 = null;
+		for (MapNode mapNode: this.mapNodes){
+			if (mapNode.getNodeID() == nodeID1){
+				mapNode1 = mapNode;
+			} else if (mapNode.getNodeID() == nodeID2){
+				mapNode2 = mapNode;
 			}
 		}
-		mapNode1.neighbors.*/
+		if(mapNode1.equals(null) || mapNode2.equals(null)){
+			//return new exception as both nodes need to exist in the local maps list of nodes to delink the nodes
+		} else if (Arrays.asList(mapNode1.getNeighbors()).contains(mapNode2) && Arrays.asList(mapNode1.getNeighbors()).contains(mapNode1)){
+			//remove the link between the two nodes
+			mapNode1.deleteNeighborLink(mapNode2);
+			mapNode2.deleteNeighborLink(mapNode1);
+			
+		} else {
+			//error in code - one node cannot be a neighbor without the other node being a neighbor return exception
+		}
 	}
 
 	public int getMapID() {

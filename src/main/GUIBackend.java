@@ -1,9 +1,11 @@
 package main;
+import java.awt.Graphics;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /** TODO write this
  * 
@@ -60,9 +62,31 @@ public class GUIBackend implements Serializable {
 		}
 
 	}
+	/**@author Andrew Petit
+	 * @description basically used by drawpath function in mainGui as it needs the list of ordered pairs for each map node
+	 * @return ArrayList<float[]> - the array of coordinate pairs
+	 */
 	
-	public void drawPathOnMap() {
-		
+	public ArrayList<float[]> getPathOnMapInfo() {
+		ArrayList<MapNode> mapNodes = this.localMap.getMapNodes();
+		ArrayList<float[]>coordinates = new ArrayList<float[]>(); 
+		for(MapNode mapNode : mapNodes){
+			float x = mapNode.getX();
+			float y = mapNode.getY();
+			float[] pairs = {x, y};
+			coordinates.add(pairs);
+		}
+		return coordinates;
+	}
+	
+	/**@author Andrew Petit
+	 * @description just gets the distance so mainGui can display it on a label  
+	 * @return
+	 */
+	
+	public float getDistance() {
+		float distance = this.startNode.calcDistance(this.endNode);
+		return distance;
 	}
 	
 	public void displayStepByStep() {
@@ -79,7 +103,8 @@ public class GUIBackend implements Serializable {
 	 */
 	public void runAStar() {
 		//initiate a new astar class with the starting node and ending node of local map 
-		Astar astar = new Astar(this.startNode, this.endNode);
+		MapNode[] aStarMap = {this.startNode, this.endNode};
+		AStar astar = new AStar(aStarMap);
 		astar.runAlgorithm();
 	}
 
