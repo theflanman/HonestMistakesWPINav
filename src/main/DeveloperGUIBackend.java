@@ -23,7 +23,7 @@ public class DeveloperGUIBackend implements Serializable  {
 	}
 	
 	public void addMapNode() {
-		
+		// TODO call LocalMap.addNode(...)
 	}
 	
 	public void removeMapNode() {

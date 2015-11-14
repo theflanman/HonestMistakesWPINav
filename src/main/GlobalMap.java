@@ -1,6 +1,7 @@
 package main;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 
 /** TODO write this
@@ -16,6 +17,12 @@ public class GlobalMap implements Serializable {
 	private LocalMap[] localMaps;
 	private MapNode[] path;
 	
+	public GlobalMap(){
+		this.mapNodes = new ArrayList<MapNode>();
+		this.localMaps = new LocalMap[100];
+		this.path = new MapNode[1000];
+	}
+	
 	public void generateStepByStep() {
 		
 	}
@@ -28,12 +35,23 @@ public class GlobalMap implements Serializable {
 	 * Sets the list of LocalMaps to the given input
 	 * @param localMaps A list of LocalMaps that has been initialized from MainGUI
 	 */
+	
+	 
+	 public void addToMapNodes(MapNode node){
+		mapNodes.add(node);
+	}
+
+	public ArrayList<MapNode> getMapNodes() {
+		return mapNodes;
+	}
+	 
 	public void setLocalMaps(LocalMap[] localMaps){
 		this.localMaps = localMaps;
 	}
 
-	public void setMapNodes(ArrayList<MapNode> allNodes) {
-		this.mapNodes = allNodes;
+	public void setMapNodes(ArrayList<MapNode> mapNodes) {
+		this.mapNodes = mapNodes;
 	}
+	
 	
 }

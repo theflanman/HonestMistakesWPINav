@@ -107,13 +107,13 @@ public class MainGUI extends JFrame {
 						g.setColor(Color.BLUE);
 						g.fillOval((int)p.getX(), (int)p.getY() - 10, 10, 10);
 						setEnd = true;
-						MapNode newNode = new MapNode((float)p.x, (float)p.y);
+						MapNode newNode = new MapNode((double)p.x, (double)p.y, 0);
 						backend.setEndNode(newNode);
 					} else {
 						g.setColor(Color.RED);
 						g.fillOval(p.x, p.y - 10, 10, 10);
 						setStart = true;
-						MapNode newNode = new MapNode((float)p.x, (float)p.y);
+						MapNode newNode = new MapNode((double)p.x, (double)p.y, 0);
 						backend.setStartNode(newNode);
 					}
 					
@@ -252,16 +252,16 @@ public class MainGUI extends JFrame {
 	        
 	        g.drawImage(this.mapImage, 0, 0, getWidth(), getHeight(), this);
 	        for(MapNode n : this.localNodes){
-	        	g.fillOval((int)n.getX(), (int)n.getY(), 10, 10);
+	        	g.fillOval((int)n.getxPos(), (int)n.getyPos(), 10, 10);
 	        }
 	        
 	        //essentially draws the line on the screen - will need to add a way to remove this line later on
 	        if(MainGUI.drawLine = true){
 	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
-					float x1 = backend.getCoordinates().get(i)[0];
-					float y1 = backend.getCoordinates().get(i)[1];
-					float x2 = backend.getCoordinates().get(i+1)[0];
-					float y2 = backend.getCoordinates().get(i+1)[1];
+					double x1 = backend.getCoordinates().get(i)[0];
+					double y1 = backend.getCoordinates().get(i)[1];
+					double x2 = backend.getCoordinates().get(i+1)[0];
+					double y2 = backend.getCoordinates().get(i+1)[1];
 					g.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
 					i++;
 	        	}

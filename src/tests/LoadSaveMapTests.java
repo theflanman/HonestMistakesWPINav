@@ -9,7 +9,7 @@ public class LoadSaveMapTests extends TestCase {
 
 	public void testDeveloperGUIBackend(){
 		DeveloperGUIBackend devGUIBack1 = new DeveloperGUIBackend();
-		LocalMap localMap1 = new LocalMap();
+		LocalMap localMap1 = new LocalMap("a");
 		localMap1.setMapID(1); // give it some random data
 		
 		devGUIBack1.setLocalMap(localMap1); // set LocalMap for DeveloperGUIBackend
@@ -25,7 +25,7 @@ public class LoadSaveMapTests extends TestCase {
 	
 	public void testGUIBackend(){
 		DeveloperGUIBackend devGUIBack1 = new DeveloperGUIBackend();
-		LocalMap localMap1 = new LocalMap();
+		LocalMap localMap1 = new LocalMap("a");
 		localMap1.setMapID(2); // give it some random data
 		
 		devGUIBack1.setLocalMap(localMap1); // set LocalMap for DeveloperGUIBackend
@@ -40,7 +40,7 @@ public class LoadSaveMapTests extends TestCase {
 	}
 	
 	public void testLocalMap(){
-		LocalMap localMap1 = new LocalMap();
+		LocalMap localMap1 = new LocalMap("a");
 		localMap1.setMapID(3);
 		
 		localMap1.saveMap("map1");

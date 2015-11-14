@@ -11,9 +11,9 @@ import java.util.LinkedList;
 
 public class MapNode implements Serializable{
 	
-	private float xPos;
-	private float yPos;
-	private float zPos;
+	private double xPos;
+	private double yPos;
+	private double zPos;
 	private int nodeID;
 	private LinkedList<MapNode> neighbors;
 	private float fScore;
@@ -25,9 +25,11 @@ public class MapNode implements Serializable{
 	//private Attributes attributes
 	
 	// temporary constructor
-	public MapNode(float xPos, float yPos){
+	
+	public MapNode(double xPos, double yPos, double zPos){
 		this.xPos = xPos;
 		this.yPos = yPos;
+		this.zPos = zPos;
 	}
 	
 	public float calcDistance(MapNode toNode) {
@@ -44,12 +46,30 @@ public class MapNode implements Serializable{
 		this.neighbors.remove(node);
 	}
 	
-	public float getX(){
-		return this.xPos;
+	public double getxPos() {
+		return xPos;
 	}
-	public float getY(){
-		return this.yPos;
+
+	public void setxPos(double xPos) {
+		this.xPos = xPos;
 	}
+
+	public double getyPos() {
+		return yPos;
+	}
+
+	public void setyPos(double yPos) {
+		this.yPos = yPos;
+	}
+
+	public double getzPos() {
+		return zPos;
+	}
+
+	public void setzPos(double zPos) {
+		this.zPos = zPos;
+	}
+
 	public int getNodeID(){
 		return this.nodeID;
 	}

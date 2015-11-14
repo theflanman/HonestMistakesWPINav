@@ -24,7 +24,7 @@ public class GUIBackend implements Serializable {
 	 * TODO: Change to Campus Map when it is complete
 	 */
 	public GUIBackend(){
-		this.localMap = new LocalMap();
+		this.localMap = new LocalMap("");
 		this.path = new LinkedList<MapNode>();
 		this.startNode = null;
 		this.endNode = null;
@@ -64,13 +64,13 @@ public class GUIBackend implements Serializable {
 	 * 
 	 */
 	
-	public LinkedList<float[]> getCoordinates(){
+	public LinkedList<double[]> getCoordinates(){
 		LinkedList<MapNode> mapNodes = this.path;
-		LinkedList<float[]>coordinates = new LinkedList<float[]>(); 
+		LinkedList<double[]>coordinates = new LinkedList<double[]>(); 
 		for(MapNode mapNode : mapNodes){
-			float x = mapNode.getX();
-			float y = mapNode.getY();
-			float[] pairs = {x, y};
+			double x = mapNode.getxPos();
+			double y = mapNode.getyPos();
+			double[] pairs = {x, y};
 			coordinates.add(pairs);
 		}
 		return coordinates;
@@ -85,8 +85,8 @@ public class GUIBackend implements Serializable {
 		/**TODO
 		 * Change this to call get distance from step by step 
 		 */
-		float distance = this.startNode.calcDistance(this.endNode);
-		return "Distance to your destination in feet:" + Float.toString(distance);
+		double distance = this.startNode.calcDistance(this.endNode);
+		return "Distance to your destination in feet:" + Double.toString(distance);
 	}
 	
 	public void displayStepByStep() {
