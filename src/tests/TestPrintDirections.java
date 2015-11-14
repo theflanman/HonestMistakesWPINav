@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 import main.MapNode;
 import main.StepbyStep;
 
-public class testPrintDirections extends TestCase{
+public class TestPrintDirections extends TestCase{
 	
 	public void testPrintDirection(){
 		MapNode node1 = new MapNode();
