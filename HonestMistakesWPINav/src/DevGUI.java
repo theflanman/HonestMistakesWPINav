@@ -32,6 +32,14 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.awt.image.*;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
 public class DevGUI extends JFrame {
 	static HashMap<String, ArrayList<MapNode>> localMap = new HashMap<String, ArrayList<MapNode>>(); // path to file, Integer data
 	static ArrayList<MapNode> points = new ArrayList<MapNode>(); // currently loaded list of points
@@ -185,8 +193,32 @@ public class DevGUI extends JFrame {
 		});
 		
 		JMenuItem mntmNewMapImage = new JMenuItem("New Map Image");
+		mntmNewMapImage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser chooser = new JFileChooser();
+		        int option = chooser.showOpenDialog(DevGUI.this);
+		        if (option == JFileChooser.APPROVE_OPTION) {
+		          File file = chooser.getSelectedFile();
+
+		          try{
+		        	  Image pic = ImageIO.read(file);
+		        	 //  picLabel.setIcon(new ImageIcon(pic));
+		        	  mapPanel.setBgImage(pic);
+		        	  
+		        	  Graphics g = mapPanel.getGraphics();
+		        	  mapPanel.renderMapPublic(g, points);
+		          }
+		          catch(IOException ex){
+		        	  ex.printStackTrace();
+		        	  System.exit(1);
+		          }
+			}
+			}
+		});
 		mnFile.add(mntmNewMapImage);
 		mnFile.add(mntmExit);
+		
+
 		
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(1000, 800));
