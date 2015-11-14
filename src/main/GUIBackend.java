@@ -85,7 +85,7 @@ public class GUIBackend implements Serializable {
 		/**TODO
 		 * Change this to call get distance from step by step 
 		 */
-		double distance = this.startNode.calcDistance(this.endNode);
+		double distance = this.startNode.aStarHeuristic(this.endNode);
 		return "Distance to your destination in feet:" + Double.toString(distance);
 	}
 	

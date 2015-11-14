@@ -1,6 +1,7 @@
 package main;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /** TODO write this
@@ -15,10 +16,10 @@ public class MapNode implements Serializable{
 	private double yPos;
 	private double zPos;
 	private int nodeID;
-	private LinkedList<MapNode> neighbors;
-	private float fScore;
-	private float gScore;
-	private float hScore;
+	private ArrayList<MapNode> neighbors;
+	private double fScore;
+	private double gScore;
+	private double hScore;
 	private MapNode cameFrom;
 	private GlobalMap globalMap;
 	private LocalMap localMap;
@@ -32,11 +33,14 @@ public class MapNode implements Serializable{
 		this.zPos = zPos;
 	}
 	
-	public float calcDistance(MapNode toNode) {
+	public double aStarHeuristic(MapNode toNode) {
 		
-		return 0;
+		double dist = (double) Math.sqrt(Math.pow((xPos - toNode.getxPos()),2) + Math.pow(yPos - toNode.getyPos(),2)) + Math.abs(zPos - toNode.getzPos());
+		
+		return dist;
 		
 	}
+	
 	
 	public void addNeighbor(MapNode node) {
 		this.neighbors.add(node);
@@ -73,8 +77,37 @@ public class MapNode implements Serializable{
 	public int getNodeID(){
 		return this.nodeID;
 	}
-	public LinkedList<MapNode> getNeighbors(){
-		return this.neighbors;
+	
+	public void setGScore(double distance) {
+		gScore = distance;
+	}
+
+	public void setHScore(double distance) {
+		hScore = distance;	
+	}
+
+	public ArrayList<MapNode> getNeighbors() {
+		return neighbors;
+	}
+
+	public double getGScore() {
+		return gScore;
+	}
+
+	public void setCameFrom(MapNode current) {
+		cameFrom = current;
+	}
+
+	public double getFScore() {
+		return fScore;
+	}
+
+	public MapNode getCameFrom() {
+		return cameFrom;
+	}
+
+	public void calcFScore() {
+		fScore = gScore + hScore;		
 	}
 
 }
