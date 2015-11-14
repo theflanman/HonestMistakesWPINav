@@ -175,14 +175,19 @@ public class MainGUI extends JFrame {
 		//need to remember to make sure the user can actually press the button
 		if (!(backend.getStartNode().equals(null)) && !(backend.getEndNode().equals(null))){
 			btnCalculateRoute.setEnabled(true);
-			btnCalculateRoute.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					backend.runAStar();
-					drawLine = true;
-					//this should only display when the user calculates the astar algorithm
-					lblDistance.setText(backend.getDistance());
-				}
-			});
+			if (btnCalculateRoute.getText() == "Calculate Route"){
+				btnCalculateRoute.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						backend.runAStar();
+						drawLine = true;
+						//this should only display when the user calculates the astar algorithm
+						lblDistance.setText(backend.getDistance());
+						btnCalculateRoute.setText("Remove Route Line");
+					}
+				});
+			} else { //if the button text is "Remove Route Line"
+				//code for this...
+			}
 		}
 		
 		// Creates a new DrawingPanel object which will display the map image 
