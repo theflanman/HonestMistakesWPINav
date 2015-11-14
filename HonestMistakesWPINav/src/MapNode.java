@@ -1,20 +1,22 @@
+import java.util.ArrayList;
+
 public class MapNode {
 	
-	private float xPos;
-	private float yPos;
-	private float zPos;
+	private double xPos;
+	private double yPos;
+	private double zPos;
 	private int nodeID;
-	private MapNode[] neighbors;
-	private float fScore;
-	private float gScore;
-	private float hScore;
+	private ArrayList<MapNode> neighbors;
+	private double fScore;
+	private double gScore;
+	private double hScore;
 	private MapNode cameFrom;
 //	private GlobalMap globalMap;
 //	private LocalMap localMap;
 	private String nodeName;
 	//private Attributes attributes
 	
-	public float calcDistance(MapNode toNode) {
+	public double calcDistance(MapNode toNode) {
 		
 		return 0;
 		
@@ -22,31 +24,50 @@ public class MapNode {
 	
 	public void addNeighbor(MapNode node) {
 		
+		neighbors.add(node);
+		
 	}
 	
-	public MapNode(int x, int y, int count) {
-		xPos = (float) x;
-		yPos = (float) y;
-		nodeID = count;
+	public ArrayList<MapNode> getNeighbors() {
+		return neighbors;
 	}
 	
-	public float getxPos() {
+
+	public MapNode(double newX, double newY, double newZ, int newID) {
+		
+		xPos = newX;
+		yPos = newY;
+		zPos = newZ;
+		nodeID = newID;
+		//globalMap = newGlobalMap;
+		//localMap = newLocalMap;
+		
+		neighbors = new ArrayList<MapNode>();
+		fScore = -1;
+		gScore = -1;
+		hScore = -1;
+		cameFrom = null;
+		
+		
+	}
+	
+	public double getxPos() {
 		return xPos;
 	}
 	
-	public float getyPos() {
+	public double getyPos() {
 		return yPos;
 	}
-	public float getzPos() {
+	public double getzPos() {
 		return zPos;
 	}
 	public String getnodeName() {
 		return nodeName;
 	}
-	public void setxPos(float pos) {
+	public void setxPos(double pos) {
 		xPos = pos;
 	}
-	public void setyPos(float pos) {
+	public void setyPos(double pos) {
 		yPos = pos;
 	}
 	public void setnodeName(String name) {
@@ -55,11 +76,5 @@ public class MapNode {
 	public int getID(){
 		return nodeID;
 	}
-	public String getNeighborsString() {
-		String result = "";
-		for(int i=0; i < neighbors.length; i++) {
-			result += neighbors[i].getnodeName();
-		}
-		return result;
-	}
+
 }

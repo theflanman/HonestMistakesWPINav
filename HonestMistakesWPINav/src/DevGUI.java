@@ -71,8 +71,7 @@ public class DevGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public DevGUI() {
-		int threshold = 10; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
-		int circleSize = 12; //Circle size determines size of nodes on map. Should probably be an even number as it's divided by 2 and needs to be an int and it'd be nice if it were exactly half.
+		
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setPreferredSize(new Dimension(1380, 760));
 		setResizable(true);
@@ -92,15 +91,18 @@ public class DevGUI extends JFrame {
 
 	//	JLabel lblNewLabel = new JLabel(); Don't put this back in! Fairly certain it should be a JPanel! Just leaving this for a little bit longer commented out.
 	//	lblNewLabel.setIcon(new ImageIcon("testmap.png"));
-		JPanel mapPanel = new JPanel();
+		MapPanel mapPanel = new MapPanel();
+		int threshold = 30; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
+		int circleSize = 12; //Circle size determines size of nodes on map. Should probably be an even number as it's divided by 2 and needs to be an int and it'd be nice if it were exactly half.
 		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
+				Point offset = mapPanel.getLocationOnScreen();
 				if(rdbtnPlaceNode.isSelected()){
 					Point p = me.getLocationOnScreen();
-					MapNode n = new MapNode(p.x, p.y, nodeCounter); // make a new mapnode with those points
+					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, 0, nodeCounter); // make a new mapnode with those points
 					nodeCounter++;
-				//	Graphics g = getGraphics();
+					Graphics g = mapPanel.getGraphics();
 					points.add(n);
 					//nodeImage.paintIcon(lblNewLabel, g, (int)n.getxPos()+ 5, (int)n.getyPos() + 5);
 				//	g.setColor(Color.blue);
@@ -111,11 +113,12 @@ public class DevGUI extends JFrame {
 					zPosField.setText(""+n.getzPos());
 					nodeNameField.setText(n.getnodeName());
 					lastClicked = n;
+					mapPanel.renderMapPublic(g, points);
 				} else if (rdbtnSelectNode.isSelected()){
 					for(MapNode n : points){
 						Point tmp = new Point((int)n.getxPos(), (int)n.getyPos());
 
-						if((Math.abs(me.getLocationOnScreen().getX() - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - tmp.getY()) <= threshold )){
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
 							//txtrXpos.setText("x_pos: " + n.getxPos() + "\ny_pos: " + n.getyPos() + "\nNode ID: " + n.getID());
 							// currentNode is now n with nodeID
 							xPosField.setText(""+n.getxPos());
@@ -131,7 +134,7 @@ public class DevGUI extends JFrame {
 						for(MapNode n : points){
 							Point tmp = new Point((int)n.getxPos(), (int)n.getyPos());
 
-							if((Math.abs(me.getLocationOnScreen().getX() - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
 								//txtrXpos.setText("x_pos: " + n.getxPos() + "\ny_pos: " + n.getyPos() + "\nNode ID: " + n.getID());
 								// currentNode is now n with nodeID
 								edgeStart = n;
@@ -144,43 +147,31 @@ public class DevGUI extends JFrame {
 						for(MapNode n : points) {
 							Point tmp = new Point((int)n.getxPos(), (int)n.getyPos());
 
-							if((Math.abs(me.getLocationOnScreen().getX() - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
 								//txtrXpos.setText("x_pos: " + n.getxPos() + "\ny_pos: " + n.getyPos() + "\nNode ID: " + n.getID());
 								// currentNode is now n with nodeID
 							//	Line2D.Double lin = new Line2D.Double(edgeStart.getX(), edgeStart.getY(), tmp.getX(), tmp.getY());
-								Graphics g = getGraphics();
-								g.setColor(Color.blue);
-								g.drawLine((int) edgeStart.getxPos() + 10, (int) edgeStart.getyPos() + 10, (int) tmp.getX()+ 10, (int) tmp.getY() + 10);
+								//g.setColor(Color.blue);
+								//g.drawLine((int) edgeStart.getxPos() + 10, (int) edgeStart.getyPos() + 10, (int) tmp.getX()+ 10, (int) tmp.getY() + 10);
+								Graphics g = mapPanel.getGraphics();
 								edgeStarted = false;
 								n.addNeighbor(edgeStart);
 								edgeStart.addNeighbor(n);
+								mapPanel.renderMapPublic(g, points);
 							}
 						}
 					}
 				}
 			}
-		});
+		}); 
 		mapPanel.setBackground(Color.WHITE);
 		
+		
+		
+		
 		JMenuItem mntmLoadMap = new JMenuItem("Load Map");
-		mntmLoadMap.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				points.add(new MapNode(100, 100, 0));
-				nodeCounter++;
-				points.add(new MapNode(200, 200, 1));
-				nodeCounter++;
-				points.add(new MapNode(150, 100, 2));
-				nodeCounter++;
-				
-				localMap.put("firstValue", points);
-				
-				Graphics g = getGraphics();
-		//		for(MapNode n : points){
-		//			nodeImage.paintIcon(lblNewLabel, g, (int)n.getxPos(), (int)n.getyPos());
-		//			
-		//		}
-			}
-		});
+
+		
 		
 		JMenuItem mntmSaveMap = new JMenuItem("Save Map");
 		mnFile.add(mntmSaveMap);
@@ -333,7 +324,7 @@ public class DevGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
             	if(lastClicked != null) {
             		lastClicked.setnodeName(nodeNameField.getText());
-            		lastClicked.setxPos((float) Double.parseDouble(xPosField.getText())); //TODO : Setting x pos doesn't work yet.
+            		lastClicked.setxPos( Double.parseDouble(xPosField.getText())); //TODO : Setting x pos doesn't work yet.
             	}
             }
             
@@ -376,4 +367,6 @@ public class DevGUI extends JFrame {
 		panel.add(mapPanel);
 		getContentPane().setLayout(groupLayout);
 	}
+	
+	
 }
