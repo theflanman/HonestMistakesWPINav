@@ -1,42 +1,36 @@
 package main;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 
-import javax.swing.JLabel;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
- * Class purposes:
- * 	GUIBackend - Keeps track of information regarding the CURRENTLY LOADED map
- *  GlobalMap - Keeps track of information regarding ALL maps.
+ * This class contains code for the main applications GUI interface as well as implementation for its various
+ * functionality such as drawing the route.
  * @author Trevor
  */
-
 public class MainGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L; // Serial Version ID
 	private static GUIBackend backend;
 	private static GlobalMap globalMap;
-	private ImageIcon nodeImage = new ImageIcon("src\\images\\node.png");
+	// private ImageIcon nodeImage = new ImageIcon("src\\images\\node.png");
 	
-	// GUI Components
-	private JLabel lblMapImage, lblNodes;
-	private JPanel panelImage;
+	private JPanel contentPane;
 	
 	/**
 	 * Create the frame.
@@ -44,8 +38,8 @@ public class MainGUI extends JFrame {
 	 * @throws ClassNotFoundException 
 	 */
 	public MainGUI(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
-		// Instantiate GUIBackend to its default (which should be the campus map). Currently set to "map1.localmap"
-		GUIBackend backend = new GUIBackend();
+		// Instantiate GUIBackend to its default
+		backend = new GUIBackend();
 		
 		// Initialize the GlobalMap variable with all of the LocalMaps and all of their nodes
 		globalMap = new GlobalMap();
@@ -61,84 +55,105 @@ public class MainGUI extends JFrame {
 		
 		System.out.println(backend.getLocalMap().getMapImage());
 		
-		// Need to somehow know how many MapNodes there are ahead of time, else use an ArrayList
+		// add the collection of nodes to the ArrayList of GlobalMap
 		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
 		for(LocalMap local : tmpListLocal){
-			allNodes.addAll(local.getMapNodes()); // add the collection of nodes to the ArrayList of Global
+			allNodes.addAll(local.getMapNodes()); 
 		}
 		globalMap.setMapNodes(allNodes);		 
 		
+		
+		
 		/**
-		 * Setup JFrame
+		 * GUI related code
 		 */
+		
+		// This will setup the main JFrame to be maximized on start and have a defined content pane
 		setTitle("WPI Nav Tool");
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		ImageIcon map = new ImageIcon("src/images/" + backend.getLocalMap().getMapImage()); // load default map image
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);		
+		setBounds(0, 0, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		
+		// Image of the default map loaded into backend
+		Image map = new ImageIcon("src/images/" + backend.getLocalMap().getMapImage()).getImage();
+		
+		// SwingBuilder Code related to the JLayeredPane() 
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		
+		// Creates a new DrawingPanel object which will display the map image 
+		DrawingPanel panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map);
+		GroupLayout gl_layeredPane = new GroupLayout(layeredPane);
+		gl_layeredPane.setHorizontalGroup(
+			gl_layeredPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 1105, Short.MAX_VALUE)
+		);
+		gl_layeredPane.setVerticalGroup(
+			gl_layeredPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
+		);
+		layeredPane.setLayout(gl_layeredPane);
+		contentPane.setLayout(gl_contentPane);
+	
+		
+		pack();
 		setVisible(true);
-		
-		// load map image
-		lblMapImage = new JLabel("");
-		lblMapImage.setIcon(map);
-		
-		lblNodes = new JLabel("");
-		
+	}
+	
+	
+	/**
+	 * A local class to allow drawing on a given panel. This allows us to override the paintComponent() method and
+	 * ensure any drawn graphics are displayed without interfering with others. Think of this like a custom canvas.
+	 * @author Trevor
+	 */
+	class DrawingPanel extends JPanel {
+
+		private static final long serialVersionUID = 1L;
+		ArrayList<MapNode> localNodes;
+		Image mapImage;
 		
 		/**
-		 * Display MapNodes on the map
-		 * TODO: Implement this once there is testable Node Data
-		 */		
-		/*
-		for(MapNode n : backend.getLocalMap().getMapNodes()){
-			Graphics g = this.getGraphics();
-			nodeImage.paintIcon(lblNodes, g, (int)n.getX(), (int)n.getY());
-			//g.fillOval((int)n.getX(), (int)n.getY(), 10, 10);
-			
-			System.out.println("we found a node");
-			System.out.println(n.getX() + "\t" + n.getY());
-		}*/
-				
-		// Initialize GUI components
-		panelImage = new JPanel();	
+		 * Constructor
+		 * @param nodes The list of nodes already existing on the map. TODO: Make these invisible !
+		 * @param map The map image for the current LocalMap
+		 */
+		public DrawingPanel(ArrayList<MapNode> nodes, Image map) {
+	        setBorder(BorderFactory.createLineBorder(Color.black));
+	        this.localNodes = nodes;
+	        this.mapImage = map;
+	        setOpaque(false);
+	    }
 		
-		// Set location and properties of the panel that holds the label representing the map image
-		panelImage.setBackground(Color.WHITE);
-		
-		panelImage.add(lblMapImage);
-		panelImage.add(lblNodes);
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panelImage, GroupLayout.PREFERRED_SIZE, 1091, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(265, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panelImage, GroupLayout.PREFERRED_SIZE, 681, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(58, Short.MAX_VALUE))
-		);
-		
-		GroupLayout gl_panelImage = new GroupLayout(panelImage);
-		gl_panelImage.setHorizontalGroup(
-			gl_panelImage.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelImage.createSequentialGroup()
-					.addComponent(lblNodes)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblMapImage, GroupLayout.DEFAULT_SIZE, 1091, Short.MAX_VALUE))
-		);
-		gl_panelImage.setVerticalGroup(
-			gl_panelImage.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblMapImage, GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
-				.addGroup(gl_panelImage.createSequentialGroup()
-					.addComponent(lblNodes)
-					.addContainerGap())
-		);
-		panelImage.setLayout(gl_panelImage);
-		getContentPane().setLayout(groupLayout);
-		
+		/**
+		 * Paints the map image to the Panel and temporarily prints a visual indication of Node locations
+		 * @param g The current graphics object for the main frame
+		 */
+	    public void paintComponent(Graphics g) {
+	        super.paintComponent(g);       
+	        
+	        g.drawImage(this.mapImage, 0, 0, getWidth(), getHeight(), this);
+	        for(MapNode n : this.localNodes){
+	        	g.fillOval((int)n.getX(), (int)n.getY(), 10, 10);
+	        }
+	    }  
+	    
 	}
 }
