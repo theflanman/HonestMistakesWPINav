@@ -3,6 +3,9 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.FlowLayout;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +19,9 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+import javax.swing.JButton;
 
 
 /**
@@ -23,13 +29,16 @@ import javax.swing.border.EmptyBorder;
  * functionality such as drawing the route.
  * @author Trevor
  */
+
+
 public class MainGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L; // Serial Version ID
 	private static GUIBackend backend;
 	private static GlobalMap globalMap;
-	// private ImageIcon nodeImage = new ImageIcon("src\\images\\node.png");
+	public static boolean drawLine = false;
 	
+	// private ImageIcon nodeImage = new ImageIcon("src\\images\\node.png");
 	private JPanel contentPane;
 	
 	/**
@@ -83,21 +92,62 @@ public class MainGUI extends JFrame {
 		// SwingBuilder Code related to the JLayeredPane() 
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		
+		JPanel panel_1 = new JPanel();
+		
+		JPanel panel_2 = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(40)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(24, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(15)
+							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+							.addGap(562)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		
+		
+		JButton btnCalculateRoute = new JButton("Calculate Route");
+		btnCalculateRoute.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				backend.runAStar();
+				drawLine = true;
+				/*for(int i = 0; i < backend.getCoordinates().size(); i++){
+					float x1 = backend.getCoordinates().get(i)[0];
+					float y1 = backend.getCoordinates().get(i)[1];
+					float x2 = backend.getCoordinates().get(i+1)[0];
+					float x3 = backend.getCoordinates().get(i+1)[1];
+					Graphics 
+				
+					
+				}*/
+			}
+		});
+		panel_2.add(btnCalculateRoute);
+		
+		JLabel lblDistance = new JLabel("");
+		panel_1.add(lblDistance);
+		lblDistance.setText(backend.getDistance());
 		
 		// Creates a new DrawingPanel object which will display the map image 
 		DrawingPanel panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map);
@@ -146,6 +196,8 @@ public class MainGUI extends JFrame {
 		 * Paints the map image to the Panel and temporarily prints a visual indication of Node locations
 		 * @param g The current graphics object for the main frame
 		 */
+		
+		
 	    public void paintComponent(Graphics g) {
 	        super.paintComponent(g);       
 	        
@@ -153,7 +205,17 @@ public class MainGUI extends JFrame {
 	        for(MapNode n : this.localNodes){
 	        	g.fillOval((int)n.getX(), (int)n.getY(), 10, 10);
 	        }
-	    }  
-	    
+	        
+	        if(MainGUI.drawLine = true){
+	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
+					float x1 = backend.getCoordinates().get(i)[0];
+					float y1 = backend.getCoordinates().get(i)[1];
+					float x2 = backend.getCoordinates().get(i+1)[0];
+					float y2 = backend.getCoordinates().get(i+1)[1];
+					g.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+					i++;
+	        	}
+	        }
+	    }
 	}
 }

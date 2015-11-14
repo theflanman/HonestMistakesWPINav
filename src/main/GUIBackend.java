@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /** TODO write this
  * 
@@ -19,7 +19,7 @@ public class GUIBackend implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private LocalMap localMap;
-	private MapNode[] path;
+	private LinkedList<MapNode> path;
 	private MapNode startNode;
 	private MapNode endNode;
 	
@@ -29,7 +29,7 @@ public class GUIBackend implements Serializable {
 	 */
 	public GUIBackend(){
 		this.localMap = new LocalMap();
-		this.path = null;
+		this.path = new LinkedList<MapNode>();
 		this.startNode = null;
 		this.endNode = null;
 	}
@@ -67,9 +67,9 @@ public class GUIBackend implements Serializable {
 	 * @return ArrayList<float[]> - the array of coordinate pairs
 	 */
 	
-	public ArrayList<float[]> getPathOnMapInfo() {
-		ArrayList<MapNode> mapNodes = this.localMap.getMapNodes();
-		ArrayList<float[]>coordinates = new ArrayList<float[]>(); 
+	public LinkedList<float[]> getCoordinates(){
+		LinkedList<MapNode> mapNodes = this.path;
+		LinkedList<float[]>coordinates = new LinkedList<float[]>(); 
 		for(MapNode mapNode : mapNodes){
 			float x = mapNode.getX();
 			float y = mapNode.getY();
@@ -84,9 +84,9 @@ public class GUIBackend implements Serializable {
 	 * @return
 	 */
 	
-	public float getDistance() {
+	public String getDistance() {
 		float distance = this.startNode.calcDistance(this.endNode);
-		return distance;
+		return "Distance to your destination in feet:" + Float.toString(distance);
 	}
 	
 	public void displayStepByStep() {
@@ -116,6 +116,7 @@ public class GUIBackend implements Serializable {
 		this.localMap = localMap;
 	}
 	
-	
-
+	public LinkedList<MapNode> getPath(){
+		return this.path;
+	}
 }
