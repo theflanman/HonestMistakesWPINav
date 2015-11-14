@@ -1,4 +1,7 @@
 package main;
+
+import java.util.ArrayList;
+
 /** TODO write this
  * 
  * @author Connor Flanigan
@@ -9,12 +12,12 @@ public class MapNode {
 	
 	private double xPos;
 	private double yPos;
-	private float zPos;
+	private double zPos;
 	private int nodeID;
-	private MapNode[] neighbors;
-	private float fScore;
-	private float gScore;
-	private float hScore;
+	private ArrayList<MapNode> neighbors;
+	private double fScore;
+	private double gScore;
+	private double hScore;
 	private MapNode cameFrom;
 	private GlobalMap globalMap;
 	private LocalMap localMap;
@@ -37,6 +40,13 @@ public class MapNode {
 		this.yPos = yPos;
 	}
 	
+	/**
+	 * @return the cameFrom
+	 */
+	public MapNode getCameFrom() {
+		return cameFrom;
+	}
+	
 	public double calcDistance(MapNode toNode) {
 		double distance = 0;
 		double distanceXLeg = toNode.getXPos() - this.getXPos();
@@ -46,9 +56,40 @@ public class MapNode {
 		
 		return distance;
 	}
+		
+	/**
+	 * function to calculate the angle needed to turn from the current to be facing the target node 
+	 * @param currentNode the current map node to make the turn on
+	 * @param nextNode the target node to turn towards
+	 * @return the angle needed to turn in order to be facing the next node
+	 * 90 degrees is left, 270 degrees is right, 180 degrees is forward, 0 degrees is backwards (hope we don't get the last one)
+	 */
+	public double calculateAngle(MapNode nextNode) {
+		MapNode currentNode = this;
+		MapNode previousNode = currentNode.getCameFrom();
+		double prevX = previousNode.getXPos();
+		double prevY = previousNode.getYPos();
+		double currentX = currentNode.getXPos();
+		double currentY = currentNode.getYPos();
+		double nextX = nextNode.getXPos();
+		double nextY = nextNode.getYPos();
+		
+	    double angle1 = Math.atan2(prevY - currentY, prevX - currentX);
+	    double angle2 = Math.atan2(nextY - currentY, nextX - currentX);
+		
+	    double radAngle;
+		 radAngle = angle1 - angle2;
+		 
+		 double resultAngle = Math.toDegrees(radAngle);
+			if (resultAngle < 0){
+				resultAngle += 360;
+			}
+			return resultAngle;
+	}
 	
 	public void addNeighbor(MapNode node) {
 		
 	}
+	
 
 }
