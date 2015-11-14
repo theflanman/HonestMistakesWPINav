@@ -82,6 +82,9 @@ public class GUIBackend implements Serializable {
 	 */
 	
 	public String getDistance() {
+		/**TODO
+		 * Change this to call get distance from step by step 
+		 */
 		float distance = this.startNode.calcDistance(this.endNode);
 		return "Distance to your destination in feet:" + Float.toString(distance);
 	}
@@ -118,6 +121,12 @@ public class GUIBackend implements Serializable {
 	}
 	public void setEndNode(MapNode endNode){
 		this.endNode = endNode;
+	}
+	public MapNode getStartNode(){
+		return this.startNode;
+	}
+	public MapNode getEndNode(){
+		return this.endNode;
 	}
 	public LinkedList<MapNode> getPath(){
 		return this.path;

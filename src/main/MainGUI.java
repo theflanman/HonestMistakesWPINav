@@ -185,8 +185,18 @@ public class MainGUI extends JFrame {
 						btnCalculateRoute.setText("Remove Route Line");
 					}
 				});
+			/**TODO
+			 * add Remove Link functionality
+			 */
 			} else { //if the button text is "Remove Route Line"
-				//code for this...
+				btnCalculateRoute.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e) {
+						//code for this...
+						
+						//change the name back
+						btnCalculateRoute.setText("Calculate Route");
+					}
+				});
 			}
 		}
 		
