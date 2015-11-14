@@ -24,7 +24,7 @@ public class LocalMapTests extends TestCase {
 		localMap.addNode(1.0, 2.0, 3.0);
 		
 		ArrayList<MapNode> nodes = localMap.getGlobalMap().getMapNodes();
-		assertEquals(3.0, nodes.get(0).getzPos());
+		assertEquals(3.0, nodes.get(0).getZPos());
 	}
 
 }

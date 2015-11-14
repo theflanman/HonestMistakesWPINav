@@ -1,8 +1,10 @@
 package main;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
+
 
 /** TODO write this
  * 
@@ -25,52 +27,48 @@ public class MapNode implements Serializable{
 	private LocalMap localMap;
 	//private Attributes attributes
 	
+
 	// temporary constructor
 	
-	public MapNode(double xPos, double yPos, double zPos){
-		this.xPos = xPos;
-		this.yPos = yPos;
-		this.zPos = zPos;
+	public MapNode(){
 	}
 	
 	public double aStarHeuristic(MapNode toNode) {
-		
-		double dist = (double) Math.sqrt(Math.pow((xPos - toNode.getxPos()),2) + Math.pow(yPos - toNode.getyPos(),2)) + Math.abs(zPos - toNode.getzPos());
+		double dist = (double) Math.sqrt(Math.pow((xPos - toNode.getXPos()),2) + Math.pow(yPos - toNode.getYPos(),2)) + Math.abs(zPos - toNode.getZPos());
 		
 		return dist;
-		
-	}
-	
-	
-	public void addNeighbor(MapNode node) {
-		this.neighbors.add(node);
 	}
 
-	public void deleteNeighborLink(MapNode node){
-		this.neighbors.remove(node);
+	
+	public MapNode getCameFrom() {
+		return cameFrom;
 	}
 	
-	public double getxPos() {
+	public void setCameFrom(MapNode cameFrom){
+		this.cameFrom = cameFrom;		
+	}
+		
+	public double getXPos() {
 		return xPos;
 	}
 
-	public void setxPos(double xPos) {
+	public void setXPos(double xPos) {
 		this.xPos = xPos;
 	}
 
-	public double getyPos() {
+	public double getYPos() {
 		return yPos;
 	}
 
-	public void setyPos(double yPos) {
+	public void setYPos(double yPos) {
 		this.yPos = yPos;
 	}
 
-	public double getzPos() {
+	public double getZPos() {
 		return zPos;
 	}
 
-	public void setzPos(double zPos) {
+	public void setZPos(double zPos) {
 		this.zPos = zPos;
 	}
 
@@ -94,20 +92,68 @@ public class MapNode implements Serializable{
 		return gScore;
 	}
 
-	public void setCameFrom(MapNode current) {
-		cameFrom = current;
-	}
-
 	public double getFScore() {
 		return fScore;
 	}
 
-	public MapNode getCameFrom() {
-		return cameFrom;
-	}
-
 	public void calcFScore() {
 		fScore = gScore + hScore;		
+	}
+	
+	public void addNeighbor(MapNode node) {
+		this.neighbors.add(node);
+	}
+
+	public void deleteNeighborLink(MapNode node){
+		this.neighbors.remove(node);
+	}
+	
+	
+	/**
+	 * @author Rayan Alsoby
+	 * 
+	 * function to calculate the angle needed to turn from the current to be facing the target node 
+	 * @param nextNode the target node to turn towards
+	 * @return the angle needed to turn in order to be facing the next node
+	 * 90 degrees is left, 270 degrees is right, 180 degrees is forward, 0 degrees is backwards (hope we don't get the last one)
+	 */
+	public double calculateAngle(MapNode nextNode) {
+		MapNode currentNode = this;
+		MapNode previousNode = currentNode.getCameFrom();
+		double prevX = previousNode.getXPos();
+		double prevY = previousNode.getYPos();
+		double currentX = currentNode.getXPos();
+		double currentY = currentNode.getYPos();
+		double nextX = nextNode.getXPos();
+		double nextY = nextNode.getYPos();
+		
+	    double angle1 = Math.atan2(prevY - currentY, prevX - currentX);
+	    double angle2 = Math.atan2(nextY - currentY, nextX - currentX);
+		
+	    double radAngle;
+		 radAngle = angle1 - angle2;
+		 
+		 double resultAngle = Math.toDegrees(radAngle);
+			if (resultAngle < 0){
+				resultAngle += 360;
+			}
+			return resultAngle;
+	}
+	
+	/**
+	 * @author Nick Gigliotti
+	 * 
+	 * @param the node to calculate the distance
+	 * @return int distance between nodes
+	 */
+	public int calcDistance(MapNode toNode) {
+		double distance = 0;
+		double distanceXLeg = toNode.getXPos() - this.getXPos();
+		double distanceYLeg = toNode.getYPos() - this.getYPos();
+
+		distance = Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg));
+		distance = Math.round(distance);
+		return (int)distance;
 	}
 
 }
