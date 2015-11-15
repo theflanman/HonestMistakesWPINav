@@ -1,7 +1,7 @@
 package main;
 
-import java.io.Serializable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /** TODO write this
@@ -12,19 +12,21 @@ import java.util.ArrayList;
 
 public class GlobalMap implements Serializable {
 
+
 	private static final long serialVersionUID = 1L;
 	private ArrayList<MapNode> mapNodes;
-	private LocalMap[] localMaps;
-	private MapNode[] path;
+	private ArrayList<LocalMap> localMaps;
+	private ArrayList<MapNode> path;
 	
 	public GlobalMap(){
 		this.mapNodes = new ArrayList<MapNode>();
-		this.localMaps = new LocalMap[100];
-		this.path = new MapNode[1000];
+		this.localMaps = new ArrayList<LocalMap>();
+		this.path = new ArrayList<MapNode>();
 	}
-	
+ 	
 	public void generateStepByStep() {
-		
+		StepByStep currentStepByStep = new StepByStep(path);
+		currentStepByStep.printDirection();
 	}
 	
 	public void navigate(MapNode startNode, MapNode endNode) {
@@ -45,7 +47,7 @@ public class GlobalMap implements Serializable {
 		return mapNodes;
 	}
 	 
-	public void setLocalMaps(LocalMap[] localMaps){
+	public void setLocalMaps(ArrayList<LocalMap> localMaps){
 		this.localMaps = localMaps;
 	}
 

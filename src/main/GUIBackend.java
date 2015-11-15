@@ -68,8 +68,8 @@ public class GUIBackend implements Serializable {
 		LinkedList<MapNode> mapNodes = this.path;
 		LinkedList<double[]>coordinates = new LinkedList<double[]>(); 
 		for(MapNode mapNode : mapNodes){
-			double x = mapNode.getxPos();
-			double y = mapNode.getyPos();
+			double x = mapNode.getXPos();
+			double y = mapNode.getYPos();
 			double[] pairs = {x, y};
 			coordinates.add(pairs);
 		}

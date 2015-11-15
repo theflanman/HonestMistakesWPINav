@@ -67,7 +67,10 @@ public class LocalMap implements Serializable{
 	
 	
 	public void addNode(double xPos, double yPos, double zPos) {
-		MapNode node = new MapNode(xPos, yPos, zPos);
+		MapNode node = new MapNode();
+		node.setXPos(xPos);
+		node.setYPos(yPos);
+		node.setZPos(zPos);
 		
 		globalMap.addToMapNodes(node); // add this node to the only GlobalMap
 	}
