@@ -30,8 +30,8 @@ public class StepByStep {
 	 * 
 	 * @ return double of the total distance for the directions
 	 */
-	public double calculateTotalDistance() {
-		double totalDistance = 0;
+	public int calculateTotalDistance() {
+		int totalDistance = 0;
 		MapNode node1 = null;
 		MapNode node2 = null;
 		for(int i = 0; i < pathNodes.size() - 1; i++){
