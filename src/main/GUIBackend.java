@@ -23,8 +23,8 @@ public class GUIBackend implements Serializable {
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
 	 * TODO: Change to Campus Map when it is complete
 	 */
-	public GUIBackend(){
-		this.localMap = new LocalMap("");
+	public GUIBackend(String defaultMapImage){
+		this.localMap = new LocalMap(defaultMapImage);
 		this.path = new ArrayList<MapNode>();
 		this.startNode = null;
 		this.endNode = null;

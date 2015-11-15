@@ -41,6 +41,7 @@ public class MapNode implements Serializable{
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.zPos = zPos;
+		neighbors = new ArrayList<MapNode>();
 	}
 
 

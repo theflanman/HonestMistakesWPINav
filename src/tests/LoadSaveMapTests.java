@@ -33,7 +33,7 @@ public class LoadSaveMapTests extends TestCase {
 		
 		devGUIBack1.saveMap("map1"); // save map to a file
 		
-		GUIBackend guiBack1 = new GUIBackend();
+		GUIBackend guiBack1 = new GUIBackend("map1.png");
 
 		guiBack1.loadLocalMap("map1.localmap"); // load the local map
 		
@@ -46,7 +46,7 @@ public class LoadSaveMapTests extends TestCase {
 		
 		localMap1.saveMap("map1");
 		
-		GUIBackend guiBack1 = new GUIBackend();
+		GUIBackend guiBack1 = new GUIBackend("map1.png");
 
 		guiBack1.loadLocalMap("map1.localmap"); // load the local map
 		

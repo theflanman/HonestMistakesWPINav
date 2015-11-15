@@ -1,29 +1,31 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 
 
 /**
@@ -41,8 +43,8 @@ public class MainGUI extends JFrame {
 	boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	public static boolean drawLine = false;
 	
-	// private ImageIcon nodeImage = new ImageIcon("src\\images\\node.png");
 	private JPanel contentPane;
+	JButton btnCalculateRoute;
 	
 	/**
 	 * Create the frame.
@@ -51,18 +53,19 @@ public class MainGUI extends JFrame {
 	 */
 	public MainGUI(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
 		// Instantiate GUIBackend to its default
-		backend = new GUIBackend();
+		String defaultMapImage = "downstairsCC.jpg";
+		backend = new GUIBackend(defaultMapImage);
 		
 		// Initialize the GlobalMap variable with all of the LocalMaps and all of their nodes
 		globalMap = new GlobalMap();
 		
-		LocalMap[] tmpListLocal = new LocalMap[numLocalMaps]; // temporary list of LocalMaps to be initialized
+		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary list of LocalMaps to be initialized
 		for(int i = 0; i < numLocalMaps; i++){		
 			backend.loadLocalMap(localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "localmaps" folder
-			tmpListLocal[i] = backend.getLocalMap();
+			tmpListLocal.add(backend.getLocalMap());
 		}
 		globalMap.setLocalMaps(tmpListLocal);
-		backend.setLocalMap(tmpListLocal[0]);
+		backend.setLocalMap(tmpListLocal.get(0));
 		
 		// add the collection of nodes to the ArrayList of GlobalMap
 		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
@@ -76,7 +79,6 @@ public class MainGUI extends JFrame {
 		/**
 		 * GUI related code
 		 */
-		
 		// This will setup the main JFrame to be maximized on start and have a defined content pane
 		setTitle("WPI Nav Tool");
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -91,40 +93,7 @@ public class MainGUI extends JFrame {
 		
 		// SwingBuilder Code related to the JLayeredPane() 
 		JLayeredPane layeredPane = new JLayeredPane();
-		layeredPane.addMouseListener(new MouseAdapter() {
-		@Override
-			public void mouseClicked(MouseEvent me) {
-				Graphics g = layeredPane.getGraphics();
-				
-				// Only add new points if you haven't set an End Node yet
-				if(!setEnd){
-					
-					Point p = me.getLocationOnScreen();
-					System.out.println("Clicked at: " + p.getX() + "\t" + p.getY());
-					
-					// If you've set a start node already, set the end node
-					if(setStart){
-						g.setColor(Color.BLUE);
-						g.fillOval((int)p.getX(), (int)p.getY() - 10, 10, 10);
-						setEnd = true;
-						MapNode newNode = new MapNode((double)p.x, (double)p.y, 0);
-						backend.setEndNode(newNode);
-					} else {
-						g.setColor(Color.RED);
-						g.fillOval(p.x, p.y - 10, 10, 10);
-						setStart = true;
-						MapNode newNode = new MapNode((double)p.x, (double)p.y, 0);
-						backend.setStartNode(newNode);
-					}
-					
-				
-				// Prohibit any new points for now
-				} else {
-					System.out.println("You've already selected two points");
-				}
-				
-			}
-		});
+		
 		layeredPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
 		JPanel panel_1 = new JPanel();
@@ -168,37 +137,31 @@ public class MainGUI extends JFrame {
 		/**TODO
 		 * going to need to add functionality to change button title to remove line when user has drawn the line on screen in a better way
 		 */
-		JButton btnCalculateRoute = new JButton("Calculate Route");
+		btnCalculateRoute = new JButton("Calculate Route");
 		panel_2.add(btnCalculateRoute);
 		btnCalculateRoute.setEnabled(false);
-		
-		//need to remember to make sure the user can actually press the button
-		if (!(backend.getStartNode().equals(null)) && !(backend.getEndNode().equals(null))){
-			btnCalculateRoute.setEnabled(true);
-			if (btnCalculateRoute.getText() == "Calculate Route"){
-				btnCalculateRoute.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						backend.runAStar();
-						drawLine = true;
-						//this should only display when the user calculates the astar algorithm
-						lblDistance.setText(backend.getDistance());
-						btnCalculateRoute.setText("Remove Route Line");
-					}
-				});
-			} else { //if the button text is "Remove Route Line"
-				btnCalculateRoute.addActionListener(new ActionListener(){
-					public void actionPerformed(ActionEvent e) {
-						//code for this...
-						drawLine = false;
-						//change the name back
-						btnCalculateRoute.setText("Calculate Route");
-					}
-				});
+		btnCalculateRoute.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(btnCalculateRoute.isEnabled()){
+					System.out.println("About to run AStar");
+					backend.runAStar();
+					System.out.println("Just ran AStar");
+					drawLine = true;
+					//this should only display when the user calculates the astar algorithm
+					lblDistance.setText(backend.getDistance());
+					btnCalculateRoute.setText("Remove Route Line");
+				} else {
+					//code for this...
+					// drawLine = false;
+					//change the name back
+					btnCalculateRoute.setText("Calculate Route");
+				}
 			}
-		}
+		});
 		
-		// Creates a new DrawingPanel object which will display the map image 
-		DrawingPanel panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map);
+		// Creates a new DrawingPanel object which will display the map image and load up MapNode data
+		DrawingPanel panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map, layeredPane.getSize());
 		GroupLayout gl_layeredPane = new GroupLayout(layeredPane);
 		gl_layeredPane.setHorizontalGroup(
 			gl_layeredPane.createParallelGroup(Alignment.LEADING)
@@ -227,17 +190,52 @@ public class MainGUI extends JFrame {
 		private static final long serialVersionUID = 1L;
 		ArrayList<MapNode> localNodes;
 		Image mapImage;
+		ArrayList<MapNode> startEndNodes;
 		
 		/**
 		 * Constructor
 		 * @param nodes The list of nodes already existing on the map. TODO: Make these invisible !
 		 * @param map The map image for the current LocalMap
 		 */
-		public DrawingPanel(ArrayList<MapNode> nodes, Image map) {
+		public DrawingPanel(ArrayList<MapNode> nodes, Image map, Dimension size) {
 	        setBorder(BorderFactory.createLineBorder(Color.black));
 	        this.localNodes = nodes;
 	        this.mapImage = map;
 	        setOpaque(false);
+	        startEndNodes = new ArrayList<MapNode>();
+	        
+	        /**
+	         * On mouse click, display the points which represent the start and end nodes. These will also set the backend to
+	         * these points on the panel.
+	         */
+	        addMouseListener(new MouseAdapter() {
+	    		@Override
+	    		public void mouseClicked(MouseEvent me) {	    				
+	    				// Only add new points if you haven't set an End Node yet
+	    				if(!setEnd){
+		    					Point clickedAt = me.getPoint();
+		    					
+		    					// If you've set a start node already, set the end node
+		    					if(setStart){
+		    						setEnd = true;
+		    						MapNode newNode = new MapNode((double)clickedAt.x, (double)clickedAt.y, 0);
+		    						startEndNodes.add(newNode);
+		    						backend.setEndNode(newNode);
+		    						btnCalculateRoute.setEnabled(true); // allow user to calculate route
+		    					} else {
+		    						setStart = true;
+		    						MapNode newNode = new MapNode((double)clickedAt.x, (double)clickedAt.y, 0);
+		    						startEndNodes.add(newNode);
+		    						backend.setStartNode(newNode);
+		    					}
+	    					
+	    				// Prohibit any new points for now
+	    				} else {
+	    					System.out.println("You've already selected two points");
+	    				}
+	    				repaint();
+	    			}
+	    		});
 	    }
 		
 		/**
@@ -246,10 +244,17 @@ public class MainGUI extends JFrame {
 		 */	
 	    public void paintComponent(Graphics g) {
 	        super.paintComponent(g);       
+	        Graphics2D graphics = (Graphics2D)g;
 	        
-	        g.drawImage(this.mapImage, 0, 0, getWidth(), getHeight(), this);
+	        // Draws the map and places pre-existing node data onto the map as well start and end nodes if they have been set
+	        graphics.drawImage(this.mapImage, 0, 0, this);
+	        graphics.setColor(Color.BLUE);
 	        for(MapNode n : this.localNodes){
-	        	g.fillOval((int)n.getXPos(), (int)n.getYPos(), 10, 10);
+	        	graphics.fillOval((int)n.getXPos() - 5, (int)n.getYPos() - 5, 10, 10);
+	        }
+	        graphics.setColor(Color.RED);
+	        for(MapNode n : this.startEndNodes){
+	        	graphics.fillOval((int)n.getXPos() - 5, (int)n.getYPos() - 5, 10, 10);
 	        }
 	        
 	        //essentially draws the line on the screen - will need to add a way to remove this line later on
