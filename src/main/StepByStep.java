@@ -30,7 +30,7 @@ public class StepByStep {
 	 * 
 	 * @ return double of the total distance for the directions
 	 */
-	public int calculateTotalDistance() {
+	public double calculateTotalDistance() {
 		double totalDistance = 0;
 		MapNode node1 = null;
 		MapNode node2 = null;
@@ -39,7 +39,7 @@ public class StepByStep {
 			node2 = pathNodes.get(i+1);
 			totalDistance += node1.calcDistance(node2);
 		}
-		return (int) totalDistance;
+		return totalDistance;
 	}
 	
 	/**

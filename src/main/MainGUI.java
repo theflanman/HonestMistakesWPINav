@@ -26,6 +26,10 @@ import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.BadLocationException;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 
 /**
@@ -42,6 +46,7 @@ public class MainGUI extends JFrame {
 	private static GlobalMap globalMap;
 	boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	public static boolean drawLine = false;
+	public static boolean removeLine = false;
 	
 	private JPanel contentPane;
 	JButton btnCalculateRoute;
@@ -99,35 +104,49 @@ public class MainGUI extends JFrame {
 		JPanel panel_1 = new JPanel();
 		
 		JPanel panel_2 = new JPanel();
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		
+		JPanel panel_3 = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(40)
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(24, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(15)
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
-							.addGap(562)
+							.addGap(16)
+							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
 						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		
+		JLabel lblStepbystepDirections = new JLabel("Step-By-Step Directions");
+		panel_3.add(lblStepbystepDirections);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setRows(15);
+		textArea_1.setEditable(false);
+		scrollPane_1.setViewportView(textArea_1);
 		
 		//adds the distance label to the map interface
 		JLabel lblDistance = new JLabel("");
@@ -148,13 +167,27 @@ public class MainGUI extends JFrame {
 					backend.runAStar();
 					System.out.println("Just ran AStar");
 					drawLine = true;
+					
 					//this should only display when the user calculates the astar algorithm
 					lblDistance.setText(backend.getDistance());
+					
+					//basically justs places each string into the array one row at a time - if, and this is a big IF, /n works in this context
+					for(String string : backend.displayStepByStep()) {
+						textArea_1.append("/n");
+						textArea_1.append(string);
+					}
 					btnCalculateRoute.setText("Remove Route Line");
 				} else {
-					//code for this...
-					// drawLine = false;
-					//change the name back
+					btnCalculateRoute.setEnabled(true);
+					
+					//if the line needs to be removed
+					//going to need to add a method here - to remove nodes from path
+					backend.removePath();
+					removeLine = true;
+					lblDistance.setText(backend.getDistance());
+					textArea_1.setText("");
+					
+					//change the name of button back to what it originally was
 					btnCalculateRoute.setText("Calculate Route");
 				}
 			}
@@ -269,9 +302,21 @@ public class MainGUI extends JFrame {
 					i++;
 	        	} 
 	        }
-	        else{
-	        		//currently need to code something about removing the line
+	        else if (MainGUI.removeLine == true){
+	        	//TODO this really should have a better implementation - but this is a quick fix to an on-going problem
+	        	//Would make sense to eventually transform the line into an object, so that it could be easily removed - but that might require adding a .awt canvas, and I'm not entirely sure we want to restructure our entire project
+	        	//essentially repaint the line white so that it can't be seen when you remove it
+	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
+					double x1 = backend.getCoordinates().get(i)[0];
+					double y1 = backend.getCoordinates().get(i)[1];
+					double x2 = backend.getCoordinates().get(i+1)[0];
+					double y2 = backend.getCoordinates().get(i+1)[1];
+					g.setColor(Color.white);
+					g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
+					i++;
 	        	}
+	        	
+	        }
 	    }
 	}
 }
