@@ -251,7 +251,7 @@ public class MainGUI extends JFrame {
 		    					// If you've set a start node already, set the end node
 		    					if(setStart){
 		    						setEnd = true;
-		    						MapNode newNode = new MapNode((double)clickedAt.x, (double)clickedAt.y, 0);
+		    						MapNode newNode = new MapNode((double)clickedAt.x, (double)clickedAt.y, 0.0);
 		    						startEndNodes.add(newNode);
 		    						backend.setEndNode(newNode);
 		    						btnCalculateRoute.setEnabled(true); // allow user to calculate route
