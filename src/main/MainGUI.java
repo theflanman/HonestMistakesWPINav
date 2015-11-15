@@ -166,7 +166,7 @@ public class MainGUI extends JFrame {
 		
 		//Code for button - if it is pressed allow the program to draw the line on the map
 		/**TODO
-		 * going to need to add functionality to change button title to remove line when user has drawn the line on screen
+		 * going to need to add functionality to change button title to remove line when user has drawn the line on screen in a better way
 		 */
 		JButton btnCalculateRoute = new JButton("Calculate Route");
 		panel_2.add(btnCalculateRoute);
@@ -185,14 +185,11 @@ public class MainGUI extends JFrame {
 						btnCalculateRoute.setText("Remove Route Line");
 					}
 				});
-			/**TODO
-			 * add Remove Link functionality
-			 */
 			} else { //if the button text is "Remove Route Line"
 				btnCalculateRoute.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
 						//code for this...
-						
+						drawLine = false;
 						//change the name back
 						btnCalculateRoute.setText("Calculate Route");
 					}
@@ -252,10 +249,11 @@ public class MainGUI extends JFrame {
 	        
 	        g.drawImage(this.mapImage, 0, 0, getWidth(), getHeight(), this);
 	        for(MapNode n : this.localNodes){
-	        	g.fillOval((int)n.getxPos(), (int)n.getyPos(), 10, 10);
+	        	g.fillOval((int)n.getXPos(), (int)n.getYPos(), 10, 10);
 	        }
 	        
 	        //essentially draws the line on the screen - will need to add a way to remove this line later on
+	        //probably need to make a coordinates class - but this currently works
 	        if(MainGUI.drawLine = true){
 	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
 					double x1 = backend.getCoordinates().get(i)[0];
@@ -264,8 +262,11 @@ public class MainGUI extends JFrame {
 					double y2 = backend.getCoordinates().get(i+1)[1];
 					g.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
 					i++;
-	        	}
+	        	} 
 	        }
+	        else{
+	        		//currently need to code something about removing the line
+	        	}
 	    }
 	}
 }

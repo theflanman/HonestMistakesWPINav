@@ -30,9 +30,21 @@ public class MapNode implements Serializable{
 
 	// temporary constructor
 	
+	
 	public MapNode(){
 	}
 	
+
+
+	public MapNode(double xPos, double yPos, double zPos) {
+		super();
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.zPos = zPos;
+	}
+
+
+
 	public double aStarHeuristic(MapNode toNode) {
 		double dist = (double) Math.sqrt(Math.pow((xPos - toNode.getXPos()),2) + Math.pow(yPos - toNode.getYPos(),2)) + Math.abs(zPos - toNode.getZPos());
 		
