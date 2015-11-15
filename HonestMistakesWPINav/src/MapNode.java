@@ -11,8 +11,8 @@ public class MapNode {
 	private double gScore;
 	private double hScore;
 	private MapNode cameFrom;
-//	private GlobalMap globalMap;
-//	private LocalMap localMap;
+	private GlobalMap globalMap;
+	private LocalMap localMap;
 	private String nodeName;
 	//private Attributes attributes
 	
@@ -55,14 +55,14 @@ public class MapNode {
 		
 	}
 	
-	public double getxPos() {
+	public double getXPos() {
 		return xPos;
 	}
 	
-	public double getyPos() {
+	public double getYPos() {
 		return yPos;
 	}
-	public double getzPos() {
+	public double getZPos() {
 		return zPos;
 	}
 	public String getnodeName() {

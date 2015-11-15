@@ -58,14 +58,13 @@ public class MapPanel extends JPanel implements ActionListener {
 		g2d.drawImage(bgImage, 0, 0, null);
 		g2d.setPaint(Color.blue);
 		for(MapNode n : mapPanelPoints){
-			g2d.fillOval((int) n.getxPos() - 5, (int) n.getyPos() - 5, circleSize, circleSize);
-			if(n.getNeighbors().isEmpty() == false) {
+			g2d.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, circleSize, circleSize);
 				for(MapNode m : n.getNeighbors()) {
-					g2d.drawLine((int) n.getxPos(), (int) n.getyPos(), (int) m.getxPos(), (int) m.getyPos());
+					g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
 				}
 			}
 		}
-	}
+	
 	
 	@Override
 	public void paintComponent(Graphics g) {
