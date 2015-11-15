@@ -55,8 +55,10 @@ public class DevGUI extends JFrame {
 	private MapNode lastClicked;
 	private MapNode edgeStart;
 	private MapNode edgeRemove;
+	private MapNode nodeToRemove;
 	private boolean edgeStarted = false;
 	private boolean edgeRemovalStarted = false;
+
 
 	/**
 	 * Launch the application.
@@ -186,6 +188,28 @@ public class DevGUI extends JFrame {
 						}
 					}
 
+				}
+				else if(rdbtnRemoveNode.isSelected()) {
+					edgeStarted = false;
+					edgeRemovalStarted = false;
+					for(MapNode n : points){
+						Point tmp = new Point((int)n.getxPos(), (int)n.getyPos());
+
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							for(MapNode m : n.getNeighbors()) {
+							//	n.removeNeighbor(m);
+								m.removeNeighbor(n);
+							}
+							nodeToRemove = n;
+							
+
+						}
+					}
+					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getxPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
+					
+					points.remove(nodeToRemove);
+					Graphics g = mapPanel.getGraphics();
+					mapPanel.renderMapPublic(g, points);
 				}
 			}
 		}); 
