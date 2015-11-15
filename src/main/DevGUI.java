@@ -110,7 +110,7 @@ public class DevGUI extends JFrame {
 					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
 					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
 					Point p = me.getLocationOnScreen();
-					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, (double) 0, nodeCounter); // make a new mapnode with those points
+					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, (double) 0); // make a new mapnode with those points
 					nodeCounter++;
 					Graphics g = mapPanel.getGraphics();
 					points.add(n);
