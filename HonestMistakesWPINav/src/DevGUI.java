@@ -39,6 +39,7 @@ import java.io.*;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class DevGUI extends JFrame {
 	static HashMap<String, ArrayList<MapNode>> localMap = new HashMap<String, ArrayList<MapNode>>(); // path to file, Integer data
@@ -53,19 +54,19 @@ public class DevGUI extends JFrame {
 	private JTextField nodeNameField;
 	private MapNode lastClicked;
 	private MapNode edgeStart;
+	private MapNode edgeRemove;
 	private boolean edgeStarted = false;
-	
+	private boolean edgeRemovalStarted = false;
+
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
-		// initialize hashmap with map data
-		// <<< pretend reading from text file >>
-		
+
+	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				
+
 				try {
 					DevGUI frame = new DevGUI();
 					frame.setVisible(true);
@@ -79,7 +80,7 @@ public class DevGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public DevGUI() {
-		
+
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setPreferredSize(new Dimension(1380, 760));
 		setResizable(true);
@@ -87,35 +88,33 @@ public class DevGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1380, 760);
 
-		
+
 		JRadioButton rdbtnSelectNode = new JRadioButton("Select Node");
+		JRadioButton rdbtnRemoveEdge = new JRadioButton("Remove Edge");
+		JRadioButton rdbtnRemoveNode = new JRadioButton("Remove Node");
 		JRadioButton rdbtnPlaceNode = new JRadioButton("Place Node");
 		JRadioButton rdbtnMakeEdge = new JRadioButton("Make Edge");
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 
-	//	JLabel lblNewLabel = new JLabel(); Don't put this back in! Fairly certain it should be a JPanel! Just leaving this for a little bit longer commented out.
-	//	lblNewLabel.setIcon(new ImageIcon("testmap.png"));
 		MapPanel mapPanel = new MapPanel();
 		int threshold = 30; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
-		int circleSize = 12; //Circle size determines size of nodes on map. Should probably be an even number as it's divided by 2 and needs to be an int and it'd be nice if it were exactly half.
+
 		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
 				Point offset = mapPanel.getLocationOnScreen();
 				if(rdbtnPlaceNode.isSelected()){
+					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
+					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
 					Point p = me.getLocationOnScreen();
 					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, 0, nodeCounter); // make a new mapnode with those points
 					nodeCounter++;
 					Graphics g = mapPanel.getGraphics();
 					points.add(n);
-					//nodeImage.paintIcon(lblNewLabel, g, (int)n.getxPos()+ 5, (int)n.getyPos() + 5);
-				//	g.setColor(Color.blue);
-				//	g.fillOval((int) n.getxPos() + 4, (int) n.getyPos() + 4, circleSize, circleSize);
-				//	Graphics2D g2d = new Graphics2d();
 					xPosField.setText(""+n.getxPos());
 					yPosField.setText(""+n.getyPos());
 					zPosField.setText(""+n.getzPos());
@@ -123,12 +122,12 @@ public class DevGUI extends JFrame {
 					lastClicked = n;
 					mapPanel.renderMapPublic(g, points);
 				} else if (rdbtnSelectNode.isSelected()){
+					edgeStarted = false;
+					edgeRemovalStarted = false;
 					for(MapNode n : points){
 						Point tmp = new Point((int)n.getxPos(), (int)n.getyPos());
 
 						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-							//txtrXpos.setText("x_pos: " + n.getxPos() + "\ny_pos: " + n.getyPos() + "\nNode ID: " + n.getID());
-							// currentNode is now n with nodeID
 							xPosField.setText(""+n.getxPos());
 							yPosField.setText(""+n.getyPos());
 							zPosField.setText(""+n.getzPos());
@@ -138,29 +137,21 @@ public class DevGUI extends JFrame {
 					}
 				}
 				else if(rdbtnMakeEdge.isSelected()) {
+					edgeRemovalStarted = false;
 					if(edgeStarted == false) {
 						for(MapNode n : points){
 							Point tmp = new Point((int)n.getxPos(), (int)n.getyPos());
-
 							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								//txtrXpos.setText("x_pos: " + n.getxPos() + "\ny_pos: " + n.getyPos() + "\nNode ID: " + n.getID());
-								// currentNode is now n with nodeID
 								edgeStart = n;
 								edgeStarted = true;
 							}
 						}
-						
+
 					}
 					else {
 						for(MapNode n : points) {
 							Point tmp = new Point((int)n.getxPos(), (int)n.getyPos());
-
 							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								//txtrXpos.setText("x_pos: " + n.getxPos() + "\ny_pos: " + n.getyPos() + "\nNode ID: " + n.getID());
-								// currentNode is now n with nodeID
-							//	Line2D.Double lin = new Line2D.Double(edgeStart.getX(), edgeStart.getY(), tmp.getX(), tmp.getY());
-								//g.setColor(Color.blue);
-								//g.drawLine((int) edgeStart.getxPos() + 10, (int) edgeStart.getyPos() + 10, (int) tmp.getX()+ 10, (int) tmp.getY() + 10);
 								Graphics g = mapPanel.getGraphics();
 								edgeStarted = false;
 								n.addNeighbor(edgeStart);
@@ -170,99 +161,125 @@ public class DevGUI extends JFrame {
 						}
 					}
 				}
+				else if(rdbtnRemoveEdge.isSelected()) {
+					edgeStarted = false;
+					if(edgeRemovalStarted == false) {
+						for(MapNode n : points){
+							Point tmp = new Point((int)n.getxPos(), (int)n.getyPos());
+							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								edgeRemove = n;
+								edgeRemovalStarted = true;
+							}
+						}
+
+					}
+					else {
+						for(MapNode n : points) {
+							Point tmp = new Point((int)n.getxPos(), (int)n.getyPos());
+							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								Graphics g = mapPanel.getGraphics();
+								edgeRemovalStarted = false;
+								n.removeNeighbor(edgeRemove);
+								edgeRemove.removeNeighbor(n);
+								mapPanel.renderMapPublic(g, points);
+							}
+						}
+					}
+
+				}
 			}
 		}); 
 		mapPanel.setBackground(Color.WHITE);
-		
-		
-		
-		
+
+
+
+
 		JMenuItem mntmLoadMap = new JMenuItem("Load Map");
 
-		
-		
+
+
 		JMenuItem mntmSaveMap = new JMenuItem("Save Map");
 		mnFile.add(mntmSaveMap);
 		mnFile.add(mntmLoadMap);
-		
+
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
-		
+
 		JMenuItem mntmNewMapImage = new JMenuItem("New Map Image");
 		mntmNewMapImage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
-		        int option = chooser.showOpenDialog(DevGUI.this);
-		        if (option == JFileChooser.APPROVE_OPTION) {
-		          File file = chooser.getSelectedFile();
+				int option = chooser.showOpenDialog(DevGUI.this);
+				if (option == JFileChooser.APPROVE_OPTION) {
+					File file = chooser.getSelectedFile();
 
-		          try{
-		        	  Image pic = ImageIO.read(file);
-		        	 //  picLabel.setIcon(new ImageIcon(pic));
-		        	  mapPanel.setBgImage(pic);
-		        	  
-		        	  Graphics g = mapPanel.getGraphics();
-		        	  mapPanel.renderMapPublic(g, points);
-		          }
-		          catch(IOException ex){
-		        	  ex.printStackTrace();
-		        	  System.exit(1);
-		          }
-			}
+					try{
+						Image pic = ImageIO.read(file);
+						//  picLabel.setIcon(new ImageIcon(pic));
+						mapPanel.setBgImage(pic);
+
+						Graphics g = mapPanel.getGraphics();
+						mapPanel.renderMapPublic(g, points);
+					}
+					catch(IOException ex){
+						ex.printStackTrace();
+						System.exit(1);
+					}
+				}
 			}
 		});
 		mnFile.add(mntmNewMapImage);
 		mnFile.add(mntmExit);
-		
 
-		
+
+
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(1000, 800));
 		panel.setSize(new Dimension(1000, 700));
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(Color.WHITE);
-		
+
 		JPanel cursorPanel = new JPanel();
 		cursorPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		
+
 		JPanel nodeInfoPanel = new JPanel();
 		nodeInfoPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		
+
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1192, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
-						.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
-					.addGap(93))
-		);
+						.addContainerGap()
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1192, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
+								.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+						.addGap(93))
+				);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 653, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
-							.addGap(35)
-							.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, 407, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(311, Short.MAX_VALUE))
-		);
+						.addContainerGap()
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 653, GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createSequentialGroup()
+										.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGap(311))
+				);
 		GridBagLayout gbl_nodeInfoPanel = new GridBagLayout();
 		gbl_nodeInfoPanel.columnWidths = new int[]{95, 99, 0};
 		gbl_nodeInfoPanel.rowHeights = new int[]{16, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_nodeInfoPanel.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		gbl_nodeInfoPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		nodeInfoPanel.setLayout(gbl_nodeInfoPanel);
-		
+
 		JLabel lblNodeInformation = new JLabel("Node Information");
 		GridBagConstraints gbc_lblNodeInformation = new GridBagConstraints();
 		gbc_lblNodeInformation.insets = new Insets(0, 0, 5, 5);
@@ -270,7 +287,7 @@ public class DevGUI extends JFrame {
 		gbc_lblNodeInformation.gridx = 0;
 		gbc_lblNodeInformation.gridy = 0;
 		nodeInfoPanel.add(lblNodeInformation, gbc_lblNodeInformation);
-		
+
 		JLabel lblXposition = new JLabel("x-position");
 		GridBagConstraints gbc_lblXposition = new GridBagConstraints();
 		gbc_lblXposition.anchor = GridBagConstraints.EAST;
@@ -278,7 +295,7 @@ public class DevGUI extends JFrame {
 		gbc_lblXposition.gridx = 0;
 		gbc_lblXposition.gridy = 1;
 		nodeInfoPanel.add(lblXposition, gbc_lblXposition);
-		
+
 		xPosField = new JTextField();
 		GridBagConstraints gbc_xPosField = new GridBagConstraints();
 		gbc_xPosField.insets = new Insets(0, 0, 5, 0);
@@ -287,7 +304,7 @@ public class DevGUI extends JFrame {
 		gbc_xPosField.gridy = 1;
 		nodeInfoPanel.add(xPosField, gbc_xPosField);
 		xPosField.setColumns(10);
-		
+
 		JLabel lblYposition = new JLabel("y-position");
 		GridBagConstraints gbc_lblYposition = new GridBagConstraints();
 		gbc_lblYposition.anchor = GridBagConstraints.EAST;
@@ -295,7 +312,7 @@ public class DevGUI extends JFrame {
 		gbc_lblYposition.gridx = 0;
 		gbc_lblYposition.gridy = 2;
 		nodeInfoPanel.add(lblYposition, gbc_lblYposition);
-		
+
 		yPosField = new JTextField();
 		GridBagConstraints gbc_yPosField = new GridBagConstraints();
 		gbc_yPosField.insets = new Insets(0, 0, 5, 0);
@@ -304,7 +321,7 @@ public class DevGUI extends JFrame {
 		gbc_yPosField.gridy = 2;
 		nodeInfoPanel.add(yPosField, gbc_yPosField);
 		yPosField.setColumns(10);
-		
+
 		JLabel lblZposition = new JLabel("z-position");
 		GridBagConstraints gbc_lblZposition = new GridBagConstraints();
 		gbc_lblZposition.anchor = GridBagConstraints.EAST;
@@ -312,7 +329,7 @@ public class DevGUI extends JFrame {
 		gbc_lblZposition.gridx = 0;
 		gbc_lblZposition.gridy = 3;
 		nodeInfoPanel.add(lblZposition, gbc_lblZposition);
-		
+
 		zPosField = new JTextField();
 		GridBagConstraints gbc_zPosField = new GridBagConstraints();
 		gbc_zPosField.insets = new Insets(0, 0, 5, 0);
@@ -321,7 +338,7 @@ public class DevGUI extends JFrame {
 		gbc_zPosField.gridy = 3;
 		nodeInfoPanel.add(zPosField, gbc_zPosField);
 		zPosField.setColumns(10);
-		
+
 		JLabel lblName = new JLabel("Name");
 		GridBagConstraints gbc_lblName = new GridBagConstraints();
 		gbc_lblName.anchor = GridBagConstraints.EAST;
@@ -329,7 +346,7 @@ public class DevGUI extends JFrame {
 		gbc_lblName.gridx = 0;
 		gbc_lblName.gridy = 4;
 		nodeInfoPanel.add(lblName, gbc_lblName);
-		
+
 		nodeNameField = new JTextField();
 		GridBagConstraints gbc_nodeNameField = new GridBagConstraints();
 		gbc_nodeNameField.insets = new Insets(0, 0, 5, 0);
@@ -338,7 +355,7 @@ public class DevGUI extends JFrame {
 		gbc_nodeNameField.gridy = 4;
 		nodeInfoPanel.add(nodeNameField, gbc_nodeNameField);
 		nodeNameField.setColumns(10);
-		
+
 		JButton btnMakeChanges = new JButton("Make Changes");
 		btnMakeChanges.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -349,56 +366,45 @@ public class DevGUI extends JFrame {
 		gbc_btnMakeChanges.gridx = 0;
 		gbc_btnMakeChanges.gridy = 5;
 		nodeInfoPanel.add(btnMakeChanges, gbc_btnMakeChanges);
-		
-        btnMakeChanges.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	if(lastClicked != null) {
-            		lastClicked.setnodeName(nodeNameField.getText());
-            		lastClicked.setxPos( Double.parseDouble(xPosField.getText())); //TODO : Setting x pos doesn't work yet.
-            	}
-            }
-            
-        });
-            
-		
-		JLabel lblNoneditableInformation = new JLabel("Non-editable information");
-		GridBagConstraints gbc_lblNoneditableInformation = new GridBagConstraints();
-		gbc_lblNoneditableInformation.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNoneditableInformation.gridx = 0;
-		gbc_lblNoneditableInformation.gridy = 7;
-		nodeInfoPanel.add(lblNoneditableInformation, gbc_lblNoneditableInformation);
-		
-		JLabel lblNeighbors = new JLabel("Neighbors");
-		GridBagConstraints gbc_lblNeighbors = new GridBagConstraints();
-		gbc_lblNeighbors.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNeighbors.gridx = 0;
-		gbc_lblNeighbors.gridy = 8;
-		nodeInfoPanel.add(lblNeighbors, gbc_lblNeighbors);
-		
-		JLabel lblNewLabel_1 = new JLabel("Cursor Options");
+		btnMakeChanges.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(lastClicked != null) {
+					lastClicked.setnodeName(nodeNameField.getText());
+					lastClicked.setxPos( Double.parseDouble(xPosField.getText())); //TODO : Setting x pos doesn't work yet.
+				}
+			}
+
+		});
+		cursorPanel.setLayout(new GridLayout(0, 1, 0, 0));
+
+		JLabel lblNewLabel_1 = new JLabel(" Cursor Options");
 		cursorPanel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-
-		cursorPanel.add(rdbtnSelectNode);
-		buttonGroup.add(rdbtnSelectNode);
-		
-		
 
 		cursorPanel.add(rdbtnPlaceNode);
 		buttonGroup.add(rdbtnPlaceNode);
 		rdbtnPlaceNode.setSelected(true);
-		
+
+		cursorPanel.add(rdbtnRemoveNode);
+		buttonGroup.add(rdbtnRemoveNode);
+
+
+		// Set up radio button group to determine cursor's function
+		cursorPanel.add(rdbtnSelectNode);
+		buttonGroup.add(rdbtnSelectNode);
 
 		cursorPanel.add(rdbtnMakeEdge);
 		buttonGroup.add(rdbtnMakeEdge);
-		
+		cursorPanel.add(rdbtnRemoveEdge);
+		buttonGroup.add(rdbtnRemoveEdge);
+
 		panel.setLayout(new BorderLayout(0, 0));
 		panel.add(mapPanel);
 		getContentPane().setLayout(groupLayout);
 	}
-	
-	
+
+
 }

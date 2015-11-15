@@ -28,6 +28,10 @@ public class MapNode {
 		
 	}
 	
+	public void removeNeighbor(MapNode node) {
+		neighbors.remove(node);
+	}
+	
 	public ArrayList<MapNode> getNeighbors() {
 		return neighbors;
 	}
