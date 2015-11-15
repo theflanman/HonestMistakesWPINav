@@ -2,6 +2,8 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.geom.Line2D;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -21,9 +23,13 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.BadLocationException;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 
 /**
@@ -40,6 +46,7 @@ public class MainGUI extends JFrame {
 	private static GlobalMap globalMap;
 	boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	public static boolean drawLine = false;
+	public static boolean removeLine = false;
 	
 	// private ImageIcon nodeImage = new ImageIcon("src\\images\\node.png");
 	private JPanel contentPane;
@@ -56,13 +63,13 @@ public class MainGUI extends JFrame {
 		// Initialize the GlobalMap variable with all of the LocalMaps and all of their nodes
 		globalMap = new GlobalMap();
 		
-		LocalMap[] tmpListLocal = new LocalMap[numLocalMaps]; // temporary list of LocalMaps to be initialized
+		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary list of LocalMaps to be initialized
 		for(int i = 0; i < numLocalMaps; i++){		
 			backend.loadLocalMap(localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "localmaps" folder
-			tmpListLocal[i] = backend.getLocalMap();
+			tmpListLocal.add(i, backend.getLocalMap());
 		}
-		globalMap.setLocalMaps(tmpListLocal);
-		backend.setLocalMap(tmpListLocal[0]);
+		//globalMap.setLocalMaps(tmpListLocal);
+		backend.setLocalMap(tmpListLocal.get(0));
 		
 		// add the collection of nodes to the ArrayList of GlobalMap
 		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
@@ -130,67 +137,88 @@ public class MainGUI extends JFrame {
 		JPanel panel_1 = new JPanel();
 		
 		JPanel panel_2 = new JPanel();
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		
+		JPanel panel_3 = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(40)
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(24, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(15)
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
-							.addGap(562)
+							.addGap(16)
+							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
 						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		
+		JLabel lblStepbystepDirections = new JLabel("Step-By-Step Directions");
+		panel_3.add(lblStepbystepDirections);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setRows(15);
+		textArea_1.setEditable(false);
+		scrollPane_1.setViewportView(textArea_1);
 		
 		//adds the distance label to the map interface
 		JLabel lblDistance = new JLabel("");
 		panel_1.add(lblDistance);
 		
 		//Code for button - if it is pressed allow the program to draw the line on the map
-		/**TODO
-		 * going to need to add functionality to change button title to remove line when user has drawn the line on screen in a better way
-		 */
 		JButton btnCalculateRoute = new JButton("Calculate Route");
-		panel_2.add(btnCalculateRoute);
 		btnCalculateRoute.setEnabled(false);
+		panel_2.add(btnCalculateRoute);
 		
 		//need to remember to make sure the user can actually press the button
-		if (!(backend.getStartNode().equals(null)) && !(backend.getEndNode().equals(null))){
-			btnCalculateRoute.setEnabled(true);
+		if (!(backend.getStartNode().equals(null)) || !(backend.getEndNode().equals(null))){
 			if (btnCalculateRoute.getText() == "Calculate Route"){
 				btnCalculateRoute.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						btnCalculateRoute.setEnabled(true);
 						backend.runAStar();
 						drawLine = true;
 						//this should only display when the user calculates the astar algorithm
 						lblDistance.setText(backend.getDistance());
+						//basically justs places each string into the array one row at a time - if, and this is a big IF, /n works in this context
+						for(String string : backend.displayStepByStep()) {
+							textArea_1.append("/n");
+							textArea_1.append(string);
+						}
 						btnCalculateRoute.setText("Remove Route Line");
 					}
 				});
 			} else { //if the button text is "Remove Route Line"
 				btnCalculateRoute.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e) {
-						//code for this...
-						drawLine = false;
-						//change the name back
+						btnCalculateRoute.setEnabled(true);
+						//if the line needs to be removed
+						//going to need to add a method here - to remove nodes from path
+						backend.removePath();
+						removeLine = true;
+						lblDistance.setText(backend.getDistance());
+						textArea_1.setText("");
+						//change the name of button back to what it originally was
 						btnCalculateRoute.setText("Calculate Route");
 					}
 				});
@@ -238,7 +266,7 @@ public class MainGUI extends JFrame {
 	        this.localNodes = nodes;
 	        this.mapImage = map;
 	        setOpaque(false);
-	    }
+		}
 		
 		/**
 		 * Paints the map image to the Panel and temporarily prints a visual indication of Node locations
@@ -254,19 +282,32 @@ public class MainGUI extends JFrame {
 	        
 	        //essentially draws the line on the screen - will need to add a way to remove this line later on
 	        //probably need to make a coordinates class - but this currently works
-	        if(MainGUI.drawLine = true){
+	        if(MainGUI.drawLine == true){
 	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
 					double x2 = backend.getCoordinates().get(i+1)[0];
 					double y2 = backend.getCoordinates().get(i+1)[1];
+					g.setColor(Color.blue);
 					g.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
 					i++;
 	        	} 
 	        }
-	        else{
-	        		//currently need to code something about removing the line
+	        else if (MainGUI.removeLine == true){
+	        	//TODO this really should have a better implementation - but this is a quick fix to an on-going problem
+	        	//Would make sense to eventually transform the line into an object, so that it could be easily removed - but that might require adding a .awt canvas, and I'm not entirely sure we want to restructure our entire project
+	        	//essentially repaint the line white so that it can't be seen when you remove it
+	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
+					double x1 = backend.getCoordinates().get(i)[0];
+					double y1 = backend.getCoordinates().get(i)[1];
+					double x2 = backend.getCoordinates().get(i+1)[0];
+					double y2 = backend.getCoordinates().get(i+1)[1];
+					g.setColor(Color.white);
+					g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
+					i++;
 	        	}
+	        	
+	        }
 	    }
 	}
 }
