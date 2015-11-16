@@ -97,8 +97,8 @@ public class GUIBackend implements Serializable {
 	 */
 	//honestly think we should role with the commented-out code, and get rid of generateStepByStep from Global -- Need someone's opinion though
 	public ArrayList<String> displayStepByStep() {
-		//StepByStep directions = new StepByStep(this.path);
-		ArrayList<String> print = this.localMap.getGlobalMap().generateStepByStep();
+		StepByStep directions = new StepByStep(this.path);
+		ArrayList<String> print = directions.printDirection();
 		return print;
 	}
 	

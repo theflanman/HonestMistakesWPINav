@@ -27,13 +27,16 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.BadLocationException;
+
+import main.*;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
-
-import main.GlobalMap;
-import main.LocalMap;
-import main.MapNode;
+import javax.swing.border.LineBorder;
+import javax.swing.JRadioButton;
+import java.awt.Font;
+import javax.swing.ButtonGroup;
 
 
 /**
@@ -48,12 +51,14 @@ public class MainGUI extends JFrame {
 
 	private static GUIBackend backend;
 	private static GlobalMap globalMap;
-	boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
+	private boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	public static boolean drawLine = false;
 	public static boolean removeLine = false;
 	
 	private JPanel contentPane;
-	JButton btnCalculateRoute;
+	private JButton btnCalculateRoute;
+	private JRadioButton rdbtnStartNode, rdbtnEndNode;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	/**
 	 * Create the frame.
@@ -84,7 +89,6 @@ public class MainGUI extends JFrame {
 		globalMap.setMapNodes(allNodes);		 
 		
 		
-		
 		/**
 		 * GUI related code
 		 */
@@ -100,30 +104,48 @@ public class MainGUI extends JFrame {
 		// Image of the default map loaded into backend
 		Image map = new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage();
 		
-		// SwingBuilder Code related to the JLayeredPane() 
+		/**
+		 * Window Builder generated code. GroupLayout auto-generated for custom formatting.
+		 */
 		JLayeredPane layeredPane = new JLayeredPane();
 		
 		layeredPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
 		JPanel panel_1 = new JPanel();
-		
 		JPanel panel_2 = new JPanel();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		
 		JPanel panel_3 = new JPanel();
+		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+		
+		JLabel lblSelectANode = new JLabel("Node Selection:");
+		lblSelectANode.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
-						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addGap(18)
+							.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(51)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblSelectANode)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -132,11 +154,14 @@ public class MainGUI extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(16)
+							.addComponent(lblSelectANode)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGap(36)
 							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
@@ -144,8 +169,52 @@ public class MainGUI extends JFrame {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		
+		rdbtnStartNode = new JRadioButton("Start Location");
+		buttonGroup.add(rdbtnStartNode);
+		rdbtnStartNode.setSelected(true);
+		rdbtnStartNode.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		rdbtnEndNode = new JRadioButton("End Location");
+		buttonGroup.add(rdbtnEndNode);
+		rdbtnEndNode.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
+		gl_panel_4.setHorizontalGroup(
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_4.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
+						.addComponent(rdbtnStartNode)
+						.addComponent(rdbtnEndNode))
+					.addContainerGap(10, Short.MAX_VALUE))
+		);
+		gl_panel_4.setVerticalGroup(
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_4.createSequentialGroup()
+					.addContainerGap(20, Short.MAX_VALUE)
+					.addComponent(rdbtnStartNode)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(rdbtnEndNode)
+					.addContainerGap())
+		);
+		panel_4.setLayout(gl_panel_4);
+		
 		JLabel lblStepbystepDirections = new JLabel("Step-By-Step Directions");
-		panel_3.add(lblStepbystepDirections);
+		lblStepbystepDirections.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGap(43)
+					.addComponent(lblStepbystepDirections)
+					.addContainerGap(49, Short.MAX_VALUE))
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
+					.addContainerGap(28, Short.MAX_VALUE)
+					.addComponent(lblStepbystepDirections))
+		);
+		panel_3.setLayout(gl_panel_3);
 		
 		JTextArea textArea_1 = new JTextArea();
 		textArea_1.setRows(15);
@@ -161,6 +230,7 @@ public class MainGUI extends JFrame {
 		 * going to need to add functionality to change button title to remove line when user has drawn the line on screen in a better way
 		 */
 		btnCalculateRoute = new JButton("Calculate Route");
+		btnCalculateRoute.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel_2.add(btnCalculateRoute);
 		btnCalculateRoute.setEnabled(false);
 		btnCalculateRoute.addActionListener(new ActionListener() {
@@ -239,7 +309,7 @@ public class MainGUI extends JFrame {
 	        this.localNodes = nodes;
 	        this.mapImage = map;
 	        setOpaque(false);
-	        startEndNodes = new ArrayList<MapNode>();
+	        startEndNodes = new ArrayList<MapNode>(); // Index 0: StartNode    Index 1: EndNode
 	        
 	        /**
 	         * On mouse click, display the points which represent the start and end nodes. These will also set the backend to
@@ -247,7 +317,9 @@ public class MainGUI extends JFrame {
 	         */
 	        addMouseListener(new MouseAdapter() {
 	    		@Override
-	    		public void mouseClicked(MouseEvent me) {	    				
+	    		public void mouseClicked(MouseEvent me) {	    
+	    			
+	    				/* Will work on later when user is able to select ANY location 
 	    				// Only add new points if you haven't set an End Node yet
 	    				if(!setEnd){
 		    					Point clickedAt = me.getPoint();
@@ -255,7 +327,7 @@ public class MainGUI extends JFrame {
 		    					// If you've set a start node already, set the end node
 		    					if(setStart){
 		    						setEnd = true;
-		    						MapNode newNode = new MapNode((double)clickedAt.x, (double)clickedAt.y, 0.0);
+		    						MapNode newNode = new MapNode((double)clickedAt.x, (double)clickedAt.y, 0);
 		    						startEndNodes.add(newNode);
 		    						backend.setEndNode(newNode);
 		    						btnCalculateRoute.setEnabled(true); // allow user to calculate route
@@ -271,8 +343,51 @@ public class MainGUI extends JFrame {
 	    					System.out.println("You've already selected two points");
 	    				}
 	    				repaint();
+	    			}*/
+	    			
+	    			// figure out if there is a map node there, if so, set it as the StartingNode
+	    			Point clickedAt = me.getPoint();
+	    			int clickRadius = 10; // clicks anywhere within a circle of radius 10
+	    			if(rdbtnStartNode.isSelected()){
+	    				
+	    				for(MapNode n : localNodes){
+	    					if((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius) && (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)){
+	    						System.out.println("This is the starting node!");	    	
+	    						backend.setStartNode(n);
+	    						
+	    						// If this is the first value, add it at index 0
+	    						// else, set the first index
+	    						if(!setStart){
+	    							startEndNodes.add(0, n);
+	    							System.out.println(startEndNodes.size());
+	    						}
+	    						else
+	    							startEndNodes.set(0, n);
+	    						
+	    						setStart = true; // start node has been set at least once
+	    					}
+	    				}
+	    			} else { // rdbtnEndNode is selected
+	    				
+	    				for(MapNode n : localNodes){
+	    					if((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius) && (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)){
+	    						System.out.println("This is the ending node!");
+	    						backend.setEndNode(n);
+	    						btnCalculateRoute.setEnabled(true);
+	    						
+	    						// If this is the first EndNode selection, add it at index 1
+	    						// else, set the second index
+	    						if(!setEnd)
+	    							startEndNodes.add(1, n);
+	    						else
+	    							startEndNodes.set(1, n);
+	    						
+	    						setEnd = true; // end node has been set at least once
+	    					}
+	    				}
 	    			}
-	    		});
+	    			repaint();
+	    		}});
 	    }
 		
 		/**
@@ -289,8 +404,10 @@ public class MainGUI extends JFrame {
 	        for(MapNode n : this.localNodes){
 	        	graphics.fillOval((int)n.getXPos() - 5, (int)n.getYPos() - 5, 10, 10);
 	        }
+	        // Sets the color of the start and end nodes to be different
 	        graphics.setColor(Color.RED);
 	        for(MapNode n : this.startEndNodes){
+	        	graphics.setColor(Color.RED);
 	        	graphics.fillOval((int)n.getXPos() - 5, (int)n.getYPos() - 5, 10, 10);
 	        }
 	        
