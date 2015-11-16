@@ -1,4 +1,4 @@
-package main;
+package main.gui;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -7,16 +7,18 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-/** TODO write this
- * 
- * @author Connor Flanigan
- *
- */
+import main.LocalMap;
+import main.MapNode;
+import main.util.SaveUtil;
 
-@SuppressWarnings("serial")
 public class DeveloperGUIBackend implements Serializable  {
-	
+
 	private LocalMap localMap;
+	
+	// constructor
+	public DeveloperGUIBackend(LocalMap localMap){
+		this.localMap = localMap;
+	}
 	
 	public void loadMapImage() {
 		
@@ -40,20 +42,17 @@ public class DeveloperGUIBackend implements Serializable  {
 	
 	/**
 	 * 
-	 * @param fileName is name of file that stores the object data without the extension
+	 * @param fileName is name of file that stores the object data (requires extension)
 	 */
-	public void saveMap(String fileName) {
-		
-		if(fileName.contains(".")){
-			System.out.println("The input for DeveloperGUIBackend.saveMap(fileName) should not have an extension or period...exiting");
-			System.exit(1);
-		}
-		
+	public void saveMap() {
+		String fileName = this.localMap.getMapImageName();
+				
+		fileName = SaveUtil.removeExtension(fileName);
 		fileName = fileName.concat(".localmap");
 		
 		FileOutputStream fileOut;
 		try {
-			fileOut = new FileOutputStream(fileName);
+			fileOut = new FileOutputStream("src/localmaps/" + fileName);
 			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
 			objOut.writeObject(this.localMap);
 			
@@ -105,7 +104,5 @@ public class DeveloperGUIBackend implements Serializable  {
 	public void setLocalMap(LocalMap localMap) {
 		this.localMap = localMap;
 	}
-	
-	
 
 }

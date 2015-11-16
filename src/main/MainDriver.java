@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.io.File;
 import java.util.ArrayList;
 
+import main.gui.MainGUI;
+
 public class MainDriver {
 	
 	/**

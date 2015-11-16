@@ -1,6 +1,5 @@
 package main;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -25,103 +24,45 @@ public class MapNode implements Serializable{
 	private MapNode cameFrom;
 	private GlobalMap globalMap;
 	private LocalMap localMap;
+	private String nodeName;
 	//private Attributes attributes
 	
-
-	// temporary constructor
+	// default constructor
+	public MapNode(){}
 	
-	
-	public MapNode(){
-	}
-	
-
-
-	public MapNode(double xPos, double yPos, double zPos) {
-		super();
-		this.xPos = xPos;
-		this.yPos = yPos;
-		this.zPos = zPos;
+	// constructor
+	public MapNode(double newX, double newY, double newZ) {
+		xPos = newX;
+		yPos = newY;
+		zPos = newZ;
+		
 		neighbors = new ArrayList<MapNode>();
+		fScore = -1;
+		gScore = -1;
+		hScore = -1;
+		cameFrom = new MapNode();
 	}
-
-
-
+	
+	public void addNeighbor(MapNode node) {
+		
+		neighbors.add(node);
+		
+	}
+	
+	public void removeNeighbor(MapNode node) {
+		neighbors.remove(node);
+	}
+	
 	public double aStarHeuristic(MapNode toNode) {
 		double dist = (double) Math.sqrt(Math.pow((xPos - toNode.getXPos()),2) + Math.pow(yPos - toNode.getYPos(),2)) + Math.abs(zPos - toNode.getZPos());
 		
 		return dist;
 	}
 
-	
-	public MapNode getCameFrom() {
-		return cameFrom;
-	}
-	
-	public void setCameFrom(MapNode cameFrom){
-		this.cameFrom = cameFrom;		
-	}
-		
-	public double getXPos() {
-		return xPos;
-	}
-
-	public void setXPos(double xPos) {
-		this.xPos = xPos;
-	}
-
-	public double getYPos() {
-		return yPos;
-	}
-
-	public void setYPos(double yPos) {
-		this.yPos = yPos;
-	}
-
-	public double getZPos() {
-		return zPos;
-	}
-
-	public void setZPos(double zPos) {
-		this.zPos = zPos;
-	}
-
-	public int getNodeID(){
-		return this.nodeID;
-	}
-	
-	public void setGScore(double distance) {
-		gScore = distance;
-	}
-
-	public void setHScore(double distance) {
-		hScore = distance;	
-	}
-
-	public ArrayList<MapNode> getNeighbors() {
-		return neighbors;
-	}
-
-	public double getGScore() {
-		return gScore;
-	}
-
-	public double getFScore() {
-		return fScore;
-	}
-
-	public void calcFScore() {
-		fScore = gScore + hScore;		
-	}
-	
-	public void addNeighbor(MapNode node) {
-		this.neighbors.add(node);
-	}
-
 	public void deleteNeighborLink(MapNode node){
 		this.neighbors.remove(node);
 	}
-	
-	
+
 	/**
 	 * @author Rayan Alsoby
 	 * 
@@ -152,7 +93,7 @@ public class MapNode implements Serializable{
 			}
 			return resultAngle;
 	}
-	
+
 	/**
 	 * @author Nick Gigliotti
 	 * 
@@ -163,10 +104,84 @@ public class MapNode implements Serializable{
 		double distance = 0;
 		double distanceXLeg = toNode.getXPos() - this.getXPos();
 		double distanceYLeg = toNode.getYPos() - this.getYPos();
-
+	
 		distance = Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg));
 		distance = Math.round(distance);
 		return (int)distance;
+	}
+
+	public ArrayList<MapNode> getNeighbors() {
+		return neighbors;
+	}
+	
+	public double getXPos() {
+		return xPos;
+	}
+	
+	public void setXPos(double xPos) {
+		this.xPos = xPos;
+	}
+
+	public double getYPos() {
+		return yPos;
+	}
+	public void setYPos(double yPos) {
+		this.yPos = yPos;
+	}
+
+	public double getZPos() {
+		return zPos;
+	}
+	public void setZPos(double zPos) {
+		this.zPos = zPos;
+	}
+
+	public String getnodeName() {
+		return nodeName;
+	}
+	public void setxPos(double pos) {
+		xPos = pos;
+	}
+	public void setyPos(double pos) {
+		yPos = pos;
+	}
+	public void setnodeName(String name) {
+		nodeName = name;
+	}
+	public int getID(){
+		return nodeID;
+	}
+	
+	public MapNode getCameFrom() {
+		return cameFrom;
+	}
+	
+	public void setCameFrom(MapNode cameFrom){
+		this.cameFrom = cameFrom;		
+	}
+
+	public int getNodeID(){
+		return this.nodeID;
+	}
+	
+	public void setGScore(double distance) {
+		gScore = distance;
+	}
+
+	public void setHScore(double distance) {
+		hScore = distance;	
+	}
+
+	public double getGScore() {
+		return gScore;
+	}
+
+	public double getFScore() {
+		return fScore;
+	}
+
+	public void calcFScore() {
+		fScore = gScore + hScore;		
 	}
 
 }
