@@ -81,7 +81,6 @@ public class DeveloperGUIBackend implements Serializable  {
 			fileIn = new FileInputStream(fileName);
 			ObjectInputStream objIn = new ObjectInputStream(fileIn);
 			this.localMap = (LocalMap) objIn.readObject();
-
 			objIn.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -96,6 +95,8 @@ public class DeveloperGUIBackend implements Serializable  {
 	public void selectNode() {
 	
 	}
+	
+	
 
 	public LocalMap getLocalMap() {
 		return localMap;
