@@ -3,24 +3,18 @@ package main;
 
 import java.util.ArrayList;
 
-/** TODO write this
- * 
- * @author Connor Flanigan
- *
- */
 
 public class StepByStep {
 
+	
 	private ArrayList<MapNode> pathNodes;
-	//private int currentPathNodeIndex;
+	private int currentPathNodeIndex;
 	
 
 	public StepByStep(ArrayList<MapNode> pathNodes){
 		this.pathNodes = pathNodes;
 	}
 	
-	
-
 	
 	/*
 	 * @ author Nick Gigliotti
@@ -41,6 +35,7 @@ public class StepByStep {
 		}
 		return totalDistance;
 	}
+	
 	
 	/**
 	 * @author Rayan Alsoby
@@ -92,7 +87,7 @@ public class StepByStep {
 						turnVar = "hard left";
 					}
 					if (20 > angle || angle > 340) {
-						turnVar = "Back";
+						turnVar = "back";
 					}
 					if (340 >= angle && angle >= 290) {
 						turnVar = "hard right";
@@ -112,7 +107,9 @@ public class StepByStep {
 		return stepList;
 	}
 	
-	public void advanceStep() { //not necessary for this revision 
+	
+	public void advanceStep() {
+		this.currentPathNodeIndex += 1; //Increments the Path Node Index 
 	}
 	
 }

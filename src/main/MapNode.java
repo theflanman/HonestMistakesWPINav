@@ -2,14 +2,7 @@ package main;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-
-/** TODO write this
- * 
- * @author Connor Flanigan
- *
- */
 
 public class MapNode implements Serializable{
 	
@@ -117,7 +110,6 @@ public class MapNode implements Serializable{
 	public double getXPos() {
 		return xPos;
 	}
-	
 	public void setXPos(double xPos) {
 		this.xPos = xPos;
 	}

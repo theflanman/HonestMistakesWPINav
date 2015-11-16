@@ -8,25 +8,17 @@ import main.StepByStep;
 
 public class TestPrintDirections extends TestCase{
 	
-	public void testPrintDirection(){
-		MapNode node1 = new MapNode();
-		node1.setXPos(3);
-		node1.setYPos(1);
+	public void testDirectionRightAndHardRight(){
+		MapNode node1 = new MapNode(3, 1, 0);
 		node1.setCameFrom(null);
 		
-		MapNode node2 = new MapNode();
-		node2.setXPos(0);
-		node2.setYPos(2);
+		MapNode node2 = new MapNode(0, 2, 0);
 		node2.setCameFrom(node1);
 		
-		MapNode node3 = new MapNode();
-		node3.setXPos(1);
-		node3.setYPos(5);
+		MapNode node3 = new MapNode(1, 5, 0);
 		node3.setCameFrom(node2);
 		
-		MapNode node4 = new MapNode();
-		node4.setXPos(7);
-		node4.setYPos(-3);
+		MapNode node4 = new MapNode(7, -3, 0);
 		node4.setCameFrom(node3);
 		
 		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
@@ -42,6 +34,104 @@ public class TestPrintDirections extends TestCase{
 		resultSteps.add("Welcome to the era of navigation, move 3 feet.");
 		resultSteps.add("Turn right, and continue for 3 feet.");
 		resultSteps.add("Turn hard right, and continue for 10 feet.");
+		resultSteps.add("You have reached your destination.");
+
+		assertEquals(stepByStep1.printDirection(), resultSteps);
+	}
+	
+	public void testDirectionsContinueStraight(){
+		MapNode node1 = new MapNode(3, 1, 0);
+		node1.setCameFrom(null);
+		
+		MapNode node2 = new MapNode(3, 2, 0);
+		node2.setCameFrom(node1);
+		
+		MapNode node3 = new MapNode(3, 5, 0);
+		node3.setCameFrom(node2);
+		
+		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
+		
+		instructionList1.add(node1);
+		instructionList1.add(node2);
+		instructionList1.add(node3);
+		
+		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		
+		ArrayList<String> resultSteps = new ArrayList<String>();
+		resultSteps.add("Welcome to the era of navigation, move 1 feet.");
+		resultSteps.add("Continue for 3 feet.");
+		resultSteps.add("You have reached your destination.");
+
+		assertEquals(stepByStep1.printDirection(), resultSteps);
+	}
+	
+	public void testDirectionsBackAndLeft(){
+		MapNode node1 = new MapNode(10, -4, 0);
+		node1.setCameFrom(null);
+		
+		MapNode node2 = new MapNode(2, -4, 0);
+		node2.setCameFrom(node1);
+		
+		MapNode node3 = new MapNode(6, -4, 0);
+		node3.setCameFrom(node2);
+		
+		MapNode node4 = new MapNode(6, 0, 0);
+		node4.setCameFrom(node3);
+		
+		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
+		
+		instructionList1.add(node1);
+		instructionList1.add(node2);
+		instructionList1.add(node3);
+		instructionList1.add(node4);
+		
+		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		
+		ArrayList<String> resultSteps = new ArrayList<String>();
+		resultSteps.add("Welcome to the era of navigation, move 8 feet.");
+		resultSteps.add("Turn back, and continue for 4 feet.");
+		resultSteps.add("Turn left, and continue for 4 feet.");
+		resultSteps.add("You have reached your destination.");
+
+		assertEquals(stepByStep1.printDirection(), resultSteps);
+	}
+	
+	public void testDirectionsComplete(){
+		MapNode node1 = new MapNode(-1, 1, 0);
+		node1.setCameFrom(null);
+		
+		MapNode node2 = new MapNode(2, 5, 0);
+		node2.setCameFrom(node1);
+		
+		MapNode node3 = new MapNode(2, 0, 0);
+		node3.setCameFrom(node2);
+		
+		MapNode node4 = new MapNode(0, -3, 0);
+		node4.setCameFrom(node3);
+		
+		MapNode node5 = new MapNode(-2, -6, 0);
+		node5.setCameFrom(node4);
+		
+		MapNode node6 = new MapNode(0, -3, 0);
+		node6.setCameFrom(node5);
+		
+		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
+		
+		instructionList1.add(node1);
+		instructionList1.add(node2);
+		instructionList1.add(node3);
+		instructionList1.add(node4);
+		instructionList1.add(node5);
+		instructionList1.add(node6);
+		
+		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		
+		ArrayList<String> resultSteps = new ArrayList<String>();
+		resultSteps.add("Welcome to the era of navigation, move 5 feet.");
+		resultSteps.add("Turn hard right, and continue for 5 feet.");
+		resultSteps.add("Turn slight right, and continue for 4 feet.");
+		resultSteps.add("Continue for 4 feet.");
+		resultSteps.add("Turn back, and continue for 4 feet.");
 		resultSteps.add("You have reached your destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
