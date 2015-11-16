@@ -1,11 +1,9 @@
 package tests;
 
 import main.LocalMap;
-import main.MapNode;
 import main.gui.DeveloperGUIBackend;
 import main.gui.GUIBackend;
 import junit.framework.TestCase;
-
 public class LoadSaveMapTests extends TestCase {
 
 	public void testDeveloperGUIBackend(){
