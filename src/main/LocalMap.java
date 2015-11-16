@@ -130,8 +130,8 @@ public class LocalMap implements Serializable{
 	 */
 	public void pixelesToFeet(){
 		for(MapNode anode : this.mapNodes){
-			anode.setXPos(anode.getXPos()/this.getMapScale());	
-			anode.setYPos(anode.getYPos()/this.getMapScale());
+			anode.setXPos(anode.getXPos()*this.getMapScale());	
+			anode.setYPos(anode.getYPos()*this.getMapScale());
 		}
 	}
 	
