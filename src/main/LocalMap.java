@@ -1,4 +1,5 @@
 package main;
+import java.awt.Image;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,47 +9,39 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import javax.swing.ImageIcon;
-
+import main.gui.DeveloperGUIBackend;
+import main.util.SaveUtil;
 import main.util.YamlParser;
 
-/** TODO write this
- * 
- * @author Connor Flanigan
- *
- */
-
-@SuppressWarnings("serial")
 public class LocalMap implements Serializable{
-	
+
 	private ArrayList<MapNode> mapNodes;
-	private String mapImage;
-	private double mapScale; // unit is feet/pixel
+	private String mapImageName;
+	private Double mapScale; // unit is feet/pixel
 	private int mapID;
 	private GlobalMap globalMap;
 	
 	// constructor
-	public LocalMap(String mapImage){
-		this.mapImage = mapImage;
+	public LocalMap(String mapImageName, ArrayList<MapNode> mapNodes){
+		this.mapImageName = mapImageName;
+		this.mapNodes = mapNodes;
 		
 		YamlParser yamlParser = new YamlParser(new String[]{"src/data/mapScales.yml"});
 		
 		HashMap<String, Double> argList = yamlParser.getArgList();
 		if(argList.size() > 0)
-			this.mapScale = argList.get(this.mapImage); // gets the scale based on the mapImage
+			this.mapScale = argList.get(this.mapImageName); // gets the scale based on the mapImageName
+
 	}
 	
 	/**
-	 * saves this map into a file with a .localmap extension
+	 * saves this .localmap into a file
 	 * 
-	 * @param fileName is name of file that stores the object data without the extension
+	 * @param fileName is name of file that stores the object data (requires an extension)
 	 */
 	public void saveMap(String fileName) {		
-		if(fileName.contains(".")){
-			System.out.println("The input for DeveloperGUIBackend.saveMap(fileName) should not have an extension or period...exiting");
-			System.exit(1);
-		}
 		
+		fileName = SaveUtil.removeExtension(fileName);
 		fileName = fileName.concat(".localmap");
 		
 		FileOutputStream fileOut;
@@ -131,7 +124,7 @@ public class LocalMap implements Serializable{
 			//error in code - one node cannot be a neighbor without the other node being a neighbor return exception
 		}
 	}
-
+	
 	public int getMapID() {
 		return mapID;
 	}
@@ -139,14 +132,7 @@ public class LocalMap implements Serializable{
 	public void setMapID(int mapID) {
 		this.mapID = mapID;
 	}
-	
-	public void setMapImage(String imageName){
-		this.mapImage = imageName;
-	}
-	public String getMapImage(){
-		return this.mapImage;
-	}
-	
+		
 	public void setMapNodes(ArrayList<MapNode> nodes){
 		this.mapNodes = nodes;
 	}
@@ -170,7 +156,13 @@ public class LocalMap implements Serializable{
 	public void setGlobalMap(GlobalMap globalMap) {
 		this.globalMap = globalMap;
 	}
-	
-	
 
+	public String getMapImageName() {
+		return mapImageName;
+	}
+
+	public void setMapImageName(String mapImageName) {
+		this.mapImageName = mapImageName;
+	}
+	
 }

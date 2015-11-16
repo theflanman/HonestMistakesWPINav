@@ -1,4 +1,4 @@
-package main;
+package main.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -31,6 +31,10 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
+import main.GlobalMap;
+import main.LocalMap;
+import main.MapNode;
+
 
 /**
  * This class contains code for the main applications GUI interface as well as implementation for its various
@@ -59,7 +63,7 @@ public class MainGUI extends JFrame {
 	public MainGUI(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
 		// Instantiate GUIBackend to its default
 		String defaultMapImage = "downstairsCC.jpg";
-		backend = new GUIBackend(defaultMapImage);
+		backend = new GUIBackend(defaultMapImage, null);
 		
 		// Initialize the GlobalMap variable with all of the LocalMaps and all of their nodes
 		globalMap = new GlobalMap();
@@ -94,7 +98,7 @@ public class MainGUI extends JFrame {
 		setContentPane(contentPane);
 		
 		// Image of the default map loaded into backend
-		Image map = new ImageIcon("src/images/" + backend.getLocalMap().getMapImage()).getImage();
+		Image map = new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage();
 		
 		// SwingBuilder Code related to the JLayeredPane() 
 		JLayeredPane layeredPane = new JLayeredPane();

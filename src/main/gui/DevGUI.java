@@ -1,4 +1,4 @@
-package main;
+package main.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -35,13 +35,21 @@ import javax.swing.border.EtchedBorder;
 
 import java.awt.*;
 import java.io.*;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import main.LocalMap;
+import main.MapNode;
+import main.MapPanel;
+import main.util.SaveUtil;
 
 
 public class DevGUI extends JFrame {
 	static HashMap<String, ArrayList<MapNode>> localMap = new HashMap<String, ArrayList<MapNode>>(); // path to file, Integer data
 	static ArrayList<MapNode> points = new ArrayList<MapNode>(); // currently loaded list of points
+	static File inputFile;
+	static Image pic;
 	String path; // current path
 	private int nodeCounter = 0;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -61,8 +69,6 @@ public class DevGUI extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-
-	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 
@@ -75,6 +81,7 @@ public class DevGUI extends JFrame {
 			}
 		});
 	}
+	
 	/**
 	 * Create the frame.
 	 */
@@ -216,12 +223,52 @@ public class DevGUI extends JFrame {
 
 
 		JMenuItem mntmLoadMap = new JMenuItem("Load Map");
+		mnFile.add(mntmLoadMap);
+		mntmLoadMap.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser chooser = new JFileChooser();
+				int option = chooser.showOpenDialog(DevGUI.this);
+				if (option == JFileChooser.APPROVE_OPTION) {
+					inputFile = chooser.getSelectedFile();
+					String inputFileName = inputFile.getName();
+					
+					// load localMap
+					DeveloperGUIBackend devGUIBack = new DeveloperGUIBackend(null);
+					devGUIBack.loadMap("src/localmaps/" + inputFileName);
+					LocalMap loadedLocalMap = devGUIBack.getLocalMap(); 
+					
+					String imagePath = SaveUtil.removeExtension(inputFileName);
+					imagePath = imagePath + ".jpg";
+										
+					// set the image
+					try {
+						pic = ImageIO.read(new File("src/images/" + imagePath));
+					} catch (IOException e1) {
+						e1.printStackTrace();}
+					
+					//  picLabel.setIcon(new ImageIcon(pic));
+					mapPanel.setBgImage(pic);
 
+					// set the points
+					Graphics g = mapPanel.getGraphics();
+					points = loadedLocalMap.getMapNodes();
+					mapPanel.renderMapPublic(g, points);
+				}
+			}
+		});
 
 
 		JMenuItem mntmSaveMap = new JMenuItem("Save Map");
 		mnFile.add(mntmSaveMap);
-		mnFile.add(mntmLoadMap);
+		mntmSaveMap.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String fileName = inputFile.getName();				
+				LocalMap thisMap = new LocalMap(fileName, points);
+				DeveloperGUIBackend devGUIBack = new DeveloperGUIBackend(thisMap);
+				
+				devGUIBack.saveMap();
+			}
+		});
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
@@ -236,10 +283,10 @@ public class DevGUI extends JFrame {
 				JFileChooser chooser = new JFileChooser();
 				int option = chooser.showOpenDialog(DevGUI.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
-					File file = chooser.getSelectedFile();
+					inputFile = chooser.getSelectedFile();
 
 					try{
-						Image pic = ImageIO.read(file);
+						pic = ImageIO.read(inputFile);
 						//  picLabel.setIcon(new ImageIcon(pic));
 						mapPanel.setBgImage(pic);
 
@@ -255,8 +302,6 @@ public class DevGUI extends JFrame {
 		});
 		mnFile.add(mntmNewMapImage);
 		mnFile.add(mntmExit);
-
-
 
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(1000, 800));
@@ -426,6 +471,5 @@ public class DevGUI extends JFrame {
 		panel.add(mapPanel);
 		getContentPane().setLayout(groupLayout);
 	}
-
 
 }

@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 public class GlobalMap implements Serializable {
 
-
-	private static final long serialVersionUID = 1L;
 	private ArrayList<MapNode> mapNodes;
 	private ArrayList<LocalMap> localMaps;
 	private ArrayList<MapNode> path;

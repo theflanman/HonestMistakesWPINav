@@ -1,10 +1,16 @@
-package main;
+package main.gui;
+import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import main.AStar;
+import main.LocalMap;
+import main.MapNode;
+import main.StepByStep;
 
 /** TODO write this
  * 
@@ -23,8 +29,8 @@ public class GUIBackend implements Serializable {
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
 	 * TODO: Change to Campus Map when it is complete
 	 */
-	public GUIBackend(String defaultMapImage){
-		this.localMap = new LocalMap(defaultMapImage);
+	public GUIBackend(String defaultMapImage, ArrayList<MapNode> points){
+		this.localMap = new LocalMap(defaultMapImage, points);
 		this.path = new ArrayList<MapNode>();
 		this.startNode = null;
 		this.endNode = null;
