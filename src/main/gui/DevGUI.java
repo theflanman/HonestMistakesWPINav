@@ -261,7 +261,9 @@ public class DevGUI extends JFrame {
 		mnFile.add(mntmSaveMap);
 		mntmSaveMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String fileName = inputFile.getName();				
+				String fileName = inputFile.getName();
+				fileName = SaveUtil.removeExtension(fileName);
+				fileName = fileName + ".jpg";
 				LocalMap thisMap = new LocalMap(fileName, points);
 				DeveloperGUIBackend devGUIBack = new DeveloperGUIBackend(thisMap);
 				

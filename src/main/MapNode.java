@@ -33,13 +33,11 @@ public class MapNode implements Serializable{
 		fScore = -1;
 		gScore = -1;
 		hScore = -1;
-		cameFrom = new MapNode();
+		cameFrom = null;
 	}
 	
 	public void addNeighbor(MapNode node) {
-		
 		neighbors.add(node);
-		
 	}
 	
 	public void removeNeighbor(MapNode node) {
