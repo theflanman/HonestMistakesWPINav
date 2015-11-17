@@ -26,11 +26,9 @@ import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.BadLocationException;
 
 import main.*;
 
-import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
@@ -48,12 +46,17 @@ import javax.swing.ButtonGroup;
 
 @SuppressWarnings("serial")
 public class MainGUI extends JFrame {
-
+	
 	private static GUIBackend backend;
 	private static GlobalMap globalMap;
 	private boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	public static boolean drawLine = false;
 	public static boolean removeLine = false;
+	
+    MapNode newNode = new MapNode(100.0, 100.0, 1.0);
+	MapNode newNode2 = new MapNode(200.0, 200.0, 1.0);
+	MapNode newNode3 = new MapNode(500.0, 200.0, 1.0);
+	ArrayList<MapNode> path = new ArrayList<MapNode>();
 	
 	private JPanel contentPane;
 	private JButton btnCalculateRoute;
@@ -229,6 +232,7 @@ public class MainGUI extends JFrame {
 		/**TODO
 		 * going to need to add functionality to change button title to remove line when user has drawn the line on screen in a better way
 		 */
+
 		btnCalculateRoute = new JButton("Calculate Route");
 		btnCalculateRoute.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel_2.add(btnCalculateRoute);
@@ -237,32 +241,36 @@ public class MainGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(btnCalculateRoute.isEnabled()){
-					System.out.println("About to run AStar");
-					backend.runAStar();
-					System.out.println("Just ran AStar");
-					drawLine = true;
+					//if (isClicked = true){
+						//btnCalculateRoute.setEnabled(true);
+						//System.out.println("About to run AStar");
+						//backend.runAStar();
+						//System.out.println("Just ran AStar");
+						drawLine = true;
 					
-					//this should only display when the user calculates the astar algorithm
-					lblDistance.setText(backend.getDistance());
+						//this should only display when the user calculates the astar algorithm
+						lblDistance.setText(backend.getDistance());
 					
-					//basically justs places each string into the array one row at a time - if, and this is a big IF, /n works in this context
-					for(String string : backend.displayStepByStep()) {
-						textArea_1.append("/n");
-						textArea_1.append(string);
-					}
-					btnCalculateRoute.setText("Remove Route Line");
-				} else {
-					btnCalculateRoute.setEnabled(true);
+						//basically justs places each string into the array one row at a time - if, and this is a big IF, /n works in this context
+						for(String string : backend.displayStepByStep()) {
+							textArea_1.append("/n");
+							textArea_1.append(string);
+						}
+						//isClicked = false;
+						btnCalculateRoute.setText("Remove Route Line");
+					//} else if (isClicked = false){
+						//btnCalculateRoute.setEnabled(true);
+						//if the line needs to be removed
+						//going to need to add a method here - to remove nodes from path
+						//backend.removePath();
+						removeLine = true;
+						lblDistance.setText("");
+						textArea_1.setText("");
 					
-					//if the line needs to be removed
-					//going to need to add a method here - to remove nodes from path
-					backend.removePath();
-					removeLine = true;
-					lblDistance.setText(backend.getDistance());
-					textArea_1.setText("");
-					
-					//change the name of button back to what it originally was
-					btnCalculateRoute.setText("Calculate Route");
+						//change the name of button back to what it originally was
+						//isClicked = true;
+						btnCalculateRoute.setText("Calculate Route");
+					//}
 				}
 			}
 		});
@@ -414,7 +422,7 @@ public class MainGUI extends JFrame {
 	        //essentially draws the line on the screen - will need to add a way to remove this line later on
 	        //probably need to make a coordinates class - but this currently works
 	        if(MainGUI.drawLine = true){
-	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
+	        	for(int i = 0; i < /*backend.getCoordinates().size()*/path.size(); i++){
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
 					double x2 = backend.getCoordinates().get(i+1)[0];
@@ -422,12 +430,14 @@ public class MainGUI extends JFrame {
 					g.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
 					i++;
 	        	} 
+	        	drawLine = false;
+	        	removeLine = true;
 	        }
 	        else if (MainGUI.removeLine == true){
 	        	//TODO this really should have a better implementation - but this is a quick fix to an on-going problem
 	        	//Would make sense to eventually transform the line into an object, so that it could be easily removed - but that might require adding a .awt canvas, and I'm not entirely sure we want to restructure our entire project
 	        	//essentially repaint the line white so that it can't be seen when you remove it
-	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
+	        	for(int i = 0; i < /*backend.getCoordinates().size()*/path.size(); i++){
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
 					double x2 = backend.getCoordinates().get(i+1)[0];
@@ -436,6 +446,8 @@ public class MainGUI extends JFrame {
 					g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 					i++;
 	        	}
+	        	removeLine = false;
+	        	drawLine = true;
 	        	
 	        }
 	    }
