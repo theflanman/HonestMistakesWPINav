@@ -49,6 +49,7 @@ public class AStar {
 			
 			//the node currently being processed is the node popped from the open set
 			MapNode current = openSet.get(0);
+			openSet.remove(0);
 			
 			//if the current node is the end node, return true
 			if (current == endNode) {
