@@ -50,7 +50,7 @@ import javax.swing.*;
 public class MapPanel extends JPanel implements ActionListener {
 	private Image bgImage;
 	int circleSize = 10; //Circle size determines size of nodes on map. 
-
+	
 	static ArrayList<MapNode> mapPanelPoints = new ArrayList<MapNode>(); // currently loaded list of points
 
 	private void renderMapPrivate(Graphics g) {

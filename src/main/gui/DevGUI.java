@@ -86,14 +86,16 @@ public class DevGUI extends JFrame {
 	 */
 	public DevGUI() {
 
-		setExtendedState(Frame.MAXIMIZED_BOTH);
+	//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
+		
+		// This sets the size and behavior of the application window itself.
 		setPreferredSize(new Dimension(1380, 760));
 		setResizable(true);
 		setTitle("Map Editor");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1380, 760);
+		setBounds(0, 0, 1300, 760);
 
-
+		// This defines the radio buttons that can be selected for the cursor options, because they are used in the following section of code.
 		JRadioButton rdbtnSelectNode = new JRadioButton("Select Node");
 		JRadioButton rdbtnRemoveEdge = new JRadioButton("Remove Edge");
 		JRadioButton rdbtnRemoveNode = new JRadioButton("Remove Node");
@@ -102,12 +104,15 @@ public class DevGUI extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenu mnFile = new JMenu("File");
-		menuBar.add(mnFile);
+
 
 		MapPanel mapPanel = new MapPanel();
+
 		int threshold = 10; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
 
+		
+		// This is code that determines what needs to happen on each mouse click in the map panel.
+		
 		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
@@ -219,8 +224,11 @@ public class DevGUI extends JFrame {
 		mapPanel.setBackground(Color.WHITE);
 
 
-
-
+		// This is code for the file menu with the save map, load map, load new image, dropdown menu.
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
 		JMenuItem mntmLoadMap = new JMenuItem("Load Map");
 		mnFile.add(mntmLoadMap);
 		mntmLoadMap.addActionListener(new ActionListener() {
@@ -255,7 +263,6 @@ public class DevGUI extends JFrame {
 				}
 			}
 		});
-
 
 		JMenuItem mntmSaveMap = new JMenuItem("Save Map");
 		mnFile.add(mntmSaveMap);
@@ -303,43 +310,20 @@ public class DevGUI extends JFrame {
 		mnFile.add(mntmExit);
 
 		JPanel panel = new JPanel();
+		panel.setLocation(12, 13);
 		panel.setPreferredSize(new Dimension(1000, 800));
-		panel.setSize(new Dimension(1000, 700));
+		panel.setSize(new Dimension(1192, 653));
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(Color.WHITE);
-
-		JPanel cursorPanel = new JPanel();
-		cursorPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-
+		
+		// This is code for the panel showing information on the current selected node.
+		
 		JPanel nodeInfoPanel = new JPanel();
+		nodeInfoPanel.setBounds(926, 214, 294, 108);
 		nodeInfoPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-
-		GroupLayout groupLayout = new GroupLayout(getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1192, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
-					.addGap(88))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 653, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)))
-					.addGap(311))
-		);
 		nodeInfoPanel.setLayout(null);
-
+		
+		// Labels
 		JLabel lblNodeInformation = new JLabel("Node Information");
 		lblNodeInformation.setBounds(2, 2, 99, 16);
 		nodeInfoPanel.add(lblNodeInformation);
@@ -348,29 +332,37 @@ public class DevGUI extends JFrame {
 		lblXposition.setBounds(2, 26, 67, 16);
 		nodeInfoPanel.add(lblXposition);
 
+		JLabel lblYposition = new JLabel("y-position");
+		lblYposition.setBounds(2, 53, 55, 16);
+		nodeInfoPanel.add(lblYposition);
+
+		JLabel lblZposition = new JLabel("z-position");
+		lblZposition.setBounds(2, 80, 55, 16);
+		nodeInfoPanel.add(lblZposition);
+		
+		// Text fields
 		xPosField = new JTextField();
 		xPosField.setBounds(122, 23, 165, 22);
 		nodeInfoPanel.add(xPosField);
 		xPosField.setColumns(10);
-
-		JLabel lblYposition = new JLabel("y-position");
-		lblYposition.setBounds(2, 53, 55, 16);
-		nodeInfoPanel.add(lblYposition);
 
 		yPosField = new JTextField();
 		yPosField.setBounds(122, 50, 165, 22);
 		nodeInfoPanel.add(yPosField);
 		yPosField.setColumns(10);
 
-		JLabel lblZposition = new JLabel("z-position");
-		lblZposition.setBounds(2, 80, 55, 16);
-		nodeInfoPanel.add(lblZposition);
-
 		zPosField = new JTextField();
 		zPosField.setBounds(122, 77, 165, 22);
 		nodeInfoPanel.add(zPosField);
 		zPosField.setColumns(10);
 
+		
+		// This is code for the panel with the radio buttons for the cursor options
+		
+		JPanel cursorPanel = new JPanel();
+		cursorPanel.setBounds(926, 13, 130, 183);
+		cursorPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
 		cursorPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel(" Cursor Options");
@@ -384,8 +376,6 @@ public class DevGUI extends JFrame {
 		cursorPanel.add(rdbtnRemoveNode);
 		buttonGroup.add(rdbtnRemoveNode);
 
-
-		// Set up radio button group to determine cursor's function
 		cursorPanel.add(rdbtnSelectNode);
 		buttonGroup.add(rdbtnSelectNode);
 
@@ -393,10 +383,15 @@ public class DevGUI extends JFrame {
 		buttonGroup.add(rdbtnMakeEdge);
 		cursorPanel.add(rdbtnRemoveEdge);
 		buttonGroup.add(rdbtnRemoveEdge);
+		getContentPane().setLayout(null);
 
+
+		// This is code pertaining to the panel holding the map panel.
 		panel.setLayout(new BorderLayout(0, 0));
+		panel.setBounds(13,13,900, 600);
 		panel.add(mapPanel);
-		getContentPane().setLayout(groupLayout);
+		getContentPane().add(panel);
+		getContentPane().add(cursorPanel);
+		getContentPane().add(nodeInfoPanel);
 	}
-
 }
