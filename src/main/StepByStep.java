@@ -1,6 +1,5 @@
 package main;
 
-
 import java.util.ArrayList;
 
 /** TODO write this
@@ -8,15 +7,14 @@ import java.util.ArrayList;
  * @author Connor Flanigan
  *
  */
-
 public class StepByStep {
-
-	private ArrayList<MapNode> pathNodes;
-	//private int currentPathNodeIndex;
 	
-
+	private ArrayList<MapNode> pathNodes;
+	private int stepNumber;
+	
 	public StepByStep(ArrayList<MapNode> pathNodes){
 		this.pathNodes = pathNodes;
+		this.stepNumber = 1;
 	}
 	
 	
@@ -52,23 +50,24 @@ public class StepByStep {
 		double angle;
 		String turnVar = "";
 		int distanceVar = 0;
-
-		String firstStep = String.format("Welcome to the era of navigation, move %d feet.", distanceVar);
-		String midStepTurn = String.format("Turn %s, and continue for %d feet.", turnVar, distanceVar);
-		String midStepNoTurn = String.format("Continue for %d feet.", distanceVar);
-		String lastStep = "You have reached your destination.";
-
+		
+		String firstStep = String.format("%d. Welcome to the era of \nnavigation, move %d feet.", stepNumber, distanceVar);
+		String midStepTurn = String.format("%d. Turn %s, and continue \nfor %d feet.", stepNumber, turnVar, distanceVar);
+		String midStepNoTurn = String.format("%d. Continue for %d feet.", stepNumber, distanceVar);
+		String lastStep = "You have reached \nyour destination.";
+		
 		int i;
 		for (i = 0; i <= (pathNodes.size()-1) ; i++) {
 			
 			if (i == 0) {
 				distanceVar = pathNodes.get(i).calcDistance(pathNodes.get(i + 1));
-				firstStep = String.format("Welcome to the era of navigation, move %d feet.", distanceVar);
+				firstStep = String.format("%d. Welcome to the era \nof navigation, move \n%d feet.", stepNumber, distanceVar);
+				stepNumber++;
 				stepList.add(firstStep);
 			} 
 			
 			else if (i == (pathNodes.size()-1)) {
-				stepList.add(lastStep);
+				stepList.add("" + (stepList.size() + 1) + ". " + lastStep);
 			} 
 			
 			else {
@@ -77,7 +76,8 @@ public class StepByStep {
 				
 				//case of going straight
 				if (200 > angle && angle > 160) {
-					midStepNoTurn = String.format("Continue for %d feet.", distanceVar);
+					midStepNoTurn = String.format("%d. Continue for %d feet.", stepNumber, distanceVar);
+					stepNumber++;
 					stepList.add(midStepNoTurn);
 				}
 				// printing different statements for different angles
@@ -103,11 +103,12 @@ public class StepByStep {
 					if (250 >= angle && angle >= 200) {
 						turnVar = "slight right";
 					}
-					midStepTurn = String.format("Turn %s, and continue for %d feet.", turnVar, distanceVar);
+					midStepTurn = String.format("%d. Turn %s, and \ncontinue for \n%d feet.", stepNumber, turnVar, distanceVar);
+					stepNumber++;
 					stepList.add(midStepTurn);
 				}
 			}
-
+			
 		}//end of loop
 		return stepList;
 	}
@@ -116,4 +117,3 @@ public class StepByStep {
 	}
 	
 }
-

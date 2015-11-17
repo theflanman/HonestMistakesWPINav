@@ -1,5 +1,7 @@
 package main.gui;
 
+import java.awt.*;
+import java.awt.geom.Line2D;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,8 +14,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -38,17 +40,15 @@ import javax.swing.JRadioButton;
 import java.awt.Font;
 import javax.swing.ButtonGroup;
 
-
 /**
  * This class contains code for the main applications GUI interface as well as implementation for its various
  * functionality such as drawing the route.
  * @author Trevor
  */
 
-
 @SuppressWarnings("serial")
 public class MainGUI extends JFrame {
-
+	
 	private static GUIBackend backend;
 	private static GlobalMap globalMap;
 	private boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
@@ -218,10 +218,10 @@ public class MainGUI extends JFrame {
 		);
 		panel_3.setLayout(gl_panel_3);
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setRows(15);
-		textArea_1.setEditable(false);
-		scrollPane_1.setViewportView(textArea_1);
+		JTextArea textArea1 = new JTextArea();
+		textArea1.setRows(15);
+		textArea1.setEditable(false);
+		scrollPane_1.setViewportView(textArea1);
 		
 		//adds the distance label to the map interface
 		JLabel lblDistance = new JLabel("");
@@ -252,10 +252,11 @@ public class MainGUI extends JFrame {
 					lblDistance.setText(backend.getDistance());
 					
 					//basically justs places each string into the array one row at a time - if, and this is a big IF, /n works in this context
-					for(String string : backend.displayStepByStep()) {
-						textArea_1.append("/n");
-						textArea_1.append(string);
-					}
+					 String allText = "";
+	                   for(String string : backend.displayStepByStep()) {
+	                       allText += string + "\n";
+	                       }
+	                   textArea1.setText(allText);
 					btnCalculateRoute.setText("Remove Route Line");
 				} else {
 					btnCalculateRoute.setEnabled(true);
@@ -265,7 +266,7 @@ public class MainGUI extends JFrame {
 					backend.removePath();
 					removeLine = true;
 					lblDistance.setText(backend.getDistance());
-					textArea_1.setText("");
+					textArea1.setText("");
 					
 					//change the name of button back to what it originally was
 					btnCalculateRoute.setText("Calculate Route");
@@ -299,7 +300,7 @@ public class MainGUI extends JFrame {
 	 * @author Trevor
 	 */
 	class DrawingPanel extends JPanel {
-
+		
 		private static final long serialVersionUID = 1L;
 		ArrayList<MapNode> localNodes;
 		Image mapImage;
@@ -416,6 +417,16 @@ public class MainGUI extends JFrame {
 	        	graphics.setColor(Color.RED);
 	        	graphics.fillOval((int)n.getXPos() - 5, (int)n.getYPos() - 5, 10, 10);
 	        }
+	        //working on adding the links between two nodes before hand
+	        /*for(MapNode mapnode : this.localNodes){
+	        	for(MapNode mapnode2 : mapnode.getNeighbors()){
+	        		if(){
+	        			for(int i = 0; i < mapnode.getNeighbors().size() - 1; i++){
+	        				double x
+	        			}
+	        		}
+	        	}
+	        }*/
 	        
 	        //essentially draws the line on the screen - will need to add a way to remove this line later on
 	        //probably need to make a coordinates class - but this currently works
@@ -425,8 +436,12 @@ public class MainGUI extends JFrame {
 					double y1 = backend.getCoordinates().get(i)[1];
 					double x2 = backend.getCoordinates().get(i+1)[0];
 					double y2 = backend.getCoordinates().get(i+1)[1];
-					graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
-					i++;
+					double alpha = 0.5;
+					Color color = new Color (0,1,0,(float) alpha);
+					Graphics2D g2 = (Graphics2D) g;
+					g2.setStroke(new BasicStroke(5));
+					g2.setColor(color);
+					g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
 	        	}
 	        }
 	        else if (MainGUI.removeLine == true){
@@ -438,13 +453,15 @@ public class MainGUI extends JFrame {
 					double y1 = backend.getCoordinates().get(i)[1];
 					double x2 = backend.getCoordinates().get(i+1)[0];
 					double y2 = backend.getCoordinates().get(i+1)[1];
-					g.setColor(Color.white);
-					g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
-					i++;
+					Graphics2D g2 = (Graphics2D) g;
+					g2.setStroke(new BasicStroke(5));
+					g2.setColor(Color.white);
+					g2.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 	        	}
 	        	
 	        }
 	        repaint();
+	        
 	    }
 	}
 }
