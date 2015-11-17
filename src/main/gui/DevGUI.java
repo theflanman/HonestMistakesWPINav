@@ -56,7 +56,6 @@ public class DevGUI extends JFrame {
 	private JTextField xPosField;
 	private JTextField yPosField;
 	private JTextField zPosField;
-	private JTextField nodeNameField;
 	private MapNode lastClicked;
 	private MapNode edgeStart;
 	private MapNode edgeRemove;
@@ -107,7 +106,7 @@ public class DevGUI extends JFrame {
 		menuBar.add(mnFile);
 
 		MapPanel mapPanel = new MapPanel();
-		int threshold = 30; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
+		int threshold = 10; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
 
 		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -124,7 +123,7 @@ public class DevGUI extends JFrame {
 					xPosField.setText(""+n.getXPos());
 					yPosField.setText(""+n.getYPos());
 					zPosField.setText(""+n.getZPos());
-					nodeNameField.setText(n.getnodeName());
+					//nodeNameField.setText(n.getnodeName());
 					lastClicked = n;
 					mapPanel.renderMapPublic(g, points);
 				} else if (rdbtnSelectNode.isSelected()){
@@ -137,7 +136,7 @@ public class DevGUI extends JFrame {
 							xPosField.setText(""+n.getXPos());
 							yPosField.setText(""+n.getYPos());
 							zPosField.setText(""+n.getZPos());
-							nodeNameField.setText(n.getnodeName());
+							//nodeNameField.setText(n.getnodeName());
 							lastClicked = n;
 						}
 					}
@@ -317,133 +316,61 @@ public class DevGUI extends JFrame {
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1192, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, 289, GroupLayout.PREFERRED_SIZE)
-								.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
-						.addGap(93))
-				);
+					.addContainerGap()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1192, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+						.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, 294, GroupLayout.PREFERRED_SIZE))
+					.addGap(88))
+		);
 		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 653, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
-										.addGap(18)
-										.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addGap(311))
-				);
-		GridBagLayout gbl_nodeInfoPanel = new GridBagLayout();
-		gbl_nodeInfoPanel.columnWidths = new int[]{95, 99, 0};
-		gbl_nodeInfoPanel.rowHeights = new int[]{16, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_nodeInfoPanel.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_nodeInfoPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		nodeInfoPanel.setLayout(gbl_nodeInfoPanel);
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 653, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(cursorPanel, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(nodeInfoPanel, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)))
+					.addGap(311))
+		);
+		nodeInfoPanel.setLayout(null);
 
 		JLabel lblNodeInformation = new JLabel("Node Information");
-		GridBagConstraints gbc_lblNodeInformation = new GridBagConstraints();
-		gbc_lblNodeInformation.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNodeInformation.anchor = GridBagConstraints.NORTHWEST;
-		gbc_lblNodeInformation.gridx = 0;
-		gbc_lblNodeInformation.gridy = 0;
-		nodeInfoPanel.add(lblNodeInformation, gbc_lblNodeInformation);
+		lblNodeInformation.setBounds(2, 2, 99, 16);
+		nodeInfoPanel.add(lblNodeInformation);
 
 		JLabel lblXposition = new JLabel("x-position");
-		GridBagConstraints gbc_lblXposition = new GridBagConstraints();
-		gbc_lblXposition.anchor = GridBagConstraints.EAST;
-		gbc_lblXposition.insets = new Insets(0, 0, 5, 5);
-		gbc_lblXposition.gridx = 0;
-		gbc_lblXposition.gridy = 1;
-		nodeInfoPanel.add(lblXposition, gbc_lblXposition);
+		lblXposition.setBounds(2, 26, 67, 16);
+		nodeInfoPanel.add(lblXposition);
 
 		xPosField = new JTextField();
-		GridBagConstraints gbc_xPosField = new GridBagConstraints();
-		gbc_xPosField.insets = new Insets(0, 0, 5, 0);
-		gbc_xPosField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_xPosField.gridx = 1;
-		gbc_xPosField.gridy = 1;
-		nodeInfoPanel.add(xPosField, gbc_xPosField);
+		xPosField.setBounds(122, 23, 165, 22);
+		nodeInfoPanel.add(xPosField);
 		xPosField.setColumns(10);
 
 		JLabel lblYposition = new JLabel("y-position");
-		GridBagConstraints gbc_lblYposition = new GridBagConstraints();
-		gbc_lblYposition.anchor = GridBagConstraints.EAST;
-		gbc_lblYposition.insets = new Insets(0, 0, 5, 5);
-		gbc_lblYposition.gridx = 0;
-		gbc_lblYposition.gridy = 2;
-		nodeInfoPanel.add(lblYposition, gbc_lblYposition);
+		lblYposition.setBounds(2, 53, 55, 16);
+		nodeInfoPanel.add(lblYposition);
 
 		yPosField = new JTextField();
-		GridBagConstraints gbc_yPosField = new GridBagConstraints();
-		gbc_yPosField.insets = new Insets(0, 0, 5, 0);
-		gbc_yPosField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_yPosField.gridx = 1;
-		gbc_yPosField.gridy = 2;
-		nodeInfoPanel.add(yPosField, gbc_yPosField);
+		yPosField.setBounds(122, 50, 165, 22);
+		nodeInfoPanel.add(yPosField);
 		yPosField.setColumns(10);
 
 		JLabel lblZposition = new JLabel("z-position");
-		GridBagConstraints gbc_lblZposition = new GridBagConstraints();
-		gbc_lblZposition.anchor = GridBagConstraints.EAST;
-		gbc_lblZposition.insets = new Insets(0, 0, 5, 5);
-		gbc_lblZposition.gridx = 0;
-		gbc_lblZposition.gridy = 3;
-		nodeInfoPanel.add(lblZposition, gbc_lblZposition);
+		lblZposition.setBounds(2, 80, 55, 16);
+		nodeInfoPanel.add(lblZposition);
 
 		zPosField = new JTextField();
-		GridBagConstraints gbc_zPosField = new GridBagConstraints();
-		gbc_zPosField.insets = new Insets(0, 0, 5, 0);
-		gbc_zPosField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_zPosField.gridx = 1;
-		gbc_zPosField.gridy = 3;
-		nodeInfoPanel.add(zPosField, gbc_zPosField);
+		zPosField.setBounds(122, 77, 165, 22);
+		nodeInfoPanel.add(zPosField);
 		zPosField.setColumns(10);
 
-		JLabel lblName = new JLabel("Name");
-		GridBagConstraints gbc_lblName = new GridBagConstraints();
-		gbc_lblName.anchor = GridBagConstraints.EAST;
-		gbc_lblName.insets = new Insets(0, 0, 5, 5);
-		gbc_lblName.gridx = 0;
-		gbc_lblName.gridy = 4;
-		nodeInfoPanel.add(lblName, gbc_lblName);
-
-		nodeNameField = new JTextField();
-		GridBagConstraints gbc_nodeNameField = new GridBagConstraints();
-		gbc_nodeNameField.insets = new Insets(0, 0, 5, 0);
-		gbc_nodeNameField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_nodeNameField.gridx = 1;
-		gbc_nodeNameField.gridy = 4;
-		nodeInfoPanel.add(nodeNameField, gbc_nodeNameField);
-		nodeNameField.setColumns(10);
-
-		JButton btnMakeChanges = new JButton("Make Changes");
-		btnMakeChanges.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		GridBagConstraints gbc_btnMakeChanges = new GridBagConstraints();
-		gbc_btnMakeChanges.insets = new Insets(0, 0, 5, 5);
-		gbc_btnMakeChanges.gridx = 0;
-		gbc_btnMakeChanges.gridy = 5;
-		nodeInfoPanel.add(btnMakeChanges, gbc_btnMakeChanges);
-
-		btnMakeChanges.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(lastClicked != null) {
-					lastClicked.setnodeName(nodeNameField.getText());
-					lastClicked.setxPos( Double.parseDouble(xPosField.getText())); //TODO : Setting x pos doesn't work yet.
-				}
-			}
-
-		});
 		cursorPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel(" Cursor Options");
