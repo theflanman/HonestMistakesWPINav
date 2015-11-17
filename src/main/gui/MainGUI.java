@@ -587,17 +587,24 @@ public class MainGUI extends JFrame {
 				graphics.setColor(Color.RED);
 				graphics.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, 10, 10);
 			}
-			// working on adding the links between two nodes before hand
-			/*
-			 * for(MapNode mapnode : this.localNodes){ for(MapNode mapnode2 :
-			 * mapnode.getNeighbors()){ if(){ for(int i = 0; i <
-			 * mapnode.getNeighbors().size() - 1; i++){ double x } } } }
-			 */
+			// working on adding the links between two nodes before hand - works, but will keep out for now
+			//ArrayList<MapNode> mapnodes = new ArrayList<MapNode>();
+			//for(MapNode neighbors : this.localNodes){
+			//	mapnodes.add(this.neighbors);
+			//}
+		    /*for(MapNode mapnode : mapnodes){
+	        	for(MapNode mapnode2 : mapnode.getNeighbors()){
+	        		Graphics2D g3 = (Graphics2D) g;
+	        		g3.setStroke(new BasicStroke(2));
+	        		g3.setColor(Color.gray);
+	        		g3.drawLine((int)mapnode.getXPos(), (int) mapnode.getYPos(), (int) mapnode2.getXPos(), (int) mapnode2.getYPos());
+	        		mapnode2.deleteNeighborLink(mapnode);
+	        		}
+	        	mapnodes.remove(mapnode);
+	        	repaint();
+	        }*/
 
-			// essentially draws the line on the screen - will need to add a way
-			// to remove this line later on
-			// probably need to make a coordinates class - but this currently
-			// works
+			// essentially draws the line on the screen 
 			if (MainGUI.drawLine = true) {
 				for (int i = 0; i < backend.getCoordinates().size() - 1; i++) {
 					double x1 = backend.getCoordinates().get(i)[0];
@@ -614,14 +621,6 @@ public class MainGUI extends JFrame {
 				drawLine = false;
 				removeLine = true;
 			} else if (MainGUI.removeLine == true) {
-				// TODO this really should have a better implementation - but
-				// this is a quick fix to an on-going problem
-				// Would make sense to eventually transform the line into an
-				// object, so that it could be easily removed - but that might
-				// require adding a .awt canvas, and I'm not entirely sure we
-				// want to restructure our entire project
-				// essentially repaint the line white so that it can't be seen
-				// when you remove it
 				for (int i = 0; i < backend.getCoordinates().size() - 1; i++) {
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
