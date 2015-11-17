@@ -6,6 +6,8 @@ import main.gui.GUIBackend;
 import junit.framework.TestCase;
 public class LoadSaveMapTests extends TestCase {
 
+	/* Fake map for test causes problems when running main application
+	 * 
 	public void testDeveloperGUIBackend(){
 		LocalMap localMap1 = new LocalMap("map1", null);
 		localMap1.setMapID(1); // give it some random data
@@ -48,5 +50,5 @@ public class LoadSaveMapTests extends TestCase {
 		
 		assertEquals(guiBack1.getLocalMap().getMapID(), 3); // check to see if the data are the same
 	}
-
+	*/
 }

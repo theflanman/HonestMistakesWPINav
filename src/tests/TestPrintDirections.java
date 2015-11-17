@@ -32,8 +32,8 @@ public class TestPrintDirections extends TestCase{
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
 		resultSteps.add("1. Welcome to the era \nof navigation, move \n3 feet.");
-		resultSteps.add("2. Turn right, and \ncontinue for \n3 feet.");
-		resultSteps.add("3. Turn hard right, and \ncontinue for \n10 feet.");
+		resultSteps.add("2. Turn left, and \ncontinue for \n3 feet.");
+		resultSteps.add("3. Turn hard left, and \ncontinue for \n10 feet.");
 		resultSteps.add("4. You have reached \nyour destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
@@ -90,7 +90,7 @@ public class TestPrintDirections extends TestCase{
 		ArrayList<String> resultSteps = new ArrayList<String>();
 		resultSteps.add("1. Welcome to the era \nof navigation, move \n8 feet.");
 		resultSteps.add("2. Turn back, and \ncontinue for \n4 feet.");
-		resultSteps.add("3. Turn left, and \ncontinue for \n4 feet.");
+		resultSteps.add("3. Turn right, and \ncontinue for \n4 feet.");
 		resultSteps.add("4. You have reached \nyour destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
@@ -128,8 +128,8 @@ public class TestPrintDirections extends TestCase{
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
 		resultSteps.add("1. Welcome to the era \nof navigation, move \n5 feet.");
-		resultSteps.add("2. Turn hard right, and \ncontinue for \n5 feet.");
-		resultSteps.add("3. Turn slight right, and \ncontinue for \n4 feet.");
+		resultSteps.add("2. Turn hard left, and \ncontinue for \n5 feet.");
+		resultSteps.add("3. Turn slight left, and \ncontinue for \n4 feet.");
 		resultSteps.add("4. Continue for 4 feet.");
 		resultSteps.add("5. Turn back, and \ncontinue for \n4 feet.");
 		resultSteps.add("6. You have reached \nyour destination.");

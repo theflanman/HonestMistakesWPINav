@@ -88,25 +88,25 @@ public class StepByStep {
 					// printing different statements for different angles
 					else {
 						if (160 >= angle && angle >= 110) {
-							turnVar = "slight left";
+							turnVar = "slight right";
 						}
 						if (110 > angle && angle > 70) {
-							turnVar = "left";
+							turnVar = "right";
 						}
 						if (70 >= angle && angle >= 20) {
-							turnVar = "hard left";
+							turnVar = "hard right";
 						}
 						if (20 > angle || angle > 340) {
 							turnVar = "back";
 						}
 						if (340 >= angle && angle >= 290) {
-							turnVar = "hard right";
+							turnVar = "hard left";
 						}
 						if (290 > angle && angle > 250) {
-							turnVar = "right";
+							turnVar = "left";
 						}
 						if (250 >= angle && angle >= 200) {
-							turnVar = "slight right";
+							turnVar = "slight left";
 						}
 						midStepTurn = String.format("%d. Turn %s, and \ncontinue for \n%d feet.", stepNumber, turnVar,
 								distanceVar);
