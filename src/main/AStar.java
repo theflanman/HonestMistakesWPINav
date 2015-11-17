@@ -118,6 +118,7 @@ public class AStar {
 			current = current.getCameFrom();
 			
 		}
+		path.add(0, startNode); // start doesn't seem to be included ?
 		
 		return path;
 		

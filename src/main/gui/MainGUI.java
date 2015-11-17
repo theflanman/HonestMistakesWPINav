@@ -1,5 +1,7 @@
 package main.gui;
 
+import java.awt.*;
+import java.awt.geom.Line2D;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,8 +14,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -27,14 +29,16 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.BadLocationException;
+
+import main.*;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
-
-import main.GlobalMap;
-import main.LocalMap;
-import main.MapNode;
-
+import javax.swing.border.LineBorder;
+import javax.swing.JRadioButton;
+import java.awt.Font;
+import javax.swing.ButtonGroup;
 
 /**
  * This class contains code for the main applications GUI interface as well as implementation for its various
@@ -42,18 +46,19 @@ import main.MapNode;
  * @author Trevor
  */
 
-
 @SuppressWarnings("serial")
 public class MainGUI extends JFrame {
-
+	
 	private static GUIBackend backend;
 	private static GlobalMap globalMap;
-	boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
+	private boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	public static boolean drawLine = false;
 	public static boolean removeLine = false;
 	
 	private JPanel contentPane;
-	JButton btnCalculateRoute;
+	private JButton btnCalculateRoute;
+	private JRadioButton rdbtnStartNode, rdbtnEndNode;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	/**
 	 * Create the frame.
@@ -79,10 +84,11 @@ public class MainGUI extends JFrame {
 		// add the collection of nodes to the ArrayList of GlobalMap
 		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
 		for(LocalMap local : tmpListLocal){
-			allNodes.addAll(local.getMapNodes()); 
+			
+			if(!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
+				allNodes.addAll(local.getMapNodes()); 
 		}
 		globalMap.setMapNodes(allNodes);		 
-		
 		
 		
 		/**
@@ -100,30 +106,48 @@ public class MainGUI extends JFrame {
 		// Image of the default map loaded into backend
 		Image map = new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage();
 		
-		// SwingBuilder Code related to the JLayeredPane() 
+		/**
+		 * Window Builder generated code. GroupLayout auto-generated for custom formatting.
+		 */
 		JLayeredPane layeredPane = new JLayeredPane();
 		
 		layeredPane.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		
 		JPanel panel_1 = new JPanel();
-		
 		JPanel panel_2 = new JPanel();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		
 		JPanel panel_3 = new JPanel();
+		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+		
+		JLabel lblSelectANode = new JLabel("Node Selection:");
+		lblSelectANode.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
-						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addGap(18)
+							.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(51)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblSelectANode)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -132,11 +156,14 @@ public class MainGUI extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(16)
+							.addComponent(lblSelectANode)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGap(36)
 							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
@@ -144,13 +171,57 @@ public class MainGUI extends JFrame {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		
-		JLabel lblStepbystepDirections = new JLabel("Step-By-Step Directions");
-		panel_3.add(lblStepbystepDirections);
+		rdbtnStartNode = new JRadioButton("Start Location");
+		buttonGroup.add(rdbtnStartNode);
+		rdbtnStartNode.setSelected(true);
+		rdbtnStartNode.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setRows(15);
-		textArea_1.setEditable(false);
-		scrollPane_1.setViewportView(textArea_1);
+		rdbtnEndNode = new JRadioButton("End Location");
+		buttonGroup.add(rdbtnEndNode);
+		rdbtnEndNode.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
+		gl_panel_4.setHorizontalGroup(
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_4.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_4.createParallelGroup(Alignment.LEADING)
+						.addComponent(rdbtnStartNode)
+						.addComponent(rdbtnEndNode))
+					.addContainerGap(10, Short.MAX_VALUE))
+		);
+		gl_panel_4.setVerticalGroup(
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_4.createSequentialGroup()
+					.addContainerGap(20, Short.MAX_VALUE)
+					.addComponent(rdbtnStartNode)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(rdbtnEndNode)
+					.addContainerGap())
+		);
+		panel_4.setLayout(gl_panel_4);
+		
+		JLabel lblStepbystepDirections = new JLabel("Step-By-Step Directions");
+		lblStepbystepDirections.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_3.createSequentialGroup()
+					.addGap(43)
+					.addComponent(lblStepbystepDirections)
+					.addContainerGap(49, Short.MAX_VALUE))
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_3.createSequentialGroup()
+					.addContainerGap(28, Short.MAX_VALUE)
+					.addComponent(lblStepbystepDirections))
+		);
+		panel_3.setLayout(gl_panel_3);
+		
+		JTextArea textArea1 = new JTextArea();
+		textArea1.setRows(15);
+		textArea1.setEditable(false);
+		scrollPane_1.setViewportView(textArea1);
 		
 		//adds the distance label to the map interface
 		JLabel lblDistance = new JLabel("");
@@ -161,6 +232,7 @@ public class MainGUI extends JFrame {
 		 * going to need to add functionality to change button title to remove line when user has drawn the line on screen in a better way
 		 */
 		btnCalculateRoute = new JButton("Calculate Route");
+		btnCalculateRoute.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel_2.add(btnCalculateRoute);
 		btnCalculateRoute.setEnabled(false);
 		btnCalculateRoute.addActionListener(new ActionListener() {
@@ -168,7 +240,11 @@ public class MainGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(btnCalculateRoute.isEnabled()){
 					System.out.println("About to run AStar");
-					backend.runAStar();
+					backend.setPath(backend.runAStar());
+					
+					for(MapNode n : backend.getPath()){
+						System.out.println("Node ID: " + n.getNodeID());
+					}
 					System.out.println("Just ran AStar");
 					drawLine = true;
 					
@@ -176,10 +252,11 @@ public class MainGUI extends JFrame {
 					lblDistance.setText(backend.getDistance());
 					
 					//basically justs places each string into the array one row at a time - if, and this is a big IF, /n works in this context
-					for(String string : backend.displayStepByStep()) {
-						textArea_1.append("/n");
-						textArea_1.append(string);
-					}
+					 String allText = "";
+	                   for(String string : backend.displayStepByStep()) {
+	                       allText += string + "\n";
+	                       }
+	                   textArea1.setText(allText);
 					btnCalculateRoute.setText("Remove Route Line");
 				} else {
 					btnCalculateRoute.setEnabled(true);
@@ -189,7 +266,7 @@ public class MainGUI extends JFrame {
 					backend.removePath();
 					removeLine = true;
 					lblDistance.setText(backend.getDistance());
-					textArea_1.setText("");
+					textArea1.setText("");
 					
 					//change the name of button back to what it originally was
 					btnCalculateRoute.setText("Calculate Route");
@@ -223,7 +300,7 @@ public class MainGUI extends JFrame {
 	 * @author Trevor
 	 */
 	class DrawingPanel extends JPanel {
-
+		
 		private static final long serialVersionUID = 1L;
 		ArrayList<MapNode> localNodes;
 		Image mapImage;
@@ -239,7 +316,7 @@ public class MainGUI extends JFrame {
 	        this.localNodes = nodes;
 	        this.mapImage = map;
 	        setOpaque(false);
-	        startEndNodes = new ArrayList<MapNode>();
+	        startEndNodes = new ArrayList<MapNode>(); // Index 0: StartNode    Index 1: EndNode
 	        
 	        /**
 	         * On mouse click, display the points which represent the start and end nodes. These will also set the backend to
@@ -247,7 +324,9 @@ public class MainGUI extends JFrame {
 	         */
 	        addMouseListener(new MouseAdapter() {
 	    		@Override
-	    		public void mouseClicked(MouseEvent me) {	    				
+	    		public void mouseClicked(MouseEvent me) {	    
+	    			
+	    				/* Will work on later when user is able to select ANY location 
 	    				// Only add new points if you haven't set an End Node yet
 	    				if(!setEnd){
 		    					Point clickedAt = me.getPoint();
@@ -255,7 +334,7 @@ public class MainGUI extends JFrame {
 		    					// If you've set a start node already, set the end node
 		    					if(setStart){
 		    						setEnd = true;
-		    						MapNode newNode = new MapNode((double)clickedAt.x, (double)clickedAt.y, 0.0);
+		    						MapNode newNode = new MapNode((double)clickedAt.x, (double)clickedAt.y, 0);
 		    						startEndNodes.add(newNode);
 		    						backend.setEndNode(newNode);
 		    						btnCalculateRoute.setEnabled(true); // allow user to calculate route
@@ -271,8 +350,51 @@ public class MainGUI extends JFrame {
 	    					System.out.println("You've already selected two points");
 	    				}
 	    				repaint();
+	    			}*/
+	    			
+	    			// figure out if there is a map node there, if so, set it as the StartingNode
+	    			Point clickedAt = me.getPoint();
+	    			int clickRadius = 10; // clicks anywhere within a circle of radius 10
+	    			if(rdbtnStartNode.isSelected()){
+	    				
+	    				for(MapNode n : localNodes){
+	    					if((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius) && (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)){
+	    						System.out.println("This is the starting node!");	    	
+	    						backend.setStartNode(n);
+	    						
+	    						// If this is the first value, add it at index 0
+	    						// else, set the first index
+	    						if(!setStart){
+	    							startEndNodes.add(0, n);
+	    							System.out.println(startEndNodes.size());
+	    						}
+	    						else
+	    							startEndNodes.set(0, n);
+	    						
+	    						setStart = true; // start node has been set at least once
+	    					}
+	    				}
+	    			} else { // rdbtnEndNode is selected
+	    				
+	    				for(MapNode n : localNodes){
+	    					if((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius) && (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)){
+	    						System.out.println("This is the ending node!");
+	    						backend.setEndNode(n);
+	    						btnCalculateRoute.setEnabled(true);
+	    						
+	    						// If this is the first EndNode selection, add it at index 1
+	    						// else, set the second index
+	    						if(!setEnd)
+	    							startEndNodes.add(1, n);
+	    						else
+	    							startEndNodes.set(1, n);
+	    						
+	    						setEnd = true; // end node has been set at least once
+	    					}
+	    				}
 	    			}
-	    		});
+	    			repaint();
+	    		}});
 	    }
 		
 		/**
@@ -289,38 +411,57 @@ public class MainGUI extends JFrame {
 	        for(MapNode n : this.localNodes){
 	        	graphics.fillOval((int)n.getXPos() - 5, (int)n.getYPos() - 5, 10, 10);
 	        }
+	        // Sets the color of the start and end nodes to be different
 	        graphics.setColor(Color.RED);
 	        for(MapNode n : this.startEndNodes){
+	        	graphics.setColor(Color.RED);
 	        	graphics.fillOval((int)n.getXPos() - 5, (int)n.getYPos() - 5, 10, 10);
 	        }
+	        //working on adding the links between two nodes before hand
+	        /*for(MapNode mapnode : this.localNodes){
+	        	for(MapNode mapnode2 : mapnode.getNeighbors()){
+	        		if(){
+	        			for(int i = 0; i < mapnode.getNeighbors().size() - 1; i++){
+	        				double x
+	        			}
+	        		}
+	        	}
+	        }*/
 	        
 	        //essentially draws the line on the screen - will need to add a way to remove this line later on
 	        //probably need to make a coordinates class - but this currently works
 	        if(MainGUI.drawLine = true){
-	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
+	        	for(int i = 0; i < backend.getCoordinates().size() - 1; i++){
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
 					double x2 = backend.getCoordinates().get(i+1)[0];
 					double y2 = backend.getCoordinates().get(i+1)[1];
-					g.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
-					i++;
-	        	} 
+					double alpha = 0.5;
+					Color color = new Color (0,1,0,(float) alpha);
+					Graphics2D g2 = (Graphics2D) g;
+					g2.setStroke(new BasicStroke(5));
+					g2.setColor(color);
+					g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+	        	}
 	        }
 	        else if (MainGUI.removeLine == true){
 	        	//TODO this really should have a better implementation - but this is a quick fix to an on-going problem
 	        	//Would make sense to eventually transform the line into an object, so that it could be easily removed - but that might require adding a .awt canvas, and I'm not entirely sure we want to restructure our entire project
 	        	//essentially repaint the line white so that it can't be seen when you remove it
-	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
+	        	for(int i = 0; i < backend.getCoordinates().size() - 1; i++){
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
 					double x2 = backend.getCoordinates().get(i+1)[0];
 					double y2 = backend.getCoordinates().get(i+1)[1];
-					g.setColor(Color.white);
-					g.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
-					i++;
+					Graphics2D g2 = (Graphics2D) g;
+					g2.setStroke(new BasicStroke(5));
+					g2.setColor(Color.white);
+					g2.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 	        	}
 	        	
 	        }
+	        repaint();
+	        
 	    }
 	}
 }
