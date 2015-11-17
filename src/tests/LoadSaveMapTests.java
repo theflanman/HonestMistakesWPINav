@@ -3,13 +3,17 @@ package tests;
 import main.LocalMap;
 import main.gui.DeveloperGUIBackend;
 import main.gui.GUIBackend;
+
+import java.io.File;
+
 import junit.framework.TestCase;
 public class LoadSaveMapTests extends TestCase {
+	
+	String path = new String("src/localmaps/map1.localmap");
+	LocalMap localMap1 = new LocalMap("map1", null);
+	File file = new File(path);
 
-	/* Fake map for test causes problems when running main application
-	 * 
 	public void testDeveloperGUIBackend(){
-		LocalMap localMap1 = new LocalMap("map1", null);
 		localMap1.setMapID(1); // give it some random data
 		
 		DeveloperGUIBackend devGUIBack1 = new DeveloperGUIBackend(localMap1);
@@ -18,13 +22,14 @@ public class LoadSaveMapTests extends TestCase {
 		
 		DeveloperGUIBackend devGUIBack2 = new DeveloperGUIBackend(null);
 
-		devGUIBack2.loadMap("src/localmaps/map1.localmap"); // get map from file
+		devGUIBack2.loadMap(path); // get map from file
 		
 		assertEquals(devGUIBack2.getLocalMap().getMapID(), 1); // check to see if the data is the same
+		
+		file.delete();
 	}
 	
 	public void testGUIBackend(){
-		LocalMap localMap1 = new LocalMap("map1", null);
 		localMap1.setMapID(2); // give it some random data
 		
 		DeveloperGUIBackend devGUIBack1 = new DeveloperGUIBackend(localMap1);
@@ -35,11 +40,12 @@ public class LoadSaveMapTests extends TestCase {
 
 		guiBack1.loadLocalMap("map1.localmap"); // load the local map
 		
-		assertEquals(guiBack1.getLocalMap().getMapID(), 2); // check to see if the data are the same		
+		assertEquals(guiBack1.getLocalMap().getMapID(), 2); // check to see if the data are the same	
+		
+		file.delete();
 	}
 	
 	public void testLocalMap(){
-		LocalMap localMap1 = new LocalMap("map1", null);
 		localMap1.setMapID(3);
 		
 		localMap1.saveMap("map1");
@@ -49,6 +55,7 @@ public class LoadSaveMapTests extends TestCase {
 		guiBack1.loadLocalMap("map1.localmap"); // load the local map
 		
 		assertEquals(guiBack1.getLocalMap().getMapID(), 3); // check to see if the data are the same
+		
+		file.delete();
 	}
-	*/
 }
