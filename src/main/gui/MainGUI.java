@@ -583,9 +583,14 @@ public class MainGUI extends JFrame {
 			}
 			// Sets the color of the start and end nodes to be different
 			graphics.setColor(Color.RED);
-			for (MapNode n : this.startEndNodes) {
-				graphics.setColor(Color.RED);
-				graphics.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, 10, 10);
+			for (int i = 0; i < this.startEndNodes.size(); i++) {
+				if(i == 0){
+					graphics.setColor(Color.RED);
+					graphics.fillOval((int) this.startEndNodes.get(i).getXPos() - 5, (int) this.startEndNodes.get(i).getYPos() - 5, 10, 10);
+				} else { //if i == 1
+					graphics.setColor(Color.GREEN);
+					graphics.fillOval((int) this.startEndNodes.get(i).getXPos() - 5, (int) this.startEndNodes.get(i).getYPos() - 5, 10, 10);
+				}
 			}
 			// working on adding the links between two nodes before hand - works, but will keep out for now
 			//ArrayList<MapNode> mapnodes = new ArrayList<MapNode>();
@@ -612,7 +617,7 @@ public class MainGUI extends JFrame {
 					double x2 = backend.getCoordinates().get(i + 1)[0];
 					double y2 = backend.getCoordinates().get(i + 1)[1];
 					double alpha = 0.5;
-					Color color = new Color(0, 1, 0, (float) alpha);
+					Color color = new Color(0, 1, 1, (float) alpha);
 					Graphics2D g2 = (Graphics2D) g;
 					g2.setStroke(new BasicStroke(5));
 					g2.setColor(color);
