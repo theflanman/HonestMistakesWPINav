@@ -54,8 +54,8 @@ public class MainGUI extends JFrame {
 	private boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	public static boolean drawLine = false;
 	public static boolean removeLine = false;
+	//needed for reset function
 	public static boolean red = false;
-	public static boolean blue = true;
 	public static boolean reset = false;
 	
 	private JPanel contentPane;
@@ -278,19 +278,6 @@ public class MainGUI extends JFrame {
 	                   textArea1.setText(allText);
 	                   btnCalculateRoute.setEnabled(false);
 	                   btnReset.setEnabled(true);
-				/*} else {
-					btnCalculateRoute.setEnabled(true);
-					
-					//if the line needs to be removed
-					//going to need to add a method here - to remove nodes from path
-					backend.removePath();
-					removeLine = true;
-					lblDistance.setText(backend.getDistance());
-					textArea1.setText("");
-					
-					//change the name of button back to what it originally was
-					btnCalculateRoute.setText("Calculate Route");
-				}*/
 				}
 			}
 		});
@@ -301,10 +288,10 @@ public class MainGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				rdbtnEndNode.setSelected(false);
+				rdbtnStartNode.setSelected(false);
 				backend.setStartNode(null);
 				backend.setEndNode(null);
 				red = false;
-				blue = true;
 				reset = true;
 				
 				//if the line needs to be removed
@@ -314,15 +301,8 @@ public class MainGUI extends JFrame {
 				backend.removePath();
 				btnReset.setEnabled(false);
 				btnCalculateRoute.setEnabled(true);
-				reset = true;
-				
 				//if the line needs to be removed
 				//going to need to add a method here - to remove nodes from path
-				lblDistance.setText("");
-				textArea1.setText("");
-				backend.removePath();
-				btnReset.setEnabled(false);
-				btnCalculateRoute.setEnabled(true);
 				removeLine = true;
 			}
 		});
@@ -410,7 +390,7 @@ public class MainGUI extends JFrame {
 	    			Point clickedAt = me.getPoint();
 	    			int clickRadius = 10; // clicks anywhere within a circle of radius 10
 	    			if(rdbtnStartNode.isSelected()){
-	    		
+	    				
 	    				for(MapNode n : localNodes){
 	    					if((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius) && (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)){
 	    						System.out.println("This is the starting node!");	    	
@@ -474,20 +454,28 @@ public class MainGUI extends JFrame {
 	        	}
 	        }
 	        if(reset == true){
-	        	//this needs to be altered, but this code is pretty much there
-	        	this.startEndNodes.remove(1);
+	        	this.startEndNodes.clear();
+	        	setStart = false;
+	        	setEnd = false;
 	        	reset = false;
 	        }
 	        //working on adding the links between two nodes before hand
-	        /*for(MapNode mapnode : this.localNodes){
+	        ArrayList<MapNode> mapnodes = new ArrayList<MapNode>();
+	        for (MapNode neighbor : this.localNodes){
+	        	mapnodes.add(neighbor);
+	        }
+	        	
+	        for(MapNode mapnode : this.localNodes){
 	        	for(MapNode mapnode2 : mapnode.getNeighbors()){
-	        		if(){
-	        			for(int i = 0; i < mapnode.getNeighbors().size() - 1; i++){
-	        				double x
-	        			}
+	        		Graphics2D g3 = (Graphics2D) g;
+	        		g3.setStroke(new BasicStroke(2));
+	        		g3.setColor(Color.gray);
+	        		g3.drawLine((int)mapnode.getXPos(), (int) mapnode.getYPos(), (int) mapnode2.getXPos(), (int) mapnode2.getYPos());
+	        		mapnode2.deleteNeighborLink(mapnode);
 	        		}
-	        	}
-	        }*/
+	        	mapnodes.remove(mapnode);
+	        	repaint();
+	        }
 	        
 	        //essentially draws the line on the screen - will need to add a way to remove this line later on
 	        //probably need to make a coordinates class - but this currently works
