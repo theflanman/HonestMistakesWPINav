@@ -90,7 +90,7 @@ public class GUIBackend implements Serializable {
 	public String getDistance() {
 		StepByStep getDistance = new StepByStep(this.path);
 		double distance = getDistance.calculateTotalDistance();
-		return "Distance in feet:" + Double.toString(distance);
+		return "Distance to your destination in feet:" + Double.toString(distance);
 	}
 	/**
 	 * @return ArrayList<String> - this is necessary to allow MainGUI to convert the strings in the array into rows of the column
@@ -99,6 +99,7 @@ public class GUIBackend implements Serializable {
 	public ArrayList<String> displayStepByStep() {
 		StepByStep directions = new StepByStep(this.path);
 		ArrayList<String> print = directions.printDirection();
+		
 		return print;
 	}
 	

@@ -44,9 +44,7 @@ public class MapNode implements Serializable{
 	}
 	
 	public void addNeighbor(MapNode node) {
-		
 		neighbors.add(node);
-		
 	}
 	
 	public void removeNeighbor(MapNode node) {

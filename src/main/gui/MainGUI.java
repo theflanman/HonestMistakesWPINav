@@ -241,6 +241,10 @@ public class MainGUI extends JFrame {
 				if(btnCalculateRoute.isEnabled()){
 					System.out.println("About to run AStar");
 					backend.setPath(backend.runAStar());
+					
+					for(MapNode n : backend.getPath()){
+						System.out.println("Node ID: " + n.getNodeID());
+					}
 					System.out.println("Just ran AStar");
 					drawLine = true;
 					
@@ -249,7 +253,8 @@ public class MainGUI extends JFrame {
 					
 					//basically justs places each string into the array one row at a time - if, and this is a big IF, /n works in this context
 					for(String string : backend.displayStepByStep()) {
-						textArea_1.setText(string + "\n");
+						textArea_1.append("/n");
+						textArea_1.append(string);
 					}
 					btnCalculateRoute.setText("Remove Route Line");
 				} else {
@@ -415,20 +420,20 @@ public class MainGUI extends JFrame {
 	        //essentially draws the line on the screen - will need to add a way to remove this line later on
 	        //probably need to make a coordinates class - but this currently works
 	        if(MainGUI.drawLine = true){
-	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
+	        	for(int i = 0; i < backend.getCoordinates().size() - 1; i++){
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
 					double x2 = backend.getCoordinates().get(i+1)[0];
 					double y2 = backend.getCoordinates().get(i+1)[1];
-					g.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+					graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
 					i++;
-	        	} 
+	        	}
 	        }
 	        else if (MainGUI.removeLine == true){
 	        	//TODO this really should have a better implementation - but this is a quick fix to an on-going problem
 	        	//Would make sense to eventually transform the line into an object, so that it could be easily removed - but that might require adding a .awt canvas, and I'm not entirely sure we want to restructure our entire project
 	        	//essentially repaint the line white so that it can't be seen when you remove it
-	        	for(int i = 0; i < backend.getCoordinates().size(); i++){
+	        	for(int i = 0; i < backend.getCoordinates().size() - 1; i++){
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
 					double x2 = backend.getCoordinates().get(i+1)[0];
