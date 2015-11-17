@@ -54,9 +54,10 @@ public class MainGUI extends JFrame {
 	private boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	public static boolean drawLine = false;
 	public static boolean removeLine = false;
+	public static boolean reset = false;
 	
 	private JPanel contentPane;
-	private JButton btnCalculateRoute;
+	private JButton btnCalculateRoute, btnReset;
 	private JRadioButton rdbtnStartNode, rdbtnEndNode;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
@@ -124,6 +125,8 @@ public class MainGUI extends JFrame {
 		
 		JLabel lblSelectANode = new JLabel("Node Selection:");
 		lblSelectANode.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		JPanel panel_5 = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -131,24 +134,32 @@ public class MainGUI extends JFrame {
 					.addContainerGap()
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addGap(18)
-							.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(18)
+										.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+											.addGroup(gl_contentPane.createSequentialGroup()
+												.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
+											.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))))
+								.addContainerGap())
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(57)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+								.addContainerGap()))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(51)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblSelectANode)
-								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap())
+							.addGap(76)
+							.addComponent(lblSelectANode)
+							.addContainerGap())))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -159,8 +170,10 @@ public class MainGUI extends JFrame {
 							.addComponent(lblSelectANode)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+							.addGap(11)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
 							.addGap(36)
 							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -227,10 +240,14 @@ public class MainGUI extends JFrame {
 		JLabel lblDistance = new JLabel("");
 		panel_1.add(lblDistance);
 		
+		//disable reset button
+		JButton btnReset = new JButton("Reset");
+		btnReset.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		btnReset.setEnabled(false);
+		panel_5.add(btnReset);
+		
 		//Code for button - if it is pressed allow the program to draw the line on the map
-		/**TODO
-		 * going to need to add functionality to change button title to remove line when user has drawn the line on screen in a better way
-		 */
 		btnCalculateRoute = new JButton("Calculate Route");
 		btnCalculateRoute.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel_2.add(btnCalculateRoute);
@@ -257,8 +274,9 @@ public class MainGUI extends JFrame {
 	                       allText += string + "\n";
 	                       }
 	                   textArea1.setText(allText);
-					btnCalculateRoute.setText("Remove Route Line");
-				} else {
+	                   btnCalculateRoute.setEnabled(false);
+	                   btnReset.setEnabled(true);
+				/*} else {
 					btnCalculateRoute.setEnabled(true);
 					
 					//if the line needs to be removed
@@ -270,9 +288,32 @@ public class MainGUI extends JFrame {
 					
 					//change the name of button back to what it originally was
 					btnCalculateRoute.setText("Calculate Route");
+				}*/
 				}
 			}
 		});
+		
+		
+		//code for reset button
+		btnReset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				rdbtnEndNode.setSelected(false);
+				backend.setStartNode(null);
+				backend.setEndNode(null);
+				reset = true;
+				
+				//if the line needs to be removed
+				//going to need to add a method here - to remove nodes from path
+				lblDistance.setText("");
+				textArea1.setText("");
+				backend.removePath();
+				btnReset.setEnabled(false);
+				btnCalculateRoute.setEnabled(true);
+				removeLine = true;
+			}
+		});
+		
 		
 		// Creates a new DrawingPanel object which will display the map image and load up MapNode data
 		DrawingPanel panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map, layeredPane.getSize());
@@ -324,8 +365,7 @@ public class MainGUI extends JFrame {
 	         */
 	        addMouseListener(new MouseAdapter() {
 	    		@Override
-	    		public void mouseClicked(MouseEvent me) {	    
-	    			
+	    		public void mouseClicked(MouseEvent me) {	    	
 	    				/* Will work on later when user is able to select ANY location 
 	    				// Only add new points if you haven't set an End Node yet
 	    				if(!setEnd){
@@ -356,12 +396,11 @@ public class MainGUI extends JFrame {
 	    			Point clickedAt = me.getPoint();
 	    			int clickRadius = 10; // clicks anywhere within a circle of radius 10
 	    			if(rdbtnStartNode.isSelected()){
-	    				
+	    		
 	    				for(MapNode n : localNodes){
 	    					if((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius) && (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)){
 	    						System.out.println("This is the starting node!");	    	
 	    						backend.setStartNode(n);
-	    						
 	    						// If this is the first value, add it at index 0
 	    						// else, set the first index
 	    						if(!setStart){
@@ -394,7 +433,7 @@ public class MainGUI extends JFrame {
 	    				}
 	    			}
 	    			repaint();
-	    		}});
+	    			}});
 	    }
 		
 		/**
@@ -443,8 +482,9 @@ public class MainGUI extends JFrame {
 					g2.setColor(color);
 					g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
 	        	}
-	        }
-	        else if (MainGUI.removeLine == true){
+	        	drawLine = false;
+	        	removeLine = true;
+	        } else if (MainGUI.removeLine == true){
 	        	//TODO this really should have a better implementation - but this is a quick fix to an on-going problem
 	        	//Would make sense to eventually transform the line into an object, so that it could be easily removed - but that might require adding a .awt canvas, and I'm not entirely sure we want to restructure our entire project
 	        	//essentially repaint the line white so that it can't be seen when you remove it
@@ -458,10 +498,10 @@ public class MainGUI extends JFrame {
 					g2.setColor(Color.white);
 					g2.drawLine((int)x1, (int)y1, (int)x2, (int)y2);
 	        	}
-	        	
-	        }
+	        	drawLine = true;
+	        	removeLine = false;
+	        	}
 	        repaint();
-	        
 	    }
 	}
 }
