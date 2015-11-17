@@ -124,7 +124,7 @@ public class GUIBackend implements Serializable {
 	 * @description when MainGUI calls it, this function removes all nodes from the path of nodes 
 	 */
 	public void removePath() {
-		path.clear();
+		this.path.clear();
 	}
 
 	public LocalMap getLocalMap() {
