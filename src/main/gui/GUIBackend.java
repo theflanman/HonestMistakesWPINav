@@ -90,7 +90,7 @@ public class GUIBackend implements Serializable {
 	public String getDistance() {
 		StepByStep getDistance = new StepByStep(this.path);
 		double distance = getDistance.calculateTotalDistance();
-		return "Distance to your destination in feet:" + Double.toString(distance);
+		return "Distance in feet:" + Double.toString(distance);
 	}
 	/**
 	 * @return ArrayList<String> - this is necessary to allow MainGUI to convert the strings in the array into rows of the column
@@ -110,11 +110,13 @@ public class GUIBackend implements Serializable {
 	 * 
 	 * @description runs the astar algorithm on the start and end nodes selected by the user
 	 */
-	public void runAStar() {
+	public ArrayList<MapNode> runAStar() {
 		//initiate a new astar class with the starting node and ending node of local map 
 		MapNode[] aStarMap = {this.startNode, this.endNode};
 		AStar astar = new AStar(aStarMap);
 		astar.runAlgorithm();
+		
+		return astar.reconstructPath();
 	}
 	//this needs to be added as a way of reseting the path to have no nodes in it...
 	/**
@@ -148,5 +150,8 @@ public class GUIBackend implements Serializable {
 	}
 	public ArrayList<MapNode> getPath(){
 		return this.path;
+	}
+	public void setPath(ArrayList<MapNode> path){
+		this.path = path;
 	}
 }

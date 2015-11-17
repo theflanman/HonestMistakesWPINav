@@ -84,7 +84,9 @@ public class MainGUI extends JFrame {
 		// add the collection of nodes to the ArrayList of GlobalMap
 		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
 		for(LocalMap local : tmpListLocal){
-			allNodes.addAll(local.getMapNodes()); 
+			
+			if(!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
+				allNodes.addAll(local.getMapNodes()); 
 		}
 		globalMap.setMapNodes(allNodes);		 
 		
@@ -238,7 +240,7 @@ public class MainGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(btnCalculateRoute.isEnabled()){
 					System.out.println("About to run AStar");
-					backend.runAStar();
+					backend.setPath(backend.runAStar());
 					System.out.println("Just ran AStar");
 					drawLine = true;
 					
@@ -247,8 +249,7 @@ public class MainGUI extends JFrame {
 					
 					//basically justs places each string into the array one row at a time - if, and this is a big IF, /n works in this context
 					for(String string : backend.displayStepByStep()) {
-						textArea_1.append("/n");
-						textArea_1.append(string);
+						textArea_1.setText(string + "\n");
 					}
 					btnCalculateRoute.setText("Remove Route Line");
 				} else {
@@ -438,6 +439,7 @@ public class MainGUI extends JFrame {
 	        	}
 	        	
 	        }
+	        repaint();
 	    }
 	}
 }
