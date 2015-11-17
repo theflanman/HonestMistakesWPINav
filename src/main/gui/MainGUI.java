@@ -398,7 +398,8 @@ public class MainGUI extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				if(rdbtnSHFloor2.isSelected()){
 					backend.setLocalMap(globalMap.getLocalMaps().get(1));
-					
+					Image temp = new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage();
+
 					panel.setMapImage(new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage()); // load map image
 					panel.setMapNodes(backend.getLocalMap().getMapNodes());
 					
@@ -410,7 +411,7 @@ public class MainGUI extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				if(rdbtnSHFloor3.isSelected()){
 					backend.setLocalMap(globalMap.getLocalMaps().get(2));
-					
+					Image temp = new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage();
 					panel.setMapImage(new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage()); // load map image
 					panel.setMapNodes(backend.getLocalMap().getMapNodes());
 					

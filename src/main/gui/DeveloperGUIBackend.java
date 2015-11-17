@@ -48,6 +48,7 @@ public class DeveloperGUIBackend implements Serializable  {
 		String fileName = this.localMap.getMapImageName();
 				
 		fileName = SaveUtil.removeExtension(fileName);
+		//this.localMap.setMapImageName(fileName);
 		fileName = fileName.concat(".localmap");
 		
 		FileOutputStream fileOut;
