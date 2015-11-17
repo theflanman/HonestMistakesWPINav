@@ -309,13 +309,6 @@ public class DevGUI extends JFrame {
 		mnFile.add(mntmNewMapImage);
 		mnFile.add(mntmExit);
 
-		JPanel panel = new JPanel();
-		panel.setLocation(12, 13);
-		panel.setPreferredSize(new Dimension(1000, 800));
-		panel.setSize(new Dimension(1192, 653));
-		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel.setBackground(Color.WHITE);
-		
 		// This is code for the panel showing information on the current selected node.
 		
 		JPanel nodeInfoPanel = new JPanel();
@@ -387,6 +380,14 @@ public class DevGUI extends JFrame {
 
 
 		// This is code pertaining to the panel holding the map panel.
+		
+		JPanel panel = new JPanel();
+		panel.setLocation(12, 13);
+		panel.setPreferredSize(new Dimension(1000, 800));
+		panel.setSize(new Dimension(1192, 653));
+		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel.setBackground(Color.WHITE);
+		
 		panel.setLayout(new BorderLayout(0, 0));
 		panel.setBounds(13,13,900, 600);
 		panel.add(mapPanel);

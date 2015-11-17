@@ -53,6 +53,7 @@ public class MapPanel extends JPanel implements ActionListener {
 	
 	static ArrayList<MapNode> mapPanelPoints = new ArrayList<MapNode>(); // currently loaded list of points
 
+	// Looks at the array of points, and creates graphical representation of what is currently stored.
 	private void renderMapPrivate(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
@@ -66,7 +67,7 @@ public class MapPanel extends JPanel implements ActionListener {
 			}
 		}
 	
-	
+	// paintComponent is what Swing calls to update the displayed graphics.
 	@Override
 	public void paintComponent(Graphics g) {
 
@@ -79,11 +80,14 @@ public class MapPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		repaint();
 	}
+	
+	//Updates the points array to reflect a change, then calls the private method to render.
 	public void renderMapPublic(Graphics g, ArrayList<MapNode> points) {
 		mapPanelPoints = points;
 		renderMapPrivate(g);
 	}
 	
+	//Sets the stored background image to the map image.
 	public void setBgImage(Image pic) {
 		bgImage = pic;
 	}
