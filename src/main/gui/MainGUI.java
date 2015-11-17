@@ -39,6 +39,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.JRadioButton;
 import java.awt.Font;
 import javax.swing.ButtonGroup;
+import javax.swing.SwingConstants;
 
 /**
  * This class contains code for the main applications GUI interface as well as implementation for its various
@@ -57,9 +58,14 @@ public class MainGUI extends JFrame {
 	public static boolean reset = false;
 	
 	private JPanel contentPane;
+	private DrawingPanel panel;
 	private JButton btnCalculateRoute, btnReset;
 	private JRadioButton rdbtnStartNode, rdbtnEndNode;
+	private JRadioButton rdbtnSHFloor1, rdbtnSHFloor2, rdbtnSHFloor3;
+	private JLabel lblDistance;
+	private JTextArea textArea1;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	
 	/**
 	 * Create the frame.
@@ -68,7 +74,7 @@ public class MainGUI extends JFrame {
 	 */
 	public MainGUI(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
 		// Instantiate GUIBackend to its default
-		String defaultMapImage = "downstairsCC.jpg";
+		String defaultMapImage = "StrattonHallF1.jpg";
 		backend = new GUIBackend(defaultMapImage, null);
 		
 		// Initialize the GlobalMap variable with all of the LocalMaps and all of their nodes
@@ -123,10 +129,16 @@ public class MainGUI extends JFrame {
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JLabel lblSelectANode = new JLabel("Node Selection:");
+		JLabel lblSelectANode = new JLabel("Node Selection");
 		lblSelectANode.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		
 		JPanel panel_5 = new JPanel();
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
+		
+		JLabel lblMapSelection = new JLabel("Map Selection");
+		lblMapSelection.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -134,39 +146,40 @@ public class MainGUI extends JFrame {
 					.addContainerGap()
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-									.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(18)
-										.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
-									.addGroup(gl_contentPane.createSequentialGroup()
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
-									.addGroup(gl_contentPane.createSequentialGroup()
-										.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-											.addGroup(gl_contentPane.createSequentialGroup()
-												.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-											.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))))
-								.addContainerGap())
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addGap(57)
-								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap()))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(76)
-							.addComponent(lblSelectANode)
-							.addContainerGap())))
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(57)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblSelectANode)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(10)
+									.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+								.addComponent(lblMapSelection))))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
 							.addComponent(lblSelectANode)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
@@ -174,15 +187,60 @@ public class MainGUI extends JFrame {
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-							.addGap(36)
-							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+							.addComponent(lblMapSelection)
 							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGap(38)
 							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
 						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		
+		/*
+		 * Radio Buttons to change the currently loaded map data, actionlisteners implemented after MapPanel
+		 */
+		rdbtnSHFloor1 = new JRadioButton("Stratton Hall First Floor");
+		rdbtnSHFloor1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		rdbtnSHFloor1.setSelected(true);
+		buttonGroup_1.add(rdbtnSHFloor1);
+		
+		rdbtnSHFloor2 = new JRadioButton("Stratton Hall Second Floor");
+		rdbtnSHFloor2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		buttonGroup_1.add(rdbtnSHFloor2);
+		
+		rdbtnSHFloor3 = new JRadioButton("Stratton Hall Third Floor");
+		rdbtnSHFloor3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		buttonGroup_1.add(rdbtnSHFloor3);
+
+		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
+		gl_panel_6.setHorizontalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
+						.addComponent(rdbtnSHFloor3)
+						.addComponent(rdbtnSHFloor2)
+						.addComponent(rdbtnSHFloor1))
+					.addContainerGap(19, Short.MAX_VALUE))
+		);
+		gl_panel_6.setVerticalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(rdbtnSHFloor1)
+					.addGap(18)
+					.addComponent(rdbtnSHFloor2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGap(13)
+					.addComponent(rdbtnSHFloor3)
+					.addContainerGap())
+		);
+		gl_panel_6.linkSize(SwingConstants.HORIZONTAL, new Component[] {rdbtnSHFloor1, rdbtnSHFloor2, rdbtnSHFloor3});
+		panel_6.setLayout(gl_panel_6);
 		
 		rdbtnStartNode = new JRadioButton("Start Location");
 		buttonGroup.add(rdbtnStartNode);
@@ -213,6 +271,10 @@ public class MainGUI extends JFrame {
 		);
 		panel_4.setLayout(gl_panel_4);
 		
+		
+		/**
+		 * Information about the step by step directions
+		 */
 		JLabel lblStepbystepDirections = new JLabel("Step-By-Step Directions");
 		lblStepbystepDirections.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
@@ -231,17 +293,17 @@ public class MainGUI extends JFrame {
 		);
 		panel_3.setLayout(gl_panel_3);
 		
-		JTextArea textArea1 = new JTextArea();
+		textArea1 = new JTextArea();
 		textArea1.setRows(15);
 		textArea1.setEditable(false);
 		scrollPane_1.setViewportView(textArea1);
 		
 		//adds the distance label to the map interface
-		JLabel lblDistance = new JLabel("");
+		lblDistance = new JLabel("");
 		panel_1.add(lblDistance);
 		
 		//disable reset button
-		JButton btnReset = new JButton("Reset");
+		btnReset = new JButton("Reset");
 		btnReset.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		
 		btnReset.setEnabled(false);
@@ -258,10 +320,7 @@ public class MainGUI extends JFrame {
 				if(btnCalculateRoute.isEnabled()){
 					System.out.println("About to run AStar");
 					backend.setPath(backend.runAStar());
-					
-					for(MapNode n : backend.getPath()){
-						System.out.println("Node ID: " + n.getNodeID());
-					}
+			
 					System.out.println("Just ran AStar");
 					drawLine = true;
 					
@@ -272,7 +331,7 @@ public class MainGUI extends JFrame {
 					 String allText = "";
 	                   for(String string : backend.displayStepByStep()) {
 	                       allText += string + "\n";
-	                       }
+	                   }
 	                   textArea1.setText(allText);
 	                   btnCalculateRoute.setEnabled(false);
 	                   btnReset.setEnabled(true);
@@ -293,30 +352,8 @@ public class MainGUI extends JFrame {
 			}
 		});
 		
-		
-		//code for reset button
-		btnReset.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				rdbtnEndNode.setSelected(false);
-				backend.setStartNode(null);
-				backend.setEndNode(null);
-				reset = true;
-				
-				//if the line needs to be removed
-				//going to need to add a method here - to remove nodes from path
-				lblDistance.setText("");
-				textArea1.setText("");
-				backend.removePath();
-				btnReset.setEnabled(false);
-				btnCalculateRoute.setEnabled(true);
-				removeLine = true;
-			}
-		});
-		
-		
 		// Creates a new DrawingPanel object which will display the map image and load up MapNode data
-		DrawingPanel panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map, layeredPane.getSize());
+		panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map, layeredPane.getSize());
 		GroupLayout gl_layeredPane = new GroupLayout(layeredPane);
 		gl_layeredPane.setHorizontalGroup(
 			gl_layeredPane.createParallelGroup(Alignment.LEADING)
@@ -328,10 +365,87 @@ public class MainGUI extends JFrame {
 		);
 		layeredPane.setLayout(gl_layeredPane);
 		contentPane.setLayout(gl_contentPane);
-	
+		
+		
+		//code for reset button
+		btnReset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				reset();
+			}
+		});
+		
+		/**
+		 * Each radiobutton when selected will load the specified map image and node data. This will refresh the display as well
+		 * as call reset() to ensure proper information is reset.
+		 * 
+		 * TODO: Make it more intuitive, right now it just gets the LocalMap at a certain index because they're ordered. Maybe use
+		 * some sort of name-getting system in the future.
+		 */
+		rdbtnSHFloor1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				if(rdbtnSHFloor1.isSelected()){
+					backend.setLocalMap(globalMap.getLocalMaps().get(0)); // sets the localMap to upstairs and reloads(?)
+					
+					panel.setMapImage(new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage()); // load map image
+					panel.setMapNodes(backend.getLocalMap().getMapNodes());
+					
+					reset();
+				}
+			}
+		});
+		rdbtnSHFloor2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				if(rdbtnSHFloor2.isSelected()){
+					backend.setLocalMap(globalMap.getLocalMaps().get(1));
+					
+					panel.setMapImage(new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage()); // load map image
+					panel.setMapNodes(backend.getLocalMap().getMapNodes());
+					
+					reset();
+				}
+			}
+		});
+		rdbtnSHFloor3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				if(rdbtnSHFloor3.isSelected()){
+					backend.setLocalMap(globalMap.getLocalMaps().get(2));
+					
+					panel.setMapImage(new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage()); // load map image
+					panel.setMapNodes(backend.getLocalMap().getMapNodes());
+					
+					reset();
+				}
+			}
+		});
 		
 		pack();
 		setVisible(true);
+	}
+	
+	/**
+	 * Resets all of the relevant information on the form and the background information
+	 */
+	public void reset(){
+		rdbtnStartNode.setSelected(true); // part of a button group, only one can be selected at a time
+		backend.setStartNode(null);
+		backend.setEndNode(null);
+		reset = true;
+		
+		// allows the user to re-input start and end nodes
+		setEnd = false;
+		setStart = false;
+		
+		panel.startEndNodes.clear();
+		
+		//if the line needs to be removed
+		//going to need to add a method here - to remove nodes from path
+		lblDistance.setText("");
+		textArea1.setText("");
+		backend.removePath();
+		btnReset.setEnabled(false);
+		btnCalculateRoute.setEnabled(true);
+		removeLine = true;
 	}
 	
 	
@@ -433,7 +547,8 @@ public class MainGUI extends JFrame {
 	    				}
 	    			}
 	    			repaint();
-	    			}});
+	    		}
+	    	});
 	    }
 		
 		/**
@@ -500,8 +615,15 @@ public class MainGUI extends JFrame {
 	        	}
 	        	drawLine = true;
 	        	removeLine = false;
-	        	}
+	        }
 	        repaint();
+	    }
+	    
+	    public void setMapImage(Image map){
+	    	this.mapImage = map;
+	    }
+	    public void setMapNodes(ArrayList<MapNode> currentLoadedNodes){
+	    	this.localNodes = currentLoadedNodes;
 	    }
 	}
 }

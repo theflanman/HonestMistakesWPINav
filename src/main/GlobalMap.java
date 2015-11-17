@@ -30,8 +30,6 @@ public class GlobalMap implements Serializable {
 	 * Sets the list of LocalMaps to the given input
 	 * @param localMaps A list of LocalMaps that has been initialized from MainGUI
 	 */
-	
-	 
 	 public void addToMapNodes(MapNode node){
 		mapNodes.add(node);
 	}
@@ -42,6 +40,10 @@ public class GlobalMap implements Serializable {
 	 
 	public void setLocalMaps(ArrayList<LocalMap> localMaps){
 		this.localMaps = localMaps;
+	}
+	
+	public ArrayList<LocalMap> getLocalMaps(){
+		return this.localMaps;
 	}
 
 	public void setMapNodes(ArrayList<MapNode> mapNodes) {
