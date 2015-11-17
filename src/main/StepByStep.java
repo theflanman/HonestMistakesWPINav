@@ -7,10 +7,12 @@ import java.util.ArrayList;
  * @author Connor Flanigan
  *
  */
+
 public class StepByStep {
 	
 	private ArrayList<MapNode> pathNodes;
 	private int stepNumber;
+	
 	
 	public StepByStep(ArrayList<MapNode> pathNodes){
 		this.pathNodes = pathNodes;
@@ -19,7 +21,6 @@ public class StepByStep {
 	
 	
 
-	
 	/*
 	 * @ author Nick Gigliotti
 	 * 

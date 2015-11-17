@@ -314,6 +314,16 @@ public class MainGUI extends JFrame {
 				backend.removePath();
 				btnReset.setEnabled(false);
 				btnCalculateRoute.setEnabled(true);
+				reset = true;
+				
+				//if the line needs to be removed
+				//going to need to add a method here - to remove nodes from path
+				lblDistance.setText("");
+				textArea1.setText("");
+				backend.removePath();
+				btnReset.setEnabled(false);
+				btnCalculateRoute.setEnabled(true);
+				removeLine = true;
 			}
 		});
 		

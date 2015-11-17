@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import main.GlobalMap;
 import main.LocalMap;
 import main.MapNode;
-import main.gui.DeveloperGUIBackend;
-import main.gui.GUIBackend;
 import junit.framework.TestCase;
 
 public class LocalMapTests extends TestCase {
