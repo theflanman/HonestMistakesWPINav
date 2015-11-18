@@ -93,10 +93,10 @@ public class MapNode implements Serializable{
 	 */
 	public int calcDistance(MapNode toNode) {
 		double distance = 0;
-		double distanceXLeg = toNode.getXPos() - this.getXPos();
-		double distanceYLeg = toNode.getYPos() - this.getYPos();
+		double distanceXLeg = (toNode.getXPos() - this.getXPos());
+		double distanceYLeg = (toNode.getYPos() - this.getYPos());
 	
-		distance = Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg));
+		distance = (Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg)))/5;
 		distance = Math.round(distance);
 		return (int)distance;
 	}
