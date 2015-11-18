@@ -1,21 +1,26 @@
 package main;
 
-
 import java.util.ArrayList;
 
+/** TODO write this
+ * 
+ * @author Connor Flanigan
+ *
+ */
 
 public class StepByStep {
-
 	
 	private ArrayList<MapNode> pathNodes;
-	private int currentPathNodeIndex;
+	private int stepNumber;
 	
-
+	
 	public StepByStep(ArrayList<MapNode> pathNodes){
 		this.pathNodes = pathNodes;
+		this.stepNumber = 1;
 	}
 	
 	
+
 	/*
 	 * @ author Nick Gigliotti
 	 * 
@@ -36,7 +41,6 @@ public class StepByStep {
 		return totalDistance;
 	}
 	
-	
 	/**
 	 * @author Rayan Alsoby
 	 * 
@@ -47,70 +51,75 @@ public class StepByStep {
 		double angle;
 		String turnVar = "";
 		int distanceVar = 0;
-
-		String firstStep = String.format("Welcome to the era of navigation, move %d feet.", distanceVar);
-		String midStepTurn = String.format("Turn %s, and continue for %d feet.", turnVar, distanceVar);
-		String midStepNoTurn = String.format("Continue for %d feet.", distanceVar);
-		String lastStep = "You have reached your destination.";
-
+		
+		String firstStep = String.format("%d. Welcome to the era of \nnavigation, move %d feet.", stepNumber, distanceVar);
+		String midStepTurn = String.format("%d. Turn %s, and continue \nfor %d feet.", stepNumber, turnVar, distanceVar);
+		String midStepNoTurn = String.format("%d. Continue for %d feet.", stepNumber, distanceVar);
+		String lastStep = "You have reached \nyour destination.";
+		
 		int i;
-		for (i = 0; i <= (pathNodes.size()-1) ; i++) {
-			
-			if (i == 0) {
-				distanceVar = pathNodes.get(i).calcDistance(pathNodes.get(i + 1));
-				firstStep = String.format("Welcome to the era of navigation, move %d feet.", distanceVar);
-				stepList.add(firstStep);
-			} 
-			
-			else if (i == (pathNodes.size()-1)) {
-				stepList.add(lastStep);
-			} 
-			
-			else {
-				distanceVar = pathNodes.get(i).calcDistance(pathNodes.get(i + 1));
-				angle = pathNodes.get(i).calculateAngle(pathNodes.get(i + 1));
-				
-				//case of going straight
-				if (200 > angle && angle > 160) {
-					midStepNoTurn = String.format("Continue for %d feet.", distanceVar);
-					stepList.add(midStepNoTurn);
+		if (pathNodes.size() == 1) {
+			turnVar = "Welcome to the era of navigation, you have reached your destination.";
+		} else {
+			for (i = 0; i <= (pathNodes.size() - 1); i++) {
+
+				if (i == 0) {
+					distanceVar = pathNodes.get(i).calcDistance(pathNodes.get(i + 1));
+					firstStep = String.format("%d. Welcome to the era \nof navigation, move \n%d feet.", stepNumber,
+							distanceVar);
+					stepNumber++;
+					stepList.add(firstStep);
 				}
-				// printing different statements for different angles
-				else{
-					if (160 >= angle && angle >= 110) {
-						turnVar = "slight left";
+
+				else if (i == (pathNodes.size() - 1)) {
+					stepList.add("" + (stepList.size() + 1) + ". " + lastStep);
+				}
+
+				else {
+					distanceVar = pathNodes.get(i).calcDistance(pathNodes.get(i + 1));
+					angle = pathNodes.get(i).calculateAngle(pathNodes.get(i + 1));
+
+					// case of going straight
+					if (200 > angle && angle > 160) {
+						midStepNoTurn = String.format("%d. Continue for %d feet.", stepNumber, distanceVar);
+						stepNumber++;
+						stepList.add(midStepNoTurn);
 					}
-					if (110 > angle && angle > 70) {
-						turnVar = "left";
+					// printing different statements for different angles
+					else {
+						if (160 >= angle && angle >= 110) {
+							turnVar = "slight right";
+						}
+						if (110 > angle && angle > 70) {
+							turnVar = "right";
+						}
+						if (70 >= angle && angle >= 20) {
+							turnVar = "hard right";
+						}
+						if (20 > angle || angle > 340) {
+							turnVar = "back";
+						}
+						if (340 >= angle && angle >= 290) {
+							turnVar = "hard left";
+						}
+						if (290 > angle && angle > 250) {
+							turnVar = "left";
+						}
+						if (250 >= angle && angle >= 200) {
+							turnVar = "slight left";
+						}
+						midStepTurn = String.format("%d. Turn %s, and \ncontinue for \n%d feet.", stepNumber, turnVar,
+								distanceVar);
+						stepNumber++;
+						stepList.add(midStepTurn);
 					}
-					if (70 >= angle && angle >= 20) {
-						turnVar = "hard left";
-					}
-					if (20 > angle || angle > 340) {
-						turnVar = "back";
-					}
-					if (340 >= angle && angle >= 290) {
-						turnVar = "hard right";
-					}
-					if (290 > angle && angle > 250) {
-						turnVar = "right";
-					}
-					if (250 >= angle && angle >= 200) {
-						turnVar = "slight right";
-					}
-					midStepTurn = String.format("Turn %s, and continue for %d feet.", turnVar, distanceVar);
-					stepList.add(midStepTurn);
 				}
 			}
-
-		}//end of loop
+		} // end of loop
 		return stepList;
 	}
 	
-	
-	public void advanceStep() {
-		this.currentPathNodeIndex += 1; //Increments the Path Node Index 
+	public void advanceStep() { //not necessary for this revision 
 	}
 	
 }
-

@@ -21,11 +21,6 @@ public class GlobalMap implements Serializable {
 		this.localMaps = new ArrayList<LocalMap>();
 		this.path = new ArrayList<MapNode>();
 	}
-//seems like a pointless method to have - I think there should be an additional l-l link between step by step and guibackend
-	public ArrayList<String> generateStepByStep() {
-		StepByStep currentStepByStep = new StepByStep(path);
-		return currentStepByStep.printDirection();
-	}
 	
 	public void navigate(MapNode startNode, MapNode endNode) {
 		
@@ -35,8 +30,6 @@ public class GlobalMap implements Serializable {
 	 * Sets the list of LocalMaps to the given input
 	 * @param localMaps A list of LocalMaps that has been initialized from MainGUI
 	 */
-	
-	 
 	 public void addToMapNodes(MapNode node){
 		mapNodes.add(node);
 	}
@@ -47,6 +40,10 @@ public class GlobalMap implements Serializable {
 	 
 	public void setLocalMaps(ArrayList<LocalMap> localMaps){
 		this.localMaps = localMaps;
+	}
+	
+	public ArrayList<LocalMap> getLocalMaps(){
+		return this.localMaps;
 	}
 
 	public void setMapNodes(ArrayList<MapNode> mapNodes) {

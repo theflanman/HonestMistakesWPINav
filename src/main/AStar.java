@@ -21,6 +21,10 @@ public class AStar {
 	public AStar(MapNode[] nodes) {
 		startNode = nodes[0];
 		endNode = nodes[1];
+		for (MapNode node : nodes){
+			node.setCameFrom(null);
+		}
+		      
 	}
 	
 	/**
@@ -31,6 +35,7 @@ public class AStar {
 	 * @description Find the most efficient route in the graph by updating the cameFrom members in the path
 	 */
 	public boolean runAlgorithm() {
+		
 		
 		//initialize the various sets
 		ArrayList<MapNode> closedSet = new ArrayList<MapNode>();
@@ -118,6 +123,7 @@ public class AStar {
 			current = current.getCameFrom();
 			
 		}
+		path.add(0, startNode); // start doesn't seem to be included ?
 		
 		return path;
 		
