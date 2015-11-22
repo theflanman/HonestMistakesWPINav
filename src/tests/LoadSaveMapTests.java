@@ -1,26 +1,26 @@
 package tests;
 
 import main.LocalMap;
-import main.gui.DeveloperGUIBackend;
-import main.gui.GUIBackend;
+import main.gui.DevGUIBack;
+import main.gui.GUIBack;
 
 import java.io.File;
 
 import junit.framework.TestCase;
 public class LoadSaveMapTests extends TestCase {
 	
-	String path = new String("src/localmaps/map1.localmap");
+	String path = new String("src/data.localmaps/map1.localmap");
 	LocalMap localMap1 = new LocalMap("map1", null);
 	File file = new File(path);
 
 	public void testDeveloperGUIBackend(){
 		localMap1.setMapID(1); // give it some random data
 		
-		DeveloperGUIBackend devGUIBack1 = new DeveloperGUIBackend(localMap1);
+		DevGUIBack devGUIBack1 = new DevGUIBack(localMap1);
 		
 		devGUIBack1.saveMap(); // save map to a file
 		
-		DeveloperGUIBackend devGUIBack2 = new DeveloperGUIBackend(null);
+		DevGUIBack devGUIBack2 = new DevGUIBack(null);
 
 		devGUIBack2.loadMap(path); // get map from file
 		
@@ -32,11 +32,11 @@ public class LoadSaveMapTests extends TestCase {
 	public void testGUIBackend(){
 		localMap1.setMapID(2); // give it some random data
 		
-		DeveloperGUIBackend devGUIBack1 = new DeveloperGUIBackend(localMap1);
+		DevGUIBack devGUIBack1 = new DevGUIBack(localMap1);
 		
 		devGUIBack1.saveMap(); // save map to a file
 		
-		GUIBackend guiBack1 = new GUIBackend("map1.png", null);
+		GUIBack guiBack1 = new GUIBack("map1.png", null);
 
 		guiBack1.loadLocalMap("map1.localmap"); // load the local map
 		
@@ -50,7 +50,7 @@ public class LoadSaveMapTests extends TestCase {
 		
 		localMap1.saveMap("map1");
 		
-		GUIBackend guiBack1 = new GUIBackend("map1.png", null);
+		GUIBack guiBack1 = new GUIBack("map1.png", null);
 
 		guiBack1.loadLocalMap("map1.localmap"); // load the local map
 		

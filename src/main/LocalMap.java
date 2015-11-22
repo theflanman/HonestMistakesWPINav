@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import main.gui.DeveloperGUIBackend;
+import main.gui.DevGUIBack;
 import main.util.SaveUtil;
 import main.util.YamlParser;
 
@@ -46,7 +46,7 @@ public class LocalMap implements Serializable{
 		
 		FileOutputStream fileOut;
 		try {
-			fileOut = new FileOutputStream("src/localmaps/" + fileName);
+			fileOut = new FileOutputStream("src/data.localmaps/" + fileName);
 			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
 			objOut.writeObject(this);
 			

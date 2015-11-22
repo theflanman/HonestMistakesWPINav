@@ -11,6 +11,7 @@ import main.AStar;
 import main.LocalMap;
 import main.MapNode;
 import main.StepByStep;
+import main.util.Constants;
 
 /** TODO write this
  * 
@@ -18,7 +19,7 @@ import main.StepByStep;
  *
  */
 @SuppressWarnings("serial")
-public class GUIBackend implements Serializable {
+public class GUIBack implements Serializable {
 	
 	private LocalMap localMap;
 	private ArrayList<MapNode> path;
@@ -29,7 +30,7 @@ public class GUIBackend implements Serializable {
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
 	 * TODO: Change to Campus Map when it is complete
 	 */
-	public GUIBackend(String defaultMapImage, ArrayList<MapNode> points){
+	public GUIBack(String defaultMapImage, ArrayList<MapNode> points){
 		this.localMap = new LocalMap(defaultMapImage, points);
 		this.path = new ArrayList<MapNode>();
 		this.startNode = null;
@@ -44,13 +45,13 @@ public class GUIBackend implements Serializable {
 	public void loadLocalMap(String fileName) {
 		
 		if(! fileName.contains(".localmap")){
-			System.out.println("DeveloperGUIBackend.loadMap(fileName) requires a .localmap file as input...exiting");
+			System.out.println("DevGUIBack.loadMap(fileName) requires a .localmap file as input...exiting");
 			System.exit(1);
 		}
 		
 		FileInputStream fileIn;
 		try {
-			fileIn = new FileInputStream("src/localmaps/" + fileName);
+			fileIn = new FileInputStream(Constants.LOCAL_MAP_PATH + "/" + fileName);
 			ObjectInputStream objIn = new ObjectInputStream(fileIn);
 			this.localMap = (LocalMap) objIn.readObject();
 
@@ -93,7 +94,7 @@ public class GUIBackend implements Serializable {
 		return "Distance in feet:" + distance;
 	}
 	/**
-	 * @return ArrayList<String> - this is necessary to allow MainGUI to convert the strings in the array into rows of the column
+	 * @return ArrayList<String> - this is necessary to allow GUIFront to convert the strings in the array into rows of the column
 	 */
 	//honestly think we should role with the commented-out code, and get rid of generateStepByStep from Global -- Need someone's opinion though
 	public ArrayList<String> displayStepByStep() {
@@ -121,7 +122,7 @@ public class GUIBackend implements Serializable {
 	}
 	//this needs to be added as a way of reseting the path to have no nodes in it...
 	/**
-	 * @description when MainGUI calls it, this function removes all nodes from the path of nodes 
+	 * @description when GUIFront calls it, this function removes all nodes from the path of nodes 
 	 */
 	public void removePath() {
 		this.path.clear();

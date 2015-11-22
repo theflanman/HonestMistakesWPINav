@@ -4,7 +4,8 @@ import java.awt.EventQueue;
 import java.io.File;
 import java.util.ArrayList;
 
-import main.gui.MainGUI;
+import main.gui.GUIFront;
+import main.util.Constants;
 
 public class MainDriver {
 	
@@ -14,7 +15,7 @@ public class MainDriver {
 	 */
 	public static void main(String[] args){		
 		
-		File[] localMapList = new File("src/localmaps").listFiles(); // gets a list of localmap filenames
+		File[] localMapList = new File(Constants.LOCAL_MAP_PATH).listFiles(); // gets a list of localmap filenames
 		
 		/*
 		// Test data to try and run AStar
@@ -51,7 +52,7 @@ public class MainDriver {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new MainGUI(localMapList.length, localMapList);
+					new GUIFront(localMapList.length, localMapList);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

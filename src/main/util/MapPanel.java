@@ -1,4 +1,4 @@
-package main.gui;
+package main.util;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
