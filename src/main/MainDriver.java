@@ -9,7 +9,7 @@ import main.gui.MainGUI;
 public class MainDriver {
 	
 	/**
-	 * Main driver to initalize map information and startup the Main GUI
+	 * Main driver to initialize map information and startup the Main GUI
 	 * @param args Command-Line arguments required of a main function
 	 */
 	public static void main(String[] args){		

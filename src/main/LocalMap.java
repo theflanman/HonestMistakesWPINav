@@ -128,7 +128,7 @@ public class LocalMap implements Serializable{
 	/**
 	 * function to convert x and y positions from pixels to feet 
 	 */
-	public void pixelesToFeet(){
+	public void pixelsToFeet(){
 		for(MapNode anode : this.mapNodes){
 			anode.setXPos(anode.getXPos()*this.getMapScale());	
 			anode.setYPos(anode.getYPos()*this.getMapScale());

@@ -41,7 +41,6 @@ import javax.swing.*;
 
 import main.LocalMap;
 import main.MapNode;
-import main.MapPanel;
 import main.util.SaveUtil;
 
 
@@ -62,7 +61,6 @@ public class DevGUI extends JFrame {
 	private MapNode nodeToRemove;
 	private boolean edgeStarted = false;
 	private boolean edgeRemovalStarted = false;
-
 
 	/**
 	 * Launch the application.

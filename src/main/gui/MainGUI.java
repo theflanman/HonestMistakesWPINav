@@ -14,8 +14,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-
 import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -31,13 +31,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.BadLocationException;
 
 import main.*;
+import main.util.Constants;
 
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import javax.swing.JRadioButton;
+
 import java.awt.Font;
+
 import javax.swing.ButtonGroup;
 import javax.swing.SwingConstants;
 
@@ -78,28 +81,16 @@ public class MainGUI extends JFrame {
 	 */
 	public MainGUI(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
 		// Instantiate GUIBackend to its default
-		String defaultMapImage = "StrattonHallF1.jpg";
+		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
 		backend = new GUIBackend(defaultMapImage, null);
 
 		// Initialize the GlobalMap variable with all of the LocalMaps and all
 		// of their nodes
 		globalMap = new GlobalMap();
 
-		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary
-																		// list
-																		// of
-																		// LocalMaps
-																		// to be
-																		// initialized
+		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary list of LocalMaps to be initialized
 		for (int i = 0; i < numLocalMaps; i++) {
-			backend.loadLocalMap(localMapFilenames[i].getName()); // sets the
-																	// current
-																	// LocalMap
-																	// each
-																	// filename
-																	// from the
-																	// "localmaps"
-																	// folder
+			backend.loadLocalMap(localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "localmaps" folder
 			tmpListLocal.add(backend.getLocalMap());
 		}
 		globalMap.setLocalMaps(tmpListLocal);
