@@ -310,11 +310,21 @@ public class DevGUIFront extends JFrame {
 		});
 		mnFile.add(mntmNewMapImage);
 		mnFile.add(mntmExit);
+		
+		// This is the View menu, allowing a developer to switch to showing one or two maps at a time.
+		JMenu mnView = new JMenu("View");
+		menuBar.add(mnView);
+		
+		JMenuItem mntmShowTwoMaps = new JMenuItem("Show Two Maps");
+		mnView.add(mntmShowTwoMaps);
+		
+		JMenuItem mntmShowOneMap = new JMenuItem("Show One Map");
+		mnView.add(mntmShowOneMap);
 
 		// This is code for the panel showing information on the current selected node.
 		
 		JPanel nodeInfoPanel = new JPanel();
-		nodeInfoPanel.setBounds(926, 214, 294, 108);
+		nodeInfoPanel.setBounds(920, 214, 294, 144);
 		nodeInfoPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		nodeInfoPanel.setLayout(null);
 		
@@ -351,11 +361,24 @@ public class DevGUIFront extends JFrame {
 		nodeInfoPanel.add(zPosField);
 		zPosField.setColumns(10);
 
+		JButton btnMakeChanges = new JButton("Make Changes");
+		btnMakeChanges.setBounds(4, 106, 115, 25);
+		nodeInfoPanel.add(btnMakeChanges);
+		
+		btnMakeChanges.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				lastClicked.setXPos(Double.parseDouble(xPosField.getText()));
+				lastClicked.setYPos(Double.parseDouble(yPosField.getText()));
+				lastClicked.setZPos(Double.parseDouble(zPosField.getText()));
+				Graphics g = mapPanel.getGraphics();
+				mapPanel.renderMapPublic(g, points);
+			}
+		});
 		
 		// This is code for the panel with the radio buttons for the cursor options
 		
 		JPanel cursorPanel = new JPanel();
-		cursorPanel.setBounds(926, 13, 130, 183);
+		cursorPanel.setBounds(920, 10, 130, 183);
 		cursorPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
 		cursorPanel.setLayout(new GridLayout(0, 1, 0, 0));
@@ -384,17 +407,42 @@ public class DevGUIFront extends JFrame {
 		// This is code pertaining to the panel holding the map panel.
 		
 		JPanel panel = new JPanel();
-		panel.setLocation(12, 13);
-		panel.setPreferredSize(new Dimension(1000, 800));
-		panel.setSize(new Dimension(1192, 653));
+		panel.setLocation(10, 13);
+	//	panel.setPreferredSize(new Dimension(1000, 800));
+	//	panel.setSize(new Dimension(1192, 653));
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(Color.WHITE);
 		
 		panel.setLayout(new BorderLayout(0, 0));
-		panel.setBounds(13,13,900, 600);
+		panel.setBounds(10,10,900, 600);
 		panel.add(mapPanel);
 		getContentPane().add(panel);
 		getContentPane().add(cursorPanel);
 		getContentPane().add(nodeInfoPanel);
+		
+		JPanel panel2 = new JPanel();
+		panel2.setLocation(465, 10);
+		panel2.setSize(new Dimension(445, 800));
+		panel2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel2.setBackground(Color.WHITE);
+		
+
+		
+
+		
+		mntmShowTwoMaps.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				getContentPane().add(panel2);
+				panel.setSize(new Dimension(445, 600));
+				panel.setBackground(Color.WHITE);
+			}
+		});
+		
+		mntmShowOneMap.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				getContentPane().remove(panel2);
+				panel.setSize(new Dimension(900, 600));
+			}
+		});
 	}
 }
