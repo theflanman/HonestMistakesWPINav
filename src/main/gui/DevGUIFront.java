@@ -12,6 +12,11 @@ import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -61,6 +66,8 @@ public class DevGUIFront extends JFrame {
 	private MapNode edgeStart;
 	private MapNode edgeRemove;
 	private MapNode nodeToRemove;
+	private boolean multiSelect;
+	private ArrayList<MapNode> selectedNodes = new ArrayList<MapNode>();
 	private boolean edgeStarted = false;
 	private boolean edgeRemovalStarted = false;
 
@@ -74,6 +81,7 @@ public class DevGUIFront extends JFrame {
 				try {
 					DevGUIFront frame = new DevGUIFront();
 					frame.setVisible(true);
+					//frame.addKeyListener(new KeyChecker());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -81,11 +89,18 @@ public class DevGUIFront extends JFrame {
 		});
 	}
 	
+	
+	public void keyPressed(KeyEvent e){
+		System.out.println("Key pressed");
+	}
+	
+	
 	/**
 	 * Create the frame.
 	 */
 	public DevGUIFront() {
 
+		System.out.println("Initializing...");
 	//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
 		
 		// This sets the size and behavior of the application window itself.
@@ -111,6 +126,7 @@ public class DevGUIFront extends JFrame {
 		int threshold = 10; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
 
 		
+		
 		// This is code that determines what needs to happen on each mouse click in the map panel.
 		
 		mapPanel.addMouseListener(new MouseAdapter() {
@@ -134,6 +150,13 @@ public class DevGUIFront extends JFrame {
 				} else if (rdbtnSelectNode.isSelected()){
 					edgeStarted = false;
 					edgeRemovalStarted = false;
+					
+					if(me.isControlDown()) {
+					    multiSelect = true;
+					}
+					else{
+						selectedNodes.clear();
+					}
 					for(MapNode n : points){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
@@ -143,8 +166,17 @@ public class DevGUIFront extends JFrame {
 							zPosField.setText(""+n.getZPos());
 							//nodeNameField.setText(n.getnodeName());
 							lastClicked = n;
+							if(!selectedNodes.contains(n)){
+								selectedNodes.add(n);
+							}
+							System.out.println(selectedNodes.size());
 						}
 					}
+					//Graphics g = mapPanel.getGraphics();
+					//g.setColor(Color.RED);
+					//mapPanel.renderMapPublic(g, points);
+					//mapPanel.renderMapPublic(g, selectedNodes);
+					
 				}
 				else if(rdbtnMakeEdge.isSelected()) {
 					edgeRemovalStarted = false;
