@@ -289,7 +289,6 @@ public class GUIFront extends JFrame {
 		panel_2.add(btnCalculateRoute);
 		btnCalculateRoute.setEnabled(false);
 		btnCalculateRoute.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 				speaker.play();
@@ -344,7 +343,6 @@ public class GUIFront extends JFrame {
 
 		// code for reset button
 		btnReset.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				reset();
 			}

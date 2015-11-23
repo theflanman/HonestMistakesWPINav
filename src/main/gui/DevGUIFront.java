@@ -86,7 +86,7 @@ public class DevGUIFront extends JFrame {
 	 */
 	public DevGUIFront() {
 
-	//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
+		//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
 		
 		// This sets the size and behavior of the application window itself.
 		setPreferredSize(new Dimension(1380, 760));
@@ -103,8 +103,6 @@ public class DevGUIFront extends JFrame {
 		JRadioButton rdbtnMakeEdge = new JRadioButton("Make Edge");
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-
-
 
 		MapPanel mapPanel = new MapPanel();
 
