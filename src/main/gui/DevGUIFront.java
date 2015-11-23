@@ -46,12 +46,16 @@ import main.util.MapPanel;
 import main.util.SaveUtil;
 
 // TODO address creation of an edge from one frame to the other...
+
+
 public class DevGUIFront extends JFrame {
 	static HashMap<String, ArrayList<MapNode>> localMap = new HashMap<String, ArrayList<MapNode>>(); // path to file, Integer data
 	static ArrayList<MapNode> points = new ArrayList<MapNode>(); // currently loaded list of points
 	static ArrayList<MapNode> points2 = new ArrayList<MapNode>(); // Points for the second map
 	static File inputFile;
+	static File inputFile2;
 	static Image pic;
+	static Image pic2;
 	String path; // current path
 	private int nodeCounter = 0;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -64,6 +68,7 @@ public class DevGUIFront extends JFrame {
 	private MapNode nodeToRemove;
 	private boolean edgeStarted = false;
 	private boolean edgeRemovalStarted = false;
+	private boolean twoMapView = false;
 
 	/**
 	 * Launch the application.
@@ -352,6 +357,7 @@ public class DevGUIFront extends JFrame {
 		mntmLoadMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
+				chooser.setCurrentDirectory(new File(Constants.LOCAL_MAP_PATH));
 				int option = chooser.showOpenDialog(DevGUIFront.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
@@ -381,6 +387,41 @@ public class DevGUIFront extends JFrame {
 				}
 			}
 		});
+		
+		JMenuItem mntmLoadExtraMap = new JMenuItem("Load Extra Map");
+		mntmLoadExtraMap.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser chooser = new JFileChooser();
+				chooser.setCurrentDirectory(new File(Constants.LOCAL_MAP_PATH));
+				int option = chooser.showOpenDialog(DevGUIFront.this);
+				if (option == JFileChooser.APPROVE_OPTION) {
+					inputFile2 = chooser.getSelectedFile();
+					String inputFileName = inputFile2.getName();
+					
+					// load localMap
+					DevGUIBack devGUIBack = new DevGUIBack(null);
+					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
+					LocalMap loadedLocalMap = devGUIBack.getLocalMap(); 
+					
+					String imagePath = SaveUtil.removeExtension(inputFileName);
+					imagePath = imagePath + ".jpg";
+										
+					// set the image
+					try {
+						pic2 = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath));
+					} catch (IOException e1) {
+						e1.printStackTrace();}
+					
+					//  picLabel.setIcon(new ImageIcon(pic));
+					mapPanel2.setBgImage(pic2);
+
+					// set the points
+					Graphics g = mapPanel2.getGraphics();
+					points2 = loadedLocalMap.getMapNodes();
+					mapPanel2.renderMapPublic(g, points2);
+				}
+			}
+		});
 
 		JMenuItem mntmSaveMap = new JMenuItem("Save Map");
 		mnFile.add(mntmSaveMap);
@@ -391,8 +432,16 @@ public class DevGUIFront extends JFrame {
 				fileName = fileName + ".jpg";
 				LocalMap thisMap = new LocalMap(fileName, points);
 				DevGUIBack devGUIBack = new DevGUIBack(thisMap);
-				
 				devGUIBack.saveMap();
+				
+				if (twoMapView) {
+					String fileName2 = inputFile2.getName();
+					fileName2 = SaveUtil.removeExtension(fileName2);
+					fileName2 = fileName2 + ".jpg";
+					LocalMap thisMap2 = new LocalMap(fileName2, points2);
+					DevGUIBack devGUIBack2 = new DevGUIBack(thisMap2);
+					devGUIBack2.saveMap();
+				}
 			}
 		});
 
@@ -407,6 +456,7 @@ public class DevGUIFront extends JFrame {
 		mntmNewMapImage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
+				chooser.setCurrentDirectory(new File(Constants.IMAGES_PATH));
 				int option = chooser.showOpenDialog(DevGUIFront.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
@@ -415,9 +465,10 @@ public class DevGUIFront extends JFrame {
 						pic = ImageIO.read(inputFile);
 						//  picLabel.setIcon(new ImageIcon(pic));
 						mapPanel.setBgImage(pic);
-
+						points = new ArrayList<MapNode>();
 						Graphics g = mapPanel.getGraphics();
 						mapPanel.renderMapPublic(g, points);
+
 					}
 					catch(IOException ex){
 						ex.printStackTrace();
@@ -490,6 +541,10 @@ public class DevGUIFront extends JFrame {
 				lastClicked.setZPos(Double.parseDouble(zPosField.getText()));
 				Graphics g = mapPanel.getGraphics();
 				mapPanel.renderMapPublic(g, points);
+				if (twoMapView) {
+					Graphics g2 = mapPanel2.getGraphics();
+					mapPanel2.renderMapPublic(g2, points2);
+				}
 			}
 		});
 		
@@ -547,7 +602,7 @@ public class DevGUIFront extends JFrame {
 		panel2.setBackground(Color.WHITE);
 		panel2.setLayout(new BorderLayout(0, 0));
 		panel2.setBounds(465, 10, 445, 600);
-		mapPanel2.setBounds(0, 0, 445, 600); //TODO Figure out why this line of code is needed when it isn't needed for mapPanel!
+		mapPanel2.setBounds(2, 2, 443, 598); //TODO Figure out why this line of code is needed when it isn't needed for mapPanel!
 		panel2.add(mapPanel2);
 	//	getContentPane().add(panel2);
 		
@@ -560,6 +615,9 @@ public class DevGUIFront extends JFrame {
 				panel.setSize(new Dimension(445, 600));
 				getContentPane().add(panel2);
 				panel.setBackground(Color.WHITE);
+				mnFile.add(mntmLoadExtraMap);
+				twoMapView = true;
+				mntmSaveMap.setText("Save Maps");
 			}
 		});
 		
@@ -567,6 +625,9 @@ public class DevGUIFront extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			getContentPane().remove(panel2);
 				panel.setSize(new Dimension(900, 600));
+				mnFile.remove(mntmLoadExtraMap);
+				twoMapView = false;
+				mntmSaveMap.setText("Save Map");
 			}
 		});
 	}
