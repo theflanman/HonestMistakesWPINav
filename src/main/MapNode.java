@@ -9,6 +9,8 @@ public class MapNode implements Serializable{
 	private double xPos;
 	private double yPos;
 	private double zPos;
+	private double xFeet;
+	private double yFeet;
 	private int nodeID;
 	private ArrayList<MapNode> neighbors;
 	private double fScore;
@@ -173,5 +175,24 @@ public class MapNode implements Serializable{
 	public void calcFScore() {
 		fScore = gScore + hScore;		
 	}
+	public void setLocalMap(LocalMap localMap){
+		this.localMap = localMap;
+	}
+	public LocalMap getLocalMap(){
+		return localMap;
+	}
+	public void setXFeet(double xPos){
+		xFeet = xPos*(this.getLocalMap().getMapScale());
+	}
+	public void setYFeet(double yPos){
+		yFeet = yPos*(this.getLocalMap().getMapScale());
+	}
+	public double getXFeet(){
+		return xFeet;
+	}
+	public double getYFeet(){
+		return yFeet;
+	}
+	
 
 }

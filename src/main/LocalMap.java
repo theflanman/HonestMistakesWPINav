@@ -144,9 +144,9 @@ public class LocalMap implements Serializable{
 		ArrayList<MapNode> transformed = new ArrayList<MapNode>();
 		for(MapNode anode:aMap.getMapNodes()){
 			MapNode transformedNode = anode;
-			//the x and y position need to be replaced by the equivalent in feet and the offsets need to be in feet as well
-			xPrime = anode.getXPos()*Math.cos(aMap.transformAngle) - anode.getYPos()*Math.sin(aMap.transformAngle);
-			yPrime = anode.getYPos()*Math.cos(aMap.transformAngle) + anode.getXPos()*Math.sin(aMap.transformAngle);
+			//the x and y position in feet and the offsets need to be in feet as well
+			xPrime = anode.getXFeet()*Math.cos(aMap.transformAngle) - anode.getYFeet()*Math.sin(aMap.transformAngle);
+			yPrime = anode.getYFeet()*Math.cos(aMap.transformAngle) + anode.getXFeet()*Math.sin(aMap.transformAngle);
 			xPrime = xPrime + xOffset;
 			yPrime = yPrime + yOffset;
 			transformedNode.setxPos(xPrime);
