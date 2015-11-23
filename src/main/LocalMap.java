@@ -17,10 +17,14 @@ public class LocalMap implements Serializable{
 
 	private ArrayList<MapNode> mapNodes;
 	private String mapImageName;
-	private Double mapScale; // unit is feet/pixel
 	private int mapID;
 	private GlobalMap globalMap;
-	
+	private double mapScale; // unit is feet/pixel
+	private double transformAngle; //Angle required to transform (rotate) the local coordinate to match the global coordinate system
+	//coordinate offset required to transform (translate) the local coordinates to match the global coordinate system
+	private double xOffset;
+	private double yOffset;
+
 	// constructor
 	public LocalMap(String mapImageName, ArrayList<MapNode> mapNodes){
 		this.mapImageName = mapImageName;
@@ -29,8 +33,13 @@ public class LocalMap implements Serializable{
 		YamlParser yamlParser = new YamlParser(new String[]{"src/data/mapScales.yml"});
 		
 		HashMap<String, Double> argList = yamlParser.getArgList();
-		if(argList.size() > 0)
-			this.mapScale = argList.get(this.mapImageName); // gets the scale based on the mapImageName
+		if(argList.size() > 0){
+			this.mapScale = argList.get("scale-"+ this.mapImageName); // gets the scale based on the associated mapImageName
+			this.transformAngle = argList.get("angle-"+ this.mapImageName);//gets the transformation angle based on the associated mapImageName
+			this.xOffset = argList.get("xOffset-"+ this.mapImageName);//gets the x coordinate offset based on the associated mapImageName
+			this.yOffset = argList.get("yOffset-"+ this.mapImageName);//gets the y coordinate offset based on the associated mapImageName
+
+		}
 
 	}
 	
@@ -124,6 +133,29 @@ public class LocalMap implements Serializable{
 			//error in code - one node cannot be a neighbor without the other node being a neighbor return exception
 		}
 	}
+	/**
+	 * 
+	 * @return a local map with respect to the global map in terms of coordinate system
+	 */
+	public LocalMap transformCoordinates(){
+		LocalMap aMap = this;
+		double xPrime; 
+		double yPrime; 
+		ArrayList<MapNode> transformed = new ArrayList<MapNode>();
+		for(MapNode anode:aMap.getMapNodes()){
+			MapNode transformedNode = anode;
+			//the x and y position need to be replaced by the equivalent in feet and the offsets need to be in feet as well
+			xPrime = anode.getXPos()*Math.cos(aMap.transformAngle) - anode.getYPos()*Math.sin(aMap.transformAngle);
+			yPrime = anode.getYPos()*Math.cos(aMap.transformAngle) + anode.getXPos()*Math.sin(aMap.transformAngle);
+			xPrime = xPrime + xOffset;
+			yPrime = yPrime + yOffset;
+			transformedNode.setxPos(xPrime);
+			transformedNode.setyPos(yPrime);
+			transformed.add(transformedNode);
+		}
+		aMap.setMapNodes(transformed);
+		return aMap;
+	}
 	
 	/**
 	 * function to convert x and y positions from pixels to feet 
@@ -183,5 +215,13 @@ public class LocalMap implements Serializable{
 	public void setMapImageName(String mapImageName) {
 		this.mapImageName = mapImageName;
 	}
-	
+	public double getTransformAngle(){
+		return transformAngle;
+	}
+	public double getXOffset(){
+		return xOffset;
+	}
+	public double getYOffset(){
+		return yOffset;
+	}
 }

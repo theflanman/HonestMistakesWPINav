@@ -5,7 +5,10 @@
 # 2. sitting area near Dunkin Donuts: 37ft, width: 333px, height: 135px, hypot: 359.3244; ratio = .10297
 # average ratio (1-2)= .107979 ft./px
 # DOWNSTAIRS
-downstairsCC.jpg : .107979
+scale-downstairsCC.jpg : .107979
+angle-downstairsCC.jpg
+xOffset-downstairsCC.jpg
+yOffset-downstairsCC.jpg
 
 ##Campus Center-2.jpg : ?
 
@@ -15,7 +18,7 @@ downstairsCC.jpg : .107979
 # 4. stairs: 30ft, width: 117px, height: 289px, hypot: 311.78518; ratio = .09622
 # average ratio (1,4) = .09712 ft./px
 # GROUND FLOOR
-groundCC.jpg : .09712
+scale-groundCC.jpg : .09712
 
 ##Campus Center-3.jpg : ?
 
@@ -24,4 +27,4 @@ groundCC.jpg : .09712
 # 2. Octowedge/Hagglund length: 47.65ft, width: 447px, height: 191px, hypot: 486.0967px; ratio = .09802
 # 3. sitting area near Dunkin Donuts: 37ft, width: 333px, height: 135px, hypot: 359.3244; ratio = .10297
 # average ratio (1-3) = .096216 ft./px
-upstairsCC.jpg : .096216
+scale-upstairsCC.jpg : .096216
