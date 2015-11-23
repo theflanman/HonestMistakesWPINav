@@ -41,11 +41,12 @@ import javax.swing.*;
 
 import main.LocalMap;
 import main.MapNode;
-import main.MapPanel;
+import main.util.Constants;
+import main.util.MapPanel;
 import main.util.SaveUtil;
 
 
-public class DevGUI extends JFrame {
+public class DevGUIFront extends JFrame {
 	static HashMap<String, ArrayList<MapNode>> localMap = new HashMap<String, ArrayList<MapNode>>(); // path to file, Integer data
 	static ArrayList<MapNode> points = new ArrayList<MapNode>(); // currently loaded list of points
 	static File inputFile;
@@ -63,7 +64,6 @@ public class DevGUI extends JFrame {
 	private boolean edgeStarted = false;
 	private boolean edgeRemovalStarted = false;
 
-
 	/**
 	 * Launch the application.
 	 */
@@ -72,7 +72,7 @@ public class DevGUI extends JFrame {
 			public void run() {
 
 				try {
-					DevGUI frame = new DevGUI();
+					DevGUIFront frame = new DevGUIFront();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -84,7 +84,7 @@ public class DevGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DevGUI() {
+	public DevGUIFront() {
 
 	//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
 		
@@ -234,14 +234,14 @@ public class DevGUI extends JFrame {
 		mntmLoadMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
-				int option = chooser.showOpenDialog(DevGUI.this);
+				int option = chooser.showOpenDialog(DevGUIFront.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
 					String inputFileName = inputFile.getName();
 					
 					// load localMap
-					DeveloperGUIBackend devGUIBack = new DeveloperGUIBackend(null);
-					devGUIBack.loadMap("src/localmaps/" + inputFileName);
+					DevGUIBack devGUIBack = new DevGUIBack(null);
+					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
 					LocalMap loadedLocalMap = devGUIBack.getLocalMap(); 
 					
 					String imagePath = SaveUtil.removeExtension(inputFileName);
@@ -249,7 +249,7 @@ public class DevGUI extends JFrame {
 										
 					// set the image
 					try {
-						pic = ImageIO.read(new File("src/images/" + imagePath));
+						pic = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath));
 					} catch (IOException e1) {
 						e1.printStackTrace();}
 					
@@ -272,7 +272,7 @@ public class DevGUI extends JFrame {
 				fileName = SaveUtil.removeExtension(fileName);
 				fileName = fileName + ".jpg";
 				LocalMap thisMap = new LocalMap(fileName, points);
-				DeveloperGUIBackend devGUIBack = new DeveloperGUIBackend(thisMap);
+				DevGUIBack devGUIBack = new DevGUIBack(thisMap);
 				
 				devGUIBack.saveMap();
 			}
@@ -289,7 +289,7 @@ public class DevGUI extends JFrame {
 		mntmNewMapImage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
-				int option = chooser.showOpenDialog(DevGUI.this);
+				int option = chooser.showOpenDialog(DevGUIFront.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
 

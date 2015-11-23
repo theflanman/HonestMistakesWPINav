@@ -14,8 +14,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-
 import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -31,13 +31,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.BadLocationException;
 
 import main.*;
+import main.util.Constants;
+import main.util.Speaker;
 
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import javax.swing.JRadioButton;
+
 import java.awt.Font;
+
 import javax.swing.ButtonGroup;
 import javax.swing.SwingConstants;
 
@@ -49,13 +53,11 @@ import javax.swing.SwingConstants;
  */
 
 @SuppressWarnings("serial")
-public class MainGUI extends JFrame {
+public class GUIFront extends JFrame {
 
-	private static GUIBackend backend;
+	private static GUIBack backend;
 	private static GlobalMap globalMap;
-	private boolean setStart = false, setEnd = false; // keeps track of whether
-														// you have set a start
-														// or end node yet
+	private boolean setStart = false, setEnd = false; // keeps track of whether you have set a start or end node yet
 	public static boolean drawLine = false;
 	public static boolean removeLine = false;
 	public static boolean reset = false;
@@ -76,30 +78,18 @@ public class MainGUI extends JFrame {
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public MainGUI(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
-		// Instantiate GUIBackend to its default
-		String defaultMapImage = "StrattonHallF1.jpg";
-		backend = new GUIBackend(defaultMapImage, null);
+	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
+		// Instantiate GUIBack to its default
+		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
+		backend = new GUIBack(defaultMapImage, null);
 
 		// Initialize the GlobalMap variable with all of the LocalMaps and all
 		// of their nodes
 		globalMap = new GlobalMap();
 
-		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary
-																		// list
-																		// of
-																		// LocalMaps
-																		// to be
-																		// initialized
+		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary list of LocalMaps to be initialized
 		for (int i = 0; i < numLocalMaps; i++) {
-			backend.loadLocalMap(localMapFilenames[i].getName()); // sets the
-																	// current
-																	// LocalMap
-																	// each
-																	// filename
-																	// from the
-																	// "localmaps"
-																	// folder
+			backend.loadLocalMap(localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "data.localmaps" folder
 			tmpListLocal.add(backend.getLocalMap());
 		}
 		globalMap.setLocalMaps(tmpListLocal);
@@ -109,9 +99,7 @@ public class MainGUI extends JFrame {
 		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
 		for (LocalMap local : tmpListLocal) {
 
-			if (!local.getMapNodes().equals(null)) // as long as the LocalMap
-													// isn't null, add its nodes
-													// to the GlobalMap
+			if (!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
 				allNodes.addAll(local.getMapNodes());
 		}
 		globalMap.setMapNodes(allNodes);
@@ -121,7 +109,7 @@ public class MainGUI extends JFrame {
 		 */
 		// This will setup the main JFrame to be maximized on start and have a
 		// defined content pane
-		setTitle("WPI Nav Tool");
+		setTitle("WPI Navigation Tool");
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 450, 300);
@@ -130,7 +118,7 @@ public class MainGUI extends JFrame {
 		setContentPane(contentPane);
 
 		// Image of the default map loaded into backend
-		Image map = new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage();
+		Image map = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
 
 		/**
 		 * Window Builder generated code. GroupLayout auto-generated for custom
@@ -303,6 +291,9 @@ public class MainGUI extends JFrame {
 		btnCalculateRoute.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Speaker speaker = new Speaker(Constants.BUTTON_PATH);
+				speaker.play();
+				
 				if (btnCalculateRoute.isEnabled()) {
 					System.out.println("About to run AStar");
 					backend.setPath(backend.runAStar());
@@ -371,18 +362,9 @@ public class MainGUI extends JFrame {
 		rdbtnSHFloor1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				if (rdbtnSHFloor1.isSelected()) {
-					backend.setLocalMap(globalMap.getLocalMaps().get(0)); // sets
-																			// the
-																			// localMap
-																			// to
-																			// upstairs
-																			// and
-																			// reloads(?)
+					backend.setLocalMap(globalMap.getLocalMaps().get(0)); // sets the localMap to upstairs and reloads(?)
 
-					panel.setMapImage(
-							new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage()); // load
-																												// map
-																												// image
+					panel.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage()); // load map image
 					panel.setMapNodes(backend.getLocalMap().getMapNodes());
 
 					reset();
@@ -393,12 +375,9 @@ public class MainGUI extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				if (rdbtnSHFloor2.isSelected()) {
 					backend.setLocalMap(globalMap.getLocalMaps().get(1));
-					Image temp = new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage();
+					Image temp = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
 
-					panel.setMapImage(
-							new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage()); // load
-																												// map
-																												// image
+					panel.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage()); // load map image
 					panel.setMapNodes(backend.getLocalMap().getMapNodes());
 
 					reset();
@@ -409,11 +388,9 @@ public class MainGUI extends JFrame {
 			public void actionPerformed(ActionEvent ae) {
 				if (rdbtnSHFloor3.isSelected()) {
 					backend.setLocalMap(globalMap.getLocalMaps().get(2));
-					Image temp = new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage();
+					Image temp = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
 					panel.setMapImage(
-							new ImageIcon("src/images/" + backend.getLocalMap().getMapImageName()).getImage()); // load
-																												// map
-																												// image
+							new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage()); // load map image
 					panel.setMapNodes(backend.getLocalMap().getMapNodes());
 
 					reset();
@@ -515,8 +492,7 @@ public class MainGUI extends JFrame {
 					// figure out if there is a map node there, if so, set it as
 					// the StartingNode
 					Point clickedAt = me.getPoint();
-					int clickRadius = 10; // clicks anywhere within a circle of
-											// radius 10
+					int clickRadius = 10; // clicks anywhere within a circle of radius 10
 					if (rdbtnStartNode.isSelected()) {
 
 						for (MapNode n : localNodes) {
@@ -532,8 +508,7 @@ public class MainGUI extends JFrame {
 								} else
 									startEndNodes.set(0, n);
 
-								setStart = true; // start node has been set at
-													// least once
+								setStart = true; // start node has been set at least once
 							}
 						}
 					} else { // rdbtnEndNode is selected
@@ -545,16 +520,13 @@ public class MainGUI extends JFrame {
 								backend.setEndNode(n);
 								btnCalculateRoute.setEnabled(true);
 
-								// If this is the first EndNode selection, add
-								// it at index 1
-								// else, set the second index
+								// If this is the first EndNode selection, add it at index 1 else, set the second index
 								if (!setEnd)
 									startEndNodes.add(1, n);
 								else
 									startEndNodes.set(1, n);
 
-								setEnd = true; // end node has been set at least
-												// once
+								setEnd = true; // end node has been set at least once
 							}
 						}
 					}
@@ -577,10 +549,12 @@ public class MainGUI extends JFrame {
 			// Draws the map and places pre-existing node data onto the map as
 			// well start and end nodes if they have been set
 			graphics.drawImage(this.mapImage, 0, 0, this);
+			
 			graphics.setColor(Color.BLUE);
 			for (MapNode n : this.localNodes) {
 				graphics.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, 10, 10);
 			}
+			
 			// Sets the color of the start and end nodes to be different
 			graphics.setColor(Color.RED);
 			for (int i = 0; i < this.startEndNodes.size(); i++) {
@@ -592,6 +566,7 @@ public class MainGUI extends JFrame {
 					graphics.fillOval((int) this.startEndNodes.get(i).getXPos() - 5, (int) this.startEndNodes.get(i).getYPos() - 5, 10, 10);
 				}
 			}
+						
 			// working on adding the links between two nodes before hand - works, but will keep out for now
 			//ArrayList<MapNode> mapnodes = new ArrayList<MapNode>();
 			//for(MapNode neighbors : this.localNodes){
@@ -610,7 +585,7 @@ public class MainGUI extends JFrame {
 	        }*/
 
 			// essentially draws the line on the screen 
-			if (MainGUI.drawLine = true) {
+			if (GUIFront.drawLine = true) {
 				for (int i = 0; i < backend.getCoordinates().size() - 1; i++) {
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
@@ -625,7 +600,7 @@ public class MainGUI extends JFrame {
 				}
 				drawLine = false;
 				removeLine = true;
-			} else if (MainGUI.removeLine == true) {
+			} else if (GUIFront.removeLine == true) {
 				for (int i = 0; i < backend.getCoordinates().size() - 1; i++) {
 					double x1 = backend.getCoordinates().get(i)[0];
 					double y1 = backend.getCoordinates().get(i)[1];
@@ -639,6 +614,7 @@ public class MainGUI extends JFrame {
 				drawLine = true;
 				removeLine = false;
 			}
+			
 			repaint();
 		}
 

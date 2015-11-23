@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 import main.MapNode;
 import main.StepByStep;
 
-public class TestPrintDirections extends TestCase{
+public class PrintDirectionsTest extends TestCase{
 	
 	public void testDirectionRightAndHardRight(){
 		MapNode node1 = new MapNode(3, 1, 0);

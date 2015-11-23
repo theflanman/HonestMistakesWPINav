@@ -9,14 +9,15 @@ import java.io.Serializable;
 
 import main.LocalMap;
 import main.MapNode;
+import main.util.Constants;
 import main.util.SaveUtil;
 
-public class DeveloperGUIBackend implements Serializable  {
+public class DevGUIBack implements Serializable  {
 
 	private LocalMap localMap;
 	
 	// constructor
-	public DeveloperGUIBackend(LocalMap localMap){
+	public DevGUIBack(LocalMap localMap){
 		this.localMap = localMap;
 	}
 	
@@ -53,7 +54,7 @@ public class DeveloperGUIBackend implements Serializable  {
 		
 		FileOutputStream fileOut;
 		try {
-			fileOut = new FileOutputStream("src/localmaps/" + fileName);
+			fileOut = new FileOutputStream(Constants.LOCAL_MAP_PATH + "/" + fileName);
 			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
 			objOut.writeObject(this.localMap);
 			
@@ -73,7 +74,7 @@ public class DeveloperGUIBackend implements Serializable  {
 	public void loadMap(String fileName) {
 		
 		if(! fileName.contains(".localmap")){
-			System.out.println("DeveloperGUIBackend.loadMap(fileName) requires a .localmap file as input...exiting");
+			System.out.println("DevGUIBack.loadMap(fileName) requires a .localmap file as input...exiting");
 			System.exit(1);
 		}
 		

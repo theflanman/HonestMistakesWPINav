@@ -1,4 +1,4 @@
-package main;
+package main.util;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -44,8 +44,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.awt.image.*;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import main.MapNode;
 
 public class MapPanel extends JPanel implements ActionListener {
 	private Image bgImage;

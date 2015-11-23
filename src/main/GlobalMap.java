@@ -28,7 +28,7 @@ public class GlobalMap implements Serializable {
 	
 	/**
 	 * Sets the list of LocalMaps to the given input
-	 * @param localMaps A list of LocalMaps that has been initialized from MainGUI
+	 * @param localMaps A list of LocalMaps that has been initialized from GUIFront
 	 */
 	 public void addToMapNodes(MapNode node){
 		mapNodes.add(node);
