@@ -172,8 +172,9 @@ public class DevGUIFront extends JFrame {
 							System.out.println(selectedNodes.size());
 						}
 					}
-					//Graphics g = mapPanel.getGraphics();
+					Graphics g = mapPanel.getGraphics();
 					//g.setColor(Color.RED);
+					mapPanel.renderSelectedNodes(g, points, selectedNodes);
 					//mapPanel.renderMapPublic(g, points);
 					//mapPanel.renderMapPublic(g, selectedNodes);
 					
