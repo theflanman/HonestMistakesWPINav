@@ -24,7 +24,8 @@ public class LocalMap implements Serializable{
 	//coordinate offset required to transform (translate) the local coordinates to match the global coordinate system
 	private double xOffset;
 	private double yOffset;
-
+	private double zHeight;
+	
 	// constructor
 	public LocalMap(String mapImageName, ArrayList<MapNode> mapNodes){
 		this.mapImageName = mapImageName;
@@ -38,7 +39,7 @@ public class LocalMap implements Serializable{
 			this.transformAngle = argList.get("angle-"+ this.mapImageName);//gets the transformation angle based on the associated mapImageName
 			this.xOffset = argList.get("xOffset-"+ this.mapImageName);//gets the x coordinate offset based on the associated mapImageName
 			this.yOffset = argList.get("yOffset-"+ this.mapImageName);//gets the y coordinate offset based on the associated mapImageName
-
+			this.zHeight = argList.get("zHeight-"+ this.mapImageName);//gets the height based on what floor the current local map is on
 		}
 
 	}
@@ -68,11 +69,11 @@ public class LocalMap implements Serializable{
 	}
 	
 	
-	public void addNode(double xPos, double yPos, double zPos) {
+	public void addNode(double xPos, double yPos) {
 		MapNode node = new MapNode();
 		node.setXPos(xPos);
 		node.setYPos(yPos);
-		node.setZPos(zPos);
+
 		
 		globalMap.addToMapNodes(node); // add this node to the only GlobalMap
 	}
@@ -134,48 +135,25 @@ public class LocalMap implements Serializable{
 		}
 	}
 	/**
-	 * 
-	 * @return a local map with respect to the global map in terms of coordinate system
+	 * function to transform the coordinate system (in feet) of all nodes in a local map to match global coordinate system
 	 */
-	public LocalMap transformCoordinates(){
-		LocalMap aMap = this;
+	public void transformCoordinates(){
 		double xPrime; 
 		double yPrime; 
-		ArrayList<MapNode> transformed = new ArrayList<MapNode>();
-		for(MapNode anode:aMap.getMapNodes()){
-			MapNode transformedNode = anode;
+		for(MapNode aNode:this.getMapNodes()){
 			//the x and y position in feet and the offsets need to be in feet as well
-			xPrime = anode.getXFeet()*Math.cos(aMap.transformAngle) - anode.getYFeet()*Math.sin(aMap.transformAngle);
-			yPrime = anode.getYFeet()*Math.cos(aMap.transformAngle) + anode.getXFeet()*Math.sin(aMap.transformAngle);
-			xPrime = xPrime + xOffset;
-			yPrime = yPrime + yOffset;
-			transformedNode.setxPos(xPrime);
-			transformedNode.setyPos(yPrime);
-			transformed.add(transformedNode);
-		}
-		aMap.setMapNodes(transformed);
-		return aMap;
-	}
-	
-	/**
-	 * function to convert x and y positions from pixels to feet 
-	 */
-	public void pixelesToFeet(){
-		for(MapNode anode : this.mapNodes){
-			anode.setXPos(anode.getXPos()*this.getMapScale());	
-			anode.setYPos(anode.getYPos()*this.getMapScale());
+			//rotate the x and y coordinates to match the global coordinate system 
+			xPrime = aNode.getXFeet()*Math.cos(aNode.getLocalMap().getTransformAngle()) - aNode.getYFeet()*Math.sin(aNode.getLocalMap().getTransformAngle());
+			yPrime = aNode.getYFeet()*Math.cos(aNode.getLocalMap().getTransformAngle()) + aNode.getXFeet()*Math.sin(aNode.getLocalMap().getTransformAngle());
+			//translate the x and y coordinates of the local map to resemble its location in the global map 
+			xPrime = xPrime + aNode.getLocalMap().getXOffset();
+			yPrime = yPrime + aNode.getLocalMap().getYOffset();
+			//set the new transformed coordinates
+			aNode.setXFeet(xPrime);
+			aNode.setYFeet(yPrime);
 		}
 	}
 	
-	/**
-	 * function to convert x and y positions from feet to pixels
-	 */
-	public void feetToPixels(){
-		for(MapNode anode : this.mapNodes){
-			anode.setXPos(anode.getXPos()/this.getMapScale());	
-			anode.setYPos(anode.getYPos()/this.getMapScale());
-		}
-	}
 	public int getMapID() {
 		return mapID;
 	}
@@ -223,5 +201,8 @@ public class LocalMap implements Serializable{
 	}
 	public double getYOffset(){
 		return yOffset;
+	}
+	public double getZHeight(){
+		return zHeight;
 	}
 }

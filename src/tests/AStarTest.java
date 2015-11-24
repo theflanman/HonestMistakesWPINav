@@ -16,6 +16,8 @@ public class AStarTest {
 
 	@Test
 	public void test() {
+		ArrayList<MapNode> nodes = new ArrayList<MapNode>();
+		LocalMap local = new LocalMap("sample.jpg", nodes);
 		
 		//          n4------n5
 		//          |     /
@@ -24,11 +26,11 @@ public class AStarTest {
 		//      /   |
 		//    /     |
 		// n1-------n2
-		MapNode n1 = new MapNode(0,0,0);
-		MapNode n2 = new MapNode(3,0,0);
-		MapNode n3 = new MapNode(3,4,0);
-		MapNode n4 = new MapNode(3,6,0);
-		MapNode n5 = new MapNode(6,6,0);
+		MapNode n1 = new MapNode(0,0,local);
+		MapNode n2 = new MapNode(3,0,local);
+		MapNode n3 = new MapNode(3,4,local);
+		MapNode n4 = new MapNode(3,6,local);
+		MapNode n5 = new MapNode(6,6,local);
 		
 		//node 1 = start
 		//node 5 = finish

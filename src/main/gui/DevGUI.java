@@ -121,13 +121,14 @@ public class DevGUI extends JFrame {
 					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
 					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
 					Point p = me.getLocationOnScreen();
-					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, (double) 0); // make a new mapnode with those points
+					LocalMap aLocalMap = new LocalMap(null,null);//This needs to be replaced by the current local map 
+					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, aLocalMap); // make a new mapnode with those points
 					nodeCounter++;
 					Graphics g = mapPanel.getGraphics();
 					points.add(n);
 					xPosField.setText(""+n.getXPos());
 					yPosField.setText(""+n.getYPos());
-					zPosField.setText(""+n.getZPos());
+					//zPosField.setText(""+n.getZPos());//the z field is not in pixels anymore it is in feet so it needs to be labeled differently 
 					//nodeNameField.setText(n.getnodeName());
 					lastClicked = n;
 					mapPanel.renderMapPublic(g, points);
@@ -140,7 +141,7 @@ public class DevGUI extends JFrame {
 						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
 							xPosField.setText(""+n.getXPos());
 							yPosField.setText(""+n.getYPos());
-							zPosField.setText(""+n.getZPos());
+							//zPosField.setText(""+n.getZPos());
 							//nodeNameField.setText(n.getnodeName());
 							lastClicked = n;
 						}

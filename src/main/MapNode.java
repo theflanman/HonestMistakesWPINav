@@ -5,12 +5,13 @@ import java.util.ArrayList;
 
 
 public class MapNode implements Serializable{
-	
+	//coordinates in pixels
 	private double xPos;
 	private double yPos;
-	private double zPos;
+	//coordinates in feet
 	private double xFeet;
 	private double yFeet;
+	private double zFeet;
 	private int nodeID;
 	private ArrayList<MapNode> neighbors;
 	private double fScore;
@@ -26,11 +27,13 @@ public class MapNode implements Serializable{
 	public MapNode(){}
 	
 	// constructor
-	public MapNode(double newX, double newY, double newZ) {
+	public MapNode(double newX, double newY, LocalMap aLocalMap) {
 		xPos = newX;
 		yPos = newY;
-		zPos = newZ;
-		
+		localMap = aLocalMap;
+		xFeet = xPos * localMap.getMapScale();
+		yFeet = yPos * localMap.getMapScale();
+		zFeet = localMap.getZHeight();
 		neighbors = new ArrayList<MapNode>();
 		fScore = -1;
 		gScore = -1;
@@ -47,7 +50,7 @@ public class MapNode implements Serializable{
 	}
 	
 	public double aStarHeuristic(MapNode toNode) {
-		double dist = (double) Math.sqrt(Math.pow((xPos - toNode.getXPos()),2) + Math.pow(yPos - toNode.getYPos(),2)) + Math.abs(zPos - toNode.getZPos());
+		double dist = (double) Math.sqrt(Math.pow((xFeet - toNode.getXFeet()),2) + Math.pow(yFeet - toNode.getYFeet(),2)) + Math.abs(zFeet - toNode.getZFeet());
 		
 		return dist;
 	}
@@ -98,7 +101,7 @@ public class MapNode implements Serializable{
 		double distanceXLeg = (toNode.getXPos() - this.getXPos());
 		double distanceYLeg = (toNode.getYPos() - this.getYPos());
 	
-		distance = (Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg)))/5;
+		distance = (Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg)));
 		distance = Math.round(distance);
 		return (int)distance;
 	}
@@ -119,13 +122,6 @@ public class MapNode implements Serializable{
 	}
 	public void setYPos(double yPos) {
 		this.yPos = yPos;
-	}
-
-	public double getZPos() {
-		return zPos;
-	}
-	public void setZPos(double zPos) {
-		this.zPos = zPos;
 	}
 
 	public String getnodeName() {
@@ -181,11 +177,11 @@ public class MapNode implements Serializable{
 	public LocalMap getLocalMap(){
 		return localMap;
 	}
-	public void setXFeet(double xPos){
-		xFeet = xPos*(this.getLocalMap().getMapScale());
+	public void setXFeet(double xFeet){
+		this.xFeet = xFeet;
 	}
-	public void setYFeet(double yPos){
-		yFeet = yPos*(this.getLocalMap().getMapScale());
+	public void setYFeet(double yFeet){
+		this.yFeet = yFeet;
 	}
 	public double getXFeet(){
 		return xFeet;
@@ -193,6 +189,11 @@ public class MapNode implements Serializable{
 	public double getYFeet(){
 		return yFeet;
 	}
-	
+	public void setZFeet(double zHeight){
+		zFeet = zHeight;
+	}
+	public double getZFeet(){
+		return zFeet;
+	}
 
 }

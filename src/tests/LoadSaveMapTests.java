@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 public class LoadSaveMapTests extends TestCase {
 	
 	String path = new String("src/localmaps/map1.localmap");
-	LocalMap localMap1 = new LocalMap("map1", null);
+	LocalMap localMap1 = new LocalMap("sample.jpg", null);
 	File file = new File(path);
 
 	public void testDeveloperGUIBackend(){
@@ -36,7 +36,7 @@ public class LoadSaveMapTests extends TestCase {
 		
 		devGUIBack1.saveMap(); // save map to a file
 		
-		GUIBackend guiBack1 = new GUIBackend("map1.png", null);
+		GUIBackend guiBack1 = new GUIBackend("sample.jpg", null);
 
 		guiBack1.loadLocalMap("map1.localmap"); // load the local map
 		
@@ -50,7 +50,7 @@ public class LoadSaveMapTests extends TestCase {
 		
 		localMap1.saveMap("map1");
 		
-		GUIBackend guiBack1 = new GUIBackend("map1.png", null);
+		GUIBackend guiBack1 = new GUIBackend("sample.jpg", null);
 
 		guiBack1.loadLocalMap("map1.localmap"); // load the local map
 		

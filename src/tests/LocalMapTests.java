@@ -19,10 +19,10 @@ public class LocalMapTests extends TestCase {
 		LocalMap localMap = new LocalMap("downstairsCC.jpg", null);
 		localMap.setGlobalMap(new GlobalMap());
 		
-		localMap.addNode(1.0, 2.0, 3.0);
+		localMap.addNode(1.0, 2.0);
 		
 		ArrayList<MapNode> nodes = localMap.getGlobalMap().getMapNodes();
-		assertEquals(3.0, nodes.get(0).getZPos());
+		assertEquals(2.0, nodes.get(0).getYPos());
 	}
 
 }

@@ -1,4 +1,14 @@
 ---
+
+##sample.jpg : ?
+
+#Sample to use in all tests and such as part of the local map
+scale-sample.jpg : .123
+angle-sample.jpg : 30.0
+xOffset-sample.jpg : 12.0
+yOffset-sample.jpg : 12.0
+zHeight-sample.jpg : 13.0
+
 ##Campus Center-1.jpg : ?
 
 # 1. stairs: 30ft, width: 107px, height: 243px, hypot: 265.51459px; ratio = .112988
@@ -6,9 +16,10 @@
 # average ratio (1-2)= .107979 ft./px
 # DOWNSTAIRS
 scale-downstairsCC.jpg : .107979
-angle-downstairsCC.jpg
-xOffset-downstairsCC.jpg
-yOffset-downstairsCC.jpg
+angle-downstairsCC.jpg : 30.0
+xOffset-downstairsCC.jpg : 12.0
+yOffset-downstairsCC.jpg : 12.0
+zHeight-downstairsCC.jpg : 13.0
 
 ##Campus Center-2.jpg : ?
 
@@ -28,3 +39,11 @@ scale-groundCC.jpg : .09712
 # 3. sitting area near Dunkin Donuts: 37ft, width: 333px, height: 135px, hypot: 359.3244; ratio = .10297
 # average ratio (1-3) = .096216 ft./px
 scale-upstairsCC.jpg : .096216
+
+##StrattonHallF1.jpg : ?
+
+scale-StrattonHallF1.jpg : .18
+angle-StrattonHallF1.jpg : 30.0
+xOffset-StrattonHallF1.jpg : 233.0
+yOffset-StrattonHallF1.jpg : 155.0
+

@@ -3,22 +3,25 @@ package tests;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
+import main.LocalMap;
 import main.MapNode;
 import main.StepByStep;
 
 public class TestPrintDirections extends TestCase{
 	
 	public void testDirectionRightAndHardRight(){
-		MapNode node1 = new MapNode(3, 1, 0);
+		ArrayList<MapNode> nodes = new ArrayList<MapNode>();
+		LocalMap local = new LocalMap("sample.jpg", nodes);
+		MapNode node1 = new MapNode(3, 1, local);
 		node1.setCameFrom(null);
 		
-		MapNode node2 = new MapNode(0, 2, 0);
+		MapNode node2 = new MapNode(0, 2, local);
 		node2.setCameFrom(node1);
 		
-		MapNode node3 = new MapNode(1, 5, 0);
+		MapNode node3 = new MapNode(1, 5, local);
 		node3.setCameFrom(node2);
 		
-		MapNode node4 = new MapNode(7, -3, 0);
+		MapNode node4 = new MapNode(7, -3, local);
 		node4.setCameFrom(node3);
 		
 		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
@@ -40,13 +43,15 @@ public class TestPrintDirections extends TestCase{
 	}
 	
 	public void testDirectionsContinueStraight(){
-		MapNode node1 = new MapNode(3, 1, 0);
+		ArrayList<MapNode> nodes = new ArrayList<MapNode>();
+		LocalMap local = new LocalMap("sample.jpg", nodes);
+		MapNode node1 = new MapNode(3, 1, local);
 		node1.setCameFrom(null);
 		
-		MapNode node2 = new MapNode(3, 2, 0);
+		MapNode node2 = new MapNode(3, 2, local);
 		node2.setCameFrom(node1);
 		
-		MapNode node3 = new MapNode(3, 5, 0);
+		MapNode node3 = new MapNode(3, 5, local);
 		node3.setCameFrom(node2);
 		
 		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
@@ -66,16 +71,18 @@ public class TestPrintDirections extends TestCase{
 	}
 	
 	public void testDirectionsBackAndLeft(){
-		MapNode node1 = new MapNode(10, -4, 0);
+		ArrayList<MapNode> nodes = new ArrayList<MapNode>();
+		LocalMap local = new LocalMap("downstairsCC.jpg", nodes);
+		MapNode node1 = new MapNode(10, -4, local);
 		node1.setCameFrom(null);
 		
-		MapNode node2 = new MapNode(2, -4, 0);
+		MapNode node2 = new MapNode(2, -4, local);
 		node2.setCameFrom(node1);
 		
-		MapNode node3 = new MapNode(6, -4, 0);
+		MapNode node3 = new MapNode(6, -4, local);
 		node3.setCameFrom(node2);
 		
-		MapNode node4 = new MapNode(6, 0, 0);
+		MapNode node4 = new MapNode(6, 0, local);
 		node4.setCameFrom(node3);
 		
 		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
@@ -97,22 +104,24 @@ public class TestPrintDirections extends TestCase{
 	}
 	
 	public void testDirectionsComplete(){
-		MapNode node1 = new MapNode(-1, 1, 0);
+		ArrayList<MapNode> nodes = new ArrayList<MapNode>();
+		LocalMap local = new LocalMap("sample.jpg", nodes);
+		MapNode node1 = new MapNode(-1, 1, local);
 		node1.setCameFrom(null);
 		
-		MapNode node2 = new MapNode(2, 5, 0);
+		MapNode node2 = new MapNode(2, 5, local);
 		node2.setCameFrom(node1);
 		
-		MapNode node3 = new MapNode(2, 0, 0);
+		MapNode node3 = new MapNode(2, 0, local);
 		node3.setCameFrom(node2);
 		
-		MapNode node4 = new MapNode(0, -3, 0);
+		MapNode node4 = new MapNode(0, -3, local);
 		node4.setCameFrom(node3);
 		
-		MapNode node5 = new MapNode(-2, -6, 0);
+		MapNode node5 = new MapNode(-2, -6, local);
 		node5.setCameFrom(node4);
 		
-		MapNode node6 = new MapNode(0, -3, 0);
+		MapNode node6 = new MapNode(0, -3, local);
 		node6.setCameFrom(node5);
 		
 		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
