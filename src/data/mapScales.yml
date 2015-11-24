@@ -1,7 +1,13 @@
 ---
+#each map image needs the following information in this file to accompany it (allvalues need to doubles)
+#scale- resembles the feet/px ratio of the map
+#angle- the angle (in radians) the coordinate of the map need to rotate to allign with the global coordinates 
+#xOffset- the offset of this map's x coordinate with respect to the global coordinate of x
+#xOffset- the offset of this map's y coordinate with respect to the global coordinate of y
+#zHeight- the hight of each level in feet, 
+#(the default for floors: ground floor same level as the top of the hill is 0.0, each floor higher we add 13 ft, each floor lower we subtract 13.) 
 
 ##sample.jpg : ?
-
 #Sample to use in all tests and such as part of the local map
 scale-sample.jpg : .123
 angle-sample.jpg : 30.0
@@ -46,4 +52,4 @@ scale-StrattonHallF1.jpg : .18
 angle-StrattonHallF1.jpg : 30.0
 xOffset-StrattonHallF1.jpg : 233.0
 yOffset-StrattonHallF1.jpg : 155.0
-
+zHeight-StrattonHallF1.jpg : 13.0

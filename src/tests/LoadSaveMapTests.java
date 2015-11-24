@@ -9,7 +9,7 @@ import java.io.File;
 import junit.framework.TestCase;
 public class LoadSaveMapTests extends TestCase {
 	
-	String path = new String("src/localmaps/map1.localmap");
+	String path = new String("src/localmaps/sample.localmap");
 	LocalMap localMap1 = new LocalMap("sample.jpg", null);
 	File file = new File(path);
 
@@ -38,7 +38,7 @@ public class LoadSaveMapTests extends TestCase {
 		
 		GUIBackend guiBack1 = new GUIBackend("sample.jpg", null);
 
-		guiBack1.loadLocalMap("map1.localmap"); // load the local map
+		guiBack1.loadLocalMap("sample.localmap"); // load the local map
 		
 		assertEquals(guiBack1.getLocalMap().getMapID(), 2); // check to see if the data are the same	
 		
@@ -48,11 +48,11 @@ public class LoadSaveMapTests extends TestCase {
 	public void testLocalMap(){
 		localMap1.setMapID(3);
 		
-		localMap1.saveMap("map1");
+		localMap1.saveMap("sample");
 		
 		GUIBackend guiBack1 = new GUIBackend("sample.jpg", null);
 
-		guiBack1.loadLocalMap("map1.localmap"); // load the local map
+		guiBack1.loadLocalMap("sample.localmap"); // load the local map
 		
 		assertEquals(guiBack1.getLocalMap().getMapID(), 3); // check to see if the data are the same
 		
