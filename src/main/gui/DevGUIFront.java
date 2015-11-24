@@ -151,11 +151,14 @@ public class DevGUIFront extends JFrame {
 					edgeStarted = false;
 					edgeRemovalStarted = false;
 					
-					if(me.isControlDown()) {
-					    multiSelect = true;
+					if(!me.isControlDown()) {
+						selectedNodes.clear();
+					}
+					if(me.isShiftDown()){
+						multiSelect = true;
 					}
 					else{
-						selectedNodes.clear();
+						multiSelect = false;
 					}
 					for(MapNode n : points){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
@@ -164,19 +167,38 @@ public class DevGUIFront extends JFrame {
 							xPosField.setText(""+n.getXPos());
 							yPosField.setText(""+n.getYPos());
 							zPosField.setText(""+n.getZPos());
+							
 							//nodeNameField.setText(n.getnodeName());
+							if(multiSelect){
+								MapNode lastPoint = lastClicked;
+								MapNode currentPoint  = n;
+								double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
+								double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
+								double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
+								double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
+								for(MapNode mn : points){
+									if(mn.getXPos() >= minX && mn.getXPos() <= maxX &&
+											mn.getYPos() >= minY && mn.getYPos() <= maxY){
+										if(!selectedNodes.contains(mn)){
+											selectedNodes.add(mn);
+										}
+									}
+								}
+								
+							}
 							lastClicked = n;
+							
+							//handle shift clicking here by adding multiple nodes
 							if(!selectedNodes.contains(n)){
 								selectedNodes.add(n);
 							}
+
 							System.out.println(selectedNodes.size());
 						}
 					}
 					Graphics g = mapPanel.getGraphics();
-					//g.setColor(Color.RED);
 					mapPanel.renderSelectedNodes(g, points, selectedNodes);
-					//mapPanel.renderMapPublic(g, points);
-					//mapPanel.renderMapPublic(g, selectedNodes);
+
 					
 				}
 				else if(rdbtnMakeEdge.isSelected()) {
