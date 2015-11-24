@@ -46,7 +46,7 @@ import main.util.MapPanel;
 import main.util.SaveUtil;
 
 // TODO address creation of an edge from one frame to the other...
-
+// TODO handle clicks on "Save Maps" where one or both panels don't have a map loaded.
 
 public class DevGUIFront extends JFrame {
 	static HashMap<String, ArrayList<MapNode>> localMap = new HashMap<String, ArrayList<MapNode>>(); // path to file, Integer data
