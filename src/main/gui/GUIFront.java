@@ -274,7 +274,9 @@ public class GUIFront extends JFrame {
 		// adds the distance label to the map interface
 		lblDistance = new JLabel("");
 		panel_1.add(lblDistance);
-
+		
+        
+	
 		// disable reset button
 		btnReset = new JButton("Reset");
 		btnReset.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -303,17 +305,44 @@ public class GUIFront extends JFrame {
 					// this should only display when the user calculates the
 					// astar algorithm
 					lblDistance.setText(backend.getDistance());
-
-					// basically justs places each string into the array one row
+					
+					// STEP BY STEP DIRECTIONS TEXT
+					// basically just places each string into the array one row
 					// at a time - if, and this is a big IF, /n works in this
 					// context
 					String allText = "";
 					for (String string : backend.displayStepByStep()) {
 						allText += string + "\n";
 					}
+					
 					textArea1.setText(allText);
 					btnCalculateRoute.setEnabled(false);
 					btnReset.setEnabled(true);
+					
+					
+					/*
+					 * @Author Nick Gigliotti
+					 * Email Directions Button
+					 */
+					JButton btnEmail = new JButton("Email Directions");
+					panel_1.add(btnEmail);
+					EmailSender email = new EmailSender() ;
+					
+					String from = "EraOfNavigation";
+			        String pass = "HonestMistakes";
+			        String[] to = { "ngigliotti@wpi.edu" };
+			        String subject = "Welcome to the Era of Navigation";
+			        String body = allText ;
+			        
+			        btnEmail.addActionListener(new ActionListener() {
+			        	public void actionPerformed(ActionEvent e) {
+			        		System.out.println("Emailing Directions");
+			        		email.sendFromGMail(from, pass, to, subject, body);
+			        	}
+			        }
+			        );
+			        
+
 					/*
 					 * } else { btnCalculateRoute.setEnabled(true);
 					 * 
@@ -329,7 +358,9 @@ public class GUIFront extends JFrame {
 				}
 			}
 		});
-
+		
+		
+	
 		// Creates a new DrawingPanel object which will display the map image
 		// and load up MapNode data
 		panel = new DrawingPanel(backend.getLocalMap().getMapNodes(), map, layeredPane.getSize());

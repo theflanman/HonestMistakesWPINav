@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,26 +12,13 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
-	private static String userName = "EraOfNavigation";  // GMail user name
-    private static String password = "HonestMistakes"; // GMail password
-    private static String recipient = "ngigliotti@wpi.edu";
- 
-    public static void main(String[] args) {
-        String from = userName;
-        String pass = password;
-        String[] to = { recipient };
-        String subject = "Welcome to the Era of Navigation";
-        String body = "Testing";
-
-        sendFromGMail(from, pass, to, subject, body);
-    }
 
 	/*
 	 * @author Nick Gigliotti
 	 * 
 	 * TODO: Finish Implementation
 	 */
-    public static void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
+    public void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
         Properties props = System.getProperties();
         String host = "smtp.gmail.com";
         props.put("mail.smtp.starttls.enable", "true");
@@ -55,6 +43,8 @@ public class EmailSender {
             for( int i = 0; i < toAddress.length; i++) {
                 message.addRecipient(Message.RecipientType.TO, toAddress[i]);
             }
+            
+            System.out.println(body);
 
             message.setSubject(subject);
             message.setText(body);
@@ -62,6 +52,7 @@ public class EmailSender {
             transport.connect(host, from, pass);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
+            System.out.println("Email Sent Successfuly");
         }
         catch (AddressException ae) {
             ae.printStackTrace();
