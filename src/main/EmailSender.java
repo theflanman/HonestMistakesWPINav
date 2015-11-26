@@ -1,6 +1,5 @@
 package main;
 
-import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -15,8 +14,6 @@ public class EmailSender {
 
 	/*
 	 * @author Nick Gigliotti
-	 * 
-	 * TODO: Finish Implementation
 	 */
     public void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
         Properties props = System.getProperties();
