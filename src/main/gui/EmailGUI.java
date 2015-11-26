@@ -49,7 +49,7 @@ public class EmailGUI extends JDialog {
 	}
 
 	public EmailGUI() {
-		setBounds(100, 100, 900, 600);
+		setBounds(100, 100, 1056, 653);
 		getContentPane().setLayout(null);
 	}
 
@@ -57,7 +57,7 @@ public class EmailGUI extends JDialog {
 		// ----------------BODY-------------------
 		JTextArea txtBody = new JTextArea();
 		txtBody.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtBody.setBounds(15, 130, 848, 353);
+		txtBody.setBounds(15, 130, 1004, 422);
 		getContentPane().add(txtBody);
 		txtBody.setText(body);
 
@@ -69,7 +69,7 @@ public class EmailGUI extends JDialog {
 		lblSubject.setFont(new Font("Tahoma", Font.BOLD, 18));
 
 		txtSubject = new JTextField();
-		txtSubject.setBounds(101, 74, 762, 39);
+		txtSubject.setBounds(101, 74, 918, 39);
 		getContentPane().add(txtSubject);
 		txtSubject.setText(subject);
 		txtSubject.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -83,13 +83,13 @@ public class EmailGUI extends JDialog {
 		lblTo.setFont(new Font("Tahoma", Font.BOLD, 18));
 
 		txtTo = new JTextField();
-		txtTo.setBounds(55, 16, 808, 39);
+		txtTo.setBounds(55, 16, 964, 39);
 		getContentPane().add(txtTo);
 		txtTo.setText("");
 		txtTo.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		txtTo.setColumns(10);
 		JPanel buttonPane = new JPanel();
-		buttonPane.setBounds(0, 483, 1033, 39);
+		buttonPane.setBounds(0, 558, 1033, 39);
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane);
 
