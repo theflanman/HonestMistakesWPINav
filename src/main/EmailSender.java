@@ -40,8 +40,6 @@ public class EmailSender {
             for( int i = 0; i < toAddress.length; i++) {
                 message.addRecipient(Message.RecipientType.TO, toAddress[i]);
             }
-            
-            System.out.println(body);
 
             message.setSubject(subject);
             message.setText(body);

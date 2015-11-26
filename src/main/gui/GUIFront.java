@@ -61,6 +61,7 @@ public class GUIFront extends JFrame {
 	public static boolean drawLine = false;
 	public static boolean removeLine = false;
 	public static boolean reset = false;
+	public static String allText = "";
 
 	private JPanel contentPane;
 	private DrawingPanel panel;
@@ -71,6 +72,7 @@ public class GUIFront extends JFrame {
 	private JTextArea textArea1;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	
 
 	/**
 	 * Create the frame.
@@ -310,7 +312,6 @@ public class GUIFront extends JFrame {
 					// basically just places each string into the array one row
 					// at a time - if, and this is a big IF, /n works in this
 					// context
-					String allText = "";
 					for (String string : backend.displayStepByStep()) {
 						allText += string + "\n";
 					}
@@ -327,11 +328,11 @@ public class GUIFront extends JFrame {
 					 */
 					JButton btnEmail = new JButton("Email Directions"); //Initial Email Button
 					panel_1.add(btnEmail);
-					EmailGUI newEmail = new EmailGUI();
+					
 					
 			        btnEmail.addActionListener(new ActionListener() {
 			        	public void actionPerformed(ActionEvent e) {
-			        		
+			        		EmailGUI newEmail = new EmailGUI();
 			        		newEmail.setVisible(true); //Opens EmailGUI Pop-Up
 			        	}
 			        }

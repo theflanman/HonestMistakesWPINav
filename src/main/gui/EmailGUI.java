@@ -9,11 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import org.junit.experimental.theories.Theories;
-
 import main.EmailSender;
 
-import javax.swing.JEditorPane;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,9 +23,9 @@ import javax.swing.JTextArea;
 public class EmailGUI extends JDialog {
 
 	private static final long serialVersionUID = 3115264882573369576L;
-
 	private JTextField txtTo;
 	private JTextField txtSubject;
+
 
 	EmailSender email = new EmailSender();
 
@@ -36,7 +33,7 @@ public class EmailGUI extends JDialog {
 	String pass = "HonestMistakes";
 	String[] to = { "" };
 	String subject = "Welcome to the Era of Navigation";
-	String body = "";
+	String body = GUIFront.allText;
 
 	/**
 	 * Launch the application.
@@ -52,14 +49,15 @@ public class EmailGUI extends JDialog {
 	}
 
 	public EmailGUI() {
-		setBounds(100, 100, 1055, 578);
+		setBounds(100, 100, 900, 600);
 		getContentPane().setLayout(null);
 	}
 
 	{
 		// ----------------BODY-------------------
 		JTextArea txtBody = new JTextArea();
-		txtBody.setBounds(15, 130, 1003, 349);
+		txtBody.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtBody.setBounds(15, 130, 848, 353);
 		getContentPane().add(txtBody);
 		txtBody.setText(body);
 
@@ -71,7 +69,7 @@ public class EmailGUI extends JDialog {
 		lblSubject.setFont(new Font("Tahoma", Font.BOLD, 18));
 
 		txtSubject = new JTextField();
-		txtSubject.setBounds(101, 74, 917, 39);
+		txtSubject.setBounds(101, 74, 762, 39);
 		getContentPane().add(txtSubject);
 		txtSubject.setText(subject);
 		txtSubject.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -85,7 +83,7 @@ public class EmailGUI extends JDialog {
 		lblTo.setFont(new Font("Tahoma", Font.BOLD, 18));
 
 		txtTo = new JTextField();
-		txtTo.setBounds(55, 16, 963, 39);
+		txtTo.setBounds(55, 16, 808, 39);
 		getContentPane().add(txtTo);
 		txtTo.setText("");
 		txtTo.setFont(new Font("Tahoma", Font.PLAIN, 18));
