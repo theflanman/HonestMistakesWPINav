@@ -323,21 +323,16 @@ public class GUIFront extends JFrame {
 					/*
 					 * @Author Nick Gigliotti
 					 * Email Directions Button
+					 * 
 					 */
-					JButton btnEmail = new JButton("Email Directions");
+					JButton btnEmail = new JButton("Email Directions"); //Initial Email Button
 					panel_1.add(btnEmail);
-					EmailSender email = new EmailSender() ;
+					EmailGUI newEmail = new EmailGUI();
 					
-					String from = "EraOfNavigation";
-			        String pass = "HonestMistakes";
-			        String[] to = { "ngigliotti@wpi.edu" };
-			        String subject = "Welcome to the Era of Navigation";
-			        String body = allText ;
-			        
 			        btnEmail.addActionListener(new ActionListener() {
 			        	public void actionPerformed(ActionEvent e) {
-			        		System.out.println("Emailing Directions");
-			        		email.sendFromGMail(from, pass, to, subject, body);
+			        		
+			        		newEmail.setVisible(true); //Opens EmailGUI Pop-Up
 			        	}
 			        }
 			        );
