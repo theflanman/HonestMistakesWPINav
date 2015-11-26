@@ -2,12 +2,10 @@ package main;
 
 import java.util.ArrayList;
 
-/** TODO write this
+/*
+ * This class contains methods regarding the StepByStep directions
  * 
- * @author Connor Flanigan
- *
  */
-
 public class StepByStep {
 	
 	private ArrayList<MapNode> pathNodes;
@@ -19,8 +17,6 @@ public class StepByStep {
 		this.stepNumber = 1;
 	}
 	
-	
-
 	/*
 	 * @ author Nick Gigliotti
 	 * 
@@ -119,7 +115,6 @@ public class StepByStep {
 		return stepList;
 	}
 	
-	public void advanceStep() { //not necessary for this revision 
+	public void advanceStep() { 
 	}
-	
 }
