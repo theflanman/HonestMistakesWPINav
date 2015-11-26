@@ -369,8 +369,7 @@ public class DevGUIFront extends JFrame {
 					// load localMap
 					DevGUIBack devGUIBack = new DevGUIBack(null);
 					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
-					LocalMap loadedLocalMap = devGUIBack.getLocalMap(); 
-//					local1 = devGUIBack.getLocalMap();
+					local1 = devGUIBack.getLocalMap();
 					String imagePath = SaveUtil.removeExtension(inputFileName);
 					imagePath = imagePath + ".jpg";
 										
@@ -385,7 +384,7 @@ public class DevGUIFront extends JFrame {
 
 					// set the points
 					Graphics g = mapPanel.getGraphics();
-					points = loadedLocalMap.getMapNodes();
+					points = local1.getMapNodes();
 					mapPanel.renderMapPublic(g, points);
 				}
 			}
@@ -403,9 +402,8 @@ public class DevGUIFront extends JFrame {
 					
 					// load localMap
 					DevGUIBack devGUIBack = new DevGUIBack(null);
-					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
-					LocalMap loadedLocalMap = devGUIBack.getLocalMap(); 
-//					local2 = loadedLocalMap;
+					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName); 
+					local2 = devGUIBack.getLocalMap();
 					String imagePath = SaveUtil.removeExtension(inputFileName);
 					imagePath = imagePath + ".jpg";
 										
@@ -420,7 +418,7 @@ public class DevGUIFront extends JFrame {
 
 					// set the points
 					Graphics g = mapPanel2.getGraphics();
-					points2 = loadedLocalMap.getMapNodes();
+					points2 = local2.getMapNodes();
 					mapPanel2.renderMapPublic(g, points2);
 				}
 			}
@@ -467,10 +465,14 @@ public class DevGUIFront extends JFrame {
 					try{
 						pic = ImageIO.read(inputFile);
 						//  picLabel.setIcon(new ImageIcon(pic));
+						String imagePath = SaveUtil.removeExtension(inputFile.getName());
+						imagePath = imagePath + ".jpg";
+						
 						mapPanel.setBgImage(pic);
 						points = new ArrayList<MapNode>();
 						Graphics g = mapPanel.getGraphics();
 						mapPanel.renderMapPublic(g, points);
+						local1 = new LocalMap(imagePath, points);
 
 					}
 					catch(IOException ex){
