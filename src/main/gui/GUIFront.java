@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -209,56 +211,126 @@ public class GUIFront extends JFrame {
 								.addComponent(lblSelectANode))
 							.addGap(70))))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(1126)
+					.addGap(1114)
 					.addComponent(panel_8, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel_9, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panel_9, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(12, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panel_9, 0, 0, Short.MAX_VALUE)
+						.addComponent(panel_8, GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+					.addGap(7)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_8, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_9, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addGap(34)
-								.addComponent(lblSelectANode)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-									.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-									.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(lblMapSelection)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-								.addGap(26)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-									.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-							.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(34)
+							.addComponent(lblSelectANode)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel_10, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblMapSelection)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+							.addGap(26)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_10, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		
 		textFieldEnd = new JTextField();
 		panel_9.add(textFieldEnd);
 		textFieldEnd.setColumns(10);
-		
 		textFieldStart = new JTextField();
 		panel_8.add(textFieldStart);
 		textFieldStart.setColumns(10);
+		//when you press enter after entering stuff in textfieldend
+		Action actionEnd = new AbstractAction()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("Enter was pressed");
+				if (textFieldStart.getText().equals("")){
+					//will need some way to alert the user that they need to enter a start location
+					System.out.println("Need to enter a valid start location");
+				} else if (!(textFieldStart.getText().equals(""))) {
+					String endString = textFieldEnd.getText();
+					boolean valid = false;
+					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
+						if(endString.equals(mapnode.getnodeName())){
+							endNode = mapnode;
+							System.out.println("This is the ending node");
+							backend.setStartNode(endNode);
+							if (!setStart) {
+								panel.startEndNodes.add(1, endNode);
+								System.out.println(panel.startEndNodes.size());					
+							} else {
+								panel.startEndNodes.set(1, endNode);
+							}
+							setEnd = true;
+							valid = true;
+						}
+					}
+					if (valid == false){
+						//tell user this entry is invalid
+						System.out.println("Invalid entry");
+					}
+				}
+			}	
+		};
+		//give end text field an action		
+		textFieldEnd.addActionListener(actionEnd);
+		//when you press enter after entering stuff in textfieldStart
+		Action actionStart = new AbstractAction()
+		{
+			@Override 
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("Enter was pressed");
+				if (textFieldStart.getText().equals("")){
+					//will need some way to alert the user that they need to enter a start location
+					System.out.println("Need to enter a valid start location");
+				} else if (!(textFieldStart.getText().equals(""))) {
+					String startString = textFieldStart.getText();
+					boolean valid = false;
+					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
+						if(startString.equals(mapnode.getnodeName())){
+							startNode = mapnode;
+							System.out.println("This is the starting node");
+							backend.setStartNode(startNode);
+							if (!setStart) {
+								panel.startEndNodes.add(0, startNode);
+								System.out.println(panel.startEndNodes.size());					
+							} else {
+								panel.startEndNodes.set(0, startNode);
+							}
+							setStart = true;
+							valid = true;
+						}
+					}
+					if (valid == false){
+						//tell user this entry is invalid
+						System.out.println("Invalid entry");
+					}
+				}	
+			}
+		};
+		//give start text field an action
+		textFieldStart.addActionListener(actionStart);
 		// Code for button - if it is pressed allow the program to draw the line
 		// on the map
 		JButton btnEmail_1 = new JButton("Email ");
@@ -531,12 +603,12 @@ public class GUIFront extends JFrame {
 			this.mapImage = map;
 			setOpaque(false);
 			startEndNodes = new ArrayList<MapNode>(); // Index 0: StartNode
-														// Index 1: EndNode
+																						// Index 1: EndNode
 			/**
 			 * @author Andrew Petit
 			 * @description added a enter action listener to allow users to press enter to allow search bar to function 
 			 */
-			addKeyListener(new KeyAdapter() {
+			/*addKeyListener(new KeyAdapter() {
 			@Override
 				public void keyPressed(KeyEvent e){
 					if (e.getKeyCode() == KeyEvent.VK_ENTER){
@@ -582,7 +654,7 @@ public class GUIFront extends JFrame {
 						}
 					}
 				}
-			});
+			});*/
 
 			/**
 			 * On mouse click, display the points which represent the start and
