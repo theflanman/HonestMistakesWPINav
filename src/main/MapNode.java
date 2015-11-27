@@ -21,7 +21,7 @@ public class MapNode implements Serializable{
 	private GlobalMap globalMap;
 	private LocalMap localMap;
 	private String nodeName;
-	//private Attributes attributes
+	private Attributes attributes;
 	
 	// default constructor
 	public MapNode(){}
@@ -39,6 +39,7 @@ public class MapNode implements Serializable{
 		gScore = -1;
 		hScore = -1;
 		cameFrom = null;
+		attributes = new Attributes();
 	}
 	
 	public void addNeighbor(MapNode node) {
@@ -196,6 +197,10 @@ public class MapNode implements Serializable{
 	}
 	public double getZFeet(){
 		return zFeet;
+	}
+	
+	public Attributes getAttributes() {
+		return attributes;
 	}
 
 }

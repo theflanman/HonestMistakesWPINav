@@ -1,4 +1,5 @@
 package main.gui;
+import main.Attributes;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.swing.ButtonGroup;
@@ -44,6 +46,7 @@ import main.MapNode;
 import main.util.Constants;
 import main.util.MapPanel;
 import main.util.SaveUtil;
+import main.Attributes.Types;
 
 // TODO address creation of an edge from one frame to the other...
 // TODO handle clicks on "Save Maps" where one or both panels don't have a map loaded.
@@ -72,7 +75,16 @@ public class DevGUIFront extends JFrame {
 	private boolean edgeStarted = false;
 	private boolean edgeRemovalStarted = false;
 	private boolean twoMapView = false;
-
+	private JTextField textFieldOfficialName;
+	
+	private Attributes defaultAttributes;
+	
+	/*public enum Type {
+		FOOD, OFFICE, CLASSROOM, WATERFOUNTAIN, BATHROOM, PARKING, WALKING, DOOR, ELEVATOR, LAB, OTHER
+	} */
+	
+	public String[] typeList = new String[] {"Food", "Office", "Classroom", "Waterfountain", "Bathroom", "Parking", "Walking", "Door", "Elevator", "Lab", "Other"};
+	
 	/**
 	 * Launch the application.
 	 */
@@ -120,232 +132,14 @@ public class DevGUIFront extends JFrame {
 
 		int threshold = 10; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
 
+		Attributes defaultAttributes = new Attributes();
+		defaultAttributes.setBikeable(false);
+		defaultAttributes.setHandicapped(true);
+		defaultAttributes.setOutside(false);
+		defaultAttributes.setPOI(false);
+		defaultAttributes.setStairs(false);
+		defaultAttributes.setType(Types.WALKING);
 		
-		// This is code that determines what needs to happen on each mouse click in the map panel.
-		
-		mapPanel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent me) {
-				Point offset = mapPanel.getLocationOnScreen();
-				if(rdbtnPlaceNode.isSelected()){
-					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
-					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
-					Point p = me.getLocationOnScreen();
-					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, local1); // make a new mapnode with those points
-					nodeCounter++;
-					Graphics g = mapPanel.getGraphics();
-					points.add(n);
-					xPosField.setText(""+n.getXPos());
-					yPosField.setText(""+n.getYPos());
-			//			zPosField.setText(""+n.getZPos());
-					//nodeNameField.setText(n.getnodeName());
-					lastClicked = n;
-					mapPanel.renderMapPublic(g, points);
-				} else if (rdbtnSelectNode.isSelected()){
-					edgeStarted = false;
-					edgeRemovalStarted = false;
-					for(MapNode n : points){
-						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-							xPosField.setText(""+n.getXPos());
-							yPosField.setText(""+n.getYPos());
-							//zPosField.setText(""+n.getZPos());
-							//nodeNameField.setText(n.getnodeName());
-							lastClicked = n;
-						}
-					}
-				}
-				else if(rdbtnMakeEdge.isSelected()) {
-					edgeRemovalStarted = false;
-					if(edgeStarted == false) {
-						for(MapNode n : points){
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								edgeStart = n;
-								edgeStarted = true;
-							}
-						}
-
-					}
-					else {
-						for(MapNode n : points) {
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								Graphics g = mapPanel.getGraphics();
-								edgeStarted = false;
-								n.addNeighbor(edgeStart);
-								edgeStart.addNeighbor(n);
-								mapPanel.renderMapPublic(g, points);
-							}
-						}
-					}
-				}
-				else if(rdbtnRemoveEdge.isSelected()) {
-					edgeStarted = false;
-					if(edgeRemovalStarted == false) {
-						for(MapNode n : points){
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								edgeRemove = n;
-								edgeRemovalStarted = true;
-							}
-						}
-
-					}
-					else {
-						for(MapNode n : points) {
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								Graphics g = mapPanel.getGraphics();
-								edgeRemovalStarted = false;
-								n.removeNeighbor(edgeRemove);
-								edgeRemove.removeNeighbor(n);
-								mapPanel.renderMapPublic(g, points);
-							}
-						}
-					}
-
-				}
-				else if(rdbtnRemoveNode.isSelected()) {
-					edgeStarted = false;
-					edgeRemovalStarted = false;
-					for(MapNode n : points){
-						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-							for(MapNode m : n.getNeighbors()) {
-							//	n.removeNeighbor(m);
-								m.removeNeighbor(n);
-							}
-							nodeToRemove = n;
-							
-
-						}
-					}
-					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
-					
-					points.remove(nodeToRemove);
-					Graphics g = mapPanel.getGraphics();
-					mapPanel.renderMapPublic(g, points);
-				}
-			}
-		}); 
-		mapPanel.setBackground(Color.WHITE);
-		
-		
-		// This is code for the second map panel.
-		
-		mapPanel2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent me) {
-//				xPosField.setText("I'm HERE");
-				Point offset = mapPanel2.getLocationOnScreen();
-				if(rdbtnPlaceNode.isSelected()){
-					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
-					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
-					Point p = me.getLocationOnScreen();
-					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, local2); // make a new mapnode with those points
-					nodeCounter++;
-					Graphics g = mapPanel2.getGraphics();
-					points2.add(n);
-					xPosField.setText(""+n.getXPos());
-					yPosField.setText(""+n.getYPos());
-			//		zPosField.setText(""+n.getZPos());
-					//nodeNameField.setText(n.getnodeName());
-					lastClicked = n;
-					mapPanel2.renderMapPublic(g, points2);
-				} else if (rdbtnSelectNode.isSelected()){
-					edgeStarted = false;
-					edgeRemovalStarted = false;
-					for(MapNode n : points2){
-						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-							xPosField.setText(""+n.getXPos());
-							yPosField.setText(""+n.getYPos());
-				//			zPosField.setText(""+n.getZPos());
-							//nodeNameField.setText(n.getnodeName());
-							lastClicked = n;
-						}
-					}
-				}
-				else if(rdbtnMakeEdge.isSelected()) {
-					edgeRemovalStarted = false;
-					if(edgeStarted == false) {
-						for(MapNode n : points2){
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								edgeStart = n;
-								edgeStarted = true;
-							}
-						}
-
-					}
-					else {
-						for(MapNode n : points2) {
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								Graphics g = mapPanel2.getGraphics();
-								edgeStarted = false;
-								n.addNeighbor(edgeStart);
-								edgeStart.addNeighbor(n);
-								mapPanel2.renderMapPublic(g, points2);
-							}
-						}
-					}
-				}
-				else if(rdbtnRemoveEdge.isSelected()) {
-					edgeStarted = false;
-					if(edgeRemovalStarted == false) {
-						for(MapNode n : points2){
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								edgeRemove = n;
-								edgeRemovalStarted = true;
-							}
-						}
-
-					}
-					else {
-						for(MapNode n : points2) {
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-								Graphics g = mapPanel2.getGraphics();
-								edgeRemovalStarted = false;
-								n.removeNeighbor(edgeRemove);
-								edgeRemove.removeNeighbor(n);
-								mapPanel2.renderMapPublic(g, points2);
-							}
-						}
-					}
-
-				}
-				else if(rdbtnRemoveNode.isSelected()) {
-					edgeStarted = false;
-					edgeRemovalStarted = false;
-					for(MapNode n : points2){
-						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-							for(MapNode m : n.getNeighbors()) {
-							//	n.removeNeighbor(m);
-								m.removeNeighbor(n);
-							}
-							nodeToRemove = n;
-							
-
-						}
-					}
-					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
-					
-					points2.remove(nodeToRemove);
-					Graphics g = mapPanel2.getGraphics();
-					mapPanel2.renderMapPublic(g, points2);
-				}
-			}
-		}); 
-		mapPanel2.setBackground(Color.WHITE);
 		
 
 
@@ -498,7 +292,7 @@ public class DevGUIFront extends JFrame {
 		// This is code for the panel showing information on the current selected node.
 		
 		JPanel nodeInfoPanel = new JPanel();
-		nodeInfoPanel.setBounds(920, 214, 294, 144);
+		nodeInfoPanel.setBounds(920, 203, 294, 136);
 		nodeInfoPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		nodeInfoPanel.setLayout(null);
 		
@@ -535,7 +329,7 @@ public class DevGUIFront extends JFrame {
 		nodeInfoPanel.add(zPosField);
 		zPosField.setColumns(10);
 
-		JButton btnMakeChanges = new JButton("Make Changes");
+		JButton btnMakeChanges = new JButton("Edit Node");
 		btnMakeChanges.setBounds(4, 106, 115, 25);
 		nodeInfoPanel.add(btnMakeChanges);
 		
@@ -598,6 +392,72 @@ public class DevGUIFront extends JFrame {
 		getContentPane().add(cursorPanel);
 		getContentPane().add(nodeInfoPanel);
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(920, 349, 301, 322);
+		getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Attributes");
+		lblNewLabel.setBounds(2, 2, 56, 16);
+		panel_1.add(lblNewLabel);
+		
+		JCheckBox chckbxBikeable = new JCheckBox("Bikeable");
+		chckbxBikeable.setBounds(8, 215, 113, 25);
+		panel_1.add(chckbxBikeable);
+		
+		JCheckBox chckbxHandicapped = new JCheckBox("Handicapped accessable");
+		chckbxHandicapped.setBounds(8, 242, 176, 25);
+		panel_1.add(chckbxHandicapped);
+		
+		JCheckBox chckbxOutside = new JCheckBox("Outside");
+		chckbxOutside.setBounds(150, 188, 113, 25);
+		panel_1.add(chckbxOutside);
+		
+		JCheckBox chckbxPOI = new JCheckBox("Point of interest");
+		chckbxPOI.setBounds(150, 215, 141, 25);
+		panel_1.add(chckbxPOI);
+		
+		JCheckBox chckbxStairs = new JCheckBox("Stairs");
+		chckbxStairs.setBounds(8, 188, 113, 25);
+		panel_1.add(chckbxStairs);
+		
+		JLabel lblNewLabel_2 = new JLabel("Name");
+		lblNewLabel_2.setBounds(12, 31, 56, 16);
+		panel_1.add(lblNewLabel_2);
+		
+		textFieldOfficialName = new JTextField();
+		textFieldOfficialName.setBounds(61, 28, 196, 22);
+		panel_1.add(textFieldOfficialName);
+		textFieldOfficialName.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("Aliases");
+		lblNewLabel_3.setBounds(12, 55, 56, 16);
+		panel_1.add(lblNewLabel_3);
+		
+		JTextArea txtrAliases = new JTextArea();
+		txtrAliases.setBounds(12, 73, 277, 68);
+		panel_1.add(txtrAliases);
+		txtrAliases.setLineWrap(true);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(268, 73, 21, 68);
+		panel_1.add(scrollBar);
+		
+		JComboBox typeBox = new JComboBox(Types.values());
+		//typeBox.setModel(new DefaultComboBoxModel(Type.values()));
+		typeBox.setMaximumRowCount(10);
+		typeBox.setBounds(12, 154, 204, 25);
+		panel_1.add(typeBox);
+		
+		typeBox.setSelectedIndex(-1);
+		
+		JButton btnEditName = new JButton("Edit Name");
+		btnEditName.setBounds(12, 276, 97, 25);
+		panel_1.add(btnEditName);
+		
+		JButton btnSetDfltAttr = new JButton("Set Default Attributes");
+		btnSetDfltAttr.setBounds(121, 276, 168, 25);
+		panel_1.add(btnSetDfltAttr);
 		JPanel panel2 = new JPanel();
 		panel2.setLocation(465, 10);
 	//	
@@ -635,5 +495,327 @@ public class DevGUIFront extends JFrame {
 				mntmSaveMap.setText("Save Map");
 			}
 		});
+		
+		btnSetDfltAttr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				defaultAttributes.setBikeable(chckbxBikeable.isSelected());
+				defaultAttributes.setStairs(chckbxStairs.isSelected());
+				defaultAttributes.setPOI(chckbxPOI.isSelected());
+				defaultAttributes.setHandicapped(chckbxHandicapped.isSelected());
+				defaultAttributes.setOutside(chckbxOutside.isSelected());
+				defaultAttributes.setType((Types) typeBox.getSelectedItem());
+			}
+		});
+		
+		btnEditName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(lastClicked != null) {
+					lastClicked.getAttributes().setOfficialName(textFieldOfficialName.getText());
+					String aliases[] = txtrAliases.getText().split("\\r?\\n");
+				    ArrayList<String>aliasesArray = new ArrayList<>(Arrays.asList(aliases)) ;
+				    lastClicked.getAttributes().setAliases(aliasesArray);
+				}
+			}
+		});
+		
+		chckbxStairs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(lastClicked != null) {
+					lastClicked.getAttributes().setStairs(chckbxStairs.isSelected());
+				}
+			}
+		});
+
+		chckbxBikeable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(lastClicked != null) {
+					lastClicked.getAttributes().setBikeable(chckbxBikeable.isSelected());
+				}
+			}
+		});
+		
+		chckbxPOI.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(lastClicked != null) {
+					lastClicked.getAttributes().setPOI(chckbxPOI.isSelected());
+				}
+			}
+		});
+		
+		chckbxOutside.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(lastClicked != null) {
+					lastClicked.getAttributes().setOutside(chckbxOutside.isSelected());
+				}
+			}
+		});
+		
+		chckbxHandicapped.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(lastClicked != null) {
+					lastClicked.getAttributes().setHandicapped(chckbxHandicapped.isSelected());
+				}
+			}
+		});
+		
+		// This is code that determines what needs to happen on each mouse click in the map panel.
+		
+		mapPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent me) {
+				Point offset = mapPanel.getLocationOnScreen();
+				if(rdbtnPlaceNode.isSelected()){
+					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
+					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
+					Point p = me.getLocationOnScreen();
+					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, local1); // make a new mapnode with those points
+					nodeCounter++;
+					Graphics g = mapPanel.getGraphics();
+					points.add(n);
+					xPosField.setText(""+n.getXPos());
+					yPosField.setText(""+n.getYPos());
+			//			zPosField.setText(""+n.getZPos());
+					//nodeNameField.setText(n.getnodeName());
+					setDefaultAttributes(n, defaultAttributes);
+					Attributes a = n.getAttributes();
+					typeBox.setSelectedItem(a.getType());
+					chckbxStairs.setSelected(a.isStairs());
+					chckbxHandicapped.setSelected(a.isHandicapped());
+					chckbxOutside.setSelected(a.isOutside());
+					chckbxPOI.setSelected(a.isPOI());
+					chckbxBikeable.setSelected(a.isBikeable());
+					textFieldOfficialName.setText("");
+					txtrAliases.setText("");
+					lastClicked = n;
+					mapPanel.renderMapPublic(g, points);
+				} else if (rdbtnSelectNode.isSelected()){
+					edgeStarted = false;
+					edgeRemovalStarted = false;
+					for(MapNode n : points){
+						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							xPosField.setText(""+n.getXPos());
+							yPosField.setText(""+n.getYPos());
+							//zPosField.setText(""+n.getZPos());
+							//nodeNameField.setText(n.getnodeName());
+							Attributes a = n.getAttributes();
+							typeBox.setSelectedItem(a.getType());
+							chckbxStairs.setSelected(a.isStairs());
+							chckbxHandicapped.setSelected(a.isHandicapped());
+							chckbxOutside.setSelected(a.isOutside());
+							chckbxPOI.setSelected(a.isPOI());
+							chckbxBikeable.setSelected(a.isBikeable());
+							txtrAliases.setText("");
+							for(String s : a.getAliases()) {
+								txtrAliases.append(s);
+								txtrAliases.append("\n");
+							}
+							textFieldOfficialName.setText(a.getOfficialName());
+							lastClicked = n;
+						}
+					}
+				}
+				else if(rdbtnMakeEdge.isSelected()) {
+					edgeRemovalStarted = false;
+					if(edgeStarted == false) {
+						for(MapNode n : points){
+							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								edgeStart = n;
+								edgeStarted = true;
+							}
+						}
+
+					}
+					else {
+						for(MapNode n : points) {
+							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								Graphics g = mapPanel.getGraphics();
+								edgeStarted = false;
+								n.addNeighbor(edgeStart);
+								edgeStart.addNeighbor(n);
+								mapPanel.renderMapPublic(g, points);
+							}
+						}
+					}
+				}
+				else if(rdbtnRemoveEdge.isSelected()) {
+					edgeStarted = false;
+					if(edgeRemovalStarted == false) {
+						for(MapNode n : points){
+							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								edgeRemove = n;
+								edgeRemovalStarted = true;
+							}
+						}
+
+					}
+					else {
+						for(MapNode n : points) {
+							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								Graphics g = mapPanel.getGraphics();
+								edgeRemovalStarted = false;
+								n.removeNeighbor(edgeRemove);
+								edgeRemove.removeNeighbor(n);
+								mapPanel.renderMapPublic(g, points);
+							}
+						}
+					}
+
+				}
+				else if(rdbtnRemoveNode.isSelected()) {
+					edgeStarted = false;
+					edgeRemovalStarted = false;
+					for(MapNode n : points){
+						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							for(MapNode m : n.getNeighbors()) {
+							//	n.removeNeighbor(m);
+								m.removeNeighbor(n);
+							}
+							nodeToRemove = n;
+							
+
+						}
+					}
+					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
+					
+					points.remove(nodeToRemove);
+					Graphics g = mapPanel.getGraphics();
+					mapPanel.renderMapPublic(g, points);
+				}
+			}
+		}); 
+		mapPanel.setBackground(Color.WHITE);
+		
+		
+		// This is code for the second map panel.
+		
+		mapPanel2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent me) {
+				Point offset = mapPanel2.getLocationOnScreen();
+				if(rdbtnPlaceNode.isSelected()){
+					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
+					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
+					Point p = me.getLocationOnScreen();
+					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, local2); // make a new mapnode with those points
+					nodeCounter++;
+					Graphics g = mapPanel2.getGraphics();
+					points2.add(n);
+					xPosField.setText(""+n.getXPos());
+					yPosField.setText(""+n.getYPos());
+			//		zPosField.setText(""+n.getZPos());
+					//nodeNameField.setText(n.getnodeName());
+					lastClicked = n;
+					mapPanel2.renderMapPublic(g, points2);
+				} else if (rdbtnSelectNode.isSelected()){
+					edgeStarted = false;
+					edgeRemovalStarted = false;
+					for(MapNode n : points2){
+						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							xPosField.setText(""+n.getXPos());
+							yPosField.setText(""+n.getYPos());
+				//			zPosField.setText(""+n.getZPos());
+							//nodeNameField.setText(n.getnodeName());
+							lastClicked = n;
+						}
+					}
+				}
+				else if(rdbtnMakeEdge.isSelected()) {
+					edgeRemovalStarted = false;
+					if(edgeStarted == false) {
+						for(MapNode n : points2){
+							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								edgeStart = n;
+								edgeStarted = true;
+							}
+						}
+
+					}
+					else {
+						for(MapNode n : points2) {
+							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								Graphics g = mapPanel2.getGraphics();
+								edgeStarted = false;
+								n.addNeighbor(edgeStart);
+								edgeStart.addNeighbor(n);
+								mapPanel2.renderMapPublic(g, points2);
+							}
+						}
+					}
+				}
+				else if(rdbtnRemoveEdge.isSelected()) {
+					edgeStarted = false;
+					if(edgeRemovalStarted == false) {
+						for(MapNode n : points2){
+							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								edgeRemove = n;
+								edgeRemovalStarted = true;
+							}
+						}
+
+					}
+					else {
+						for(MapNode n : points2) {
+							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+								Graphics g = mapPanel2.getGraphics();
+								edgeRemovalStarted = false;
+								n.removeNeighbor(edgeRemove);
+								edgeRemove.removeNeighbor(n);
+								mapPanel2.renderMapPublic(g, points2);
+							}
+						}
+					}
+
+				}
+				else if(rdbtnRemoveNode.isSelected()) {
+					edgeStarted = false;
+					edgeRemovalStarted = false;
+					for(MapNode n : points2){
+						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							for(MapNode m : n.getNeighbors()) {
+							//	n.removeNeighbor(m);
+								m.removeNeighbor(n);
+							}
+							nodeToRemove = n;
+							
+
+						}
+					}
+					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
+					
+					points2.remove(nodeToRemove);
+					Graphics g = mapPanel2.getGraphics();
+					mapPanel2.renderMapPublic(g, points2);
+				}
+			}
+		}); 
+		mapPanel2.setBackground(Color.WHITE);
 	}
+	
+	private void setDefaultAttributes(MapNode n, Attributes dfltA) {
+		Attributes a = n.getAttributes();
+		a.setStairs(dfltA.isStairs());
+		a.setPOI(dfltA.isPOI());
+		a.setBikeable(dfltA.isBikeable());
+		a.setHandicapped(dfltA.isHandicapped());
+		a.setOutside(dfltA.isOutside());
+		a.setType(dfltA.getType());
+	}
+	
+	
 }
