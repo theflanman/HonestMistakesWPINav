@@ -61,11 +61,13 @@ public class GUIFront extends JFrame {
 	public static boolean drawLine = false;
 	public static boolean removeLine = false;
 	public static boolean reset = false;
+	public static MapNode endNode = null;
+	public static MapNode startNode = null;
 	public static String allText = "";
 
 	private JPanel contentPane;
 	private DrawingPanel panel;
-	private JButton btnCalculateRoute, btnReset;
+	private JButton btnCalculateRoute, btnReset, btnEmail;
 	private JRadioButton rdbtnStartNode, rdbtnEndNode;
 	private JRadioButton rdbtnSHFloor1, rdbtnSHFloor2, rdbtnSHFloor3;
 	private JLabel lblDistance;
@@ -149,58 +151,93 @@ public class GUIFront extends JFrame {
 
 		JLabel lblMapSelection = new JLabel("Map Selection");
 		lblMapSelection.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		JPanel panel_7 = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addContainerGap()
-				.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+									.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
+								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(10)
+											.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
+										.addComponent(lblMapSelection)))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(18)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+											.addGap(18)
+											.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)))
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+									.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
+								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+									.addGap(60)
+									.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+									.addGap(44)))
+							.addContainerGap())
 						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(18)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(57).addGroup(gl_contentPane
-								.createParallelGroup(Alignment.LEADING).addComponent(lblSelectANode)
-								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-								.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addPreferredGap(ComponentPlacement.UNRELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_contentPane.createSequentialGroup().addGap(10)
-												.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
-										.addComponent(lblMapSelection))))
-				.addContainerGap()));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(11).addComponent(lblSelectANode)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60,
-												GroupLayout.PREFERRED_SIZE)
-								.addGap(11)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48,
-												GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-								.addComponent(lblMapSelection).addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
-								.addGap(38)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblSelectANode)
+							.addGap(76))))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(lblSelectANode)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+							.addComponent(lblMapSelection)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(39))
 						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE))
-				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		// Code for button - if it is pressed allow the program to draw the line
+		// on the map
+		JButton btnEmail_1 = new JButton("Email ");
+		panel_7.add(btnEmail_1);
+		btnEmail_1.setEnabled(false);
+		
+		btnEmail_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EmailGUI newEmail = new EmailGUI();
+				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
+				}
+			});
 
 		/*
 		 * Radio Buttons to change the currently loaded map data,
@@ -286,18 +323,23 @@ public class GUIFront extends JFrame {
 		btnReset.setEnabled(false);
 		panel_5.add(btnReset);
 
-		// Code for button - if it is pressed allow the program to draw the line
-		// on the map
+		
+		/**
+		 * @author Andrew Petit
+		 * @description Button that initates the drawing of a route on a map
+		 */
 		btnCalculateRoute = new JButton("Calculate Route");
 		btnCalculateRoute.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel_2.add(btnCalculateRoute);
 		btnCalculateRoute.setEnabled(false);
 		btnCalculateRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Speaker speaker = new Speaker(Constants.BUTTON_PATH);
-				speaker.play();
+				//Speaker speaker = new Speaker(Constants.BUTTON_PATH);
+				//speaker.play();
 				
 				if (btnCalculateRoute.isEnabled()) {
+					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
+					speaker.play();
 					System.out.println("About to run AStar");
 					backend.setPath(backend.runAStar());
 
@@ -320,37 +362,8 @@ public class GUIFront extends JFrame {
 					btnCalculateRoute.setEnabled(false);
 					btnReset.setEnabled(true);
 					
+					btnEmail_1.setEnabled(true);
 					
-					/*
-					 * @Author Nick Gigliotti
-					 * Email Directions Button
-					 * 
-					 */
-					JButton btnEmail = new JButton("Email Directions"); //Initial Email Button
-					panel_1.add(btnEmail);
-					
-					
-			        btnEmail.addActionListener(new ActionListener() {
-			        	public void actionPerformed(ActionEvent e) {
-			        		EmailGUI newEmail = new EmailGUI();
-			        		newEmail.setVisible(true); //Opens EmailGUI Pop-Up
-			        	}
-			        }
-			        );
-			        
-
-					/*
-					 * } else { btnCalculateRoute.setEnabled(true);
-					 * 
-					 * //if the line needs to be removed //going to need to add
-					 * a method here - to remove nodes from path
-					 * backend.removePath(); removeLine = true;
-					 * lblDistance.setText(backend.getDistance());
-					 * textArea1.setText("");
-					 * 
-					 * //change the name of button back to what it originally
-					 * was btnCalculateRoute.setText("Calculate Route"); }
-					 */
 				}
 			}
 		});
@@ -428,8 +441,8 @@ public class GUIFront extends JFrame {
 	}
 
 	/**
-	 * Resets all of the relevant information on the form and the background
-	 * information
+	 * @author Andrew Petit
+	 * @description Resets all of the relevant information on the form and the background information
 	 */
 	public void reset() {
 		rdbtnStartNode.setSelected(true); // part of a button group, only one
@@ -450,7 +463,7 @@ public class GUIFront extends JFrame {
 		textArea1.setText("");
 		backend.removePath();
 		btnReset.setEnabled(false);
-		btnCalculateRoute.setEnabled(true);
+		//btnEmail.setEnabled(false);
 		removeLine = true;
 	}
 
@@ -485,6 +498,34 @@ public class GUIFront extends JFrame {
 			setOpaque(false);
 			startEndNodes = new ArrayList<MapNode>(); // Index 0: StartNode
 														// Index 1: EndNode
+			/**
+			 * @author Andrew Petit
+			 * @description added a enter action listener to allow users to press enter to allow search bar to function 
+			 */
+			/*addKeyListener(new KeyAdapter() {
+			@Override
+				public void keyPressed(KeyEvent e){
+					if (e.getKeyCode() == KeyEvent.VK_ENTER){
+						System.out.println("Enter has been pressed");
+						if (textField2.getText().equals("")){
+							//will need some way to alert the user that they need to enter a value
+							System.out.println("Need to enter an end value");
+						} else {
+							//this will change to global map when Rayan finishes the conversions
+							String endString = textField2.getText();
+							for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
+								if (endString.equals(mapnode.getnodeName())){
+									startBtnNode = mapnode;
+								}
+							}
+						}
+						if (startNode.equals(null)){
+							//will need some way to alert the user that the location does not exist
+							System.out.println("Location is not valid");
+						}
+					}
+				}
+			});*/
 
 			/**
 			 * On mouse click, display the points which represent the start and
@@ -494,66 +535,38 @@ public class GUIFront extends JFrame {
 			addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent me) {
-					/*
-					 * Will work on later when user is able to select ANY
-					 * location // Only add new points if you haven't set an End
-					 * Node yet if(!setEnd){ Point clickedAt = me.getPoint();
-					 * 
-					 * // If you've set a start node already, set the end node
-					 * if(setStart){ setEnd = true; MapNode newNode = new
-					 * MapNode((double)clickedAt.x, (double)clickedAt.y, 0);
-					 * startEndNodes.add(newNode); backend.setEndNode(newNode);
-					 * btnCalculateRoute.setEnabled(true); // allow user to
-					 * calculate route } else { setStart = true; MapNode newNode
-					 * = new MapNode((double)clickedAt.x, (double)clickedAt.y,
-					 * 0); startEndNodes.add(newNode);
-					 * backend.setStartNode(newNode); }
-					 * 
-					 * // Prohibit any new points for now } else {
-					 * System.out.println("You've already selected two points");
-					 * } repaint(); }
-					 */
-
-					// figure out if there is a map node there, if so, set it as
+					// figure out where the closest map node is, set that node as a startnode
 					// the StartingNode
 					Point clickedAt = me.getPoint();
-					int clickRadius = 10; // clicks anywhere within a circle of radius 10
 					if (rdbtnStartNode.isSelected()) {
+						startNode = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
+							System.out.println("This is the starting node!");
+							backend.setStartNode(startNode);
+							// If this is the first value, add it at index 0
+							// else, set the first index
+							if (!setStart) {
+								startEndNodes.add(0, startNode);
+								System.out.println(startEndNodes.size());
+							} else {
+									startEndNodes.set(0, startNode);
+									}
 
-						for (MapNode n : localNodes) {
-							if ((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius)
-									&& (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)) {
-								System.out.println("This is the starting node!");
-								backend.setStartNode(n);
-								// If this is the first value, add it at index 0
-								// else, set the first index
-								if (!setStart) {
-									startEndNodes.add(0, n);
-									System.out.println(startEndNodes.size());
-								} else
-									startEndNodes.set(0, n);
-
-								setStart = true; // start node has been set at least once
-							}
-						}
+								setStart = true; // start node has been set at
+													// least once
 					} else { // rdbtnEndNode is selected
-
-						for (MapNode n : localNodes) {
-							if ((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius)
-									&& (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)) {
-								System.out.println("This is the ending node!");
-								backend.setEndNode(n);
-								btnCalculateRoute.setEnabled(true);
-
-								// If this is the first EndNode selection, add it at index 1 else, set the second index
-								if (!setEnd)
-									startEndNodes.add(1, n);
-								else
-									startEndNodes.set(1, n);
-
-								setEnd = true; // end node has been set at least once
+							endNode = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
+							System.out.println("This is the ending node!");
+							backend.setEndNode(endNode);
+							if (!setEnd){
+								startEndNodes.add(1, endNode);
+							} else {
+								startEndNodes.set(1, endNode);
 							}
-						}
+							setEnd = true; // end node has been set at least
+												// once
+							}
+					if (setEnd == true && setStart == true){
+						btnCalculateRoute.setEnabled(true);
 					}
 					repaint();
 				}
@@ -575,11 +588,6 @@ public class GUIFront extends JFrame {
 			// well start and end nodes if they have been set
 			graphics.drawImage(this.mapImage, 0, 0, this);
 			
-			graphics.setColor(Color.BLUE);
-			for (MapNode n : this.localNodes) {
-				graphics.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, 10, 10);
-			}
-			
 			// Sets the color of the start and end nodes to be different
 			graphics.setColor(Color.RED);
 			for (int i = 0; i < this.startEndNodes.size(); i++) {
@@ -591,24 +599,12 @@ public class GUIFront extends JFrame {
 					graphics.fillOval((int) this.startEndNodes.get(i).getXPos() - 5, (int) this.startEndNodes.get(i).getYPos() - 5, 10, 10);
 				}
 			}
-						
-			// working on adding the links between two nodes before hand - works, but will keep out for now
-			//ArrayList<MapNode> mapnodes = new ArrayList<MapNode>();
-			//for(MapNode neighbors : this.localNodes){
-			//	mapnodes.add(this.neighbors);
-			//}
-		    /*for(MapNode mapnode : mapnodes){
-	        	for(MapNode mapnode2 : mapnode.getNeighbors()){
-	        		Graphics2D g3 = (Graphics2D) g;
-	        		g3.setStroke(new BasicStroke(2));
-	        		g3.setColor(Color.gray);
-	        		g3.drawLine((int)mapnode.getXPos(), (int) mapnode.getYPos(), (int) mapnode2.getXPos(), (int) mapnode2.getYPos());
-	        		mapnode2.deleteNeighborLink(mapnode);
-	        		}
-	        	mapnodes.remove(mapnode);
-	        	repaint();
-	        }*/
 
+			/**
+			 * @author Andrew Petit 
+			 * @description initiates drawing of the path on the screen from the coordinates of the path 
+			 * --if removeline is true redraws line to be white to remove the line from the screen
+			 */
 			// essentially draws the line on the screen 
 			if (GUIFront.drawLine = true) {
 				for (int i = 0; i < backend.getCoordinates().size() - 1; i++) {

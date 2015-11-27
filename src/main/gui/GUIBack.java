@@ -127,6 +127,30 @@ public class GUIBack implements Serializable {
 	public void removePath() {
 		this.path.clear();
 	}
+	
+	
+	/**
+	 * @author Andrew Petit
+	 * @description Essentially enables a user to press anywhere on the map
+	 * @param xPos
+	 * @param yPos
+	 * @return
+	 */
+	public MapNode findNearestNode(double xPos, double yPos){
+		MapNode start = new MapNode(xPos, yPos, 0);
+		MapNode temp = null;
+		//need to initialize with an extremely large unobtainable number - or find a better solution
+		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0;
+		for (MapNode mapnode : this.localMap.getMapNodes()){
+			 if (distance > (double) Math.sqrt((Math.pow(xPos - mapnode.getXPos(), 2)) + (Math.pow(yPos - mapnode.getYPos(), 2)))){
+				 distance = (double) Math.sqrt((Math.pow(xPos - mapnode.getXPos(), 2)) + (Math.pow(yPos - mapnode.getYPos(), 2)));
+				 temp = mapnode;
+			 }
+		}
+		start.addNeighbor(temp);
+		temp.addNeighbor(start);
+		return start;
+	}
 
 	public LocalMap getLocalMap() {
 		return localMap;
