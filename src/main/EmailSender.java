@@ -15,12 +15,12 @@ public class EmailSender {
 	/*
 	 * @author Nick Gigliotti
 	 */
-    public void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
+    public void sendFromGMail(String fromEmail, String pass, String[] toEmail, String subject, String body) {
         Properties props = System.getProperties();
         String host = "smtp.gmail.com";
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
-        props.put("mail.smtp.user", from);
+        props.put("mail.smtp.user", fromEmail);
         props.put("mail.smtp.password", pass);
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", "true");
@@ -29,12 +29,12 @@ public class EmailSender {
         MimeMessage message = new MimeMessage(session);
 
         try {
-            message.setFrom(new InternetAddress(from));
-            InternetAddress[] toAddress = new InternetAddress[to.length];
+            message.setFrom(new InternetAddress(fromEmail));
+            InternetAddress[] toAddress = new InternetAddress[toEmail.length];
 
             // To get the array of addresses
-            for( int i = 0; i < to.length; i++ ) {
-                toAddress[i] = new InternetAddress(to[i]);
+            for( int i = 0; i < toEmail.length; i++ ) {
+                toAddress[i] = new InternetAddress(toEmail[i]);
             }
 
             for( int i = 0; i < toAddress.length; i++) {
@@ -44,7 +44,7 @@ public class EmailSender {
             message.setSubject(subject);
             message.setText(body);
             Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, pass);
+            transport.connect(host, fromEmail, pass);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
             System.out.println("Email Sent Successfuly");

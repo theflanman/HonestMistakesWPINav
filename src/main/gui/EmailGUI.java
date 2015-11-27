@@ -29,9 +29,9 @@ public class EmailGUI extends JDialog {
 
 	EmailSender email = new EmailSender();
 
-	String from = "EraOfNavigation";
+	String fromEmail = "EraOfNavigation";
 	String pass = "HonestMistakes";
-	String[] to = { "" };
+	String[] toEmail = { "" };
 	String subject = "Welcome to the Era of Navigation";
 	String body = GUIFront.allText;
 
@@ -104,9 +104,9 @@ public class EmailGUI extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 					System.out.println("Emailing Directions");
 					body = txtBody.getText();
-					to[0] = txtTo.getText();
+					toEmail[0] = txtTo.getText();
 					subject = txtSubject.getText();
-					email.sendFromGMail(from, pass, to, subject, body);
+					email.sendFromGMail(fromEmail, pass, toEmail, subject, body);
 					EmailGUI.this.setVisible(false);
 				}
 			});
