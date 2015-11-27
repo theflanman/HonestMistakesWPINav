@@ -10,6 +10,8 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -74,6 +76,8 @@ public class GUIFront extends JFrame {
 	private JTextArea textArea1;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private JTextField textFieldStart;
+	private JTextField textFieldEnd;
 	
 
 	/**
@@ -153,79 +157,108 @@ public class GUIFront extends JFrame {
 		lblMapSelection.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		
 		JPanel panel_7 = new JPanel();
+		
+		JPanel panel_8 = new JPanel();
+		
+		JPanel panel_9 = new JPanel();
+		
+		JPanel panel_10 = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-									.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
-								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(73)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+								.addGap(41))
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+									.addGroup(gl_contentPane.createSequentialGroup()
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 										.addGroup(gl_contentPane.createSequentialGroup()
-											.addGap(10)
-											.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
-										.addComponent(lblMapSelection)))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(18)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.UNRELATED)
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addGroup(gl_contentPane.createSequentialGroup()
+													.addGap(10)
+													.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
+												.addComponent(lblMapSelection)))
 										.addGroup(gl_contentPane.createSequentialGroup()
-											.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
 											.addGap(18)
-											.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)))
-									.addPreferredGap(ComponentPlacement.RELATED))
-								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-									.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-									.addGap(60)
-									.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
-									.addGap(44)))
-							.addContainerGap())
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblSelectANode)
-							.addGap(76))))
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)
+												.addGroup(gl_contentPane.createSequentialGroup()
+													.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+													.addGap(18)
+													.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))))
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))))
+								.addContainerGap()))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(87)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(panel_10, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblSelectANode))
+							.addGap(70))))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(1126)
+					.addComponent(panel_8, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_9, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(12, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_8, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_9, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(34)
+								.addComponent(lblSelectANode)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+									.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+									.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(lblMapSelection)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+								.addGap(26)
+								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+									.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(lblSelectANode)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-							.addComponent(lblMapSelection)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(39))
-						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE))
+							.addComponent(panel_10, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
+		
+		textFieldEnd = new JTextField();
+		panel_9.add(textFieldEnd);
+		textFieldEnd.setColumns(10);
+		
+		textFieldStart = new JTextField();
+		panel_8.add(textFieldStart);
+		textFieldStart.setColumns(10);
 		// Code for button - if it is pressed allow the program to draw the line
 		// on the map
 		JButton btnEmail_1 = new JButton("Email ");
@@ -475,6 +508,7 @@ public class GUIFront extends JFrame {
 	 * 
 	 * @author Trevor
 	 */
+	
 	class DrawingPanel extends JPanel {
 
 		private static final long serialVersionUID = 1L;
@@ -491,7 +525,7 @@ public class GUIFront extends JFrame {
 		 * @param map
 		 *            The map image for the current LocalMap
 		 */
-		public DrawingPanel(ArrayList<MapNode> nodes, Image map, Dimension size) {
+		public DrawingPanel(ArrayList<MapNode> nodes, Image map, Dimension size){
 			setBorder(BorderFactory.createLineBorder(Color.black));
 			this.localNodes = nodes;
 			this.mapImage = map;
@@ -502,30 +536,53 @@ public class GUIFront extends JFrame {
 			 * @author Andrew Petit
 			 * @description added a enter action listener to allow users to press enter to allow search bar to function 
 			 */
-			/*addKeyListener(new KeyAdapter() {
+			addKeyListener(new KeyAdapter() {
 			@Override
 				public void keyPressed(KeyEvent e){
 					if (e.getKeyCode() == KeyEvent.VK_ENTER){
 						System.out.println("Enter has been pressed");
-						if (textField2.getText().equals("")){
+						if (textFieldStart.getText().equals("") || textFieldEnd.getText().equals("")){
 							//will need some way to alert the user that they need to enter a value
 							System.out.println("Need to enter an end value");
 						} else {
 							//this will change to global map when Rayan finishes the conversions
-							String endString = textField2.getText();
+							String startString = textFieldStart.getText();
+							String endString = textFieldEnd.getText();
 							for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
+								if (startString.equals(mapnode.getnodeName())){
+									startNode = mapnode;
+									System.out.println("This is the starting node");
+									backend.setStartNode(startNode);
+									if (!setStart) {
+										startEndNodes.add(0, startNode);
+										System.out.println(startEndNodes.size());
+										} else {
+											startEndNodes.set(0, startNode);
+											}
+									setStart = true; // start node has been set at
+														// least once
+									}
 								if (endString.equals(mapnode.getnodeName())){
-									startBtnNode = mapnode;
+									endNode = mapnode;
+									System.out.println("This is the ending node");
+									backend.setEndNode(endNode);
+									if (!setEnd) {
+										startEndNodes.add(1, endNode);
+										System.out.println(startEndNodes.size());
+									} else {
+										startEndNodes.set(0, endNode);
+									}
+									setEnd = true;
 								}
 							}
 						}
-						if (startNode.equals(null)){
+						if (startNode.equals(null) || endNode.equals(null)){
 							//will need some way to alert the user that the location does not exist
-							System.out.println("Location is not valid");
+							System.out.println("Location(s) is not valid");
 						}
 					}
 				}
-			});*/
+			});
 
 			/**
 			 * On mouse click, display the points which represent the start and
