@@ -151,6 +151,20 @@ public class GUIBack implements Serializable {
 		temp.addNeighbor(start);
 		return start;
 	}
+	
+	public MapNode findNearestAttributedNode(String nodeAttribute, MapNode startNode){
+		MapNode temp = null;
+		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0;
+		for (MapNode mapnode : this.localMap.getMapNodes()){
+			if (mapnode.getAttributes().getType().toString().equals(nodeAttribute)){
+				 if (distance > (double) Math.sqrt((Math.pow(startNode.getXPos() - mapnode.getXPos(), 2)) + (Math.pow(startNode.getYPos() - mapnode.getYPos(), 2)))){
+					 distance = (double) Math.sqrt((Math.pow(startNode.getXPos() - mapnode.getXPos(), 2)) + (Math.pow(startNode.getYPos() - mapnode.getYPos(), 2)));
+					 temp = mapnode;
+				 }
+			}
+		}
+		return temp;
+	}
 
 	public LocalMap getLocalMap() {
 		return localMap;

@@ -273,12 +273,14 @@ public class GUIFront extends JFrame {
 				} else if (!(textFieldEnd.getText().equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
 					String endString = textFieldEnd.getText();
 					boolean valid = false;
+					boolean typeUnfound = true;
+					MapNode node = null;
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
 						if(endString.equals(mapnode.getAttributes().getOfficialName())){
 							endNode = mapnode;
 							System.out.println("This is the ending node");
-							backend.setStartNode(endNode);
-							if (!setStart) {
+							backend.setEndNode(endNode);
+							if (!setEnd) {
 								panel.startEndNodes.add(1, endNode);
 								System.out.println(panel.startEndNodes.size());					
 							} else {
@@ -286,12 +288,37 @@ public class GUIFront extends JFrame {
 							}
 							setEnd = true;
 							valid = true;
-						}
+							typeUnfound = false;
+						} 
+					
 					}
-					if (valid == false){
+					if (node.getAttributes().getPossibleEntries().containsKey(endString)){
+						String findNearestThing = node.getAttributes().getPossibleEntries().get(endString);
+						if(startNode != null){
+							node = backend.findNearestAttributedNode(findNearestThing, startNode);
+							if (node != null){
+								endNode = node;
+								System.out.println("This is the ending node!");
+								backend.setEndNode(endNode);
+								if (!setEnd) {
+									panel.startEndNodes.add(1, endNode);
+									System.out.println(panel.startEndNodes.size());					
+								} else {
+									panel.startEndNodes.set(1, endNode);
+								}
+								setEnd = true;
+								valid = true;
+								typeUnfound = false;
+							}
+						}
+					} else if (valid == false){
 						//tell user this entry is invalid
 						System.out.println("Invalid entry");
+					} else if (typeUnfound = true){
+						//tell user no node can be found with that type on the local map
+						System.out.println("Invalid type entered");
 					}
+					
 				}
 			}	
 		};
@@ -607,57 +634,6 @@ public class GUIFront extends JFrame {
 			setOpaque(false);
 			startEndNodes = new ArrayList<MapNode>(); // Index 0: StartNode
 																						// Index 1: EndNode
-			/**
-			 * @author Andrew Petit
-			 * @description added a enter action listener to allow users to press enter to allow search bar to function 
-			 */
-			/*addKeyListener(new KeyAdapter() {
-			@Override
-				public void keyPressed(KeyEvent e){
-					if (e.getKeyCode() == KeyEvent.VK_ENTER){
-						System.out.println("Enter has been pressed");
-						if (textFieldStart.getText().equals("") || textFieldEnd.getText().equals("")){
-							//will need some way to alert the user that they need to enter a value
-							System.out.println("Need to enter an end value");
-						} else {
-							//this will change to global map when Rayan finishes the conversions
-							String startString = textFieldStart.getText();
-							String endString = textFieldEnd.getText();
-							for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
-								if (startString.equals(mapnode.getnodeName())){
-									startNode = mapnode;
-									System.out.println("This is the starting node");
-									backend.setStartNode(startNode);
-									if (!setStart) {
-										startEndNodes.add(0, startNode);
-										System.out.println(startEndNodes.size());
-										} else {
-											startEndNodes.set(0, startNode);
-											}
-									setStart = true; // start node has been set at
-														// least once
-									}
-								if (endString.equals(mapnode.getnodeName())){
-									endNode = mapnode;
-									System.out.println("This is the ending node");
-									backend.setEndNode(endNode);
-									if (!setEnd) {
-										startEndNodes.add(1, endNode);
-										System.out.println(startEndNodes.size());
-									} else {
-										startEndNodes.set(0, endNode);
-									}
-									setEnd = true;
-								}
-							}
-						}
-						if (startNode.equals(null) || endNode.equals(null)){
-							//will need some way to alert the user that the location does not exist
-							System.out.println("Location(s) is not valid");
-						}
-					}
-				}
-			});*/
 
 			/**
 			 * On mouse click, display the points which represent the start and
