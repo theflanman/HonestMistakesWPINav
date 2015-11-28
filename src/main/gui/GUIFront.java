@@ -279,7 +279,8 @@ public class GUIFront extends JFrame {
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
 						//this follows a similar pattern to how the original nodes are set with the radio buttons
-						if(endString.equals(mapnode.getAttributes().getOfficialName())){
+						if(endString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(endString)){
+							//if endstring is the official name or one of a few different accepted aliases we will allow the end node to be placed
 							endNode = mapnode;
 							System.out.println("This is the ending node");
 							backend.setEndNode(endNode);
@@ -372,7 +373,8 @@ public class GUIFront extends JFrame {
 					String startString = textFieldStart.getText();
 					boolean valid = false;
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
-						if(startString.equals(mapnode.getAttributes().getOfficialName())){
+						if(startString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(startString)){
+							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 							startNode = mapnode; //set the startNode in a similar way that is done when using radio buttons refer to drawing pannel mouse click
 							System.out.println("This is the starting node");
 							backend.setStartNode(startNode);
