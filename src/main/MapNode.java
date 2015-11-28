@@ -40,6 +40,7 @@ public class MapNode implements Serializable{
 		hScore = -1;
 		cameFrom = null;
 		attributes = new Attributes();
+		
 	}
 	
 	public void addNeighbor(MapNode node) {
@@ -201,6 +202,16 @@ public class MapNode implements Serializable{
 	
 	public Attributes getAttributes() {
 		return attributes;
+	}
+	
+	public void setDefaultAttributes(Attributes dfltA) {
+		Attributes a = this.getAttributes();
+		a.setStairs(dfltA.isStairs());
+		a.setPOI(dfltA.isPOI());
+		a.setBikeable(dfltA.isBikeable());
+		a.setHandicapped(dfltA.isHandicapped());
+		a.setOutside(dfltA.isOutside());
+		a.setType(dfltA.getType());
 	}
 
 }
