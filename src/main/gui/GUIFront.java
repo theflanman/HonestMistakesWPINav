@@ -298,8 +298,9 @@ public class GUIFront extends JFrame {
 					if (attribute.getPossibleEntries().containsKey(endString)){ //check if the entry in the text field is an attribute not an official name
 						String findNearestThing = attribute.getPossibleEntries().get(endString);
 						if(startNode != null){ //if there is no valid start node, this cannot be done - why? because you need a valid start node to find the closest node with the given attribute
+							valid = true;
 							MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
-							if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
+							if (node != null){ //if no node was found, you should not place a node on the map otherwise do it 
 								endNode = node;
 								System.out.println("This is the ending node!");
 								backend.setEndNode(endNode);
@@ -310,21 +311,50 @@ public class GUIFront extends JFrame {
 									panel.startEndNodes.set(1, endNode);
 								}
 								setEnd = true;
-								valid = true;
 								typeUnfound = false;
 								btnCalculateRoute.setEnabled(true);
+								}
+							} else if(!(textFieldStart.getText().equals(""))){ //if there is something entered in the start field as well as the end field we can go ahead and place both at the same time...
+								String startString = textFieldStart.getText();
+								for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+									if(startString.equals(mapnode.getAttributes().getOfficialName())){
+										startNode = mapnode; //set the startNode in a similar way that is done when using radio buttons refer to drawing pannel mouse click
+										System.out.println("This is the starting node");
+										backend.setStartNode(startNode);
+										if (!setStart) {
+											panel.startEndNodes.add(0, startNode);
+											System.out.println(panel.startEndNodes.size());					
+										} else {
+											panel.startEndNodes.set(0, startNode);
+										}
+										setStart = true;
+									}
+								}
+								if (startNode != null){ //make sure that the startNode value is still not null, otherwise this won't work if it is
+									MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
+									if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
+										endNode = node;
+										System.out.println("This is the ending node!");
+										backend.setEndNode(endNode);
+										if (!setEnd) {
+											panel.startEndNodes.add(1, endNode);
+											System.out.println(panel.startEndNodes.size());					
+										} else {
+											panel.startEndNodes.set(1, endNode);
+										}
+										setEnd = true;
+										btnCalculateRoute.setEnabled(true);
+										valid = true;
+									}
+								}
 							}
 						}
-					} else if (valid == false){
-						//tell user this entry is invalid
-						System.out.println("Invalid entry");
-					} else if (typeUnfound == true){
-						//tell user no node can be found with that type on the local map
-						System.out.println("Invalid type entered");
-					}
-					
+						if (valid == false){
+							//tell user this entry is invalid
+							System.out.println("Invalid entry");
+						}
 				}
-			}	
+			}
 		};
 		//give end text field an action		
 		textFieldEnd.addActionListener(actionEnd);
