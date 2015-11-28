@@ -29,6 +29,7 @@ public class MapNode implements Serializable{
 		zPos = newZ;
 		
 		neighbors = new ArrayList<MapNode>();
+		attributes = new Attributes();
 		fScore = -1;
 		gScore = -1;
 		hScore = -1;

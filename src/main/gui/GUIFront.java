@@ -252,7 +252,7 @@ public class GUIFront extends JFrame {
 		);
 		/**
 		 * @author Andrew Petit 
-		 * @description following textfields and actions are needed in order to hava a search bar
+		 * @description following textfields and actions are needed in order to have a working search bar
 		 */
 		textFieldEnd = new JTextField();
 		panel_9.add(textFieldEnd);
@@ -267,15 +267,18 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("Enter was pressed");
+				//if the user presses enter without having entered anything in this box
 				if (textFieldEnd.getText().equals("")){
 					//will need some way to alert the user that they need to enter an end location
 					System.out.println("Need to enter a valid start location");
 				} else if (!(textFieldEnd.getText().equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
-					String endString = textFieldEnd.getText();
+					String endString = textFieldEnd.getText(); //entered text = endString constant
 					boolean valid = false;
 					boolean typeUnfound = true;
-					MapNode node = null;
+					Attributes attribute = new Attributes(); //will most likely need some other way of obtaining this information
+					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
+						//this follows a similar pattern to how the original nodes are set with the radio buttons
 						if(endString.equals(mapnode.getAttributes().getOfficialName())){
 							endNode = mapnode;
 							System.out.println("This is the ending node");
@@ -290,13 +293,13 @@ public class GUIFront extends JFrame {
 							valid = true;
 							typeUnfound = false;
 						} 
-					
 					}
-					if (node.getAttributes().getPossibleEntries().containsKey(endString)){
-						String findNearestThing = node.getAttributes().getPossibleEntries().get(endString);
-						if(startNode != null){
-							node = backend.findNearestAttributedNode(findNearestThing, startNode);
-							if (node != null){
+					
+					if (attribute.getPossibleEntries().containsKey(endString)){ //check if the entry in the text field is an attribute not an official name
+						String findNearestThing = attribute.getPossibleEntries().get(endString);
+						if(startNode != null){ //if there is no valid start node, this cannot be done - why? because you need a valid start node to find the closest node with the given attribute
+							MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
+							if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
 								endNode = node;
 								System.out.println("This is the ending node!");
 								backend.setEndNode(endNode);
@@ -309,12 +312,13 @@ public class GUIFront extends JFrame {
 								setEnd = true;
 								valid = true;
 								typeUnfound = false;
+								btnCalculateRoute.setEnabled(true);
 							}
 						}
 					} else if (valid == false){
 						//tell user this entry is invalid
 						System.out.println("Invalid entry");
-					} else if (typeUnfound = true){
+					} else if (typeUnfound == true){
 						//tell user no node can be found with that type on the local map
 						System.out.println("Invalid type entered");
 					}
@@ -337,9 +341,9 @@ public class GUIFront extends JFrame {
 				} else if (!(textFieldStart.getText().equals(""))) {//if there is something entered check if the name is valid and then basically add the start node
 					String startString = textFieldStart.getText();
 					boolean valid = false;
-					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
+					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 						if(startString.equals(mapnode.getAttributes().getOfficialName())){
-							startNode = mapnode;
+							startNode = mapnode; //set the startNode in a similar way that is done when using radio buttons refer to drawing pannel mouse click
 							System.out.println("This is the starting node");
 							backend.setStartNode(startNode);
 							if (!setStart) {
@@ -365,8 +369,8 @@ public class GUIFront extends JFrame {
 		// on the map
 		JButton btnEmail_1 = new JButton("Email ");
 		panel_7.add(btnEmail_1);
-		btnEmail_1.setEnabled(false);
-		
+		btnEmail_1.setEnabled(false); 
+		//This needs to be outside of the other action listener or it will cause problems
 		btnEmail_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EmailGUI newEmail = new EmailGUI();
@@ -497,7 +501,7 @@ public class GUIFront extends JFrame {
 					btnCalculateRoute.setEnabled(false);
 					btnReset.setEnabled(true);
 					
-					btnEmail_1.setEnabled(true);
+					btnEmail_1.setEnabled(true); //this is where email button should be enabled
 					
 				}
 			}
@@ -598,7 +602,7 @@ public class GUIFront extends JFrame {
 		textArea1.setText("");
 		backend.removePath();
 		btnReset.setEnabled(false);
-		//btnEmail.setEnabled(false);
+		//btnEmail.setEnabled(false); -- for some reason this does not work -- will be looking into...
 		removeLine = true;
 	}
 

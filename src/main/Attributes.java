@@ -1,8 +1,9 @@
 package main;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.Serializable;
 
-public class Attributes {
+public class Attributes implements Serializable {
 	HashMap<String, String> possibleEntries;
 	String officialName;
 	ArrayList<String> aliases = new ArrayList<String>();
@@ -15,8 +16,7 @@ public class Attributes {
 		foodLocation, office, classRoom, waterFountain, bathRoom, parking, walking, door, elevator, laboratory, other
 		}
 	LocationType type;
-	public Attributes(String officialName, ArrayList<String> aliases, boolean isOutside, boolean isBikeable,
-			boolean isHandicapped, boolean isStairs, boolean isPOI) {
+	public Attributes() {
 		super();
 		this.officialName = officialName;
 		this.aliases = aliases;
