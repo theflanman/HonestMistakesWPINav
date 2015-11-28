@@ -81,7 +81,6 @@ public class DevGUIFront extends JFrame {
 				try {
 					DevGUIFront frame = new DevGUIFront();
 					frame.setVisible(true);
-					//frame.addKeyListener(new KeyChecker());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
