@@ -250,7 +250,10 @@ public class GUIFront extends JFrame {
 						.addComponent(panel_10, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		
+		/**
+		 * @author Andrew Petit 
+		 * @description following textfields and actions are needed in order to hava a search bar
+		 */
 		textFieldEnd = new JTextField();
 		panel_9.add(textFieldEnd);
 		textFieldEnd.setColumns(10);
@@ -264,14 +267,14 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				System.out.println("Enter was pressed");
-				if (textFieldStart.getText().equals("")){
-					//will need some way to alert the user that they need to enter a start location
+				if (textFieldEnd.getText().equals("")){
+					//will need some way to alert the user that they need to enter an end location
 					System.out.println("Need to enter a valid start location");
-				} else if (!(textFieldStart.getText().equals(""))) {
+				} else if (!(textFieldEnd.getText().equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
 					String endString = textFieldEnd.getText();
 					boolean valid = false;
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
-						if(endString.equals(mapnode.getnodeName())){
+						if(endString.equals(mapnode.getAttributes().getOfficialName())){
 							endNode = mapnode;
 							System.out.println("This is the ending node");
 							backend.setStartNode(endNode);
@@ -304,11 +307,11 @@ public class GUIFront extends JFrame {
 				if (textFieldStart.getText().equals("")){
 					//will need some way to alert the user that they need to enter a start location
 					System.out.println("Need to enter a valid start location");
-				} else if (!(textFieldStart.getText().equals(""))) {
+				} else if (!(textFieldStart.getText().equals(""))) {//if there is something entered check if the name is valid and then basically add the start node
 					String startString = textFieldStart.getText();
 					boolean valid = false;
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
-						if(startString.equals(mapnode.getnodeName())){
+						if(startString.equals(mapnode.getAttributes().getOfficialName())){
 							startNode = mapnode;
 							System.out.println("This is the starting node");
 							backend.setStartNode(startNode);
