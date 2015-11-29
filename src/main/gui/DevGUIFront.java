@@ -119,6 +119,7 @@ public class DevGUIFront extends JFrame {
 		JRadioButton rdbtnPlaceNode = new JRadioButton("Place Node");
 		JRadioButton rdbtnMakeEdge = new JRadioButton("Make Edge");
 		JMenuBar menuBar = new JMenuBar();
+		JButton linearize = new JButton("make it a nice line"); //someone probably wants this to look less shit
 		setJMenuBar(menuBar);
 
 
@@ -275,7 +276,68 @@ public class DevGUIFront extends JFrame {
 					points.remove(nodeToRemove);
 					Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points);
+				} else if (linearize.isSelected()) {
+					
+					//so another branch has the multiple selection functionality right now, so I'm just gonna assume that it's an
+					//ArrayList of mapNodes and modify the nodes which are selected
+					ArrayList<MapNode> selectedPoints = new ArrayList<MapNode>();  //just to avoid errors
+					
+					linearSmooth(selectedPoints);
+					
 				}
+			}
+
+			private void linearSmooth(ArrayList<MapNode> selectedPoints) {
+				
+				//step zero: find the pair of nodes with the largest distance between them
+				
+				double dist = -1;
+				MapNode nodeA = null;
+				MapNode nodeB = null;
+				
+				for (int i = 0; i <= selectedPoints.size(); i++) {
+					for (int j = i + 1; j < selectedPoints.size(); j++) {
+						
+						MapNode tempNodeA = selectedPoints.get(i);
+						MapNode tempNodeB = selectedPoints.get(j);
+						
+						if (dist > tempNodeA.aStarHeuristic(tempNodeB) || dist == -1) {
+							nodeA = tempNodeA;
+							nodeB = tempNodeB;
+						}
+						
+					}
+				}
+				
+				//steps one and last: convert coordinates to new frame where the first node is on the origin and the last node is on the positive x axis
+
+				double deltaX = nodeA.getXPos();
+				double deltaY = nodeA.getYPos();
+				double theta = Math.atan2(nodeB.getYPos() - deltaY, nodeB.getXPos() -  deltaX);
+				
+				for (MapNode node : selectedPoints) {
+					node.setXPos(node.getXPos() - deltaX);
+					node.setYPos(node.getYPos() - deltaY);
+					
+					node.setXPos(node.getXPos()*Math.cos(theta) - node.getYPos()*Math.sin(theta));
+					node.setYPos(node.getXPos()*Math.sin(theta) + node.getYPos()*Math.cos(theta));
+					
+				}
+				
+				//step two: set the y value of all nodes to 0 (to translate them to the nearest point on the line between the first and last points
+				for (MapNode node : selectedPoints) {
+					node.setYPos(0.0);
+				}
+				
+				for (MapNode node : selectedPoints) {
+					node.setXPos(node.getXPos() + deltaX);
+					node.setYPos(node.getYPos() + deltaY);
+					
+					node.setXPos(node.getXPos()*Math.cos(theta) + node.getYPos()*Math.sin(theta));
+					node.setYPos(node.getYPos()*Math.cos(theta) - node.getXPos()*Math.sin(theta));
+					
+				}
+		
 			}
 		}); 
 		mapPanel.setBackground(Color.WHITE);
