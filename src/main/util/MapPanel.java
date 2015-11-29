@@ -55,6 +55,7 @@ public class MapPanel extends JPanel implements ActionListener {
 	int circleSize = 10; //Circle size determines size of nodes on map. 
 	
 	static ArrayList<MapNode> mapPanelPoints = new ArrayList<MapNode>(); // currently loaded list of points
+	static ArrayList<MapNode> selectedPanelPoints = new ArrayList<MapNode>(); //currently selected points
 
 	// Looks at the array of points, and creates graphical representation of what is currently stored.
 	private void renderMapPrivate(Graphics g) {
@@ -67,6 +68,10 @@ public class MapPanel extends JPanel implements ActionListener {
 				for(MapNode m : n.getNeighbors()) {
 					g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
 				}
+			}
+		g2d.setPaint(Color.green);
+		for(MapNode n : selectedPanelPoints){
+			g2d.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, circleSize, circleSize);
 			}
 		}
 	
@@ -87,6 +92,13 @@ public class MapPanel extends JPanel implements ActionListener {
 	//Updates the points array to reflect a change, then calls the private method to render.
 	public void renderMapPublic(Graphics g, ArrayList<MapNode> points) {
 		mapPanelPoints = points;
+		selectedPanelPoints.clear();
+		renderMapPrivate(g);
+	}
+	
+	public void renderSelectedNodes(Graphics g, ArrayList<MapNode> points, ArrayList<MapNode> selectedNodes){
+		mapPanelPoints = points;
+		selectedPanelPoints = selectedNodes;
 		renderMapPrivate(g);
 	}
 	
