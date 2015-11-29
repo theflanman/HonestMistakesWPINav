@@ -108,6 +108,7 @@ public class GUIFront extends JFrame {
 		for (LocalMap local : tmpListLocal) {
 
 			if (!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
+				System.out.println(local.getMapNodes());
 				allNodes.addAll(local.getMapNodes());
 		}
 		globalMap.setMapNodes(allNodes);
