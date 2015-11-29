@@ -230,11 +230,31 @@ public class DevGUIFront extends JFrame {
 
 			private void linearSmooth(ArrayList<MapNode> selectedPoints) {
 				
+				//step zero: find the pair of nodes with the largest distance between them
+				
+				double dist = -1;
+				MapNode nodeA = null;
+				MapNode nodeB = null;
+				
+				for (int i = 0; i <= selectedPoints.size(); i++) {
+					for (int j = i + 1; j < selectedPoints.size(); j++) {
+						
+						MapNode tempNodeA = selectedPoints.get(i);
+						MapNode tempNodeB = selectedPoints.get(j);
+						
+						if (dist > tempNodeA.aStarHeuristic(tempNodeB) || dist == -1) {
+							nodeA = tempNodeA;
+							nodeB = tempNodeB;
+						}
+						
+					}
+				}
+				
 				//steps one and last: convert coordinates to new frame where the first node is on the origin and the last node is on the positive x axis
 
-				double deltaX = selectedPoints.get(0).getXPos();
-				double deltaY = selectedPoints.get(0).getYPos();
-				double theta = Math.atan2(selectedPoints.get(selectedPoints.size()-1).getYPos() - deltaY,selectedPoints.get(selectedPoints.size()-1).getXPos() -  deltaX);
+				double deltaX = nodeA.getXPos();
+				double deltaY = nodeA.getYPos();
+				double theta = Math.atan2(nodeB.getYPos() - deltaY, nodeB.getXPos() -  deltaX);
 				
 				for (MapNode node : selectedPoints) {
 					node.setXPos(node.getXPos() - deltaX);
