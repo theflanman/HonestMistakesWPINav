@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 import main.AStar;
+import main.AStarException;
 import main.LocalMap;
 import main.MapNode;
 
@@ -65,7 +66,12 @@ public class AStarTest {
 		
 		//correct path is n1->n3->n4
 		AStar testAStar = new AStar(startAndFinish);
-		testAStar.runAlgorithm();
+		try {
+			testAStar.runAlgorithm();
+		} catch (AStarException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ArrayList<MapNode> path = testAStar.reconstructPath();
 		
 		//make sure the path size is correct and that the steps along the path are correct.

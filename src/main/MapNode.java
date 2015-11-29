@@ -50,6 +50,21 @@ public class MapNode implements Serializable{
 		return dist;
 	}
 
+	public double aStarHeuristic(ArrayList<MapNode> endNode) {
+		
+		double minDist = 1000000000;
+		
+		for (int i = 0; i < endNode.size(); i++) {
+			
+			double dist = aStarHeuristic(endNode.get(i));			
+			minDist = (dist < minDist) ? dist : minDist;
+			
+		}
+		
+		return minDist;
+
+	}
+
 	public void deleteNeighborLink(MapNode node){
 		this.neighbors.remove(node);
 	}
@@ -108,36 +123,43 @@ public class MapNode implements Serializable{
 	public double getXPos() {
 		return xPos;
 	}
+	
 	public void setXPos(double xPos) {
 		this.xPos = xPos;
 	}
-
+	
 	public double getYPos() {
 		return yPos;
 	}
+	
 	public void setYPos(double yPos) {
 		this.yPos = yPos;
 	}
-
+	
 	public double getZPos() {
 		return zPos;
 	}
+	
 	public void setZPos(double zPos) {
 		this.zPos = zPos;
 	}
-
+	
 	public String getnodeName() {
 		return nodeName;
 	}
+	
 	public void setxPos(double pos) {
 		xPos = pos;
 	}
+	
 	public void setyPos(double pos) {
 		yPos = pos;
 	}
+	
 	public void setnodeName(String name) {
 		nodeName = name;
 	}
+	
 	public int getID(){
 		return nodeID;
 	}
@@ -172,6 +194,14 @@ public class MapNode implements Serializable{
 
 	public void calcFScore() {
 		fScore = gScore + hScore;		
+	}
+
+	public GlobalMap getGlobalMap() {
+		return globalMap;
+	}
+
+	public void setGlobalMap(GlobalMap globalMap) {
+		this.globalMap = globalMap;
 	}
 
 }

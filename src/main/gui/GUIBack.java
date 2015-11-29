@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import main.AStar;
+import main.AStarException;
 import main.LocalMap;
 import main.MapNode;
 import main.StepByStep;
@@ -116,7 +117,12 @@ public class GUIBack implements Serializable {
 		//initiate a new astar class with the starting node and ending node of local map 
 		MapNode[] aStarMap = {this.startNode, this.endNode};
 		AStar astar = new AStar(aStarMap);
-		astar.runAlgorithm();
+		try {
+			astar.runAlgorithm();
+		} catch (AStarException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return astar.reconstructPath();
 	}

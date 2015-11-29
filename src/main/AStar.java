@@ -11,7 +11,11 @@ import java.util.ArrayList;
 public class AStar {
 	
 	private MapNode startNode;
-	private MapNode endNode;
+	private ArrayList<MapNode> endNode;
+	private ArrayList<ArrayList<MapNode>> waypoints;
+	private AStar parent;
+	private AStar child;
+	private ArrayList<MapNode> path;
 	
 	/**
 	 * @author Connor Flanigan
@@ -20,21 +24,75 @@ public class AStar {
 	 */
 	public AStar(MapNode[] nodes) {
 		startNode = nodes[0];
-		endNode = nodes[1];
-		for (MapNode node : nodes){
-			node.setCameFrom(null);
-		}
+		endNode = new ArrayList<MapNode>();
+		endNode.set(0, nodes[1]);
+		
+		nullifyNodes(startNode);
+		
+		parent = null;
+		child = null;
+		path = null;
+		waypoints = null;
 		      
 	}
 	
+	
+	public AStar(ArrayList<ArrayList<MapNode>> wayPoints) throws AStarException {
+		
+		//handle invalid cases
+		if (wayPoints.size() < 2) { 
+			throw new AStarException("list too short, size is " + Integer.toString(wayPoints.size()));
+		} if (wayPoints.get(0).size() > 1) {
+			throw new AStarException("too many start nodes, size is" + Integer.toString(wayPoints.get(0).size()));
+		} else {
+
+			startNode = wayPoints.get(0).get(0);
+			endNode = wayPoints.get(0);
+			this.waypoints = wayPoints;
+			
+			nullifyNodes(startNode);
+			
+			parent = null;
+			child = null;
+			path = null;
+			
+		}
+		
+	}
+	
+	public AStar(ArrayList<ArrayList<MapNode>> wayPoints, AStar aStar) throws AStarException {
+		
+		//handle invalid cases
+		if (wayPoints.size() < 2) { 
+			throw new AStarException("list too short, size is " + Integer.toString(wayPoints.size()));
+		} if (wayPoints.get(0).size() > 1) {
+			throw new AStarException("too many start nodes, size is" + Integer.toString(wayPoints.get(0).size()));
+		} else {
+
+			startNode = wayPoints.get(0).get(0);
+			endNode = wayPoints.get(0);
+			this.waypoints = wayPoints;
+			
+			nullifyNodes(startNode);
+			
+			parent = aStar;
+			child = null;
+			path = null;
+			
+		}
+		
+	}
+
+
 	/**
 	 * @author Connor Flanigan
 	 * 
 	 * @return true if a valid path exists, false otherwise
+	 * @throws AStarException 
 	 * 
 	 * @description Find the most efficient route in the graph by updating the cameFrom members in the path
 	 */
-	public boolean runAlgorithm() {
+	public boolean runAlgorithm() throws AStarException {
 		
 		
 		//initialize the various sets
@@ -57,7 +115,22 @@ public class AStar {
 			openSet.remove(0);
 			
 			//if the current node is the end node, return true
-			if (current == endNode) {
+			if (endNode.contains(current)) {
+				
+				this.reconstructPath();
+				
+				if (waypoints.size() > 2) {
+					
+					waypoints.remove(0);
+					waypoints.get(0).set(0, current);
+					endNode.set(0, current);
+					
+					path = this.reconstructPath();
+					
+					child = new AStar(waypoints, this);
+					
+				}
+				
 				return true;
 			}
 			
@@ -109,23 +182,35 @@ public class AStar {
 	 */
 	public ArrayList<MapNode> reconstructPath() {
 		
-		//start the empty path
-		ArrayList<MapNode> path = new ArrayList<MapNode>();
+		if (this.path == null) {	
 		
-		//we begin at the end
-		MapNode current = endNode;
+			//start the empty path
+			ArrayList<MapNode> path = new ArrayList<MapNode>();
+			
+			//we begin at the end
+			MapNode current = endNode.get(0);
+			
+			//while the current node came from another node (is not the start)
+			while (current.getCameFrom() != null) {
+				
+				//add the current node to the path and update the current node
+				path.add(0,current);
+				current = current.getCameFrom();
+				
+			}
+			
+			path.add(0, startNode); // start doesn't seem to be included ?
+			// did someone add the above comment?  -CJF
+			
+			this.path = path;
+			
+		} 
 		
-		//while the current node came from another node (is not the start)
-		while (current.getCameFrom() != null) {
-			
-			//add the current node to the path and update the current node
-			path.add(0,current);
-			current = current.getCameFrom();
-			
+		if (this.child != null) {
+			this.path.addAll(this.child.reconstructPath());
 		}
-		path.add(0, startNode); // start doesn't seem to be included ?
 		
-		return path;
+		return this.path;
 		
 	}
 	
@@ -155,6 +240,16 @@ public class AStar {
 		}
 		
 		return openSet;
+		
+	}
+	
+	private void nullifyNodes (MapNode node) {
+		
+		ArrayList<MapNode> gNodes = node.getGlobalMap().getMapNodes();
+		
+		for (int i = 0; i < gNodes.size(); i++) {
+			gNodes.get(i).setCameFrom(null);
+		}
 		
 	}
 
