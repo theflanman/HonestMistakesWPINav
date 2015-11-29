@@ -24,6 +24,7 @@ public class GUIBack implements Serializable {
 	private LocalMap localMap;
 	private ArrayList<MapNode> path;
 	private MapNode startNode;
+	private ArrayList<MapNode> middleNodes;
 	private MapNode endNode;
 	
 	/**
@@ -34,6 +35,7 @@ public class GUIBack implements Serializable {
 		this.localMap = new LocalMap(defaultMapImage, points);
 		this.path = new ArrayList<MapNode>();
 		this.startNode = null;
+		this.middleNodes = new ArrayList<MapNode>();
 		this.endNode = null;
 	}
 		
@@ -148,6 +150,11 @@ public class GUIBack implements Serializable {
 	public MapNode getEndNode(){
 		return this.endNode;
 	}
+	
+	public void addToMiddleNodes(MapNode node){
+		this.middleNodes.add(node);
+	}
+
 	public ArrayList<MapNode> getPath(){
 		return this.path;
 	}
