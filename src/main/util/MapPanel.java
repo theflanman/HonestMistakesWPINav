@@ -61,9 +61,9 @@ public class MapPanel extends JPanel implements ActionListener {
 	// Looks at the array of points, and creates graphical representation of what is currently stored.
 	private void renderMapPrivate(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-
-		g2d.drawImage(bgImage, 0, 0, null);
 		g2d.setPaint(Color.blue);
+		g2d.drawImage(bgImage, 0, 0, null);
+		
 		//		if (mapPanelPoints != null) {
 		//			String currentLocal = mapPanelPoints.get(0).getLocalMap().getMapImageName();
 		for(MapNode n : mapPanelPoints){

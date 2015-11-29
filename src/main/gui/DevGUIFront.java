@@ -48,10 +48,6 @@ import main.util.MapPanel;
 import main.util.SaveUtil;
 import main.Attributes.Types;
 
-// TODO address creation of an edge from one frame to the other...
-// TODO handle clicks on "Save Maps" where one or both panels don't have a map loaded.
-// TODO start app with campusmap loaded
-
 public class DevGUIFront extends JFrame {
 	static HashMap<String, ArrayList<MapNode>> localMap = new HashMap<String, ArrayList<MapNode>>(); // path to file, Integer data
 	static ArrayList<MapNode> points = new ArrayList<MapNode>(); // currently loaded list of points
@@ -185,7 +181,7 @@ public class DevGUIFront extends JFrame {
 					// set the points
 					Graphics g = mapPanel.getGraphics();
 					points = local1.getMapNodes();
-					mapPanel.renderMapPublic(g, points);
+					mapPanel.renderMapPublic(g, points, null);
 				}
 			}
 		});
@@ -219,7 +215,7 @@ public class DevGUIFront extends JFrame {
 					// set the points
 					Graphics g = mapPanel2.getGraphics();
 					points2 = local2.getMapNodes();
-					mapPanel2.renderMapPublic(g, points2);
+					mapPanel2.renderMapPublic(g, points2, null);
 				}
 			}
 		});
@@ -235,7 +231,7 @@ public class DevGUIFront extends JFrame {
 				DevGUIBack devGUIBack = new DevGUIBack(thisMap);
 				devGUIBack.saveMap();
 				
-				if (twoMapView) {
+				if (twoMapView && !local1.getMapImageName().equals(local2.getMapImageName())) {
 					String fileName2 = inputFile2.getName();
 					fileName2 = SaveUtil.removeExtension(fileName2);
 					fileName2 = fileName2 + ".jpg";
@@ -271,7 +267,7 @@ public class DevGUIFront extends JFrame {
 						mapPanel.setBgImage(pic);
 						points = new ArrayList<MapNode>();
 						Graphics g = mapPanel.getGraphics();
-						mapPanel.renderMapPublic(g, points);
+						mapPanel.renderMapPublic(g, points, null);
 						local1 = new LocalMap(imagePath, points);
 
 					}
@@ -315,7 +311,7 @@ public class DevGUIFront extends JFrame {
 		lblYposition.setBounds(2, 53, 55, 16);
 		nodeInfoPanel.add(lblYposition);
 
-		JLabel lblZposition = new JLabel("z-position");
+		JLabel lblZposition = new JLabel("z-feet");
 		lblZposition.setBounds(2, 80, 55, 16);
 		nodeInfoPanel.add(lblZposition);
 		
@@ -343,7 +339,7 @@ public class DevGUIFront extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				lastClicked.setXPos(Double.parseDouble(xPosField.getText()));
 				lastClicked.setYPos(Double.parseDouble(yPosField.getText()));
-		//		lastClicked.setZPos(Double.parseDouble(zPosField.getText()));
+				lastClicked.setZFeet(Double.parseDouble(zPosField.getText()));
 				Graphics g = mapPanel.getGraphics();
 				mapPanel.renderMapPublic(g, points, lastClicked);
 				if (twoMapView) {
@@ -489,6 +485,8 @@ public class DevGUIFront extends JFrame {
 				mnFile.add(mntmLoadExtraMap);
 				twoMapView = true;
 				mntmSaveMap.setText("Save Maps");
+				Graphics g2 = mapPanel2.getGraphics();
+				mapPanel2.renderMapPublic(g2, points2, lastClicked);
 			}
 		});
 		
@@ -576,13 +574,16 @@ public class DevGUIFront extends JFrame {
 					Point p = me.getLocationOnScreen();
 					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, local1); // make a new mapnode with those points
 					Graphics g = mapPanel.getGraphics();
-					Graphics g2 = mapPanel2.getGraphics();
+					
 					points.add(n);
 					n.setDefaultAttributes(defaultAttributes);
 					setInfoFields(n);
 					lastClicked = n;
 					mapPanel.renderMapPublic(g, points, lastClicked);
-					mapPanel2.renderMapPublic(g2, points2, lastClicked);
+					if(twoMapView) {
+						Graphics g2 = mapPanel2.getGraphics();
+						mapPanel2.renderMapPublic(g2, points2, lastClicked);
+					}
 				} else if (rdbtnSelectNode.isSelected()){
 					edgeStarted = false;
 					edgeRemovalStarted = false;
@@ -593,9 +594,13 @@ public class DevGUIFront extends JFrame {
 							setInfoFields(n);							
 							lastClicked = n;
 							Graphics g = mapPanel.getGraphics();
-							Graphics g2 = mapPanel2.getGraphics();
+							
 							mapPanel.renderMapPublic(g, points, lastClicked);
-							mapPanel2.renderMapPublic(g2, points2, lastClicked);
+							if(twoMapView) {
+								Graphics g2 = mapPanel2.getGraphics();
+								mapPanel2.renderMapPublic(g2, points2, lastClicked);
+							}
+							
 						}
 					}
 				}
@@ -610,9 +615,11 @@ public class DevGUIFront extends JFrame {
 								setInfoFields(n);							
 								lastClicked = n;
 								Graphics g = mapPanel.getGraphics();
-								Graphics g2 = mapPanel2.getGraphics();
 								mapPanel.renderMapPublic(g, points, lastClicked);
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
+								if(twoMapView) {
+									Graphics g2 = mapPanel2.getGraphics();
+									mapPanel2.renderMapPublic(g2, points2, lastClicked);
+								}
 							}
 						}
 
@@ -622,14 +629,16 @@ public class DevGUIFront extends JFrame {
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
 								Graphics g = mapPanel.getGraphics();
-								Graphics g2 = mapPanel2.getGraphics();
 								edgeStarted = false;
 								n.addNeighbor(edgeStart);
 								edgeStart.addNeighbor(n);
 								setInfoFields(n);							
 								lastClicked = n;
 								mapPanel.renderMapPublic(g, points, lastClicked);
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
+								if(twoMapView) {
+									Graphics g2 = mapPanel2.getGraphics();
+									mapPanel2.renderMapPublic(g2, points2, lastClicked);
+								}
 							}
 						}
 					}
@@ -645,9 +654,11 @@ public class DevGUIFront extends JFrame {
 								setInfoFields(n);							
 								lastClicked = n;
 								Graphics g = mapPanel.getGraphics();
-								Graphics g2 = mapPanel2.getGraphics();
 								mapPanel.renderMapPublic(g, points, lastClicked);
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
+								if(twoMapView) {
+									Graphics g2 = mapPanel2.getGraphics();
+									mapPanel2.renderMapPublic(g2, points2, lastClicked);
+								}
 							}
 						}
 
@@ -657,14 +668,16 @@ public class DevGUIFront extends JFrame {
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
 								Graphics g = mapPanel.getGraphics();
-								Graphics g2 = mapPanel2.getGraphics();
 								edgeRemovalStarted = false;
 								n.removeNeighbor(edgeRemove);
 								edgeRemove.removeNeighbor(n);
 								setInfoFields(n);							
 								lastClicked = n;
 								mapPanel.renderMapPublic(g, points, lastClicked);
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
+								if(twoMapView) {
+									Graphics g2 = mapPanel2.getGraphics();
+									mapPanel2.renderMapPublic(g2, points2, lastClicked);
+								}
 							}
 						}
 					}
@@ -690,9 +703,11 @@ public class DevGUIFront extends JFrame {
 					
 					points.remove(nodeToRemove);
 					Graphics g = mapPanel.getGraphics();
-					Graphics g2 = mapPanel2.getGraphics();
 					mapPanel.renderMapPublic(g, points);
-					mapPanel2.renderMapPublic(g2, points2);
+					if(twoMapView) {
+						Graphics g2 = mapPanel2.getGraphics();
+						mapPanel2.renderMapPublic(g2, points2, lastClicked);
+					}
 				}
 			}
 		}); 
@@ -832,11 +847,62 @@ public class DevGUIFront extends JFrame {
 			}
 		}); 
 		mapPanel2.setBackground(Color.WHITE);
+		
+		//Initialize both map panels
+		/*
+		String inputFileName = "StrattonHallF1.localmap";
+		String inputFileName2 = "StrattonHallF2.localmap";
+		
+		
+		// load localMap
+		DevGUIBack devGUIBack = new DevGUIBack(null);
+		devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
+		local1 = devGUIBack.getLocalMap();
+		String imagePath = SaveUtil.removeExtension(inputFileName);
+		imagePath = imagePath + ".jpg";
+							
+		// set the image
+		try {
+			pic = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath));
+		} catch (IOException e1) {
+			e1.printStackTrace();}
+		
+		//  picLabel.setIcon(new ImageIcon(pic));
+		mapPanel.setBgImage(pic);
+
+		// set the points
+		Graphics f = mapPanel.getGraphics();
+		points = local1.getMapNodes();
+		mapPanel.renderMapPublic(f, points, null);
+		
+		
+		DevGUIBack devGUIBack2 = new DevGUIBack(null);
+		devGUIBack2.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName2); 
+		local2 = devGUIBack2.getLocalMap();
+		String imagePath2 = SaveUtil.removeExtension(inputFileName2);
+		imagePath2 = imagePath2 + ".jpg";
+							
+		// set the image
+		try {
+			pic2 = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath2));
+		} catch (IOException e1) {
+			e1.printStackTrace();}
+		
+		//  picLabel.setIcon(new ImageIcon(pic));
+		mapPanel2.setBgImage(pic2);
+
+		// set the points
+		Graphics g2 = mapPanel2.getGraphics();
+		points2 = local2.getMapNodes();
+		mapPanel2.renderMapPublic(g2, points2, null);
+		
+		*/
 	}
 	
 	private void setInfoFields(MapNode n) {
 		xPosField.setText(""+n.getXPos());
 		yPosField.setText(""+n.getYPos());
+		zPosField.setText(""+n.getZFeet());
 //		zPosField.setText(""+n.getZPos());
 		Attributes a = n.getAttributes();
 		typeBox.setSelectedItem(a.getType());
