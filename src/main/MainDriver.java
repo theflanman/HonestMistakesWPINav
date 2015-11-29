@@ -17,15 +17,14 @@ public class MainDriver {
 		
 		File[] localMapList = new File(Constants.LOCAL_MAP_PATH).listFiles(); // gets a list of localmap filenames
 		
-		/*
+		
 		// Test data to try and run AStar
-		ArrayList<MapNode> nodes = new ArrayList<MapNode>();
+		/*ArrayList<MapNode> nodes = new ArrayList<MapNode>();
 		MapNode node1 = new MapNode(100.0, 100.0, 1.0);
 		MapNode node2 = new MapNode(200.0, 200.0, 1.0);
 		MapNode node3 = new MapNode(500.0, 200.0, 1.0);
 		MapNode node4 = new MapNode(600.0, 400.0, 1.0);
 		//MapNode node5 = new MapNode(800.0, 600.0, 1.0);
-		
 		node1.addNeighbor(node2);
 		node2.addNeighbor(node1);
 		node2.addNeighbor(node3);
@@ -45,8 +44,8 @@ public class MainDriver {
 		
 		LocalMap tmp = new LocalMap("StrattonHallF2.jpg", nodes);
 		tmp.setMapNodes(nodes);
-		tmp.saveMap("StrattonHallF2");
-		*/
+		tmp.saveMap("StrattonHallF2");*/
+		
 		
 		// Launches the main application
 		EventQueue.invokeLater(new Runnable() {

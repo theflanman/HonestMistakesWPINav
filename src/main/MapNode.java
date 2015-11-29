@@ -17,8 +17,7 @@ public class MapNode implements Serializable{
 	private MapNode cameFrom;
 	private GlobalMap globalMap;
 	private LocalMap localMap;
-	private String nodeName;
-	//private Attributes attributes
+	private Attributes attributes;
 	
 	// default constructor
 	public MapNode(){}
@@ -30,6 +29,7 @@ public class MapNode implements Serializable{
 		zPos = newZ;
 		
 		neighbors = new ArrayList<MapNode>();
+		attributes = new Attributes();
 		fScore = -1;
 		gScore = -1;
 		hScore = -1;
@@ -125,18 +125,11 @@ public class MapNode implements Serializable{
 	public void setZPos(double zPos) {
 		this.zPos = zPos;
 	}
-
-	public String getnodeName() {
-		return nodeName;
-	}
 	public void setxPos(double pos) {
 		xPos = pos;
 	}
 	public void setyPos(double pos) {
 		yPos = pos;
-	}
-	public void setnodeName(String name) {
-		nodeName = name;
 	}
 	public int getID(){
 		return nodeID;
@@ -172,6 +165,10 @@ public class MapNode implements Serializable{
 
 	public void calcFScore() {
 		fScore = gScore + hScore;		
+	}
+	
+	public Attributes getAttributes() {
+		return this.attributes;
 	}
 
 }

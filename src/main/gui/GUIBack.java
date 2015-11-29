@@ -127,6 +127,45 @@ public class GUIBack implements Serializable {
 	public void removePath() {
 		this.path.clear();
 	}
+	
+	
+	/**
+	 * @author Andrew Petit
+	 * @description Essentially enables a user to press anywhere on the map
+	 * @param xPos
+	 * @param yPos
+	 * @return
+	 */
+	public MapNode findNearestNode(double xPos, double yPos){
+		MapNode start = new MapNode(xPos, yPos, 0);
+		MapNode temp = null;
+		//need to initialize with an extremely large unobtainable number - or find a better solution
+		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0;
+		for (MapNode mapnode : this.localMap.getMapNodes()){ //for all nodes in localmaps' nodes -- this will be changed to global map nodes when that is finished, and then do distance formula to find the nearest node
+			 if (distance > (double) Math.sqrt((Math.pow(xPos - mapnode.getXPos(), 2)) + (Math.pow(yPos - mapnode.getYPos(), 2)))){
+				 distance = (double) Math.sqrt((Math.pow(xPos - mapnode.getXPos(), 2)) + (Math.pow(yPos - mapnode.getYPos(), 2)));
+				 temp = mapnode;
+			 }
+		}
+		//this will change to check to make sure the neighbor is valid
+		start.addNeighbor(temp); //add the new nodes link with the closest node
+		temp.addNeighbor(start); //add the new node as a neighbor to the closest node
+		return start;
+	}
+	
+	public MapNode findNearestAttributedNode(String nodeAttribute, MapNode startNode){
+		MapNode temp = null; //initialize a new node
+		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0; //need to set distance to a value that is unattainable
+		for (MapNode mapnode : this.localMap.getMapNodes()){ //for all nodes in localmaps nodes -- this will be changed to global map nodes when that is finished
+			if (mapnode.getAttributes().getType().toString().equals(nodeAttribute)){ //if this is true do distance formula to find the closest node that has that attribute
+				 if (distance > (double) Math.sqrt((Math.pow(startNode.getXPos() - mapnode.getXPos(), 2)) + (Math.pow(startNode.getYPos() - mapnode.getYPos(), 2)))){
+					 distance = (double) Math.sqrt((Math.pow(startNode.getXPos() - mapnode.getXPos(), 2)) + (Math.pow(startNode.getYPos() - mapnode.getYPos(), 2)));
+					 temp = mapnode;//set temp to this node value
+				 }
+			}
+		}
+		return temp;
+	}
 
 	public LocalMap getLocalMap() {
 		return localMap;

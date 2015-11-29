@@ -10,12 +10,16 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -61,17 +65,21 @@ public class GUIFront extends JFrame {
 	public static boolean drawLine = false;
 	public static boolean removeLine = false;
 	public static boolean reset = false;
+	public static MapNode endNode = null;
+	public static MapNode startNode = null;
 	public static String allText = "";
 
 	private JPanel contentPane;
 	private DrawingPanel panel;
-	private JButton btnCalculateRoute, btnReset;
+	private JButton btnCalculateRoute, btnReset, btnEmail;
 	private JRadioButton rdbtnStartNode, rdbtnEndNode;
 	private JRadioButton rdbtnSHFloor1, rdbtnSHFloor2, rdbtnSHFloor3;
 	private JLabel lblDistance;
 	private JTextArea textArea1;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private JTextField textFieldStart;
+	private JTextField textFieldEnd;
 	
 
 	/**
@@ -149,58 +157,258 @@ public class GUIFront extends JFrame {
 
 		JLabel lblMapSelection = new JLabel("Map Selection");
 		lblMapSelection.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		JPanel panel_7 = new JPanel();
+		
+		JPanel panel_8 = new JPanel();
+		
+		JPanel panel_9 = new JPanel();
+		
+		JPanel panel_10 = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
-				.createSequentialGroup().addContainerGap()
-				.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
-				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(18)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
-						.addGroup(gl_contentPane.createSequentialGroup().addGap(57).addGroup(gl_contentPane
-								.createParallelGroup(Alignment.LEADING).addComponent(lblSelectANode)
-								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-								.addPreferredGap(ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup().addPreferredGap(ComponentPlacement.UNRELATED)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_contentPane.createSequentialGroup().addGap(10)
-												.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
-										.addComponent(lblMapSelection))))
-				.addContainerGap()));
-		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup().addGap(11).addComponent(lblSelectANode)
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 1109, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGap(73)
+								.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE)
+								.addGap(41))
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+									.addGroup(gl_contentPane.createSequentialGroup()
 										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60,
-												GroupLayout.PREFERRED_SIZE)
-								.addGap(11)
-								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48,
-												GroupLayout.PREFERRED_SIZE))
-								.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-								.addComponent(lblMapSelection).addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
-								.addGap(38)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
-						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE))
-				.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+										.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addPreferredGap(ComponentPlacement.UNRELATED)
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addGroup(gl_contentPane.createSequentialGroup()
+													.addGap(10)
+													.addComponent(panel_6, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
+												.addComponent(lblMapSelection)))
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGap(18)
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE)
+												.addGroup(gl_contentPane.createSequentialGroup()
+													.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+													.addGap(18)
+													.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))))
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE))))
+								.addContainerGap()))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(87)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(panel_10, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblSelectANode))
+							.addGap(70))))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(1114)
+					.addComponent(panel_8, GroupLayout.PREFERRED_SIZE, 113, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panel_9, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(12, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panel_9, 0, 0, Short.MAX_VALUE)
+						.addComponent(panel_8, GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+					.addGap(7)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(34)
+							.addComponent(lblSelectANode)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblMapSelection)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel_6, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+							.addGap(26)
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, 677, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_10, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		/**
+		 * @author Andrew Petit 
+		 * @description following textfields and actions are needed in order to have a working search bar
+		 */
+		textFieldEnd = new JTextField();
+		panel_9.add(textFieldEnd);
+		textFieldEnd.setColumns(10);
+		textFieldStart = new JTextField();
+		panel_8.add(textFieldStart);
+		textFieldStart.setColumns(10);
+		//when you press enter after entering stuff in textfieldend
+		Action actionEnd = new AbstractAction()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("Enter was pressed");
+				//if the user presses enter without having entered anything in this box
+				if (textFieldEnd.getText().equals("")){
+					//will need some way to alert the user that they need to enter an end location
+					System.out.println("Need to enter a valid start location");
+				} else if (!(textFieldEnd.getText().equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
+					String endString = textFieldEnd.getText(); //entered text = endString constant
+					boolean valid = false;
+					boolean typeUnfound = true;
+					Attributes attribute = new Attributes(); //will most likely need some other way of obtaining this information
+					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
+					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
+						//this follows a similar pattern to how the original nodes are set with the radio buttons
+						if(endString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(endString)){
+							//if endstring is the official name or one of a few different accepted aliases we will allow the end node to be placed
+							endNode = mapnode;
+							System.out.println("This is the ending node");
+							backend.setEndNode(endNode);
+							if (!setEnd) {
+								panel.startEndNodes.add(1, endNode);
+								System.out.println(panel.startEndNodes.size());					
+							} else {
+								panel.startEndNodes.set(1, endNode);
+							}
+							setEnd = true;
+							valid = true;
+							typeUnfound = false;
+						} 
+					}
+					
+					if (attribute.getPossibleEntries().containsKey(endString)){ //check if the entry in the text field is an attribute not an official name
+						String findNearestThing = attribute.getPossibleEntries().get(endString);
+						if(startNode != null){ //if there is no valid start node, this cannot be done - why? because you need a valid start node to find the closest node with the given attribute
+							valid = true;
+							MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
+							if (node != null){ //if no node was found, you should not place a node on the map otherwise do it 
+								endNode = node;
+								System.out.println("This is the ending node!");
+								backend.setEndNode(endNode);
+								if (!setEnd) {
+									panel.startEndNodes.add(1, endNode);
+									System.out.println(panel.startEndNodes.size());					
+								} else {
+									panel.startEndNodes.set(1, endNode);
+								}
+								setEnd = true;
+								typeUnfound = false;
+								btnCalculateRoute.setEnabled(true);
+								}
+							} else if(!(textFieldStart.getText().equals(""))){ //if there is something entered in the start field as well as the end field we can go ahead and place both at the same time...
+								String startString = textFieldStart.getText();
+								for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+									if(startString.equals(mapnode.getAttributes().getOfficialName())){
+										startNode = mapnode; //set the startNode in a similar way that is done when using radio buttons refer to drawing pannel mouse click
+										System.out.println("This is the starting node");
+										backend.setStartNode(startNode);
+										if (!setStart) {
+											panel.startEndNodes.add(0, startNode);
+											System.out.println(panel.startEndNodes.size());					
+										} else {
+											panel.startEndNodes.set(0, startNode);
+										}
+										setStart = true;
+									}
+								}
+								if (startNode != null){ //make sure that the startNode value is still not null, otherwise this won't work if it is
+									MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
+									if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
+										endNode = node;
+										System.out.println("This is the ending node!");
+										backend.setEndNode(endNode);
+										if (!setEnd) {
+											panel.startEndNodes.add(1, endNode);
+											System.out.println(panel.startEndNodes.size());					
+										} else {
+											panel.startEndNodes.set(1, endNode);
+										}
+										setEnd = true;
+										btnCalculateRoute.setEnabled(true);
+										valid = true;
+									}
+								}
+							}
+						}
+						if (valid == false){
+							//tell user this entry is invalid
+							System.out.println("Invalid entry");
+						}
+				}
+			}
+		};
+		//give end text field an action		
+		textFieldEnd.addActionListener(actionEnd);
+		//when you press enter after entering stuff in textfieldStart
+		Action actionStart = new AbstractAction()
+		{
+			@Override 
+			public void actionPerformed(ActionEvent e)
+			{
+				System.out.println("Enter was pressed");
+				if (textFieldStart.getText().equals("")){
+					//will need some way to alert the user that they need to enter a start location
+					System.out.println("Need to enter a valid start location");
+				} else if (!(textFieldStart.getText().equals(""))) {//if there is something entered check if the name is valid and then basically add the start node
+					String startString = textFieldStart.getText();
+					boolean valid = false;
+					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+						if(startString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(startString)){
+							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
+							startNode = mapnode; //set the startNode in a similar way that is done when using radio buttons refer to drawing pannel mouse click
+							System.out.println("This is the starting node");
+							backend.setStartNode(startNode);
+							if (!setStart) {
+								panel.startEndNodes.add(0, startNode);
+								System.out.println(panel.startEndNodes.size());					
+							} else {
+								panel.startEndNodes.set(0, startNode);
+							}
+							setStart = true;
+							valid = true;
+						}
+					}
+					if (valid == false){
+						//tell user this entry is invalid
+						System.out.println("Invalid entry");
+					}
+				}	
+			}
+		};
+		//give start text field an action
+		textFieldStart.addActionListener(actionStart);
+		// Code for button - if it is pressed allow the program to draw the line
+		// on the map
+		JButton btnEmail_1 = new JButton("Email ");
+		panel_7.add(btnEmail_1);
+		btnEmail_1.setEnabled(false); 
+		//This needs to be outside of the other action listener or it will cause problems
+		btnEmail_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EmailGUI newEmail = new EmailGUI();
+				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
+				}
+			});
 
 		/*
 		 * Radio Buttons to change the currently loaded map data,
@@ -286,18 +494,23 @@ public class GUIFront extends JFrame {
 		btnReset.setEnabled(false);
 		panel_5.add(btnReset);
 
-		// Code for button - if it is pressed allow the program to draw the line
-		// on the map
+		
+		/**
+		 * @author Andrew Petit
+		 * @description Button that initates the drawing of a route on a map
+		 */
 		btnCalculateRoute = new JButton("Calculate Route");
 		btnCalculateRoute.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel_2.add(btnCalculateRoute);
 		btnCalculateRoute.setEnabled(false);
 		btnCalculateRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Speaker speaker = new Speaker(Constants.BUTTON_PATH);
-				speaker.play();
+				//Speaker speaker = new Speaker(Constants.BUTTON_PATH);
+				//speaker.play();
 				
 				if (btnCalculateRoute.isEnabled()) {
+					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
+					speaker.play();
 					System.out.println("About to run AStar");
 					backend.setPath(backend.runAStar());
 
@@ -320,37 +533,8 @@ public class GUIFront extends JFrame {
 					btnCalculateRoute.setEnabled(false);
 					btnReset.setEnabled(true);
 					
+					btnEmail_1.setEnabled(true); //this is where email button should be enabled
 					
-					/*
-					 * @Author Nick Gigliotti
-					 * Email Directions Button
-					 * 
-					 */
-					JButton btnEmail = new JButton("Email Directions"); //Initial Email Button
-					panel_1.add(btnEmail);
-					
-					
-			        btnEmail.addActionListener(new ActionListener() {
-			        	public void actionPerformed(ActionEvent e) {
-			        		EmailGUI newEmail = new EmailGUI();
-			        		newEmail.setVisible(true); //Opens EmailGUI Pop-Up
-			        	}
-			        }
-			        );
-			        
-
-					/*
-					 * } else { btnCalculateRoute.setEnabled(true);
-					 * 
-					 * //if the line needs to be removed //going to need to add
-					 * a method here - to remove nodes from path
-					 * backend.removePath(); removeLine = true;
-					 * lblDistance.setText(backend.getDistance());
-					 * textArea1.setText("");
-					 * 
-					 * //change the name of button back to what it originally
-					 * was btnCalculateRoute.setText("Calculate Route"); }
-					 */
 				}
 			}
 		});
@@ -428,8 +612,8 @@ public class GUIFront extends JFrame {
 	}
 
 	/**
-	 * Resets all of the relevant information on the form and the background
-	 * information
+	 * @author Andrew Petit
+	 * @description Resets all of the relevant information on the form and the background information
 	 */
 	public void reset() {
 		rdbtnStartNode.setSelected(true); // part of a button group, only one
@@ -450,7 +634,7 @@ public class GUIFront extends JFrame {
 		textArea1.setText("");
 		backend.removePath();
 		btnReset.setEnabled(false);
-		btnCalculateRoute.setEnabled(true);
+		//btnEmail.setEnabled(false); -- for some reason this does not work -- will be looking into...
 		removeLine = true;
 	}
 
@@ -462,6 +646,7 @@ public class GUIFront extends JFrame {
 	 * 
 	 * @author Trevor
 	 */
+	
 	class DrawingPanel extends JPanel {
 
 		private static final long serialVersionUID = 1L;
@@ -478,13 +663,13 @@ public class GUIFront extends JFrame {
 		 * @param map
 		 *            The map image for the current LocalMap
 		 */
-		public DrawingPanel(ArrayList<MapNode> nodes, Image map, Dimension size) {
+		public DrawingPanel(ArrayList<MapNode> nodes, Image map, Dimension size){
 			setBorder(BorderFactory.createLineBorder(Color.black));
 			this.localNodes = nodes;
 			this.mapImage = map;
 			setOpaque(false);
 			startEndNodes = new ArrayList<MapNode>(); // Index 0: StartNode
-														// Index 1: EndNode
+																						// Index 1: EndNode
 
 			/**
 			 * On mouse click, display the points which represent the start and
@@ -494,66 +679,38 @@ public class GUIFront extends JFrame {
 			addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent me) {
-					/*
-					 * Will work on later when user is able to select ANY
-					 * location // Only add new points if you haven't set an End
-					 * Node yet if(!setEnd){ Point clickedAt = me.getPoint();
-					 * 
-					 * // If you've set a start node already, set the end node
-					 * if(setStart){ setEnd = true; MapNode newNode = new
-					 * MapNode((double)clickedAt.x, (double)clickedAt.y, 0);
-					 * startEndNodes.add(newNode); backend.setEndNode(newNode);
-					 * btnCalculateRoute.setEnabled(true); // allow user to
-					 * calculate route } else { setStart = true; MapNode newNode
-					 * = new MapNode((double)clickedAt.x, (double)clickedAt.y,
-					 * 0); startEndNodes.add(newNode);
-					 * backend.setStartNode(newNode); }
-					 * 
-					 * // Prohibit any new points for now } else {
-					 * System.out.println("You've already selected two points");
-					 * } repaint(); }
-					 */
-
-					// figure out if there is a map node there, if so, set it as
+					// figure out where the closest map node is, set that node as a startnode
 					// the StartingNode
 					Point clickedAt = me.getPoint();
-					int clickRadius = 10; // clicks anywhere within a circle of radius 10
 					if (rdbtnStartNode.isSelected()) {
+						startNode = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
+							System.out.println("This is the starting node!");
+							backend.setStartNode(startNode);
+							// If this is the first value, add it at index 0
+							// else, set the first index
+							if (!setStart) {
+								startEndNodes.add(0, startNode);
+								System.out.println(startEndNodes.size());
+							} else {
+									startEndNodes.set(0, startNode);
+									}
 
-						for (MapNode n : localNodes) {
-							if ((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius)
-									&& (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)) {
-								System.out.println("This is the starting node!");
-								backend.setStartNode(n);
-								// If this is the first value, add it at index 0
-								// else, set the first index
-								if (!setStart) {
-									startEndNodes.add(0, n);
-									System.out.println(startEndNodes.size());
-								} else
-									startEndNodes.set(0, n);
-
-								setStart = true; // start node has been set at least once
-							}
-						}
+								setStart = true; // start node has been set at
+													// least once
 					} else { // rdbtnEndNode is selected
-
-						for (MapNode n : localNodes) {
-							if ((Math.abs(n.getXPos() - clickedAt.getX()) <= clickRadius)
-									&& (Math.abs(n.getYPos() - clickedAt.getY()) <= clickRadius)) {
-								System.out.println("This is the ending node!");
-								backend.setEndNode(n);
-								btnCalculateRoute.setEnabled(true);
-
-								// If this is the first EndNode selection, add it at index 1 else, set the second index
-								if (!setEnd)
-									startEndNodes.add(1, n);
-								else
-									startEndNodes.set(1, n);
-
-								setEnd = true; // end node has been set at least once
+							endNode = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
+							System.out.println("This is the ending node!");
+							backend.setEndNode(endNode);
+							if (!setEnd){
+								startEndNodes.add(1, endNode);
+							} else {
+								startEndNodes.set(1, endNode);
 							}
-						}
+							setEnd = true; // end node has been set at least
+												// once
+							}
+					if (setEnd == true && setStart == true){
+						btnCalculateRoute.setEnabled(true);
 					}
 					repaint();
 				}
@@ -575,11 +732,6 @@ public class GUIFront extends JFrame {
 			// well start and end nodes if they have been set
 			graphics.drawImage(this.mapImage, 0, 0, this);
 			
-			graphics.setColor(Color.BLUE);
-			for (MapNode n : this.localNodes) {
-				graphics.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, 10, 10);
-			}
-			
 			// Sets the color of the start and end nodes to be different
 			graphics.setColor(Color.RED);
 			for (int i = 0; i < this.startEndNodes.size(); i++) {
@@ -591,24 +743,12 @@ public class GUIFront extends JFrame {
 					graphics.fillOval((int) this.startEndNodes.get(i).getXPos() - 5, (int) this.startEndNodes.get(i).getYPos() - 5, 10, 10);
 				}
 			}
-						
-			// working on adding the links between two nodes before hand - works, but will keep out for now
-			//ArrayList<MapNode> mapnodes = new ArrayList<MapNode>();
-			//for(MapNode neighbors : this.localNodes){
-			//	mapnodes.add(this.neighbors);
-			//}
-		    /*for(MapNode mapnode : mapnodes){
-	        	for(MapNode mapnode2 : mapnode.getNeighbors()){
-	        		Graphics2D g3 = (Graphics2D) g;
-	        		g3.setStroke(new BasicStroke(2));
-	        		g3.setColor(Color.gray);
-	        		g3.drawLine((int)mapnode.getXPos(), (int) mapnode.getYPos(), (int) mapnode2.getXPos(), (int) mapnode2.getYPos());
-	        		mapnode2.deleteNeighborLink(mapnode);
-	        		}
-	        	mapnodes.remove(mapnode);
-	        	repaint();
-	        }*/
 
+			/**
+			 * @author Andrew Petit 
+			 * @description initiates drawing of the path on the screen from the coordinates of the path 
+			 * --if removeline is true redraws line to be white to remove the line from the screen
+			 */
 			// essentially draws the line on the screen 
 			if (GUIFront.drawLine = true) {
 				for (int i = 0; i < backend.getCoordinates().size() - 1; i++) {
