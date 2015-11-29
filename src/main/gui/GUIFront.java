@@ -292,6 +292,11 @@ public class GUIFront extends JFrame {
 		btnCalculateRoute.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel_2.add(btnCalculateRoute);
 		btnCalculateRoute.setEnabled(false);
+		
+		JButton btnEmail = new JButton("Email Directions"); //Initial Email Button
+		btnEmail.setEnabled(false);
+		panel_1.add(btnEmail);
+		
 		btnCalculateRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Speaker speaker = new Speaker(Constants.BUTTON_PATH);
@@ -318,6 +323,7 @@ public class GUIFront extends JFrame {
 					
 					textArea1.setText(allText);
 					btnCalculateRoute.setEnabled(false);
+					btnEmail.setEnabled(true);
 					btnReset.setEnabled(true);
 					
 					
@@ -326,9 +332,6 @@ public class GUIFront extends JFrame {
 					 * Email Directions Button
 					 * 
 					 */
-					JButton btnEmail = new JButton("Email Directions"); //Initial Email Button
-					panel_1.add(btnEmail);
-					
 					
 			        btnEmail.addActionListener(new ActionListener() {
 			        	public void actionPerformed(ActionEvent e) {
