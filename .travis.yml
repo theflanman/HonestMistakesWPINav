@@ -1,3 +1,9 @@
 language: java
+script: 
+   - mvn clean package
+   - mvn install
+jdk:
+   - oraclejdk8
+
 notifications:
   slack: honestmistakes:dOo7ymGvz7yvbY5M1XJJbTsb
