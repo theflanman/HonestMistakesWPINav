@@ -299,19 +299,19 @@ public class DevGUIFront extends JFrame {
 		nodeInfoPanel.setLayout(null);
 		
 		// Labels
-		JLabel lblNodeInformation = new JLabel("Node Information");
-		lblNodeInformation.setBounds(2, 2, 99, 16);
+		JLabel lblNodeInformation = new JLabel(" Node Information");
+		lblNodeInformation.setBounds(2, 2, 133, 16);
 		nodeInfoPanel.add(lblNodeInformation);
 
-		JLabel lblXposition = new JLabel("x-position");
+		JLabel lblXposition = new JLabel(" x-position");
 		lblXposition.setBounds(2, 26, 67, 16);
 		nodeInfoPanel.add(lblXposition);
 
-		JLabel lblYposition = new JLabel("y-position");
-		lblYposition.setBounds(2, 53, 55, 16);
+		JLabel lblYposition = new JLabel(" y-position");
+		lblYposition.setBounds(2, 53, 73, 16);
 		nodeInfoPanel.add(lblYposition);
 
-		JLabel lblZposition = new JLabel("z-feet");
+		JLabel lblZposition = new JLabel(" z-feet");
 		lblZposition.setBounds(2, 80, 55, 16);
 		nodeInfoPanel.add(lblZposition);
 		
@@ -395,12 +395,13 @@ public class DevGUIFront extends JFrame {
 		getContentPane().add(nodeInfoPanel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(920, 349, 301, 322);
+		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		panel_1.setBounds(920, 349, 301, 312);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Attributes");
-		lblNewLabel.setBounds(2, 2, 56, 16);
+		JLabel lblNewLabel = new JLabel(" Attributes");
+		lblNewLabel.setBounds(2, 2, 66, 16);
 		panel_1.add(lblNewLabel);
 		
 		chckbxBikeable = new JCheckBox("Bikeable");
@@ -436,15 +437,6 @@ public class DevGUIFront extends JFrame {
 		lblNewLabel_3.setBounds(12, 55, 56, 16);
 		panel_1.add(lblNewLabel_3);
 		
-		txtrAliases = new JTextArea();
-		txtrAliases.setBounds(12, 73, 277, 68);
-		panel_1.add(txtrAliases);
-		txtrAliases.setLineWrap(true);
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(268, 73, 21, 68);
-		panel_1.add(scrollBar);
-		
 		typeBox = new JComboBox(Types.values());
 		//typeBox.setModel(new DefaultComboBoxModel(Type.values()));
 		typeBox.setMaximumRowCount(10);
@@ -460,8 +452,15 @@ public class DevGUIFront extends JFrame {
 		JButton btnSetDfltAttr = new JButton("Set Default Attributes");
 		btnSetDfltAttr.setBounds(121, 276, 168, 25);
 		panel_1.add(btnSetDfltAttr);
+		
+		txtrAliases = new JTextArea();
+		JScrollPane scrollpane = new JScrollPane(txtrAliases);
+		scrollpane.setBounds(14, 73, 277, 68);
+		panel_1.add(scrollpane);
+		txtrAliases.setLineWrap(true);
 		JPanel panel2 = new JPanel();
 		panel2.setLocation(465, 10);
+		
 	//	
 	//	panel2.setLocation(930, 500);
 		panel2.setSize(445, 600);
@@ -918,6 +917,4 @@ public class DevGUIFront extends JFrame {
 		}
 		textFieldOfficialName.setText(a.getOfficialName());
 	}
-	
-	
 }
