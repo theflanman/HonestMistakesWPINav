@@ -464,10 +464,6 @@ public class GUIFront extends JFrame {
 		panel_2.add(btnCalculateRoute);
 		btnCalculateRoute.setEnabled(false);
 		
-		JButton btnEmail = new JButton("Email Directions"); //Initial Email Button
-		btnEmail.setEnabled(false);
-		panel_1.add(btnEmail);
-		
 		btnCalculateRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Speaker speaker = new Speaker(Constants.BUTTON_PATH);
@@ -496,20 +492,8 @@ public class GUIFront extends JFrame {
 
 					textArea1.setText(allText);
 					btnCalculateRoute.setEnabled(false);
-					btnEmail.setEnabled(true);
 					btnReset.setEnabled(true);
 
-					/*
-					 * @Author Nick Gigliotti
-					 * Email Directions Button
-					 * 
-					 */
-			        btnEmail.addActionListener(new ActionListener() {
-			        	public void actionPerformed(ActionEvent e) {
-			        		EmailGUI newEmail = new EmailGUI();
-			        		newEmail.setVisible(true); //Opens EmailGUI Pop-Up
-			        	}
-			        });
 
 					btnEmail_1.setEnabled(true); //this is where email button should be enabled
 				}
