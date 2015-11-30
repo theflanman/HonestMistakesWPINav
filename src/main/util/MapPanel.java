@@ -54,6 +54,7 @@ import main.MapNode;
 public class MapPanel extends JPanel implements ActionListener {
 	private Image bgImage;
 	int circleSize = 10; //Circle size determines size of nodes on map. 
+	ArrayList<MapNode> selectedPanelPoints = new ArrayList<MapNode>(); //currently selected points
 
 	ArrayList<MapNode> mapPanelPoints = new ArrayList<MapNode>(); // currently loaded list of points
 
@@ -67,32 +68,34 @@ public class MapPanel extends JPanel implements ActionListener {
 		//		if (mapPanelPoints != null) {
 		//			String currentLocal = mapPanelPoints.get(0).getLocalMap().getMapImageName();
 		for(MapNode n : mapPanelPoints){
-			if(selectedNode != null) {
-				if(n.equals(selectedNode)) {
-					g2d.setPaint(Color.red);
-				}
-				if(selectedNode.getNeighbors().contains(n)) {
-					g2d.setPaint(Color.green);
-				}
-			}
 			g2d.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, circleSize, circleSize);
-			g2d.setPaint(Color.blue);
-			for(MapNode m : n.getNeighbors()) {
-					if(m.getLocalMap().getMapImageName().equals(n.getLocalMap().getMapImageName())) {
-						//g2d.fillOval((int) m.getXPos() - 5, (int) m.getYPos() - 5, circleSize, circleSize);
-						g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
-					}
-					else {
-						//g2d.drawArc((int) n.getXPos(),  (int) n.getYPos(), 10, 10, 10, 10);
-						if(m.getAttributes().getOfficialName() != null && !m.getAttributes().getOfficialName().equals(""))
-	  						g2d.drawString(m.getAttributes().getOfficialName(), (int) n.getXPos() + 10, (int) n.getYPos() + 10);
-						else
-							g2d.drawString("" + m.getXPos() + ", " + m.getYPos(), (int) n.getXPos() + 10, (int) n.getYPos() + 10);
-					}
+				for(MapNode m : n.getNeighbors()) {
+					g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
+				}
+				for(MapNode m : n.getNeighbors()) {
+				if(m.getLocalMap().getMapImageName().equals(n.getLocalMap().getMapImageName())) {
+					//g2d.fillOval((int) m.getXPos() - 5, (int) m.getYPos() - 5, circleSize, circleSize);
+					//g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
+				}
+				else {
+					//g2d.drawArc((int) n.getXPos(),  (int) n.getYPos(), 10, 10, 10, 10);
+					if(m.getAttributes().getOfficialName() != null && !m.getAttributes().getOfficialName().equals(""))
+	  					g2d.drawString(m.getAttributes().getOfficialName(), (int) n.getXPos() + 10, (int) n.getYPos() + 10);
+					else
+						g2d.drawString("" + m.getXPos() + ", " + m.getYPos(), (int) n.getXPos() + 10, (int) n.getYPos() + 10);
+				}//end else
 				//g2d.setPaint(Color.blue);
+				
+				}//end for
+		}//end outer for
+			
+		g2d.setPaint(Color.green);
+		for(MapNode n : selectedPanelPoints){
+			g2d.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, circleSize, circleSize);
 			}
 		}
-	}
+			
+			
 	//}
 
 	// paintComponent is what Swing calls to update the displayed graphics.
@@ -112,6 +115,14 @@ public class MapPanel extends JPanel implements ActionListener {
 	//Updates the points array to reflect a change, then calls the private method to render.
 	public void renderMapPublic(Graphics g, ArrayList<MapNode> points) {
 		mapPanelPoints = points;
+		selectedPanelPoints.clear();
+		renderMapPrivate(g);
+	}
+	
+	public void renderSelectedNodes(Graphics g, ArrayList<MapNode> points, ArrayList<MapNode> selectedNodes, MapNode selected){
+		mapPanelPoints = points;
+		selectedPanelPoints = selectedNodes;
+		selectedNode = selected;
 		renderMapPrivate(g);
 	}
 

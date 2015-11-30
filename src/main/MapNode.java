@@ -20,7 +20,6 @@ public class MapNode implements Serializable{
 	private MapNode cameFrom;
 	private GlobalMap globalMap;
 	private LocalMap localMap;
-	private String nodeName;
 	private Attributes attributes;
 	
 	// default constructor
@@ -127,19 +126,13 @@ public class MapNode implements Serializable{
 	public void setYPos(double yPos) {
 		this.yPos = yPos;
 	}
-
-	public String getnodeName() {
-		return nodeName;
-	}
 	public void setxPos(double pos) {
 		xPos = pos;
 	}
 	public void setyPos(double pos) {
 		yPos = pos;
 	}
-	public void setnodeName(String name) {
-		nodeName = name;
-	}
+
 	public int getID(){
 		return nodeID;
 	}

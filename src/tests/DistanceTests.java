@@ -3,36 +3,40 @@ package tests;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
+import main.LocalMap;
 import main.MapNode;
 import main.StepByStep;
 
 public class DistanceTests extends TestCase{
+	
+	LocalMap localMap1 = new LocalMap("map1", null);
+	
 	public void testNodeDistanceInts() {
-		MapNode node1 = new MapNode(5, 3, 0);
-		MapNode node2 = new MapNode(1, 0, 0);
+		MapNode node1 = new MapNode(5, 3, localMap1);
+		MapNode node2 = new MapNode(1, 0, localMap1);
 		
 		assertEquals(node1.calcDistance(node2), 5); 
 	}
 	
 	public void testNodeDistanceNegative() {
-		MapNode node1 = new MapNode(-2, 8, 0);
-		MapNode node2 = new MapNode(1, -4, 0);
+		MapNode node1 = new MapNode(-2, 8, localMap1);
+		MapNode node2 = new MapNode(1, -4, localMap1);
 		
 		assertEquals(node1.calcDistance(node2), 12); 
 	}
 	
 	public void testNodeDistanceDecimal() {
-		MapNode node1 = new MapNode(3.2, 1.4, 0);
-		MapNode node2 = new MapNode(.5, 2.1, 0);
+		MapNode node1 = new MapNode(3.2, 1.4, localMap1);
+		MapNode node2 = new MapNode(.5, 2.1, localMap1);
 		
 		assertEquals(node1.calcDistance(node2), 3); 
 	}
 	
 	public void testTotalDistance() {
-		MapNode node1 = new MapNode(3, 1, 0);
-		MapNode node2 = new MapNode(0, 2, 0);
-		MapNode node3 = new MapNode(1, 5, 0);
-		MapNode node4 = new MapNode(7, -3, 0);
+		MapNode node1 = new MapNode(3, 1, localMap1);
+		MapNode node2 = new MapNode(0, 2, localMap1);
+		MapNode node3 = new MapNode(1, 5, localMap1);
+		MapNode node4 = new MapNode(7, -3, localMap1);
 		
 		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
 		instructionList1.add(node4);
@@ -46,8 +50,8 @@ public class DistanceTests extends TestCase{
 	}
 	
 	public void testTotalDistanceSingleDistance() {
-		MapNode node1 = new MapNode(3, 1, 0);
-		MapNode node2 = new MapNode(0, 2, 0);
+		MapNode node1 = new MapNode(3, 1, localMap1);
+		MapNode node2 = new MapNode(0, 2, localMap1);
 		
 		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
 		instructionList1.add(node2);

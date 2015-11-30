@@ -13,6 +13,11 @@ import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -67,6 +72,9 @@ public class DevGUIFront extends JFrame {
 	private MapNode edgeStart;
 	private MapNode edgeRemove;
 	private MapNode nodeToRemove;
+	private boolean multiSelect;
+	private ArrayList<MapNode> selectedNodes = new ArrayList<MapNode>();
+	private ArrayList<MapNode> selectedNodes2 = new ArrayList<MapNode>();
 	private boolean edgeStarted = false;
 	private boolean edgeRemovalStarted = false;
 	private boolean twoMapView = false;
@@ -104,11 +112,19 @@ public class DevGUIFront extends JFrame {
 		});
 	}
 	
+	
+	public void keyPressed(KeyEvent e){
+		System.out.println("Key pressed");
+	}
+	
+	
 	/**
 	 * Create the frame.
 	 */
 	public DevGUIFront() {
 
+	//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
+		System.out.println("Initializing...");
 	//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
 		
 		// This sets the size and behavior of the application window itself.
@@ -586,18 +602,54 @@ public class DevGUIFront extends JFrame {
 				} else if (rdbtnSelectNode.isSelected()){
 					edgeStarted = false;
 					edgeRemovalStarted = false;
+					if(!me.isControlDown()){
+						selectedNodes.clear();
+					}
+					if(me.isShiftDown()){
+						multiSelect = true;
+					}
+					else{
+						multiSelect = false;
+					}
+					
 					for(MapNode n : points){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
 						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-							setInfoFields(n);							
+							setInfoFields(n);
+							
+							if(multiSelect){
+								MapNode lastPoint = lastClicked;
+								MapNode currentPoint  = n;
+								double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
+								double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
+								double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
+								double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
+								for(MapNode mn : points){
+									if(mn.getXPos() >= minX && mn.getXPos() <= maxX &&
+											mn.getYPos() >= minY && mn.getYPos() <= maxY){
+										if(!selectedNodes.contains(mn)){
+											selectedNodes.add(mn);
+										}
+									}
+								}
+								
+							}
+													
 							lastClicked = n;
+							
+							if(!selectedNodes.contains(n)){
+								selectedNodes.add(n);
+							}
+							
+							System.out.println(selectedNodes.size());
+							
 							Graphics g = mapPanel.getGraphics();
 							
-							mapPanel.renderMapPublic(g, points, lastClicked);
+							mapPanel.renderSelectedNodes(g, points, selectedNodes, lastClicked);
 							if(twoMapView) {
 								Graphics g2 = mapPanel2.getGraphics();
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
+								mapPanel2.renderSelectedNodes(g2, points2, selectedNodes2, lastClicked);
 							}
 							
 						}
@@ -733,6 +785,7 @@ public class DevGUIFront extends JFrame {
 					mapPanel2.renderMapPublic(g2, points2, lastClicked);
 					mapPanel.renderMapPublic(g, points, lastClicked);
 				} else if (rdbtnSelectNode.isSelected()){
+					/*
 					edgeStarted = false;
 					edgeRemovalStarted = false;
 					for(MapNode n : points2){
@@ -747,8 +800,61 @@ public class DevGUIFront extends JFrame {
 							mapPanel.renderMapPublic(g, points, lastClicked);
 						}
 					}
-				}
-				else if(rdbtnMakeEdge.isSelected()) {
+					*/
+					edgeStarted = false;
+					edgeRemovalStarted = false;
+					if(!me.isControlDown()){
+						selectedNodes2.clear();
+					}
+					if(me.isShiftDown()){
+						multiSelect = true;
+					}
+					else{
+						multiSelect = false;
+					}
+					
+					for(MapNode n : points2){
+						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							setInfoFields(n);
+							
+							if(multiSelect){
+								MapNode lastPoint = lastClicked;
+								MapNode currentPoint  = n;
+								double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
+								double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
+								double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
+								double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
+								for(MapNode mn : points){
+									if(mn.getXPos() >= minX && mn.getXPos() <= maxX &&
+											mn.getYPos() >= minY && mn.getYPos() <= maxY){
+										if(!selectedNodes2.contains(mn)){
+											selectedNodes2.add(mn);
+										}
+									}
+								}
+								
+							}
+													
+							lastClicked = n;
+							
+							if(!selectedNodes2.contains(n)){
+								selectedNodes2.add(n);
+							}
+							
+							System.out.println(selectedNodes2.size());
+						}
+					}
+					Graphics g = mapPanel.getGraphics();
+					Graphics g2 = mapPanel2.getGraphics();
+					mapPanel2.renderSelectedNodes(g2, points2, selectedNodes2, lastClicked);
+					mapPanel.renderSelectedNodes(g, points, selectedNodes, lastClicked);
+					
+						
+
+				
+				} else if(rdbtnMakeEdge.isSelected()) {
 					edgeRemovalStarted = false;
 					if(edgeStarted == false) {
 						for(MapNode n : points2){
