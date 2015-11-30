@@ -20,7 +20,18 @@ public class MapNode implements Serializable{
 	private Attributes attributes;
 	
 	// default constructor
-	public MapNode(){}
+	public MapNode(){
+		xPos = -1.0;
+		yPos = -1.0;
+		zPos = -1.0;
+		
+		neighbors = new ArrayList<MapNode>();
+		attributes = new Attributes();
+		fScore = -1;
+		gScore = -1;
+		hScore = -1;
+		cameFrom = null;
+	}
 	
 	// constructor
 	public MapNode(double newX, double newY, double newZ) {

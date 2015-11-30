@@ -318,6 +318,7 @@ public class DevGUIBack implements Serializable  {
 			for (int i = 0; i < xmlNodeList.getLength(); ++i){
 				ArrayList<Integer> newList = new ArrayList<Integer>();
 				MapNode newMapNode = new MapNode();
+				
 				loadedNodes.add(newMapNode);
 				neighborNodes.add(newList);
 			}
@@ -338,10 +339,13 @@ public class DevGUIBack implements Serializable  {
 				loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
 				loadedNodes.get(i).setZPos(Double.parseDouble(zPos));
 				//debug print
+				
+				/*
 				System.out.println(loadedNodes.get(i).getNodeID());
 				System.out.println(loadedNodes.get(i).getXPos());
 				System.out.println(loadedNodes.get(i).getYPos());
 				System.out.println(loadedNodes.get(i).getZPos());
+				*/
 				
 				//get the neighbor values and store those node ID's in the neighbor nodes arraylist
 				Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
@@ -360,7 +364,6 @@ public class DevGUIBack implements Serializable  {
 				}
 				
 				//extract the attribute values and store these
-				System.out.println("About to extract Attributes");
 				Element attributes = ((Element)currentNode.getElementsByTagName("Attributes").item(0));
 				String officialName = attributes.getElementsByTagName("OfficialName").item(0).getTextContent();
 				String bikeable = attributes.getElementsByTagName("Bikeable").item(0).getTextContent();
@@ -369,11 +372,9 @@ public class DevGUIBack implements Serializable  {
 				String outside = attributes.getElementsByTagName("Outside").item(0).getTextContent();
 				String poi = attributes.getElementsByTagName("POI").item(0).getTextContent();
 				String type = attributes.getElementsByTagName("Type").item(0).getTextContent();
-				System.out.println("Done Extracting Attributes");
 				
 				
 				//set the attributes in the array list
-				System.out.println("I is: " + Integer.toString(i));
 				
 				Attributes attr = new Attributes();
 				attr.setOfficialName(officialName);
@@ -384,7 +385,6 @@ public class DevGUIBack implements Serializable  {
 				attr.setType(LocationType.parseType(type));
 				
 				loadedNodes.get(i).setAttributes(attr);
-				System.out.println("Done Setting Attributes");
 				
 				//debug print
 				/*
@@ -404,15 +404,15 @@ public class DevGUIBack implements Serializable  {
 			for (int i = 0; i < xmlNodeList.getLength(); i++){
 				//loop through the list of neighbor associations to do assignment for each one
 				for (int j = 0; j < neighborNodes.get(i).size(); j++){
-					System.out.println("Inside of second loop, j = " + Integer.toString(j));
+					
 					int neighborID = neighborNodes.get(i).get(j);
-					System.out.println("Call to neighbor ID didnt fail");
 					//need to get the node associated with this ID
 					for(MapNode potentialNode : loadedNodes){
 						if(potentialNode.getNodeID() == neighborID){
-							System.out.println("Linking node " + Integer.toString(loadedNodes.get(i).getNodeID()) + " with node " + Integer.toString(potentialNode.getNodeID()));
+						
 							MapNode currentNode = loadedNodes.get(i);
 							currentNode.addNeighbor(potentialNode);
+							//currentNode.getNeighbors().add(potentialNode);
 						}
 					}//end inner for		
 				}//end middle for
