@@ -12,6 +12,20 @@ import main.MapNode;
 import main.util.Constants;
 import main.util.SaveUtil;
 
+import java.io.File;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+
 public class DevGUIBack implements Serializable  {
 
 	private LocalMap localMap;
@@ -45,6 +59,7 @@ public class DevGUIBack implements Serializable  {
 	 * 
 	 * @param fileName is name of file that stores the object data (requires extension)
 	 */
+	/*
 	public void saveMap() {
 		String fileName = this.localMap.getMapImageName();
 				
@@ -65,7 +80,49 @@ public class DevGUIBack implements Serializable  {
 			e.printStackTrace();
 		}
 	}
+	*/
 	
+	public void saveMap() {
+		//get the filename of the map image, remove the image extension,
+		//and slap on a .localmap
+		String fileName = this.localMap.getMapImageName();
+		fileName = SaveUtil.removeExtension(fileName);
+		fileName = fileName.concat(".localmap");
+		
+		
+		/**
+		 * XML Saving based on the code from Costis Aivalis
+		 * on SE
+		 * 
+		 * http://stackoverflow.com/questions/7373567/java-how-to-read-and-write-xml-files
+		 */
+		Document dom;
+	    Element e = null;
+
+	    // instance of a DocumentBuilderFactory
+	    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+	    try {
+	        // use factory to get an instance of document builder
+	        DocumentBuilder db = dbf.newDocumentBuilder();
+	        // create instance of DOM
+	        dom = db.newDocument();
+
+	        // create the root element
+	        Element rootEle = dom.createElement("mapnodes");
+	        dom.appendChild(rootEle);
+	        
+	        for(MapNode node : this.localMap.getMapNodes()){
+	        	e = dom.createElement("node");
+	        	
+	        }
+
+	       
+	    } catch (ParserConfigurationException pce) {
+	        System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
+	    }
+				
+		
+	}
 	/**
 	 * loads a LocalMap into this class
 	 * 
