@@ -486,14 +486,8 @@ public class GUIFront extends JFrame {
 					// astar algorithm
 					lblDistance.setText(backend.getDistance());
 
-					// STEP BY STEP DIRECTIONS TEXT
-					// basically just places each string into the array one row
-					// at a time - if, and this is a big IF, /n works in this
-					// context
-					for (String string : backend.displayStepByStep()) {
-						allText += string + "\n";
-					}
-
+					allText = backend.makeStepByStep();
+					
 					textArea1.setText(allText);
 					btnCalculateRoute.setEnabled(false);
 					btnEmail.setEnabled(true);

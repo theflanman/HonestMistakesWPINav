@@ -98,12 +98,17 @@ public class GUIBack implements Serializable {
 	/**
 	 * @return ArrayList<String> - this is necessary to allow GUIFront to convert the strings in the array into rows of the column
 	 */
-	//honestly think we should role with the commented-out code, and get rid of generateStepByStep from Global -- Need someone's opinion though
-	public ArrayList<String> displayStepByStep() {
+	// honestly think we should role with the commented-out code, and get rid of generateStepByStep from Global -- Need someone's opinion though
+	public String makeStepByStep() {
 		StepByStep directions = new StepByStep(this.path);
 		ArrayList<String> print = directions.printDirection();
 		
-		return print;
+		String stepByStep = "";
+		for(String s : print){
+			stepByStep += s + "\n";
+		}
+		
+		return stepByStep;
 	}
 	
 	public void selectNodesForNavigation() {
