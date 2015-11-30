@@ -2,8 +2,16 @@ package main.gui;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.NoninvertibleTransformException;
+import java.awt.geom.Point2D;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +31,7 @@ import aurelienribon.slidinglayout.SLKeyframe;
 import aurelienribon.slidinglayout.SLPanel;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+import javafx.scene.transform.Transform;
 import main.*;
 import main.util.Constants;
 import javax.swing.JTextField;
@@ -36,6 +45,8 @@ import javax.swing.border.MatteBorder;
 /**
  * This class contains code for the main applications GUI interface as well as
  * implementation for its various functionality such as drawing the route.
+ * 
+ * Tween code adapted from Aurelien Ribon's Sliding Layout Demo 
  * 
  * @author Trevor
  */
@@ -51,6 +62,11 @@ public class GUIFront extends JFrame {
 	public static boolean reset = false;
 	public static MapNode startNode = null, endNode = null;
 	public static String allText = "";
+	
+	static AffineTransform transform; // the current state of image transformation
+	Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
+	static PanHandler panHandle;
+	static ZoomHandler zoomHandle;
 
 	private JPanel contentPane;
 	private static JTextField textFieldEnd, textFieldStart;
@@ -100,14 +116,32 @@ public class GUIFront extends JFrame {
 		setBounds(0, 0, 499, 396);
 		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
+		panHandle = new PanHandler();
+		zoomHandle = new ZoomHandler();
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
+		// File Menu
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
-		JMenuItem mntmExit = new JMenuItem("Exit");
+		JMenuItem mntmEmail = new JMenuItem("Email"); // Code to open up the email sender
+		mntmEmail.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				EmailGUI newEmail = new EmailGUI();
+				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
+			}
+		});
+		JMenuItem mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
+		mntmExit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.exit(0); 
+			}
+		});
+		mnFile.add(mntmEmail);
 		mnFile.add(mntmExit);
 		
 		JMenu mnOptions = new JMenu("Options");
@@ -308,6 +342,9 @@ public class GUIFront extends JFrame {
 		panelDirections = new TweenPanel("2");
 		panelDirections.setBackground(Color.RED);
 		
+		JLabel test = new JLabel("Hey Nathan");
+		panelDirections.add(test, BorderLayout.NORTH);
+		
 		// add to the tabbed pane
 		tabbedPane.add(slidePanel, BorderLayout.CENTER);
 		
@@ -415,7 +452,134 @@ public class GUIFront extends JFrame {
 		removeLine = true;
 	}
 	
+	/**
+	 * A class to handle zooming based on scrolling of the mouse wheel. 
+	 * Current implementation allows for between 50% and 200% zoom. Anything less than 50%
+	 * with the current map sizes makes the images disappear.
+	 * TODO: Potentially add double click functionality ? 
+	 * TODO: Potentially add button functionality ?
+	 * 
+	 * @author Gatrie
+	 */
+	class ZoomHandler implements MouseWheelListener {
+		
+		double zoomAmount;
+		
+		public ZoomHandler(){
+			this.zoomAmount = 1; // the amount to zoom 
+		}
+
+		@Override
+		public void mouseWheelMoved(MouseWheelEvent mwe) {
+			int direction = mwe.getWheelRotation();
+			
+			if(direction < 0){ // moving up, so zoom in	(no greater than 100%)
+				if(zoomAmount != 2)
+					zoomAmount += 0.1;
+			} else { // moving down, zoom out (no less than 0%)
+				if(zoomAmount >= 0.5)
+					zoomAmount -= 0.1;
+			}
+			
+			// Set it to slightly above 0, weird errors occur if you do exactly 0
+			//if(zoomAmount == 0)
+			//	zoomAmount = 0.00001;
+			
+			panelMap.setScale(zoomAmount);
+		}
+		
+	}
 	
+	/**
+	 * Handles events related to panning the map image efficiently. 
+	 * Created with reference to code at: http://web.eecs.utk.edu/
+	 * @author Trevor
+	 */
+	class PanHandler implements MouseListener, MouseMotionListener {
+		double startX, startY; // reference points of original transformation
+		AffineTransform startTransform; // original state of transformation
+		
+		@Override
+		public void mouseDragged(MouseEvent me) {
+			// now we want to start in reference to the initial transformation of THIS object, ie startTransform
+			try {
+				mainReferencePoint = startTransform.inverseTransform(me.getPoint(), null);
+			} catch (NoninvertibleTransformException e){
+				e.printStackTrace();
+			}
+			
+			// Now figure out the difference
+			double distanceMovedX = mainReferencePoint.getX() - startX;
+			double distanceMovedY = mainReferencePoint.getY() - startY;
+			
+			// reset the start points to the clicked point (remember, this is stored in mainReferencePoint)
+			startX = mainReferencePoint.getX();
+			startY = mainReferencePoint.getY();
+			
+			panelMap.panX += distanceMovedX;
+			panelMap.panY += distanceMovedY;
+			
+			// Update the map node locations relative to the map image
+			for(MapNode n : backend.getLocalMap().getMapNodes()){
+				n.setXPos(n.getXPos() + distanceMovedX);
+				n.setYPos(n.getYPos() + distanceMovedY);
+			}
+			
+			panelMap.repaint();
+			
+		}
+		
+		/**
+		 * Will save the point clicked at and the state of the initial transformation as
+		 * panning is likely to occur.
+		 */
+		@Override
+		public void mousePressed(MouseEvent me) {
+		   /**
+			* Suppose that T:U->V is a linear transformation. If there is a function S:V->U such that
+			*	S*T=I   T*S=I, then T is invertible.
+			*	
+			*	Check to make sure the current transformation is invertible and get that point
+			*/
+			try {
+				mainReferencePoint = transform.inverseTransform(me.getPoint(), null);
+			} catch (NoninvertibleTransformException e) {
+				e.printStackTrace();
+			}
+			
+			// save the starting points and initial transformation
+			startX = mainReferencePoint.getX();
+			startY = mainReferencePoint.getY();
+			startTransform = transform;
+		}
+
+				
+		@Override
+		public void mouseReleased(MouseEvent me) {
+
+		}
+		@Override
+		public void mouseMoved(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+
 	
 	/**
 	 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
@@ -434,13 +598,16 @@ public class GUIFront extends JFrame {
 		private boolean hover = false;
 		private int borderThickness = 2;
 		private String panelID;
+		
+		double panX, panY;
+		double scale;
 
 		/**
 		 * Constructor for any tab that would hold a map
 		 * @param mapNodes A list of map nodes of the currently loaded map
 		 * @param mapPath The image of the map 
 		 * @param panelID Represents the ID of a panel to keep track of it 
-		 */
+		 */	
 		public TweenPanel(ArrayList<MapNode> mapNodes, Image mapPath, String panelID) {
 			setLayout(new BorderLayout());
 			
@@ -453,7 +620,15 @@ public class GUIFront extends JFrame {
 			labelMainPanel.setText(panelID);
 			
 			this.mapImage = mapPath;
-			this.panelID = panelID;			
+			this.panelID = panelID;		
+			
+			panX = 0;
+			panY = 0;
+			scale = 1;
+			
+			addMouseListener(panHandle);
+			addMouseMotionListener(panHandle);
+			addMouseWheelListener(zoomHandle);
 			
 			/* Map Node Selection Stuff */
 			/**
@@ -616,25 +791,37 @@ public class GUIFront extends JFrame {
 
 			Graphics2D graphics = (Graphics2D) g;
 
-			if(this.mapImage == null)
+			if(this.mapImage == null) // StepByStep
 				graphics.drawString(getID(), this.getWidth()/2, this.getHeight()/2);
 			else {
+				// Save the current transformed state incase something goes wrong
+				AffineTransform saveTransform = graphics.getTransform();
+				transform = new AffineTransform(saveTransform);
+				
+				// account for changes in zoom
+				transform.translate(getWidth() / 2, getHeight() /2);
+				transform.scale(scale, scale);
+				transform.translate(-getWidth() / 2, -getHeight() / 2);
+				
+				transform.translate(panX, panY); // move to designated location
+				graphics.setTransform(transform);
+				
 				// Scale the map relative to the panels current size and your current viewing window
-				graphics.drawImage(mapImage, 0, 0, mapImage.getWidth(null), mapImage.getHeight(null), this);	
+				graphics.drawImage(mapImage, 0, 0, this);	
 						
 				// Test drawing of map nodes
 				for(MapNode n : localNodes){
-					graphics.fillOval((int)n.getXPos() - 5, (int)n.getYPos() - 5, 10, 10);
+					graphics.fillOval((int)n.getXPos() - (int)panX - 5, (int)n.getYPos() - (int)panY - 5, 10, 10);
 				}
 				
 				// Colors start and end differently
 				for (int i = 0; i < this.startEndNodes.size(); i++) {
 					if(i == 0){
 						graphics.setColor(Color.RED);
-						graphics.fillOval((int) this.startEndNodes.get(i).getXPos() - 5, (int) this.startEndNodes.get(i).getYPos() - 5, 10, 10);
+						graphics.fillOval((int) this.startEndNodes.get(i).getXPos() - (int)panX - 5, (int) this.startEndNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
 					} else { //if i == 1
 						graphics.setColor(Color.GREEN);
-						graphics.fillOval((int) this.startEndNodes.get(i).getXPos() - 5, (int) this.startEndNodes.get(i).getYPos() - 5, 10, 10);
+						graphics.fillOval((int) this.startEndNodes.get(i).getXPos() - (int)panX - 5, (int) this.startEndNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
 					}
 				}
 				
@@ -668,12 +855,16 @@ public class GUIFront extends JFrame {
 					drawLine = true;
 					removeLine = false;
 				}
-						
+				repaint();
+				graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
 			}
 		}
 		
 		public String getID(){
 			return this.panelID;
+		}
+		public void setScale(double scaleAmt){
+			this.scale = scaleAmt;
 		}
 
 		/**
