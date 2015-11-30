@@ -91,6 +91,11 @@ public class DevGUIBack implements Serializable  {
 		fileName = SaveUtil.removeExtension(fileName);
 		fileName = fileName.concat(".localmap");
 		
+		int i = 1;
+		for(MapNode node : this.localMap.getMapNodes()){
+			node.setNodeID(i++);
+		}
+		
 		
 		/**
 		 * XML Saving based on the code from Costis Aivalis
@@ -144,9 +149,11 @@ public class DevGUIBack implements Serializable  {
 	        	System.out.println("Saving Official Name");
 	        	Element officialName = dom.createElement("OfficialName");
 	        	officialName.appendChild(dom.createTextNode(node.getAttributes().getOfficialName()));
-	        	attributes.appendChild(officialName);
+	        	
+	        	
+	        	System.out.println("Saving Type");
 	        	Element type = dom.createElement("Type");
-	        	//type.appendChild(dom.createTextNode(Integer.toString((int)node.getAttributes().getType())));
+	        	type.appendChild(dom.createTextNode(node.getAttributes().getType().toString()));
 	        	
 	        	
 	        	/*
@@ -182,14 +189,15 @@ public class DevGUIBack implements Serializable  {
 	        	Element isPOI = dom.createElement("POI");
 	        	isPOI.appendChild(dom.createTextNode(Boolean.toString(node.getAttributes().isPOI())));
 	        	
-	        	/*
-	        	attributes.appendChild(dom.createTextNode("Attributes"));
+	        	
+	        	attributes.appendChild(officialName);
 	        	attributes.appendChild(isBikeable);
 	        	attributes.appendChild(isHandicapped);
 	        	attributes.appendChild(isStairs);
 	        	attributes.appendChild(isOutside);
 	        	attributes.appendChild(isPOI);
-	        	*/
+	        	attributes.appendChild(type);
+	        	
 	        	
 	        	
 	        	/*
@@ -208,12 +216,15 @@ public class DevGUIBack implements Serializable  {
 	        	e.appendChild(xPos);
 	        	e.appendChild(yPos);
 	        	e.appendChild(zPos);
+	        	e.appendChild(attributes);
+	        	/*
 	        	e.appendChild(officialName);
 	        	e.appendChild(isBikeable);
 	        	e.appendChild(isHandicapped);
 	        	e.appendChild(isStairs);
 	        	e.appendChild(isOutside);
 	        	e.appendChild(isPOI);
+	        	*/
 	        	
 	        	
 	        	rootEle.appendChild(e);

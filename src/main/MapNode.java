@@ -146,6 +146,9 @@ public class MapNode implements Serializable{
 	public int getNodeID(){
 		return this.nodeID;
 	}
+	public void setNodeID(int id){
+		this.nodeID = id;
+	}
 	
 	public void setGScore(double distance) {
 		gScore = distance;
