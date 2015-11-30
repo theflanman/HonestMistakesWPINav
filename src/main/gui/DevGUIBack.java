@@ -314,10 +314,35 @@ public class DevGUIBack implements Serializable  {
 			for (int i = 0; i < xmlNodeList.getLength(); ++i){
 				MapNode newMapNode = new MapNode();
 				Element currentNode = (Element) xmlNodeList.item(i);
-				String nodeID = currentNode.getAttribute("NodeID");
-				String xPos = currentNode.getAttribute("XPos");
-				String yPos = currentNode.getAttribute("YPos");
-				String zPos = currentNode.getAttribute("ZPos");
+				//String nodeID = currentNode.getAttribute("NodeID");
+				//String nodeID = currentNode.getTextContent();
+				String nodeID = currentNode.getElementsByTagName("NodeID").item(0).getTextContent();
+				String xPos = currentNode.getElementsByTagName("XPos").item(0).getTextContent();
+				String yPos = currentNode.getElementsByTagName("YPos").item(0).getTextContent();
+				String zPos = currentNode.getElementsByTagName("ZPos").item(0).getTextContent();
+				
+				System.out.println(nodeID);
+				System.out.println(xPos);
+				System.out.println(yPos);
+				System.out.println(zPos);
+				//System.out.println("----------------------------------------------");
+				
+				Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
+				if(!neighborCheck.getTextContent().equals("none")){
+					NodeList neighborList = neighborCheck.getElementsByTagName("Neighbor");
+					//System.out.println(neighborList3.getLength());
+					for(int j = 0; j < neighborList.getLength(); ++j){
+						Element neighbor = (Element) neighborList.item(j);
+						System.out.println("    " + neighbor.getTextContent().trim());
+					}
+				}
+				else{
+					System.out.println("No Neighbors");
+				}
+				
+				
+				
+				
 				
 				
 			}
