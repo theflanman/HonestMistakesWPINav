@@ -96,10 +96,22 @@ public class GUIFront extends JFrame {
 		globalMap = new GlobalMap();
 
 		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary list of LocalMaps to be initialized
+		
 		for (int i = 0; i < numLocalMaps; i++) {
-			backend.loadLocalMap(localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "data.localmaps" folder
+			System.out.println(localMapFilenames[i].getName());
+			backend.loadLocalMap("src/data/localmaps/" + localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "data.localmaps" folder
 			tmpListLocal.add(backend.getLocalMap());
 		}
+		
+		/*
+		backend.loadLocalMap("src/data/localmaps/StrattonHallF1.localmap");
+		tmpListLocal.add(backend.getLocalMap());
+		backend.loadLocalMap("src/data/localmaps/StrattonHallF2.localmap");
+		tmpListLocal.add(backend.getLocalMap());
+		*/
+		
+		//backend.loadLocalMap("StrattonHallF1.localmap");
+		//tmpListLocal.add(backend.getLocalMap());
 		globalMap.setLocalMaps(tmpListLocal);
 		backend.setLocalMap(tmpListLocal.get(0));
 

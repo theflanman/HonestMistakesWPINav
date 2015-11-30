@@ -14,7 +14,6 @@ public class MainDriver {
 	 * @param args Command-Line arguments required of a main function
 	 */
 	public static void main(String[] args){		
-		
 		File[] localMapList = new File(Constants.LOCAL_MAP_PATH).listFiles(); // gets a list of localmap filenames
 		
 		

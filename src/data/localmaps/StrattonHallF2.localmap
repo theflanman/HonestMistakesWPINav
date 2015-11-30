@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <MapNodes>
     <Node>
         <NodeID>1</NodeID>
-        <XPos>319.0</XPos>
-        <YPos>333.0</YPos>
+        <XPos>129.0</XPos>
+        <YPos>272.0</YPos>
         <ZPos>0.0</ZPos>
         <Neighbors>
-            <Neighbor>7</Neighbor>
             <Neighbor>2</Neighbor>
         </Neighbors>
         <Attributes>
@@ -22,11 +21,15 @@
     </Node>
     <Node>
         <NodeID>2</NodeID>
-        <XPos>365.0</XPos>
-        <YPos>288.0</YPos>
+        <XPos>132.0</XPos>
+        <YPos>313.0</YPos>
         <ZPos>0.0</ZPos>
         <Neighbors>
+            <Neighbor>2</Neighbor>
+            <Neighbor>2</Neighbor>
             <Neighbor>1</Neighbor>
+            <Neighbor>2</Neighbor>
+            <Neighbor>2</Neighbor>
             <Neighbor>3</Neighbor>
         </Neighbors>
         <Attributes>
@@ -42,12 +45,14 @@
     </Node>
     <Node>
         <NodeID>3</NodeID>
-        <XPos>411.0</XPos>
-        <YPos>337.0</YPos>
+        <XPos>327.0</XPos>
+        <YPos>316.0</YPos>
         <ZPos>0.0</ZPos>
         <Neighbors>
-            <Neighbor>2</Neighbor>
             <Neighbor>4</Neighbor>
+            <Neighbor>3</Neighbor>
+            <Neighbor>3</Neighbor>
+            <Neighbor>2</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
@@ -62,15 +67,12 @@
     </Node>
     <Node>
         <NodeID>4</NodeID>
-        <XPos>403.0</XPos>
-        <YPos>389.0</YPos>
+        <XPos>327.0</XPos>
+        <YPos>272.0</YPos>
         <ZPos>0.0</ZPos>
         <Neighbors>
-            <Neighbor>3</Neighbor>
-            <Neighbor>4</Neighbor>
-            <Neighbor>4</Neighbor>
             <Neighbor>5</Neighbor>
-            <Neighbor>9</Neighbor>
+            <Neighbor>3</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
@@ -85,14 +87,11 @@
     </Node>
     <Node>
         <NodeID>5</NodeID>
-        <XPos>371.0</XPos>
-        <YPos>383.0</YPos>
+        <XPos>523.0</XPos>
+        <YPos>274.0</YPos>
         <ZPos>0.0</ZPos>
         <Neighbors>
-            <Neighbor>9</Neighbor>
-            <Neighbor>7</Neighbor>
-            <Neighbor>9</Neighbor>
-            <Neighbor>9</Neighbor>
+            <Neighbor>6</Neighbor>
             <Neighbor>4</Neighbor>
         </Neighbors>
         <Attributes>
@@ -108,13 +107,12 @@
     </Node>
     <Node>
         <NodeID>6</NodeID>
-        <XPos>368.0</XPos>
-        <YPos>374.0</YPos>
+        <XPos>570.0</XPos>
+        <YPos>275.0</YPos>
         <ZPos>0.0</ZPos>
         <Neighbors>
             <Neighbor>9</Neighbor>
-            <Neighbor>7</Neighbor>
-            <Neighbor>9</Neighbor>
+            <Neighbor>5</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
@@ -129,15 +127,12 @@
     </Node>
     <Node>
         <NodeID>7</NodeID>
-        <XPos>356.0</XPos>
-        <YPos>373.0</YPos>
+        <XPos>765.0</XPos>
+        <YPos>275.0</YPos>
         <ZPos>0.0</ZPos>
         <Neighbors>
-            <Neighbor>5</Neighbor>
-            <Neighbor>6</Neighbor>
-            <Neighbor>7</Neighbor>
-            <Neighbor>7</Neighbor>
-            <Neighbor>1</Neighbor>
+            <Neighbor>8</Neighbor>
+            <Neighbor>9</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
@@ -152,11 +147,11 @@
     </Node>
     <Node>
         <NodeID>8</NodeID>
-        <XPos>354.0</XPos>
-        <YPos>391.0</YPos>
+        <XPos>762.0</XPos>
+        <YPos>200.0</YPos>
         <ZPos>0.0</ZPos>
         <Neighbors>
-            <Neighbor>9</Neighbor>
+            <Neighbor>7</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
@@ -171,21 +166,32 @@
     </Node>
     <Node>
         <NodeID>9</NodeID>
-        <XPos>365.0</XPos>
-        <YPos>391.0</YPos>
+        <XPos>698.0</XPos>
+        <YPos>271.0</YPos>
         <ZPos>0.0</ZPos>
         <Neighbors>
-            <Neighbor>5</Neighbor>
+            <Neighbor>10</Neighbor>
+            <Neighbor>7</Neighbor>
             <Neighbor>6</Neighbor>
-            <Neighbor>5</Neighbor>
-            <Neighbor>8</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName>none</OfficialName>
+            <Bikeable>false</Bikeable>
+            <Handicapped>false</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>other</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>10</NodeID>
+        <XPos>695.0</XPos>
+        <YPos>212.0</YPos>
+        <ZPos>0.0</ZPos>
+        <Neighbors>
             <Neighbor>9</Neighbor>
-            <Neighbor>9</Neighbor>
-            <Neighbor>5</Neighbor>
-            <Neighbor>6</Neighbor>
-            <Neighbor>9</Neighbor>
-            <Neighbor>9</Neighbor>
-            <Neighbor>4</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
