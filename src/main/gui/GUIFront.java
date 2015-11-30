@@ -23,6 +23,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import aurelienribon.slidinglayout.SLAnimator;
@@ -41,6 +42,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
 import javax.swing.border.MatteBorder;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JButton;
 
 /**
  * This class contains code for the main applications GUI interface as well as
@@ -70,6 +73,8 @@ public class GUIFront extends JFrame {
 
 	private JPanel contentPane;
 	private static JTextField textFieldEnd, textFieldStart;
+	private JLabel lblStart, lblEnd;
+	private JButton btnClear;
 	
 	private SLPanel slidePanel;
 	private TweenPanel panelMap, panelDirections;
@@ -112,7 +117,7 @@ public class GUIFront extends JFrame {
 		 */
 		// This will setup the main JFrame to be maximized on start
 		setTitle("Era of Navigation");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 499, 396);
 		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
@@ -307,28 +312,61 @@ public class GUIFront extends JFrame {
 		textFieldEnd.setColumns(10);
 		//give end text field an action		
 		textFieldEnd.addActionListener(actionEnd);
+		
+		lblStart = new JLabel("Starting Location");
+		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		lblEnd = new JLabel("Ending Location");
+		lblEnd.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		
+		// Clear button will call all of the reset code
+		btnClear = new JButton("Clear All");
+		btnClear.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				reset();
+			}
+		});
+		
+		/**
+		 * Auto-Generated code by WindowBuilder for GroupLayout placement of components
+		 */
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblStart))
 							.addGap(18)
-							.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED, 395, Short.MAX_VALUE)
+							.addComponent(btnClear))
+						.addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(13)
-					.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblStart)
+								.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnClear)))
+					.addGap(18)
+					.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 		
@@ -341,6 +379,12 @@ public class GUIFront extends JFrame {
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1");
 		panelDirections = new TweenPanel("2");
 		panelDirections.setBackground(Color.RED);
+		
+		/**
+		 * Adding new components onto the Step By Step slideout panel
+		 */
+		JList<String> tmpList = new JList<String>();
+		panelDirections.add(tmpList, BorderLayout.CENTER);
 		
 		JLabel test = new JLabel("Hey Nathan");
 		panelDirections.add(test, BorderLayout.NORTH);
@@ -364,7 +408,7 @@ public class GUIFront extends JFrame {
 
 		panelDirectionsConfig = new SLConfig(slidePanel)
 				.gap(10, 10)
-				.row(1f).col(600).col(150) // 600xH | 150xH
+				.row(1f).col(550).col(200) // 550xH | 200xH
 				.place(0, 0, panelMap)
 				.place(0, 1, panelDirections);
 		
@@ -426,29 +470,31 @@ public class GUIFront extends JFrame {
 	}};
 
 	/**
-	 * Resets all of the relevant information on the form and the background
-	 * information
+	 * @author Andrew Petit
+	 * @description Resets all of the relevant information on the form and the background information
 	 */
 	public void reset() {
-		//rdbtnStartNode.setSelected(true); // part of a button group, only one
-											// can be selected at a time
+		//allowSetting = true;		
 		backend.setStartNode(null);
 		backend.setEndNode(null);
+		
+		
 		reset = true;
 
 		// allows the user to re-input start and end nodes
 		setEnd = false;
 		setStart = false;
+		//paths.clear();
+		//backend.removePath(backend.getMiddleNodes());
 
-		panelMap.startEndNodes.clear();
+		//panelMap.chosenNodes.clear();
+		//backend.removePath(backend.getPath()); // this is obsolete now
 
 		// if the line needs to be removed
 		// going to need to add a method here - to remove nodes from path
 		//lblDistance.setText("");
 		//textArea1.setText("");
-		backend.removePath();
-		//btnReset.setEnabled(false);
-		//btnCalculateRoute.setEnabled(true);
+		//btnClear.setEnabled(false);
 		removeLine = true;
 	}
 	
@@ -525,8 +571,26 @@ public class GUIFront extends JFrame {
 				n.setYPos(n.getYPos() + distanceMovedY);
 			}
 			
-			panelMap.repaint();
+			/**
+			 * Reset the location of the user selected start end nodes. This solution won't actually add the node to the 
+			 * list of nodes on the local map
+			 */
+			MapNode tmpStart, tmpEnd; // temporary variables for clarity
+			if(backend.getStartNode() != null){
+				tmpStart = backend.getStartNode();
+				tmpStart.setXPos(tmpStart.getXPos() + distanceMovedX);
+				tmpStart.setYPos(tmpStart.getYPos() + distanceMovedY);
+				backend.setStartNode(tmpStart);
+			} 
+			if (backend.getEndNode() != null){
+				tmpEnd = backend.getEndNode();
+				tmpEnd.setXPos(tmpEnd.getXPos() + distanceMovedX);
+				tmpEnd.setYPos(tmpEnd.getYPos() + distanceMovedY);
+				backend.setEndNode(tmpEnd);
+			}
+				
 			
+			panelMap.repaint();	
 		}
 		
 		/**
@@ -641,30 +705,38 @@ public class GUIFront extends JFrame {
 				public void mouseClicked(MouseEvent me) {
 					Point clickedAt = me.getPoint();
 					
+					// Right now, the node placement is based off of if there text in the textboxes or not. Depending
+					// on how we decide when a user is allowed to select nodes this will change, but it's a quick fix
 					if(textFieldStart.getText().length() <= 1){
 						startNode = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
+						//backend.getLocalMap().getMapNodes().add(startNode);
 						
 						System.out.println("This is the starting node!");
 						backend.setStartNode(startNode);
 						
+						// If you haven't set a start node yet, add it to the list of start/end nodes
+						// Else, set that value
 						if (!setStart) {
-							startEndNodes.add(0, startNode);
+							startEndNodes.add(0, backend.getStartNode());
 							setStart = true;
 						} else {
-							startEndNodes.set(0, startNode);
+							startEndNodes.set(0, backend.getStartNode());
 						}
 						textFieldStart.setText("Start Node Selected!");
 					} else if (textFieldEnd.getText().length() <= 1) {
 						endNode = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
+						//backend.getLocalMap().getMapNodes().add(endNode);
 						
 						System.out.println("This is the ending node!");
 						backend.setEndNode(endNode);
 						
+						// If you've chosen a start point but not an end point, add it to the list
+						// Else, set the value at that index
 						if(!setEnd && setStart) {
-							startEndNodes.add(1, endNode);
+							startEndNodes.add(1, backend.getEndNode());
 							setEnd = true;
 						} else {
-							startEndNodes.set(1, endNode);
+							startEndNodes.set(1, backend.getEndNode());
 						}
 						textFieldEnd.setText("End Node Selected!");
 					}
@@ -837,7 +909,7 @@ public class GUIFront extends JFrame {
 						Graphics2D g2 = (Graphics2D) g;
 						g2.setStroke(new BasicStroke(5));
 						g2.setColor(color);
-						g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+						g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 					}
 					drawLine = false;
 					removeLine = true;
@@ -850,7 +922,7 @@ public class GUIFront extends JFrame {
 						Graphics2D g2 = (Graphics2D) g;
 						g2.setStroke(new BasicStroke(5));
 						g2.setColor(Color.white);
-						g2.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
+						g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 					}
 					drawLine = true;
 					removeLine = false;
