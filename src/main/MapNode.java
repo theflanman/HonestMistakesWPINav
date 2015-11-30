@@ -173,5 +173,9 @@ public class MapNode implements Serializable{
 	public Attributes getAttributes() {
 		return this.attributes;
 	}
+	
+	public void setAttributes(Attributes a) {
+		this.attributes = a;
+	}
 
 }

@@ -8,7 +8,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import main.Attributes;
 import main.LocalMap;
+import main.LocationType;
 import main.MapNode;
 import main.util.Constants;
 import main.util.SaveUtil;
@@ -301,6 +303,7 @@ public class DevGUIBack implements Serializable  {
 	
 	public void loadMap(String fileName){
 		ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
+		ArrayList<ArrayList<Integer>> neighborNodes = new ArrayList<ArrayList<Integer>>();
 		
 		Document dom;
 		
@@ -310,48 +313,112 @@ public class DevGUIBack implements Serializable  {
 			dom = db.parse(fileName);
 			Element doc = dom.getDocumentElement();
 			
+			//first pass, just setup arrays of map nodes and neighbor array
 			NodeList xmlNodeList = doc.getElementsByTagName("Node");
 			for (int i = 0; i < xmlNodeList.getLength(); ++i){
+				ArrayList<Integer> newList = new ArrayList<Integer>();
 				MapNode newMapNode = new MapNode();
+				loadedNodes.add(newMapNode);
+				neighborNodes.add(newList);
+			}
+			
+			//second pass, store all map node data except neighbor linking
+			for (int i = 0; i < xmlNodeList.getLength(); ++i){
+				//get the first xml node from the root node
 				Element currentNode = (Element) xmlNodeList.item(i);
-				//String nodeID = currentNode.getAttribute("NodeID");
-				//String nodeID = currentNode.getTextContent();
+				
+				//extract these node variables (ID, x, y, z);
 				String nodeID = currentNode.getElementsByTagName("NodeID").item(0).getTextContent();
 				String xPos = currentNode.getElementsByTagName("XPos").item(0).getTextContent();
 				String yPos = currentNode.getElementsByTagName("YPos").item(0).getTextContent();
 				String zPos = currentNode.getElementsByTagName("ZPos").item(0).getTextContent();
+				//store the nodes in the array list of nodes
+				loadedNodes.get(i).setNodeID(Integer.parseInt(nodeID));
+				loadedNodes.get(i).setXPos(Double.parseDouble(xPos));
+				loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
+				loadedNodes.get(i).setZPos(Double.parseDouble(zPos));
+				//debug print
+				System.out.println(loadedNodes.get(i).getNodeID());
+				System.out.println(loadedNodes.get(i).getXPos());
+				System.out.println(loadedNodes.get(i).getYPos());
+				System.out.println(loadedNodes.get(i).getZPos());
 				
-				System.out.println(nodeID);
-				System.out.println(xPos);
-				System.out.println(yPos);
-				System.out.println(zPos);
-				//System.out.println("----------------------------------------------");
-				
+				//get the neighbor values and store those node ID's in the neighbor nodes arraylist
 				Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
 				if(!neighborCheck.getTextContent().equals("none")){
 					NodeList neighborList = neighborCheck.getElementsByTagName("Neighbor");
 					//System.out.println(neighborList3.getLength());
 					for(int j = 0; j < neighborList.getLength(); ++j){
 						Element neighbor = (Element) neighborList.item(j);
+						neighborNodes.get(i).add(Integer.parseInt(neighbor.getTextContent().trim()));
 						System.out.println("    " + neighbor.getTextContent().trim());
 					}
 				}
 				else{
+					//no neighbors, nothing to add
 					System.out.println("No Neighbors");
 				}
 				
+				//extract the attribute values and store these
+				System.out.println("About to extract Attributes");
+				Element attributes = ((Element)currentNode.getElementsByTagName("Attributes").item(0));
+				String officialName = attributes.getElementsByTagName("OfficialName").item(0).getTextContent();
+				String bikeable = attributes.getElementsByTagName("Bikeable").item(0).getTextContent();
+				String handicapped = attributes.getElementsByTagName("Handicapped").item(0).getTextContent();
+				String stairs = attributes.getElementsByTagName("Stairs").item(0).getTextContent();
+				String outside = attributes.getElementsByTagName("Outside").item(0).getTextContent();
+				String poi = attributes.getElementsByTagName("POI").item(0).getTextContent();
+				String type = attributes.getElementsByTagName("Type").item(0).getTextContent();
+				System.out.println("Done Extracting Attributes");
 				
 				
+				//set the attributes in the array list
+				System.out.println("I is: " + Integer.toString(i));
 				
+				Attributes attr = new Attributes();
+				attr.setOfficialName(officialName);
+				attr.setBikeable(Boolean.parseBoolean(bikeable));
+				attr.setHandicapped(Boolean.parseBoolean(handicapped));
+				attr.setPOI(Boolean.parseBoolean(poi));
+				attr.setStairs(Boolean.parseBoolean(stairs));
+				attr.setType(LocationType.parseType(type));
 				
+				loadedNodes.get(i).setAttributes(attr);
+				System.out.println("Done Setting Attributes");
 				
+				//debug print
+				/*
+				System.out.println(officialName);
+				System.out.println(bikeable);
+				System.out.println(handicapped);
+				System.out.println(stairs);
+				System.out.println(outside);
+				System.out.println(poi);
+				System.out.println(type);
+				*/
+	
 			}
 			
+			//third pass; link nodes
+			System.out.println("About to do the third pass");
+			for (int i = 0; i < xmlNodeList.getLength(); i++){
+				//loop through the list of neighbor associations to do assignment for each one
+				for (int j = 0; j < neighborNodes.get(i).size(); j++){
+					System.out.println("Inside of second loop, j = " + Integer.toString(j));
+					int neighborID = neighborNodes.get(i).get(j);
+					System.out.println("Call to neighbor ID didnt fail");
+					//need to get the node associated with this ID
+					for(MapNode potentialNode : loadedNodes){
+						if(potentialNode.getNodeID() == neighborID){
+							System.out.println("Linking node " + Integer.toString(loadedNodes.get(i).getNodeID()) + " with node " + Integer.toString(potentialNode.getNodeID()));
+							MapNode currentNode = loadedNodes.get(i);
+							currentNode.addNeighbor(potentialNode);
+						}
+					}//end inner for		
+				}//end middle for
+			}//end outer for
 			
-			
-			
-		int i = 0;
-		i++;
+			this.localMap = new LocalMap(fileName, loadedNodes);
 			
 		} catch (ParserConfigurationException pce) {
             System.out.println(pce.getMessage());
