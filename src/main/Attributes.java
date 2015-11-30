@@ -7,15 +7,15 @@ public class Attributes implements Serializable {
 	HashMap<String, String> possibleEntries;
 	String officialName;
 	ArrayList<String> aliases = new ArrayList<String>();
-	boolean isOutside;
-	boolean isBikeable;
-	boolean isHandicapped;
-	boolean isStairs;
-	boolean isPOI;
+	boolean isOutside = false;
+	boolean isBikeable = false;
+	boolean isHandicapped = false;
+	boolean isStairs = false;
+	boolean isPOI = false;
 	public enum LocationType{
 		foodLocation, office, classRoom, waterFountain, bathRoom, parking, walking, door, elevator, laboratory, other
 		}
-	LocationType type;
+	LocationType type = LocationType.other;
 	public Attributes() {
 		super();
 		this.officialName = officialName;
