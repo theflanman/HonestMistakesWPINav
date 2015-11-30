@@ -600,11 +600,8 @@ public class GUIFront extends JFrame {
 		// allows the user to re-input start and end nodes
 		setEnd = false;
 		setStart = false;
-		/*for(ArrayList<MapNode> mapNodes : paths){
-			mapNodes.clear();
-			paths.remove(mapNodes);
-		}*/
 		paths.clear();
+		backend.removePath(backend.getMiddleNodes());
 
 		panel.chosenNodes.clear();
 		//backend.removePath(backend.getPath()); // this is obsolete now
