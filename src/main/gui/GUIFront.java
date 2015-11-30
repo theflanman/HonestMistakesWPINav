@@ -309,7 +309,7 @@ public class GUIFront extends JFrame {
 							String startString = textFieldStart.getText();
 							for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 								if(startString.equals(mapnode.getAttributes().getOfficialName())){
-									startNode = mapnode; //set the startNode in a similar way that is done when using radio buttons refer to drawing pannel mouse click
+									startNode = mapnode; //set the startNode and then draw it on the map
 									System.out.println("This is the starting node");
 									backend.setStartNode(startNode);
 									if (!setStart) {
@@ -324,7 +324,7 @@ public class GUIFront extends JFrame {
 							if (startNode != null){ //make sure that the startNode value is still not null, otherwise this won't work if it is
 								MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
 								if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
-									endNode = node;
+									endNode = node; //set the end node and place that node on the map
 									System.out.println("This is the ending node!");
 									backend.setEndNode(endNode);
 									if (!setEnd) {
@@ -367,7 +367,7 @@ public class GUIFront extends JFrame {
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(startString)){
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
-							startNode = mapnode; //set the startNode in a similar way that is done when using radio buttons refer to drawing pannel mouse click
+							startNode = mapnode; //set the startNode and place it on the map
 							System.out.println("This is the starting node");
 							backend.setStartNode(startNode);
 							if (!setStart) {
@@ -477,17 +477,21 @@ public class GUIFront extends JFrame {
 		btnCalculateRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnCalculateRoute.isEnabled()) {
-					allowSetting = false;
-					allText = "";
+					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
+					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
+					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
 					for(int i = 0; i < panel.chosenNodes.size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
 						wayPoints = backend.runAStar(panel.chosenNodes.get(i), panel.chosenNodes.get(i + 1));
 						paths.add(wayPoints);
 					}
+					//draw the line on the map
 					drawLine = true;
+					//set the initial distance as 0 
 					int distance = 0;
+					//update the step by step directions and distance for each waypoint added
 					for (ArrayList<MapNode>wayPoints : paths){
 						String all = "";
 						distance += backend.getDistance(wayPoints);
@@ -501,12 +505,7 @@ public class GUIFront extends JFrame {
 					// astar algorithm
 					
 					lblDistance.setText("Distance in feet:" + distance);
-
-					// STEP BY STEP DIRECTIONS TEXT
-					// basically just places each string into the array one row
-					// at a time - if, and this is a big IF, /n works in this
-					// context
-
+					//this sets the textarea with the step by step directions
 					textArea1.setText(allText);
 					btnCalculateRoute.setEnabled(false);
 					btnReset.setEnabled(true);
@@ -592,7 +591,7 @@ public class GUIFront extends JFrame {
 	 * @description Resets all of the relevant information on the form and the background information
 	 */
 	public void reset() {
-		allowSetting = true;
+		allowSetting = true; //allow user to reset nodes only once reset is pressed
 		backend.setStartNode(null);
 		backend.setEndNode(null);
 		reset = true;
