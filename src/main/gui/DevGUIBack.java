@@ -20,6 +20,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -85,6 +86,7 @@ public class DevGUIBack implements Serializable  {
 	public void saveMap() {
 		//get the filename of the map image, remove the image extension,
 		//and slap on a .localmap
+		System.out.println("Preparing to save...");
 		String fileName = this.localMap.getMapImageName();
 		fileName = SaveUtil.removeExtension(fileName);
 		fileName = fileName.concat(".localmap");
@@ -109,18 +111,50 @@ public class DevGUIBack implements Serializable  {
 
 	        // create the root element
 	        Element rootEle = dom.createElement("mapnodes");
-	        dom.appendChild(rootEle);
+	        
 	        
 	        for(MapNode node : this.localMap.getMapNodes()){
+	        	
 	        	e = dom.createElement("node");
 	        	
+	        	Element id = dom.createElement("NodeID");
+	        	id.appendChild(dom.createTextNode(Integer.toString(node.getNodeID())));
+	        	
+	        	Element xPos = dom.createElement("XPos");
+	        	xPos.appendChild(dom.createTextNode(Double.toString(node.getXPos())));
+	        	
+	        	
+	        	e.appendChild(id);
+	        	e.appendChild(xPos);
+	        	
+	        	rootEle.appendChild(e);
 	        }
+	        
+	        dom.appendChild(rootEle);
+	        try {
+	            Transformer tr = TransformerFactory.newInstance().newTransformer();
+	            tr.setOutputProperty(OutputKeys.INDENT, "yes");
+	            tr.setOutputProperty(OutputKeys.METHOD, "xml");
+	            tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+	            tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, fileName);
+	            tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
+	            // send DOM to file
+	            tr.transform(new DOMSource(dom), 
+	                                 new StreamResult(new FileOutputStream(fileName)));
+
+	        } catch (TransformerException te) {
+	            System.out.println(te.getMessage());
+	        } catch (IOException ioe) {
+	            System.out.println(ioe.getMessage());
+	        }
+	        
 	       
 	    } catch (ParserConfigurationException pce) {
 	        System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
 	    }
-				
+		
+	    System.out.println("Done saving...");
 		
 	}
 	/**
