@@ -9,7 +9,7 @@ import main.StepByStep;
 
 public class PrintDirectionsTest extends TestCase{
 	
-	LocalMap localMap1 = new LocalMap("StrattonHallF1", null);
+	LocalMap localMap1 = new LocalMap("sample.jpg", null);
 	
 	public void testDirectionRightAndHardRight(){
 		MapNode node1 = new MapNode(3, 1, localMap1);

@@ -6,7 +6,7 @@ import main.MapNode;
 
 public class AngleTests extends TestCase {
 	
-	LocalMap localMap1 = new LocalMap("map1", null);
+	LocalMap localMap1 = new LocalMap("sample.jpg", null);
 	
 	public void test270() {
 		MapNode node1 = new MapNode(3, 1, localMap1);

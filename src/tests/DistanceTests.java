@@ -9,7 +9,7 @@ import main.StepByStep;
 
 public class DistanceTests extends TestCase{
 	
-	LocalMap localMap1 = new LocalMap("map1", null);
+	LocalMap localMap1 = new LocalMap("sample.jpg", null);
 	
 	public void testNodeDistanceInts() {
 		MapNode node1 = new MapNode(5, 3, localMap1);
