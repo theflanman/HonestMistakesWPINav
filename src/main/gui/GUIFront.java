@@ -108,8 +108,7 @@ public class GUIFront extends JFrame {
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
 		backend = new GUIBack(defaultMapImage, null);
 
-		// Initialize the GlobalMap variable with all of the LocalMaps and all
-		// of their nodes
+		// Initialize the GlobalMap variable with all of the LocalMaps and all of their nodes
 		globalMap = new GlobalMap();
 
 		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary list of LocalMaps to be initialized
