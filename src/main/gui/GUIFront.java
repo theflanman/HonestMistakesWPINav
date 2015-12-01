@@ -565,6 +565,7 @@ public class GUIFront extends JFrame {
 		 * Tween related code to make the animations work
 		 */
 		slidePanel = new SLPanel();
+		System.out.println("MAP PATH: " + mapPath);
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1");
 		panelDirections = new TweenPanel("2");
 		
@@ -950,6 +951,7 @@ public class GUIFront extends JFrame {
 		 * @param panelID Represents the ID of a panel to keep track of it 
 		 */	
 		public TweenPanel(ArrayList<MapNode> mapNodes, Image mapPath, String panelID) {
+			
 			setLayout(new BorderLayout());
 			
 			this.localNodes = mapNodes;
