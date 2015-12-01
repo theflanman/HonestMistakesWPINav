@@ -94,7 +94,7 @@ public class GUIFront extends JFrame {
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 
 	private SLPanel slidePanel;
-	public TweenPanel panelMap, panelDirections;
+	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
 
 	/**
@@ -182,6 +182,8 @@ public class GUIFront extends JFrame {
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(1).getMapNodes();
 				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(1).getMapImageName()).getImage();
 				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
+				backend.setLocalMap(GUIFront.globalMap.getLocalMaps().get(1)); //= enteredNodes;
+				panelMap = strattonMap;
 				tabbedPane.addTab("Stratton Floor 1", strattonMap);
 			}
 		});
