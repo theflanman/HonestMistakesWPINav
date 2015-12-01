@@ -266,6 +266,7 @@ public class GUIFront extends JFrame {
 		
 
 		// Image of the default map loaded into backend
+		System.out.println("MAP PATH: " + Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName());
 		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
 		JLabel lblInvalidEntry = new JLabel("Invalid Entry");
 		lblInvalidEntry.setVisible(false);
@@ -533,8 +534,6 @@ public class GUIFront extends JFrame {
 					.addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
-		
-		
 		
 		/**
 		 * Tween related code to make the animations work
@@ -994,8 +993,7 @@ public class GUIFront extends JFrame {
 			labelMainPanel.setText("Step by Step Directions");
 			
 			this.panelID = panelID;
-			
-			
+				
 			addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
