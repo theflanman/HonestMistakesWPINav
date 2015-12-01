@@ -29,6 +29,9 @@ public class MapNode implements Serializable{
 		xPos = -1.0;
 		yPos = -1.0;
 		zPos = -1.0;
+		xFeet = -1.0;
+		yFeet = -1.0;
+		zFeet = -1.0;
 		
 		neighbors = new ArrayList<MapNode>();
 		attributes = new Attributes();
@@ -42,6 +45,7 @@ public class MapNode implements Serializable{
 	public MapNode(double newX, double newY, LocalMap aLocalMap) {
 		xPos = newX;
 		yPos = newY;
+		zPos = 0.0;
 		
 		xFeet = xPos * aLocalMap.getMapScale();
 		yFeet = yPos * aLocalMap.getMapScale();

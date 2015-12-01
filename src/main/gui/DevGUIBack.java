@@ -144,9 +144,17 @@ public class DevGUIBack implements Serializable  {
 	        	Element yPos = dom.createElement("YPos");	
 	        	yPos.appendChild(dom.createTextNode(Double.toString(node.getYPos())));
 	        	
+	        	System.out.println("Saving xFeet");
+	        	Element xFeet = dom.createElement("XFeet");
+	        	xFeet.appendChild(dom.createTextNode(Double.toString(node.getXFeet())));
+	        	
+	        	System.out.println("Saving Feet");
+	        	Element yFeet = dom.createElement("YFeet");	
+	        	yFeet.appendChild(dom.createTextNode(Double.toString(node.getYFeet())));
+	        	
 	        	System.out.println("Saving zPos");
-	        	Element zPos = dom.createElement("ZPos");
-	        	zPos.appendChild(dom.createTextNode(Double.toString(node.getZFeet())));
+	        	Element zFeet = dom.createElement("ZFeet");
+	        	zFeet.appendChild(dom.createTextNode(Double.toString(node.getZFeet())));
 	        	
 	        	System.out.println("Saving Type");
 	        	Element type = dom.createElement("Type");
@@ -228,9 +236,12 @@ public class DevGUIBack implements Serializable  {
 	        	e.appendChild(id);
 	        	e.appendChild(xPos);
 	        	e.appendChild(yPos);
-	        	e.appendChild(zPos);
+	        	e.appendChild(xFeet);
+	        	e.appendChild(yFeet);
+	        	e.appendChild(zFeet);
 	        	e.appendChild(neighbors);
 	        	e.appendChild(attributes);
+	        	
 	        	/*
 	        	e.appendChild(officialName);
 	        	e.appendChild(isBikeable);
@@ -347,12 +358,16 @@ public class DevGUIBack implements Serializable  {
 				System.out.println(nodeID);
 				String xPos = currentNode.getElementsByTagName("XPos").item(0).getTextContent();
 				String yPos = currentNode.getElementsByTagName("YPos").item(0).getTextContent();
-				String zPos = currentNode.getElementsByTagName("ZPos").item(0).getTextContent();
+				String xFeet = currentNode.getElementsByTagName("XFeet").item(0).getTextContent();
+				String yFeet = currentNode.getElementsByTagName("YFeet").item(0).getTextContent();
+				String zFeet = currentNode.getElementsByTagName("ZFeet").item(0).getTextContent();
 				//store the nodes in the array list of nodes
 				loadedNodes.get(i).setNodeID(nodeID);
 				loadedNodes.get(i).setXPos(Double.parseDouble(xPos));
 				loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
-				loadedNodes.get(i).setZFeet(Double.parseDouble(zPos));
+				loadedNodes.get(i).setXFeet(Double.parseDouble(xFeet));
+				loadedNodes.get(i).setYFeet(Double.parseDouble(yFeet));
+				loadedNodes.get(i).setZFeet(Double.parseDouble(zFeet));
 				//debug print
 				
 				/*

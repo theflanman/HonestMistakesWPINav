@@ -99,12 +99,16 @@ public class GUIBack implements Serializable {
 					System.out.println(nodeID);
 					String xPos = currentNode.getElementsByTagName("XPos").item(0).getTextContent();
 					String yPos = currentNode.getElementsByTagName("YPos").item(0).getTextContent();
-					String zPos = currentNode.getElementsByTagName("ZPos").item(0).getTextContent();
+					String xFeet = currentNode.getElementsByTagName("XFeet").item(0).getTextContent();
+					String yFeet = currentNode.getElementsByTagName("YFeet").item(0).getTextContent();
+					String zFeet = currentNode.getElementsByTagName("ZFeet").item(0).getTextContent();
 					//store the nodes in the array list of nodes
 					loadedNodes.get(i).setNodeID(nodeID);
 					loadedNodes.get(i).setXPos(Double.parseDouble(xPos));
 					loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
-					loadedNodes.get(i).setZFeet(Double.parseDouble(zPos));
+					loadedNodes.get(i).setXFeet(Double.parseDouble(xFeet));
+					loadedNodes.get(i).setYFeet(Double.parseDouble(yFeet));
+					loadedNodes.get(i).setZFeet(Double.parseDouble(zFeet));
 					//debug print
 					
 					/*

@@ -1,284 +1,135 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <MapNodes>
+    <ImageName>CCM.jpg</ImageName>
     <Node>
         <NodeID>CCM_1</NodeID>
-        <XPos>528.0</XPos>
-        <YPos>403.0</YPos>
-        <ZPos>0.0</ZPos>
+        <XPos>406.0</XPos>
+        <YPos>337.0</YPos>
+        <XFeet>73.08</XFeet>
+        <YFeet>60.66</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_1</Neighbor>
-            <Neighbor>CCM_1</Neighbor>
-            <Neighbor>CCM_5</Neighbor>
-			<Neighbor>SH1_1</Neighbor>
-			<Neighbor>SH3_5</Neighbor>
+            <Neighbor>CCM_2</Neighbor>
+            <Neighbor>CCM_6</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>none</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
+            <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>other</Type>
+            <Type>walking</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>CCM_2</NodeID>
-        <XPos>500.0</XPos>
-        <YPos>418.0</YPos>
-        <ZPos>0.0</ZPos>
+        <XPos>571.0</XPos>
+        <YPos>425.0</YPos>
+        <XFeet>102.78</XFeet>
+        <YFeet>76.5</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_2</Neighbor>
-            <Neighbor>CCM_2</Neighbor>
-            <Neighbor>CCM_9</Neighbor>
+            <Neighbor>CCM_1</Neighbor>
             <Neighbor>CCM_5</Neighbor>
+            <Neighbor>CCM_3</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>none</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
+            <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>other</Type>
+            <Type>walking</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>CCM_3</NodeID>
-        <XPos>503.0</XPos>
-        <YPos>391.0</YPos>
-        <ZPos>0.0</ZPos>
+        <XPos>585.0</XPos>
+        <YPos>497.0</YPos>
+        <XFeet>105.3</XFeet>
+        <YFeet>89.46</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_5</Neighbor>
-            <Neighbor>CCM_5</Neighbor>
-            <Neighbor>CCM_3</Neighbor>
-            <Neighbor>CCM_3</Neighbor>
             <Neighbor>CCM_4</Neighbor>
+            <Neighbor>CCM_2</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>none</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
+            <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>other</Type>
+            <Type>walking</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>CCM_4</NodeID>
-        <XPos>481.0</XPos>
-        <YPos>404.0</YPos>
-        <ZPos>0.0</ZPos>
+        <XPos>676.0</XPos>
+        <YPos>473.0</YPos>
+        <XFeet>121.67999999999999</XFeet>
+        <YFeet>85.14</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_4</Neighbor>
-            <Neighbor>CCM_4</Neighbor>
+            <Neighbor>CCM_5</Neighbor>
             <Neighbor>CCM_3</Neighbor>
-            <Neighbor>CCM_9</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>none</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
+            <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>other</Type>
+            <Type>walking</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>CCM_5</NodeID>
-        <XPos>516.0</XPos>
-        <YPos>411.0</YPos>
-        <ZPos>0.0</ZPos>
+        <XPos>640.0</XPos>
+        <YPos>399.0</YPos>
+        <XFeet>115.19999999999999</XFeet>
+        <YFeet>71.82</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_1</Neighbor>
-            <Neighbor>CCM_3</Neighbor>
-            <Neighbor>CCM_3</Neighbor>
-            <Neighbor>CCM_6</Neighbor>
             <Neighbor>CCM_2</Neighbor>
+            <Neighbor>CCM_4</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>none</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
+            <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>other</Type>
+            <Type>walking</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>CCM_6</NodeID>
-        <XPos>513.0</XPos>
-        <YPos>432.0</YPos>
-        <ZPos>0.0</ZPos>
+        <XPos>353.0</XPos>
+        <YPos>273.0</YPos>
+        <XFeet>63.54</XFeet>
+        <YFeet>49.14</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_5</Neighbor>
+            <Neighbor>CCM_1</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>none</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
+            <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>other</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CCM_7</NodeID>
-        <XPos>501.0</XPos>
-        <YPos>439.0</YPos>
-        <ZPos>0.0</ZPos>
-        <Neighbors>
-            <Neighbor>CCM_9</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName>none</OfficialName>
-            <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>other</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CCM_8</NodeID>
-        <XPos>497.0</XPos>
-        <YPos>448.0</YPos>
-        <ZPos>0.0</ZPos>
-        <Neighbors>
-            <Neighbor>CCM_9</Neighbor>
-            <Neighbor>CCM_10</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName>none</OfficialName>
-            <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>other</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CCM_9</NodeID>
-        <XPos>484.0</XPos>
-        <YPos>427.0</YPos>
-        <ZPos>0.0</ZPos>
-        <Neighbors>
-            <Neighbor>CCM_4</Neighbor>
-            <Neighbor>CCM_2</Neighbor>
-            <Neighbor>CCM_7</Neighbor>
-            <Neighbor>CCM_8</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName>none</OfficialName>
-            <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>other</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CCM_10</NodeID>
-        <XPos>485.0</XPos>
-        <YPos>495.0</YPos>
-        <ZPos>0.0</ZPos>
-        <Neighbors>
-            <Neighbor>CCM_8</Neighbor>
-            <Neighbor>CCM_11</Neighbor>
-            <Neighbor>CCM_11</Neighbor>
-            <Neighbor>CCM_12</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName>none</OfficialName>
-            <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>other</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CCM_11</NodeID>
-        <XPos>475.0</XPos>
-        <YPos>495.0</YPos>
-        <ZPos>0.0</ZPos>
-        <Neighbors>
-            <Neighbor>CCM_10</Neighbor>
-            <Neighbor>CCM_11</Neighbor>
-            <Neighbor>CCM_11</Neighbor>
-            <Neighbor>CCM_10</Neighbor>
-            <Neighbor>CCM_11</Neighbor>
-            <Neighbor>CCM_11</Neighbor>
-            <Neighbor>CCM_12</Neighbor>
-            <Neighbor>CCM_13</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName>none</OfficialName>
-            <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>other</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CCM_12</NodeID>
-        <XPos>467.0</XPos>
-        <YPos>519.0</YPos>
-        <ZPos>0.0</ZPos>
-        <Neighbors>
-            <Neighbor>CCM_10</Neighbor>
-            <Neighbor>CCM_11</Neighbor>
-            <Neighbor>CCM_13</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName>none</OfficialName>
-            <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>other</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CCM_13</NodeID>
-        <XPos>457.0</XPos>
-        <YPos>493.0</YPos>
-        <ZPos>0.0</ZPos>
-        <Neighbors>
-            <Neighbor>CCM_12</Neighbor>
-            <Neighbor>CCM_11</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName>none</OfficialName>
-            <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>other</Type>
+            <Type>walking</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
