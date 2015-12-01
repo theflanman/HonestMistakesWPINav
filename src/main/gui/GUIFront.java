@@ -36,6 +36,7 @@ import javax.swing.text.BadLocationException;
 
 import main.*;
 import main.util.Constants;
+import main.util.SaveUtil;
 import main.util.Speaker;
 
 import javax.swing.JTextField;
@@ -139,7 +140,12 @@ public class GUIFront extends JFrame {
 		setContentPane(contentPane);
 
 		// Image of the default map loaded into backend
-		Image map = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
+		String inputFileName = backend.getLocalMap().getMapImageName();
+
+		String imagePath = SaveUtil.removeExtension(inputFileName);
+		imagePath = imagePath + ".jpg";
+		System.out.println(imagePath);
+		Image map = new ImageIcon("src/data/images/Complete_Campus_Map.jpg").getImage();
 
 		/**
 		 * Window Builder generated code. GroupLayout auto-generated for custom

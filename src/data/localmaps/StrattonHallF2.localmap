@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <MapNodes>
+    <ImageName>StrattonHallF2.jpg</ImageName>
     <Node>
         <NodeID>1</NodeID>
         <XPos>129.0</XPos>
@@ -113,6 +114,7 @@
         <Neighbors>
             <Neighbor>9</Neighbor>
             <Neighbor>5</Neighbor>
+            <Neighbor>11</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
@@ -192,6 +194,25 @@
         <ZPos>0.0</ZPos>
         <Neighbors>
             <Neighbor>9</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName>none</OfficialName>
+            <Bikeable>false</Bikeable>
+            <Handicapped>false</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>other</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>11</NodeID>
+        <XPos>577.0</XPos>
+        <YPos>188.0</YPos>
+        <ZPos>0.0</ZPos>
+        <Neighbors>
+            <Neighbor>6</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
