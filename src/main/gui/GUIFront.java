@@ -98,37 +98,27 @@ public class GUIFront extends JFrame {
 			localMapFilenameStrings[i] = localMapFilenames[i].getName();
 		}
 		
-		backend.loadLocalMaps(localMapFilenameStrings);
+		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
 		
-		/*
-		for (int i = 0; i < numLocalMaps; i++) {
-			System.out.println(localMapFilenames[i].getName());
-			backend.loadLocalMap("src/data/localmaps/" + localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "data.localmaps" folder
-			tmpListLocal.add(backend.getLocalMap());
-		}
-		*/
+		System.out.println("Setting globalMap's localMap list...");
+		globalMap.setLocalMaps(localMapList);
+		System.out.println("GlobalMap's localMap list set.");
 		
-		/*
-		backend.loadLocalMap("src/data/localmaps/StrattonHallF1.localmap");
-		tmpListLocal.add(backend.getLocalMap());
-		backend.loadLocalMap("src/data/localmaps/StrattonHallF2.localmap");
-		tmpListLocal.add(backend.getLocalMap());
-		*/
+		System.out.println("Setting backend's current local map...");
+		backend.setLocalMap(localMapList.get(0));
+		System.out.println("Backend's local map set.");
 		
-		//backend.loadLocalMap("StrattonHallF1.localmap");
-		//tmpListLocal.add(backend.getLocalMap());
-		globalMap.setLocalMaps(tmpListLocal);
-		backend.setLocalMap(tmpListLocal.get(0));
-
 		// add the collection of nodes to the ArrayList of GlobalMap
+		System.out.println("Setting up GlobalMap's node list...");
 		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
-		for (LocalMap local : tmpListLocal) {
+		for (LocalMap local : localMapList) {
 
 			if (!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
 				System.out.println(local.getMapNodes());
 				allNodes.addAll(local.getMapNodes());
 		}
 		globalMap.setMapNodes(allNodes);
+		System.out.println("There are " + globalMap.getMapNodes().size() + " nodes in the globalMap");
 
 		/**
 		 * GUI related code

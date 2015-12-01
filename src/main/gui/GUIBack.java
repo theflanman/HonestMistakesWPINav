@@ -54,7 +54,7 @@ public class GUIBack implements Serializable {
 	 * Linking is then done for every map and can be done across maps.
 	 * @param fileName
 	 */
-	public void loadLocalMaps(String fileNames[]){
+	public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
 		//iterate through each file name
 		ArrayList<ArrayList<ArrayList<String>>> allNeighborList = new ArrayList<ArrayList<ArrayList<String>>>();
 		ArrayList<LocalMap> localMapList = new ArrayList<LocalMap>();
@@ -236,29 +236,17 @@ public class GUIBack implements Serializable {
 		
 		
 		//time to print out all the nodes and see if it worked...
-		for(MapNode node : completeNodeList){
-			System.out.println("Currently on node with ID: " + node.getNodeID());
-			System.out.println("This node is linked with...");
-			for(MapNode neighbor : node.getNeighbors()){
-				System.out.println("    " + neighbor.getNodeID());
+		for(LocalMap lmap : localMapList){
+			for(MapNode node : lmap.getMapNodes()) {
+				System.out.println("Currently on node with ID: " + node.getNodeID());
+				System.out.println("This node is linked with...");
+				for(MapNode neighbor : node.getNeighbors()){
+					System.out.println("    " + neighbor.getNodeID());
+				}	
 			}
 		}
-		
-		//second pass through all of the created local maps.
-		//this is where the nodes will be linked
-		//need to use the triple array list:
-		//  ArrayList<		ArrayList<		ArrayList<String>>>
-		//	Maps				 Neighbors				Node Ids
-		
-		
-	
-		
-		
-		
-		
 			
-		
-		
+		return localMapList; 
 	}
 	
 	
