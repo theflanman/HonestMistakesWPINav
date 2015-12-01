@@ -1,11 +1,33 @@
 ---
+#each map image needs the following information in this file to accompany it (allvalues need to doubles)
+#scale- resembles the feet/px ratio of the map
+#angle- the angle (in radians) the coordinate of the map need to rotate to allign with the global coordinates 
+#xOffset- the offset of this map's x coordinate with respect to the global coordinate of x
+#xOffset- the offset of this map's y coordinate with respect to the global coordinate of y
+#zHeight- the hight of each level in feet, 
+#(the default for floors: ground floor same level as the top of the hill is 0.0, each floor higher we add 13 ft, each floor lower we subtract 13.) 
+
+##sample.jpg : ?
+#Sample to use in all tests and such as part of the local map
+scale-sample.jpg : .123
+angle-sample.jpg : 30.0
+xOffset-sample.jpg : 12.0
+yOffset-sample.jpg : 12.0
+zHeight-sample.jpg : 13.0
+
+
+
 ##Campus Center-1.jpg : ?
 
 # 1. stairs: 30ft, width: 107px, height: 243px, hypot: 265.51459px; ratio = .112988
 # 2. sitting area near Dunkin Donuts: 37ft, width: 333px, height: 135px, hypot: 359.3244; ratio = .10297
 # average ratio (1-2)= .107979 ft./px
 # DOWNSTAIRS
-downstairsCC.jpg : .107979
+scale-downstairsCC.jpg : .107979
+angle-downstairsCC.jpg : 30.0
+xOffset-downstairsCC.jpg : 12.0
+yOffset-downstairsCC.jpg : 12.0
+zHeight-downstairsCC.jpg : 13.0
 
 ##Campus Center-2.jpg : ?
 
@@ -15,7 +37,7 @@ downstairsCC.jpg : .107979
 # 4. stairs: 30ft, width: 117px, height: 289px, hypot: 311.78518; ratio = .09622
 # average ratio (1,4) = .09712 ft./px
 # GROUND FLOOR
-groundCC.jpg : .09712
+scale-groundCC.jpg : .09712
 
 ##Campus Center-3.jpg : ?
 
@@ -24,4 +46,36 @@ groundCC.jpg : .09712
 # 2. Octowedge/Hagglund length: 47.65ft, width: 447px, height: 191px, hypot: 486.0967px; ratio = .09802
 # 3. sitting area near Dunkin Donuts: 37ft, width: 333px, height: 135px, hypot: 359.3244; ratio = .10297
 # average ratio (1-3) = .096216 ft./px
-upstairsCC.jpg : .096216
+scale-upstairsCC.jpg : .096216
+
+##SH1.jpg : ?
+
+scale-SH1.jpg : .18
+angle-SH1.jpg : 30.0
+xOffset-SH1.jpg : 233.0
+yOffset-SH1.jpg : 155.0
+zHeight-SH1.jpg : 13.0
+
+##SH2.jpg : ?
+
+scale-SH2.jpg : .18
+angle-SH2.jpg : 30.0
+xOffset-SH2.jpg : 233.0
+yOffset-SH2.jpg : 155.0
+zHeight-SH2.jpg : 13.0
+
+##SH3.jpg : ?
+
+scale-SH3.jpg : .18
+angle-SH3.jpg : 30.0
+xOffset-SH3.jpg : 233.0
+yOffset-SH3.jpg : 155.0
+zHeight-SH3.jpg : 13.0
+
+##CCM.jpg : ?
+
+scale-CCM.jpg : .18
+angle-CCM.jpg : 30.0
+xOffset-CCM.jpg : 233.0
+yOffset-CCM.jpg : 155.0
+zHeight-CCM.jpg : 13.0

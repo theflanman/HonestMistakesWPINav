@@ -106,28 +106,39 @@ public class GUIFront extends JFrame {
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
 		// Instantiate GUIBack to its default
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
-		backend = new GUIBack(defaultMapImage, null);
+		backend = new GUIBack();
 
 		// Initialize the GlobalMap variable with all of the LocalMaps and all
 		// of their nodes
 		globalMap = new GlobalMap();
-
-		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary list of LocalMaps to be initialized
-		for (int i = 0; i < numLocalMaps; i++) {
-			backend.loadLocalMap(localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "data.localmaps" folder
-			tmpListLocal.add(backend.getLocalMap());
+		
+		String[] localMapFilenameStrings = new String[localMapFilenames.length];
+		for(int i = 0; i < localMapFilenames.length; i++){
+			localMapFilenameStrings[i] = localMapFilenames[i].getName();
 		}
-		globalMap.setLocalMaps(tmpListLocal);
-		backend.setLocalMap(tmpListLocal.get(0));
-
+		
+		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
+		
+		System.out.println("Setting globalMap's localMap list...");
+		globalMap.setLocalMaps(localMapList);
+		System.out.println("GlobalMap's localMap list set.");
+		
+		System.out.print("Setting backend's current local map...");
+		System.out.println(localMapList.get(0).getMapImageName());
+		backend.setLocalMap(localMapList.get(0));
+		System.out.println("Backend's local map set.");
+		
 		// add the collection of nodes to the ArrayList of GlobalMap
-		allNodes = new ArrayList<MapNode>();
-		for (LocalMap local : tmpListLocal) {
+		System.out.println("Setting up GlobalMap's node list...");
+		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
+		for (LocalMap local : localMapList) {
 
 			if (!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
+				System.out.println(local.getMapNodes());
 				allNodes.addAll(local.getMapNodes());
 		}
 		globalMap.setMapNodes(allNodes);
+		System.out.println("There are " + globalMap.getMapNodes().size() + " nodes in the globalMap");
 
 		/**
 		 * GUI related code
@@ -180,7 +191,7 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e){
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(1).getMapNodes();
-				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(1).getMapImageName()).getImage();
+				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
 				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
 				backend.setLocalMap(GUIFront.globalMap.getLocalMaps().get(1)); //= enteredNodes;
 				panelMap = strattonMap;
