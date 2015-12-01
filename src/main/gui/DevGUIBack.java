@@ -303,13 +303,18 @@ public class DevGUIBack implements Serializable  {
 	*/
 	
 	public void loadMap(String fileName){
-		System.out.println("-----");
+		System.out.println("----------------------------------------------");
+		System.out.println(fileName);
 		String fileParts[] = fileName.split("/");
+		for (String part:fileParts){
+			System.out.println(part);
+		}
 		String mapAppend = fileParts[fileParts.length-1];
-		mapAppend = SaveUtil.removeExtension(mapAppend);
-		ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
-		ArrayList<ArrayList<Integer>> neighborNodes = new ArrayList<ArrayList<Integer>>();
 		
+		mapAppend = SaveUtil.removeExtension(mapAppend) + "_";
+		ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
+		ArrayList<ArrayList<String>> neighborNodes = new ArrayList<ArrayList<String>>();
+		System.out.println(mapAppend);
 		Document dom;
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -321,7 +326,7 @@ public class DevGUIBack implements Serializable  {
 			//first pass, just setup arrays of map nodes and neighbor array
 			NodeList xmlNodeList = doc.getElementsByTagName("Node");
 			for (int i = 0; i < xmlNodeList.getLength(); ++i){
-				ArrayList<Integer> newList = new ArrayList<Integer>();
+				ArrayList<String> newList = new ArrayList<String>();
 				MapNode newMapNode = new MapNode();
 				
 				loadedNodes.add(newMapNode);
@@ -335,6 +340,7 @@ public class DevGUIBack implements Serializable  {
 				
 				//extract these node variables (ID, x, y, z);
 				String nodeID = currentNode.getElementsByTagName("NodeID").item(0).getTextContent();
+				System.out.println(nodeID);
 				String xPos = currentNode.getElementsByTagName("XPos").item(0).getTextContent();
 				String yPos = currentNode.getElementsByTagName("YPos").item(0).getTextContent();
 				String zPos = currentNode.getElementsByTagName("ZPos").item(0).getTextContent();
@@ -356,10 +362,9 @@ public class DevGUIBack implements Serializable  {
 				Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
 				if(!neighborCheck.getTextContent().equals("none")){
 					NodeList neighborList = neighborCheck.getElementsByTagName("Neighbor");
-					//System.out.println(neighborList3.getLength());
 					for(int j = 0; j < neighborList.getLength(); ++j){
 						Element neighbor = (Element) neighborList.item(j);
-						neighborNodes.get(i).add(Integer.parseInt(neighbor.getTextContent().trim()));
+						neighborNodes.get(i).add(neighbor.getTextContent().trim());
 						System.out.println("    " + neighbor.getTextContent().trim());
 					}
 				}
@@ -410,8 +415,8 @@ public class DevGUIBack implements Serializable  {
 				//loop through the list of neighbor associations to do assignment for each one
 				for (int j = 0; j < neighborNodes.get(i).size(); j++){
 					
-					int neighborIDInt = neighborNodes.get(i).get(j);
-					String neighborID = Integer.toString(neighborIDInt);
+					String neighborID = neighborNodes.get(i).get(j);
+					//String neighborID = Integer.toString(neighborIDInt);
 					//need to get the node associated with this ID
 					for(MapNode potentialNode : loadedNodes){
 						System.out.println(potentialNode.getNodeID() + " vs " + neighborID);
