@@ -1,13 +1,7 @@
 package main.gui;
 
 import java.awt.*;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
-import java.awt.Image;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -28,21 +22,17 @@ import aurelienribon.slidinglayout.SLKeyframe;
 import aurelienribon.slidinglayout.SLPanel;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
-import javafx.scene.transform.Transform;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -55,14 +45,6 @@ import main.util.Constants;
 import main.util.Speaker;
 
 import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.border.LineBorder;
-import javax.swing.JRadioButton;
-
-import java.awt.Font;
-
-import javax.swing.ButtonGroup;
 import javax.swing.SwingConstants;
 
 /**
@@ -89,6 +71,8 @@ public class GUIFront extends JFrame {
 	public static ArrayList<ArrayList<MapNode>> paths = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
 	public static boolean allowSetting = true;
+	public static JTabbedPane tabbedPane; 
+	public static ArrayList<MapNode> allNodes;
 	
 	static AffineTransform transform; // the current state of image transformation
 	Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
@@ -127,7 +111,7 @@ public class GUIFront extends JFrame {
 		backend.setLocalMap(tmpListLocal.get(0));
 
 		// add the collection of nodes to the ArrayList of GlobalMap
-		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
+		allNodes = new ArrayList<MapNode>();
 		for (LocalMap local : tmpListLocal) {
 
 			if (!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
@@ -175,11 +159,100 @@ public class GUIFront extends JFrame {
 		JMenu mnOptions = new JMenu("Options");
 		menuBar.add(mnOptions);
 		
+		JMenu mnLocations = new JMenu("Locations");
+		menuBar.add(mnLocations);
+		
+		JMenu mnStratton = new JMenu("Stratton");
+		mnLocations.add(mnStratton);
+		
+		JMenuItem mntmFFStratton = new JMenuItem("Floor 1");
+		mntmFFStratton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(1).getMapNodes();
+				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(1).getMapImageName()).getImage();
+				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
+				tabbedPane.addTab("Stratton Floor 1", strattonMap);
+			}
+		});
+		mnStratton.add(mntmFFStratton);
+		
+		JMenuItem mntmSFStratton = new JMenuItem("Floor 2");
+		mntmSFStratton.addActionListener(new ActionListener() {
+			@Override 
+			public void actionPerformed(ActionEvent e){
+				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(2).getMapNodes();
+				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
+				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
+				tabbedPane.addTab("Stratton Floor 2", strattonMap);
+			}
+		});
+		mnStratton.add(mntmSFStratton);
+		mntmSFStratton.addActionListener(new ActionListener() {
+			@Override 
+			public void actionPerformed(ActionEvent e){
+				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(3).getMapNodes();
+				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
+				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
+				tabbedPane.addTab("Stratton Floor 3", strattonMap);
+			}
+		});
+		JMenuItem mntmThirdStratton = new JMenuItem("Floor 3");
+		mntmThirdStratton.addActionListener(new ActionListener() {
+			@Override 
+			public void actionPerformed(ActionEvent e){
+				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(3).getMapNodes();
+				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
+				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
+				tabbedPane.addTab("Stratton Floor 3", strattonMap);
+			}
+		});
+		mnStratton.add(mntmThirdStratton);
+		
+		JMenu mnCampusCenter = new JMenu("Campus Center");
+		mnLocations.add(mnCampusCenter);
+		
+		JMenuItem mntmMainCampus = new JMenuItem("Main floor");
+		mntmMainCampus.addActionListener(new ActionListener() {
+			@Override 
+			public void actionPerformed(ActionEvent e){
+				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(4).getMapNodes();
+				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
+				TweenPanel campusMap = new TweenPanel(enteredNodes, mapPath, "1");
+				tabbedPane.addTab("Campus Main Floor", campusMap);
+			}
+		});
+		mnCampusCenter.add(mntmMainCampus);
+		JMenuItem mntmLowerCampus = new JMenuItem("Lower level");
+		mntmLowerCampus.addActionListener(new ActionListener() {
+			@Override 
+			public void actionPerformed(ActionEvent e){
+				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(5).getMapNodes();
+				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
+				TweenPanel campusMap = new TweenPanel(enteredNodes, mapPath, "1");
+				tabbedPane.addTab("Campus Main Floor", campusMap);
+			}
+		});
+		mnCampusCenter.add(mntmLowerCampus);
+		
+		JMenuItem mntmUpperCampus = new JMenuItem("Upper level");
+		mntmUpperCampus.addActionListener(new ActionListener() {
+			@Override 
+			public void actionPerformed(ActionEvent e){
+				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(6).getMapNodes();
+				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
+				TweenPanel campusMap = new TweenPanel(enteredNodes, mapPath, "1");
+				tabbedPane.addTab("Campus Main Floor", campusMap);
+			}
+		});
+		mnCampusCenter.add(mntmUpperCampus);
+		
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		
 
 		// Image of the default map loaded into backend
 		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
@@ -332,7 +405,7 @@ public class GUIFront extends JFrame {
 		/**
 		 * GroupLayout code for tabbedpane and textfields (Temporary)
 		 */
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		textFieldStart = new JTextField();
 		textFieldStart.setText("");
@@ -731,6 +804,55 @@ public class GUIFront extends JFrame {
 			
 		}
 	}
+	
+	/*public class CloseIcon implements Icon {
+		int size = 10;
+		@Override
+		public void paintIcon(Component c, Graphics g, int x, int y) {
+			// TODO Auto-generated method stub
+			g.drawLine(x, y, x + size, y + size);
+			g.drawLine(x + size, y, x, y + size);
+			
+		}
+
+		@Override
+		public int getIconWidth() {
+			// TODO Auto-generated method stub
+			return size;
+		}
+
+		@Override
+		public int getIconHeight() {
+			// TODO Auto-generated method stub
+			return size;
+		}
+		
+	}*/
+	
+	/*class CloseTabButton extends JPanel implements ActionListener {
+		  //private JTabbedPane pane;
+		  public CloseTabButton(JTabbedPane tabbedPane, int index) {
+		    //pane = JTabbedPane;
+		    setOpaque(false);
+		    add(new JLabel(
+		        tabbedPane.getTitleAt(index),
+		        tabbedPane.getIconAt(index),
+		        JLabel.LEFT));
+		    Icon closeIcon = new CloseIcon();
+		    JButton btClose = new JButton(closeIcon);
+		    btClose.setPreferredSize(new Dimension(
+		        closeIcon.getIconWidth(), closeIcon.getIconHeight()));
+		    add(btClose);
+		    btClose.addActionListener(this);
+		    tabbedPane.setTabComponentAt(index, this);
+		  }
+		  public void actionPerformed(ActionEvent e) {
+		    int i = tabbedPane.indexOfTabComponent(this);
+		    if (i != -1) {
+		      tabbedPane.remove(i);
+		    }
+		  }
+		}*/
 
 	
 	/**
