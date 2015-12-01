@@ -1,6 +1,12 @@
 package main.gui;
 
 import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +42,7 @@ import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -114,23 +121,20 @@ public class GUIFront extends JFrame {
 		
 		String[] localMapFilenameStrings = new String[localMapFilenames.length];
 		for(int i = 0; i < localMapFilenames.length; i++){
-			localMapFilenameStrings[i] = localMapFilenames[i].getName();
+			System.out.println("LOCAL MAP FILE NAME STRINGS: " + localMapFilenames[i].getName());
+			String path = localMapFilenames[i].getName();
+			localMapFilenameStrings[i] = path;
 		}
 		
 		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
 		
-		System.out.println("Setting globalMap's localMap list...");
 		globalMap.setLocalMaps(localMapList);
-		System.out.println("GlobalMap's localMap list set.");
 		
-		System.out.print("Setting backend's current local map...");
-		System.out.println(localMapList.get(0).getMapImageName());
 		backend.setLocalMap(localMapList.get(0));
-		System.out.println("Backend's local map set.");
 		
 		// add the collection of nodes to the ArrayList of GlobalMap
-		System.out.println("Setting up GlobalMap's node list...");
-		ArrayList<MapNode> allNodes = new ArrayList<MapNode>();
+		allNodes = new ArrayList<MapNode>();
+
 		for (LocalMap local : localMapList) {
 
 			if (!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
@@ -138,7 +142,6 @@ public class GUIFront extends JFrame {
 				allNodes.addAll(local.getMapNodes());
 		}
 		globalMap.setMapNodes(allNodes);
-		System.out.println("There are " + globalMap.getMapNodes().size() + " nodes in the globalMap");
 
 		/**
 		 * GUI related code
@@ -276,8 +279,9 @@ public class GUIFront extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-
 		// Image of the default map loaded into backend
+		String inputFileName = backend.getLocalMap().getMapImageName();
+
 		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
 		JLabel lblInvalidEntry = new JLabel("Invalid Entry");
 		lblInvalidEntry.setVisible(false);
@@ -552,6 +556,7 @@ public class GUIFront extends JFrame {
 		 * Tween related code to make the animations work
 		 */
 		slidePanel = new SLPanel();
+		System.out.println("MAP PATH: " + mapPath);
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1");
 		panelDirections = new TweenPanel("2");
 		
@@ -937,6 +942,7 @@ public class GUIFront extends JFrame {
 		 * @param panelID Represents the ID of a panel to keep track of it 
 		 */	
 		public TweenPanel(ArrayList<MapNode> mapNodes, Image mapPath, String panelID) {
+			
 			setLayout(new BorderLayout());
 			
 			this.localNodes = mapNodes;
@@ -1065,9 +1071,6 @@ public class GUIFront extends JFrame {
 				.start(tweenManager);
 		}
 
-		/**
-		 * Hides the highlighted border once the mouse leaves the component
-		 */
 		private void hideBorder() {
 			tweenManager.killTarget(borderThickness);
 			Tween.to(TweenPanel.this, Accessor.BORDER_THICKNESS, 0.4f)
@@ -1108,9 +1111,6 @@ public class GUIFront extends JFrame {
 				transform.translate(panX, panY); // move to designated location
 				graphics.setTransform(transform);
 				
-				// Scale the map relative to the panels current size and your current viewing window
-				graphics.drawImage(mapImage, 0, 0, this);	
-						
 				// Test drawing of map nodes
 				for(MapNode n : localNodes){
 					graphics.fillOval((int)n.getXPos() - (int)panX - 5, (int)n.getYPos() - (int)panY - 5, 10, 10);

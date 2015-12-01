@@ -114,4 +114,7 @@ public class StepByStep {
 		} // end of loop
 		return stepList;
 	}
+	
+	public void advanceStep() { 
+	}
 }
