@@ -122,21 +122,18 @@ public class GUIFront extends JFrame {
 		
 		String[] localMapFilenameStrings = new String[localMapFilenames.length];
 		for(int i = 0; i < localMapFilenames.length; i++){
-			localMapFilenameStrings[i] = localMapFilenames[i].getName();
+			System.out.println("LOCAL MAP FILE NAME STRINGS: " + localMapFilenames[i].getName());
+			String path = localMapFilenames[i].getName();
+			localMapFilenameStrings[i] = path;
 		}
 		
 		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
 		
-		System.out.println("Setting globalMap's localMap list...");
 		globalMap.setLocalMaps(localMapList);
-		System.out.println("GlobalMap's localMap list set.");
 		
-		System.out.println("Setting backend's current local map...");
 		backend.setLocalMap(localMapList.get(0));
-		System.out.println("Backend's local map set.");
 		
 		// add the collection of nodes to the ArrayList of GlobalMap
-		System.out.println("Setting up GlobalMap's node list...");
 		allNodes = new ArrayList<MapNode>();
 		for (LocalMap local : localMapList) {
 
@@ -144,7 +141,6 @@ public class GUIFront extends JFrame {
 				allNodes.addAll(local.getMapNodes());
 		}
 		globalMap.setMapNodes(allNodes);
-		System.out.println("There are " + globalMap.getMapNodes().size() + " nodes in the globalMap");
 
 		/**
 		 * GUI related code
@@ -286,11 +282,11 @@ public class GUIFront extends JFrame {
 		// Image of the default map loaded into backend
 		String inputFileName = backend.getLocalMap().getMapImageName();
 		
-		String imagePath = SaveUtil.removeExtension(inputFileName);
-		imagePath = imagePath + ".jpg";
-		System.out.println(imagePath);
-		Image map = new ImageIcon("src/data/images/CCM.jpg").getImage();
-		
+//		String imagePath = SaveUtil.removeExtension(inputFileName);
+//		imagePath = imagePath + ".jpg";
+//		System.out.println(imagePath);
+//		Image map = new ImageIcon("src/data/images/CCM.jpg").getImage();
+
 		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
 		JLabel lblInvalidEntry = new JLabel("Invalid Entry");
 		lblInvalidEntry.setVisible(false);
@@ -1128,7 +1124,6 @@ public class GUIFront extends JFrame {
 				// Colors start and end differently
 				// Draws the map and places pre-existing node data onto the map as
 				// well start and end nodes if they have been set
-				System.out.println("DRAWING MAP IMAGE: " + this.mapImage);
 				graphics.drawImage(this.mapImage, 0, 0, this);
 
 				// Sets the color of the start and end nodes to be different
