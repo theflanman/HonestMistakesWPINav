@@ -1,9 +1,6 @@
 package main.gui;
-import java.awt.Image;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -22,13 +19,8 @@ import main.LocalMap;
 import main.LocationType;
 import main.MapNode;
 import main.StepByStep;
-import main.util.Constants;
 
-/** TODO write this
- * 
- * @author Connor Flanigan
- *
- */
+
 @SuppressWarnings("serial")
 public class GUIBack implements Serializable {
 	
@@ -38,12 +30,14 @@ public class GUIBack implements Serializable {
 	private ArrayList<MapNode> middleNodes;
 	private MapNode endNode;
 	
+	
 	/**
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
 	 * TODO: Change to Campus Map when it is complete
 	 */
-	public GUIBack(String defaultMapImage, ArrayList<MapNode> points){
-		this.localMap = new LocalMap(defaultMapImage, points);
+	public GUIBack(){
+		String defaultMapImage = "Complete_Campus_Map.JPG";
+		this.localMap = new LocalMap(defaultMapImage, null);
 		this.path = new ArrayList<MapNode>();
 		this.startNode = null;
 		this.middleNodes = new ArrayList<MapNode>();

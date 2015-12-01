@@ -1,7 +1,6 @@
 package main.gui;
 
 import java.awt.*;
-import java.awt.geom.Line2D;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -10,8 +9,6 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -32,7 +29,6 @@ import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.BadLocationException;
 
 import main.*;
 import main.util.Constants;
@@ -89,7 +85,7 @@ public class GUIFront extends JFrame {
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
 		// Instantiate GUIBack to its default
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
-		backend = new GUIBack(defaultMapImage, null);
+		backend = new GUIBack();
 
 		// Initialize the GlobalMap variable with all of the LocalMaps and all
 		// of their nodes
