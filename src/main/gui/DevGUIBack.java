@@ -94,6 +94,7 @@ public class DevGUIBack implements Serializable  {
 		String fileName = this.localMap.getMapImageName();
 		String mapImageName = fileName;
 		fileName = SaveUtil.removeExtension(fileName);
+		String mapNameNoExtension = fileName;
 		String mapAppend = fileName + "_";
 		fileName = fileName.concat(".localmap");
 		fileName = Constants.LOCAL_MAP_PATH + "/" + fileName;
@@ -172,6 +173,14 @@ public class DevGUIBack implements Serializable  {
 		        		ngbr.appendChild(dom.createTextNode(n.getNodeID()));
 		        		neighbors.appendChild(ngbr);
 		        	}
+	        	}
+	        	//if there are any cross map neighbors, make sure these are saved
+	        	if(!(node.getCrossMapNeighbors().size() == 0)){
+	        		for(String s: node.getCrossMapNeighbors()){
+	        			Element crossNgbr = dom.createElement("Neighbor");
+	        			crossNgbr.appendChild(dom.createTextNode(s));
+	        			neighbors.appendChild(crossNgbr);
+	        		}
 	        	}
 	        	
 	        	Element attributes = dom.createElement("Attributes");
@@ -325,7 +334,7 @@ public class DevGUIBack implements Serializable  {
 			System.out.println(part);
 		}
 		String mapAppend = fileParts[fileParts.length-1];
-		
+		String mapNameNoExtension = SaveUtil.removeExtension(mapAppend);
 		mapAppend = SaveUtil.removeExtension(mapAppend) + "_";
 		ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
 		ArrayList<ArrayList<String>> neighborNodes = new ArrayList<ArrayList<String>>();
@@ -378,14 +387,27 @@ public class DevGUIBack implements Serializable  {
 				*/
 				
 				//get the neighbor values and store those node ID's in the neighbor nodes arraylist
+				//also need to do an operation here, if a neighbor is on another map, store it on the
+				//maps cross-map list.
+				
 				Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
+				ArrayList<String> crossMapNeighbors = new ArrayList<String>();
 				if(!neighborCheck.getTextContent().equals("none")){
 					NodeList neighborList = neighborCheck.getElementsByTagName("Neighbor");
+					
+					//for each element in this nodes neighbors
 					for(int j = 0; j < neighborList.getLength(); ++j){
+						crossMapNeighbors = new ArrayList<String>();
 						Element neighbor = (Element) neighborList.item(j);
-						neighborNodes.get(i).add(neighbor.getTextContent().trim());
+						String neighborID = neighbor.getTextContent().trim();
+						if(!(neighborID.split("_")[0]).equals(mapNameNoExtension)){
+							crossMapNeighbors.add(neighborID);
+						}
+						neighborNodes.get(i).add(neighborID);
 						System.out.println("    " + neighbor.getTextContent().trim());
 					}
+					loadedNodes.get(i).setCrossMapNeighbors(crossMapNeighbors);
+					System.out.println("Node " + loadedNodes.get(i).getNodeID() + " has " + crossMapNeighbors.size() + " cross map neighbors");
 				}
 				else{
 					//no neighbors, nothing to add
@@ -411,20 +433,10 @@ public class DevGUIBack implements Serializable  {
 				attr.setHandicapped(Boolean.parseBoolean(handicapped));
 				attr.setPOI(Boolean.parseBoolean(poi));
 				attr.setStairs(Boolean.parseBoolean(stairs));
+				attr.setOutside(Boolean.parseBoolean(outside));
 				attr.setType(Types.parseType(type));
 				
 				loadedNodes.get(i).setAttributes(attr);
-				
-				//debug print
-				/*
-				System.out.println(officialName);
-				System.out.println(bikeable);
-				System.out.println(handicapped);
-				System.out.println(stairs);
-				System.out.println(outside);
-				System.out.println(poi);
-				System.out.println(type);
-				*/
 	
 			}
 			

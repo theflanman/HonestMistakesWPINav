@@ -16,6 +16,7 @@ public class MapNode implements Serializable{
 	
 	private String nodeID;
 	private ArrayList<MapNode> neighbors;
+	private ArrayList<String> crossMapNeighbors;
 	private double fScore;
 	private double gScore;
 	private double hScore;
@@ -34,6 +35,7 @@ public class MapNode implements Serializable{
 		zFeet = -1.0;
 		
 		neighbors = new ArrayList<MapNode>();
+		crossMapNeighbors = new ArrayList<String>();
 		attributes = new Attributes();
 		fScore = -1;
 		gScore = -1;
@@ -51,6 +53,7 @@ public class MapNode implements Serializable{
 		yFeet = yPos * aLocalMap.getMapScale();
 		zFeet = aLocalMap.getZHeight();
 		neighbors = new ArrayList<MapNode>();
+		crossMapNeighbors = new ArrayList<String>();
 		attributes = new Attributes();
 		fScore = -1;
 		gScore = -1;
@@ -58,6 +61,13 @@ public class MapNode implements Serializable{
 		cameFrom = null;
 		attributes = new Attributes();
 		
+	}
+	
+	public void setCrossMapNeighbors(ArrayList<String> s){
+		this.crossMapNeighbors = s;
+	}
+	public ArrayList<String> getCrossMapNeighbors(){
+		return this.crossMapNeighbors;
 	}
 	
 	public void addNeighbor(MapNode node) {

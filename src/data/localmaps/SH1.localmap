@@ -10,6 +10,7 @@
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_2</Neighbor>
+            <Neighbor>SH2_1</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -166,6 +167,44 @@
         <Neighbors>
             <Neighbor>SH1_7</Neighbor>
         </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_9</NodeID>
+        <XPos>388.0</XPos>
+        <YPos>185.0</YPos>
+        <XFeet>69.84</XFeet>
+        <YFeet>33.3</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>none</Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_10</NodeID>
+        <XPos>319.0</XPos>
+        <YPos>216.0</YPos>
+        <XFeet>57.419999999999995</XFeet>
+        <YFeet>38.879999999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>none</Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>

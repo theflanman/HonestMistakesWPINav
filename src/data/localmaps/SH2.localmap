@@ -10,6 +10,7 @@
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_2</Neighbor>
+            <Neighbor>SH1_1</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
