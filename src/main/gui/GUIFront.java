@@ -70,7 +70,7 @@ public class GUIFront extends JFrame {
 	public static boolean reset = false;
 	public static MapNode startNode = null, endNode = null;
 	public static String allText = "";
-	public static ArrayList<MapNode> chosenNodes = new ArrayList<MapNode>();
+	//public static ArrayList<MapNode> chosenNodes = new ArrayList<MapNode>();
 	public static ArrayList<ArrayList<MapNode>> paths = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
 	public static boolean allowSetting = true;
@@ -94,7 +94,7 @@ public class GUIFront extends JFrame {
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 
 	private SLPanel slidePanel;
-	private TweenPanel panelMap, panelDirections;
+	public TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
 
 	/**
@@ -289,9 +289,9 @@ public class GUIFront extends JFrame {
 						startNode = n;
 						backend.setStartNode(startNode);
 						if (!setStart){
-							GUIFront.chosenNodes.add(0, startNode);
+							panelMap.chosenNodes.add(0, startNode);
 						} else {
-							GUIFront.chosenNodes.set(0, startNode);
+							panelMap.chosenNodes.set(0, startNode);
 						}
 					}
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
@@ -302,10 +302,10 @@ public class GUIFront extends JFrame {
 							System.out.println("This is the ending node");
 							backend.setEndNode(endNode);
 							if (!setEnd) {
-								GUIFront.chosenNodes.add(1, endNode);
-								System.out.println(GUIFront.chosenNodes.size());					
+								panelMap.chosenNodes.add(1, endNode);
+								System.out.println(panelMap.chosenNodes.size());					
 							} else {
-								GUIFront.chosenNodes.set(1, endNode);
+								panelMap.chosenNodes.set(1, endNode);
 							}
 							setEnd = true;
 							valid = true;
@@ -322,10 +322,10 @@ public class GUIFront extends JFrame {
 								System.out.println("This is the ending node!");
 								backend.setEndNode(endNode);
 								if (!setEnd) {
-									GUIFront.chosenNodes.add(1, endNode);
-									System.out.println(GUIFront.chosenNodes.size());					
+									panelMap.chosenNodes.add(1, endNode);
+									System.out.println(panelMap.chosenNodes.size());					
 								} else {
-									GUIFront.chosenNodes.set(1, endNode);
+									panelMap.chosenNodes.set(1, endNode);
 								}
 								setEnd = true;
 								//btnCalculateRoute.setEnabled(true);
@@ -338,10 +338,10 @@ public class GUIFront extends JFrame {
 									System.out.println("This is the starting node");
 									backend.setStartNode(startNode);
 									if (!setStart) {
-										GUIFront.chosenNodes.add(0, startNode);
-										System.out.println(GUIFront.chosenNodes.size());					
+										panelMap.chosenNodes.add(0, startNode);
+										System.out.println(panelMap.chosenNodes.size());					
 									} else {
-										GUIFront.chosenNodes.set(0, startNode);
+										panelMap.chosenNodes.set(0, startNode);
 									}
 									setStart = true;
 								}
@@ -353,10 +353,10 @@ public class GUIFront extends JFrame {
 									System.out.println("This is the ending node!");
 									backend.setEndNode(endNode);
 									if (!setEnd) {
-										GUIFront.chosenNodes.add(1, endNode);
-										System.out.println(GUIFront.chosenNodes.size());					
+										panelMap.chosenNodes.add(1, endNode);
+										System.out.println(panelMap.chosenNodes.size());					
 									} else {
-										GUIFront.chosenNodes.set(1, endNode);
+										panelMap.chosenNodes.set(1, endNode);
 									}
 									setEnd = true;
 									//btnCalculateRoute.setEnabled(true);
@@ -394,10 +394,10 @@ public class GUIFront extends JFrame {
 							System.out.println("This is the starting node");
 							backend.setStartNode(startNode);
 							if (!setStart) {
-								GUIFront.chosenNodes.add(0, startNode);
-								System.out.println(GUIFront.chosenNodes.size());					
+								panelMap.chosenNodes.add(0, startNode);
+								System.out.println(panelMap.chosenNodes.size());					
 							} else {
-								GUIFront.chosenNodes.set(0, startNode);
+								panelMap.chosenNodes.set(0, startNode);
 							}
 							setStart = true;
 							valid = true;
@@ -452,9 +452,9 @@ public class GUIFront extends JFrame {
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
-					for(int i = 0; i < GUIFront.chosenNodes.size() - 1; i++){
+					for(int i = 0; i < panelMap.chosenNodes.size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
-						wayPoints = backend.runAStar(GUIFront.chosenNodes.get(i), GUIFront.chosenNodes.get(i + 1));
+						wayPoints = backend.runAStar(panelMap.chosenNodes.get(i), panelMap.chosenNodes.get(i + 1));
 						paths.add(wayPoints);
 					}
 					//draw the line on the map
@@ -678,7 +678,7 @@ public class GUIFront extends JFrame {
 		paths.clear();
 		backend.removePath(backend.getMiddleNodes());
 
-		this.chosenNodes.clear();
+		panelMap.chosenNodes.clear();
 		//backend.removePath(backend.getPath()); // this is obsolete now
 
 		// if the line needs to be removed
@@ -902,7 +902,7 @@ public class GUIFront extends JFrame {
 	 */
 	public static class TweenPanel extends JPanel {
 		ArrayList<MapNode> localNodes;
-		public ArrayList<MapNode> startEndNodes;
+		public ArrayList<MapNode> chosenNodes;
 		
 		private final TweenManager tweenManager = SLAnimator.createTweenManager();
 		private JLabel labelMainPanel = new JLabel();
@@ -927,7 +927,7 @@ public class GUIFront extends JFrame {
 			setLayout(new BorderLayout());
 			
 			this.localNodes = mapNodes;
-			startEndNodes = new ArrayList<MapNode>();
+			chosenNodes = new ArrayList<MapNode>();
 
 			labelMainPanel.setFont(new Font("Sans", Font.BOLD, 90));
 			labelMainPanel.setVerticalAlignment(SwingConstants.CENTER);
@@ -951,7 +951,7 @@ public class GUIFront extends JFrame {
 			 * end nodes. These will also set the backend to these points on the
 			 * panel.
 			 */
-			chosenNodes = new ArrayList<MapNode>(); // Index 0: StartNode; Index 1: EndNode
+			//ArrayList<MapNode> chosenNodes = new ArrayList<MapNode>(); // Index 0: StartNode; Index 1: EndNode
 			addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent me) {
@@ -1110,18 +1110,18 @@ public class GUIFront extends JFrame {
 
 				// Sets the color of the start and end nodes to be different
 				graphics.setColor(Color.RED);
-				for (int i = 0; i < GUIFront.chosenNodes.size(); i++) {
+				for (int i = 0; i < chosenNodes.size(); i++) {
 					if(i == 0){
 						graphics.setColor(Color.RED);
-						graphics.fillOval((int) GUIFront.chosenNodes.get(i).getXPos() - (int)panX - 5, (int) GUIFront.chosenNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
+						graphics.fillOval((int) chosenNodes.get(i).getXPos() - (int)panX - 5, (int) chosenNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
 					} 
-					else if(i == GUIFront.chosenNodes.size()-1){
+					else if(i == chosenNodes.size()-1){
 						graphics.setColor(Color.GREEN);
-						graphics.fillOval((int) GUIFront.chosenNodes.get(i).getXPos() - (int)panX - 5, (int) GUIFront.chosenNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
+						graphics.fillOval((int) chosenNodes.get(i).getXPos() - (int)panX - 5, (int) chosenNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
 					}
 					else {
 						graphics.setColor(Color.ORANGE);
-						graphics.fillOval((int) GUIFront.chosenNodes.get(i).getXPos() - (int)panX - 5, (int) GUIFront.chosenNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
+						graphics.fillOval((int) chosenNodes.get(i).getXPos() - (int)panX - 5, (int) chosenNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
 					}
 				}
 				
