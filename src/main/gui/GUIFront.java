@@ -183,27 +183,34 @@ public class GUIFront extends JFrame {
 
 		// Image of the default map loaded into backend
 		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
-
-		/**
-		 * @author Andrew Petit 
-		 * @description following textfields and actions are needed in order to have a working search bar
-		 */		
-		//when you press enter after entering stuff in textfieldend
-		Action actionEnd = new AbstractAction(){
+		JLabel lblInvalidEntry = new JLabel("Invalid Entry");
+		lblInvalidEntry.setVisible(false);
+		Action actionEnd = new AbstractAction()
+		{
 			@Override
-			public void actionPerformed(ActionEvent e){
+			public void actionPerformed(ActionEvent e)
+			{
+				lblInvalidEntry.setVisible(false);
 				System.out.println("Enter was pressed");
 				//if the user presses enter without having entered anything in this box
 				if (textFieldEnd.getText().equals("")){
 					//will need some way to alert the user that they need to enter an end location
 					System.out.println("Need to enter a valid start location");
-					setEnd = false; // reset setEnd
 				} else if (!(textFieldEnd.getText().equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
 					String endString = textFieldEnd.getText(); //entered text = endString constant
 					boolean valid = false;
-					boolean typeUnfound = true;
 					Attributes attribute = new Attributes(); //will most likely need some other way of obtaining this information
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
+					MapNode n = allNodes.get(0);
+					if (startNode == null){
+						startNode = n;
+						backend.setStartNode(startNode);
+						if (!setStart){
+							GUIFront.chosenNodes.add(0, startNode);
+						} else {
+							GUIFront.chosenNodes.set(0, startNode);
+						}
+					}
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
 						//this follows a similar pattern to how the original nodes are set with the radio buttons
 						if(endString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(endString)){
@@ -212,17 +219,16 @@ public class GUIFront extends JFrame {
 							System.out.println("This is the ending node");
 							backend.setEndNode(endNode);
 							if (!setEnd) {
-								panelMap.startEndNodes.add(1, endNode);
-								System.out.println(panelMap.startEndNodes.size());					
+								GUIFront.chosenNodes.add(1, endNode);
+								System.out.println(GUIFront.chosenNodes.size());					
 							} else {
-								panelMap.startEndNodes.set(1, endNode);
+								GUIFront.chosenNodes.set(1, endNode);
 							}
 							setEnd = true;
 							valid = true;
-							typeUnfound = false;
 						} 
 					}
-					
+
 					if (attribute.getPossibleEntries().containsKey(endString)){ //check if the entry in the text field is an attribute not an official name
 						String findNearestThing = attribute.getPossibleEntries().get(endString);
 						if(startNode != null){ //if there is no valid start node, this cannot be done - why? because you need a valid start node to find the closest node with the given attribute
@@ -233,81 +239,82 @@ public class GUIFront extends JFrame {
 								System.out.println("This is the ending node!");
 								backend.setEndNode(endNode);
 								if (!setEnd) {
-									panelMap.startEndNodes.add(1, endNode);
-									System.out.println(panelMap.startEndNodes.size());					
+									GUIFront.chosenNodes.add(1, endNode);
+									System.out.println(GUIFront.chosenNodes.size());					
 								} else {
-									panelMap.startEndNodes.set(1, endNode);
+									GUIFront.chosenNodes.set(1, endNode);
 								}
 								setEnd = true;
-								typeUnfound = false;
 								//btnCalculateRoute.setEnabled(true);
-								}
-							} else if(!(textFieldStart.getText().equals(""))){ //if there is something entered in the start field as well as the end field we can go ahead and place both at the same time...
-								String startString = textFieldStart.getText();
-								for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
-									if(startString.equals(mapnode.getAttributes().getOfficialName())){
-										startNode = mapnode; //set the startNode in a similar way that is done when using radio buttons refer to drawing pannel mouse click
-										System.out.println("This is the starting node");
-										backend.setStartNode(startNode);
-										if (!setStart) {
-											panelMap.startEndNodes.add(0, startNode);
-											System.out.println(panelMap.startEndNodes.size());					
-										} else {
-											panelMap.startEndNodes.set(0, startNode);
-										}
-										setStart = true;
+							}
+						} else if(!(textFieldStart.getText().equals(""))){ //if there is something entered in the start field as well as the end field we can go ahead and place both at the same time...
+							String startString = textFieldStart.getText();
+							for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+								if(startString.equals(mapnode.getAttributes().getOfficialName())){
+									startNode = mapnode; //set the startNode and then draw it on the map
+									System.out.println("This is the starting node");
+									backend.setStartNode(startNode);
+									if (!setStart) {
+										GUIFront.chosenNodes.add(0, startNode);
+										System.out.println(GUIFront.chosenNodes.size());					
+									} else {
+										GUIFront.chosenNodes.set(0, startNode);
 									}
+									setStart = true;
 								}
-								if (startNode != null){ //make sure that the startNode value is still not null, otherwise this won't work if it is
-									MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
-									if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
-										endNode = node;
-										System.out.println("This is the ending node!");
-										backend.setEndNode(endNode);
-										if (!setEnd) {
-											panelMap.startEndNodes.add(1, endNode);
-											System.out.println(panelMap.startEndNodes.size());					
-										} else {
-											panelMap.startEndNodes.set(1, endNode);
-										}
-										setEnd = true;
-										//btnCalculateRoute.setEnabled(true);
-										valid = true;
+							}
+							if (startNode != null){ //make sure that the startNode value is still not null, otherwise this won't work if it is
+								MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
+								if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
+									endNode = node; //set the end node and place that node on the map
+									System.out.println("This is the ending node!");
+									backend.setEndNode(endNode);
+									if (!setEnd) {
+										GUIFront.chosenNodes.add(1, endNode);
+										System.out.println(GUIFront.chosenNodes.size());					
+									} else {
+										GUIFront.chosenNodes.set(1, endNode);
 									}
+									setEnd = true;
+									//btnCalculateRoute.setEnabled(true);
+									valid = true;
 								}
 							}
 						}
-						if (valid == false){
-							//tell user this entry is invalid
-							System.out.println("Invalid entry");
-						}
+					}
+					if (valid == false){
+						//tell user this entry is invalid
+						System.out.println("Invalid entry");
+						lblInvalidEntry.setVisible(true);
+					}
 				}
 			}
 		};
-		
 		//when you press enter after entering stuff in textfieldStart
-		Action actionStart = new AbstractAction(){
+		Action actionStart = new AbstractAction()
+		{
 			@Override 
-			public void actionPerformed(ActionEvent e){
+			public void actionPerformed(ActionEvent e)
+			{
+				lblInvalidEntry.setVisible(false);
 				System.out.println("Enter was pressed");
 				if (textFieldStart.getText().equals("")){
 					//will need some way to alert the user that they need to enter a start location
 					System.out.println("Need to enter a valid start location");
-					setStart = false; // reset setStart
 				} else if (!(textFieldStart.getText().equals(""))) {//if there is something entered check if the name is valid and then basically add the start node
 					String startString = textFieldStart.getText();
 					boolean valid = false;
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(startString)){
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
-							startNode = mapnode; //set the startNode in a similar way that is done when using radio buttons refer to drawing pannel mouse click
+							startNode = mapnode; //set the startNode and place it on the map
 							System.out.println("This is the starting node");
 							backend.setStartNode(startNode);
 							if (!setStart) {
-								panelMap.startEndNodes.add(0, startNode);
-								System.out.println(panelMap.startEndNodes.size());					
+								GUIFront.chosenNodes.add(0, startNode);
+								System.out.println(GUIFront.chosenNodes.size());					
 							} else {
-								panelMap.startEndNodes.set(0, startNode);
+								GUIFront.chosenNodes.set(0, startNode);
 							}
 							setStart = true;
 							valid = true;
@@ -316,6 +323,7 @@ public class GUIFront extends JFrame {
 					if (valid == false){
 						//tell user this entry is invalid
 						System.out.println("Invalid entry");
+						lblInvalidEntry.setVisible(true);
 					}
 				}	
 			}
@@ -394,11 +402,12 @@ public class GUIFront extends JFrame {
 				}
 			}
 		});
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -408,7 +417,9 @@ public class GUIFront extends JFrame {
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
+							.addGap(18)
+							.addComponent(lblInvalidEntry)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(btnClear))
@@ -426,7 +437,8 @@ public class GUIFront extends JFrame {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 								.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblInvalidEntry)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
