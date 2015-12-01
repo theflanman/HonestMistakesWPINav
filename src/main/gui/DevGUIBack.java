@@ -92,6 +92,7 @@ public class DevGUIBack implements Serializable  {
 		//and slap on a .localmap
 		System.out.println("Preparing to save...");
 		String fileName = this.localMap.getMapImageName();
+		String mapImageName = fileName;
 		fileName = SaveUtil.removeExtension(fileName);
 		String mapAppend = fileName + "_";
 		fileName = fileName.concat(".localmap");
@@ -122,6 +123,9 @@ public class DevGUIBack implements Serializable  {
 	        // create the root element
 	        Element rootEle = dom.createElement("MapNodes");
 	        
+	        Element imageName = dom.createElement("ImageName");
+	        imageName.appendChild(dom.createTextNode(mapImageName));
+	        rootEle.appendChild(imageName);
 	        
 	        for(MapNode node : this.localMap.getMapNodes()){
 	        	

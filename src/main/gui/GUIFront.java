@@ -32,6 +32,7 @@ import javax.swing.border.EmptyBorder;
 
 import main.*;
 import main.util.Constants;
+import main.util.SaveUtil;
 import main.util.Speaker;
 
 import javax.swing.JTextField;
@@ -90,8 +91,6 @@ public class GUIFront extends JFrame {
 		// Initialize the GlobalMap variable with all of the LocalMaps and all
 		// of their nodes
 		globalMap = new GlobalMap();
-
-		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary list of LocalMaps to be initialized
 		
 		String[] localMapFilenameStrings = new String[localMapFilenames.length];
 		for(int i = 0; i < localMapFilenames.length; i++){
@@ -134,8 +133,12 @@ public class GUIFront extends JFrame {
 		setContentPane(contentPane);
 
 		// Image of the default map loaded into backend
-		Image map = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
+		String inputFileName = backend.getLocalMap().getMapImageName();
 
+		String imagePath = SaveUtil.removeExtension(inputFileName);
+		imagePath = imagePath + ".jpg";
+		System.out.println(imagePath);
+		Image map = new ImageIcon("src/data/images/CCM.jpg").getImage();
 		/**
 		 * Window Builder generated code. GroupLayout auto-generated for custom
 		 * formatting.
