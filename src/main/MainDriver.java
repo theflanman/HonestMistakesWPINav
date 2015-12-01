@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import aurelienribon.slidinglayout.SLAnimator;
@@ -32,7 +33,12 @@ public class MainDriver {
 		SLAnimator.start();
 		
 		// Change the theme away from the standard swing one
-		UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+	    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+	        if ("Nimbus".equals(info.getName())) {
+	            UIManager.setLookAndFeel(info.getClassName());
+	            break;
+	        }
+	    }
 		
 		// Launches the main application
 		EventQueue.invokeLater(new Runnable() {

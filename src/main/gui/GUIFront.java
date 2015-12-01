@@ -95,9 +95,16 @@ public class GUIFront extends JFrame {
 	static PanHandler panHandle;
 	static ZoomHandler zoomHandle;
 
+	// MapPanel components
 	private JPanel contentPane;
 	private static JTextField textFieldEnd, textFieldStart;
 	private JLabel lblStart, lblEnd;
+	
+	// Directions Components
+	private static JLabel lblStepByStep, lblClickHere, lblDistance;
+	private static JScrollPane scrollPane;
+	private static JTextArea txtAreaDirections;
+	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 
 	private SLPanel slidePanel;
 	private TweenPanel panelMap, panelDirections;
@@ -390,8 +397,9 @@ public class GUIFront extends JFrame {
 
 					// this should only display when the user calculates the
 					// astar algorithm
+					txtAreaDirections.setText(allText);
 					
-					//lblDistance.setText("Distance in feet:" + distance);
+					lblDistance.setText("Distance in feet:" + distance);
 					//this sets the textarea with the step by step directions
 					//textArea1.setText(allText);
 					//btnRoute.setEnabled(false);
@@ -457,16 +465,43 @@ public class GUIFront extends JFrame {
 		slidePanel = new SLPanel();
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1");
 		panelDirections = new TweenPanel("2");
-		panelDirections.setBackground(Color.RED);
 		
 		/**
 		 * Adding new components onto the Step By Step slideout panel
 		 */
-		JList<String> tmpList = new JList<String>();
-		panelDirections.add(tmpList, BorderLayout.CENTER);
+		JPanel stepByStepUI = new JPanel();
 		
-		JLabel test = new JLabel("Hey Nathan");
-		panelDirections.add(test, BorderLayout.NORTH);
+		lblClickHere = new JLabel("<<<");
+		lblClickHere.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblClickHere.setVisible(true);
+		stepByStepUI.add(lblClickHere);
+		
+		lblStepByStep = new JLabel("Step by Step Directions!");
+		lblStepByStep.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblStepByStep.setBounds(23, 11, 167, 14);
+		lblStepByStep.setVisible(false);
+		stepByStepUI.add(lblStepByStep);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 30, 180, 322);
+		scrollPane.setVisible(false);
+		stepByStepUI.add(scrollPane);
+		
+		txtAreaDirections = new JTextArea();
+		txtAreaDirections.setRows(26);
+		txtAreaDirections.setEditable(false);
+		scrollPane.setViewportView(txtAreaDirections);
+		txtAreaDirections.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		txtAreaDirections.setWrapStyleWord(true);
+		txtAreaDirections.setLineWrap(true);
+		txtAreaDirections.setVisible(false);
+		
+		lblDistance = new JLabel();
+		lblDistance.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblDistance.setVisible(false);
+		
+		panelDirections.add(lblDistance, BorderLayout.SOUTH);
+		panelDirections.add(stepByStepUI, BorderLayout.NORTH);
 		
 		// add to the tabbed pane
 		tabbedPane.add(slidePanel, BorderLayout.CENTER);
@@ -521,6 +556,7 @@ public class GUIFront extends JFrame {
 		@Override 
 		public void run() {
 			disableActions();
+			currentlyOpen = true;
 	
 			slidePanel.createTransition()
 				.push(new SLKeyframe(panelDirectionsConfig, 0.6f)
@@ -536,6 +572,7 @@ public class GUIFront extends JFrame {
 		@Override 
 		public void run() {
 			disableActions();
+			currentlyOpen = false;
 	
 			slidePanel.createTransition()
 				.push(new SLKeyframe(mainConfig, 0.6f)
@@ -557,6 +594,7 @@ public class GUIFront extends JFrame {
 		backend.setStartNode(null);
 		backend.setEndNode(null);
 		reset = true;
+		txtAreaDirections.setText(""); // clear directions
 
 		// allows the user to re-input start and end nodes
 		setEnd = false;
@@ -569,7 +607,7 @@ public class GUIFront extends JFrame {
 
 		// if the line needs to be removed
 		// going to need to add a method here - to remove nodes from path
-		//lblDistance.setText("");
+		lblDistance.setText("");
 		//textArea1.setText("");
 		btnClear.setEnabled(false);
 		//btnRoute.setEnabled(true);
@@ -906,7 +944,19 @@ public class GUIFront extends JFrame {
 			Graphics2D graphics = (Graphics2D) g;
 
 			if(this.mapImage == null) // StepByStep
-				graphics.drawString(getID(), this.getWidth()/2, this.getHeight()/2);
+				if(!currentlyOpen){
+					lblStepByStep.setVisible(false);
+					lblClickHere.setVisible(true);
+					lblDistance.setVisible(false);
+					scrollPane.setVisible(false);
+					txtAreaDirections.setVisible(false);
+				} else {
+					lblStepByStep.setVisible(true);
+					lblDistance.setVisible(true);
+					lblClickHere.setVisible(false);
+					scrollPane.setVisible(true);
+					txtAreaDirections.setVisible(true);
+				}
 			else {
 				// Save the current transformed state incase something goes wrong
 				AffineTransform saveTransform = graphics.getTransform();
