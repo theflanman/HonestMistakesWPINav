@@ -9,6 +9,11 @@ public class MapNode implements Serializable{
 	private double xPos;
 	private double yPos;
 	private double zPos;
+	
+	private double xFeet;
+	private double yFeet;
+	private double zFeet;
+	
 	private String nodeID;
 	private ArrayList<MapNode> neighbors;
 	private double fScore;
@@ -34,17 +39,21 @@ public class MapNode implements Serializable{
 	}
 	
 	// constructor
-	public MapNode(double newX, double newY, double newZ) {
+	public MapNode(double newX, double newY, LocalMap aLocalMap) {
 		xPos = newX;
 		yPos = newY;
-		zPos = newZ;
 		
+		xFeet = xPos * aLocalMap.getMapScale();
+		yFeet = yPos * aLocalMap.getMapScale();
+		zFeet = aLocalMap.getZHeight();
 		neighbors = new ArrayList<MapNode>();
 		attributes = new Attributes();
 		fScore = -1;
 		gScore = -1;
 		hScore = -1;
 		cameFrom = null;
+		attributes = new Attributes();
+		
 	}
 	
 	public void addNeighbor(MapNode node) {
@@ -56,7 +65,7 @@ public class MapNode implements Serializable{
 	}
 	
 	public double aStarHeuristic(MapNode toNode) {
-		double dist = (double) Math.sqrt(Math.pow((xPos - toNode.getXPos()),2) + Math.pow(yPos - toNode.getYPos(),2)) + Math.abs(zPos - toNode.getZPos());
+		double dist = (double) Math.sqrt(Math.pow((xFeet - toNode.getXFeet()),2) + Math.pow(yFeet - toNode.getYFeet(),2)) + Math.abs(zFeet - toNode.getZFeet());
 		
 		return dist;
 	}
@@ -126,15 +135,10 @@ public class MapNode implements Serializable{
 	public double getYPos() {
 		return yPos;
 	}
+	
+	
 	public void setYPos(double yPos) {
 		this.yPos = yPos;
-	}
-
-	public double getZPos() {
-		return zPos;
-	}
-	public void setZPos(double zPos) {
-		this.zPos = zPos;
 	}
 	public void setxPos(double pos) {
 		xPos = pos;
@@ -142,6 +146,7 @@ public class MapNode implements Serializable{
 	public void setyPos(double pos) {
 		yPos = pos;
 	}
+
 	public String getID(){
 		return nodeID;
 	}
@@ -180,9 +185,43 @@ public class MapNode implements Serializable{
 	public void calcFScore() {
 		fScore = gScore + hScore;		
 	}
+	public void setLocalMap(LocalMap localMap){
+		this.localMap = localMap;
+	}
+	public LocalMap getLocalMap(){
+		return localMap;
+	}
+	public void setXFeet(double xFeet){
+		this.xFeet = xFeet;
+	}
+	public void setYFeet(double yFeet){
+		this.yFeet = yFeet;
+	}
+	public double getXFeet(){
+		return xFeet;
+	}
+	public double getYFeet(){
+		return yFeet;
+	}
+	public void setZFeet(double zHeight){
+		zFeet = zHeight;
+	}
+	public double getZFeet(){
+		return zFeet;
+	}
 	
 	public Attributes getAttributes() {
 		return this.attributes;
+	}
+	
+	public void setDefaultAttributes(Attributes dfltA) {
+		Attributes a = this.getAttributes();
+		a.setStairs(dfltA.isStairs());
+		a.setPOI(dfltA.isPOI());
+		a.setBikeable(dfltA.isBikeable());
+		a.setHandicapped(dfltA.isHandicapped());
+		a.setOutside(dfltA.isOutside());
+		a.setType(dfltA.getType());
 	}
 	
 	public void setAttributes(Attributes a) {

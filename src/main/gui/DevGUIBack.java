@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import main.Attributes;
 import main.LocalMap;
-import main.LocationType;
+import main.Types;
 import main.MapNode;
 import main.util.Constants;
 import main.util.SaveUtil;
@@ -146,7 +146,7 @@ public class DevGUIBack implements Serializable  {
 	        	
 	        	System.out.println("Saving zPos");
 	        	Element zPos = dom.createElement("ZPos");
-	        	zPos.appendChild(dom.createTextNode(Double.toString(node.getZPos())));
+	        	zPos.appendChild(dom.createTextNode(Double.toString(node.getZFeet())));
 	        	
 	        	System.out.println("Saving Type");
 	        	Element type = dom.createElement("Type");
@@ -352,7 +352,7 @@ public class DevGUIBack implements Serializable  {
 				loadedNodes.get(i).setNodeID(nodeID);
 				loadedNodes.get(i).setXPos(Double.parseDouble(xPos));
 				loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
-				loadedNodes.get(i).setZPos(Double.parseDouble(zPos));
+				loadedNodes.get(i).setZFeet(Double.parseDouble(zPos));
 				//debug print
 				
 				/*
@@ -396,7 +396,7 @@ public class DevGUIBack implements Serializable  {
 				attr.setHandicapped(Boolean.parseBoolean(handicapped));
 				attr.setPOI(Boolean.parseBoolean(poi));
 				attr.setStairs(Boolean.parseBoolean(stairs));
-				attr.setType(LocationType.parseType(type));
+				attr.setType(Types.parseType(type));
 				
 				loadedNodes.get(i).setAttributes(attr);
 				

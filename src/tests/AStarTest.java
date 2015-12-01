@@ -13,6 +13,8 @@ import main.LocalMap;
 import main.MapNode;
 
 public class AStarTest {
+	
+	LocalMap localMap1 = new LocalMap("sample.jpg", null);
 
 	@Test
 	public void test() {
@@ -24,11 +26,11 @@ public class AStarTest {
 		//      /   |
 		//    /     |
 		// n1-------n2
-		MapNode n1 = new MapNode(0,0,0);
-		MapNode n2 = new MapNode(3,0,0);
-		MapNode n3 = new MapNode(3,4,0);
-		MapNode n4 = new MapNode(3,6,0);
-		MapNode n5 = new MapNode(6,6,0);
+		MapNode n1 = new MapNode(0,0,localMap1);
+		MapNode n2 = new MapNode(3,0,localMap1);
+		MapNode n3 = new MapNode(3,4, localMap1);
+		MapNode n4 = new MapNode(3,6,localMap1);
+		MapNode n5 = new MapNode(6,6,localMap1);
 		
 		//node 1 = start
 		//node 5 = finish

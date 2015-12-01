@@ -12,10 +12,10 @@ public class Attributes implements Serializable {
 	boolean isHandicapped = false;
 	boolean isStairs = false;
 	boolean isPOI = false;
-	LocationType type = LocationType.other;
+	Types type = Types.OTHER;
 	public Attributes() {
 		super();
-		this.officialName = officialName;
+		this.officialName = "";
 		this.aliases = aliases;
 		this.isOutside = isOutside;
 		this.isBikeable = isBikeable;
@@ -69,6 +69,11 @@ public class Attributes implements Serializable {
 	public void setAliases(ArrayList<String> aliases) {
 		this.aliases = aliases;
 	}
+	public void removeAlias(String alias) {
+		if(this.aliases.contains(alias)) {
+			this.aliases.remove(this.aliases.indexOf(alias));
+		}
+	}
 	public boolean isOutside() {
 		return isOutside;
 	}
@@ -99,10 +104,10 @@ public class Attributes implements Serializable {
 	public void setPOI(boolean isPOI) {
 		this.isPOI = isPOI;
 	}
-	public LocationType getType() {
+	public Types getType() {
 		return type;
 	}
-	public void setType(LocationType type) {
+	public void setType(Types type) {
 		this.type = type;
 	}
 	public HashMap<String, String> getPossibleEntries() {

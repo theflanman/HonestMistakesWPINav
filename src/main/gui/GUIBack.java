@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
 import main.AStar;
 import main.Attributes;
 import main.LocalMap;
-import main.LocationType;
+import main.Types;
 import main.MapNode;
 import main.StepByStep;
 import main.util.Constants;
@@ -104,7 +104,7 @@ public class GUIBack implements Serializable {
 					loadedNodes.get(i).setNodeID(nodeID);
 					loadedNodes.get(i).setXPos(Double.parseDouble(xPos));
 					loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
-					loadedNodes.get(i).setZPos(Double.parseDouble(zPos));
+					loadedNodes.get(i).setZFeet(Double.parseDouble(zPos));
 					//debug print
 					
 					/*
@@ -147,7 +147,7 @@ public class GUIBack implements Serializable {
 					attr.setHandicapped(Boolean.parseBoolean(handicapped));
 					attr.setPOI(Boolean.parseBoolean(poi));
 					attr.setStairs(Boolean.parseBoolean(stairs));
-					attr.setType(LocationType.parseType(type));
+					attr.setType(Types.parseType(type));
 					
 					
 					
@@ -286,7 +286,7 @@ public class GUIBack implements Serializable {
 				loadedNodes.get(i).setNodeID(nodeID);
 				loadedNodes.get(i).setXPos(Double.parseDouble(xPos));
 				loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
-				loadedNodes.get(i).setZPos(Double.parseDouble(zPos));
+				loadedNodes.get(i).setZFeet(Double.parseDouble(zPos));
 				//debug print
 				
 				/*
@@ -331,7 +331,7 @@ public class GUIBack implements Serializable {
 				attr.setHandicapped(Boolean.parseBoolean(handicapped));
 				attr.setPOI(Boolean.parseBoolean(poi));
 				attr.setStairs(Boolean.parseBoolean(stairs));
-				attr.setType(LocationType.parseType(type));
+				attr.setType(Types.parseType(type));
 				
 				loadedNodes.get(i).setAttributes(attr);
 				
@@ -450,7 +450,7 @@ public class GUIBack implements Serializable {
 	 * @return
 	 */
 	public MapNode findNearestNode(double xPos, double yPos){
-		MapNode start = new MapNode(xPos, yPos, 0);
+		MapNode start = new MapNode(xPos, yPos, this.localMap);
 		MapNode temp = null;
 		//need to initialize with an extremely large unobtainable number - or find a better solution
 		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0;
