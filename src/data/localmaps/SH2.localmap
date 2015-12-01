@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<MapNodes>
+    <ImageName>SH2.jpg</ImageName>
+    <Node>
+        <NodeID>SH2_1</NodeID>
+        <XPos>399.0</XPos>
+        <YPos>278.0</YPos>
+        <XFeet>71.82</XFeet>
+        <YFeet>50.04</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH2_2</Neighbor>
+            <Neighbor>SH1_1</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH2_2</NodeID>
+        <XPos>519.0</XPos>
+        <YPos>278.0</YPos>
+        <XFeet>93.42</XFeet>
+        <YFeet>50.04</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH2_1</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+</MapNodes>
