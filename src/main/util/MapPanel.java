@@ -68,30 +68,38 @@ public class MapPanel extends JPanel implements ActionListener {
 		//		if (mapPanelPoints != null) {
 		//			String currentLocal = mapPanelPoints.get(0).getLocalMap().getMapImageName();
 		for(MapNode n : mapPanelPoints){
-			g2d.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, circleSize, circleSize);
-				for(MapNode m : n.getNeighbors()) {
-					g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
-				}
-				for(MapNode m : n.getNeighbors()) {
-				if(m.getLocalMap().getMapImageName().equals(n.getLocalMap().getMapImageName())) {
+			g2d.fillOval((int) n.getXPos() - (circleSize/2), (int) n.getYPos() - (circleSize/2), circleSize, circleSize);
+			for(MapNode m : n.getNeighbors()) {
+				g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
+			}
+			for(MapNode m : n.getNeighbors()) {
+				//this checks to see if the two nodes are on the same map.
+				String mapM = m.getNodeID().split("_")[0];
+				String mapN = n.getNodeID().split("_")[0];
+				//System.out.println("M Image Name:" + m.getLocalMap().getMapImageName());
+				//System.out.println("N Image Name:" + n.getLocalMap().getMapImageName());
+				//if(m.getLocalMap().getMapImageName().equals(n.getLocalMap().getMapImageName())) {
+				if(mapM.equals(mapN)){
 					//g2d.fillOval((int) m.getXPos() - 5, (int) m.getYPos() - 5, circleSize, circleSize);
 					//g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
 				}
 				else {
 					//g2d.drawArc((int) n.getXPos(),  (int) n.getYPos(), 10, 10, 10, 10);
-					if(m.getAttributes().getOfficialName() != null && !m.getAttributes().getOfficialName().equals(""))
-	  					g2d.drawString(m.getAttributes().getOfficialName(), (int) n.getXPos() + 10, (int) n.getYPos() + 10);
-					else
-						g2d.drawString("" + m.getXPos() + ", " + m.getYPos(), (int) n.getXPos() + 10, (int) n.getYPos() + 10);
+					if(m.getAttributes().getOfficialName() != null && !m.getAttributes().getOfficialName().equals("")) {
+	  					g2d.drawString(m.getAttributes().getOfficialName(), (int) n.getXPos() + circleSize, (int) n.getYPos() + circleSize);
+					}
+					else {
+						g2d.drawString("" + m.getXPos() + ", " + m.getYPos(), (int) n.getXPos() + circleSize, (int) n.getYPos() + circleSize);
+					}
 				}//end else
-				//g2d.setPaint(Color.blue);
-				
-				}//end for
+			//g2d.setPaint(Color.blue);
+			
+			}//end for
 		}//end outer for
 			
 		g2d.setPaint(Color.green);
 		for(MapNode n : selectedPanelPoints){
-			g2d.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, circleSize, circleSize);
+			g2d.fillOval((int) n.getXPos() - (circleSize/2), (int) n.getYPos() - (circleSize/2), circleSize, circleSize);
 			}
 		}
 			

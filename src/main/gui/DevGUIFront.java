@@ -660,7 +660,7 @@ public class DevGUIFront extends JFrame {
 					if(edgeStarted == false) {
 						for(MapNode n : points){
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
 								edgeStart = n;
 								edgeStarted = true;
 								setInfoFields(n);							

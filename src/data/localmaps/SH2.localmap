@@ -6,7 +6,9 @@
         <XPos>131.0</XPos>
         <YPos>313.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_2</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -23,7 +25,10 @@
         <XPos>195.0</XPos>
         <YPos>314.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_1</Neighbor>
+            <Neighbor>SH2_3</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -40,7 +45,10 @@
         <XPos>244.0</XPos>
         <YPos>319.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_2</Neighbor>
+            <Neighbor>SH2_4</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -57,7 +65,10 @@
         <XPos>290.0</XPos>
         <YPos>315.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_3</Neighbor>
+            <Neighbor>SH2_5</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -74,7 +85,11 @@
         <XPos>340.0</XPos>
         <YPos>321.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_4</Neighbor>
+            <Neighbor>SH2_6</Neighbor>
+            <Neighbor>SH1_5</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -91,7 +106,10 @@
         <XPos>332.0</XPos>
         <YPos>274.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_5</Neighbor>
+            <Neighbor>SH2_7</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -108,7 +126,10 @@
         <XPos>370.0</XPos>
         <YPos>271.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_6</Neighbor>
+            <Neighbor>SH2_8</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -125,7 +146,10 @@
         <XPos>406.0</XPos>
         <YPos>273.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_7</Neighbor>
+            <Neighbor>SH2_9</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -142,7 +166,10 @@
         <XPos>476.0</XPos>
         <YPos>275.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_8</Neighbor>
+            <Neighbor>SH2_12</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -159,7 +186,9 @@
         <XPos>461.0</XPos>
         <YPos>178.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_11</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -176,7 +205,10 @@
         <XPos>517.0</XPos>
         <YPos>169.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_12</Neighbor>
+            <Neighbor>SH2_10</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -193,7 +225,11 @@
         <XPos>526.0</XPos>
         <YPos>279.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_9</Neighbor>
+            <Neighbor>SH2_11</Neighbor>
+            <Neighbor>SH2_13</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -210,7 +246,10 @@
         <XPos>579.0</XPos>
         <YPos>276.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_12</Neighbor>
+            <Neighbor>SH2_14</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -227,7 +266,10 @@
         <XPos>609.0</XPos>
         <YPos>272.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_13</Neighbor>
+            <Neighbor>SH2_15</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -244,7 +286,10 @@
         <XPos>701.0</XPos>
         <YPos>276.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_14</Neighbor>
+            <Neighbor>SH2_16</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -261,7 +306,9 @@
         <XPos>762.0</XPos>
         <YPos>280.0</YPos>
         <ZPos>13.0</ZPos>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH2_15</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>

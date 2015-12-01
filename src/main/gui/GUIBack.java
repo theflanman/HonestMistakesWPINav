@@ -38,7 +38,7 @@ public class GUIBack implements Serializable {
 	 * TODO: Change to Campus Map when it is complete
 	 */
 	public GUIBack(){
-		String defaultMapImage = "Complete_Campus_Map.JPG";
+		String defaultMapImage = "CCM.jpg";
 		this.localMap = new LocalMap(defaultMapImage, null);
 		this.path = new ArrayList<MapNode>();
 		this.startNode = null;
