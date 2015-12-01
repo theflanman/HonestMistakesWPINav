@@ -52,7 +52,6 @@ import javax.swing.border.MatteBorder;
 
 import main.*;
 import main.util.Constants;
-import main.util.SaveUtil;
 import main.util.Speaker;
 
 import javax.swing.JTextField;
@@ -135,9 +134,11 @@ public class GUIFront extends JFrame {
 		
 		// add the collection of nodes to the ArrayList of GlobalMap
 		allNodes = new ArrayList<MapNode>();
+
 		for (LocalMap local : localMapList) {
 
 			if (!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
+				System.out.println(local.getMapNodes());
 				allNodes.addAll(local.getMapNodes());
 		}
 		globalMap.setMapNodes(allNodes);
@@ -193,7 +194,7 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e){
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(1).getMapNodes();
-				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(1).getMapImageName()).getImage();
+				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
 				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
 				backend.setLocalMap(GUIFront.globalMap.getLocalMaps().get(1)); //= enteredNodes;
 				panelMap = strattonMap;
@@ -278,14 +279,8 @@ public class GUIFront extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-
 		// Image of the default map loaded into backend
 		String inputFileName = backend.getLocalMap().getMapImageName();
-		
-//		String imagePath = SaveUtil.removeExtension(inputFileName);
-//		imagePath = imagePath + ".jpg";
-//		System.out.println(imagePath);
-//		Image map = new ImageIcon("src/data/images/CCM.jpg").getImage();
 
 		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
 		JLabel lblInvalidEntry = new JLabel("Invalid Entry");
