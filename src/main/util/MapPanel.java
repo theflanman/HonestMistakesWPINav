@@ -48,13 +48,16 @@ import java.awt.image.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import main.MapNode;
 
+@SuppressWarnings("serial")
 public class MapPanel extends JPanel implements ActionListener {
 	private Image bgImage;
-	int circleSize = 10; //Circle size determines size of nodes on map. 
-	ArrayList<MapNode> selectedPanelPoints = new ArrayList<MapNode>(); //currently selected points
+	private int circleSize = 10; //Circle size determines size of nodes on map. 
+	private double xOffset = 0;
+	private double yOffset = 0;
+	private double startX, startY; //coordinates where mouse is pressed down
+	private double dx, dy; //distance dragged with mouse
 
 	ArrayList<MapNode> mapPanelPoints = new ArrayList<MapNode>(); // currently loaded list of points
 
@@ -63,39 +66,38 @@ public class MapPanel extends JPanel implements ActionListener {
 	private void renderMapPrivate(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setPaint(Color.blue);
-		g2d.drawImage(bgImage, 0, 0, null);
-		
+		g2d.drawImage(bgImage, (int) xOffset, (int) yOffset, null);
+
+
 		//		if (mapPanelPoints != null) {
 		//			String currentLocal = mapPanelPoints.get(0).getLocalMap().getMapImageName();
 		for(MapNode n : mapPanelPoints){
-			g2d.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, circleSize, circleSize);
-				for(MapNode m : n.getNeighbors()) {
-					g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
+			if(selectedNode != null) {
+				if(n.equals(selectedNode)) {
+					g2d.setPaint(Color.red);
 				}
-				for(MapNode m : n.getNeighbors()) {
+				if(selectedNode.getNeighbors().contains(n)) {
+					g2d.setPaint(Color.green);
+				}
+			}
+			g2d.fillOval((int) (n.getXPos() - 5 + xOffset), (int) (n.getYPos() - 5 + yOffset), circleSize, circleSize);
+			g2d.setPaint(Color.blue);
+			for(MapNode m : n.getNeighbors()) {
 				if(m.getLocalMap().getMapImageName().equals(n.getLocalMap().getMapImageName())) {
 					//g2d.fillOval((int) m.getXPos() - 5, (int) m.getYPos() - 5, circleSize, circleSize);
-					//g2d.drawLine((int) n.getXPos(), (int) n.getYPos(), (int) m.getXPos(), (int) m.getYPos());
+					g2d.drawLine((int) (n.getXPos() + xOffset), (int) (n.getYPos() + yOffset), (int) (m.getXPos() + xOffset), (int) (m.getYPos() + yOffset));
 				}
 				else {
 					//g2d.drawArc((int) n.getXPos(),  (int) n.getYPos(), 10, 10, 10, 10);
 					if(m.getAttributes().getOfficialName() != null && !m.getAttributes().getOfficialName().equals(""))
-	  					g2d.drawString(m.getAttributes().getOfficialName(), (int) n.getXPos() + 10, (int) n.getYPos() + 10);
+						g2d.drawString(m.getAttributes().getOfficialName(), (int) (n.getXPos() + 10 + xOffset), (int) (n.getYPos() + 10 + yOffset));
 					else
-						g2d.drawString("" + m.getXPos() + ", " + m.getYPos(), (int) n.getXPos() + 10, (int) n.getYPos() + 10);
-				}//end else
+						g2d.drawString("" + m.getXPos() + ", " + m.getYPos(), (int) (n.getXPos() + 10 + xOffset), (int) (n.getYPos() + 10 + yOffset));
+				}
 				//g2d.setPaint(Color.blue);
-				
-				}//end for
-		}//end outer for
-			
-		g2d.setPaint(Color.green);
-		for(MapNode n : selectedPanelPoints){
-			g2d.fillOval((int) n.getXPos() - 5, (int) n.getYPos() - 5, circleSize, circleSize);
 			}
 		}
-			
-			
+	}
 	//}
 
 	// paintComponent is what Swing calls to update the displayed graphics.
@@ -115,17 +117,9 @@ public class MapPanel extends JPanel implements ActionListener {
 	//Updates the points array to reflect a change, then calls the private method to render.
 	public void renderMapPublic(Graphics g, ArrayList<MapNode> points) {
 		mapPanelPoints = points;
-		selectedPanelPoints.clear();
 		renderMapPrivate(g);
 	}
-	
-	public void renderSelectedNodes(Graphics g, ArrayList<MapNode> points, ArrayList<MapNode> selectedNodes, MapNode selected){
-		mapPanelPoints = points;
-		selectedPanelPoints = selectedNodes;
-		selectedNode = selected;
-		renderMapPrivate(g);
-	}
-
+	//This version added later and should be used, accommodates selection of multiple nodes.
 	public void renderMapPublic(Graphics g, ArrayList<MapNode> points, MapNode selected) {
 		mapPanelPoints = points;
 		selectedNode = selected;
@@ -137,4 +131,38 @@ public class MapPanel extends JPanel implements ActionListener {
 		bgImage = pic;
 	}
 
+	public MapPanel() {
+		//The following two listeners implement panning.
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent me) {
+				super.mousePressed(me);
+				startX = me.getX(); //Remember where the mouse was pressed
+				startY = me.getY();
+			}
+		});
+
+		addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent me) {
+				super.mouseDragged(me);
+				dx = me.getX() - startX; //Track changes in position as dragging occurs
+				dy = me.getY() - startY;
+				startX = me.getX();
+				startY = me.getY();
+				xOffset += dx; //the offset variables track the net offset from the original position the image and contents are in.
+				yOffset += dy;
+
+				repaint();
+			}
+		});
+	}
+	
+	public double getXOffset() {
+		return xOffset;
+	}
+	
+	public double getYOffset() {
+		return yOffset;
+	}
 }

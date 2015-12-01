@@ -484,7 +484,7 @@ public class DevGUIFront extends JFrame {
 		panel2.setBackground(Color.WHITE);
 		panel2.setLayout(new BorderLayout(0, 0));
 		panel2.setBounds(465, 10, 445, 600);
-		mapPanel2.setBounds(2, 2, 443, 598); //TODO Figure out why this line of code is needed when it isn't needed for mapPanel!
+		mapPanel2.setBounds(2, 2, 443, 598);
 		panel2.add(mapPanel2);
 	//	getContentPane().add(panel2);
 		
@@ -587,7 +587,7 @@ public class DevGUIFront extends JFrame {
 					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
 					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
 					Point p = me.getLocationOnScreen();
-					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, local1); // make a new mapnode with those points
+					MapNode n = new MapNode((double) p.x - offset.x - mapPanel.getXOffset(), (double) p.y - offset.y - mapPanel.getYOffset(), local1); // make a new mapnode with those points
 					Graphics g = mapPanel.getGraphics();
 					
 					points.add(n);
@@ -602,54 +602,18 @@ public class DevGUIFront extends JFrame {
 				} else if (rdbtnSelectNode.isSelected()){
 					edgeStarted = false;
 					edgeRemovalStarted = false;
-					if(!me.isControlDown()){
-						selectedNodes.clear();
-					}
-					if(me.isShiftDown()){
-						multiSelect = true;
-					}
-					else{
-						multiSelect = false;
-					}
-					
 					for(MapNode n : points){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-							setInfoFields(n);
-							
-							if(multiSelect){
-								MapNode lastPoint = lastClicked;
-								MapNode currentPoint  = n;
-								double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
-								double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
-								double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
-								double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
-								for(MapNode mn : points){
-									if(mn.getXPos() >= minX && mn.getXPos() <= maxX &&
-											mn.getYPos() >= minY && mn.getYPos() <= maxY){
-										if(!selectedNodes.contains(mn)){
-											selectedNodes.add(mn);
-										}
-									}
-								}
-								
-							}
-													
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX() - mapPanel.getXOffset()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()- mapPanel.getYOffset()) <= threshold )){
+							setInfoFields(n);							
 							lastClicked = n;
-							
-							if(!selectedNodes.contains(n)){
-								selectedNodes.add(n);
-							}
-							
-							System.out.println(selectedNodes.size());
-							
 							Graphics g = mapPanel.getGraphics();
 							
-							mapPanel.renderSelectedNodes(g, points, selectedNodes, lastClicked);
+							mapPanel.renderMapPublic(g, points, lastClicked);
 							if(twoMapView) {
 								Graphics g2 = mapPanel2.getGraphics();
-								mapPanel2.renderSelectedNodes(g2, points2, selectedNodes2, lastClicked);
+								mapPanel2.renderMapPublic(g2, points2, lastClicked);
 							}
 							
 						}
@@ -660,7 +624,7 @@ public class DevGUIFront extends JFrame {
 					if(edgeStarted == false) {
 						for(MapNode n : points){
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX() - mapPanel.getXOffset()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY() - mapPanel.getYOffset()) <= threshold )){
 								edgeStart = n;
 								edgeStarted = true;
 								setInfoFields(n);							
@@ -678,7 +642,7 @@ public class DevGUIFront extends JFrame {
 					else {
 						for(MapNode n : points) {
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								Graphics g = mapPanel.getGraphics();
 								edgeStarted = false;
 								n.addNeighbor(edgeStart);
@@ -699,7 +663,7 @@ public class DevGUIFront extends JFrame {
 					if(edgeRemovalStarted == false) {
 						for(MapNode n : points){
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX()- mapPanel.getXOffset() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								edgeRemove = n;
 								edgeRemovalStarted = true;
 								setInfoFields(n);							
@@ -717,7 +681,7 @@ public class DevGUIFront extends JFrame {
 					else {
 						for(MapNode n : points) {
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX()- mapPanel.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								Graphics g = mapPanel.getGraphics();
 								edgeRemovalStarted = false;
 								n.removeNeighbor(edgeRemove);
@@ -740,7 +704,7 @@ public class DevGUIFront extends JFrame {
 					for(MapNode n : points){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+						if((Math.abs(me.getLocationOnScreen().getX()- mapPanel.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 							for(MapNode m : n.getNeighbors()) {
 							//	n.removeNeighbor(m);
 								m.removeNeighbor(n);
@@ -775,7 +739,7 @@ public class DevGUIFront extends JFrame {
 					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
 					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
 					Point p = me.getLocationOnScreen();
-					MapNode n = new MapNode((double) p.x - offset.x, (double) p.y - offset.y, local2); // make a new mapnode with those points
+					MapNode n = new MapNode((double) p.x - offset.x - mapPanel2.getXOffset(), (double) p.y - offset.y - mapPanel2.getYOffset(), local2); // make a new mapnode with those points
 					Graphics g = mapPanel.getGraphics();
 					Graphics g2 = mapPanel2.getGraphics();
 					points2.add(n);
@@ -785,13 +749,12 @@ public class DevGUIFront extends JFrame {
 					mapPanel2.renderMapPublic(g2, points2, lastClicked);
 					mapPanel.renderMapPublic(g, points, lastClicked);
 				} else if (rdbtnSelectNode.isSelected()){
-					/*
 					edgeStarted = false;
 					edgeRemovalStarted = false;
 					for(MapNode n : points2){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+						if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 							setInfoFields(n);
 							lastClicked = n;
 							Graphics g = mapPanel.getGraphics();
@@ -800,66 +763,13 @@ public class DevGUIFront extends JFrame {
 							mapPanel.renderMapPublic(g, points, lastClicked);
 						}
 					}
-					*/
-					edgeStarted = false;
-					edgeRemovalStarted = false;
-					if(!me.isControlDown()){
-						selectedNodes2.clear();
-					}
-					if(me.isShiftDown()){
-						multiSelect = true;
-					}
-					else{
-						multiSelect = false;
-					}
-					
-					for(MapNode n : points2){
-						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
-							setInfoFields(n);
-							
-							if(multiSelect){
-								MapNode lastPoint = lastClicked;
-								MapNode currentPoint  = n;
-								double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
-								double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
-								double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
-								double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
-								for(MapNode mn : points){
-									if(mn.getXPos() >= minX && mn.getXPos() <= maxX &&
-											mn.getYPos() >= minY && mn.getYPos() <= maxY){
-										if(!selectedNodes2.contains(mn)){
-											selectedNodes2.add(mn);
-										}
-									}
-								}
-								
-							}
-													
-							lastClicked = n;
-							
-							if(!selectedNodes2.contains(n)){
-								selectedNodes2.add(n);
-							}
-							
-							System.out.println(selectedNodes2.size());
-						}
-					}
-					Graphics g = mapPanel.getGraphics();
-					Graphics g2 = mapPanel2.getGraphics();
-					mapPanel2.renderSelectedNodes(g2, points2, selectedNodes2, lastClicked);
-					mapPanel.renderSelectedNodes(g, points, selectedNodes, lastClicked);
-					
-						
-
-				
-				} else if(rdbtnMakeEdge.isSelected()) {
+				}
+				else if(rdbtnMakeEdge.isSelected()) {
 					edgeRemovalStarted = false;
 					if(edgeStarted == false) {
 						for(MapNode n : points2){
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								edgeStart = n;
 								edgeStarted = true;
 								setInfoFields(n);
@@ -875,7 +785,7 @@ public class DevGUIFront extends JFrame {
 					else {
 						for(MapNode n : points2) {
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								Graphics g = mapPanel.getGraphics();
 								Graphics g2 = mapPanel2.getGraphics();
 								edgeStarted = false;
@@ -894,7 +804,7 @@ public class DevGUIFront extends JFrame {
 					if(edgeRemovalStarted == false) {
 						for(MapNode n : points2){
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								edgeRemove = n;
 								edgeRemovalStarted = true;
 								setInfoFields(n);
@@ -910,7 +820,7 @@ public class DevGUIFront extends JFrame {
 					else {
 						for(MapNode n : points2) {
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								Graphics g = mapPanel.getGraphics();
 								Graphics g2 = mapPanel2.getGraphics();
 								edgeRemovalStarted = false;
@@ -931,7 +841,7 @@ public class DevGUIFront extends JFrame {
 					for(MapNode n : points2){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()) <= threshold )){
+						if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 							for(MapNode m : n.getNeighbors()) {
 							//	n.removeNeighbor(m);
 								m.removeNeighbor(n);
@@ -952,6 +862,7 @@ public class DevGUIFront extends JFrame {
 			}
 		}); 
 		mapPanel2.setBackground(Color.WHITE);
+
 		
 		//Initialize both map panels
 		/*
