@@ -168,6 +168,10 @@ public class GUIBack implements Serializable {
 			
 			//store all this data so far, nodes still need to be linked.
 			LocalMap tempMap = new LocalMap(fileName, loadedNodes);
+			for(MapNode anode: loadedNodes){
+				anode.setLocalMap(tempMap);
+			}
+			
 			localMapList.add(tempMap);
 			allNeighborList.add(neighborNodes);
 			

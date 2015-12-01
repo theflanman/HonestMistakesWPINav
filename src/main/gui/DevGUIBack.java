@@ -462,7 +462,9 @@ public class DevGUIBack implements Serializable  {
 			}//end outer for
 			
 			this.localMap = new LocalMap(fileName, loadedNodes);
-			
+			for(MapNode anode: loadedNodes){
+				anode.setLocalMap(this.localMap);
+			}
 		} catch (ParserConfigurationException pce) {
             System.out.println(pce.getMessage());
         } catch (SAXException se) {
