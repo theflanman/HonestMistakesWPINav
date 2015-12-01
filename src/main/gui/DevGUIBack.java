@@ -93,11 +93,12 @@ public class DevGUIBack implements Serializable  {
 		System.out.println("Preparing to save...");
 		String fileName = this.localMap.getMapImageName();
 		fileName = SaveUtil.removeExtension(fileName);
+		String mapAppend = fileName + "_";
 		fileName = fileName.concat(".localmap");
 		fileName = Constants.LOCAL_MAP_PATH + "/" + fileName;
 		int i = 1;
 		for(MapNode node : this.localMap.getMapNodes()){
-			node.setNodeID(i++);
+			node.setNodeID(mapAppend + Integer.toString(i++));
 		}
 		
 		
@@ -128,7 +129,7 @@ public class DevGUIBack implements Serializable  {
 	        	//node id
 	        	System.out.println("Saving ID");
 	        	Element id = dom.createElement("NodeID");
-        		id.appendChild(dom.createTextNode(Integer.toString(node.getNodeID())));
+        		id.appendChild(dom.createTextNode(node.getNodeID()));
 	        	
 	        	//x y and z coords
 	        	System.out.println("Saving xPos");
@@ -156,7 +157,7 @@ public class DevGUIBack implements Serializable  {
 	        	else{
 		        	for(MapNode n: node.getNeighbors()){
 		        		Element ngbr = dom.createElement("Neighbor");
-		        		ngbr.appendChild(dom.createTextNode(Integer.toString(n.getNodeID())));
+		        		ngbr.appendChild(dom.createTextNode(n.getNodeID()));
 		        		neighbors.appendChild(ngbr);
 		        	}
 	        	}
@@ -302,6 +303,10 @@ public class DevGUIBack implements Serializable  {
 	*/
 	
 	public void loadMap(String fileName){
+		System.out.println("-----");
+		String fileParts[] = fileName.split("/");
+		String mapAppend = fileParts[fileParts.length-1];
+		mapAppend = SaveUtil.removeExtension(mapAppend);
 		ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
 		ArrayList<ArrayList<Integer>> neighborNodes = new ArrayList<ArrayList<Integer>>();
 		
@@ -334,7 +339,7 @@ public class DevGUIBack implements Serializable  {
 				String yPos = currentNode.getElementsByTagName("YPos").item(0).getTextContent();
 				String zPos = currentNode.getElementsByTagName("ZPos").item(0).getTextContent();
 				//store the nodes in the array list of nodes
-				loadedNodes.get(i).setNodeID(Integer.parseInt(nodeID));
+				loadedNodes.get(i).setNodeID(nodeID);
 				loadedNodes.get(i).setXPos(Double.parseDouble(xPos));
 				loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
 				loadedNodes.get(i).setZPos(Double.parseDouble(zPos));
@@ -405,13 +410,15 @@ public class DevGUIBack implements Serializable  {
 				//loop through the list of neighbor associations to do assignment for each one
 				for (int j = 0; j < neighborNodes.get(i).size(); j++){
 					
-					int neighborID = neighborNodes.get(i).get(j);
+					int neighborIDInt = neighborNodes.get(i).get(j);
+					String neighborID = Integer.toString(neighborIDInt);
 					//need to get the node associated with this ID
 					for(MapNode potentialNode : loadedNodes){
-						if(potentialNode.getNodeID() == neighborID){
-						
+						System.out.println(potentialNode.getNodeID() + " vs " + neighborID);
+						if(potentialNode.getNodeID().equals(neighborID)){
 							MapNode currentNode = loadedNodes.get(i);
 							currentNode.addNeighbor(potentialNode);
+							System.out.println("Adding " + currentNode.getNodeID() + " to " + potentialNode.getNodeID());
 							//currentNode.getNeighbors().add(potentialNode);
 						}
 					}//end inner for		

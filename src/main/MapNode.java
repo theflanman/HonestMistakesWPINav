@@ -9,7 +9,7 @@ public class MapNode implements Serializable{
 	private double xPos;
 	private double yPos;
 	private double zPos;
-	private int nodeID;
+	private String nodeID;
 	private ArrayList<MapNode> neighbors;
 	private double fScore;
 	private double gScore;
@@ -142,7 +142,7 @@ public class MapNode implements Serializable{
 	public void setyPos(double pos) {
 		yPos = pos;
 	}
-	public int getID(){
+	public String getID(){
 		return nodeID;
 	}
 	
@@ -154,10 +154,10 @@ public class MapNode implements Serializable{
 		this.cameFrom = cameFrom;		
 	}
 
-	public int getNodeID(){
+	public String getNodeID(){
 		return this.nodeID;
 	}
-	public void setNodeID(int id){
+	public void setNodeID(String id){
 		this.nodeID = id;
 	}
 	

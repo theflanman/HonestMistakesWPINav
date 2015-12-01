@@ -83,9 +83,9 @@ public class LocalMap implements Serializable{
 		MapNode mapNode2 = null;
 		//Unless nodeID's definitely correspond to an idex of an array we need to actually check every node in the list to get the node
 		for (MapNode mapNode: this.mapNodes){
-			if (mapNode.getNodeID() == nodeID1) {
+			if (mapNode.getNodeID().equals(nodeID1)) {
 				mapNode1 = mapNode;
-			} else if (mapNode.getNodeID() == nodeID2){
+			} else if (mapNode.getNodeID().equals(nodeID2)){
 				mapNode2 = mapNode;
 			}
 		}
@@ -108,9 +108,9 @@ public class LocalMap implements Serializable{
 		MapNode mapNode1 = null;
 		MapNode mapNode2 = null;
 		for (MapNode mapNode: this.mapNodes){
-			if (mapNode.getNodeID() == nodeID1){
+			if (mapNode.getNodeID().equals(nodeID1)){
 				mapNode1 = mapNode;
-			} else if (mapNode.getNodeID() == nodeID2){
+			} else if (mapNode.getNodeID().equals(nodeID2)){
 				mapNode2 = mapNode;
 			}
 		}

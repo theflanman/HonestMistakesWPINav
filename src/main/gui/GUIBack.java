@@ -82,7 +82,7 @@ public class GUIBack implements Serializable {
 				String yPos = currentNode.getElementsByTagName("YPos").item(0).getTextContent();
 				String zPos = currentNode.getElementsByTagName("ZPos").item(0).getTextContent();
 				//store the nodes in the array list of nodes
-				loadedNodes.get(i).setNodeID(Integer.parseInt(nodeID));
+				loadedNodes.get(i).setNodeID(nodeID);
 				loadedNodes.get(i).setXPos(Double.parseDouble(xPos));
 				loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
 				loadedNodes.get(i).setZPos(Double.parseDouble(zPos));
@@ -156,7 +156,7 @@ public class GUIBack implements Serializable {
 					int neighborID = neighborNodes.get(i).get(j);
 					//need to get the node associated with this ID
 					for(MapNode potentialNode : loadedNodes){
-						if(potentialNode.getNodeID() == neighborID){
+						if(potentialNode.getNodeID().equals(neighborID)){
 						
 							MapNode currentNode = loadedNodes.get(i);
 							currentNode.addNeighbor(potentialNode);
