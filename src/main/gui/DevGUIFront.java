@@ -86,15 +86,16 @@ public class DevGUIFront extends JFrame {
 	private JCheckBox chckbxHandicapped;
 	private JCheckBox chckbxBikeable;
 	private JCheckBox chckbxOutside;
-	
+	private boolean clickMiss;
+
 	private Attributes defaultAttributes;
-	
+
 	/*public enum Type {
 		FOOD, OFFICE, CLASSROOM, WATERFOUNTAIN, BATHROOM, PARKING, WALKING, DOOR, ELEVATOR, LAB, OTHER
 	} */
-	
+
 	public String[] typeList = new String[] {"Food", "Office", "Classroom", "Waterfountain", "Bathroom", "Parking", "Walking", "Door", "Elevator", "Lab", "Other"};
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -111,22 +112,22 @@ public class DevGUIFront extends JFrame {
 			}
 		});
 	}
-	
-	
+
+
 	public void keyPressed(KeyEvent e){
 		System.out.println("Key pressed");
 	}
-	
-	
+
+
 	/**
 	 * Create the frame.
 	 */
 	public DevGUIFront() {
 
-	//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
+		//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
 		System.out.println("Initializing...");
-	//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
-		
+		//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
+
 		// This sets the size and behavior of the application window itself.
 		setPreferredSize(new Dimension(1380, 760));
 		setResizable(true);
@@ -157,16 +158,16 @@ public class DevGUIFront extends JFrame {
 		defaultAttributes.setPOI(false);
 		defaultAttributes.setStairs(false);
 		defaultAttributes.setType(Types.WALKING);
-		
-		
+
+
 
 
 
 		// This is code for the file menu with the save map, load map, load new image, dropdown menu.
-		
+
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
-		
+
 		JMenuItem mntmLoadMap = new JMenuItem("Load Map");
 		mnFile.add(mntmLoadMap);
 		mntmLoadMap.addActionListener(new ActionListener() {
@@ -177,31 +178,32 @@ public class DevGUIFront extends JFrame {
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
 					String inputFileName = inputFile.getName();
-					
+
 					// load localMap
 					DevGUIBack devGUIBack = new DevGUIBack(null);
 					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
 					local1 = devGUIBack.getLocalMap();
 					String imagePath = SaveUtil.removeExtension(inputFileName);
 					imagePath = imagePath + ".jpg";
-										
+
 					// set the image
 					try {
 						pic = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath));
 					} catch (IOException e1) {
 						e1.printStackTrace();}
-					
+
 					//  picLabel.setIcon(new ImageIcon(pic));
 					mapPanel.setBgImage(pic);
 
 					// set the points
 					Graphics g = mapPanel.getGraphics();
+					selectedNodes.clear();
 					points = local1.getMapNodes();
 					mapPanel.renderMapPublic(g, points, null);
 				}
 			}
 		});
-		
+
 		JMenuItem mntmLoadExtraMap = new JMenuItem("Load Extra Map");
 		mntmLoadExtraMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -211,25 +213,26 @@ public class DevGUIFront extends JFrame {
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile2 = chooser.getSelectedFile();
 					String inputFileName = inputFile2.getName();
-					
+
 					// load localMap
 					DevGUIBack devGUIBack = new DevGUIBack(null);
 					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName); 
 					local2 = devGUIBack.getLocalMap();
 					String imagePath = SaveUtil.removeExtension(inputFileName);
 					imagePath = imagePath + ".jpg";
-										
+
 					// set the image
 					try {
 						pic2 = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath));
 					} catch (IOException e1) {
 						e1.printStackTrace();}
-					
+
 					//  picLabel.setIcon(new ImageIcon(pic));
 					mapPanel2.setBgImage(pic2);
 
 					// set the points
 					Graphics g = mapPanel2.getGraphics();
+					selectedNodes.clear();
 					points2 = local2.getMapNodes();
 					mapPanel2.renderMapPublic(g, points2, null);
 				}
@@ -246,7 +249,7 @@ public class DevGUIFront extends JFrame {
 				LocalMap thisMap = new LocalMap(fileName, points);
 				DevGUIBack devGUIBack = new DevGUIBack(thisMap);
 				devGUIBack.saveMap();
-				
+
 				if (twoMapView && !local1.getMapImageName().equals(local2.getMapImageName())) {
 					String fileName2 = inputFile2.getName();
 					fileName2 = SaveUtil.removeExtension(fileName2);
@@ -279,8 +282,9 @@ public class DevGUIFront extends JFrame {
 						//  picLabel.setIcon(new ImageIcon(pic));
 						String imagePath = SaveUtil.removeExtension(inputFile.getName());
 						imagePath = imagePath + ".jpg";
-						
+
 						mapPanel.setBgImage(pic);
+						selectedNodes.clear();
 						points = new ArrayList<MapNode>();
 						Graphics g = mapPanel.getGraphics();
 						mapPanel.renderMapPublic(g, points, null);
@@ -296,24 +300,24 @@ public class DevGUIFront extends JFrame {
 		});
 		mnFile.add(mntmNewMapImage);
 		mnFile.add(mntmExit);
-		
+
 		// This is the View menu, allowing a developer to switch to showing one or two maps at a time.
 		JMenu mnView = new JMenu("View");
 		menuBar.add(mnView);
-		
+
 		JMenuItem mntmShowTwoMaps = new JMenuItem("Show Two Maps");
 		mnView.add(mntmShowTwoMaps);
-		
+
 		JMenuItem mntmShowOneMap = new JMenuItem("Show One Map");
 		mnView.add(mntmShowOneMap);
 
 		// This is code for the panel showing information on the current selected node.
-		
+
 		JPanel nodeInfoPanel = new JPanel();
 		nodeInfoPanel.setBounds(920, 203, 294, 136);
 		nodeInfoPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		nodeInfoPanel.setLayout(null);
-		
+
 		// Labels
 		JLabel lblNodeInformation = new JLabel(" Node Information");
 		lblNodeInformation.setBounds(2, 2, 133, 16);
@@ -330,7 +334,7 @@ public class DevGUIFront extends JFrame {
 		JLabel lblZposition = new JLabel(" z-feet");
 		lblZposition.setBounds(2, 80, 55, 16);
 		nodeInfoPanel.add(lblZposition);
-		
+
 		// Text fields
 		xPosField = new JTextField();
 		xPosField.setBounds(122, 23, 165, 22);
@@ -350,7 +354,7 @@ public class DevGUIFront extends JFrame {
 		JButton btnMakeChanges = new JButton("Edit Node");
 		btnMakeChanges.setBounds(4, 106, 115, 25);
 		nodeInfoPanel.add(btnMakeChanges);
-		
+
 		btnMakeChanges.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lastClicked.setXPos(Double.parseDouble(xPosField.getText()));
@@ -364,13 +368,13 @@ public class DevGUIFront extends JFrame {
 				}
 			}
 		});
-		
+
 		// This is code for the panel with the radio buttons for the cursor options
-		
+
 		JPanel cursorPanel = new JPanel();
 		cursorPanel.setBounds(920, 10, 130, 183);
 		cursorPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		
+
 		cursorPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel(" Cursor Options");
@@ -395,80 +399,80 @@ public class DevGUIFront extends JFrame {
 
 
 		// This is code pertaining to the panel holding the map panel.
-		
+
 		JPanel panel = new JPanel();
 		panel.setLocation(10, 13);
-	//	panel.setPreferredSize(new Dimension(1000, 800));
-	//	panel.setSize(new Dimension(1192, 653));
+		//	panel.setPreferredSize(new Dimension(1000, 800));
+		//	panel.setSize(new Dimension(1192, 653));
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(Color.WHITE);
-		
+
 		panel.setLayout(new BorderLayout(0, 0));
 		panel.setBounds(10,10,900, 600);
 		panel.add(mapPanel);
 		getContentPane().add(panel);
 		getContentPane().add(cursorPanel);
 		getContentPane().add(nodeInfoPanel);
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_1.setBounds(920, 349, 301, 312);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel(" Attributes");
 		lblNewLabel.setBounds(2, 2, 66, 16);
 		panel_1.add(lblNewLabel);
-		
+
 		chckbxBikeable = new JCheckBox("Bikeable");
 		chckbxBikeable.setBounds(8, 215, 113, 25);
 		panel_1.add(chckbxBikeable);
-		
+
 		chckbxHandicapped = new JCheckBox("Handicapped accessable");
 		chckbxHandicapped.setBounds(8, 242, 176, 25);
 		panel_1.add(chckbxHandicapped);
-		
+
 		chckbxOutside = new JCheckBox("Outside");
 		chckbxOutside.setBounds(150, 188, 113, 25);
 		panel_1.add(chckbxOutside);
-		
+
 		chckbxPOI = new JCheckBox("Point of interest");
 		chckbxPOI.setBounds(150, 215, 141, 25);
 		panel_1.add(chckbxPOI);
-		
+
 		chckbxStairs = new JCheckBox("Stairs");
 		chckbxStairs.setBounds(8, 188, 113, 25);
 		panel_1.add(chckbxStairs);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Name");
 		lblNewLabel_2.setBounds(12, 31, 56, 16);
 		panel_1.add(lblNewLabel_2);
-		
+
 		textFieldOfficialName = new JTextField();
 		textFieldOfficialName.setBounds(61, 28, 196, 22);
 		panel_1.add(textFieldOfficialName);
 		textFieldOfficialName.setColumns(10);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Aliases");
 		lblNewLabel_3.setBounds(12, 55, 56, 16);
 		panel_1.add(lblNewLabel_3);
-		
+
 		typeBox = new JComboBox(Types.values());
 		//typeBox.setModel(new DefaultComboBoxModel(Type.values()));
 		typeBox.setMaximumRowCount(10);
 		typeBox.setBounds(12, 154, 204, 25);
 		panel_1.add(typeBox);
-		
+
 		typeBox.setSelectedIndex(-1);
-		
+
 		JButton btnEditName = new JButton("Edit Name");
 		btnEditName.setBounds(12, 276, 97, 25);
 		panel_1.add(btnEditName);
-		
+
 		JButton btnSetDfltAttr = new JButton("Set Default Attributes");
 		btnSetDfltAttr.setBounds(121, 276, 168, 25);
 		panel_1.add(btnSetDfltAttr);
-		
+
 		txtrAliases = new JTextArea();
 		JScrollPane scrollpane = new JScrollPane(txtrAliases);
 		scrollpane.setBounds(14, 73, 277, 68);
@@ -476,9 +480,9 @@ public class DevGUIFront extends JFrame {
 		txtrAliases.setLineWrap(true);
 		JPanel panel2 = new JPanel();
 		panel2.setLocation(465, 10);
-		
-	//	
-	//	panel2.setLocation(930, 500);
+
+		//	
+		//	panel2.setLocation(930, 500);
 		panel2.setSize(445, 600);
 		panel2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel2.setBackground(Color.WHITE);
@@ -486,11 +490,11 @@ public class DevGUIFront extends JFrame {
 		panel2.setBounds(465, 10, 445, 600);
 		mapPanel2.setBounds(2, 2, 443, 598);
 		panel2.add(mapPanel2);
-	//	getContentPane().add(panel2);
-		
-	//	panel.setSize(new Dimension(445, 600));
-	//	getContentPane().add(panel2);
-		
+		//	getContentPane().add(panel2);
+
+		//	panel.setSize(new Dimension(445, 600));
+		//	getContentPane().add(panel2);
+
 		mntmShowTwoMaps.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -504,17 +508,18 @@ public class DevGUIFront extends JFrame {
 				mapPanel2.renderMapPublic(g2, points2, lastClicked);
 			}
 		});
-		
+
 		mntmShowOneMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			getContentPane().remove(panel2);
+				getContentPane().remove(panel2);
 				panel.setSize(new Dimension(900, 600));
 				mnFile.remove(mntmLoadExtraMap);
 				twoMapView = false;
 				mntmSaveMap.setText("Save Map");
+				selectedNodes.clear(); //selected points could be in two maps at once, causing issues later if all of them are edited
 			}
 		});
-		
+
 		btnSetDfltAttr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				defaultAttributes.setBikeable(chckbxBikeable.isSelected());
@@ -525,60 +530,69 @@ public class DevGUIFront extends JFrame {
 				defaultAttributes.setType((Types) typeBox.getSelectedItem());
 			}
 		});
-		
+
 		btnEditName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(lastClicked != null) {
 					lastClicked.getAttributes().setOfficialName(textFieldOfficialName.getText());
 					String aliases[] = txtrAliases.getText().split("\\r?\\n");
-				    ArrayList<String>aliasesArray = new ArrayList<>(Arrays.asList(aliases)) ;
-				    lastClicked.getAttributes().setAliases(aliasesArray);
+					ArrayList<String>aliasesArray = new ArrayList<>(Arrays.asList(aliases)) ;
+					lastClicked.getAttributes().setAliases(aliasesArray);
 				}
 			}
 		});
-		
+
 		chckbxStairs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(lastClicked != null) {
-					lastClicked.getAttributes().setStairs(chckbxStairs.isSelected());
+				for(MapNode n : selectedNodes) {
+					n.getAttributes().setStairs(chckbxStairs.isSelected());
 				}
+
 			}
 		});
 
 		chckbxBikeable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(lastClicked != null) {
-					lastClicked.getAttributes().setBikeable(chckbxBikeable.isSelected());
+				for(MapNode n : selectedNodes) {
+					n.getAttributes().setBikeable(chckbxBikeable.isSelected());
 				}
 			}
 		});
-		
+
 		chckbxPOI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(lastClicked != null) {
-					lastClicked.getAttributes().setPOI(chckbxPOI.isSelected());
+				for(MapNode n : selectedNodes) {
+					n.getAttributes().setPOI(chckbxPOI.isSelected());
 				}
 			}
 		});
-		
+
 		chckbxOutside.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(lastClicked != null) {
-					lastClicked.getAttributes().setOutside(chckbxOutside.isSelected());
+				for(MapNode n : selectedNodes) {
+					n.getAttributes().setOutside(chckbxOutside.isSelected());
 				}
 			}
 		});
-		
+
 		chckbxHandicapped.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(lastClicked != null) {
-					lastClicked.getAttributes().setHandicapped(chckbxHandicapped.isSelected());
+				for(MapNode n : selectedNodes) {
+					n.getAttributes().setHandicapped(chckbxHandicapped.isSelected());
 				}
 			}
 		});
 		
+		typeBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(MapNode n : selectedNodes) {
+					n.getAttributes().setType((Types) typeBox.getSelectedItem());
+				}
+			}
+		});
+
 		// This is code that determines what needs to happen on each mouse click in the map panel.
-		
+
 		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
@@ -589,34 +603,80 @@ public class DevGUIFront extends JFrame {
 					Point p = me.getLocationOnScreen();
 					MapNode n = new MapNode((double) p.x - offset.x - mapPanel.getXOffset(), (double) p.y - offset.y - mapPanel.getYOffset(), local1); // make a new mapnode with those points
 					Graphics g = mapPanel.getGraphics();
-					
+
 					points.add(n);
 					n.setDefaultAttributes(defaultAttributes);
 					setInfoFields(n);
 					lastClicked = n;
-					mapPanel.renderMapPublic(g, points, lastClicked);
+					selectedNodes.clear();
+					selectedNodes.add(n);
+					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 					if(twoMapView) {
 						Graphics g2 = mapPanel2.getGraphics();
-						mapPanel2.renderMapPublic(g2, points2, lastClicked);
+						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 					}
 				} else if (rdbtnSelectNode.isSelected()){
 					edgeStarted = false;
 					edgeRemovalStarted = false;
+					if(!me.isControlDown()){
+						selectedNodes.clear();
+					}
+					if(me.isShiftDown()){
+						multiSelect = true;
+					}
+					else{
+						multiSelect = false;
+					}
+
+					clickMiss = true; //If the for-loop finishes and this is not changed to false, the info fields will be cleared and no nodes will be shown as clicked.
 					for(MapNode n : points){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
-						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX() - mapPanel.getXOffset()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY()- mapPanel.getYOffset()) <= threshold )){
-							setInfoFields(n);							
-							lastClicked = n;
-							Graphics g = mapPanel.getGraphics();
-							
-							mapPanel.renderMapPublic(g, points, lastClicked);
-							if(twoMapView) {
-								Graphics g2 = mapPanel2.getGraphics();
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX() - mapPanel.getXOffset()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY() - mapPanel.getYOffset()) <= threshold )){
+							setInfoFields(n);
+							clickMiss = false;
+							if(multiSelect){
+								MapNode lastPoint = lastClicked;
+								MapNode currentPoint  = n;
+								double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
+								double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
+								double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
+								double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
+								for(MapNode mn : points){
+									if(mn.getXPos() >= minX && mn.getXPos() <= maxX &&
+											mn.getYPos() >= minY && mn.getYPos() <= maxY){
+										if(!selectedNodes.contains(mn)){
+											selectedNodes.add(mn);
+										}
+									}
+								}
+
 							}
-							
-						}
+
+							lastClicked = n;
+
+							if(!selectedNodes.contains(n)){
+								selectedNodes.add(n);
+							}
+
+							System.out.println(selectedNodes.size());
+
+
+
+
+
+						} //end the threshold selection if
+						
+
+					}
+					if(clickMiss == true) {
+						blankInfoFields();
+					}
+					Graphics g = mapPanel.getGraphics();
+					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
+					if(twoMapView) {
+						Graphics g2 = mapPanel2.getGraphics();
+						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 					}
 				}
 				else if(rdbtnMakeEdge.isSelected()) {
@@ -629,11 +689,13 @@ public class DevGUIFront extends JFrame {
 								edgeStarted = true;
 								setInfoFields(n);							
 								lastClicked = n;
+								selectedNodes.clear();
+								selectedNodes.add(n);
 								Graphics g = mapPanel.getGraphics();
-								mapPanel.renderMapPublic(g, points, lastClicked);
+								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 								if(twoMapView) {
 									Graphics g2 = mapPanel2.getGraphics();
-									mapPanel2.renderMapPublic(g2, points2, lastClicked);
+									mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								}
 							}
 						}
@@ -649,10 +711,12 @@ public class DevGUIFront extends JFrame {
 								edgeStart.addNeighbor(n);
 								setInfoFields(n);							
 								lastClicked = n;
-								mapPanel.renderMapPublic(g, points, lastClicked);
+								selectedNodes.clear();
+								selectedNodes.add(n);
+								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 								if(twoMapView) {
 									Graphics g2 = mapPanel2.getGraphics();
-									mapPanel2.renderMapPublic(g2, points2, lastClicked);
+									mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								}
 							}
 						}
@@ -668,11 +732,13 @@ public class DevGUIFront extends JFrame {
 								edgeRemovalStarted = true;
 								setInfoFields(n);							
 								lastClicked = n;
+								selectedNodes.clear();
+								selectedNodes.add(n);
 								Graphics g = mapPanel.getGraphics();
-								mapPanel.renderMapPublic(g, points, lastClicked);
+								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 								if(twoMapView) {
 									Graphics g2 = mapPanel2.getGraphics();
-									mapPanel2.renderMapPublic(g2, points2, lastClicked);
+									mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								}
 							}
 						}
@@ -688,10 +754,12 @@ public class DevGUIFront extends JFrame {
 								edgeRemove.removeNeighbor(n);
 								setInfoFields(n);							
 								lastClicked = n;
-								mapPanel.renderMapPublic(g, points, lastClicked);
+								selectedNodes.clear();
+								selectedNodes.add(n);
+								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 								if(twoMapView) {
 									Graphics g2 = mapPanel2.getGraphics();
-									mapPanel2.renderMapPublic(g2, points2, lastClicked);
+									mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								}
 							}
 						}
@@ -706,31 +774,31 @@ public class DevGUIFront extends JFrame {
 
 						if((Math.abs(me.getLocationOnScreen().getX()- mapPanel.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 							for(MapNode m : n.getNeighbors()) {
-							//	n.removeNeighbor(m);
+								//	n.removeNeighbor(m);
 								m.removeNeighbor(n);
 							}
 							nodeToRemove = n;
-							
+
 
 						}
 					}
 					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
-					
+
 					points.remove(nodeToRemove);
 					Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points);
 					if(twoMapView) {
 						Graphics g2 = mapPanel2.getGraphics();
-						mapPanel2.renderMapPublic(g2, points2, lastClicked);
+						mapPanel2.renderMapPublic(g2, points2);
 					}
 				}
 			}
 		}); 
 		mapPanel.setBackground(Color.WHITE);
-		
-		
+
+
 		// This is code for the second map panel.
-		
+
 		mapPanel2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
@@ -746,24 +814,72 @@ public class DevGUIFront extends JFrame {
 					n.setDefaultAttributes(defaultAttributes);
 					setInfoFields(n);
 					lastClicked = n;
-					mapPanel2.renderMapPublic(g2, points2, lastClicked);
-					mapPanel.renderMapPublic(g, points, lastClicked);
+					selectedNodes.clear();
+					selectedNodes.add(n);
+					mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
+					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 				} else if (rdbtnSelectNode.isSelected()){
 					edgeStarted = false;
 					edgeRemovalStarted = false;
+					if(!me.isControlDown()){
+						selectedNodes.clear();
+					}
+					if(me.isShiftDown()){
+						multiSelect = true;
+					}
+					else{
+						multiSelect = false;
+					}
+					clickMiss = true;
 					for(MapNode n : points2){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
-						if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
+						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX() - mapPanel2.getXOffset()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY() - mapPanel2.getYOffset()) <= threshold )){
 							setInfoFields(n);
+							clickMiss = false;
+							if(multiSelect){
+								MapNode lastPoint = lastClicked;
+								MapNode currentPoint  = n;
+								double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
+								double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
+								double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
+								double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
+								for(MapNode mn : points2){
+									if(mn.getXPos() >= minX && mn.getXPos() <= maxX &&
+											mn.getYPos() >= minY && mn.getYPos() <= maxY){
+										if(!selectedNodes.contains(mn)){
+											selectedNodes.add(mn);
+										}
+									}
+								}
+
+							}
+
 							lastClicked = n;
-							Graphics g = mapPanel.getGraphics();
-							Graphics g2 = mapPanel2.getGraphics();
-							mapPanel2.renderMapPublic(g2, points2, lastClicked);
-							mapPanel.renderMapPublic(g, points, lastClicked);
+
+							if(!selectedNodes.contains(n)){
+								selectedNodes.add(n);
+							}
+
+							System.out.println(selectedNodes.size());
+
+
+
 						}
 					}
+					
+					if(clickMiss == true) {
+						blankInfoFields();
+					}
+					Graphics g = mapPanel.getGraphics();
+					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
+					if(twoMapView) {
+						Graphics g2 = mapPanel2.getGraphics();
+						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
+					}
 				}
+
+
 				else if(rdbtnMakeEdge.isSelected()) {
 					edgeRemovalStarted = false;
 					if(edgeStarted == false) {
@@ -774,10 +890,12 @@ public class DevGUIFront extends JFrame {
 								edgeStarted = true;
 								setInfoFields(n);
 								lastClicked = n;
+								selectedNodes.clear();
+								selectedNodes.add(n);
 								Graphics g = mapPanel.getGraphics();
 								Graphics g2 = mapPanel2.getGraphics();
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
-								mapPanel.renderMapPublic(g, points, lastClicked);
+								mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
+								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 							}
 						}
 
@@ -793,8 +911,10 @@ public class DevGUIFront extends JFrame {
 								edgeStart.addNeighbor(n);
 								setInfoFields(n);
 								lastClicked = n;
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
-								mapPanel.renderMapPublic(g, points, lastClicked);
+								selectedNodes.clear();
+								selectedNodes.add(n);
+								mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
+								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 							}
 						}
 					}
@@ -809,10 +929,12 @@ public class DevGUIFront extends JFrame {
 								edgeRemovalStarted = true;
 								setInfoFields(n);
 								lastClicked = n;
+								selectedNodes.clear();
+								selectedNodes.add(n);
 								Graphics g = mapPanel.getGraphics();
 								Graphics g2 = mapPanel2.getGraphics();
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
-								mapPanel.renderMapPublic(g, points, lastClicked);
+								mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
+								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 							}
 						}
 
@@ -828,8 +950,10 @@ public class DevGUIFront extends JFrame {
 								edgeRemove.removeNeighbor(n);
 								setInfoFields(n);
 								lastClicked = n;
-								mapPanel2.renderMapPublic(g2, points2, lastClicked);
-								mapPanel.renderMapPublic(g, points, lastClicked);
+								selectedNodes.clear();
+								selectedNodes.add(n);
+								mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
+								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 							}
 						}
 					}
@@ -843,16 +967,16 @@ public class DevGUIFront extends JFrame {
 
 						if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 							for(MapNode m : n.getNeighbors()) {
-							//	n.removeNeighbor(m);
+								//	n.removeNeighbor(m);
 								m.removeNeighbor(n);
 							}
 							nodeToRemove = n;
-							
+
 
 						}
 					}
 					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
-					
+
 					points2.remove(nodeToRemove);
 					Graphics g2 = mapPanel2.getGraphics();
 					mapPanel2.renderMapPublic(g2, points2);
@@ -863,26 +987,26 @@ public class DevGUIFront extends JFrame {
 		}); 
 		mapPanel2.setBackground(Color.WHITE);
 
-		
+
 		//Initialize both map panels
 		/*
 		String inputFileName = "StrattonHallF1.localmap";
 		String inputFileName2 = "StrattonHallF2.localmap";
-		
-		
+
+
 		// load localMap
 		DevGUIBack devGUIBack = new DevGUIBack(null);
 		devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
 		local1 = devGUIBack.getLocalMap();
 		String imagePath = SaveUtil.removeExtension(inputFileName);
 		imagePath = imagePath + ".jpg";
-							
+
 		// set the image
 		try {
 			pic = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath));
 		} catch (IOException e1) {
 			e1.printStackTrace();}
-		
+
 		//  picLabel.setIcon(new ImageIcon(pic));
 		mapPanel.setBgImage(pic);
 
@@ -890,20 +1014,20 @@ public class DevGUIFront extends JFrame {
 		Graphics f = mapPanel.getGraphics();
 		points = local1.getMapNodes();
 		mapPanel.renderMapPublic(f, points, null);
-		
-		
+
+
 		DevGUIBack devGUIBack2 = new DevGUIBack(null);
 		devGUIBack2.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName2); 
 		local2 = devGUIBack2.getLocalMap();
 		String imagePath2 = SaveUtil.removeExtension(inputFileName2);
 		imagePath2 = imagePath2 + ".jpg";
-							
+
 		// set the image
 		try {
 			pic2 = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath2));
 		} catch (IOException e1) {
 			e1.printStackTrace();}
-		
+
 		//  picLabel.setIcon(new ImageIcon(pic));
 		mapPanel2.setBgImage(pic2);
 
@@ -911,15 +1035,15 @@ public class DevGUIFront extends JFrame {
 		Graphics g2 = mapPanel2.getGraphics();
 		points2 = local2.getMapNodes();
 		mapPanel2.renderMapPublic(g2, points2, null);
-		
-		*/
+
+		 */
 	}
-	
+
 	private void setInfoFields(MapNode n) {
 		xPosField.setText(""+n.getXPos());
 		yPosField.setText(""+n.getYPos());
 		zPosField.setText(""+n.getZFeet());
-//		zPosField.setText(""+n.getZPos());
+		//		zPosField.setText(""+n.getZPos());
 		Attributes a = n.getAttributes();
 		typeBox.setSelectedItem(a.getType());
 		chckbxStairs.setSelected(a.isStairs());
@@ -933,5 +1057,20 @@ public class DevGUIFront extends JFrame {
 			txtrAliases.append("\n");
 		}
 		textFieldOfficialName.setText(a.getOfficialName());
+	}
+	
+	private void blankInfoFields() {
+		xPosField.setText("");
+		yPosField.setText("");
+		zPosField.setText("");
+		//		zPosField.setText(""+n.getZPos());
+		typeBox.setSelectedItem(-1);
+		chckbxStairs.setSelected(false);
+		chckbxHandicapped.setSelected(false);
+		chckbxOutside.setSelected(false);
+		chckbxPOI.setSelected(false);
+		chckbxBikeable.setSelected(false);
+		txtrAliases.setText("");
+		textFieldOfficialName.setText("");
 	}
 }

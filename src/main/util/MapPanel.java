@@ -58,9 +58,9 @@ public class MapPanel extends JPanel implements ActionListener {
 	private double yOffset = 0;
 	private double startX, startY; //coordinates where mouse is pressed down
 	private double dx, dy; //distance dragged with mouse
-
+	ArrayList<MapNode> selectedPanelPoints = new ArrayList<MapNode>(); //currently selected points
 	ArrayList<MapNode> mapPanelPoints = new ArrayList<MapNode>(); // currently loaded list of points
-
+	String thismap;
 	MapNode selectedNode;
 	// Looks at the array of points, and creates graphical representation of what is currently stored.
 	private void renderMapPrivate(Graphics g) {
@@ -72,31 +72,41 @@ public class MapPanel extends JPanel implements ActionListener {
 		//		if (mapPanelPoints != null) {
 		//			String currentLocal = mapPanelPoints.get(0).getLocalMap().getMapImageName();
 		for(MapNode n : mapPanelPoints){
-			if(selectedNode != null) {
-				if(n.equals(selectedNode)) {
-					g2d.setPaint(Color.red);
-				}
-				if(selectedNode.getNeighbors().contains(n)) {
-					g2d.setPaint(Color.green);
-				}
-			}
 			g2d.fillOval((int) (n.getXPos() - 5 + xOffset), (int) (n.getYPos() - 5 + yOffset), circleSize, circleSize);
-			g2d.setPaint(Color.blue);
+
 			for(MapNode m : n.getNeighbors()) {
 				if(m.getLocalMap().getMapImageName().equals(n.getLocalMap().getMapImageName())) {
-					//g2d.fillOval((int) m.getXPos() - 5, (int) m.getYPos() - 5, circleSize, circleSize);
 					g2d.drawLine((int) (n.getXPos() + xOffset), (int) (n.getYPos() + yOffset), (int) (m.getXPos() + xOffset), (int) (m.getYPos() + yOffset));
 				}
 				else {
-					//g2d.drawArc((int) n.getXPos(),  (int) n.getYPos(), 10, 10, 10, 10);
 					if(m.getAttributes().getOfficialName() != null && !m.getAttributes().getOfficialName().equals(""))
 						g2d.drawString(m.getAttributes().getOfficialName(), (int) (n.getXPos() + 10 + xOffset), (int) (n.getYPos() + 10 + yOffset));
 					else
 						g2d.drawString("" + m.getXPos() + ", " + m.getYPos(), (int) (n.getXPos() + 10 + xOffset), (int) (n.getYPos() + 10 + yOffset));
-				}
+				}//end else
 				//g2d.setPaint(Color.blue);
+
+			}//end for
+		}//end outer for
+
+		//Color selected nodes that are in this panel to be green.
+		g2d.setPaint(Color.green);
+		if(!mapPanelPoints.isEmpty()) {
+			thismap = mapPanelPoints.get(0).getLocalMap().getMapImageName(); //What map is currently being displayed by this panel?
+			/*if(selectedNode != null) { //Leave this as a comment, it may be useful for debugging later.
+				if(thismap.equals(selectedNode.getLocalMap().getMapImageName())) { //Make sure the node is in this panel, not the other panel
+					g2d.setPaint(Color.red);
+					g2d.fillOval((int) (selectedNode.getXPos() - 5 + xOffset), (int) (selectedNode.getYPos() - 5 + yOffset), circleSize, circleSize);
+					g2d.setPaint(Color.green);
+				}
+			} */
+			for(MapNode n : selectedPanelPoints){
+				if(thismap.equals(n.getLocalMap().getMapImageName())) { //Make sure the nodes are in this panel, not the other panel
+					g2d.fillOval((int) (n.getXPos() - 5 + xOffset), (int) (n.getYPos() - 5 + yOffset), circleSize, circleSize);
+				}
 			}
 		}
+
 	}
 	//}
 
@@ -122,6 +132,13 @@ public class MapPanel extends JPanel implements ActionListener {
 	//This version added later and should be used, accommodates selection of multiple nodes.
 	public void renderMapPublic(Graphics g, ArrayList<MapNode> points, MapNode selected) {
 		mapPanelPoints = points;
+		selectedNode = selected;
+		renderMapPrivate(g);
+	}
+
+	public void renderMapPublic(Graphics g, ArrayList<MapNode> points, ArrayList<MapNode> selectedNodes, MapNode selected){
+		mapPanelPoints = points;
+		selectedPanelPoints = selectedNodes;
 		selectedNode = selected;
 		renderMapPrivate(g);
 	}
@@ -157,11 +174,11 @@ public class MapPanel extends JPanel implements ActionListener {
 			}
 		});
 	}
-	
+
 	public double getXOffset() {
 		return xOffset;
 	}
-	
+
 	public double getYOffset() {
 		return yOffset;
 	}
