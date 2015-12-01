@@ -30,14 +30,15 @@ public class EmailGUI extends JDialog {
 
 
 	EmailSender email = new EmailSender();
-
+	
+	String welcomeMessage = "The directions for your route are:\n\n";
 	String fromEmail = "EraOfNavigation";
 	String pass = "HonestMistakes";
 	String[] toEmail = { "" };
-	String subject = "Welcome to the Era of Navigation";
-	String body = GUIFront.allText;
-	
+	String subject = "The Era of Navigationn"; 
+	String body = welcomeMessage.concat(GUIFront.allText);
 
+ 
 	/**
 	 * Launch the application.
 	 */
