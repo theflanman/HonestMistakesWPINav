@@ -1120,9 +1120,6 @@ public class GUIFront extends JFrame {
 				transform.translate(panX, panY); // move to designated location
 				graphics.setTransform(transform);
 				
-				// Scale the map relative to the panels current size and your current viewing window
-				graphics.drawImage(mapImage, 0, 0, this);	
-						
 				// Test drawing of map nodes
 				for(MapNode n : localNodes){
 					graphics.fillOval((int)n.getXPos() - (int)panX - 5, (int)n.getYPos() - (int)panY - 5, 10, 10);
@@ -1131,6 +1128,7 @@ public class GUIFront extends JFrame {
 				// Colors start and end differently
 				// Draws the map and places pre-existing node data onto the map as
 				// well start and end nodes if they have been set
+				System.out.println("DRAWING MAP IMAGE: " + this.mapImage);
 				graphics.drawImage(this.mapImage, 0, 0, this);
 
 				// Sets the color of the start and end nodes to be different
