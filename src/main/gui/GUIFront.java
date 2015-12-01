@@ -70,12 +70,13 @@ public class GUIFront extends JFrame {
 	public static boolean reset = false;
 	public static MapNode startNode = null, endNode = null;
 	public static String allText = "";
-	//public static ArrayList<MapNode> chosenNodes = new ArrayList<MapNode>();
+	public static ArrayList<GUIBack> backends = new ArrayList<GUIBack>();
 	public static ArrayList<ArrayList<MapNode>> paths = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
 	public static boolean allowSetting = true;
 	public static JTabbedPane tabbedPane; 
 	public static ArrayList<MapNode> allNodes;
+	public static int index = 0;
 	
 	static AffineTransform transform; // the current state of image transformation
 	Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
@@ -94,6 +95,7 @@ public class GUIFront extends JFrame {
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 
 	private SLPanel slidePanel;
+	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
 
@@ -107,6 +109,7 @@ public class GUIFront extends JFrame {
 		// Instantiate GUIBack to its default
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
 		backend = new GUIBack(defaultMapImage, null);
+		backends.add(0, backend);
 
 		// Initialize the GlobalMap variable with all of the LocalMaps and all
 		// of their nodes
@@ -180,11 +183,15 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e){
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(1).getMapNodes();
-				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(1).getMapImageName()).getImage();
-				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
-				backend.setLocalMap(GUIFront.globalMap.getLocalMaps().get(1)); //= enteredNodes;
-				panelMap = strattonMap;
-				tabbedPane.addTab("Stratton Floor 1", strattonMap);
+				Image mapPath2 = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(1).getMapImageName()).getImage();
+				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath2, "1");
+				GUIBack backend2 = new GUIBack("stratton", enteredNodes);
+				backend2.setLocalMap(GUIFront.globalMap.getLocalMaps().get(1)); //= enteredNodes;
+				panels.add(strattonMap);
+				index += 1;
+				//panelMap = strattonMap;
+				//strattonMap.labelMainPanel.setText("HAROO");
+				//tabbedPane.addTab("Stratton Floor 1", strattonMap);
 			}
 		});
 		mnStratton.add(mntmFFStratton);
@@ -196,7 +203,7 @@ public class GUIFront extends JFrame {
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(2).getMapNodes();
 				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
 				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
-				tabbedPane.addTab("Stratton Floor 2", strattonMap);
+				//tabbedPane.addTab("Stratton Floor 2", strattonMap);
 			}
 		});
 		mnStratton.add(mntmSFStratton);
@@ -206,7 +213,7 @@ public class GUIFront extends JFrame {
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(3).getMapNodes();
 				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
 				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
-				tabbedPane.addTab("Stratton Floor 3", strattonMap);
+				//tabbedPane.addTab("Stratton Floor 3", strattonMap);
 			}
 		});
 		JMenuItem mntmThirdStratton = new JMenuItem("Floor 3");
@@ -216,7 +223,7 @@ public class GUIFront extends JFrame {
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(3).getMapNodes();
 				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
 				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath, "1");
-				tabbedPane.addTab("Stratton Floor 3", strattonMap);
+				//tabbedPane.addTab("Stratton Floor 3", strattonMap);
 			}
 		});
 		mnStratton.add(mntmThirdStratton);
@@ -231,7 +238,7 @@ public class GUIFront extends JFrame {
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(4).getMapNodes();
 				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
 				TweenPanel campusMap = new TweenPanel(enteredNodes, mapPath, "1");
-				tabbedPane.addTab("Campus Main Floor", campusMap);
+				//tabbedPane.addTab("Campus Main Floor", campusMap);
 			}
 		});
 		mnCampusCenter.add(mntmMainCampus);
@@ -242,7 +249,7 @@ public class GUIFront extends JFrame {
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(5).getMapNodes();
 				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
 				TweenPanel campusMap = new TweenPanel(enteredNodes, mapPath, "1");
-				tabbedPane.addTab("Campus Main Floor", campusMap);
+				//tabbedPane.addTab("Campus Main Floor", campusMap);
 			}
 		});
 		mnCampusCenter.add(mntmLowerCampus);
@@ -254,7 +261,7 @@ public class GUIFront extends JFrame {
 				ArrayList<MapNode> enteredNodes = GUIFront.globalMap.getLocalMaps().get(6).getMapNodes();
 				Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(2).getMapImageName()).getImage();
 				TweenPanel campusMap = new TweenPanel(enteredNodes, mapPath, "1");
-				tabbedPane.addTab("Campus Main Floor", campusMap);
+				//tabbedPane.addTab("Campus Main Floor", campusMap);
 			}
 		});
 		mnCampusCenter.add(mntmUpperCampus);
@@ -289,11 +296,11 @@ public class GUIFront extends JFrame {
 					MapNode n = allNodes.get(0);
 					if (startNode == null){
 						startNode = n;
-						backend.setStartNode(startNode);
+						globalMap.setStartNode(startNode);
 						if (!setStart){
-							panelMap.chosenNodes.add(0, startNode);
+							globalMap.getChosenNodes().add(0, startNode);
 						} else {
-							panelMap.chosenNodes.set(0, startNode);
+							globalMap.getChosenNodes().set(0, startNode);
 						}
 					}
 					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
@@ -302,12 +309,12 @@ public class GUIFront extends JFrame {
 							//if endstring is the official name or one of a few different accepted aliases we will allow the end node to be placed
 							endNode = mapnode;
 							System.out.println("This is the ending node");
-							backend.setEndNode(endNode);
+							globalMap.setEndNode(endNode);
 							if (!setEnd) {
-								panelMap.chosenNodes.add(1, endNode);
-								System.out.println(panelMap.chosenNodes.size());					
+								globalMap.getChosenNodes().add(1, endNode);
+								System.out.println(globalMap.getChosenNodes().size());					
 							} else {
-								panelMap.chosenNodes.set(1, endNode);
+								globalMap.getChosenNodes().set(1, endNode);
 							}
 							setEnd = true;
 							valid = true;
@@ -322,12 +329,12 @@ public class GUIFront extends JFrame {
 							if (node != null){ //if no node was found, you should not place a node on the map otherwise do it 
 								endNode = node;
 								System.out.println("This is the ending node!");
-								backend.setEndNode(endNode);
+								globalMap.setEndNode(endNode);
 								if (!setEnd) {
-									panelMap.chosenNodes.add(1, endNode);
-									System.out.println(panelMap.chosenNodes.size());					
+									globalMap.getChosenNodes().add(1, endNode);
+									System.out.println(globalMap.getChosenNodes().size());					
 								} else {
-									panelMap.chosenNodes.set(1, endNode);
+									globalMap.getChosenNodes().set(1, endNode);
 								}
 								setEnd = true;
 								//btnCalculateRoute.setEnabled(true);
@@ -338,12 +345,12 @@ public class GUIFront extends JFrame {
 								if(startString.equals(mapnode.getAttributes().getOfficialName())){
 									startNode = mapnode; //set the startNode and then draw it on the map
 									System.out.println("This is the starting node");
-									backend.setStartNode(startNode);
+									globalMap.setStartNode(startNode);
 									if (!setStart) {
-										panelMap.chosenNodes.add(0, startNode);
-										System.out.println(panelMap.chosenNodes.size());					
+										globalMap.getChosenNodes().add(0, startNode);
+										System.out.println(globalMap.getChosenNodes().size());					
 									} else {
-										panelMap.chosenNodes.set(0, startNode);
+										globalMap.getChosenNodes().set(0, startNode);
 									}
 									setStart = true;
 								}
@@ -353,12 +360,12 @@ public class GUIFront extends JFrame {
 								if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
 									endNode = node; //set the end node and place that node on the map
 									System.out.println("This is the ending node!");
-									backend.setEndNode(endNode);
+									globalMap.setEndNode(endNode);
 									if (!setEnd) {
-										panelMap.chosenNodes.add(1, endNode);
-										System.out.println(panelMap.chosenNodes.size());					
+										globalMap.getChosenNodes().add(1, endNode);
+										System.out.println(globalMap.getChosenNodes().size());					
 									} else {
-										panelMap.chosenNodes.set(1, endNode);
+										globalMap.getChosenNodes().set(1, endNode);
 									}
 									setEnd = true;
 									//btnCalculateRoute.setEnabled(true);
@@ -394,12 +401,12 @@ public class GUIFront extends JFrame {
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 							startNode = mapnode; //set the startNode and place it on the map
 							System.out.println("This is the starting node");
-							backend.setStartNode(startNode);
+							globalMap.setStartNode(startNode);
 							if (!setStart) {
-								panelMap.chosenNodes.add(0, startNode);
-								System.out.println(panelMap.chosenNodes.size());					
+								globalMap.getChosenNodes().add(0, startNode);
+								System.out.println(globalMap.getChosenNodes().size());					
 							} else {
-								panelMap.chosenNodes.set(0, startNode);
+								globalMap.getChosenNodes().set(0, startNode);
 							}
 							setStart = true;
 							valid = true;
@@ -454,9 +461,10 @@ public class GUIFront extends JFrame {
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
-					for(int i = 0; i < panelMap.chosenNodes.size() - 1; i++){
+					for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
-						wayPoints = backend.runAStar(panelMap.chosenNodes.get(i), panelMap.chosenNodes.get(i + 1));
+						//wayPoints = backend.getMeRoutes(panelMap.chosenNodes.get(i), panelMap.chosenNodes.get(i + 1));
+						wayPoints = backend.runAStar(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
 						paths.add(wayPoints);
 					}
 					//draw the line on the map
@@ -542,6 +550,7 @@ public class GUIFront extends JFrame {
 		 */
 		slidePanel = new SLPanel();
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1");
+		panels.add(panelMap);
 		panelDirections = new TweenPanel("2");
 		
 		/**
@@ -617,11 +626,15 @@ public class GUIFront extends JFrame {
 	 * Enable/Disable actions
 	 */
 	public void enableActions(){
-		panelMap.enableAction();
+		for (TweenPanel panel : panels){
+			panel.enableAction();
+		}
 		panelDirections.enableAction();
 	}
 	public void disableActions(){
-		panelMap.disableAction();
+		for (TweenPanel panel : panels){
+			panel.disableAction();
+		}
 		panelDirections.disableAction();
 	}
 
@@ -669,8 +682,8 @@ public class GUIFront extends JFrame {
 	 */
 	public void reset() {
 		allowSetting = true; //allow user to re place nodes only once reset is pressed
-		backend.setStartNode(null);
-		backend.setEndNode(null);
+		globalMap.setStartNode(null);
+		globalMap.setEndNode(null);
 		reset = true;
 		txtAreaDirections.setText(""); // clear directions
 
@@ -678,9 +691,9 @@ public class GUIFront extends JFrame {
 		setEnd = false;
 		setStart = false;
 		paths.clear();
-		backend.removePath(backend.getMiddleNodes());
+		backend.removePath(globalMap.getMiddleNodes());
 
-		panelMap.chosenNodes.clear();
+		globalMap.getChosenNodes().clear();
 		//backend.removePath(backend.getPath()); // this is obsolete now
 
 		// if the line needs to be removed
@@ -725,8 +738,9 @@ public class GUIFront extends JFrame {
 			// Set it to slightly above 0, weird errors occur if you do exactly 0
 			//if(zoomAmount == 0)
 			//	zoomAmount = 0.00001;
-			
-			panelMap.setScale(zoomAmount);
+			for (TweenPanel panel: panels){
+				panel.setScale(zoomAmount);
+			}
 		}
 		
 	}
@@ -771,20 +785,20 @@ public class GUIFront extends JFrame {
 			 * list of nodes on the local map
 			 */
 			MapNode tmpStart, tmpEnd; // temporary variables for clarity
-			if(backend.getStartNode() != null){
-				tmpStart = backend.getStartNode();
+			if(globalMap.getStartNode() != null){
+				tmpStart = globalMap.getStartNode();
 				tmpStart.setXPos(tmpStart.getXPos() + distanceMovedX);
 				tmpStart.setYPos(tmpStart.getYPos() + distanceMovedY);
-				backend.setStartNode(tmpStart);
+				globalMap.setStartNode(tmpStart);
 			} 
-			if (backend.getEndNode() != null){
-				tmpEnd = backend.getEndNode();
+			if (globalMap.getEndNode() != null){
+				tmpEnd = globalMap.getEndNode();
 				tmpEnd.setXPos(tmpEnd.getXPos() + distanceMovedX);
 				tmpEnd.setYPos(tmpEnd.getYPos() + distanceMovedY);
-				backend.setEndNode(tmpEnd);
+				globalMap.setEndNode(tmpEnd);
 			}
 			
-			for (MapNode mapnode : backend.getMiddleNodes()){
+			for (MapNode mapnode : globalMap.getMiddleNodes()){
 				MapNode tmpMiddle;
 				if (mapnode != null){
 					tmpMiddle = mapnode;
@@ -904,7 +918,7 @@ public class GUIFront extends JFrame {
 	 */
 	public static class TweenPanel extends JPanel {
 		ArrayList<MapNode> localNodes;
-		public ArrayList<MapNode> chosenNodes;
+		//public ArrayList<MapNode> chosenNodes;
 		
 		private final TweenManager tweenManager = SLAnimator.createTweenManager();
 		private JLabel labelMainPanel = new JLabel();
@@ -929,7 +943,7 @@ public class GUIFront extends JFrame {
 			setLayout(new BorderLayout());
 			
 			this.localNodes = mapNodes;
-			chosenNodes = new ArrayList<MapNode>();
+			//chosenNodes = new ArrayList<MapNode>();
 
 			labelMainPanel.setFont(new Font("Sans", Font.BOLD, 90));
 			labelMainPanel.setVerticalAlignment(SwingConstants.CENTER);
@@ -962,20 +976,20 @@ public class GUIFront extends JFrame {
 						Point clickedAt = me.getPoint();
 						MapNode node = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
 					
-						if(chosenNodes.size() == 0){
-							backend.setStartNode(node);
+						if(globalMap.getChosenNodes().size() == 0){
+							globalMap.setStartNode(node);
 							btnClear.setEnabled(true);
 						}
 						else{
-							MapNode endNode = backend.getEndNode();
+							MapNode endNode = globalMap.getEndNode();
 							if(endNode != null)
-							backend.addToMiddleNodes(endNode);
+							globalMap.addToMiddleNodes(endNode);
 						
-							backend.setEndNode(node);
+							globalMap.setEndNode(node);
 						//	btnRoute.setEnabled(true);
 						}
 
-						chosenNodes.add(node);
+						globalMap.getChosenNodes().add(node);
 						
 					}
 					repaint();
@@ -1112,23 +1126,24 @@ public class GUIFront extends JFrame {
 
 				// Sets the color of the start and end nodes to be different
 				graphics.setColor(Color.RED);
-				for (int i = 0; i < chosenNodes.size(); i++) {
+				for (int i = 0; i < globalMap.getChosenNodes().size(); i++) {
 					if(i == 0){
 						graphics.setColor(Color.RED);
-						graphics.fillOval((int) chosenNodes.get(i).getXPos() - (int)panX - 5, (int) chosenNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
+						graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
 					} 
-					else if(i == chosenNodes.size()-1){
+					else if(i == globalMap.getChosenNodes().size()-1){
 						graphics.setColor(Color.GREEN);
-						graphics.fillOval((int) chosenNodes.get(i).getXPos() - (int)panX - 5, (int) chosenNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
+						graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
 					}
 					else {
 						graphics.setColor(Color.ORANGE);
-						graphics.fillOval((int) chosenNodes.get(i).getXPos() - (int)panX - 5, (int) chosenNodes.get(i).getYPos() - (int)panY - 5, 10, 10);
+						graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
 					}
 				}
 				
 				// essentially draws the line on the screen 
 				if (GUIFront.drawLine = true) {
+					//for (ArrayList<MapNode> mapNodes: backend.getMeRoutes(startNode, endNode)){
 					for (ArrayList<MapNode> mapNodes : paths){
 						for (int i = 0; i < mapNodes.size() - 1; i++) {
 							double x1 = backend.getCoordinates(mapNodes).get(i)[0];
@@ -1146,6 +1161,7 @@ public class GUIFront extends JFrame {
 						removeLine = true;
 					}
 				} else if (GUIFront.removeLine == true) {
+					//for (ArrayList<MapNode> mapNodes : backend.getMeRoutes(startNode, endNode)){
 					for (ArrayList<MapNode> mapNodes : paths){
 						for (int i = 0; i < mapNodes.size() - 1; i++) {
 							double x1 = backend.getCoordinates(mapNodes).get(i)[0];
@@ -1157,6 +1173,8 @@ public class GUIFront extends JFrame {
 							g2.setColor(Color.white);
 							g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 						}
+						//load next map function in another tab pane
+						//
 						drawLine = true;
 						removeLine = false;
 					}
@@ -1256,7 +1274,7 @@ public class GUIFront extends JFrame {
 					MapNode n = allNodes.get(0);
 					if (startNode == null){
 						startNode = n;
-						backend.setStartNode(startNode);
+						globalMap.setStartNode(startNode);
 						if (!setStart){
 							panel.chosenNodes.add(0, startNode);
 						} else {
@@ -1269,7 +1287,7 @@ public class GUIFront extends JFrame {
 							//if endstring is the official name or one of a few different accepted aliases we will allow the end node to be placed
 							endNode = mapnode;
 							System.out.println("This is the ending node");
-							backend.setEndNode(endNode);
+							globalMap.setEndNode(endNode);
 							if (!setEnd) {
 								panel.chosenNodes.add(1, endNode);
 								System.out.println(panel.chosenNodes.size());					
@@ -1289,7 +1307,7 @@ public class GUIFront extends JFrame {
 							if (node != null){ //if no node was found, you should not place a node on the map otherwise do it 
 								endNode = node;
 								System.out.println("This is the ending node!");
-								backend.setEndNode(endNode);
+								globalMap.setEndNode(endNode);
 								if (!setEnd) {
 									panel.chosenNodes.add(1, endNode);
 									System.out.println(panel.chosenNodes.size());					
@@ -1305,7 +1323,7 @@ public class GUIFront extends JFrame {
 								if(startString.equals(mapnode.getAttributes().getOfficialName())){
 									startNode = mapnode; //set the startNode and then draw it on the map
 									System.out.println("This is the starting node");
-									backend.setStartNode(startNode);
+									globalMap.setStartNode(startNode);
 									if (!setStart) {
 										panel.chosenNodes.add(0, startNode);
 										System.out.println(panel.chosenNodes.size());					
@@ -1320,7 +1338,7 @@ public class GUIFront extends JFrame {
 								if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
 									endNode = node; //set the end node and place that node on the map
 									System.out.println("This is the ending node!");
-									backend.setEndNode(endNode);
+									globalMap.setEndNode(endNode);
 									if (!setEnd) {
 										panel.chosenNodes.add(1, endNode);
 										System.out.println(panel.chosenNodes.size());					
@@ -1363,7 +1381,7 @@ public class GUIFront extends JFrame {
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 							startNode = mapnode; //set the startNode and place it on the map
 							System.out.println("This is the starting node");
-							backend.setStartNode(startNode);
+							globalMap.setStartNode(startNode);
 							if (!setStart) {
 								panel.chosenNodes.add(0, startNode);
 								System.out.println(panel.chosenNodes.size());					
@@ -1457,15 +1475,15 @@ public class GUIFront extends JFrame {
 	 */
 	/*public void reset() {
 		allowSetting = true; //allow user to reset nodes only once reset is pressed
-		backend.setStartNode(null);
-		backend.setEndNode(null);
+		globalMap.setStartNode(null);
+		globalMap.setEndNode(null);
 		reset = true;
 
 		// allows the user to re-input start and end nodes
 		setEnd = false;
 		setStart = false;
 		paths.clear();
-		backend.removePath(backend.getMiddleNodes());
+		backend.removePath(globalMap.getMiddleNodes());
 
 		panel.chosenNodes.clear();
 		//backend.removePath(backend.getPath()); // this is obsolete now
@@ -1524,15 +1542,15 @@ public class GUIFront extends JFrame {
 						MapNode node = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
 					
 						if(chosenNodes.size() == 0){
-							//backend.setStartNode(node);
+							//globalMap.setStartNode(node);
 							btnReset.setEnabled(true);
 						}
 						else{
-							MapNode endNode = backend.getEndNode();
+							MapNode endNode = globalMap.getEndNode();
 							if(endNode != null)
 							backend.addToMiddleNodes(endNode);
 						
-							//backend.setEndNode(node);
+							//globalMap.setEndNode(node);
 							btnCalculateRoute.setEnabled(true);
 						}
 

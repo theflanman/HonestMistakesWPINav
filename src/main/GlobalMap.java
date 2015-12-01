@@ -12,14 +12,20 @@ import java.util.ArrayList;
 
 public class GlobalMap implements Serializable {
 
-	private ArrayList<MapNode> mapNodes;
+	private ArrayList<MapNode> mapNodes, chosenNodes;
 	private ArrayList<LocalMap> localMaps;
 	private ArrayList<MapNode> path;
+	private MapNode startNode, endNode;
+	private ArrayList<MapNode> middleNodes;
 	
 	public GlobalMap(){
 		this.mapNodes = new ArrayList<MapNode>();
 		this.localMaps = new ArrayList<LocalMap>();
 		this.path = new ArrayList<MapNode>();
+		this.chosenNodes = new ArrayList<MapNode>();
+		this.startNode = null;
+		this.endNode = null;
+		this.middleNodes = new ArrayList<MapNode>();
 	}
 	
 	public void navigate(MapNode startNode, MapNode endNode) {
@@ -48,6 +54,32 @@ public class GlobalMap implements Serializable {
 
 	public void setMapNodes(ArrayList<MapNode> mapNodes) {
 		this.mapNodes = mapNodes;
+	}
+	public void setChosenNodes(ArrayList<MapNode> chosen){
+		this.chosenNodes = chosen;
+	}
+	public ArrayList<MapNode> getChosenNodes(){
+		return this.chosenNodes;
+	}
+	
+	public void setStartNode(MapNode start){
+		this.startNode = start;
+	}
+	public void setEndNode(MapNode end){
+		this.endNode = end;
+	}
+	public MapNode getStartNode(){
+		return this.startNode;
+	}
+	public MapNode getEndNode(){
+		return this.endNode;
+	}
+	public ArrayList<MapNode> getMiddleNodes(){
+		return this.middleNodes;
+	}
+	
+	public void addToMiddleNodes(MapNode node){
+		this.middleNodes.add(node);
 	}
 	
 	

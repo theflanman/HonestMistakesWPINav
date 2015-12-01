@@ -11,6 +11,7 @@ import main.AStar;
 import main.LocalMap;
 import main.MapNode;
 import main.StepByStep;
+import main.gui.GUIFront.TweenPanel;
 import main.util.Constants;
 
 /** TODO write this
@@ -23,9 +24,6 @@ public class GUIBack implements Serializable {
 	
 	private LocalMap localMap;
 	private ArrayList<MapNode> path;
-	private MapNode startNode;
-	private ArrayList<MapNode> middleNodes;
-	private MapNode endNode;
 	
 	/**
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
@@ -34,9 +32,6 @@ public class GUIBack implements Serializable {
 	public GUIBack(String defaultMapImage, ArrayList<MapNode> points){
 		this.localMap = new LocalMap(defaultMapImage, points);
 		this.path = new ArrayList<MapNode>();
-		this.startNode = null;
-		this.middleNodes = new ArrayList<MapNode>();
-		this.endNode = null;
 	}
 		
 	/**
@@ -56,7 +51,7 @@ public class GUIBack implements Serializable {
 			fileIn = new FileInputStream(Constants.LOCAL_MAP_PATH + "/" + fileName);
 			ObjectInputStream objIn = new ObjectInputStream(fileIn);
 			this.localMap = (LocalMap) objIn.readObject();
-
+			
 			objIn.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -65,14 +60,14 @@ public class GUIBack implements Serializable {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
+		
 	}
+	
 	/**@author Andrew Petit
 	 * 
 	 * @description basically used by drawLine function in mainGui to draw a line between two nodes one at a time
 	 * 
 	 */
-	
 	public ArrayList<double[]> getCoordinates(ArrayList<MapNode> mapNodes){
 		ArrayList<double[]>coordinates = new ArrayList<double[]>(); 
 		for(MapNode mapNode : mapNodes){
@@ -128,8 +123,7 @@ public class GUIBack implements Serializable {
 	public void removePath(ArrayList<MapNode> mapNodes) {
 		mapNodes.clear();
 	}
-	
-	
+		
 	/**
 	 * @author Andrew Petit
 	 * @description Essentially enables a user to press anywhere on the map
@@ -158,10 +152,6 @@ public class GUIBack implements Serializable {
 		}
 	}
 	
-	public ArrayList<MapNode> getMiddleNodes() {
-		return middleNodes;
-	}
-
 	public MapNode findNearestAttributedNode(String nodeAttribute, MapNode startNode){
 		MapNode temp = null; //initialize a new node
 		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0; //need to set distance to a value that is unattainable
@@ -179,28 +169,10 @@ public class GUIBack implements Serializable {
 	public LocalMap getLocalMap() {
 		return localMap;
 	}
-
+	
 	public void setLocalMap(LocalMap localMap) {
 		this.localMap = localMap;
 	}
-	
-	public void setStartNode(MapNode startNode){
-		this.startNode = startNode;
-	}
-	public void setEndNode(MapNode endNode){
-		this.endNode = endNode;
-	}
-	public MapNode getStartNode(){
-		return this.startNode;
-	}
-	public MapNode getEndNode(){
-		return this.endNode;
-	}
-	
-	public void addToMiddleNodes(MapNode node){
-		this.middleNodes.add(node);
-	}
-
 	public ArrayList<MapNode> getPath(){
 		return this.path;
 	}
@@ -208,3 +180,28 @@ public class GUIBack implements Serializable {
 		this.path = path;
 	}
 }
+	
+	/*public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end){
+		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
+		ArrayList<MapNode> route = new ArrayList<MapNode>();
+		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
+		MapNode start1 = null;
+		MapNode end1 = null;
+		int j = 0;
+		for(int i = 0; i < globalNodes.size(); i++){
+			if (j == 0) {
+				start1 = globalNodes.get(i);
+				j++;
+			} 
+			if (globalNodes.get(i).getLocalMap() != globalNodes.get(i + 1).getLocalMap()){
+				end1 = globalNodes.get(i);
+				route = this.runAStar(start, end);
+				routes.add(route);
+				start1 = null;
+				end1 = null;
+				j = 0;
+			}
+		}
+		return routes;
+	}*/
+

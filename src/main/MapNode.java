@@ -23,12 +23,23 @@ public class MapNode implements Serializable{
 	public MapNode(){}
 	
 	// constructor
+	public MapNode(LocalMap localMap){
+		neighbors = new ArrayList<MapNode>();
+		localMap = this.localMap;
+		attributes = new Attributes();
+		fScore = -1;
+		gScore = -1;
+		hScore = -1;
+		cameFrom = null;
+		localMap = this.localMap;
+	}
 	public MapNode(double newX, double newY, double newZ) {
 		xPos = newX;
 		yPos = newY;
 		zPos = newZ;
 		
 		neighbors = new ArrayList<MapNode>();
+		//localMap = this.localMap;
 		attributes = new Attributes();
 		fScore = -1;
 		gScore = -1;
@@ -36,6 +47,14 @@ public class MapNode implements Serializable{
 		cameFrom = null;
 	}
 	
+	public LocalMap getLocalMap() {
+		return localMap;
+	}
+
+	public void setLocalMap(LocalMap localMap) {
+		this.localMap = localMap;
+	}
+
 	public void addNeighbor(MapNode node) {
 		neighbors.add(node);
 	}
