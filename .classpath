@@ -17,5 +17,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="jars/sliding-layout-sources.jar"/>
+	<classpathentry kind="lib" path="jars/sliding-layout.jar"/>
+	<classpathentry kind="lib" path="jars/tween-engine-api-sources.jar"/>
+	<classpathentry kind="lib" path="jars/tween-engine-api.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
