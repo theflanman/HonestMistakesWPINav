@@ -388,8 +388,7 @@ public class GUIBack implements Serializable {
 	 * 
 	 */
 	
-	public ArrayList<double[]> getCoordinates(){
-		ArrayList<MapNode> mapNodes = this.path;
+	public ArrayList<double[]> getCoordinates(ArrayList<MapNode> mapNodes){
 		ArrayList<double[]>coordinates = new ArrayList<double[]>(); 
 		for(MapNode mapNode : mapNodes){
 			double x = mapNode.getXPos();
@@ -405,17 +404,17 @@ public class GUIBack implements Serializable {
 	 * @return String - this is necessary to allow MainGui to push the distance to a label
 	 */
 	
-	public String getDistance() {
-		StepByStep getDistance = new StepByStep(this.path);
+	public int getDistance(ArrayList<MapNode> mapNodes) {
+		StepByStep getDistance = new StepByStep(mapNodes);
 		int distance = getDistance.calculateTotalDistance();
-		return "Distance in feet:" + distance;
+		return distance;
 	}
 	/**
 	 * @return ArrayList<String> - this is necessary to allow GUIFront to convert the strings in the array into rows of the column
 	 */
 	//honestly think we should role with the commented-out code, and get rid of generateStepByStep from Global -- Need someone's opinion though
-	public ArrayList<String> displayStepByStep() {
-		StepByStep directions = new StepByStep(this.path);
+	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes) {
+		StepByStep directions = new StepByStep(mapNodes);
 		ArrayList<String> print = directions.printDirection();
 		
 		return print;
@@ -429,9 +428,9 @@ public class GUIBack implements Serializable {
 	 * 
 	 * @description runs the astar algorithm on the start and end nodes selected by the user
 	 */
-	public ArrayList<MapNode> runAStar() {
+	public ArrayList<MapNode> runAStar(MapNode start, MapNode end) {
 		//initiate a new astar class with the starting node and ending node of local map 
-		MapNode[] aStarMap = {this.startNode, this.endNode};
+		MapNode[] aStarMap = {start, end};
 		AStar astar = new AStar(aStarMap);
 		astar.runAlgorithm();
 		
@@ -441,8 +440,8 @@ public class GUIBack implements Serializable {
 	/**
 	 * @description when GUIFront calls it, this function removes all nodes from the path of nodes 
 	 */
-	public void removePath() {
-		this.path.clear();
+	public void removePath(ArrayList<MapNode> mapNodes) {
+		mapNodes.clear();
 	}
 	
 	
@@ -464,12 +463,20 @@ public class GUIBack implements Serializable {
 				 temp = mapnode;
 			 }
 		}
-		//this will change to check to make sure the neighbor is valid
-		start.addNeighbor(temp); //add the new nodes link with the closest node
-		temp.addNeighbor(start); //add the new node as a neighbor to the closest node
-		return start;
+		if (distance == 0){
+			return temp;
+		} else {
+			//this will change to check to make sure the neighbor is valid
+			start.addNeighbor(temp); //add the new nodes link with the closest node
+			temp.addNeighbor(start); //add the new node as a neighbor to the closest node
+			return start;
+		}
 	}
 	
+	public ArrayList<MapNode> getMiddleNodes() {
+		return middleNodes;
+	}
+
 	public MapNode findNearestAttributedNode(String nodeAttribute, MapNode startNode){
 		MapNode temp = null; //initialize a new node
 		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0; //need to set distance to a value that is unattainable

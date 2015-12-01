@@ -48,10 +48,10 @@ public class StepByStep {
 		String turnVar = "";
 		int distanceVar = 0;
 		
-		String firstStep = String.format("%d. Welcome to the era of \nnavigation, move %d feet.", stepNumber, distanceVar);
-		String midStepTurn = String.format("%d. Turn %s, and continue \nfor %d feet.", stepNumber, turnVar, distanceVar);
+		String firstStep = String.format("%d. Welcome to the era of navigation, move %d feet.", stepNumber, distanceVar);
+		String midStepTurn = String.format("%d. Turn %s, and continue for %d feet.", stepNumber, turnVar, distanceVar);
 		String midStepNoTurn = String.format("%d. Continue for %d feet.", stepNumber, distanceVar);
-		String lastStep = "You have reached \nyour destination.";
+		String lastStep = "You have reached your destination.";
 		
 		int i;
 		if (pathNodes.size() == 1) {
@@ -61,7 +61,7 @@ public class StepByStep {
 
 				if (i == 0) {
 					distanceVar = pathNodes.get(i).calcDistance(pathNodes.get(i + 1));
-					firstStep = String.format("%d. Welcome to the era \nof navigation, move \n%d feet.", stepNumber,
+					firstStep = String.format("%d. Welcome to the era of navigation, move %d feet.", stepNumber,
 							distanceVar);
 					stepNumber++;
 					stepList.add(firstStep);
@@ -104,7 +104,7 @@ public class StepByStep {
 						if (250 >= angle && angle >= 200) {
 							turnVar = "slight left";
 						}
-						midStepTurn = String.format("%d. Turn %s, and \ncontinue for \n%d feet.", stepNumber, turnVar,
+						midStepTurn = String.format("%d. Turn %s, and continue for %d feet.", stepNumber, turnVar,
 								distanceVar);
 						stepNumber++;
 						stepList.add(midStepTurn);
@@ -113,8 +113,5 @@ public class StepByStep {
 			}
 		} // end of loop
 		return stepList;
-	}
-	
-	public void advanceStep() { 
 	}
 }
