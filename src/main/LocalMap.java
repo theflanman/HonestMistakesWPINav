@@ -20,6 +20,10 @@ public class LocalMap implements Serializable{
 	private String mapImageName;
 	private int mapID;
 	private GlobalMap globalMap;
+	private MapNode start;
+	private MapNode end;
+	private ArrayList<MapNode> chosenNodes = new ArrayList<MapNode>();
+	private ArrayList<MapNode> middleNodes = new ArrayList<MapNode>();
 	private double mapScale; // unit is feet/pixel
 	private double transformAngle; //Angle required to transform (rotate) the local coordinate to match the global coordinate system
 	//coordinate offset required to transform (translate) the local coordinates to match the global coordinate system
@@ -31,16 +35,26 @@ public class LocalMap implements Serializable{
 	public LocalMap(String mapImageName, ArrayList<MapNode> mapNodes){
 		this.mapImageName = mapImageName;
 		this.mapNodes = mapNodes;
+		this.start = null;
+		this.end = null;
+		ArrayList<MapNode> chosenNodes;
+		ArrayList<MapNode> middleNodes;
 		
+		//YamlParser yamlParser = new YamlParser(new String[]{"src/data/mapData.yml"});
 		YamlParser yamlParser = new YamlParser(new String[]{Constants.DATA_PATH});
 		
 		HashMap<String, Double> argList = yamlParser.getArgList();
-		if(argList.size() > 0){			
+		if(argList.size() > 0){
+			System.out.println("Loading information from yaml file...");
+			System.out.println("Working with image: " + this.mapImageName);
+			
 			String mapImageJPG = SaveUtil.removeExtension(this.mapImageName);
 			String[] s = mapImageJPG.split("/");
 			mapImageJPG = s[s.length-1];
 			mapImageJPG = mapImageJPG + ".jpg";
+			System.out.println("Getting image name");
 
+			System.out.println(mapImageJPG);
 			this.mapScale = argList.get("scale-"+ mapImageJPG); // gets the zoomRatio based on the associated mapImageName
 			this.transformAngle = argList.get("angle-"+ mapImageJPG);//gets the transformation angle based on the associated mapImageName
 			this.xOffset = argList.get("xOffset-"+ mapImageJPG);//gets the x coordinate offset based on the associated mapImageName
@@ -50,28 +64,36 @@ public class LocalMap implements Serializable{
 
 	}
 	
-	/**
-	 * saves this .localmap into a file
-	 * 
-	 * @param fileName is name of file that stores the object data (requires an extension)
-	 */
-	public void saveMap(String fileName) {		
-		
-		fileName = SaveUtil.removeExtension(fileName);
-		fileName = fileName.concat(".localmap");
-		
-		FileOutputStream fileOut;
-		try {
-			fileOut = new FileOutputStream("src/localmaps/" + fileName);
-			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
-			objOut.writeObject(this);
-			
-			objOut.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public MapNode getStart() {
+		return start;
+	}
+
+	public void setStart(MapNode start) {
+		this.start = start;
+	}
+
+	public MapNode getEnd() {
+		return end;
+	}
+
+	public void setEnd(MapNode end) {
+		this.end = end;
+	}
+
+	public ArrayList<MapNode> getChosenNodes() {
+		return chosenNodes;
+	}
+
+	public void setChosenNodes(ArrayList<MapNode> chosenNodes) {
+		this.chosenNodes = chosenNodes;
+	}
+
+	public ArrayList<MapNode> getMiddleNodes() {
+		return middleNodes;
+	}
+
+	public void setMiddleNodes(ArrayList<MapNode> middleNodes) {
+		this.middleNodes = middleNodes;
 	}
 	
 	
@@ -79,8 +101,6 @@ public class LocalMap implements Serializable{
 		MapNode node = new MapNode();
 		node.setXPos(xPos);
 		node.setYPos(yPos);
-
-		
 		globalMap.addToMapNodes(node); // add this node to the only GlobalMap
 	}
 	
@@ -93,7 +113,7 @@ public class LocalMap implements Serializable{
 	 * 
 	 * @description adds a link between a pair of nodes
 	 */
-	public void linkNodes(int nodeID1, int nodeID2) {
+	public void linkNodes(String nodeID1, String nodeID2) {
 		MapNode mapNode1 = null;
 		MapNode mapNode2 = null;
 		//Unless nodeID's definitely correspond to an idex of an array we need to actually check every node in the list to get the node

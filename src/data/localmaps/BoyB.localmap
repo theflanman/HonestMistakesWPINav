@@ -5,8 +5,8 @@
         <NodeID>BoyB_1</NodeID>
         <XPos>484.0</XPos>
         <YPos>188.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>111.90079999999999</XFeet>
+        <YFeet>43.465599999999995</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_55</Neighbor>
@@ -26,8 +26,8 @@
         <NodeID>BoyB_2</NodeID>
         <XPos>508.0</XPos>
         <YPos>220.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>117.44959999999999</XFeet>
+        <YFeet>50.864</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_55</Neighbor>
@@ -47,8 +47,8 @@
         <NodeID>BoyB_3</NodeID>
         <XPos>461.0</XPos>
         <YPos>241.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>106.58319999999999</XFeet>
+        <YFeet>55.7192</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_54</Neighbor>
@@ -69,8 +69,8 @@
         <NodeID>BoyB_4</NodeID>
         <XPos>426.0</XPos>
         <YPos>241.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>98.49119999999999</XFeet>
+        <YFeet>55.7192</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_3</Neighbor>
@@ -90,8 +90,8 @@
         <NodeID>BoyB_5</NodeID>
         <XPos>461.0</XPos>
         <YPos>260.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>106.58319999999999</XFeet>
+        <YFeet>60.111999999999995</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_53</Neighbor>
@@ -111,8 +111,8 @@
         <NodeID>BoyB_6</NodeID>
         <XPos>509.0</XPos>
         <YPos>279.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>117.68079999999999</XFeet>
+        <YFeet>64.5048</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_52</Neighbor>
@@ -132,8 +132,8 @@
         <NodeID>BoyB_7</NodeID>
         <XPos>609.0</XPos>
         <YPos>303.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>140.80079999999998</XFeet>
+        <YFeet>70.0536</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_50</Neighbor>
@@ -154,8 +154,8 @@
         <NodeID>BoyB_8</NodeID>
         <XPos>678.0</XPos>
         <YPos>322.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>156.7536</XFeet>
+        <YFeet>74.4464</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_49</Neighbor>
@@ -176,8 +176,8 @@
         <NodeID>BoyB_9</NodeID>
         <XPos>681.0</XPos>
         <YPos>242.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>157.44719999999998</XFeet>
+        <YFeet>55.950399999999995</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_51</Neighbor>
@@ -198,8 +198,8 @@
         <NodeID>BoyB_10</NodeID>
         <XPos>655.0</XPos>
         <YPos>380.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>151.43599999999998</XFeet>
+        <YFeet>87.856</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_37</Neighbor>
@@ -220,8 +220,8 @@
         <NodeID>BoyB_11</NodeID>
         <XPos>653.0</XPos>
         <YPos>414.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>150.9736</XFeet>
+        <YFeet>95.71679999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_37</Neighbor>
@@ -241,8 +241,8 @@
         <NodeID>BoyB_12</NodeID>
         <XPos>596.0</XPos>
         <YPos>339.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>137.7952</XFeet>
+        <YFeet>78.3768</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_47</Neighbor>
@@ -262,8 +262,8 @@
         <NodeID>BoyB_13</NodeID>
         <XPos>568.0</XPos>
         <YPos>339.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>131.3216</XFeet>
+        <YFeet>78.3768</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_46</Neighbor>
@@ -283,8 +283,8 @@
         <NodeID>BoyB_14</NodeID>
         <XPos>528.0</XPos>
         <YPos>339.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>122.0736</XFeet>
+        <YFeet>78.3768</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_45</Neighbor>
@@ -304,8 +304,8 @@
         <NodeID>BoyB_15</NodeID>
         <XPos>410.0</XPos>
         <YPos>339.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>94.792</XFeet>
+        <YFeet>78.3768</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_43</Neighbor>
@@ -325,8 +325,8 @@
         <NodeID>BoyB_16</NodeID>
         <XPos>405.0</XPos>
         <YPos>288.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>93.636</XFeet>
+        <YFeet>66.5856</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_43</Neighbor>
@@ -346,8 +346,8 @@
         <NodeID>BoyB_17</NodeID>
         <XPos>337.0</XPos>
         <YPos>337.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.9144</XFeet>
+        <YFeet>77.9144</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_41</Neighbor>
@@ -367,8 +367,8 @@
         <NodeID>BoyB_18</NodeID>
         <XPos>316.0</XPos>
         <YPos>301.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>73.05919999999999</XFeet>
+        <YFeet>69.5912</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_39</Neighbor>
@@ -389,8 +389,8 @@
         <NodeID>BoyB_19</NodeID>
         <XPos>269.0</XPos>
         <YPos>301.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>62.1928</XFeet>
+        <YFeet>69.5912</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_56</Neighbor>
@@ -411,8 +411,8 @@
         <NodeID>BoyB_20</NodeID>
         <XPos>224.0</XPos>
         <YPos>320.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>51.788799999999995</XFeet>
+        <YFeet>73.984</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_57</Neighbor>
@@ -433,8 +433,8 @@
         <NodeID>BoyB_21</NodeID>
         <XPos>189.0</XPos>
         <YPos>384.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>43.696799999999996</XFeet>
+        <YFeet>88.7808</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_24</Neighbor>
@@ -454,8 +454,8 @@
         <NodeID>BoyB_22</NodeID>
         <XPos>122.0</XPos>
         <YPos>383.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>28.2064</XFeet>
+        <YFeet>88.5496</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_23</Neighbor>
@@ -475,8 +475,8 @@
         <NodeID>BoyB_23</NodeID>
         <XPos>122.0</XPos>
         <YPos>361.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>28.2064</XFeet>
+        <YFeet>83.4632</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_24</Neighbor>
@@ -497,8 +497,8 @@
         <NodeID>BoyB_24</NodeID>
         <XPos>188.0</XPos>
         <YPos>359.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>43.465599999999995</XFeet>
+        <YFeet>83.0008</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_27</Neighbor>
@@ -520,8 +520,8 @@
         <NodeID>BoyB_25</NodeID>
         <XPos>240.0</XPos>
         <YPos>385.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>55.488</XFeet>
+        <YFeet>89.012</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_26</Neighbor>
@@ -541,8 +541,8 @@
         <NodeID>BoyB_26</NodeID>
         <XPos>243.0</XPos>
         <YPos>358.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>56.181599999999996</XFeet>
+        <YFeet>82.7696</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_27</Neighbor>
@@ -563,8 +563,8 @@
         <NodeID>BoyB_27</NodeID>
         <XPos>222.0</XPos>
         <YPos>357.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>51.3264</XFeet>
+        <YFeet>82.5384</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_20</Neighbor>
@@ -586,8 +586,8 @@
         <NodeID>BoyB_28</NodeID>
         <XPos>165.0</XPos>
         <YPos>282.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>38.147999999999996</XFeet>
+        <YFeet>65.19839999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_58</Neighbor>
@@ -607,8 +607,8 @@
         <NodeID>BoyB_29</NodeID>
         <XPos>138.0</XPos>
         <YPos>266.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>31.9056</XFeet>
+        <YFeet>61.499199999999995</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_58</Neighbor>
@@ -628,8 +628,8 @@
         <NodeID>BoyB_30</NodeID>
         <XPos>136.0</XPos>
         <YPos>234.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>31.443199999999997</XFeet>
+        <YFeet>54.1008</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_32</Neighbor>
@@ -649,8 +649,8 @@
         <NodeID>BoyB_31</NodeID>
         <XPos>194.0</XPos>
         <YPos>247.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>44.852799999999995</XFeet>
+        <YFeet>57.1064</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_32</Neighbor>
@@ -673,8 +673,8 @@
         <NodeID>BoyB_32</NodeID>
         <XPos>169.0</XPos>
         <YPos>235.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>39.0728</XFeet>
+        <YFeet>54.332</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_30</Neighbor>
@@ -695,8 +695,8 @@
         <NodeID>BoyB_33</NodeID>
         <XPos>231.0</XPos>
         <YPos>246.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>53.407199999999996</XFeet>
+        <YFeet>56.8752</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_60</Neighbor>
@@ -716,8 +716,8 @@
         <NodeID>BoyB_34</NodeID>
         <XPos>256.0</XPos>
         <YPos>246.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>59.1872</XFeet>
+        <YFeet>56.8752</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_61</Neighbor>
@@ -738,8 +738,8 @@
         <NodeID>BoyB_35</NodeID>
         <XPos>251.0</XPos>
         <YPos>213.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>58.0312</XFeet>
+        <YFeet>49.245599999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_34</Neighbor>
@@ -759,8 +759,8 @@
         <NodeID>BoyB_36</NodeID>
         <XPos>198.0</XPos>
         <YPos>282.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>45.7776</XFeet>
+        <YFeet>65.19839999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_59</Neighbor>
@@ -780,12 +780,13 @@
         <NodeID>BoyB_37</NodeID>
         <XPos>655.0</XPos>
         <YPos>396.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>151.43599999999998</XFeet>
+        <YFeet>91.5552</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_11</Neighbor>
             <Neighbor>BoyB_10</Neighbor>
+            <Neighbor>BoyB_38</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -802,10 +803,12 @@
         <NodeID>BoyB_38</NodeID>
         <XPos>702.0</XPos>
         <YPos>396.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>162.3024</XFeet>
+        <YFeet>91.5552</YFeet>
         <ZFeet>0.0</ZFeet>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>BoyB_37</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -821,8 +824,8 @@
         <NodeID>BoyB_39</NodeID>
         <XPos>336.0</XPos>
         <YPos>299.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.6832</XFeet>
+        <YFeet>69.1288</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_41</Neighbor>
@@ -845,8 +848,8 @@
         <NodeID>BoyB_40</NodeID>
         <XPos>337.0</XPos>
         <YPos>244.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.9144</XFeet>
+        <YFeet>56.4128</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_62</Neighbor>
@@ -866,8 +869,8 @@
         <NodeID>BoyB_41</NodeID>
         <XPos>335.0</XPos>
         <YPos>317.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.452</XFeet>
+        <YFeet>73.29039999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_42</Neighbor>
@@ -889,8 +892,8 @@
         <NodeID>BoyB_42</NodeID>
         <XPos>389.0</XPos>
         <YPos>312.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>89.93679999999999</XFeet>
+        <YFeet>72.1344</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_43</Neighbor>
@@ -911,8 +914,8 @@
         <NodeID>BoyB_43</NodeID>
         <XPos>407.0</XPos>
         <YPos>312.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>94.0984</XFeet>
+        <YFeet>72.1344</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_44</Neighbor>
@@ -935,8 +938,8 @@
         <NodeID>BoyB_44</NodeID>
         <XPos>485.0</XPos>
         <YPos>315.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>112.13199999999999</XFeet>
+        <YFeet>72.828</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_45</Neighbor>
@@ -958,8 +961,8 @@
         <NodeID>BoyB_45</NodeID>
         <XPos>528.0</XPos>
         <YPos>317.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>122.0736</XFeet>
+        <YFeet>73.29039999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_46</Neighbor>
@@ -981,8 +984,8 @@
         <NodeID>BoyB_46</NodeID>
         <XPos>568.0</XPos>
         <YPos>318.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>131.3216</XFeet>
+        <YFeet>73.52159999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_47</Neighbor>
@@ -1004,8 +1007,8 @@
         <NodeID>BoyB_47</NodeID>
         <XPos>592.0</XPos>
         <YPos>318.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>136.8704</XFeet>
+        <YFeet>73.52159999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_48</Neighbor>
@@ -1027,8 +1030,8 @@
         <NodeID>BoyB_48</NodeID>
         <XPos>609.0</XPos>
         <YPos>318.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>140.80079999999998</XFeet>
+        <YFeet>73.52159999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_7</Neighbor>
@@ -1049,8 +1052,8 @@
         <NodeID>BoyB_49</NodeID>
         <XPos>656.0</XPos>
         <YPos>321.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>151.66719999999998</XFeet>
+        <YFeet>74.2152</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_10</Neighbor>
@@ -1071,8 +1074,8 @@
         <NodeID>BoyB_50</NodeID>
         <XPos>608.0</XPos>
         <YPos>242.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>140.56959999999998</XFeet>
+        <YFeet>55.950399999999995</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_9</Neighbor>
@@ -1093,8 +1096,8 @@
         <NodeID>BoyB_51</NodeID>
         <XPos>682.0</XPos>
         <YPos>283.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>157.67839999999998</XFeet>
+        <YFeet>65.4296</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_8</Neighbor>
@@ -1115,8 +1118,8 @@
         <NodeID>BoyB_52</NodeID>
         <XPos>483.0</XPos>
         <YPos>278.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>111.66959999999999</XFeet>
+        <YFeet>64.2736</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_53</Neighbor>
@@ -1138,8 +1141,8 @@
         <NodeID>BoyB_53</NodeID>
         <XPos>483.0</XPos>
         <YPos>258.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>111.66959999999999</XFeet>
+        <YFeet>59.6496</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_54</Neighbor>
@@ -1161,8 +1164,8 @@
         <NodeID>BoyB_54</NodeID>
         <XPos>481.0</XPos>
         <YPos>239.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>111.2072</XFeet>
+        <YFeet>55.2568</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_55</Neighbor>
@@ -1184,8 +1187,8 @@
         <NodeID>BoyB_55</NodeID>
         <XPos>481.0</XPos>
         <YPos>217.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>111.2072</XFeet>
+        <YFeet>50.1704</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_1</Neighbor>
@@ -1207,8 +1210,8 @@
         <NodeID>BoyB_56</NodeID>
         <XPos>292.0</XPos>
         <YPos>301.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>67.51039999999999</XFeet>
+        <YFeet>69.5912</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_19</Neighbor>
@@ -1229,8 +1232,8 @@
         <NodeID>BoyB_57</NodeID>
         <XPos>244.0</XPos>
         <YPos>306.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>56.4128</XFeet>
+        <YFeet>70.74719999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_19</Neighbor>
@@ -1251,8 +1254,8 @@
         <NodeID>BoyB_58</NodeID>
         <XPos>165.0</XPos>
         <YPos>264.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>38.147999999999996</XFeet>
+        <YFeet>61.0368</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_29</Neighbor>
@@ -1274,8 +1277,8 @@
         <NodeID>BoyB_59</NodeID>
         <XPos>198.0</XPos>
         <YPos>265.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>45.7776</XFeet>
+        <YFeet>61.267999999999994</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_58</Neighbor>
@@ -1298,8 +1301,8 @@
         <NodeID>BoyB_60</NodeID>
         <XPos>232.0</XPos>
         <YPos>267.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>53.6384</XFeet>
+        <YFeet>61.730399999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_59</Neighbor>
@@ -1321,8 +1324,8 @@
         <NodeID>BoyB_61</NodeID>
         <XPos>257.0</XPos>
         <YPos>265.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>59.4184</XFeet>
+        <YFeet>61.267999999999994</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_34</Neighbor>
@@ -1344,8 +1347,8 @@
         <NodeID>BoyB_62</NodeID>
         <XPos>336.0</XPos>
         <YPos>268.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.6832</XFeet>
+        <YFeet>61.9616</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_61</Neighbor>
@@ -1367,8 +1370,8 @@
         <NodeID>BoyB_63</NodeID>
         <XPos>357.0</XPos>
         <YPos>300.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>82.5384</XFeet>
+        <YFeet>69.36</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_39</Neighbor>

@@ -92,6 +92,7 @@ public class DevGUIBack implements Serializable  {
 		//and slap on a .localmap
 		System.out.println("Preparing to save...");
 		String fileName = this.localMap.getMapImageName();
+		System.out.println(this.localMap.getMapScale());
 		String mapImageName = fileName;
 		fileName = SaveUtil.removeExtension(fileName);
 		String mapNameNoExtension = fileName;
@@ -102,7 +103,6 @@ public class DevGUIBack implements Serializable  {
 		for(MapNode node : this.localMap.getMapNodes()){
 			node.setNodeID(mapAppend + Integer.toString(i++));
 		}
-		
 		
 		/**
 		 * XML Saving based on the code from Costis Aivalis
@@ -129,7 +129,11 @@ public class DevGUIBack implements Serializable  {
 	        rootEle.appendChild(imageName);
 	        
 	        for(MapNode node : this.localMap.getMapNodes()){
-	        	
+	        	node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
+	        	System.out.println(node.getLocalMap().getMapScale());
+	        	System.out.println("xFeet: " + node.getXFeet());
+	        	node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
+	        	System.out.println("yFeet: " + node.getYFeet());
 	        	e = dom.createElement("Node");
 	        	//node id
 	        	System.out.println("Saving ID");
@@ -408,7 +412,7 @@ public class DevGUIBack implements Serializable  {
 						System.out.println("    " + neighbor.getTextContent().trim());
 					}
 					loadedNodes.get(i).setCrossMapNeighbors(crossMapNeighbors);
-					System.out.println("Node " + loadedNodes.get(i).getNodeID() + " has " + crossMapNeighbors.size() + " cross map neighbors");
+					//System.out.println("Node " + loadedNodes.get(i).getNodeID() + " has " + crossMapNeighbors.size() + " cross map neighbors");
 				}
 				else{
 					//no neighbors, nothing to add
@@ -451,11 +455,11 @@ public class DevGUIBack implements Serializable  {
 					//String neighborID = Integer.toString(neighborIDInt);
 					//need to get the node associated with this ID
 					for(MapNode potentialNode : loadedNodes){
-						System.out.println(potentialNode.getNodeID() + " vs " + neighborID);
+						//System.out.println(potentialNode.getNodeID() + " vs " + neighborID);
 						if(potentialNode.getNodeID().equals(neighborID)){
 							MapNode currentNode = loadedNodes.get(i);
 							currentNode.addNeighbor(potentialNode);
-							System.out.println("Adding " + currentNode.getNodeID() + " to " + potentialNode.getNodeID());
+							//System.out.println("Adding " + currentNode.getNodeID() + " to " + potentialNode.getNodeID());
 							//currentNode.getNeighbors().add(potentialNode);
 						}
 					}//end inner for		

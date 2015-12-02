@@ -5,8 +5,8 @@
         <NodeID>CCM_1</NodeID>
         <XPos>644.0</XPos>
         <YPos>670.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>965.3560000000001</XFeet>
+        <YFeet>1004.33</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_4</Neighbor>
@@ -30,8 +30,8 @@
         <NodeID>CCM_2</NodeID>
         <XPos>586.0</XPos>
         <YPos>592.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>878.4140000000001</XFeet>
+        <YFeet>887.408</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_111</Neighbor>
@@ -54,8 +54,8 @@
         <NodeID>CCM_3</NodeID>
         <XPos>556.0</XPos>
         <YPos>723.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>833.4440000000001</XFeet>
+        <YFeet>1083.777</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_35</Neighbor>
@@ -77,8 +77,8 @@
         <NodeID>CCM_4</NodeID>
         <XPos>613.0</XPos>
         <YPos>760.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>918.8870000000001</XFeet>
+        <YFeet>1139.24</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_3</Neighbor>
@@ -100,8 +100,8 @@
         <NodeID>CCM_5</NodeID>
         <XPos>685.0</XPos>
         <YPos>771.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1026.815</XFeet>
+        <YFeet>1155.729</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_4</Neighbor>
@@ -122,8 +122,8 @@
         <NodeID>CCM_6</NodeID>
         <XPos>721.0</XPos>
         <YPos>765.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1080.779</XFeet>
+        <YFeet>1146.7350000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_1</Neighbor>
@@ -145,8 +145,8 @@
         <NodeID>CCM_7</NodeID>
         <XPos>765.0</XPos>
         <YPos>707.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1146.7350000000001</XFeet>
+        <YFeet>1059.7930000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_6</Neighbor>
@@ -167,8 +167,8 @@
         <NodeID>CCM_8</NodeID>
         <XPos>759.0</XPos>
         <YPos>685.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1137.741</XFeet>
+        <YFeet>1026.815</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_7</Neighbor>
@@ -189,8 +189,8 @@
         <NodeID>CCM_9</NodeID>
         <XPos>771.0</XPos>
         <YPos>671.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1155.729</XFeet>
+        <YFeet>1005.8290000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_8</Neighbor>
@@ -211,8 +211,8 @@
         <NodeID>CCM_10</NodeID>
         <XPos>674.0</XPos>
         <YPos>582.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1010.326</XFeet>
+        <YFeet>872.4180000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_11</Neighbor>
@@ -233,8 +233,8 @@
         <NodeID>CCM_11</NodeID>
         <XPos>647.0</XPos>
         <YPos>565.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>969.8530000000001</XFeet>
+        <YFeet>846.9350000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_2</Neighbor>
@@ -255,8 +255,8 @@
         <NodeID>CCM_12</NodeID>
         <XPos>585.0</XPos>
         <YPos>551.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>876.9150000000001</XFeet>
+        <YFeet>825.9490000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_2</Neighbor>
@@ -277,8 +277,8 @@
         <NodeID>CCM_13</NodeID>
         <XPos>569.0</XPos>
         <YPos>529.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>852.931</XFeet>
+        <YFeet>792.971</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_12</Neighbor>
@@ -299,8 +299,8 @@
         <NodeID>CCM_14</NodeID>
         <XPos>577.0</XPos>
         <YPos>478.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>864.9230000000001</XFeet>
+        <YFeet>716.522</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_13</Neighbor>
@@ -323,8 +323,8 @@
         <NodeID>CCM_15</NodeID>
         <XPos>543.0</XPos>
         <YPos>437.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>813.9570000000001</XFeet>
+        <YFeet>655.0630000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_30</Neighbor>
@@ -346,8 +346,8 @@
         <NodeID>CCM_16</NodeID>
         <XPos>500.0</XPos>
         <YPos>444.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>749.5</XFeet>
+        <YFeet>665.556</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_15</Neighbor>
@@ -369,8 +369,8 @@
         <NodeID>CCM_17</NodeID>
         <XPos>489.0</XPos>
         <YPos>462.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>733.0110000000001</XFeet>
+        <YFeet>692.538</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_16</Neighbor>
@@ -392,8 +392,8 @@
         <NodeID>CCM_18</NodeID>
         <XPos>478.0</XPos>
         <YPos>480.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>716.522</XFeet>
+        <YFeet>719.5200000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_17</Neighbor>
@@ -415,8 +415,8 @@
         <NodeID>CCM_19</NodeID>
         <XPos>418.0</XPos>
         <YPos>561.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>626.582</XFeet>
+        <YFeet>840.9390000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_18</Neighbor>
@@ -438,8 +438,8 @@
         <NodeID>CCM_20</NodeID>
         <XPos>357.0</XPos>
         <YPos>635.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>535.143</XFeet>
+        <YFeet>951.8650000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_19</Neighbor>
@@ -460,8 +460,8 @@
         <NodeID>CCM_21</NodeID>
         <XPos>286.0</XPos>
         <YPos>742.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>428.71400000000006</XFeet>
+        <YFeet>1112.258</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_20</Neighbor>
@@ -482,8 +482,8 @@
         <NodeID>CCM_22</NodeID>
         <XPos>222.0</XPos>
         <YPos>786.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>332.778</XFeet>
+        <YFeet>1178.2140000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_21</Neighbor>
@@ -504,8 +504,8 @@
         <NodeID>CCM_23</NodeID>
         <XPos>155.0</XPos>
         <YPos>769.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>232.34500000000003</XFeet>
+        <YFeet>1152.731</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_22</Neighbor>
@@ -526,8 +526,8 @@
         <NodeID>CCM_24</NodeID>
         <XPos>125.0</XPos>
         <YPos>698.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>187.375</XFeet>
+        <YFeet>1046.3020000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_23</Neighbor>
@@ -548,8 +548,8 @@
         <NodeID>CCM_25</NodeID>
         <XPos>154.0</XPos>
         <YPos>633.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>230.846</XFeet>
+        <YFeet>948.8670000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_24</Neighbor>
@@ -570,8 +570,8 @@
         <NodeID>CCM_26</NodeID>
         <XPos>266.0</XPos>
         <YPos>474.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>398.73400000000004</XFeet>
+        <YFeet>710.5260000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_25</Neighbor>
@@ -592,8 +592,8 @@
         <NodeID>CCM_27</NodeID>
         <XPos>316.0</XPos>
         <YPos>442.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>473.684</XFeet>
+        <YFeet>662.558</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_26</Neighbor>
@@ -614,8 +614,8 @@
         <NodeID>CCM_28</NodeID>
         <XPos>380.0</XPos>
         <YPos>451.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>569.62</XFeet>
+        <YFeet>676.0490000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_27</Neighbor>
@@ -636,8 +636,8 @@
         <NodeID>CCM_29</NodeID>
         <XPos>419.0</XPos>
         <YPos>497.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>628.081</XFeet>
+        <YFeet>745.003</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_28</Neighbor>
@@ -659,8 +659,8 @@
         <NodeID>CCM_30</NodeID>
         <XPos>532.0</XPos>
         <YPos>370.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>797.4680000000001</XFeet>
+        <YFeet>554.63</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_31</Neighbor>
@@ -682,8 +682,8 @@
         <NodeID>CCM_31</NodeID>
         <XPos>581.0</XPos>
         <YPos>333.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>870.9190000000001</XFeet>
+        <YFeet>499.16700000000003</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_32</Neighbor>
@@ -704,8 +704,8 @@
         <NodeID>CCM_32</NodeID>
         <XPos>627.0</XPos>
         <YPos>362.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>939.873</XFeet>
+        <YFeet>542.638</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_33</Neighbor>
@@ -726,8 +726,8 @@
         <NodeID>CCM_33</NodeID>
         <XPos>586.0</XPos>
         <YPos>409.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>878.4140000000001</XFeet>
+        <YFeet>613.091</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_34</Neighbor>
@@ -748,8 +748,8 @@
         <NodeID>CCM_34</NodeID>
         <XPos>593.0</XPos>
         <YPos>439.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>888.907</XFeet>
+        <YFeet>658.061</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_14</Neighbor>
@@ -770,8 +770,8 @@
         <NodeID>CCM_35</NodeID>
         <XPos>546.0</XPos>
         <YPos>701.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>818.4540000000001</XFeet>
+        <YFeet>1050.799</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_36</Neighbor>
@@ -793,8 +793,8 @@
         <NodeID>CCM_36</NodeID>
         <XPos>469.0</XPos>
         <YPos>691.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>703.0310000000001</XFeet>
+        <YFeet>1035.809</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_37</Neighbor>
@@ -815,8 +815,8 @@
         <NodeID>CCM_37</NodeID>
         <XPos>371.0</XPos>
         <YPos>756.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>556.129</XFeet>
+        <YFeet>1133.2440000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_38</Neighbor>
@@ -837,8 +837,8 @@
         <NodeID>CCM_38</NodeID>
         <XPos>359.0</XPos>
         <YPos>803.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>538.1410000000001</XFeet>
+        <YFeet>1203.6970000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_39</Neighbor>
@@ -859,8 +859,8 @@
         <NodeID>CCM_39</NodeID>
         <XPos>449.0</XPos>
         <YPos>817.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>673.051</XFeet>
+        <YFeet>1224.683</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_38</Neighbor>
@@ -880,8 +880,8 @@
         <NodeID>CCM_40</NodeID>
         <XPos>794.0</XPos>
         <YPos>784.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1190.2060000000001</XFeet>
+        <YFeet>1175.2160000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_49</Neighbor>
@@ -902,8 +902,8 @@
         <NodeID>CCM_41</NodeID>
         <XPos>789.0</XPos>
         <YPos>813.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1182.711</XFeet>
+        <YFeet>1218.6870000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_40</Neighbor>
@@ -923,8 +923,8 @@
         <NodeID>CCM_42</NodeID>
         <XPos>857.0</XPos>
         <YPos>788.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1284.643</XFeet>
+        <YFeet>1181.212</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_49</Neighbor>
@@ -946,8 +946,8 @@
         <NodeID>CCM_43</NodeID>
         <XPos>849.0</XPos>
         <YPos>840.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1272.651</XFeet>
+        <YFeet>1259.16</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_42</Neighbor>
@@ -968,8 +968,8 @@
         <NodeID>CCM_44</NodeID>
         <XPos>836.0</XPos>
         <YPos>855.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1253.164</XFeet>
+        <YFeet>1281.645</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_43</Neighbor>
@@ -990,8 +990,8 @@
         <NodeID>CCM_45</NodeID>
         <XPos>814.0</XPos>
         <YPos>865.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1220.1860000000001</XFeet>
+        <YFeet>1296.635</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_44</Neighbor>
@@ -1012,8 +1012,8 @@
         <NodeID>CCM_46</NodeID>
         <XPos>808.0</XPos>
         <YPos>900.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1211.192</XFeet>
+        <YFeet>1349.1000000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_45</Neighbor>
@@ -1033,8 +1033,8 @@
         <NodeID>CCM_47</NodeID>
         <XPos>858.0</XPos>
         <YPos>758.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1286.142</XFeet>
+        <YFeet>1136.2420000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_49</Neighbor>
@@ -1057,8 +1057,8 @@
         <NodeID>CCM_48</NodeID>
         <XPos>1009.0</XPos>
         <YPos>779.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1512.4910000000002</XFeet>
+        <YFeet>1167.721</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_72</Neighbor>
@@ -1080,8 +1080,8 @@
         <NodeID>CCM_49</NodeID>
         <XPos>819.0</XPos>
         <YPos>758.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1227.681</XFeet>
+        <YFeet>1136.2420000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_50</Neighbor>
@@ -1104,8 +1104,8 @@
         <NodeID>CCM_50</NodeID>
         <XPos>828.0</XPos>
         <YPos>698.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1241.172</XFeet>
+        <YFeet>1046.3020000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_51</Neighbor>
@@ -1127,8 +1127,8 @@
         <NodeID>CCM_51</NodeID>
         <XPos>839.0</XPos>
         <YPos>628.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1257.661</XFeet>
+        <YFeet>941.3720000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_112</Neighbor>
@@ -1151,8 +1151,8 @@
         <NodeID>CCM_52</NodeID>
         <XPos>872.0</XPos>
         <YPos>609.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1307.1280000000002</XFeet>
+        <YFeet>912.8910000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_51</Neighbor>
@@ -1175,8 +1175,8 @@
         <NodeID>CCM_53</NodeID>
         <XPos>820.0</XPos>
         <YPos>573.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1229.18</XFeet>
+        <YFeet>858.927</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_54</Neighbor>
@@ -1197,8 +1197,8 @@
         <NodeID>CCM_54</NodeID>
         <XPos>798.0</XPos>
         <YPos>567.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1196.202</XFeet>
+        <YFeet>849.9330000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_53</Neighbor>
@@ -1219,8 +1219,8 @@
         <NodeID>CCM_55</NodeID>
         <XPos>888.0</XPos>
         <YPos>483.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1331.112</XFeet>
+        <YFeet>724.017</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_57</Neighbor>
@@ -1240,8 +1240,8 @@
         <NodeID>CCM_56</NodeID>
         <XPos>878.0</XPos>
         <YPos>544.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1316.122</XFeet>
+        <YFeet>815.456</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_57</Neighbor>
@@ -1263,8 +1263,8 @@
         <NodeID>CCM_57</NodeID>
         <XPos>887.0</XPos>
         <YPos>495.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1329.613</XFeet>
+        <YFeet>742.0050000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_58</Neighbor>
@@ -1286,8 +1286,8 @@
         <NodeID>CCM_58</NodeID>
         <XPos>916.0</XPos>
         <YPos>498.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1373.084</XFeet>
+        <YFeet>746.5020000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_59</Neighbor>
@@ -1308,8 +1308,8 @@
         <NodeID>CCM_59</NodeID>
         <XPos>918.0</XPos>
         <YPos>473.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1376.082</XFeet>
+        <YFeet>709.027</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_92</Neighbor>
@@ -1331,8 +1331,8 @@
         <NodeID>CCM_60</NodeID>
         <XPos>913.0</XPos>
         <YPos>459.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1368.587</XFeet>
+        <YFeet>688.041</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_92</Neighbor>
@@ -1353,8 +1353,8 @@
         <NodeID>CCM_61</NodeID>
         <XPos>1013.0</XPos>
         <YPos>510.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1518.487</XFeet>
+        <YFeet>764.49</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_62</Neighbor>
@@ -1377,8 +1377,8 @@
         <NodeID>CCM_62</NodeID>
         <XPos>1003.0</XPos>
         <YPos>591.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1503.497</XFeet>
+        <YFeet>885.9090000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_64</Neighbor>
@@ -1400,8 +1400,8 @@
         <NodeID>CCM_63</NodeID>
         <XPos>963.0</XPos>
         <YPos>588.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1443.537</XFeet>
+        <YFeet>881.412</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_62</Neighbor>
@@ -1421,8 +1421,8 @@
         <NodeID>CCM_64</NodeID>
         <XPos>993.0</XPos>
         <YPos>650.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1488.507</XFeet>
+        <YFeet>974.35</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_66</Neighbor>
@@ -1444,8 +1444,8 @@
         <NodeID>CCM_65</NodeID>
         <XPos>1004.0</XPos>
         <YPos>652.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1504.996</XFeet>
+        <YFeet>977.3480000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_64</Neighbor>
@@ -1465,8 +1465,8 @@
         <NodeID>CCM_66</NodeID>
         <XPos>983.0</XPos>
         <YPos>685.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1473.517</XFeet>
+        <YFeet>1026.815</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_67</Neighbor>
@@ -1488,8 +1488,8 @@
         <NodeID>CCM_67</NodeID>
         <XPos>919.0</XPos>
         <YPos>664.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1377.5810000000001</XFeet>
+        <YFeet>995.3360000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_69</Neighbor>
@@ -1511,8 +1511,8 @@
         <NodeID>CCM_68</NodeID>
         <XPos>862.0</XPos>
         <YPos>660.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1292.1380000000001</XFeet>
+        <YFeet>989.34</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_52</Neighbor>
@@ -1535,8 +1535,8 @@
         <NodeID>CCM_69</NodeID>
         <XPos>941.0</XPos>
         <YPos>698.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1410.5590000000002</XFeet>
+        <YFeet>1046.3020000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_70</Neighbor>
@@ -1558,8 +1558,8 @@
         <NodeID>CCM_70</NodeID>
         <XPos>928.0</XPos>
         <YPos>744.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1391.0720000000001</XFeet>
+        <YFeet>1115.256</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_71</Neighbor>
@@ -1580,8 +1580,8 @@
         <NodeID>CCM_71</NodeID>
         <XPos>900.0</XPos>
         <YPos>758.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1349.1000000000001</XFeet>
+        <YFeet>1136.2420000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_47</Neighbor>
@@ -1603,8 +1603,8 @@
         <NodeID>CCM_72</NodeID>
         <XPos>965.0</XPos>
         <YPos>769.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1446.535</XFeet>
+        <YFeet>1152.731</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_71</Neighbor>
@@ -1625,8 +1625,8 @@
         <NodeID>CCM_73</NodeID>
         <XPos>1048.0</XPos>
         <YPos>794.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1570.9520000000002</XFeet>
+        <YFeet>1190.2060000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_48</Neighbor>
@@ -1648,8 +1648,8 @@
         <NodeID>CCM_74</NodeID>
         <XPos>1119.0</XPos>
         <YPos>806.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1677.381</XFeet>
+        <YFeet>1208.1940000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_73</Neighbor>
@@ -1671,8 +1671,8 @@
         <NodeID>CCM_75</NodeID>
         <XPos>1121.0</XPos>
         <YPos>789.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1680.3790000000001</XFeet>
+        <YFeet>1182.711</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_74</Neighbor>
@@ -1692,8 +1692,8 @@
         <NodeID>CCM_76</NodeID>
         <XPos>1159.0</XPos>
         <YPos>753.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1737.3410000000001</XFeet>
+        <YFeet>1128.747</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_74</Neighbor>
@@ -1715,8 +1715,8 @@
         <NodeID>CCM_77</NodeID>
         <XPos>1170.0</XPos>
         <YPos>680.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1753.8300000000002</XFeet>
+        <YFeet>1019.32</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_76</Neighbor>
@@ -1738,8 +1738,8 @@
         <NodeID>CCM_78</NodeID>
         <XPos>1050.0</XPos>
         <YPos>520.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1573.95</XFeet>
+        <YFeet>779.48</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_80</Neighbor>
@@ -1761,8 +1761,8 @@
         <NodeID>CCM_79</NodeID>
         <XPos>1049.0</XPos>
         <YPos>532.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1572.451</XFeet>
+        <YFeet>797.4680000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_78</Neighbor>
@@ -1782,8 +1782,8 @@
         <NodeID>CCM_80</NodeID>
         <XPos>1076.0</XPos>
         <YPos>525.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1612.9240000000002</XFeet>
+        <YFeet>786.975</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_81</Neighbor>
@@ -1805,8 +1805,8 @@
         <NodeID>CCM_81</NodeID>
         <XPos>1081.0</XPos>
         <YPos>509.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1620.419</XFeet>
+        <YFeet>762.9910000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_82</Neighbor>
@@ -1827,8 +1827,8 @@
         <NodeID>CCM_82</NodeID>
         <XPos>1112.0</XPos>
         <YPos>510.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1666.8880000000001</XFeet>
+        <YFeet>764.49</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_83</Neighbor>
@@ -1849,8 +1849,8 @@
         <NodeID>CCM_83</NodeID>
         <XPos>1106.0</XPos>
         <YPos>530.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1657.8940000000002</XFeet>
+        <YFeet>794.47</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_84</Neighbor>
@@ -1872,8 +1872,8 @@
         <NodeID>CCM_84</NodeID>
         <XPos>1120.0</XPos>
         <YPos>548.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1678.88</XFeet>
+        <YFeet>821.4520000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_86</Neighbor>
@@ -1894,8 +1894,8 @@
         <NodeID>CCM_85</NodeID>
         <XPos>1190.0</XPos>
         <YPos>559.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1783.8100000000002</XFeet>
+        <YFeet>837.941</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_86</Neighbor>
@@ -1916,8 +1916,8 @@
         <NodeID>CCM_86</NodeID>
         <XPos>1176.0</XPos>
         <YPos>555.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1762.824</XFeet>
+        <YFeet>831.945</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_87</Neighbor>
@@ -1939,8 +1939,8 @@
         <NodeID>CCM_87</NodeID>
         <XPos>1167.0</XPos>
         <YPos>617.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1749.333</XFeet>
+        <YFeet>924.883</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_77</Neighbor>
@@ -1962,8 +1962,8 @@
         <NodeID>CCM_88</NodeID>
         <XPos>1018.0</XPos>
         <YPos>479.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1525.9820000000002</XFeet>
+        <YFeet>718.0210000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_61</Neighbor>
@@ -1986,8 +1986,8 @@
         <NodeID>CCM_89</NodeID>
         <XPos>992.0</XPos>
         <YPos>464.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1487.008</XFeet>
+        <YFeet>695.5360000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_88</Neighbor>
@@ -2008,8 +2008,8 @@
         <NodeID>CCM_90</NodeID>
         <XPos>947.0</XPos>
         <YPos>487.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1419.553</XFeet>
+        <YFeet>730.013</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_90</Neighbor>
@@ -2032,8 +2032,8 @@
         <NodeID>CCM_91</NodeID>
         <XPos>959.0</XPos>
         <YPos>476.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1437.5410000000002</XFeet>
+        <YFeet>713.524</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_89</Neighbor>
@@ -2056,8 +2056,8 @@
         <NodeID>CCM_92</NodeID>
         <XPos>930.0</XPos>
         <YPos>456.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1394.0700000000002</XFeet>
+        <YFeet>683.5440000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_91</Neighbor>
@@ -2080,8 +2080,8 @@
         <NodeID>CCM_93</NodeID>
         <XPos>952.0</XPos>
         <YPos>504.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1427.048</XFeet>
+        <YFeet>755.4960000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_90</Neighbor>
@@ -2101,8 +2101,8 @@
         <NodeID>CCM_94</NodeID>
         <XPos>955.0</XPos>
         <YPos>300.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1431.545</XFeet>
+        <YFeet>449.70000000000005</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_92</Neighbor>
@@ -2125,8 +2125,8 @@
         <NodeID>CCM_95</NodeID>
         <XPos>905.0</XPos>
         <YPos>308.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1356.595</XFeet>
+        <YFeet>461.692</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_94</Neighbor>
@@ -2147,8 +2147,8 @@
         <NodeID>CCM_96</NodeID>
         <XPos>882.0</XPos>
         <YPos>305.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1322.1180000000002</XFeet>
+        <YFeet>457.19500000000005</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_95</Neighbor>
@@ -2170,8 +2170,8 @@
         <NodeID>CCM_97</NodeID>
         <XPos>864.0</XPos>
         <YPos>365.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1295.1360000000002</XFeet>
+        <YFeet>547.135</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_96</Neighbor>
@@ -2192,8 +2192,8 @@
         <NodeID>CCM_98</NodeID>
         <XPos>855.0</XPos>
         <YPos>385.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1281.645</XFeet>
+        <YFeet>577.115</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_99</Neighbor>
@@ -2213,8 +2213,8 @@
         <NodeID>CCM_99</NodeID>
         <XPos>839.0</XPos>
         <YPos>403.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1257.661</XFeet>
+        <YFeet>604.0970000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_101</Neighbor>
@@ -2236,8 +2236,8 @@
         <NodeID>CCM_100</NodeID>
         <XPos>849.0</XPos>
         <YPos>412.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1272.651</XFeet>
+        <YFeet>617.5880000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_99</Neighbor>
@@ -2257,8 +2257,8 @@
         <NodeID>CCM_101</NodeID>
         <XPos>816.0</XPos>
         <YPos>401.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1223.1840000000002</XFeet>
+        <YFeet>601.099</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_102</Neighbor>
@@ -2279,8 +2279,8 @@
         <NodeID>CCM_102</NodeID>
         <XPos>799.0</XPos>
         <YPos>379.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1197.701</XFeet>
+        <YFeet>568.1210000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_103</Neighbor>
@@ -2301,8 +2301,8 @@
         <NodeID>CCM_103</NodeID>
         <XPos>816.0</XPos>
         <YPos>356.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1223.1840000000002</XFeet>
+        <YFeet>533.644</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_104</Neighbor>
@@ -2323,8 +2323,8 @@
         <NodeID>CCM_104</NodeID>
         <XPos>841.0</XPos>
         <YPos>356.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1260.659</XFeet>
+        <YFeet>533.644</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_97</Neighbor>
@@ -2345,8 +2345,8 @@
         <NodeID>CCM_105</NodeID>
         <XPos>882.0</XPos>
         <YPos>252.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1322.1180000000002</XFeet>
+        <YFeet>377.74800000000005</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_96</Neighbor>
@@ -2368,8 +2368,8 @@
         <NodeID>CCM_106</NodeID>
         <XPos>861.0</XPos>
         <YPos>247.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1290.6390000000001</XFeet>
+        <YFeet>370.25300000000004</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_105</Neighbor>
@@ -2390,8 +2390,8 @@
         <NodeID>CCM_107</NodeID>
         <XPos>859.0</XPos>
         <YPos>229.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1287.641</XFeet>
+        <YFeet>343.271</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_107</Neighbor>
@@ -2414,8 +2414,8 @@
         <NodeID>CCM_108</NodeID>
         <XPos>819.0</XPos>
         <YPos>220.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1227.681</XFeet>
+        <YFeet>329.78000000000003</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_108</Neighbor>
@@ -2438,8 +2438,8 @@
         <NodeID>CCM_109</NodeID>
         <XPos>792.0</XPos>
         <YPos>229.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1187.208</XFeet>
+        <YFeet>343.271</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_109</Neighbor>
@@ -2462,8 +2462,8 @@
         <NodeID>CCM_110</NodeID>
         <XPos>802.0</XPos>
         <YPos>237.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1202.198</XFeet>
+        <YFeet>355.26300000000003</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_109</Neighbor>
@@ -2483,8 +2483,8 @@
         <NodeID>CCM_111</NodeID>
         <XPos>559.0</XPos>
         <YPos>647.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>837.941</XFeet>
+        <YFeet>969.8530000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_35</Neighbor>
@@ -2505,8 +2505,8 @@
         <NodeID>CCM_112</NodeID>
         <XPos>804.0</XPos>
         <YPos>597.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1205.1960000000001</XFeet>
+        <YFeet>894.903</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_113</Neighbor>
@@ -2530,8 +2530,8 @@
         <NodeID>CCM_113</NodeID>
         <XPos>751.0</XPos>
         <YPos>609.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1125.749</XFeet>
+        <YFeet>912.8910000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_10</Neighbor>
@@ -2554,8 +2554,8 @@
         <NodeID>CCM_114</NodeID>
         <XPos>850.0</XPos>
         <YPos>592.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1274.15</XFeet>
+        <YFeet>887.408</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_112</Neighbor>
@@ -2577,8 +2577,8 @@
         <NodeID>CCM_115</NodeID>
         <XPos>1073.0</XPos>
         <YPos>453.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1608.4270000000001</XFeet>
+        <YFeet>679.047</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_122</Neighbor>
@@ -2601,8 +2601,8 @@
         <NodeID>CCM_116</NodeID>
         <XPos>1027.0</XPos>
         <YPos>424.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1539.4730000000002</XFeet>
+        <YFeet>635.576</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_115</Neighbor>
@@ -2624,8 +2624,8 @@
         <NodeID>CCM_117</NodeID>
         <XPos>1036.0</XPos>
         <YPos>378.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1552.9640000000002</XFeet>
+        <YFeet>566.6220000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_115</Neighbor>
@@ -2649,8 +2649,8 @@
         <NodeID>CCM_118</NodeID>
         <XPos>1029.0</XPos>
         <YPos>411.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1542.471</XFeet>
+        <YFeet>616.089</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_116</Neighbor>
@@ -2672,8 +2672,8 @@
         <NodeID>CCM_119</NodeID>
         <XPos>999.0</XPos>
         <YPos>409.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1497.5010000000002</XFeet>
+        <YFeet>613.091</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_118</Neighbor>
@@ -2693,8 +2693,8 @@
         <NodeID>CCM_120</NodeID>
         <XPos>1008.0</XPos>
         <YPos>346.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1510.9920000000002</XFeet>
+        <YFeet>518.654</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_121</Neighbor>
@@ -2714,8 +2714,8 @@
         <NodeID>CCM_121</NodeID>
         <XPos>1039.0</XPos>
         <YPos>351.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1557.461</XFeet>
+        <YFeet>526.149</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_117</Neighbor>
@@ -2737,8 +2737,8 @@
         <NodeID>CCM_122</NodeID>
         <XPos>1080.0</XPos>
         <YPos>413.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1618.92</XFeet>
+        <YFeet>619.087</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_123</Neighbor>
@@ -2759,8 +2759,8 @@
         <NodeID>CCM_123</NodeID>
         <XPos>1099.0</XPos>
         <YPos>399.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1647.401</XFeet>
+        <YFeet>598.101</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_124</Neighbor>
@@ -2781,8 +2781,8 @@
         <NodeID>CCM_124</NodeID>
         <XPos>1105.0</XPos>
         <YPos>382.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1656.3950000000002</XFeet>
+        <YFeet>572.618</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_128</Neighbor>
@@ -2805,8 +2805,8 @@
         <NodeID>CCM_125</NodeID>
         <XPos>1040.0</XPos>
         <YPos>334.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1558.96</XFeet>
+        <YFeet>500.66600000000005</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_121</Neighbor>
@@ -2828,8 +2828,8 @@
         <NodeID>CCM_126</NodeID>
         <XPos>1085.0</XPos>
         <YPos>349.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1626.4150000000002</XFeet>
+        <YFeet>523.1510000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_127</Neighbor>
@@ -2850,8 +2850,8 @@
         <NodeID>CCM_127</NodeID>
         <XPos>1141.0</XPos>
         <YPos>380.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1710.3590000000002</XFeet>
+        <YFeet>569.62</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_128</Neighbor>
@@ -2872,8 +2872,8 @@
         <NodeID>CCM_128</NodeID>
         <XPos>1150.0</XPos>
         <YPos>397.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1723.8500000000001</XFeet>
+        <YFeet>595.1030000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_129</Neighbor>
@@ -2895,8 +2895,8 @@
         <NodeID>CCM_129</NodeID>
         <XPos>1189.0</XPos>
         <YPos>414.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1782.3110000000001</XFeet>
+        <YFeet>620.586</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_132</Neighbor>
@@ -2918,8 +2918,8 @@
         <NodeID>CCM_130</NodeID>
         <XPos>1193.0</XPos>
         <YPos>393.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1788.3070000000002</XFeet>
+        <YFeet>589.1070000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_129</Neighbor>
@@ -2940,8 +2940,8 @@
         <NodeID>CCM_131</NodeID>
         <XPos>1165.0</XPos>
         <YPos>377.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1746.335</XFeet>
+        <YFeet>565.123</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_130</Neighbor>
@@ -2961,8 +2961,8 @@
         <NodeID>CCM_132</NodeID>
         <XPos>1202.0</XPos>
         <YPos>433.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1801.7980000000002</XFeet>
+        <YFeet>649.067</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_133</Neighbor>
@@ -2983,8 +2983,8 @@
         <NodeID>CCM_133</NodeID>
         <XPos>1218.0</XPos>
         <YPos>456.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1825.7820000000002</XFeet>
+        <YFeet>683.5440000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_134</Neighbor>
@@ -3005,8 +3005,8 @@
         <NodeID>CCM_134</NodeID>
         <XPos>1213.0</XPos>
         <YPos>507.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1818.287</XFeet>
+        <YFeet>759.993</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_135</Neighbor>
@@ -3029,8 +3029,8 @@
         <NodeID>CCM_135</NodeID>
         <XPos>1209.0</XPos>
         <YPos>560.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1812.2910000000002</XFeet>
+        <YFeet>839.44</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_137</Neighbor>
@@ -3053,8 +3053,8 @@
         <NodeID>CCM_136</NodeID>
         <XPos>1224.0</XPos>
         <YPos>567.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1834.776</XFeet>
+        <YFeet>849.9330000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_135</Neighbor>
@@ -3074,8 +3074,8 @@
         <NodeID>CCM_137</NodeID>
         <XPos>1207.0</XPos>
         <YPos>601.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1809.2930000000001</XFeet>
+        <YFeet>900.8990000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_139</Neighbor>
@@ -3097,8 +3097,8 @@
         <NodeID>CCM_138</NodeID>
         <XPos>1184.0</XPos>
         <YPos>653.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1774.816</XFeet>
+        <YFeet>978.8470000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_137</Neighbor>
@@ -3120,8 +3120,8 @@
         <NodeID>CCM_139</NodeID>
         <XPos>1217.0</XPos>
         <YPos>655.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1824.2830000000001</XFeet>
+        <YFeet>981.845</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_140</Neighbor>
@@ -3142,8 +3142,8 @@
         <NodeID>CCM_140</NodeID>
         <XPos>1233.0</XPos>
         <YPos>663.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1848.267</XFeet>
+        <YFeet>993.8370000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_145</Neighbor>
@@ -3165,8 +3165,8 @@
         <NodeID>CCM_141</NodeID>
         <XPos>1259.0</XPos>
         <YPos>648.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1887.2410000000002</XFeet>
+        <YFeet>971.3520000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_140</Neighbor>
@@ -3187,8 +3187,8 @@
         <NodeID>CCM_142</NodeID>
         <XPos>1284.0</XPos>
         <YPos>660.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1924.7160000000001</XFeet>
+        <YFeet>989.34</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_141</Neighbor>
@@ -3209,8 +3209,8 @@
         <NodeID>CCM_143</NodeID>
         <XPos>1287.0</XPos>
         <YPos>707.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1929.2130000000002</XFeet>
+        <YFeet>1059.7930000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_154</Neighbor>
@@ -3233,8 +3233,8 @@
         <NodeID>CCM_144</NodeID>
         <XPos>1260.0</XPos>
         <YPos>753.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1888.7400000000002</XFeet>
+        <YFeet>1128.747</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_143</Neighbor>
@@ -3255,8 +3255,8 @@
         <NodeID>CCM_145</NodeID>
         <XPos>1235.0</XPos>
         <YPos>715.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1851.265</XFeet>
+        <YFeet>1071.785</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_144</Neighbor>
@@ -3277,8 +3277,8 @@
         <NodeID>CCM_146</NodeID>
         <XPos>1095.0</XPos>
         <YPos>735.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1641.4050000000002</XFeet>
+        <YFeet>1101.765</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_76</Neighbor>
@@ -3299,8 +3299,8 @@
         <NodeID>CCM_147</NodeID>
         <XPos>1047.0</XPos>
         <YPos>722.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1569.4530000000002</XFeet>
+        <YFeet>1082.278</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_146</Neighbor>
@@ -3321,8 +3321,8 @@
         <NodeID>CCM_148</NodeID>
         <XPos>1021.0</XPos>
         <YPos>766.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1530.479</XFeet>
+        <YFeet>1148.2340000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_147</Neighbor>
@@ -3345,8 +3345,8 @@
         <NodeID>CCM_149</NodeID>
         <XPos>1035.0</XPos>
         <YPos>838.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1551.4650000000001</XFeet>
+        <YFeet>1256.162</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_148</Neighbor>
@@ -3367,8 +3367,8 @@
         <NodeID>CCM_150</NodeID>
         <XPos>1080.0</XPos>
         <YPos>884.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1618.92</XFeet>
+        <YFeet>1325.116</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_149</Neighbor>
@@ -3389,8 +3389,8 @@
         <NodeID>CCM_151</NodeID>
         <XPos>1131.0</XPos>
         <YPos>900.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1695.3690000000001</XFeet>
+        <YFeet>1349.1000000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_150</Neighbor>
@@ -3411,8 +3411,8 @@
         <NodeID>CCM_152</NodeID>
         <XPos>1202.0</XPos>
         <YPos>857.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1801.7980000000002</XFeet>
+        <YFeet>1284.643</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_151</Neighbor>
@@ -3433,8 +3433,8 @@
         <NodeID>CCM_153</NodeID>
         <XPos>1247.0</XPos>
         <YPos>801.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1869.2530000000002</XFeet>
+        <YFeet>1200.699</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_152</Neighbor>
@@ -3455,8 +3455,8 @@
         <NodeID>CCM_154</NodeID>
         <XPos>1271.0</XPos>
         <YPos>765.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1905.229</XFeet>
+        <YFeet>1146.7350000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_153</Neighbor>
@@ -3477,8 +3477,8 @@
         <NodeID>CCM_155</NodeID>
         <XPos>1041.0</XPos>
         <YPos>307.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1560.459</XFeet>
+        <YFeet>460.19300000000004</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_125</Neighbor>
@@ -3499,8 +3499,8 @@
         <NodeID>CCM_156</NodeID>
         <XPos>993.0</XPos>
         <YPos>297.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1488.507</XFeet>
+        <YFeet>445.20300000000003</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_155</Neighbor>
@@ -3521,8 +3521,8 @@
         <NodeID>CCM_157</NodeID>
         <XPos>938.0</XPos>
         <YPos>256.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1406.0620000000001</XFeet>
+        <YFeet>383.744</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_94</Neighbor>
@@ -3543,8 +3543,8 @@
         <NodeID>CCM_158</NodeID>
         <XPos>849.0</XPos>
         <YPos>698.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1272.651</XFeet>
+        <YFeet>1046.3020000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_68</Neighbor>
@@ -3566,8 +3566,8 @@
         <NodeID>CCM_159</NodeID>
         <XPos>1333.0</XPos>
         <YPos>527.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1998.1670000000001</XFeet>
+        <YFeet>789.9730000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_143</Neighbor>
@@ -3588,8 +3588,8 @@
         <NodeID>CCM_160</NodeID>
         <XPos>1356.0</XPos>
         <YPos>494.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>2032.6440000000002</XFeet>
+        <YFeet>740.5060000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_159</Neighbor>
@@ -3612,8 +3612,8 @@
         <NodeID>CCM_161</NodeID>
         <XPos>1325.0</XPos>
         <YPos>418.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>1986.1750000000002</XFeet>
+        <YFeet>626.582</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_160</Neighbor>
@@ -3634,8 +3634,8 @@
         <NodeID>CCM_162</NodeID>
         <XPos>1399.0</XPos>
         <YPos>486.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>2097.101</XFeet>
+        <YFeet>728.514</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_160</Neighbor>
@@ -3657,8 +3657,8 @@
         <NodeID>CCM_163</NodeID>
         <XPos>1405.0</XPos>
         <YPos>468.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>2106.0950000000003</XFeet>
+        <YFeet>701.532</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_162</Neighbor>
@@ -3679,8 +3679,8 @@
         <NodeID>CCM_164</NodeID>
         <XPos>1424.0</XPos>
         <YPos>459.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>2134.576</XFeet>
+        <YFeet>688.041</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_163</Neighbor>
@@ -3701,8 +3701,8 @@
         <NodeID>CCM_165</NodeID>
         <XPos>1439.0</XPos>
         <YPos>377.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>2157.061</XFeet>
+        <YFeet>565.123</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_164</Neighbor>
@@ -3724,8 +3724,8 @@
         <NodeID>CCM_166</NodeID>
         <XPos>1374.0</XPos>
         <YPos>405.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>2059.626</XFeet>
+        <YFeet>607.095</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_165</Neighbor>
@@ -3745,8 +3745,8 @@
         <NodeID>CCM_167</NodeID>
         <XPos>1408.0</XPos>
         <YPos>318.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>2110.592</XFeet>
+        <YFeet>476.682</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_168</Neighbor>
@@ -3766,8 +3766,8 @@
         <NodeID>CCM_168</NodeID>
         <XPos>1478.0</XPos>
         <YPos>357.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>2215.5220000000004</XFeet>
+        <YFeet>535.143</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_165</Neighbor>
@@ -3789,8 +3789,8 @@
         <NodeID>CCM_169</NodeID>
         <XPos>1462.0</XPos>
         <YPos>485.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>2191.538</XFeet>
+        <YFeet>727.0150000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_168</Neighbor>
