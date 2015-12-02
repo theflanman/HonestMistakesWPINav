@@ -123,6 +123,30 @@ public class GUIBack implements Serializable {
 	public void removePath(ArrayList<MapNode> mapNodes) {
 		mapNodes.clear();
 	}
+	
+	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end){
+		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
+		ArrayList<MapNode> route = new ArrayList<MapNode>();
+		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
+		MapNode start1 = null;
+		MapNode end1 = null;
+		int j = 0;
+		for(int i = 0; i < globalNodes.size() - 1; i++){
+			if (j == 0) {
+				start1 = globalNodes.get(i);
+				j++;
+			} 
+			if (globalNodes.get(i).getLocalMap() != globalNodes.get(i + 1).getLocalMap()){
+				end1 = globalNodes.get(i);
+				route = this.runAStar(start, end);
+				routes.add(route);
+				start1 = null;
+				end1 = null;
+				j = 0;
+			}
+		}
+		return routes;
+	}
 		
 	/**
 	 * @author Andrew Petit
@@ -180,28 +204,5 @@ public class GUIBack implements Serializable {
 		this.path = path;
 	}
 }
-	
-	/*public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end){
-		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
-		ArrayList<MapNode> route = new ArrayList<MapNode>();
-		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
-		MapNode start1 = null;
-		MapNode end1 = null;
-		int j = 0;
-		for(int i = 0; i < globalNodes.size(); i++){
-			if (j == 0) {
-				start1 = globalNodes.get(i);
-				j++;
-			} 
-			if (globalNodes.get(i).getLocalMap() != globalNodes.get(i + 1).getLocalMap()){
-				end1 = globalNodes.get(i);
-				route = this.runAStar(start, end);
-				routes.add(route);
-				start1 = null;
-				end1 = null;
-				j = 0;
-			}
-		}
-		return routes;
-	}*/
+
 

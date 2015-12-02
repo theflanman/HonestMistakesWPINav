@@ -73,6 +73,7 @@ public class GUIFront extends JFrame {
 	public static String allText = "";
 	public static ArrayList<GUIBack> backends = new ArrayList<GUIBack>();
 	public static ArrayList<ArrayList<MapNode>> paths = new ArrayList<ArrayList<MapNode>>();
+	public static ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
 	private JButton btnPreviousMap, btnNextMap;
 	public static boolean allowSetting = true;
@@ -468,13 +469,26 @@ public class GUIFront extends JFrame {
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
+					routes = backend.getMeRoutes(globalMap.getStartNode(), globalMap.getEndNode());
+					for (int i = 0; i < routes.size() - 1; i++){
+						LocalMap localmap = routes.get(i).get(0).getLocalMap();
+						if (localmap.getEnd() == null){
+							int size = routes.get(i).size() - 1;
+							localmap.setStart(routes.get(i).get(size));
+						}
+						if (localmap.getStart() == null){
+							localmap.setEnd(routes.get(i).get(0));
+						}
+						ArrayList<MapNode> route = routes.get(i);
+						paths.add(route);
+					}
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
-					for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
+					/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
 						//wayPoints = backend.getMeRoutes(panelMap.chosenNodes.get(i), panelMap.chosenNodes.get(i + 1));
 						wayPoints = backend.runAStar(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
 						paths.add(wayPoints);
-					}
+					}*/
 					//draw the line on the map
 					drawLine = true;
 					//set the initial distance as 0 
@@ -1020,23 +1034,28 @@ public class GUIFront extends JFrame {
 					
 						if(globalMap.getChosenNodes().size() == 0){
 							globalMap.setStartNode(node);
+							globalMap.getStartNode().setLocalMap(backend.getLocalMap());
+							backend.getLocalMap().setStart(node);
+							System.out.println("This has happened");
 							btnClear.setEnabled(true);
 						}
 						else{
 							MapNode endNode = globalMap.getEndNode();
 							if(endNode != null)
-							globalMap.addToMiddleNodes(endNode);
+								globalMap.addToMiddleNodes(endNode);
+								//globalMap.getEndNode().getLocalMap().getMiddleNodes().add(endNode);
+								//globalMap.getEndNode().getLocalMap().setEnd(null);
 						
-							globalMap.setEndNode(node);
-						//	btnRoute.setEnabled(true);
+								globalMap.setEndNode(node);
+								globalMap.getEndNode().setLocalMap(backend.getLocalMap());
+								backend.getLocalMap().setEnd(node);
+							}
+							globalMap.getChosenNodes().add(node);
 						}
-
-						globalMap.getChosenNodes().add(node);
-						
-					}
-					repaint();
-				}	
-			});
+						//	btnRoute.setEnabled(true);
+						repaint();
+					}	
+				});
 		}
 
 		public void setMapNodes(ArrayList<MapNode> mapNodes) {
@@ -1178,12 +1197,16 @@ public class GUIFront extends JFrame {
 				graphics.setColor(Color.RED);
 				for (int i = 0; i < globalMap.getChosenNodes().size(); i++) {
 					if(i == 0){
+						if (backend.getLocalMap().getStart() != null){
 						graphics.setColor(Color.RED);
-						graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+						graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
+						}
 					} 
 					else if(i == globalMap.getChosenNodes().size()-1){
+						if (backend.getLocalMap().getEnd() != null){
 						graphics.setColor(Color.GREEN);
-						graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+						graphics.fillOval((int) backend.getLocalMap().getEnd().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getEnd().getYPos() - (int)panY - 5, 10, 10);
+						}
 					}
 					else {
 						graphics.setColor(Color.ORANGE);
@@ -1193,6 +1216,7 @@ public class GUIFront extends JFrame {
 				
 				// essentially draws the line on the screen 
 				if (GUIFront.drawLine = true) {
+					//ArrayList<MapNode> mapNodes = backend.getLocalMap().getChosenNodes();
 					//for (ArrayList<MapNode> mapNodes: backend.getMeRoutes(startNode, endNode)){
 					for (ArrayList<MapNode> mapNodes : paths){
 						for (int i = 0; i < mapNodes.size() - 1; i++) {

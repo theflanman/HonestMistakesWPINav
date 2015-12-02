@@ -23,8 +23,8 @@ public class LocalMap implements Serializable{
 	private GlobalMap globalMap;
 	private MapNode start;
 	private MapNode end;
-	private ArrayList<MapNode> chosenNodes;
-	private ArrayList<MapNode> middleNodes;
+	private ArrayList<MapNode> chosenNodes = new ArrayList<MapNode>();
+	private ArrayList<MapNode> middleNodes = new ArrayList<MapNode>();
 	
 	// constructor
 	public LocalMap(String mapImageName, ArrayList<MapNode> mapNodes){
@@ -32,8 +32,8 @@ public class LocalMap implements Serializable{
 		this.mapNodes = mapNodes;
 		this.start = null;
 		this.end = null;
-		ArrayList<MapNode> chosenNodes = new ArrayList<MapNode>();
-		ArrayList<MapNode> middleNodes = new ArrayList<MapNode>();
+		ArrayList<MapNode> chosenNodes;
+		ArrayList<MapNode> middleNodes;
 		
 		YamlParser yamlParser = new YamlParser(new String[]{Constants.SCALES_PATH});
 		
