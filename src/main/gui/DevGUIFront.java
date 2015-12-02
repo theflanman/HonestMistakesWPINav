@@ -592,7 +592,6 @@ public class DevGUIFront extends JFrame {
 		});
 
 		// This is code that determines what needs to happen on each mouse click in the map panel.
-
 		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {

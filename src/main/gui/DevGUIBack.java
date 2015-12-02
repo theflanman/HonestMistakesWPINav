@@ -346,6 +346,7 @@ public class DevGUIBack implements Serializable  {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			dom = db.parse(fileName);
 			Element doc = dom.getDocumentElement();
+			String mapImageName = doc.getElementsByTagName("ImageName").item(0).getTextContent();
 			
 			//first pass, just setup arrays of map nodes and neighbor array
 			NodeList xmlNodeList = doc.getElementsByTagName("Node");
@@ -461,7 +462,7 @@ public class DevGUIBack implements Serializable  {
 				}//end middle for
 			}//end outer for
 			
-			this.localMap = new LocalMap(fileName, loadedNodes);
+			this.localMap = new LocalMap(mapImageName, loadedNodes);
 			for(MapNode anode: loadedNodes){
 				anode.setLocalMap(this.localMap);
 			}

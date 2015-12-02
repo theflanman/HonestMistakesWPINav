@@ -101,6 +101,7 @@ public class MapPanel extends JPanel implements ActionListener {
 				}
 			} */
 			for(MapNode n : selectedPanelPoints){
+				System.out.println(thismap.equals(n.getLocalMap().getMapImageName()));
 				if(thismap.equals(n.getLocalMap().getMapImageName())) { //Make sure the nodes are in this panel, not the other panel
 					g2d.fillOval((int) (n.getXPos() - 5 + xOffset), (int) (n.getYPos() - 5 + yOffset), circleSize, circleSize);
 				}

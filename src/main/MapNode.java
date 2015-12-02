@@ -61,6 +61,7 @@ public class MapNode implements Serializable{
 		cameFrom = null;
 		attributes = new Attributes();
 		
+		this.localMap = aLocalMap;		
 	}
 	
 	public void setCrossMapNeighbors(ArrayList<String> s){

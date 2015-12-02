@@ -1,0 +1,167 @@
+---
+########Template###########################
+# each map image needs the following information in this file to accompany it (all values need to be doubles)
+# scale- resembles the feet/px ratio of the map
+# angle- the angle (in radians) the coordinate of the map need to rotate to align with the global coordinates
+# xOffset- the offset of this map's x coordinate with respect to the global coordinate of x in feet
+# xOffset- the offset of this map's y coordinate with respect to the global coordinate of y in feet
+# zHeight- the height of each level in feet,
+# (the default for floors: ground floor same level as the top of the hill is 0.0, each floor higher we add 13 ft, each floor lower we subtract 13.)
+###########################################
+
+##sample.jpg: Sample to use in all tests and such as part of the local map
+scale-sample.jpg : .123
+angle-sample.jpg : 30.0
+xOffset-sample.jpg : 12.0
+yOffset-sample.jpg : 12.0
+zHeight-sample.jpg : 13.0
+
+##AK1.jpg
+scale-AK1.jpg : .365 # 155.47ft, 426px
+xOffset-AK1.jpg : 1635.12
+yOffset-AK1.jpg : 313.5
+
+##AK2.jpg
+scale-AK2.jpg : .365 # 155.47ft, 426px
+xOffset-AK1.jpg : 1635.12
+yOffset-AK1.jpg : 313.5
+
+##AK3.jpg
+scale-AK3.jpg : .365 # 155.47ft, 426px
+xOffset-AK1.jpg : 1635.12
+yOffset-AK1.jpg : 313.5
+
+##AKB.jpg
+scale-AKB.jpg : .365 # got .3515 from different measurement
+xOffset-AK1.jpg : 1635.12
+yOffset-AK1.jpg : 313.5
+
+##Boynton_1.jpg
+scale-Boynton_1.jpg : .2312 # 162.32ft, 702px
+xOffset-Boynton_1.jpg : 1558.5
+yOffset-Boynton_1.jpg : 1086
+
+##Boynton_2.jpg
+scale-Boynton_2.jpg : .2312 # 162.32ft, 702px
+xOffset-Boynton_2.jpg : 1558.5
+yOffset-Boynton_2.jpg : 1086
+
+##Boynton_3.jpg
+scale-Boynton_3.jpg : .2312 # 162.32ft, 702px
+xOffset-Boynton_3.jpg : 1558.5
+yOffset-Boynton_3.jpg : 1086
+
+##Boynton_B.jpg
+scale-Boynton_B.jpg : .2312 # 162.32ft, 702px
+xOffset-Boynton_B.jpg : 1558.5
+yOffset-Boynton_B.jpg : 1086
+
+##CC1.jpg: downstairs
+scale-CC1.jpg : .107979
+angle-CC1.jpg :
+xOffset-CC1.jpg : 1209
+yOffset-CC1.jpg : 706.5
+zHeight-CC1.jpg :
+
+##CC2.jpg: ground
+scale-CC2.jpg : .09712
+angle-CC2.jpg :
+xOffset-CC2.jpg : 1209
+yOffset-CC2.jpg : 706.5
+zHeight-CC2.jpg :
+
+##CC3.jpg: upstairs
+scale-CC3.jpg : .096216
+angle-CC3.jpg :
+xOffset-CC3.jpg : 1209
+yOffset-CC3.jpg : 706.5
+zHeight-CC3.jpg :
+
+##CCM.jpg
+scale-CCM.jpg : 1.499 # 1201.92ft, 801.96px
+
+##GL1.jpg
+scale-GL1.jpg : .2217 # 182.43ft, 823px
+xOffset-GL1.jpg : 1968
+yOffset-GL1.jpg : 772.5
+
+##GL2.jpg
+scale-GL2.jpg : .2252 # 182.43ft, 810px
+xOffset-GL2.jpg : 1968
+yOffset-GL2.jpg : 772.5
+
+##GL3.jpg
+scale-GL3.jpg : .296 # 182.43ft, 617px
+xOffset-GL3.jpg : 1968
+yOffset-GL3.jpg : 772.5
+
+##GLB.jpg
+scale-GLB.jpg : .2752 # 182.43ft, 663px
+xOffset-GLB.jpg : 1968
+yOffset-GLB.jpg : 772.5
+
+##GLSB.jpg
+scale-GLSB.jpg : .2752 # 182.43ft, 663px
+xOffset-GLSB.jpg : 1968
+yOffset-GLSB.jpg : 772.5
+
+##HH1.jpg
+scale-HH1.jpg : .2295 # 88.81ft, 387px
+xOffset-HH1.jpg : 1275
+yOffset-HH1.jpg : 364.5
+
+##HH2.jpg
+scale-HH2.jpg : .2018 # 88.81ft, 440px
+xOffset-HH2.jpg : 1275
+yOffset-HH2.jpg : 364.5
+
+##HH3.jpg
+scale-HH3.jpg : .1987 # 88.81ft, 447px
+xOffset-HH3.jpg : 1275
+yOffset-HH4.jpg : 364.5
+
+##HHG1.jpg
+scale-HHG1.jpg : .1282 # 88.81ft, 693px
+xOffset-HHG1.jpg : 1275
+yOffset-HHG1.jpg : 364.5
+
+##HHG2.jpg
+scale-HHG1.jpg : .1282 # 88.81ft, 693px
+xOffset-HHG1.jpg : 1275
+yOffset-HHG1.jpg : 364.5
+
+##PC1.jpg
+scale-PC1.jpg : .1391 # 92.76ft, 667px
+xOffset-PC1.jpg : 1617
+yOffset-PC1.jpg : 802.5
+
+##PC2.jpg
+scale-PC2.jpg : .1447 # 92.76ft, 641px
+xOffset-PC2.jpg : 1617
+yOffset-PC2.jpg : 802.5
+
+##SH1.jpg
+scale-SH1.jpg : .183
+angle-SH1.jpg : 
+xOffset-SH1.jpg : 1482
+yOffset-SH1.jpg : 1065
+zHeight-SH1.jpg : 
+
+##SH2.jpg
+scale-SH2.jpg : .183
+angle-SH2.jpg :
+xOffset-SH2.jpg : 1482
+yOffset-SH2.jpg : 1065
+zHeight-SH2.jpg : 
+
+##SH3.jpg
+scale-SH3.jpg : .183
+angle-SH3.jpg : 1.720
+xOffset-SH3.jpg : 1482
+yOffset-SH3.jpg : 1065
+zHeight-SH3.jpg :
+
+##SHB.jpg
+scale-SHB.jpg : .1823 # 126.71ft, 695px
+xOffset-SHB.jpg : 1482
+yOffset-SHB.jpg : 1065
