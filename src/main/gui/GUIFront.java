@@ -492,7 +492,7 @@ public class GUIFront extends JFrame {
 					if (routes.isEmpty()){
 						mapnodes = backend.runAStar(backend.getLocalMap().getStart(), backend.getLocalMap().getEnd());
 					} else {
-						for (int i = 0; i < routes.size() - 1; i++){
+						for (int i = 0; i < routes.size(); i++){
 							LocalMap localmap = routes.get(i).get(0).getLocalMap();
 							if (localmap.getEnd() == null){
 								int size = routes.get(i).size() - 1;
@@ -506,7 +506,12 @@ public class GUIFront extends JFrame {
 							paths.add(route);
 						}
 					}
-					thisRoute = routes.get(index);
+					
+					
+					thisRoute = routes.get(0);
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(0).get(0).getLocalMap().getMapImageName()).getImage());
+					panelMap.setMapNodes(paths.get(0).get(0).getLocalMap().getMapNodes());
+					backend.setLocalMap(paths.get(0).get(0).getLocalMap());
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
 					/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
@@ -624,8 +629,10 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae){
 				index++;
-				thisRoute = paths.get(index - 1);
-				globalMap.getLocalMaps().get(index);
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(index).getMapImageName()).getImage());
+				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
+				thisRoute = paths.get(index);
 				drawLine = true;
 				// TODO: Fill in this mehtod once we know how to draw/load maps
 			}
@@ -641,6 +648,9 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				index--;
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(index).get(0).getLocalMap().getMapImageName()).getImage());
+				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
 				thisRoute = paths.get(index);
 				drawLine = true;
 				// TODO: Fill in this method once we know how to draw/load maps

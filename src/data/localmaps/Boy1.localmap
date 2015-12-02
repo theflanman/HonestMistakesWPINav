@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <MapNodes>
+<<<<<<< HEAD
     <ImageName>Boy1.jpg</ImageName>
+=======
+    <ImageName>Boynton_1.jpg</ImageName>
+>>>>>>> e2c852a6c4c6eba158d96c8e9658cc317a35d920
 </MapNodes>
