@@ -366,6 +366,11 @@ public class GUIBack implements Serializable {
 	 */
 	public MapNode findNearestNode(double xPos, double yPos, LocalMap localmap){
 		MapNode start = new MapNode(xPos, yPos, localmap);
+		start.setXFeet(start.getLocalMap().getMapScale()*start.getXPos());
+		start.setYFeet(start.getLocalMap().getMapScale()*start.getYPos());
+		start.runTransform();
+		System.out.println(start.getXFeet());
+		System.out.println(start.getYFeet());
 		start.setNodeID("temp" + Double.toString(xPos));
 		MapNode temp = null;
 		//need to initialize with an extremely large unobtainable number - or find a better solution

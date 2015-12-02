@@ -75,6 +75,18 @@ public class MapNode implements Serializable{
 		this.localMap = aLocalMap;		
 	}
 	
+	public void runTransform(){
+		double xPrime, yPrime;
+		xPrime = this.getXFeet()*Math.cos(this.getLocalMap().getTransformAngle()) - this.getYFeet()*Math.sin(this.getLocalMap().getTransformAngle());
+		yPrime = this.getYFeet()*Math.cos(this.getLocalMap().getTransformAngle()) + this.getXFeet()*Math.sin(this.getLocalMap().getTransformAngle());
+		//translate the x and y coordinates of the local map to resemble its location in the global map 
+		xPrime = xPrime + this.getLocalMap().getXOffset();
+		yPrime = yPrime + this.getLocalMap().getYOffset();
+		//set the new transformed coordinates
+		this.setXFeet(xPrime);
+		this.setYFeet(yPrime);
+	}
+	
 	public LocalMap getLocalMap() {
 		return localMap;
 	}
@@ -147,8 +159,8 @@ public class MapNode implements Serializable{
 	 */
 	public int calcDistance(MapNode toNode) {
 		double distance = 0;
-		double distanceXLeg = (toNode.getXPos() - this.getXPos());
-		double distanceYLeg = (toNode.getYPos() - this.getYPos());
+		double distanceXLeg = (toNode.getXFeet() - this.getXFeet());
+		double distanceYLeg = (toNode.getYFeet() - this.getYFeet());
 	
 		distance = (Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg)));
 		distance = Math.round(distance);
