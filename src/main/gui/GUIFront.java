@@ -398,6 +398,8 @@ public class GUIFront extends JFrame {
 					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(0).get(0).getLocalMap().getMapImageName()).getImage());
 					panelMap.setMapNodes(paths.get(0).get(0).getLocalMap().getMapNodes());
 					backend.setLocalMap(paths.get(0).get(0).getLocalMap());
+					index = 0;
+					btnNextMap.setEnabled(true);
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
 					/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
@@ -508,9 +510,7 @@ public class GUIFront extends JFrame {
 		mainPanel.add(slidePanel, BorderLayout.CENTER);
 		getContentPane().add(mainPanel);
 		btnNextMap = new JButton("Next Map -->");
-		if (index != paths.size()){
-			btnNextMap.setEnabled(false);
-		}
+		btnNextMap.setEnabled(false);
 		btnNextMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae){
@@ -540,9 +540,10 @@ public class GUIFront extends JFrame {
 
 		// Add buttons to move between two maps
 		btnPreviousMap = new JButton("<-- Previous Map");
-		if (index <= 0){
+		/*if (index <= 0){
 			btnPreviousMap.setEnabled(false);
-		}
+		}*/
+		btnPreviousMap.setEnabled(false);
 		btnPreviousMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
@@ -1058,6 +1059,8 @@ public class GUIFront extends JFrame {
 				setStart = false;
 				paths.clear();
 				backend.removePath(globalMap.getMiddleNodes());
+				btnNextMap.setEnabled(false);
+				btnPreviousMap.setEnabled(false);
 
 				globalMap.getChosenNodes().clear();
 				//backend.removePath(backend.getPath()); // this is obsolete now
