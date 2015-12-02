@@ -9,8 +9,14 @@ public class MapNode implements Serializable{
 	private double xPos;
 	private double yPos;
 	private double zPos;
-	private int nodeID;
+	
+	private double xFeet;
+	private double yFeet;
+	private double zFeet;
+	
+	private String nodeID;
 	private ArrayList<MapNode> neighbors;
+	private ArrayList<String> crossMapNeighbors;
 	private double fScore;
 	private double gScore;
 	private double hScore;
@@ -20,7 +26,22 @@ public class MapNode implements Serializable{
 	private Attributes attributes;
 	
 	// default constructor
-	public MapNode(){}
+	public MapNode(){
+		xPos = -1.0;
+		yPos = -1.0;
+		zPos = -1.0;
+		xFeet = -1.0;
+		yFeet = -1.0;
+		zFeet = -1.0;
+		
+		neighbors = new ArrayList<MapNode>();
+		crossMapNeighbors = new ArrayList<String>();
+		attributes = new Attributes();
+		fScore = -1;
+		gScore = -1;
+		hScore = -1;
+		cameFrom = null;
+	}
 	
 	// constructor
 	public MapNode(LocalMap localMap){
@@ -31,20 +52,27 @@ public class MapNode implements Serializable{
 		gScore = -1;
 		hScore = -1;
 		cameFrom = null;
-		localMap = this.localMap;
+		this.localMap = localMap;
 	}
-	public MapNode(double newX, double newY, double newZ) {
+	public MapNode(double newX, double newY, LocalMap aLocalMap) {
 		xPos = newX;
 		yPos = newY;
-		zPos = newZ;
+		zPos = 0.0;
 		
+		xFeet = xPos * aLocalMap.getMapScale();
+		yFeet = yPos * aLocalMap.getMapScale();
+		zFeet = aLocalMap.getZHeight();
 		neighbors = new ArrayList<MapNode>();
 		//localMap = this.localMap;
+		crossMapNeighbors = new ArrayList<String>();
 		attributes = new Attributes();
 		fScore = -1;
 		gScore = -1;
 		hScore = -1;
 		cameFrom = null;
+		attributes = new Attributes();
+		
+		this.localMap = aLocalMap;		
 	}
 	
 	public LocalMap getLocalMap() {
@@ -55,6 +83,13 @@ public class MapNode implements Serializable{
 		this.localMap = localMap;
 	}
 
+	public void setCrossMapNeighbors(ArrayList<String> s){
+		this.crossMapNeighbors = s;
+	}
+	public ArrayList<String> getCrossMapNeighbors(){
+		return this.crossMapNeighbors;
+	}
+	
 	public void addNeighbor(MapNode node) {
 		neighbors.add(node);
 	}
@@ -64,7 +99,7 @@ public class MapNode implements Serializable{
 	}
 	
 	public double aStarHeuristic(MapNode toNode) {
-		double dist = (double) Math.sqrt(Math.pow((xPos - toNode.getXPos()),2) + Math.pow(yPos - toNode.getYPos(),2)) + Math.abs(zPos - toNode.getZPos());
+		double dist = (double) Math.sqrt(Math.pow((xFeet - toNode.getXFeet()),2) + Math.pow(yFeet - toNode.getYFeet(),2)) + Math.abs(zFeet - toNode.getZFeet());
 		
 		return dist;
 	}
@@ -134,6 +169,8 @@ public class MapNode implements Serializable{
 	public double getYPos() {
 		return yPos;
 	}
+	
+	
 	public void setYPos(double yPos) {
 		this.yPos = yPos;
 	}
@@ -150,7 +187,8 @@ public class MapNode implements Serializable{
 	public void setyPos(double pos) {
 		yPos = pos;
 	}
-	public int getID(){
+
+	public String getID(){
 		return nodeID;
 	}
 	
@@ -162,8 +200,11 @@ public class MapNode implements Serializable{
 		this.cameFrom = cameFrom;		
 	}
 
-	public int getNodeID(){
+	public String getNodeID(){
 		return this.nodeID;
+	}
+	public void setNodeID(String id){
+		this.nodeID = id;
 	}
 	
 	public void setGScore(double distance) {
@@ -186,8 +227,41 @@ public class MapNode implements Serializable{
 		fScore = gScore + hScore;		
 	}
 	
+	public void setXFeet(double xFeet){
+		this.xFeet = xFeet;
+	}
+	public void setYFeet(double yFeet){
+		this.yFeet = yFeet;
+	}
+	public double getXFeet(){
+		return xFeet;
+	}
+	public double getYFeet(){
+		return yFeet;
+	}
+	public void setZFeet(double zHeight){
+		zFeet = zHeight;
+	}
+	public double getZFeet(){
+		return zFeet;
+	}
+	
 	public Attributes getAttributes() {
 		return this.attributes;
+	}
+	
+	public void setDefaultAttributes(Attributes dfltA) {
+		Attributes a = this.getAttributes();
+		a.setStairs(dfltA.isStairs());
+		a.setPOI(dfltA.isPOI());
+		a.setBikeable(dfltA.isBikeable());
+		a.setHandicapped(dfltA.isHandicapped());
+		a.setOutside(dfltA.isOutside());
+		a.setType(dfltA.getType());
+	}
+	
+	public void setAttributes(Attributes a) {
+		this.attributes = a;
 	}
 
 }

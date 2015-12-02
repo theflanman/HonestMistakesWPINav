@@ -7,18 +7,26 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
 import main.AStar;
+import main.Attributes;
 import main.LocalMap;
+import main.Types;
 import main.MapNode;
 import main.StepByStep;
 import main.gui.GUIFront.TweenPanel;
 import main.util.Constants;
+import main.util.SaveUtil;
 
-/** TODO write this
- * 
- * @author Connor Flanigan
- *
- */
+
 @SuppressWarnings("serial")
 public class GUIBack implements Serializable {
 	
@@ -29,40 +37,196 @@ public class GUIBack implements Serializable {
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
 	 * TODO: Change to Campus Map when it is complete
 	 */
-	public GUIBack(String defaultMapImage, ArrayList<MapNode> points){
-		this.localMap = new LocalMap(defaultMapImage, points);
+	public GUIBack(){
+		String defaultMapImage = "CCM.jpg";
+		this.localMap = new LocalMap(defaultMapImage, null);
 		this.path = new ArrayList<MapNode>();
 	}
 		
 	/**
-	 * loads a LocalMap into this class
-	 * 
-	 * @param fileName is name of file that stores the object data (requires an extension)
+	 * Takes an array of filenames of local maps to be loaded
+	 * The following processing is then done to make the maps work:
+	 *   Each map its nodes populate with no links.  No linking is done
+	 *   until every map has had its nodes loaded
+	 * Linking is then done for every map and can be done across maps.
+	 * @param fileName
 	 */
-	public void loadLocalMap(String fileName) {
+public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
+		//iterate through each file name
+		System.out.println("Starting load");
+		ArrayList<ArrayList<ArrayList<String>>> allNeighborList = new ArrayList<ArrayList<ArrayList<String>>>();
+		ArrayList<LocalMap> localMapList = new ArrayList<LocalMap>();
 		
-		if(! fileName.contains(".localmap")){
-			System.out.println("DevGUIBack.loadMap(fileName) requires a .localmap file as input...exiting");
-			System.exit(1);
-		}
 		
-		FileInputStream fileIn;
-		try {
-			fileIn = new FileInputStream(Constants.LOCAL_MAP_PATH + "/" + fileName);
-			ObjectInputStream objIn = new ObjectInputStream(fileIn);
-			this.localMap = (LocalMap) objIn.readObject();
+		for(String fileName: fileNames){
+			//find exclusively the file name
+			String fileParts[] = fileName.split("/");
 			
-			objIn.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			String mapAppend = fileParts[fileParts.length-1];
+			mapAppend = SaveUtil.removeExtension(mapAppend) + "_";
+			//setup an array list of nodes for the local map and an array list of strings for linking
+			ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
+			ArrayList<ArrayList<String>> neighborNodes = new ArrayList<ArrayList<String>>();
+			Document dom;
+			
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			try {
+				DocumentBuilder db = dbf.newDocumentBuilder();
+				String xmlFileName = SaveUtil.removeExtension(fileName) + ".localmap";
+				dom = db.parse(Constants.LOCAL_MAP_PATH + "/" + xmlFileName);
+				Element doc = dom.getDocumentElement();
+				
+				//first pass, just setup arrays of map nodes and neighbor array
+				NodeList xmlNodeList = doc.getElementsByTagName("Node");
+				for (int i = 0; i < xmlNodeList.getLength(); ++i){
+					ArrayList<String> newList = new ArrayList<String>();
+					MapNode newMapNode = new MapNode();
+					
+					loadedNodes.add(newMapNode);
+					neighborNodes.add(newList);
+				}
+			
+				//second pass, store all map node data except neighbor linking
+				for (int i = 0; i < xmlNodeList.getLength(); ++i){
+					//get the first xml node from the root node
+					Element currentNode = (Element) xmlNodeList.item(i);
+					
+					//extract these node variables (ID, x, y, z);
+					String nodeID = currentNode.getElementsByTagName("NodeID").item(0).getTextContent();
+					String xPos = currentNode.getElementsByTagName("XPos").item(0).getTextContent();
+					String yPos = currentNode.getElementsByTagName("YPos").item(0).getTextContent();
+					String xFeet = currentNode.getElementsByTagName("XFeet").item(0).getTextContent();
+					String yFeet = currentNode.getElementsByTagName("YFeet").item(0).getTextContent();
+					String zFeet = currentNode.getElementsByTagName("ZFeet").item(0).getTextContent();
+					//store the nodes in the array list of nodes
+					loadedNodes.get(i).setNodeID(nodeID);
+					loadedNodes.get(i).setXPos(Double.parseDouble(xPos));
+					loadedNodes.get(i).setYPos(Double.parseDouble(yPos));
+					loadedNodes.get(i).setXFeet(Double.parseDouble(xFeet));
+					loadedNodes.get(i).setYFeet(Double.parseDouble(yFeet));
+					loadedNodes.get(i).setZFeet(Double.parseDouble(zFeet));
+					//debug print
+					
+					/*
+					System.out.println(loadedNodes.get(i).getNodeID());
+					System.out.println(loadedNodes.get(i).getXPos());
+					System.out.println(loadedNodes.get(i).getYPos());
+					System.out.println(loadedNodes.get(i).getZPos());
+					*/
+					
+					//get the neighbor values and store those node ID's in the neighbor nodes arraylist
+					Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
+					if(!neighborCheck.getTextContent().equals("none")){
+						NodeList neighborList = neighborCheck.getElementsByTagName("Neighbor");
+						for(int j = 0; j < neighborList.getLength(); ++j){
+							Element neighbor = (Element) neighborList.item(j);
+							neighborNodes.get(i).add(neighbor.getTextContent().trim());
+						}
+					}
+					else{
+						//no neighbors, nothing to add
+					}
+					
+					
+					//extract the attribute values and store these
+					Element attributes = ((Element)currentNode.getElementsByTagName("Attributes").item(0));
+					String officialName = attributes.getElementsByTagName("OfficialName").item(0).getTextContent();
+					String bikeable = attributes.getElementsByTagName("Bikeable").item(0).getTextContent();
+					String handicapped = attributes.getElementsByTagName("Handicapped").item(0).getTextContent();
+					String stairs = attributes.getElementsByTagName("Stairs").item(0).getTextContent();
+					String outside = attributes.getElementsByTagName("Outside").item(0).getTextContent();
+					String poi = attributes.getElementsByTagName("POI").item(0).getTextContent();
+					String type = attributes.getElementsByTagName("Type").item(0).getTextContent();
+					
+					//set the attributes in the array list
+					Attributes attr = new Attributes();
+					attr.setOfficialName(officialName);
+					attr.setBikeable(Boolean.parseBoolean(bikeable));
+					attr.setHandicapped(Boolean.parseBoolean(handicapped));
+					attr.setPOI(Boolean.parseBoolean(poi));
+					attr.setStairs(Boolean.parseBoolean(stairs));
+					attr.setType(Types.parseType(type));
+					
+					
+					
+					loadedNodes.get(i).setAttributes(attr);
+					
+					
+		
+				}//end second for
+			
+			} catch (ParserConfigurationException pce) {
+	            System.out.println(pce.getMessage());
+	        } catch (SAXException se) {
+	            System.out.println(se.getMessage());
+	        } catch (IOException ioe) {
+	            System.out.println(ioe.getMessage());
+	        }
+		
+			
+			//store all this data so far, nodes still need to be linked.
+			LocalMap tempMap = new LocalMap(fileName, loadedNodes);
+			for(MapNode anode: loadedNodes){
+				anode.setLocalMap(tempMap);
+			}
+			
+			localMapList.add(tempMap);
+			allNeighborList.add(neighborNodes);
+			
+		}//end file name for
+		
+		//Stop here for now to get some info to ensure the loading is functioning correctly.
+				
+		//drop all of the map nodes into a single list.
+		
+		ArrayList<MapNode> completeNodeList = new ArrayList<MapNode>();
+		for(LocalMap lmap : localMapList){ //for each map
+			for(MapNode node : lmap.getMapNodes()){ //for each node on this map
+				completeNodeList.add(node);
+			}
 		}
 		
+		//time to loop through each local map and link its nodes to itself and other local maps
+		//this will probably feel like black magic (BECAUSE IT IS)
+		for(int i = 0; i< localMapList.size(); i++){
+			//this is the local map that we're currently linking
+			LocalMap currentLocalMap = localMapList.get(i);
+			//this is the number of nodes we have to look a for neighbors
+			int numNodes = currentLocalMap.getMapNodes().size();
+			ArrayList<MapNode> currentMapsNodes = currentLocalMap.getMapNodes();
+			//this list of neighbor nodes contains a list of all the neighbor relations for this map.
+			ArrayList<ArrayList<String>> neighborNodes = allNeighborList.get(i);
+			
+			//go through each node on this local map
+			for(int j = 0; j < numNodes; j++){
+				//this is the list of nodes that need to be linked to this node.
+				ArrayList<String> thisNodesNeighbors = neighborNodes.get(j);
+				int numNeighbors = thisNodesNeighbors.size();
+				//for each node that needs to be linked
+				for(int k = 0; k < numNeighbors; k++){
+					//get the id of the node to be linked
+					String nodeIDToBeLinked = thisNodesNeighbors.get(k);
+					
+					//find that node in the collection of nodes
+					for(MapNode potentialNode : completeNodeList){
+						//if there is a match, link the nodes.
+						if(potentialNode.getNodeID().equals(nodeIDToBeLinked)){
+							MapNode currentNode = currentMapsNodes.get(j);
+							currentNode.addNeighbor(potentialNode);
+							
+						}
+					}
+					
+				}
+				
+				
+			}
+			
+			
+		}
+					
+		return localMapList; 
 	}
-	
 	/**@author Andrew Petit
 	 * 
 	 * @description basically used by drawLine function in mainGui to draw a line between two nodes one at a time
@@ -125,26 +289,70 @@ public class GUIBack implements Serializable {
 	}
 	
 	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end){
+		System.out.println("hello");
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
+		System.out.println(globalNodes.size());
 		MapNode start1 = null;
 		MapNode end1 = null;
 		int j = 0;
+		/*
 		for(int i = 0; i < globalNodes.size() - 1; i++){
 			if (j == 0) {
-				start1 = globalNodes.get(i);
+				String startName = globalNodes.get(i).getID();
+				for (MapNode mapnode : globalNodes.get(i).getLocalMap().getMapNodes()){
+					if (mapnode.getID().equals(startName)){
+						start1 = mapnode;
+					}
+				}
 				j++;
 			} 
-			if (globalNodes.get(i).getLocalMap() != globalNodes.get(i + 1).getLocalMap()){
+			if (!(globalNodes.get(i).getLocalMap().equals(globalNodes.get(i + 1).getLocalMap()))){
 				end1 = globalNodes.get(i);
-				route = this.runAStar(start, end);
+				String endName = globalNodes.get(i).getID();
+				for (MapNode mapnode : globalNodes.get(i).getLocalMap().getMapNodes()){
+					if (mapnode.getID().equals(endName)){
+						end1 = mapnode;
+					}
+				}
+				route = this.runAStar(start1, end1);
 				routes.add(route);
+				System.out.println(start1.getID());
+				System.out.println(end1.getID());
 				start1 = null;
 				end1 = null;
 				j = 0;
 			}
 		}
+		*/
+		
+		for (int i = 0; i < globalNodes.size(); i++) {
+			//if this is the first time through, no nodes have been added
+			//immediately add this to a new route
+			if (i == 0) {
+				route.add(globalNodes.get(i));
+			}
+			//this isnt the first node and it isnt the last node
+			else if (i != globalNodes.size()-1){
+				//if this is on the same local map as the last one...
+				if(globalNodes.get(i).getLocalMap().equals(globalNodes.get(i-1).getLocalMap())){
+					route.add(globalNodes.get(i));
+				}
+				//time to move onto a new route, add this one to routes and clear it
+				else{
+					routes.add(route);
+					route = new ArrayList<MapNode>();
+					route.add(globalNodes.get(i));
+				}
+			}//end else if
+			else {
+				route.add(globalNodes.get(i));
+				routes.add(route);
+			}
+
+		}
+		
 		return routes;
 	}
 		
@@ -155,8 +363,9 @@ public class GUIBack implements Serializable {
 	 * @param yPos
 	 * @return
 	 */
-	public MapNode findNearestNode(double xPos, double yPos){
-		MapNode start = new MapNode(xPos, yPos, 0);
+	public MapNode findNearestNode(double xPos, double yPos, LocalMap localmap){
+		MapNode start = new MapNode(xPos, yPos, localmap);
+		start.setNodeID("temp" + Double.toString(xPos));
 		MapNode temp = null;
 		//need to initialize with an extremely large unobtainable number - or find a better solution
 		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0;
@@ -170,8 +379,13 @@ public class GUIBack implements Serializable {
 			return temp;
 		} else {
 			//this will change to check to make sure the neighbor is valid
-			start.addNeighbor(temp); //add the new nodes link with the closest node
-			temp.addNeighbor(start); //add the new node as a neighbor to the closest node
+			//MapNode start = temp;
+			//start.getNeighbors().clear();
+			this.localMap.getMapNodes().add(start);
+			this.localMap.getMapNodes().add(temp);
+			this.localMap.linkNodes(start.getNodeID(), temp.getNodeID());
+			//start.addNeighbor(temp); //add the new nodes link with the closest node
+			//temp.addNeighbor(start); //add the new node as a neighbor to the closest node
 			return start;
 		}
 	}

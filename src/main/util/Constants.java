@@ -8,7 +8,7 @@ public class Constants {
 	public static final String SCALES_PATH = "src/data/mapScales.yml"; // scales path
 	
 	// images
-	public static final String DEFAULT_MAP_IMAGE = "Complete_Campus_Map.JPG"; // default map
+	public static final String DEFAULT_MAP_IMAGE = "CCM.JPG"; // default map
 	
 	// sounds
 	public static final String BUTTON_PATH = "src/data/sound/button.wav";

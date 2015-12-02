@@ -62,7 +62,7 @@ import javax.swing.JLayeredPane;
 @SuppressWarnings("serial")
 public class GUIFront extends JFrame {
 
-	private static GUIBack backend;
+	public static GUIBack backend;
 	private static GlobalMap globalMap;
 	private static boolean setStart = false; // keeps track of whether you have set a start or end node yet
 	private static boolean setEnd = false;
@@ -72,6 +72,7 @@ public class GUIFront extends JFrame {
 	public static MapNode startNode = null, endNode = null;
 	public static String allText = "";
 	public static ArrayList<GUIBack> backends = new ArrayList<GUIBack>();
+	public static ArrayList<MapNode> mapnodes = new ArrayList<MapNode>();
 	public static ArrayList<ArrayList<MapNode>> paths = new ArrayList<ArrayList<MapNode>>();
 	public static ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
@@ -80,6 +81,7 @@ public class GUIFront extends JFrame {
 	public static JTabbedPane mainPanel; 
 	public static ArrayList<MapNode> allNodes;
 	public static int index = 0;
+	public static ArrayList<MapNode> thisRoute;
 	
 	static AffineTransform transform; // the current state of image transformation
 	Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
@@ -111,30 +113,38 @@ public class GUIFront extends JFrame {
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
 		// Instantiate GUIBack to its default
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
-		GUIBack initial = new GUIBack(defaultMapImage, null);
+		GUIBack initial = new GUIBack(/*defaultMapImage, null*/);
 		backends.add(0, initial);
 
 		// Initialize the GlobalMap variable with all of the LocalMaps and all
 		// of their nodes
 		globalMap = new GlobalMap();
-
-		ArrayList<LocalMap> tmpListLocal = new ArrayList<LocalMap>(); // temporary list of LocalMaps to be initialized
-		for (int i = 0; i < numLocalMaps; i++) {
-			initial.loadLocalMap(localMapFilenames[i].getName()); // sets the current LocalMap each filename from the "data.localmaps" folder
-			tmpListLocal.add(initial.getLocalMap());
+		
+		String[] localMapFilenameStrings = new String[localMapFilenames.length];
+		for(int i = 0; i < localMapFilenames.length; i++){
+			System.out.println("LOCAL MAP FILE NAME STRINGS: " + localMapFilenames[i].getName());
+			String path = localMapFilenames[i].getName();
+			localMapFilenameStrings[i] = path;
 		}
-		globalMap.setLocalMaps(tmpListLocal);
-		initial.setLocalMap(tmpListLocal.get(0));
+		
+		backend = initial;
+		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
+		for (LocalMap localmap : localMapList){
+			localmap.transformCoordinates();
+		}
+		globalMap.setLocalMaps(localMapList);
+		
+		backend.setLocalMap(localMapList.get(0));
 
 		// add the collection of nodes to the ArrayList of GlobalMap
 		allNodes = new ArrayList<MapNode>();
-		for (LocalMap local : tmpListLocal) {
+		for (LocalMap local : localMapList) {
 
 			if (!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
 				allNodes.addAll(local.getMapNodes());
 		}
 		globalMap.setMapNodes(allNodes);
-		backend = initial;
+		//backend = initial;
 
 		/**
 		 * GUI related code
@@ -186,7 +196,7 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(0).getMapImageName()).getImage());
 				panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
-				backend.setLocalMap(tmpListLocal.get(0));
+				backend.setLocalMap(globalMap.getLocalMaps().get(0));
 			}
 		});
 		
@@ -199,7 +209,7 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(1).getMapImageName()).getImage());
 				panelMap.setMapNodes(globalMap.getLocalMaps().get(1).getMapNodes());
-				backend.setLocalMap(tmpListLocal.get(1));
+				backend.setLocalMap(globalMap.getLocalMaps().get(1));
 			}
 		});
 		mnStratton.add(mntmFFStratton);
@@ -282,7 +292,7 @@ public class GUIFront extends JFrame {
 		
 
 		// Image of the default map loaded into backend
-		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
+		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + "AK1.jpg").getImage();
 		JLabel lblInvalidEntry = new JLabel("Invalid Entry");
 		lblInvalidEntry.setVisible(false);
 		Action actionEnd = new AbstractAction()
@@ -469,19 +479,28 @@ public class GUIFront extends JFrame {
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
+					System.out.println("Start node: " + globalMap.getStartNode().getNodeID());
+					System.out.println("End node: " + globalMap.getEndNode().getNodeID());
+					System.out.println("Number of nodes in globalMap: " + globalMap.getMapNodes().size());
 					routes = backend.getMeRoutes(globalMap.getStartNode(), globalMap.getEndNode());
-					for (int i = 0; i < routes.size() - 1; i++){
-						LocalMap localmap = routes.get(i).get(0).getLocalMap();
-						if (localmap.getEnd() == null){
-							int size = routes.get(i).size() - 1;
-							localmap.setStart(routes.get(i).get(size));
+					if (routes.isEmpty()){
+						mapnodes = backend.runAStar(backend.getLocalMap().getStart(), backend.getLocalMap().getEnd());
+					} else {
+						for (int i = 0; i < routes.size() - 1; i++){
+							LocalMap localmap = routes.get(i).get(0).getLocalMap();
+								if (localmap.getEnd() == null){
+									int size = routes.get(i).size() - 1;
+									localmap.setStart(routes.get(i).get(size));
+								}
+						
+							if (localmap.getStart() == null){
+								localmap.setEnd(routes.get(i).get(0));
+							}
+							ArrayList<MapNode> route = routes.get(i);
+							paths.add(route);
 						}
-						if (localmap.getStart() == null){
-							localmap.setEnd(routes.get(i).get(0));
-						}
-						ArrayList<MapNode> route = routes.get(i);
-						paths.add(route);
 					}
+					thisRoute = routes.get(index);
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
 					/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
@@ -594,20 +613,34 @@ public class GUIFront extends JFrame {
 		mainPanel.add(slidePanel, BorderLayout.CENTER);
 		getContentPane().add(mainPanel);
 		btnNextMap = new JButton("Next Map -->");
+		if (index != paths.size()){
+			btnNextMap.setEnabled(false);
+		}
 		btnNextMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae){
+				index++;
+				thisRoute = paths.get(index - 1);
+				globalMap.getLocalMaps().get(index);
+				drawLine = true;
 				// TODO: Fill in this mehtod once we know how to draw/load maps
 			}
 		});
 		getContentPane().add(btnNextMap, BorderLayout.SOUTH);
 		
-		// Add buttons to move between two maps 
+		// Add buttons to move between two maps
 		btnPreviousMap = new JButton("<-- Previous Map");
+		if (index != 0){
+			btnPreviousMap.setEnabled(false);
+		}
 		btnPreviousMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
+				index--;
+				thisRoute = paths.get(index);
+				drawLine = true;
 				// TODO: Fill in this method once we know how to draw/load maps
+				
 			}
 		});
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
@@ -1030,7 +1063,9 @@ public class GUIFront extends JFrame {
 					if (allowSetting == true){
 						// figure out where the closest map node is, set that node as a startnode the StartingNode
 						Point clickedAt = me.getPoint();
-						MapNode node = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
+						MapNode node = backend.findNearestNode(clickedAt.getX(), clickedAt.getY(), backend.getLocalMap());
+						GUIBack tempBack = backend;
+						System.out.println("Node found is: " + node.getNodeID());
 					
 						if(globalMap.getChosenNodes().size() == 0){
 							globalMap.setStartNode(node);
@@ -1218,12 +1253,12 @@ public class GUIFront extends JFrame {
 				if (GUIFront.drawLine = true) {
 					//ArrayList<MapNode> mapNodes = backend.getLocalMap().getChosenNodes();
 					//for (ArrayList<MapNode> mapNodes: backend.getMeRoutes(startNode, endNode)){
-					for (ArrayList<MapNode> mapNodes : paths){
-						for (int i = 0; i < mapNodes.size() - 1; i++) {
-							double x1 = backend.getCoordinates(mapNodes).get(i)[0];
-							double y1 = backend.getCoordinates(mapNodes).get(i)[1];
-							double x2 = backend.getCoordinates(mapNodes).get(i + 1)[0];
-							double y2 = backend.getCoordinates(mapNodes).get(i + 1)[1];
+					if (paths.isEmpty()) {
+						for (int i = 0; i < mapnodes.size() - 1; i++) {
+							double x1 = backend.getCoordinates(mapnodes).get(i)[0];
+							double y1 = backend.getCoordinates(mapnodes).get(i)[1];
+							double x2 = backend.getCoordinates(mapnodes).get(i + 1)[0];
+							double y2 = backend.getCoordinates(mapnodes).get(i + 1)[1];
 							double alpha = 0.5;
 							Color color = new Color(0, 1, 1, (float) alpha);
 							Graphics2D g2 = (Graphics2D) g;
@@ -1233,30 +1268,66 @@ public class GUIFront extends JFrame {
 						}
 						drawLine = false;
 						removeLine = true;
+					} 
+					else {
+						//for (ArrayList<MapNode> mapNodes : paths){
+							//ArrayList<MapNode>  = paths.get(0);
+							for (int i = 0; i < thisRoute.size() - 1; i++) {
+								double x1 = backend.getCoordinates(thisRoute).get(i)[0];
+								double y1 = backend.getCoordinates(thisRoute).get(i)[1];
+								double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
+								double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
+								double alpha = 0.5;
+								Color color = new Color(0, 1, 1, (float) alpha);
+								Graphics2D g2 = (Graphics2D) g;
+								g2.setStroke(new BasicStroke(5));
+								g2.setColor(color);
+								g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+							}
+							drawLine = false;
+							removeLine = true;
+						//}
 					}
 				} else if (GUIFront.removeLine == true) {
-					//for (ArrayList<MapNode> mapNodes : backend.getMeRoutes(startNode, endNode)){
-					for (ArrayList<MapNode> mapNodes : paths){
-						for (int i = 0; i < mapNodes.size() - 1; i++) {
-							double x1 = backend.getCoordinates(mapNodes).get(i)[0];
-							double y1 = backend.getCoordinates(mapNodes).get(i)[1];
-							double x2 = backend.getCoordinates(mapNodes).get(i + 1)[0];
-							double y2 = backend.getCoordinates(mapNodes).get(i + 1)[1];
+					if (paths.isEmpty()){
+						for (int i = 0; i < mapnodes.size() - 1; i++) {
+							double x1 = backend.getCoordinates(mapnodes).get(i)[0];
+							double y1 = backend.getCoordinates(mapnodes).get(i)[1];
+							double x2 = backend.getCoordinates(mapnodes).get(i + 1)[0];
+							double y2 = backend.getCoordinates(mapnodes).get(i + 1)[1];
+							double alpha = 0.5;
+							Color color = new Color(0, 1, 1, (float) alpha);
 							Graphics2D g2 = (Graphics2D) g;
 							g2.setStroke(new BasicStroke(5));
-							g2.setColor(Color.white);
+							g2.setColor(color);
 							g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 						}
-						//load next map function in another tab pane
-						//
 						drawLine = true;
 						removeLine = false;
+					} else {
+					//for (ArrayList<MapNode> mapNodes : backend.getMeRoutes(startNode, endNode)){
+						//for (ArrayList<MapNode> mapNodes : paths){
+							for (int i = 0; i < thisRoute.size() - 1; i++) {
+								double x1 = backend.getCoordinates(thisRoute).get(i)[0];
+								double y1 = backend.getCoordinates(thisRoute).get(i)[1];
+								double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
+								double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
+								Graphics2D g2 = (Graphics2D) g;
+								g2.setStroke(new BasicStroke(5));
+								g2.setColor(Color.white);
+								g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+							}
+							//load next map function in another tab pane
+							//
+							drawLine = true;
+							removeLine = false;
+						//}
 					}
 				}
 				repaint();
 				graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
+				}
 			}
-		}
 		
 		public String getID(){
 			return this.panelID;
