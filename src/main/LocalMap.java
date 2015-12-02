@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import main.gui.DevGUIBack;
+import main.util.Constants;
 import main.util.SaveUtil;
 import main.util.YamlParser;
 
@@ -31,7 +32,7 @@ public class LocalMap implements Serializable{
 		this.mapImageName = mapImageName;
 		this.mapNodes = mapNodes;
 		
-		YamlParser yamlParser = new YamlParser(new String[]{"src/data/mapScales.yml"});
+		YamlParser yamlParser = new YamlParser(new String[]{Constants.DATA_PATH});
 		
 		HashMap<String, Double> argList = yamlParser.getArgList();
 		if(argList.size() > 0){
@@ -44,7 +45,8 @@ public class LocalMap implements Serializable{
 			mapImageJPG = mapImageJPG + ".jpg";
 			
 			System.out.println(mapImageJPG);
-			this.mapScale = argList.get("zoomRatio-"+ mapImageJPG); // gets the zoomRatio based on the associated mapImageName
+			this.mapScale = argList.get("scale-"+ mapImageJPG); // gets the zoomRatio based on the associated mapImageName
+			System.out.println("angle-"+ mapImageJPG);
 			this.transformAngle = argList.get("angle-"+ mapImageJPG);//gets the transformation angle based on the associated mapImageName
 			this.xOffset = argList.get("xOffset-"+ mapImageJPG);//gets the x coordinate offset based on the associated mapImageName
 			this.yOffset = argList.get("yOffset-"+ mapImageJPG);//gets the y coordinate offset based on the associated mapImageName

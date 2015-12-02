@@ -5,7 +5,7 @@ public class Constants {
 	// paths
 	public static final String LOCAL_MAP_PATH = "src/data/localmaps"; // local map path
 	public static final String IMAGES_PATH = "src/data/images"; // images path
-	public static final String SCALES_PATH = "src/data/mapData.yml"; // scales path
+	public static final String DATA_PATH = "src/data/mapData.yml"; // scales path
 	
 	// images
 	public static final String DEFAULT_MAP_IMAGE = "CCM.jpg"; // default map

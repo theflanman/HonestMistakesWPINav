@@ -61,6 +61,7 @@ public class GUIBack implements Serializable {
 		
 		
 		for(String fileName: fileNames){
+			System.out.println("Loading Nodes from " + fileName);
 			//find exclusively the file name
 			String fileParts[] = fileName.split("/");
 			
