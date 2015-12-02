@@ -44,7 +44,7 @@ public class LocalMap implements Serializable{
 			mapImageJPG = mapImageJPG + ".jpg";
 			
 			System.out.println(mapImageJPG);
-			this.mapScale = argList.get("scale-"+ mapImageJPG); // gets the scale based on the associated mapImageName
+			this.mapScale = argList.get("zoomRatio-"+ mapImageJPG); // gets the zoomRatio based on the associated mapImageName
 			this.transformAngle = argList.get("angle-"+ mapImageJPG);//gets the transformation angle based on the associated mapImageName
 			this.xOffset = argList.get("xOffset-"+ mapImageJPG);//gets the x coordinate offset based on the associated mapImageName
 			this.yOffset = argList.get("yOffset-"+ mapImageJPG);//gets the y coordinate offset based on the associated mapImageName

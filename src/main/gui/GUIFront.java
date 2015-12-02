@@ -600,7 +600,7 @@ public class GUIFront extends JFrame {
 		
 		/**
 		 * The configuration files describe what will take place for each animation. So by default we want the map larger 
-		 * and the side panel very small. When we click the directions panel we want that to slide out, scale the map panel, and
+		 * and the side panel very small. When we click the directions panel we want that to slide out, zoomRatio the map panel, and
 		 * adjust the sizes
 		 */
 		mainConfig = new SLConfig(slidePanel)
@@ -928,7 +928,7 @@ public class GUIFront extends JFrame {
 		private String panelID;
 		
 		double panX, panY;
-		double scale;
+		double zoomRatio;
 
 		/**
 		 * Constructor for any tab that would hold a map
@@ -953,7 +953,7 @@ public class GUIFront extends JFrame {
 			
 			panX = 0;
 			panY = 0;
-			scale = 1;
+			zoomRatio = 1;
 			
 			addMouseListener(panHandle);
 			addMouseMotionListener(panHandle);
@@ -972,7 +972,25 @@ public class GUIFront extends JFrame {
 					if (allowSetting == true){
 						// figure out where the closest map node is, set that node as a startnode the StartingNode
 						Point clickedAt = me.getPoint();
-						MapNode node = backend.findNearestNode(clickedAt.getX(), clickedAt.getY());
+						
+						int scaledXPos = (int) clickedAt.getX();
+						int scaledYPos = (int) clickedAt.getY();
+						if(zoomRatio > 1){
+							scaledXPos = scaledXPos;
+							scaledYPos = scaledYPos;
+						}
+						else if(zoomRatio < 1){
+							scaledXPos = scaledXPos;
+							scaledYPos = scaledYPos;		
+						}
+						
+						System.out.println("ZOOM AMOUNT: " + zoomRatio);
+						System.out.println("OLD X: " + clickedAt.getX());
+						System.out.println("OLD Y: " + clickedAt.getY());
+						System.out.println("SCALED X: " + scaledXPos);
+						System.out.println("SCALED Y: " + scaledYPos);
+						System.out.println("---------");
+						MapNode node = backend.findNearestNode(scaledXPos, scaledYPos);
 					
 						if(chosenNodes.size() == 0){
 							backend.setStartNode(node);
@@ -1099,7 +1117,7 @@ public class GUIFront extends JFrame {
 				
 				// account for changes in zoom
 				transform.translate(getWidth() / 2, getHeight() /2);
-				transform.scale(scale, scale);
+				transform.scale(zoomRatio, zoomRatio);
 				transform.translate(-getWidth() / 2, -getHeight() / 2);
 				
 				transform.translate(panX, panY); // move to designated location
@@ -1175,7 +1193,7 @@ public class GUIFront extends JFrame {
 			return this.panelID;
 		}
 		public void setScale(double scaleAmt){
-			this.scale = scaleAmt;
+			this.zoomRatio = scaleAmt;
 		}
 
 		/**
