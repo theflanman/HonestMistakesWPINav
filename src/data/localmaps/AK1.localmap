@@ -1896,7 +1896,9 @@
         <XFeet>227.39499999999998</XFeet>
         <YFeet>76.285</YFeet>
         <ZFeet>0.0</ZFeet>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>AK1_112</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -2186,6 +2188,7 @@
         <Neighbors>
             <Neighbor>AK1_31</Neighbor>
             <Neighbor>AK1_16</Neighbor>
+            <Neighbor>AK1_112</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2476,7 +2479,11 @@
         <XFeet>195.64</XFeet>
         <YFeet>77.38</YFeet>
         <ZFeet>0.0</ZFeet>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>AK1_99</Neighbor>
+            <Neighbor>AK1_86</Neighbor>
+            <Neighbor>AK1_156</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -2498,6 +2505,7 @@
         <Neighbors>
             <Neighbor>AK1_71</Neighbor>
             <Neighbor>AK1_115</Neighbor>
+            <Neighbor>AK1_155</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>AK132</OfficialName>
@@ -2521,6 +2529,7 @@
             <Neighbor>AK1_2</Neighbor>
             <Neighbor>AK1_68</Neighbor>
             <Neighbor>AK1_130</Neighbor>
+            <Neighbor>AK1_156</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -3033,7 +3042,6 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK1_136</Neighbor>
-            <Neighbor>AK2_87</Neighbor>
             <Neighbor>AKB_9</Neighbor>
         </Neighbors>
         <Attributes>
@@ -3414,6 +3422,51 @@
         <Neighbors>
             <Neighbor>AK1_34</Neighbor>
             <Neighbor>AK1_135</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>AK1_155</NodeID>
+        <XPos>511.0</XPos>
+        <YPos>176.0</YPos>
+        <XFeet>186.515</XFeet>
+        <YFeet>64.24</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>AK1_113</Neighbor>
+            <Neighbor>AK1_156</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>AK1_156</NodeID>
+        <XPos>539.0</XPos>
+        <YPos>176.0</YPos>
+        <XFeet>196.73499999999999</XFeet>
+        <YFeet>64.24</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>AK1_112</Neighbor>
+            <Neighbor>AK1_155</Neighbor>
+            <Neighbor>AK1_114</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

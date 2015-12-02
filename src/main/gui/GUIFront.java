@@ -528,7 +528,7 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(index).getMapImageName()).getImage());
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(index).get(0).getLocalMap().getMapImageName()).getImage());
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
 				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
 				thisRoute = paths.get(index);
