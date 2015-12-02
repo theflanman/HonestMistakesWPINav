@@ -119,7 +119,6 @@ public class GUIFront extends JFrame {
 
 		String[] localMapFilenameStrings = new String[localMapFilenames.length];
 		for(int i = 0; i < localMapFilenames.length; i++){
-			System.out.println("LOCAL MAP FILE NAME STRINGS: " + localMapFilenames[i].getName());
 			String path = localMapFilenames[i].getName();
 			localMapFilenameStrings[i] = path;
 		}
@@ -134,9 +133,6 @@ public class GUIFront extends JFrame {
 		allNodes = new ArrayList<MapNode>();
 
 		for (LocalMap local : localMapList) {
-
-			if (!local.getMapNodes().equals(null)) // as long as the LocalMap isn't null, add its nodes to the GlobalMap
-				System.out.println(local.getMapNodes());
 			allNodes.addAll(local.getMapNodes());
 		}
 		globalMap.setMapNodes(allNodes);
@@ -556,7 +552,6 @@ public class GUIFront extends JFrame {
 		 * Tween related code to make the animations work
 		 */
 		slidePanel = new SLPanel();
-		System.out.println("MAP PATH: " + mapPath);
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1");
 		panelDirections = new TweenPanel("2");
 

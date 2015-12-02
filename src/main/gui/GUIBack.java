@@ -61,10 +61,8 @@ public class GUIBack implements Serializable {
 		
 		
 		for(String fileName: fileNames){
-			System.out.println("Loading Nodes from " + fileName);
 			//find exclusively the file name
 			String fileParts[] = fileName.split("/");
-			
 			String mapAppend = fileParts[fileParts.length-1];
 			mapAppend = SaveUtil.removeExtension(mapAppend) + "_";
 			//setup an array list of nodes for the local map and an array list of strings for linking
