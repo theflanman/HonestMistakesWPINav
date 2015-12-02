@@ -5,8 +5,8 @@
         <NodeID>AK2_1</NodeID>
         <XPos>501.0</XPos>
         <YPos>121.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>182.865</XFeet>
+        <YFeet>44.165</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_4</Neighbor>
@@ -30,8 +30,8 @@
         <NodeID>AK2_2</NodeID>
         <XPos>566.0</XPos>
         <YPos>119.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>206.59</XFeet>
+        <YFeet>43.435</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_3</Neighbor>
@@ -51,8 +51,8 @@
         <NodeID>AK2_3</NodeID>
         <XPos>549.0</XPos>
         <YPos>121.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>200.385</XFeet>
+        <YFeet>44.165</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_2</Neighbor>
@@ -74,8 +74,8 @@
         <NodeID>AK2_4</NodeID>
         <XPos>517.0</XPos>
         <YPos>121.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>188.70499999999998</XFeet>
+        <YFeet>44.165</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_3</Neighbor>
@@ -98,8 +98,8 @@
         <NodeID>AK2_5</NodeID>
         <XPos>545.0</XPos>
         <YPos>148.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>198.92499999999998</XFeet>
+        <YFeet>54.019999999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_7</Neighbor>
@@ -120,8 +120,8 @@
         <NodeID>AK2_6</NodeID>
         <XPos>521.0</XPos>
         <YPos>144.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>190.165</XFeet>
+        <YFeet>52.56</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_8</Neighbor>
@@ -142,8 +142,8 @@
         <NodeID>AK2_7</NodeID>
         <XPos>546.0</XPos>
         <YPos>164.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>199.29</XFeet>
+        <YFeet>59.86</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_5</Neighbor>
@@ -165,8 +165,8 @@
         <NodeID>AK2_8</NodeID>
         <XPos>521.0</XPos>
         <YPos>163.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>190.165</XFeet>
+        <YFeet>59.495</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_6</Neighbor>
@@ -188,8 +188,8 @@
         <NodeID>AK2_9</NodeID>
         <XPos>568.0</XPos>
         <YPos>165.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>207.32</XFeet>
+        <YFeet>60.225</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_7</Neighbor>
@@ -211,8 +211,8 @@
         <NodeID>AK2_10</NodeID>
         <XPos>566.0</XPos>
         <YPos>144.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>206.59</XFeet>
+        <YFeet>52.56</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_9</Neighbor>
@@ -233,8 +233,8 @@
         <NodeID>AK2_11</NodeID>
         <XPos>567.0</XPos>
         <YPos>132.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>206.95499999999998</XFeet>
+        <YFeet>48.18</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_10</Neighbor>
@@ -255,8 +255,8 @@
         <NodeID>AK2_12</NodeID>
         <XPos>591.0</XPos>
         <YPos>164.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>215.715</XFeet>
+        <YFeet>59.86</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_9</Neighbor>
@@ -277,8 +277,8 @@
         <NodeID>AK2_13</NodeID>
         <XPos>486.0</XPos>
         <YPos>161.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>177.39</XFeet>
+        <YFeet>58.765</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_8</Neighbor>
@@ -300,8 +300,8 @@
         <NodeID>AK2_14</NodeID>
         <XPos>488.0</XPos>
         <YPos>184.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>178.12</XFeet>
+        <YFeet>67.16</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_13</Neighbor>
@@ -322,8 +322,8 @@
         <NodeID>AK2_15</NodeID>
         <XPos>440.0</XPos>
         <YPos>161.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>160.6</XFeet>
+        <YFeet>58.765</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_13</Neighbor>
@@ -345,8 +345,8 @@
         <NodeID>AK2_16</NodeID>
         <XPos>438.0</XPos>
         <YPos>183.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>159.87</XFeet>
+        <YFeet>66.795</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_15</Neighbor>
@@ -367,8 +367,8 @@
         <NodeID>AK2_17</NodeID>
         <XPos>421.0</XPos>
         <YPos>140.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>153.665</XFeet>
+        <YFeet>51.1</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_18</Neighbor>
@@ -389,8 +389,8 @@
         <NodeID>AK2_18</NodeID>
         <XPos>423.0</XPos>
         <YPos>120.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>154.395</XFeet>
+        <YFeet>43.8</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_17</Neighbor>
@@ -412,8 +412,8 @@
         <NodeID>AK2_19</NodeID>
         <XPos>403.0</XPos>
         <YPos>120.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>147.095</XFeet>
+        <YFeet>43.8</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_18</Neighbor>
@@ -434,8 +434,8 @@
         <NodeID>AK2_20</NodeID>
         <XPos>369.0</XPos>
         <YPos>120.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>134.685</XFeet>
+        <YFeet>43.8</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_21</Neighbor>
@@ -456,8 +456,8 @@
         <NodeID>AK2_21</NodeID>
         <XPos>366.0</XPos>
         <YPos>144.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>133.59</XFeet>
+        <YFeet>52.56</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_22</Neighbor>
@@ -478,8 +478,8 @@
         <NodeID>AK2_22</NodeID>
         <XPos>365.0</XPos>
         <YPos>162.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>133.225</XFeet>
+        <YFeet>59.129999999999995</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_23</Neighbor>
@@ -501,8 +501,8 @@
         <NodeID>AK2_23</NodeID>
         <XPos>385.0</XPos>
         <YPos>161.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>140.525</XFeet>
+        <YFeet>58.765</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_44</Neighbor>
@@ -524,8 +524,8 @@
         <NodeID>AK2_24</NodeID>
         <XPos>385.0</XPos>
         <YPos>253.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>140.525</XFeet>
+        <YFeet>92.345</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_26</Neighbor>
@@ -547,8 +547,8 @@
         <NodeID>AK2_25</NodeID>
         <XPos>384.0</XPos>
         <YPos>270.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>140.16</XFeet>
+        <YFeet>98.55</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_24</Neighbor>
@@ -568,8 +568,8 @@
         <NodeID>AK2_26</NodeID>
         <XPos>367.0</XPos>
         <YPos>255.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>133.95499999999998</XFeet>
+        <YFeet>93.075</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_27</Neighbor>
@@ -590,8 +590,8 @@
         <NodeID>AK2_27</NodeID>
         <XPos>366.0</XPos>
         <YPos>279.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>133.59</XFeet>
+        <YFeet>101.835</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_28</Neighbor>
@@ -612,8 +612,8 @@
         <NodeID>AK2_28</NodeID>
         <XPos>352.0</XPos>
         <YPos>280.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>128.48</XFeet>
+        <YFeet>102.2</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_29</Neighbor>
@@ -634,8 +634,8 @@
         <NodeID>AK2_29</NodeID>
         <XPos>332.0</XPos>
         <YPos>281.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>121.17999999999999</XFeet>
+        <YFeet>102.565</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_30</Neighbor>
@@ -658,8 +658,8 @@
         <NodeID>AK2_30</NodeID>
         <XPos>314.0</XPos>
         <YPos>280.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>114.61</XFeet>
+        <YFeet>102.2</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_31</Neighbor>
@@ -680,8 +680,8 @@
         <NodeID>AK2_31</NodeID>
         <XPos>295.0</XPos>
         <YPos>279.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>107.675</XFeet>
+        <YFeet>101.835</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_32</Neighbor>
@@ -702,8 +702,8 @@
         <NodeID>AK2_32</NodeID>
         <XPos>294.0</XPos>
         <YPos>207.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>107.31</XFeet>
+        <YFeet>75.55499999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_33</Neighbor>
@@ -724,8 +724,8 @@
         <NodeID>AK2_33</NodeID>
         <XPos>295.0</XPos>
         <YPos>185.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>107.675</XFeet>
+        <YFeet>67.52499999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_34</Neighbor>
@@ -747,8 +747,8 @@
         <NodeID>AK2_34</NodeID>
         <XPos>312.0</XPos>
         <YPos>184.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>113.88</XFeet>
+        <YFeet>67.16</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_33</Neighbor>
@@ -768,8 +768,8 @@
         <NodeID>AK2_35</NodeID>
         <XPos>264.0</XPos>
         <YPos>183.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>96.36</XFeet>
+        <YFeet>66.795</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_46</Neighbor>
@@ -790,8 +790,8 @@
         <NodeID>AK2_36</NodeID>
         <XPos>283.0</XPos>
         <YPos>172.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>103.295</XFeet>
+        <YFeet>62.78</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_37</Neighbor>
@@ -812,8 +812,8 @@
         <NodeID>AK2_37</NodeID>
         <XPos>285.0</XPos>
         <YPos>161.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>104.02499999999999</XFeet>
+        <YFeet>58.765</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_38</Neighbor>
@@ -834,8 +834,8 @@
         <NodeID>AK2_38</NodeID>
         <XPos>302.0</XPos>
         <YPos>161.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>110.23</XFeet>
+        <YFeet>58.765</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_39</Neighbor>
@@ -857,8 +857,8 @@
         <NodeID>AK2_39</NodeID>
         <XPos>302.0</XPos>
         <YPos>141.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>110.23</XFeet>
+        <YFeet>51.464999999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_38</Neighbor>
@@ -878,8 +878,8 @@
         <NodeID>AK2_40</NodeID>
         <XPos>318.0</XPos>
         <YPos>161.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>116.07</XFeet>
+        <YFeet>58.765</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_41</Neighbor>
@@ -901,8 +901,8 @@
         <NodeID>AK2_41</NodeID>
         <XPos>319.0</XPos>
         <YPos>143.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>116.435</XFeet>
+        <YFeet>52.195</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_40</Neighbor>
@@ -922,8 +922,8 @@
         <NodeID>AK2_42</NodeID>
         <XPos>350.0</XPos>
         <YPos>161.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>127.75</XFeet>
+        <YFeet>58.765</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_43</Neighbor>
@@ -945,8 +945,8 @@
         <NodeID>AK2_43</NodeID>
         <XPos>350.0</XPos>
         <YPos>142.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>127.75</XFeet>
+        <YFeet>51.83</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_42</Neighbor>
@@ -966,8 +966,8 @@
         <NodeID>AK2_44</NodeID>
         <XPos>419.0</XPos>
         <YPos>162.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>152.935</XFeet>
+        <YFeet>59.129999999999995</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_23</Neighbor>
@@ -989,8 +989,8 @@
         <NodeID>AK2_45</NodeID>
         <XPos>385.0</XPos>
         <YPos>184.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>140.525</XFeet>
+        <YFeet>67.16</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_23</Neighbor>
@@ -1011,8 +1011,8 @@
         <NodeID>AK2_46</NodeID>
         <XPos>282.0</XPos>
         <YPos>183.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>102.92999999999999</XFeet>
+        <YFeet>66.795</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_33</Neighbor>
@@ -1034,8 +1034,8 @@
         <NodeID>AK2_47</NodeID>
         <XPos>590.0</XPos>
         <YPos>186.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>215.35</XFeet>
+        <YFeet>67.89</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_48</Neighbor>
@@ -1056,8 +1056,8 @@
         <NodeID>AK2_48</NodeID>
         <XPos>613.0</XPos>
         <YPos>185.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>223.745</XFeet>
+        <YFeet>67.52499999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_49</Neighbor>
@@ -1078,8 +1078,8 @@
         <NodeID>AK2_49</NodeID>
         <XPos>611.0</XPos>
         <YPos>207.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>223.015</XFeet>
+        <YFeet>75.55499999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_50</Neighbor>
@@ -1101,8 +1101,8 @@
         <NodeID>AK2_50</NodeID>
         <XPos>583.0</XPos>
         <YPos>207.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>212.795</XFeet>
+        <YFeet>75.55499999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_51</Neighbor>
@@ -1123,8 +1123,8 @@
         <NodeID>AK2_51</NodeID>
         <XPos>559.0</XPos>
         <YPos>206.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>204.035</XFeet>
+        <YFeet>75.19</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_52</Neighbor>
@@ -1145,8 +1145,8 @@
         <NodeID>AK2_52</NodeID>
         <XPos>536.0</XPos>
         <YPos>206.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>195.64</XFeet>
+        <YFeet>75.19</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_53</Neighbor>
@@ -1168,8 +1168,8 @@
         <NodeID>AK2_53</NodeID>
         <XPos>537.0</XPos>
         <YPos>247.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>196.005</XFeet>
+        <YFeet>90.155</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_55</Neighbor>
@@ -1191,8 +1191,8 @@
         <NodeID>AK2_54</NodeID>
         <XPos>583.0</XPos>
         <YPos>246.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>212.795</XFeet>
+        <YFeet>89.78999999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_53</Neighbor>
@@ -1212,8 +1212,8 @@
         <NodeID>AK2_55</NodeID>
         <XPos>538.0</XPos>
         <YPos>281.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>196.37</XFeet>
+        <YFeet>102.565</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_61</Neighbor>
@@ -1235,8 +1235,8 @@
         <NodeID>AK2_56</NodeID>
         <XPos>516.0</XPos>
         <YPos>279.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>188.34</XFeet>
+        <YFeet>101.835</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_55</Neighbor>
@@ -1257,8 +1257,8 @@
         <NodeID>AK2_57</NodeID>
         <XPos>498.0</XPos>
         <YPos>245.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>181.76999999999998</XFeet>
+        <YFeet>89.425</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_89</Neighbor>
@@ -1279,8 +1279,8 @@
         <NodeID>AK2_58</NodeID>
         <XPos>498.0</XPos>
         <YPos>220.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>181.76999999999998</XFeet>
+        <YFeet>80.3</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_57</Neighbor>
@@ -1301,8 +1301,8 @@
         <NodeID>AK2_59</NodeID>
         <XPos>480.0</XPos>
         <YPos>278.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>175.2</XFeet>
+        <YFeet>101.47</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_89</Neighbor>
@@ -1323,8 +1323,8 @@
         <NodeID>AK2_60</NodeID>
         <XPos>439.0</XPos>
         <YPos>278.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>160.23499999999999</XFeet>
+        <YFeet>101.47</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_16</Neighbor>
@@ -1345,8 +1345,8 @@
         <NodeID>AK2_61</NodeID>
         <XPos>537.0</XPos>
         <YPos>295.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>196.005</XFeet>
+        <YFeet>107.675</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_63</Neighbor>
@@ -1368,8 +1368,8 @@
         <NodeID>AK2_62</NodeID>
         <XPos>559.0</XPos>
         <YPos>294.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>204.035</XFeet>
+        <YFeet>107.31</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_61</Neighbor>
@@ -1389,8 +1389,8 @@
         <NodeID>AK2_63</NodeID>
         <XPos>518.0</XPos>
         <YPos>296.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>189.07</XFeet>
+        <YFeet>108.03999999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_61</Neighbor>
@@ -1411,8 +1411,8 @@
         <NodeID>AK2_64</NodeID>
         <XPos>485.0</XPos>
         <YPos>297.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>177.025</XFeet>
+        <YFeet>108.405</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_65</Neighbor>
@@ -1433,8 +1433,8 @@
         <NodeID>AK2_65</NodeID>
         <XPos>484.0</XPos>
         <YPos>318.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>176.66</XFeet>
+        <YFeet>116.07</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_66</Neighbor>
@@ -1455,8 +1455,8 @@
         <NodeID>AK2_66</NodeID>
         <XPos>486.0</XPos>
         <YPos>341.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>177.39</XFeet>
+        <YFeet>124.465</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_67</Neighbor>
@@ -1478,8 +1478,8 @@
         <NodeID>AK2_67</NodeID>
         <XPos>568.0</XPos>
         <YPos>342.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>207.32</XFeet>
+        <YFeet>124.83</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_70</Neighbor>
@@ -1501,8 +1501,8 @@
         <NodeID>AK2_68</NodeID>
         <XPos>597.0</XPos>
         <YPos>334.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>217.905</XFeet>
+        <YFeet>121.91</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_67</Neighbor>
@@ -1522,8 +1522,8 @@
         <NodeID>AK2_69</NodeID>
         <XPos>572.0</XPos>
         <YPos>378.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>208.78</XFeet>
+        <YFeet>137.97</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_88</Neighbor>
@@ -1545,8 +1545,8 @@
         <NodeID>AK2_70</NodeID>
         <XPos>573.0</XPos>
         <YPos>357.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>209.14499999999998</XFeet>
+        <YFeet>130.305</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_69</Neighbor>
@@ -1568,8 +1568,8 @@
         <NodeID>AK2_71</NodeID>
         <XPos>639.0</XPos>
         <YPos>316.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>233.23499999999999</XFeet>
+        <YFeet>115.34</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_84</Neighbor>
@@ -1589,8 +1589,8 @@
         <NodeID>AK2_72</NodeID>
         <XPos>682.0</XPos>
         <YPos>318.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>248.93</XFeet>
+        <YFeet>116.07</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_84</Neighbor>
@@ -1610,8 +1610,8 @@
         <NodeID>AK2_73</NodeID>
         <XPos>669.0</XPos>
         <YPos>354.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>244.185</XFeet>
+        <YFeet>129.21</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_86</Neighbor>
@@ -1633,8 +1633,8 @@
         <NodeID>AK2_74</NodeID>
         <XPos>665.0</XPos>
         <YPos>379.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>242.725</XFeet>
+        <YFeet>138.335</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_73</Neighbor>
@@ -1656,8 +1656,8 @@
         <NodeID>AK2_75</NodeID>
         <XPos>689.0</XPos>
         <YPos>411.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>251.48499999999999</XFeet>
+        <YFeet>150.015</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_78</Neighbor>
@@ -1677,8 +1677,8 @@
         <NodeID>AK2_76</NodeID>
         <XPos>689.0</XPos>
         <YPos>389.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>251.48499999999999</XFeet>
+        <YFeet>141.98499999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_77</Neighbor>
@@ -1698,8 +1698,8 @@
         <NodeID>AK2_77</NodeID>
         <XPos>664.0</XPos>
         <YPos>392.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>242.35999999999999</XFeet>
+        <YFeet>143.07999999999998</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_76</Neighbor>
@@ -1721,8 +1721,8 @@
         <NodeID>AK2_78</NodeID>
         <XPos>664.0</XPos>
         <YPos>412.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>242.35999999999999</XFeet>
+        <YFeet>150.38</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_79</Neighbor>
@@ -1744,8 +1744,8 @@
         <NodeID>AK2_79</NodeID>
         <XPos>667.0</XPos>
         <YPos>467.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>243.45499999999998</XFeet>
+        <YFeet>170.45499999999998</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_78</Neighbor>
@@ -1766,8 +1766,8 @@
         <NodeID>AK2_80</NodeID>
         <XPos>645.0</XPos>
         <YPos>502.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>235.42499999999998</XFeet>
+        <YFeet>183.23</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_81</Neighbor>
@@ -1788,8 +1788,8 @@
         <NodeID>AK2_81</NodeID>
         <XPos>669.0</XPos>
         <YPos>501.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>244.185</XFeet>
+        <YFeet>182.865</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_79</Neighbor>
@@ -1810,8 +1810,8 @@
         <NodeID>AK2_82</NodeID>
         <XPos>655.0</XPos>
         <YPos>205.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>239.075</XFeet>
+        <YFeet>74.825</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_49</Neighbor>
@@ -1832,8 +1832,8 @@
         <NodeID>AK2_83</NodeID>
         <XPos>657.0</XPos>
         <YPos>287.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>239.805</XFeet>
+        <YFeet>104.755</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_82</Neighbor>
@@ -1854,8 +1854,8 @@
         <NodeID>AK2_84</NodeID>
         <XPos>656.0</XPos>
         <YPos>316.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>239.44</XFeet>
+        <YFeet>115.34</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_83</Neighbor>
@@ -1878,8 +1878,8 @@
         <NodeID>AK2_85</NodeID>
         <XPos>682.0</XPos>
         <YPos>336.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>248.93</XFeet>
+        <YFeet>122.64</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_86</Neighbor>
@@ -1899,8 +1899,8 @@
         <NodeID>AK2_86</NodeID>
         <XPos>659.0</XPos>
         <YPos>334.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>240.535</XFeet>
+        <YFeet>121.91</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_87</Neighbor>
@@ -1923,8 +1923,8 @@
         <NodeID>AK2_87</NodeID>
         <XPos>641.0</XPos>
         <YPos>335.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>233.965</XFeet>
+        <YFeet>122.27499999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_86</Neighbor>
@@ -1944,8 +1944,8 @@
         <NodeID>AK2_88</NodeID>
         <XPos>644.0</XPos>
         <YPos>374.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>235.06</XFeet>
+        <YFeet>136.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_74</Neighbor>
@@ -1966,8 +1966,8 @@
         <NodeID>AK2_89</NodeID>
         <XPos>499.0</XPos>
         <YPos>275.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>182.135</XFeet>
+        <YFeet>100.375</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_56</Neighbor>
@@ -1989,8 +1989,8 @@
         <NodeID>AK2_90</NodeID>
         <XPos>344.0</XPos>
         <YPos>191.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>125.56</XFeet>
+        <YFeet>69.715</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_91</Neighbor>
@@ -2010,8 +2010,8 @@
         <NodeID>AK2_91</NodeID>
         <XPos>330.0</XPos>
         <YPos>190.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>120.45</XFeet>
+        <YFeet>69.35</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_92</Neighbor>
@@ -2033,8 +2033,8 @@
         <NodeID>AK2_92</NodeID>
         <XPos>330.0</XPos>
         <YPos>161.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>120.45</XFeet>
+        <YFeet>58.765</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_40</Neighbor>
@@ -2056,8 +2056,8 @@
         <NodeID>AK2_93</NodeID>
         <XPos>333.0</XPos>
         <YPos>299.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>121.545</XFeet>
+        <YFeet>109.13499999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_95</Neighbor>
@@ -2080,8 +2080,8 @@
         <NodeID>AK2_94</NodeID>
         <XPos>351.0</XPos>
         <YPos>298.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>128.115</XFeet>
+        <YFeet>108.77</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_93</Neighbor>
@@ -2101,8 +2101,8 @@
         <NodeID>AK2_95</NodeID>
         <XPos>317.0</XPos>
         <YPos>297.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>115.705</XFeet>
+        <YFeet>108.405</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_93</Neighbor>
@@ -2122,8 +2122,8 @@
         <NodeID>AK2_96</NodeID>
         <XPos>333.0</XPos>
         <YPos>342.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>121.545</XFeet>
+        <YFeet>124.83</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_104</Neighbor>
@@ -2145,8 +2145,8 @@
         <NodeID>AK2_97</NodeID>
         <XPos>376.0</XPos>
         <YPos>342.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>137.24</XFeet>
+        <YFeet>124.83</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_96</Neighbor>
@@ -2168,8 +2168,8 @@
         <NodeID>AK2_98</NodeID>
         <XPos>394.0</XPos>
         <YPos>341.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>143.81</XFeet>
+        <YFeet>124.465</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_97</Neighbor>
@@ -2191,8 +2191,8 @@
         <NodeID>AK2_99</NodeID>
         <XPos>393.0</XPos>
         <YPos>326.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>143.445</XFeet>
+        <YFeet>118.99</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_98</Neighbor>
@@ -2213,8 +2213,8 @@
         <NodeID>AK2_100</NodeID>
         <XPos>421.0</XPos>
         <YPos>319.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>153.665</XFeet>
+        <YFeet>116.435</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_99</Neighbor>
@@ -2235,8 +2235,8 @@
         <NodeID>AK2_101</NodeID>
         <XPos>435.0</XPos>
         <YPos>316.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>158.775</XFeet>
+        <YFeet>115.34</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_100</Neighbor>
@@ -2257,8 +2257,8 @@
         <NodeID>AK2_102</NodeID>
         <XPos>433.0</XPos>
         <YPos>300.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>158.045</XFeet>
+        <YFeet>109.5</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_101</Neighbor>
@@ -2278,8 +2278,8 @@
         <NodeID>AK2_103</NodeID>
         <XPos>275.0</XPos>
         <YPos>334.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>100.375</XFeet>
+        <YFeet>121.91</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_104</Neighbor>
@@ -2299,8 +2299,8 @@
         <NodeID>AK2_104</NodeID>
         <XPos>291.0</XPos>
         <YPos>342.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>106.215</XFeet>
+        <YFeet>124.83</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_106</Neighbor>
@@ -2322,8 +2322,8 @@
         <NodeID>AK2_105</NodeID>
         <XPos>293.0</XPos>
         <YPos>367.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>106.945</XFeet>
+        <YFeet>133.95499999999998</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_106</Neighbor>
@@ -2344,8 +2344,8 @@
         <NodeID>AK2_106</NodeID>
         <XPos>289.0</XPos>
         <YPos>355.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>105.485</XFeet>
+        <YFeet>129.575</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_107</Neighbor>
@@ -2367,8 +2367,8 @@
         <NodeID>AK2_107</NodeID>
         <XPos>213.0</XPos>
         <YPos>355.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.745</XFeet>
+        <YFeet>129.575</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_110</Neighbor>
@@ -2390,8 +2390,8 @@
         <NodeID>AK2_108</NodeID>
         <XPos>211.0</XPos>
         <YPos>397.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.015</XFeet>
+        <YFeet>144.905</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_109</Neighbor>
@@ -2413,8 +2413,8 @@
         <NodeID>AK2_109</NodeID>
         <XPos>195.0</XPos>
         <YPos>397.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>71.175</XFeet>
+        <YFeet>144.905</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_108</Neighbor>
@@ -2434,8 +2434,8 @@
         <NodeID>AK2_110</NodeID>
         <XPos>213.0</XPos>
         <YPos>332.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.745</XFeet>
+        <YFeet>121.17999999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_112</Neighbor>
@@ -2458,8 +2458,8 @@
         <NodeID>AK2_111</NodeID>
         <XPos>194.0</XPos>
         <YPos>333.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>70.81</XFeet>
+        <YFeet>121.545</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_110</Neighbor>
@@ -2479,8 +2479,8 @@
         <NodeID>AK2_112</NodeID>
         <XPos>214.0</XPos>
         <YPos>316.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>78.11</XFeet>
+        <YFeet>115.34</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_114</Neighbor>
@@ -2503,8 +2503,8 @@
         <NodeID>AK2_113</NodeID>
         <XPos>230.0</XPos>
         <YPos>319.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>83.95</XFeet>
+        <YFeet>116.435</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_112</Neighbor>
@@ -2524,8 +2524,8 @@
         <NodeID>AK2_114</NodeID>
         <XPos>198.0</XPos>
         <YPos>318.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>72.27</XFeet>
+        <YFeet>116.07</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_112</Neighbor>
@@ -2545,8 +2545,8 @@
         <NodeID>AK2_115</NodeID>
         <XPos>230.0</XPos>
         <YPos>333.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>83.95</XFeet>
+        <YFeet>121.545</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_110</Neighbor>
@@ -2566,8 +2566,8 @@
         <NodeID>AK2_116</NodeID>
         <XPos>377.0</XPos>
         <YPos>321.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>137.605</XFeet>
+        <YFeet>117.16499999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_97</Neighbor>
@@ -2587,8 +2587,8 @@
         <NodeID>AK2_117</NodeID>
         <XPos>214.0</XPos>
         <YPos>283.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>78.11</XFeet>
+        <YFeet>103.295</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_118</Neighbor>
@@ -2609,8 +2609,8 @@
         <NodeID>AK2_118</NodeID>
         <XPos>214.0</XPos>
         <YPos>183.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>78.11</XFeet>
+        <YFeet>66.795</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_117</Neighbor>
@@ -2631,8 +2631,8 @@
         <NodeID>AK2_119</NodeID>
         <XPos>211.0</XPos>
         <YPos>414.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.015</XFeet>
+        <YFeet>151.10999999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_121</Neighbor>
@@ -2654,8 +2654,8 @@
         <NodeID>AK2_120</NodeID>
         <XPos>194.0</XPos>
         <YPos>414.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>70.81</XFeet>
+        <YFeet>151.10999999999999</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_119</Neighbor>
@@ -2675,8 +2675,8 @@
         <NodeID>AK2_121</NodeID>
         <XPos>209.0</XPos>
         <YPos>446.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>76.285</XFeet>
+        <YFeet>162.79</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_121</Neighbor>
@@ -2699,8 +2699,8 @@
         <NodeID>AK2_122</NodeID>
         <XPos>212.0</XPos>
         <YPos>503.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.38</XFeet>
+        <YFeet>183.595</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_123</Neighbor>
@@ -2721,8 +2721,8 @@
         <NodeID>AK2_123</NodeID>
         <XPos>231.0</XPos>
         <YPos>501.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>84.315</XFeet>
+        <YFeet>182.865</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_128</Neighbor>
@@ -2743,8 +2743,8 @@
         <NodeID>AK2_124</NodeID>
         <XPos>235.0</XPos>
         <YPos>375.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>85.77499999999999</XFeet>
+        <YFeet>136.875</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_127</Neighbor>
@@ -2765,8 +2765,8 @@
         <NodeID>AK2_125</NodeID>
         <XPos>212.0</XPos>
         <YPos>377.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.38</XFeet>
+        <YFeet>137.605</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_108</Neighbor>
@@ -2788,8 +2788,8 @@
         <NodeID>AK2_126</NodeID>
         <XPos>290.0</XPos>
         <YPos>379.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>105.85</XFeet>
+        <YFeet>138.335</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_127</Neighbor>
@@ -2811,8 +2811,8 @@
         <NodeID>AK2_127</NodeID>
         <XPos>251.0</XPos>
         <YPos>379.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>91.615</XFeet>
+        <YFeet>138.335</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_124</Neighbor>
@@ -2834,8 +2834,8 @@
         <NodeID>AK2_128</NodeID>
         <XPos>251.0</XPos>
         <YPos>499.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>91.615</XFeet>
+        <YFeet>182.135</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_127</Neighbor>
@@ -2857,8 +2857,8 @@
         <NodeID>AK2_129</NodeID>
         <XPos>604.0</XPos>
         <YPos>436.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>220.46</XFeet>
+        <YFeet>159.14</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_69</Neighbor>
@@ -2879,8 +2879,8 @@
         <NodeID>AK2_130</NodeID>
         <XPos>534.0</XPos>
         <YPos>163.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>194.91</XFeet>
+        <YFeet>59.495</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_8</Neighbor>

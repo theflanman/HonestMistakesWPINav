@@ -40,7 +40,7 @@ public class LocalMap implements Serializable{
 		ArrayList<MapNode> chosenNodes;
 		ArrayList<MapNode> middleNodes;
 		
-		YamlParser yamlParser = new YamlParser(new String[]{"src/data/mapScales.yml"});
+		YamlParser yamlParser = new YamlParser(new String[]{"src/data/mapData.yml"});
 		
 		HashMap<String, Double> argList = yamlParser.getArgList();
 		if(argList.size() > 0){
@@ -51,7 +51,8 @@ public class LocalMap implements Serializable{
 			String[] s = mapImageJPG.split("/");
 			mapImageJPG = s[s.length-1];
 			mapImageJPG = mapImageJPG + ".jpg";
-			
+			System.out.println("Getting image name");
+
 			System.out.println(mapImageJPG);
 			this.mapScale = argList.get("scale-"+ mapImageJPG); // gets the scale based on the associated mapImageName
 			this.transformAngle = argList.get("angle-"+ mapImageJPG);//gets the transformation angle based on the associated mapImageName
