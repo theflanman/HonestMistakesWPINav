@@ -366,19 +366,7 @@ public class GUIFront extends JFrame {
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
-					if (index <= 0){
-						btnPreviousMap.setEnabled(false);
-					}
-					if (index < paths.size() - 1){
-						btnNextMap.setEnabled(true);
-					}
 					
-					if (index >= paths.size() - 1){
-						btnNextMap.setEnabled(false);
-					}
-					if (index > 0){
-						btnPreviousMap.setEnabled(true);
-					}
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
