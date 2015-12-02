@@ -3,14 +3,18 @@
     <ImageName>CCM.jpg</ImageName>
     <Node>
         <NodeID>CCM_1</NodeID>
-        <XPos>406.0</XPos>
-        <YPos>337.0</YPos>
-        <XFeet>73.08</XFeet>
-        <YFeet>60.66</YFeet>
-        <ZFeet>13.0</ZFeet>
+        <XPos>647.0</XPos>
+        <YPos>669.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
         <Neighbors>
+            <Neighbor>CCM_4</Neighbor>
+            <Neighbor>CCM_7</Neighbor>
             <Neighbor>CCM_2</Neighbor>
+            <Neighbor>CCM_3</Neighbor>
             <Neighbor>CCM_6</Neighbor>
+            <Neighbor>CCM_9</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -25,15 +29,15 @@
     </Node>
     <Node>
         <NodeID>CCM_2</NodeID>
-        <XPos>571.0</XPos>
-        <YPos>425.0</YPos>
-        <XFeet>102.78</XFeet>
-        <YFeet>76.5</YFeet>
-        <ZFeet>13.0</ZFeet>
+        <XPos>615.0</XPos>
+        <YPos>761.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
         <Neighbors>
+            <Neighbor>CCM_4</Neighbor>
+            <Neighbor>CCM_8</Neighbor>
             <Neighbor>CCM_1</Neighbor>
-            <Neighbor>CCM_5</Neighbor>
-            <Neighbor>CCM_3</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -48,14 +52,15 @@
     </Node>
     <Node>
         <NodeID>CCM_3</NodeID>
-        <XPos>585.0</XPos>
-        <YPos>497.0</YPos>
-        <XFeet>105.3</XFeet>
-        <YFeet>89.46</YFeet>
-        <ZFeet>13.0</ZFeet>
+        <XPos>554.0</XPos>
+        <YPos>721.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_4</Neighbor>
-            <Neighbor>CCM_2</Neighbor>
+            <Neighbor>CCM_6</Neighbor>
+            <Neighbor>CCM_8</Neighbor>
+            <Neighbor>CCM_1</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -70,14 +75,16 @@
     </Node>
     <Node>
         <NodeID>CCM_4</NodeID>
-        <XPos>676.0</XPos>
-        <YPos>473.0</YPos>
-        <XFeet>121.67999999999999</XFeet>
-        <YFeet>85.14</YFeet>
-        <ZFeet>13.0</ZFeet>
+        <XPos>683.0</XPos>
+        <YPos>772.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_5</Neighbor>
-            <Neighbor>CCM_3</Neighbor>
+            <Neighbor>CCM_2</Neighbor>
+            <Neighbor>CCM_20</Neighbor>
+            <Neighbor>CCM_1</Neighbor>
+            <Neighbor>CCM_9</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -92,13 +99,349 @@
     </Node>
     <Node>
         <NodeID>CCM_5</NodeID>
-        <XPos>640.0</XPos>
-        <YPos>399.0</YPos>
-        <XFeet>115.19999999999999</XFeet>
-        <YFeet>71.82</YFeet>
-        <ZFeet>13.0</ZFeet>
+        <XPos>745.0</XPos>
+        <YPos>614.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
         <Neighbors>
+            <Neighbor>CCM_7</Neighbor>
+            <Neighbor>CCM_10</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>bathRoom</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_6</NodeID>
+        <XPos>584.0</XPos>
+        <YPos>577.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_3</Neighbor>
+            <Neighbor>CCM_7</Neighbor>
+            <Neighbor>CCM_1</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_7</NodeID>
+        <XPos>666.0</XPos>
+        <YPos>573.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_1</Neighbor>
+            <Neighbor>CCM_6</Neighbor>
+            <Neighbor>CCM_5</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_8</NodeID>
+        <XPos>558.0</XPos>
+        <YPos>774.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_3</Neighbor>
+            <Neighbor>CCM_22</Neighbor>
             <Neighbor>CCM_2</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_9</NodeID>
+        <XPos>790.0</XPos>
+        <YPos>810.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_10</Neighbor>
+            <Neighbor>CCM_4</Neighbor>
+            <Neighbor>CCM_1</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_10</NodeID>
+        <XPos>828.0</XPos>
+        <YPos>697.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_5</Neighbor>
+            <Neighbor>CCM_9</Neighbor>
+            <Neighbor>CCM_11</Neighbor>
+            <Neighbor>CCM_19</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_11</NodeID>
+        <XPos>873.0</XPos>
+        <YPos>616.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_10</Neighbor>
+            <Neighbor>CCM_12</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_12</NodeID>
+        <XPos>891.0</XPos>
+        <YPos>487.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_11</Neighbor>
+            <Neighbor>CCM_13</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_13</NodeID>
+        <XPos>1015.0</XPos>
+        <YPos>512.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_12</Neighbor>
+            <Neighbor>CCM_19</Neighbor>
+            <Neighbor>CCM_14</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_14</NodeID>
+        <XPos>1077.0</XPos>
+        <YPos>457.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_13</Neighbor>
+            <Neighbor>CCM_18</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_15</NodeID>
+        <XPos>1326.0</XPos>
+        <YPos>361.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_16</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_16</NodeID>
+        <XPos>1221.0</XPos>
+        <YPos>562.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_17</Neighbor>
+            <Neighbor>CCM_15</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_17</NodeID>
+        <XPos>1104.0</XPos>
+        <YPos>569.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_18</Neighbor>
+            <Neighbor>CCM_16</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_18</NodeID>
+        <XPos>1102.0</XPos>
+        <YPos>540.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_14</Neighbor>
+            <Neighbor>CCM_17</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_19</NodeID>
+        <XPos>991.0</XPos>
+        <YPos>776.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_13</Neighbor>
+            <Neighbor>CCM_10</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_20</NodeID>
+        <XPos>648.0</XPos>
+        <YPos>948.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_22</Neighbor>
             <Neighbor>CCM_4</Neighbor>
         </Neighbors>
         <Attributes>
@@ -113,14 +456,37 @@
         </Attributes>
     </Node>
     <Node>
-        <NodeID>CCM_6</NodeID>
-        <XPos>353.0</XPos>
-        <YPos>273.0</YPos>
-        <XFeet>63.54</XFeet>
-        <YFeet>49.14</YFeet>
-        <ZFeet>13.0</ZFeet>
+        <NodeID>CCM_21</NodeID>
+        <XPos>483.0</XPos>
+        <YPos>888.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_1</Neighbor>
+            <Neighbor>CCM_22</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_22</NodeID>
+        <XPos>561.0</XPos>
+        <YPos>845.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_8</Neighbor>
+            <Neighbor>CCM_21</Neighbor>
+            <Neighbor>CCM_20</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
