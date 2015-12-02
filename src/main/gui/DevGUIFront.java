@@ -51,7 +51,7 @@ import main.MapNode;
 import main.util.Constants;
 import main.util.MapPanel;
 import main.util.SaveUtil;
-import main.Attributes.Types;
+import main.Types;
 
 public class DevGUIFront extends JFrame {
 	static HashMap<String, ArrayList<MapNode>> localMap = new HashMap<String, ArrayList<MapNode>>(); // path to file, Integer data
