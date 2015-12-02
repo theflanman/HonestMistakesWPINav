@@ -294,38 +294,8 @@ public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
 		System.out.println(globalNodes.size());
-		MapNode start1 = null;
-		MapNode end1 = null;
-		int j = 0;
-		/*
-		for(int i = 0; i < globalNodes.size() - 1; i++){
-			if (j == 0) {
-				String startName = globalNodes.get(i).getID();
-				for (MapNode mapnode : globalNodes.get(i).getLocalMap().getMapNodes()){
-					if (mapnode.getID().equals(startName)){
-						start1 = mapnode;
-					}
-				}
-				j++;
-			} 
-			if (!(globalNodes.get(i).getLocalMap().equals(globalNodes.get(i + 1).getLocalMap()))){
-				end1 = globalNodes.get(i);
-				String endName = globalNodes.get(i).getID();
-				for (MapNode mapnode : globalNodes.get(i).getLocalMap().getMapNodes()){
-					if (mapnode.getID().equals(endName)){
-						end1 = mapnode;
-					}
-				}
-				route = this.runAStar(start1, end1);
-				routes.add(route);
-				System.out.println(start1.getID());
-				System.out.println(end1.getID());
-				start1 = null;
-				end1 = null;
-				j = 0;
-			}
-		}
-		*/
+		//MapNode start1 = null;
+		//MapNode end1 = null;
 		
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added

@@ -476,9 +476,6 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(0).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(0));
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
@@ -505,7 +502,10 @@ public class GUIFront extends JFrame {
 					}
 					
 					
-					thisRoute = routes.get(index);
+					thisRoute = routes.get(0);
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(0).get(0).getLocalMap().getMapImageName()).getImage());
+					panelMap.setMapNodes(paths.get(0).get(0).getLocalMap().getMapNodes());
+					backend.setLocalMap(paths.get(0).get(0).getLocalMap());
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
 					/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
@@ -626,10 +626,9 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent ae){
 				index++;
 				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(index).getMapImageName()).getImage());
-				panelMap.setMapNodes(globalMap.getLocalMaps().get(index).getMapNodes());
-				backend.setLocalMap(globalMap.getLocalMaps().get(index));
+				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
 				thisRoute = paths.get(index);
-				globalMap.getLocalMaps().get(index);
 				drawLine = true;
 				// TODO: Fill in this mehtod once we know how to draw/load maps
 			}
@@ -645,9 +644,9 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				index--;
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(index).getMapImageName()).getImage());
-				panelMap.setMapNodes(globalMap.getLocalMaps().get(index).getMapNodes());
-				backend.setLocalMap(globalMap.getLocalMaps().get(index));
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(index).get(0).getLocalMap().getMapImageName()).getImage());
+				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
 				thisRoute = paths.get(index);
 				drawLine = true;
 				// TODO: Fill in this method once we know how to draw/load maps
@@ -1241,6 +1240,7 @@ public class GUIFront extends JFrame {
 
 				// Sets the color of the start and end nodes to be different
 				graphics.setColor(Color.RED);
+				//for ()
 				for (int i = 0; i < globalMap.getChosenNodes().size(); i++) {
 					if(i == 0){
 						if (backend.getLocalMap().getStart() != null){
@@ -1255,10 +1255,22 @@ public class GUIFront extends JFrame {
 						}
 					}
 					else {
+						/*for (LocalMap localmap : globalMap.getLocalMaps()){
+							if (localmap.getStart() != null){
+								graphics.setColor(Color.BLACK);
+								graphics.fillOval((int) backend.getLocalMap().getEnd().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getEnd().getYPos() - (int)panY - 5, 10, 10);
+							} else if (localmap.getEnd() != null) {
+								graphics.setColor(Color.BLACK);
+								graphics.fillOval((int) backend.getLocalMap().getEnd().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getEnd().getYPos() - (int)panY - 5, 10, 10);
+							}
+						}*/
+					}
+					/*else {
 						graphics.setColor(Color.ORANGE);
 						graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
-					}
+					}*/
 				}
+				
 				
 				// essentially draws the line on the screen 
 				if (GUIFront.drawLine = true) {
