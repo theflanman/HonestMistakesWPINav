@@ -21,11 +21,19 @@ public class LocalMap implements Serializable{
 	private Double mapScale; // unit is feet/pixel
 	private int mapID;
 	private GlobalMap globalMap;
+	private MapNode start;
+	private MapNode end;
+	private ArrayList<MapNode> chosenNodes;
+	private ArrayList<MapNode> middleNodes;
 	
 	// constructor
 	public LocalMap(String mapImageName, ArrayList<MapNode> mapNodes){
 		this.mapImageName = mapImageName;
 		this.mapNodes = mapNodes;
+		this.start = null;
+		this.end = null;
+		ArrayList<MapNode> chosenNodes = new ArrayList<MapNode>();
+		ArrayList<MapNode> middleNodes = new ArrayList<MapNode>();
 		
 		YamlParser yamlParser = new YamlParser(new String[]{Constants.SCALES_PATH});
 		
@@ -35,6 +43,38 @@ public class LocalMap implements Serializable{
 
 	}
 	
+	public MapNode getStart() {
+		return start;
+	}
+
+	public void setStart(MapNode start) {
+		this.start = start;
+	}
+
+	public MapNode getEnd() {
+		return end;
+	}
+
+	public void setEnd(MapNode end) {
+		this.end = end;
+	}
+
+	public ArrayList<MapNode> getChosenNodes() {
+		return chosenNodes;
+	}
+
+	public void setChosenNodes(ArrayList<MapNode> chosenNodes) {
+		this.chosenNodes = chosenNodes;
+	}
+
+	public ArrayList<MapNode> getMiddleNodes() {
+		return middleNodes;
+	}
+
+	public void setMiddleNodes(ArrayList<MapNode> middleNodes) {
+		this.middleNodes = middleNodes;
+	}
+
 	/**
 	 * saves this .localmap into a file
 	 * 

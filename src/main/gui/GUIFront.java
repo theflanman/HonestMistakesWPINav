@@ -186,12 +186,12 @@ public class GUIFront extends JFrame {
 				Image mapPath2 = new ImageIcon(Constants.IMAGES_PATH + "/" + GUIFront.globalMap.getLocalMaps().get(1).getMapImageName()).getImage();
 				TweenPanel strattonMap = new TweenPanel(enteredNodes, mapPath2, "1");
 				GUIBack backend2 = new GUIBack("stratton", enteredNodes);
-				backend2.setLocalMap(GUIFront.globalMap.getLocalMaps().get(1)); //= enteredNodes;
+				backend.setLocalMap(globalMap.getLocalMaps().get(1)); //= enteredNodes;
 				panels.add(strattonMap);
 				index += 1;
-				//panelMap = strattonMap;
+				panelMap = strattonMap;
 				//strattonMap.labelMainPanel.setText("HAROO");
-				//tabbedPane.addTab("Stratton Floor 1", strattonMap);
+				tabbedPane.addTab("Stratton Floor 1", strattonMap);
 			}
 		});
 		mnStratton.add(mntmFFStratton);
@@ -978,19 +978,26 @@ public class GUIFront extends JFrame {
 					
 						if(globalMap.getChosenNodes().size() == 0){
 							globalMap.setStartNode(node);
+							globalMap.getStartNode().setLocalMap(backend.getLocalMap());
+							//backend.getLocalMap().setStart(node);
 							btnClear.setEnabled(true);
 						}
 						else{
 							MapNode endNode = globalMap.getEndNode();
-							if(endNode != null)
+							if(endNode != null){
+								
 							globalMap.addToMiddleNodes(endNode);
+							//globalMap.getEndNode().getLocalMap().getMiddleNodes().add(endNode);
+							//globalMap.getEndNode().getLocalMap().setEnd(null);
 						
 							globalMap.setEndNode(node);
+							//globalMap.getEndNode().setLocalMap(backend.getLocalMap());
+							//backend.getLocalMap().setEnd(node);
 						//	btnRoute.setEnabled(true);
+							}
 						}
 
 						globalMap.getChosenNodes().add(node);
-						
 					}
 					repaint();
 				}	
@@ -1125,21 +1132,27 @@ public class GUIFront extends JFrame {
 				graphics.drawImage(this.mapImage, 0, 0, this);
 
 				// Sets the color of the start and end nodes to be different
-				graphics.setColor(Color.RED);
-				for (int i = 0; i < globalMap.getChosenNodes().size(); i++) {
-					if(i == 0){
-						graphics.setColor(Color.RED);
-						graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
-					} 
-					else if(i == globalMap.getChosenNodes().size()-1){
-						graphics.setColor(Color.GREEN);
-						graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+				/*graphics.setColor(Color.RED);
+				for (int i = 0; i < globalMap.getChosenNodes().size(); i++){
+					if (i == 0){
+						if(backend.getLocalMap().getStart() != null){
+							graphics.setColor(Color.RED);
+							graphics.fillOval((int) /*globalMap.getChosenNodes().get(i)backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) /*globalMap.getChosenNodes().get(i).backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
+						}
 					}
-					else {
-						graphics.setColor(Color.ORANGE);
-						graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+					/*else if(/*i == globalMap.getChosenNodes().size()-1 !(localmap.getMiddleNodes().isEmpty())){
+						for (MapNode mapnode : localmap.getMiddleNodes()){
+							graphics.setColor(Color.GREEN);
+							graphics.fillOval((int) /*globalMap.getChosenNodes() mapnode.getXPos() - (int)panX - 5, (int) /*globalMap.getChosenNodes().get(i) mapnode.getYPos() - (int)panY - 5, 10, 10);
+						}
 					}
-				}
+					else if (i > 0){ 
+						if (backend.getLocalMap().getEnd() != null) {
+							graphics.setColor(Color.GREEN/*ORANGE);
+							graphics.fillOval((int) /*globalMap.getChosenNodes().get(i).backend.getLocalMap().getEnd().getXPos() - (int)panX - 5, (int) /*globalMap.getChosenNodes().get(i).backend.getLocalMap().getEnd().getYPos() - (int)panY - 5, 10, 10);
+							}
+						}
+					}*/
 				
 				// essentially draws the line on the screen 
 				if (GUIFront.drawLine = true) {
