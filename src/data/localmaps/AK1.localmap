@@ -3,12 +3,14 @@
     <ImageName>AK1.jpg</ImageName>
     <Node>
         <NodeID>AK1_1</NodeID>
-        <XPos>410.0</XPos>
-        <YPos>231.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>none</Neighbors>
+        <XPos>432.0</XPos>
+        <YPos>232.0</YPos>
+        <XFeet>157.68</XFeet>
+        <YFeet>84.67999999999999</YFeet>
+        <ZFeet>-1.0</ZFeet>
+        <Neighbors>
+            <Neighbor>AK1_2</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -22,12 +24,14 @@
     </Node>
     <Node>
         <NodeID>AK1_2</NodeID>
-        <XPos>462.0</XPos>
-        <YPos>228.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>none</Neighbors>
+        <XPos>464.0</XPos>
+        <YPos>231.0</YPos>
+        <XFeet>169.35999999999999</XFeet>
+        <YFeet>84.315</YFeet>
+        <ZFeet>-1.0</ZFeet>
+        <Neighbors>
+            <Neighbor>AK1_1</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>

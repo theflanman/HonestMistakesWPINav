@@ -127,7 +127,10 @@ public class GUIFront extends JFrame {
 
 		globalMap.setLocalMaps(localMapList);
 
-		backend.setLocalMap(localMapList.get(0));
+		for(LocalMap localMap : localMapList){
+			if(localMap.getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE))
+				backend.setLocalMap(localMap);
+		}
 
 		// add the collection of nodes to the ArrayList of GlobalMap
 		allNodes = new ArrayList<MapNode>();
