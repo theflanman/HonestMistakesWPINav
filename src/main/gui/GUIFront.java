@@ -476,6 +476,9 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(0).getMapImageName()).getImage());
+					panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
+					backend.setLocalMap(globalMap.getLocalMaps().get(0));
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
@@ -486,7 +489,7 @@ public class GUIFront extends JFrame {
 					if (routes.isEmpty()){
 						mapnodes = backend.runAStar(backend.getLocalMap().getStart(), backend.getLocalMap().getEnd());
 					} else {
-						for (int i = 0; i < routes.size() - 1; i++){
+						for (int i = 0; i < routes.size(); i++){
 							LocalMap localmap = routes.get(i).get(0).getLocalMap();
 								if (localmap.getEnd() == null){
 									int size = routes.get(i).size() - 1;
@@ -500,6 +503,8 @@ public class GUIFront extends JFrame {
 							paths.add(route);
 						}
 					}
+					
+					
 					thisRoute = routes.get(index);
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
 					/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
@@ -620,7 +625,10 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae){
 				index++;
-				thisRoute = paths.get(index - 1);
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(index).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(index).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(index));
+				thisRoute = paths.get(index);
 				globalMap.getLocalMaps().get(index);
 				drawLine = true;
 				// TODO: Fill in this mehtod once we know how to draw/load maps
@@ -637,6 +645,9 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				index--;
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(index).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(index).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(index));
 				thisRoute = paths.get(index);
 				drawLine = true;
 				// TODO: Fill in this method once we know how to draw/load maps
