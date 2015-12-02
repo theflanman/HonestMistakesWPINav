@@ -134,6 +134,7 @@ public class GUIFront extends JFrame {
 		}
 
 		backend = initial;
+		
 
 		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
 
@@ -365,6 +366,19 @@ public class GUIFront extends JFrame {
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
+					if (index <= 0){
+						btnPreviousMap.setEnabled(false);
+					}
+					if (index < paths.size() - 1){
+						btnNextMap.setEnabled(true);
+					}
+					
+					if (index >= paths.size() - 1){
+						btnNextMap.setEnabled(false);
+					}
+					if (index > 0){
+						btnPreviousMap.setEnabled(true);
+					}
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
@@ -513,6 +527,19 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae){
 				index++;
+				if (index <= 0){
+					btnPreviousMap.setEnabled(false);
+				}
+				if (index < paths.size() - 1){
+					btnNextMap.setEnabled(true);
+				}
+				
+				if (index >= paths.size() - 1){
+					btnNextMap.setEnabled(false);
+				}
+				if (index > 0){
+					btnPreviousMap.setEnabled(true);
+				}
 				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(index).getMapImageName()).getImage());
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
 				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
@@ -525,20 +552,32 @@ public class GUIFront extends JFrame {
 
 		// Add buttons to move between two maps
 		btnPreviousMap = new JButton("<-- Previous Map");
-		if (index != 0){
+		if (index <= 0){
 			btnPreviousMap.setEnabled(false);
 		}
 		btnPreviousMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				index--;
+				if (index <= 0){
+					btnPreviousMap.setEnabled(false);
+				}
+				if (index < paths.size() - 1){
+					btnNextMap.setEnabled(true);
+				}
+				
+				if (index >= paths.size() - 1){
+					btnNextMap.setEnabled(false);
+				}
+				if (index > 0){
+					btnPreviousMap.setEnabled(true);
+				}
 				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(index).get(0).getLocalMap().getMapImageName()).getImage());
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
 				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
 				thisRoute = paths.get(index);
 				drawLine = true;
 				// TODO: Fill in this method once we know how to draw/load maps
-
 			}
 		});
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
@@ -546,63 +585,63 @@ public class GUIFront extends JFrame {
 		// Group Layout code for all components
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(10)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblStart)
-												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-												.addGap(18)
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-														.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-														.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-														.addGap(18)
-														.addComponent(lblInvalidEntry)
-														.addGap(227)
-														.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-														.addGap(18)
-														.addComponent(btnClear))
-														.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
-														.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-																.addGap(79)
-																.addComponent(btnPreviousMap)
-																.addGap(123)
-																.addComponent(btnNextMap, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-																.addContainerGap(379, Short.MAX_VALUE))
-				);
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblStart)
+								.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addComponent(lblInvalidEntry)
+							.addGap(227)
+							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(btnClear))
+						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(79)
+					.addComponent(btnPreviousMap)
+					.addPreferredGap(ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+					.addComponent(btnNextMap)
+					.addGap(170))
+		);
 		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblStart)
-										.addGap(6)
-										.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addComponent(lblEnd)
-												.addGap(6)
-												.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-												.addGroup(gl_contentPane.createSequentialGroup()
-														.addGap(24)
-														.addComponent(lblInvalidEntry))
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addGap(11)
-																.addComponent(btnRoute))
-																.addGroup(gl_contentPane.createSequentialGroup()
-																		.addGap(11)
-																		.addComponent(btnClear)))
-																		.addGap(18)
-																		.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-																		.addGap(18)
-																		.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-																				.addComponent(btnPreviousMap)
-																				.addComponent(btnNextMap))
-																				.addGap(35))
-				);
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblStart)
+							.addGap(6)
+							.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblEnd)
+							.addGap(6)
+							.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(24)
+							.addComponent(lblInvalidEntry))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(btnRoute))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(btnClear)))
+					.addGap(18)
+					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnPreviousMap)
+						.addComponent(btnNextMap))
+					.addGap(35))
+		);
 		contentPane.setLayout(gl_contentPane);
 
 		pack();
