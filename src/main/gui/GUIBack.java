@@ -302,6 +302,7 @@ public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
 			//immediately add this to a new route
 			if (i == 0) {
 				route.add(globalNodes.get(i));
+				globalNodes.get(i).getLocalMap().setStart(globalNodes.get(i));
 			}
 			//this isnt the first node and it isnt the last node
 			else if (i != globalNodes.size()-1){
@@ -311,12 +312,14 @@ public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
 				}
 				//time to move onto a new route, add this one to routes and clear it
 				else{
+					globalNodes.get(i-1).getLocalMap().setEnd(globalNodes.get(i-1));
 					routes.add(route);
 					route = new ArrayList<MapNode>();
 					route.add(globalNodes.get(i));
 				}
 			}//end else if
 			else {
+				globalNodes.get(i-1).getLocalMap().setEnd(globalNodes.get(i-1));
 				route.add(globalNodes.get(i));
 				routes.add(route);
 			}
