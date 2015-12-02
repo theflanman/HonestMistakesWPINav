@@ -85,7 +85,7 @@ public class GUIFront extends JFrame {
 	public static ArrayList<MapNode> allNodes;
 	
 	static AffineTransform transform; // the current state of image transformation
-	Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
+	static Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
 	static PanHandler panHandle;
 	static ZoomHandler zoomHandle;
 
@@ -726,7 +726,7 @@ public class GUIFront extends JFrame {
 			int direction = mwe.getWheelRotation();
 			
 			if(direction < 0){ // moving up, so zoom in	(no greater than 100%)
-				if(zoomAmount != 2)
+				if(zoomAmount <= (.9 + .001))
 					zoomAmount += 0.1;
 			} else { // moving down, zoom out (no less than 0%)
 				if(zoomAmount >= 0.5)
@@ -973,24 +973,7 @@ public class GUIFront extends JFrame {
 						// figure out where the closest map node is, set that node as a startnode the StartingNode
 						Point clickedAt = me.getPoint();
 						
-						int scaledXPos = (int) clickedAt.getX();
-						int scaledYPos = (int) clickedAt.getY();
-						if(zoomRatio > 1){
-							scaledXPos = scaledXPos;
-							scaledYPos = scaledYPos;
-						}
-						else if(zoomRatio < 1){
-							scaledXPos = scaledXPos;
-							scaledYPos = scaledYPos;		
-						}
-						
-						System.out.println("ZOOM AMOUNT: " + zoomRatio);
-						System.out.println("OLD X: " + clickedAt.getX());
-						System.out.println("OLD Y: " + clickedAt.getY());
-						System.out.println("SCALED X: " + scaledXPos);
-						System.out.println("SCALED Y: " + scaledYPos);
-						System.out.println("---------");
-						MapNode node = backend.findNearestNode(scaledXPos, scaledYPos);
+						MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY);
 					
 						if(chosenNodes.size() == 0){
 							backend.setStartNode(node);
