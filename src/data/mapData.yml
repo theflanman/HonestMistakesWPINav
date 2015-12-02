@@ -10,6 +10,7 @@
 ###########################################
 
 ##sample.jpg: Sample to use in all tests and such as part of the local map
+
 scale-sample.jpg : .123
 angle-sample.jpg : 30.0
 xOffset-sample.jpg : 12.0
@@ -18,196 +19,200 @@ zHeight-sample.jpg : 13.0
 
 ##AK1.jpg
 scale-AK1.jpg : .365 # 155.47ft, 426px
-angle-AK1.jpg : -1.0
+angle-AK1.jpg : 3.656
 xOffset-AK1.jpg : 1635.12
-yOffset-AK1.jpg : 313.5
-zHeight-AK1.jpg : -1.0
+yOffset-AK1.jpg: 313.5
+zHeight-AK1.jpg: 0.0
+
 
 ##AK2.jpg
 scale-AK2.jpg : .365 # 155.47ft, 426px
-angle-AK2.jpg : -1.0
+angle-AK2.jpg : 3.656
 xOffset-AK2.jpg : 1635.12
-yOffset-AK2.jpg : 313.5
-zHeight-AK2.jpg : -1.0
+yOffset-AK2.jpg: 313.5
+zHeight-AK2.jpg: 13.0
 
 ##AK3.jpg
 scale-AK3.jpg : .365 # 155.47ft, 426px
-angle-AK3.jpg : -1.0
+angle-AK3.jpg : 3.656
 xOffset-AK3.jpg : 1635.12
-yOffset-AK3.jpg : 313.5
-zHeight-AK3.jpg : -1.0
+yOffset-AK3.jpg: 313.5
+zHeight-AK3.jpg: 26.0
 
 ##AKB.jpg
 scale-AKB.jpg : .365 # got .3515 from different measurement
-angle-AKB.jpg : -1.0
+angle-AKB.jpg : 3.656
 xOffset-AKB.jpg : 1635.12
-yOffset-AKB.jpg : 313.5
-zHeight-AKB.jpg : -1.0
+yOffset-AKB.jpg: 313.5
+zHeight-AKB.jpg: -13.0
 
-##Boynton_1.jpg
-scale-Boynton_1.jpg : .2312 # 162.32ft, 702px
-angle-Boynton_1.jpg : -1.0
-xOffset-Boynton_1.jpg : 1558.5
-yOffset-Boynton_1.jpg : 1086.0
-zHeight-Boynton_1.jpg : -1.0
+##Boy1.jpg
+scale-Boy1.jpg : .2312 # 162.32ft, 702px
+angle-Boy1.jpg : 0.167
+xOffset-Boy1.jpg : 1558.5 
+yOffset-Boy1.jpg : 1086.0
+zHeight-Boy1.jpg : 0.0
 
-##Boynton_2.jpg
-scale-Boynton_2.jpg : .2312 # 162.32ft, 702px
-angle-Boynton_2.jpg : -1.0
-xOffset-Boynton_2.jpg : 1558.5
-yOffset-Boynton_2.jpg : 1086.0
-zHeight-Boynton_2.jpg : -1.0
 
-##Boynton_3.jpg
-scale-Boynton_3.jpg : .2312 # 162.32ft, 702px
-angle-Boynton_3.jpg : -1.0
-xOffset-Boynton_3.jpg : 1558.5
-yOffset-Boynton_3.jpg : 1086.0
-zHeight-Boynton_3.jpg : -1.0
+##Boy2.jpg
+scale-Boy2.jpg : .2312 # 162.32ft, 702px
+angle-Boy2.jpg : 0.167
+xOffset-Boy2.jpg : 1558.5 
+yOffset-Boy2.jpg : 1086.0
+zHeight-Boy2.jpg : 13.0
 
-##Boynton_B.jpg
-scale-Boynton_B.jpg : .2312 # 162.32ft, 702px
-angle-Boynton_B.jpg : -1.0
-xOffset-Boynton_B.jpg : 1558.5
-yOffset-Boynton_B.jpg : 1086.0
-zHeight-Boynton_B.jpg : -1.0
+##Boy3.jpg
+scale-Boy3.jpg : .2312 # 162.32ft, 702px
+angle-Boy3.jpg : 0.167
+xOffset-Boy3.jpg : 1558.5 
+yOffset-Boy3.jpg : 1086.0
+zHeight-Boy3.jpg : 26.0
+
+##BoyB.jpg
+scale-BoyB.jpg : .2312 # 162.32ft, 702px
+angle-BoyB.jpg : 0.167
+xOffset-BoyB.jpg : 1558.5 
+yOffset-BoyB.jpg : 1086.0
+zHeight-BoyB.jpg : -13.0
+
 
 ##CC1.jpg: downstairs
 scale-CC1.jpg : .107979
-angle-CC1.jpg : -1.0
+angle-CC1.jpg : 4.851
 xOffset-CC1.jpg : 1209.0
 yOffset-CC1.jpg : 706.5
-zHeight-CC1.jpg : -1.0
+zHeight-CC1.jpg : -13.0
 
 ##CC2.jpg: ground
 scale-CC2.jpg : .09712
-angle-CC2.jpg : -1.0
+angle-CC2.jpg : 4.851
 xOffset-CC2.jpg : 1209.0
 yOffset-CC2.jpg : 706.5
-zHeight-CC2.jpg : -1.0
+zHeight-CC2.jpg : 0.0
 
 ##CC3.jpg: upstairs
 scale-CC3.jpg : .096216
-angle-CC3.jpg : -1.0
+angle-CC3.jpg : 4.851
 xOffset-CC3.jpg : 1209.0
 yOffset-CC3.jpg : 706.5
-zHeight-CC3.jpg : -1.0
+zHeight-CC3.jpg : 13.0
 
 ##CCM.jpg
 scale-CCM.jpg : 1.499 # 1201.92ft, 801.96px
-angle-CCM.jpg : -1.0
-xOffset-CCM.jpg : -1.0
-yOffset-CCM.jpg : -1.0
-zHeight-CCM.jpg : -1.0
+angle-CCM.jpg : 0.0
+xOffset-CCM.jpg : 0.0
+yOffset-CCM.jpg : 0.0
+zHeight-CCM.jpg : 0.0
 
 ##GL1.jpg
-scale-GL1.jpg : .2217 # 182.43ft, 823px
-angle-GL1.jpg : -1.0
+scale-GL1.jpg: .2217 # 182.43ft, 823px
+angle-GL1.jpg : 1.785
 xOffset-GL1.jpg : 1968.0
 yOffset-GL1.jpg : 772.5
-zHeight-GL1.jpg : -1.0
+zHeight-GL1.jpg : 0.0
 
 ##GL2.jpg
 scale-GL2.jpg : .2252 # 182.43ft, 810px
-angle-GL2.jpg : -1.0
+angle-GL2.jpg : 1.785
 xOffset-GL2.jpg : 1968.0
 yOffset-GL2.jpg : 772.5
-zHeight-GL2.jpg : -1.0
+zHeight-GL2.jpg : 13.0
 
 ##GL3.jpg
 scale-GL3.jpg : .296 # 182.43ft, 617px
-angle-GL3.jpg : -1.0
+angle-GL3.jpg : 1.785
 xOffset-GL3.jpg : 1968.0
 yOffset-GL3.jpg : 772.5
-zHeight-GL3.jpg : -1.0
+zHeight-GL3.jpg : 26.0
 
 ##GLB.jpg
 scale-GLB.jpg : .2752 # 182.43ft, 663px
-angle-GLB.jpg : -1.0
+angle-GLB.jpg : 1.785
 xOffset-GLB.jpg : 1968.0
 yOffset-GLB.jpg : 772.5
-zHeight-GLB.jpg : -1.0
+zHeight-GLB.jpg : -13.0 
 
 ##GLSB.jpg
 scale-GLSB.jpg : .2752 # 182.43ft, 663px
-angle-GLSB.jpg : -1.0
+angle-GLSB.jpg : 1.785
 xOffset-GLSB.jpg : 1968.0
 yOffset-GLSB.jpg : 772.5
-zHeight-GLSB.jpg : -1.0
+zHeight-GLSB.jpg : -26.0 
 
 ##HH1.jpg
 scale-HH1.jpg : .2295 # 88.81ft, 387px
-angle-HH1.jpg : -1.0
+angle-HH1.jpg: 2.178
 xOffset-HH1.jpg : 1275.0
 yOffset-HH1.jpg : 364.5
-zHeight-HH1.jpg : -1.0
+zHeight-HH1.jpg : 0.0 
 
 ##HH2.jpg
 scale-HH2.jpg : .2018 # 88.81ft, 440px
-angle-HH2.jpg : -1.0
+angle-HH2.jpg: 2.178
 xOffset-HH2.jpg : 1275.0
 yOffset-HH2.jpg : 364.5
-zHeight-HH2.jpg : -1.0
+zHeight-HH2.jpg : 13.0 
 
 ##HH3.jpg
 scale-HH3.jpg : .1987 # 88.81ft, 447px
-angle-HH3.jpg : -1.0
+angle-HH3.jpg: 2.178
 xOffset-HH3.jpg : 1275.0
 yOffset-HH3.jpg : 364.5
-zHeight-HH3.jpg : -1.0
+zHeight-HH3.jpg : 26.0 
 
 ##HHG1.jpg
 scale-HHG1.jpg : .1282 # 88.81ft, 693px
-angle-HHG1.jpg : -1.0
+angle-HHG1.jpg: 5.318
 xOffset-HHG1.jpg : 1275.0
 yOffset-HHG1.jpg : 364.5
-zHeight-HHG1.jpg : -1.0
+zHeight-HHG1.jpg : 26.0 
 
 ##HHG2.jpg
 scale-HHG2.jpg : .1282 # 88.81ft, 693px
-angle-HHG2.jpg : -1.0
+angle-HHG2.jpg: 5.318
 xOffset-HHG2.jpg : 1275.0
 yOffset-HHG2.jpg : 364.5
-zHeight-HHG2.jpg : -1.0
+zHeight-HHG2.jpg : 26.0 
 
 ##PC1.jpg
 scale-PC1.jpg : .1391 # 92.76ft, 667px
-angle-PC1.jpg : -1.0
+angle-PC1.jpg :  1.748
 xOffset-PC1.jpg : 1617.0
 yOffset-PC1.jpg : 802.5
-zHeight-PC1.jpg : -1.0
+zHeight-PC1.jpg : 0.0
 
 ##PC2.jpg
 scale-PC2.jpg : .1447 # 92.76ft, 641px
-angle-PC2.jpg : -1.0
+angle-PC2.jpg : 1.748
 xOffset-PC2.jpg : 1617.0
 yOffset-PC2.jpg : 802.5
-zHeight-PC2.jpg : -1.0
+zHeight-PC2.jpg : 13.0
 
 ##SH1.jpg
 scale-SH1.jpg : .183
-angle-SH1.jpg : -1.0
+angle-SH1.jpg : 1.720
 xOffset-SH1.jpg : 1482.0
 yOffset-SH1.jpg : 1065.0
-zHeight-SH1.jpg : -1.0
+zHeight-SH1.jpg : 13.0
 
 ##SH2.jpg
 scale-SH2.jpg : .183
-angle-SH2.jpg : -1.0
+angle-SH2.jpg : 1.720
 xOffset-SH2.jpg : 1482.0
 yOffset-SH2.jpg : 1065.0
-zHeight-SH2.jpg : -1.0
+zHeight-SH2.jpg : 26.0
 
 ##SH3.jpg
 scale-SH3.jpg : .183
 angle-SH3.jpg : 1.720
 xOffset-SH3.jpg : 1482.0
 yOffset-SH3.jpg : 1065.0
-zHeight-SH3.jpg : -1.0
+zHeight-SH3.jpg : 26.0
 
 ##SHB.jpg
 scale-SHB.jpg : .1823 # 126.71ft, 695px
-angle-SHB.jpg : -1.0
+angle-SHB.jpg : 1.720
 xOffset-SHB.jpg : 1482.0
 yOffset-SHB.jpg : 1065.0
-zHeight-SHB.jpg : -1.0
+zHeight-SHB.jpg : 0.0
+

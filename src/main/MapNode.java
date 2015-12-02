@@ -44,6 +44,16 @@ public class MapNode implements Serializable{
 	}
 	
 	// constructor
+	public MapNode(LocalMap localMap){
+		neighbors = new ArrayList<MapNode>();
+		localMap = this.localMap;
+		attributes = new Attributes();
+		fScore = -1;
+		gScore = -1;
+		hScore = -1;
+		cameFrom = null;
+		this.localMap = localMap;
+	}
 	public MapNode(double newX, double newY, LocalMap aLocalMap) {
 		xPos = newX;
 		yPos = newY;
@@ -53,6 +63,7 @@ public class MapNode implements Serializable{
 		yFeet = yPos * aLocalMap.getMapScale();
 		zFeet = aLocalMap.getZHeight();
 		neighbors = new ArrayList<MapNode>();
+		//localMap = this.localMap;
 		crossMapNeighbors = new ArrayList<String>();
 		attributes = new Attributes();
 		fScore = -1;
@@ -64,6 +75,26 @@ public class MapNode implements Serializable{
 		this.localMap = aLocalMap;		
 	}
 	
+	public void runTransform(){
+		double xPrime, yPrime;
+		xPrime = this.getXFeet()*Math.cos(this.getLocalMap().getTransformAngle()) - this.getYFeet()*Math.sin(this.getLocalMap().getTransformAngle());
+		yPrime = this.getYFeet()*Math.cos(this.getLocalMap().getTransformAngle()) + this.getXFeet()*Math.sin(this.getLocalMap().getTransformAngle());
+		//translate the x and y coordinates of the local map to resemble its location in the global map 
+		xPrime = xPrime + this.getLocalMap().getXOffset();
+		yPrime = yPrime + this.getLocalMap().getYOffset();
+		//set the new transformed coordinates
+		this.setXFeet(xPrime);
+		this.setYFeet(yPrime);
+	}
+	
+	public LocalMap getLocalMap() {
+		return localMap;
+	}
+
+	public void setLocalMap(LocalMap localMap) {
+		this.localMap = localMap;
+	}
+
 	public void setCrossMapNeighbors(ArrayList<String> s){
 		this.crossMapNeighbors = s;
 	}
@@ -128,8 +159,8 @@ public class MapNode implements Serializable{
 	 */
 	public int calcDistance(MapNode toNode) {
 		double distance = 0;
-		double distanceXLeg = (toNode.getXPos() - this.getXPos());
-		double distanceYLeg = (toNode.getYPos() - this.getYPos());
+		double distanceXLeg = (toNode.getXFeet() - this.getXFeet());
+		double distanceYLeg = (toNode.getYFeet() - this.getYFeet());
 	
 		distance = (Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg)));
 		distance = Math.round(distance);
@@ -154,6 +185,13 @@ public class MapNode implements Serializable{
 	
 	public void setYPos(double yPos) {
 		this.yPos = yPos;
+	}
+
+	public double getZPos() {
+		return zPos;
+	}
+	public void setZPos(double zPos) {
+		this.zPos = zPos;
 	}
 	public void setxPos(double pos) {
 		xPos = pos;
@@ -200,12 +238,7 @@ public class MapNode implements Serializable{
 	public void calcFScore() {
 		fScore = gScore + hScore;		
 	}
-	public void setLocalMap(LocalMap localMap){
-		this.localMap = localMap;
-	}
-	public LocalMap getLocalMap(){
-		return localMap;
-	}
+	
 	public void setXFeet(double xFeet){
 		this.xFeet = xFeet;
 	}
