@@ -808,6 +808,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_37</Neighbor>
+            <Neighbor>Boy1_63</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1216,6 +1217,7 @@
         <Neighbors>
             <Neighbor>BoyB_19</Neighbor>
             <Neighbor>BoyB_18</Neighbor>
+            <Neighbor>BoyB_64</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>BH000A</OfficialName>
@@ -1375,6 +1377,28 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>BoyB_39</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>BoyB_64</NodeID>
+        <XPos>287.0</XPos>
+        <YPos>371.0</YPos>
+        <XFeet>66.3544</XFeet>
+        <YFeet>85.7752</YFeet>
+        <ZFeet>-13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>BoyB_56</Neighbor>
+            <Neighbor>Boy1_59</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

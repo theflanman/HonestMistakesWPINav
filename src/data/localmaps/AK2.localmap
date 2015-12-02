@@ -238,6 +238,8 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_10</Neighbor>
+            <Neighbor>AK3_58</Neighbor>
+            <Neighbor>AK1_128</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1505,6 +1507,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_67</Neighbor>
+            <Neighbor>AK3_16</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1927,6 +1930,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_86</Neighbor>
+            <Neighbor>AK1_137</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2282,6 +2286,8 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK2_104</Neighbor>
+            <Neighbor>AK3_32</Neighbor>
+            <Neighbor>AK1_127</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

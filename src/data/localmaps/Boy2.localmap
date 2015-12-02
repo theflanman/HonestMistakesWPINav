@@ -1458,6 +1458,8 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>Boy2_65</Neighbor>
+            <Neighbor>Boy3_29</Neighbor>
+            <Neighbor>Boy1_58</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1595,6 +1597,7 @@
         <Neighbors>
             <Neighbor>Boy2_9</Neighbor>
             <Neighbor>Boy2_11</Neighbor>
+            <Neighbor>Boy3_45</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1617,6 +1620,7 @@
         <Neighbors>
             <Neighbor>Boy2_10</Neighbor>
             <Neighbor>Boy2_11</Neighbor>
+            <Neighbor>Boy1_63</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

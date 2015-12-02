@@ -367,6 +367,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_53</Neighbor>
+            <Neighbor>PC1_71</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1188,6 +1189,7 @@
         <Neighbors>
             <Neighbor>PC1_55</Neighbor>
             <Neighbor>PC1_7</Neighbor>
+            <Neighbor>PC1_70</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1532,6 +1534,50 @@
         </Neighbors>
         <Attributes>
             <OfficialName>PC109A</OfficialName>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>PC1_70</NodeID>
+        <XPos>127.0</XPos>
+        <YPos>339.0</YPos>
+        <XFeet>17.6657</XFeet>
+        <YFeet>47.1549</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>PC1_54</Neighbor>
+            <Neighbor>CCM_79</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>PC1_71</NodeID>
+        <XPos>354.0</XPos>
+        <YPos>139.0</YPos>
+        <XFeet>49.2414</XFeet>
+        <YFeet>19.3349</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>PC1_17</Neighbor>
+            <Neighbor>PC2_53</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>

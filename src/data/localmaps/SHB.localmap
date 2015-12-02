@@ -56,6 +56,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>SHB_2</Neighbor>
+            <Neighbor>CCM_177</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -216,6 +217,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>SHB_11</Neighbor>
+            <Neighbor>CCM_65</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -260,6 +262,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>SHB_7</Neighbor>
+            <Neighbor>CCM_65</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -302,6 +305,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>SHB_5</Neighbor>
+            <Neighbor>SHB_30</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -632,6 +636,50 @@
         </Neighbors>
         <Attributes>
             <OfficialName>SH011</OfficialName>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SHB_30</NodeID>
+        <XPos>563.0</XPos>
+        <YPos>409.0</YPos>
+        <XFeet>102.63489999999999</XFeet>
+        <YFeet>74.5607</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SHB_31</Neighbor>
+            <Neighbor>SHB_14</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SHB_31</NodeID>
+        <XPos>564.0</XPos>
+        <YPos>369.0</YPos>
+        <XFeet>102.8172</XFeet>
+        <YFeet>67.2687</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SHB_30</Neighbor>
+            <Neighbor>SH1_15</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>

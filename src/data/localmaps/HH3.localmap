@@ -842,6 +842,7 @@
             <Neighbor>HH3_51</Neighbor>
             <Neighbor>HH3_39</Neighbor>
             <Neighbor>HH3_60</Neighbor>
+            <Neighbor>HH3_65</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>HH259</OfficialName>
@@ -1441,6 +1442,28 @@
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HH3_14</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_65</NodeID>
+        <XPos>452.0</XPos>
+        <YPos>352.0</YPos>
+        <XFeet>89.8124</XFeet>
+        <YFeet>69.94239999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_38</Neighbor>
+            <Neighbor>HH2_61</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

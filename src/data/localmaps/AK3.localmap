@@ -101,7 +101,6 @@
         <Neighbors>
             <Neighbor>AK3_4</Neighbor>
             <Neighbor>AK3_6</Neighbor>
-            <Neighbor>AK3_8</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -169,7 +168,6 @@
             <Neighbor>AK3_11</Neighbor>
             <Neighbor>AK3_12</Neighbor>
             <Neighbor>AK3_13</Neighbor>
-            <Neighbor>AK3_5</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -343,6 +341,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK3_13</Neighbor>
+            <Neighbor>AK2_68</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -407,7 +406,6 @@
         <Neighbors>
             <Neighbor>AK3_21</Neighbor>
             <Neighbor>AK3_18</Neighbor>
-            <Neighbor>AK3_26</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -566,7 +564,6 @@
             <Neighbor>AK3_27</Neighbor>
             <Neighbor>AK3_28</Neighbor>
             <Neighbor>AK3_29</Neighbor>
-            <Neighbor>AK3_19</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -668,9 +665,9 @@
     </Node>
     <Node>
         <NodeID>AK3_31</NodeID>
-        <XPos>203.0</XPos>
+        <XPos>205.0</XPos>
         <YPos>372.0</YPos>
-        <XFeet>74.095</XFeet>
+        <XFeet>74.825</XFeet>
         <YFeet>135.78</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -697,7 +694,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK3_29</Neighbor>
-            <Neighbor>AK2_115</Neighbor>
+            <Neighbor>AK2_103</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -757,9 +754,9 @@
     </Node>
     <Node>
         <NodeID>AK3_35</NodeID>
-        <XPos>202.0</XPos>
+        <XPos>205.0</XPos>
         <YPos>417.0</YPos>
-        <XFeet>73.73</XFeet>
+        <XFeet>74.825</XFeet>
         <YFeet>152.20499999999998</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -779,9 +776,9 @@
     </Node>
     <Node>
         <NodeID>AK3_36</NodeID>
-        <XPos>203.0</XPos>
+        <XPos>205.0</XPos>
         <YPos>469.0</YPos>
-        <XFeet>74.095</XFeet>
+        <XFeet>74.825</XFeet>
         <YFeet>171.185</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -1259,6 +1256,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AK3_57</Neighbor>
+            <Neighbor>AK2_11</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

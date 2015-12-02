@@ -10,6 +10,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CC3_3</Neighbor>
+            <Neighbor>CC2_2</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

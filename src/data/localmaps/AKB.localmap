@@ -186,6 +186,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AKB_8</Neighbor>
+            <Neighbor>AK1_137</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -296,6 +297,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>AKB_13</Neighbor>
+            <Neighbor>AK1_122</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

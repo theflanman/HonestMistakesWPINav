@@ -5,8 +5,8 @@
         <NodeID>SH1_1</NodeID>
         <XPos>305.0</XPos>
         <YPos>285.0</YPos>
-        <XFeet>54.9</XFeet>
-        <YFeet>51.3</YFeet>
+        <XFeet>55.815</XFeet>
+        <YFeet>52.155</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_2</Neighbor>
@@ -29,8 +29,8 @@
         <NodeID>SH1_2</NodeID>
         <XPos>413.0</XPos>
         <YPos>283.0</YPos>
-        <XFeet>74.34</XFeet>
-        <YFeet>50.94</YFeet>
+        <XFeet>75.579</XFeet>
+        <YFeet>51.789</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_3</Neighbor>
@@ -53,12 +53,15 @@
         <NodeID>SH1_3</NodeID>
         <XPos>487.0</XPos>
         <YPos>274.0</YPos>
-        <XFeet>87.66</XFeet>
-        <YFeet>49.32</YFeet>
+        <XFeet>89.121</XFeet>
+        <YFeet>50.141999999999996</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_4</Neighbor>
             <Neighbor>SH1_2</Neighbor>
+            <Neighbor>SH1_11</Neighbor>
+            <Neighbor>SH1_18</Neighbor>
+            <Neighbor>SH1_19</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -75,12 +78,13 @@
         <NodeID>SH1_4</NodeID>
         <XPos>572.0</XPos>
         <YPos>272.0</YPos>
-        <XFeet>102.96</XFeet>
-        <YFeet>48.96</YFeet>
+        <XFeet>104.676</XFeet>
+        <YFeet>49.775999999999996</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_3</Neighbor>
             <Neighbor>SH1_5</Neighbor>
+            <Neighbor>SH1_18</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -97,8 +101,8 @@
         <NodeID>SH1_5</NodeID>
         <XPos>621.0</XPos>
         <YPos>274.0</YPos>
-        <XFeet>111.78</XFeet>
-        <YFeet>49.32</YFeet>
+        <XFeet>113.643</XFeet>
+        <YFeet>50.141999999999996</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_4</Neighbor>
@@ -120,8 +124,8 @@
         <NodeID>SH1_6</NodeID>
         <XPos>583.0</XPos>
         <YPos>187.0</YPos>
-        <XFeet>104.94</XFeet>
-        <YFeet>33.66</YFeet>
+        <XFeet>106.689</XFeet>
+        <YFeet>34.221</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_5</Neighbor>
@@ -141,8 +145,8 @@
         <NodeID>SH1_7</NodeID>
         <XPos>677.0</XPos>
         <YPos>279.0</YPos>
-        <XFeet>121.86</XFeet>
-        <YFeet>50.22</YFeet>
+        <XFeet>123.89099999999999</XFeet>
+        <YFeet>51.057</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_7</Neighbor>
@@ -165,8 +169,8 @@
         <NodeID>SH1_8</NodeID>
         <XPos>725.0</XPos>
         <YPos>280.0</YPos>
-        <XFeet>130.5</XFeet>
-        <YFeet>50.4</YFeet>
+        <XFeet>132.67499999999998</XFeet>
+        <YFeet>51.24</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_7</Neighbor>
@@ -186,8 +190,8 @@
         <NodeID>SH1_9</NodeID>
         <XPos>388.0</XPos>
         <YPos>185.0</YPos>
-        <XFeet>69.84</XFeet>
-        <YFeet>33.3</YFeet>
+        <XFeet>71.004</XFeet>
+        <YFeet>33.855</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_2</Neighbor>
@@ -211,12 +215,237 @@
         <NodeID>SH1_10</NodeID>
         <XPos>319.0</XPos>
         <YPos>216.0</YPos>
-        <XFeet>57.419999999999995</XFeet>
-        <YFeet>38.879999999999995</YFeet>
+        <XFeet>58.376999999999995</XFeet>
+        <YFeet>39.528</YFeet>
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_1</Neighbor>
             <Neighbor>SH1_9</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_11</NodeID>
+        <XPos>515.0</XPos>
+        <YPos>229.0</YPos>
+        <XFeet>94.245</XFeet>
+        <YFeet>41.907</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_12</Neighbor>
+            <Neighbor>SH1_3</Neighbor>
+            <Neighbor>SH1_18</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_12</NodeID>
+        <XPos>516.0</XPos>
+        <YPos>160.0</YPos>
+        <XFeet>94.428</XFeet>
+        <YFeet>29.28</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_13</Neighbor>
+            <Neighbor>SH1_11</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_13</NodeID>
+        <XPos>465.0</XPos>
+        <YPos>161.0</YPos>
+        <XFeet>85.095</XFeet>
+        <YFeet>29.463</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_14</Neighbor>
+            <Neighbor>SH1_12</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_14</NodeID>
+        <XPos>465.0</XPos>
+        <YPos>135.0</YPos>
+        <XFeet>85.095</XFeet>
+        <YFeet>24.705</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_13</Neighbor>
+            <Neighbor>CCM_177</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_15</NodeID>
+        <XPos>567.0</XPos>
+        <YPos>372.0</YPos>
+        <XFeet>103.761</XFeet>
+        <YFeet>68.076</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_16</Neighbor>
+            <Neighbor>SHB_31</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_16</NodeID>
+        <XPos>563.0</XPos>
+        <YPos>314.0</YPos>
+        <XFeet>103.029</XFeet>
+        <YFeet>57.461999999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_15</Neighbor>
+            <Neighbor>SH1_17</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_17</NodeID>
+        <XPos>519.0</XPos>
+        <YPos>317.0</YPos>
+        <XFeet>94.977</XFeet>
+        <YFeet>58.010999999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_16</Neighbor>
+            <Neighbor>SH1_18</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_18</NodeID>
+        <XPos>517.0</XPos>
+        <YPos>259.0</YPos>
+        <XFeet>94.611</XFeet>
+        <YFeet>47.397</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_18</Neighbor>
+            <Neighbor>SH1_18</Neighbor>
+            <Neighbor>SH1_11</Neighbor>
+            <Neighbor>SH1_3</Neighbor>
+            <Neighbor>SH1_17</Neighbor>
+            <Neighbor>SH1_4</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_19</NodeID>
+        <XPos>459.0</XPos>
+        <YPos>259.0</YPos>
+        <XFeet>83.997</XFeet>
+        <YFeet>47.397</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_20</Neighbor>
+            <Neighbor>SH1_3</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>SH1_20</NodeID>
+        <XPos>460.0</XPos>
+        <YPos>194.0</YPos>
+        <XFeet>84.17999999999999</XFeet>
+        <YFeet>35.502</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>SH1_19</Neighbor>
+            <Neighbor>SH2_41</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

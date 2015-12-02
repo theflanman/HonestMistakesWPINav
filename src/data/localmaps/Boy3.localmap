@@ -662,6 +662,7 @@
         <Neighbors>
             <Neighbor>Boy3_28</Neighbor>
             <Neighbor>Boy3_28</Neighbor>
+            <Neighbor>Boy2_66</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1049,6 +1050,7 @@
             <Neighbor>Boy3_47</Neighbor>
             <Neighbor>Boy3_42</Neighbor>
             <Neighbor>Boy3_42</Neighbor>
+            <Neighbor>Boy2_72</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
