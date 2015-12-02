@@ -112,7 +112,6 @@ public class GUIFront extends JFrame {
 	 */
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
 		// Instantiate GUIBack to its default
-		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
 		backend = new GUIBack();
 
 		// Initialize the GlobalMap variable with all of the LocalMaps and all of their nodes
@@ -279,7 +278,8 @@ public class GUIFront extends JFrame {
 		setContentPane(contentPane);
 		
 		// Image of the default map loaded into backend
-		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + backend.getLocalMap().getMapImageName()).getImage();
+		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
+		Image mapPath = new ImageIcon(Constants.IMAGES_PATH + "/" + defaultMapImage).getImage();
 		JLabel lblInvalidEntry = new JLabel("Invalid Entry");
 		lblInvalidEntry.setVisible(false);
 		Action actionEnd = new AbstractAction()

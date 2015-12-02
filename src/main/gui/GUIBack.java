@@ -129,7 +129,6 @@ public class GUIBack implements Serializable {
 						//no neighbors, nothing to add
 					}
 					
-					
 					//extract the attribute values and store these
 					Element attributes = ((Element)currentNode.getElementsByTagName("Attributes").item(0));
 					String officialName = attributes.getElementsByTagName("OfficialName").item(0).getTextContent();

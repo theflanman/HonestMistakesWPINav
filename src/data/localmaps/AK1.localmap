@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<MapNodes>
+    <ImageName>AK1.jpg</ImageName>
+    <Node>
+        <NodeID>AK1_1</NodeID>
+        <XPos>410.0</XPos>
+        <YPos>231.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>none</Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>AK1_2</NodeID>
+        <XPos>462.0</XPos>
+        <YPos>228.0</YPos>
+        <XFeet>0.0</XFeet>
+        <YFeet>0.0</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>none</Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+</MapNodes>
