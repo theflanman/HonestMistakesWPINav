@@ -103,7 +103,6 @@ public class DevGUIBack implements Serializable  {
 			node.setNodeID(mapAppend + Integer.toString(i++));
 		}
 		
-		
 		/**
 		 * XML Saving based on the code from Costis Aivalis
 		 * on SE

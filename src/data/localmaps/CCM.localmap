@@ -421,6 +421,7 @@
         <Neighbors>
             <Neighbor>CCM_13</Neighbor>
             <Neighbor>CCM_10</Neighbor>
+            <Neighbor>SH1_9</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

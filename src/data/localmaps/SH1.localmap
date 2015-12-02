@@ -10,6 +10,8 @@
         <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>SH1_2</Neighbor>
+            <Neighbor>SH1_10</Neighbor>
+            <Neighbor>SH1_9</Neighbor>
             <Neighbor>SH2_1</Neighbor>
         </Neighbors>
         <Attributes>
@@ -33,6 +35,8 @@
         <Neighbors>
             <Neighbor>SH1_3</Neighbor>
             <Neighbor>SH1_1</Neighbor>
+            <Neighbor>SH1_9</Neighbor>
+            <Neighbor>SH1_9</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -185,7 +189,13 @@
         <XFeet>69.84</XFeet>
         <YFeet>33.3</YFeet>
         <ZFeet>13.0</ZFeet>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH1_2</Neighbor>
+            <Neighbor>SH1_2</Neighbor>
+            <Neighbor>SH1_10</Neighbor>
+            <Neighbor>SH1_1</Neighbor>
+            <Neighbor>CCM_19</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -204,7 +214,10 @@
         <XFeet>57.419999999999995</XFeet>
         <YFeet>38.879999999999995</YFeet>
         <ZFeet>13.0</ZFeet>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>SH1_1</Neighbor>
+            <Neighbor>SH1_9</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
