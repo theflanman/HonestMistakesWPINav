@@ -82,8 +82,6 @@ public class GUIFront extends JFrame {
 	public static ArrayList<MapNode> allNodes;
 	public static int index = 0;
 	public static ArrayList<MapNode> thisRoute;
-	private static Point clickedAt;
-	private static LocalMap localMap;
 
 	static AffineTransform transform; // the current state of image transformation
 	static Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
@@ -146,7 +144,6 @@ public class GUIFront extends JFrame {
 			if(localMap.getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE))
 				backend.setLocalMap(localMap);
 		}
-		localMap = backend.getLocalMap();
 
 		// add the collection of nodes to the ArrayList of GlobalMap
 		allNodes = new ArrayList<MapNode>();
@@ -402,7 +399,9 @@ public class GUIFront extends JFrame {
 					panelMap.setMapNodes(paths.get(0).get(0).getLocalMap().getMapNodes());
 					backend.setLocalMap(paths.get(0).get(0).getLocalMap());
 					index = 0;
-					btnNextMap.setEnabled(true);
+					if (paths.size() > 1){
+						btnNextMap.setEnabled(true);
+					}
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
 					/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
@@ -1055,7 +1054,6 @@ public class GUIFront extends JFrame {
 				globalMap.setStartNode(null);
 				globalMap.setEndNode(null);
 				reset = true;
-				localMap = backend.getLocalMap();
 				txtAreaDirections.setText(""); // clear directions
 
 				// allows the user to re-input start and end nodes
@@ -1281,7 +1279,7 @@ public class GUIFront extends JFrame {
 						public void mouseClicked(MouseEvent me) {
 							if (allowSetting == true){
 								// figure out where the closest map node is, set that node as a startnode the StartingNode
-								clickedAt = me.getPoint();
+								//clickedAt = me.getPoint();
 								MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
 								GUIBack tempBack = backend;
 								System.out.println("Node found is: " + node.getNodeID());
