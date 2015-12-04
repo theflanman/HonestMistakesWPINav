@@ -1287,22 +1287,40 @@ public class GUIFront extends JFrame {
 								if(globalMap.getChosenNodes().size() == 0){
 									globalMap.setStartNode(node);
 									globalMap.getStartNode().setLocalMap(backend.getLocalMap());
+									globalMap.getChosenNodes().add(node);
 									backend.getLocalMap().setStart(node);
 									System.out.println("This has happened");
 									btnClear.setEnabled(true);
 								}
 								else{
-									MapNode endNode = globalMap.getEndNode();
-									//if(endNode != null)
-										//globalMap.addToMiddleNodes(endNode);
+									//MapNode endNode = globalMap.getEndNode();
+									if(globalMap.getChosenNodes().size() == 1){
+										globalMap.getChosenNodes().add(node);
+										globalMap.setEndNode(node);
+										globalMap.getEndNode().setLocalMap(backend.getLocalMap());
+										backend.getLocalMap().setEnd(node);
+									} else {
+										MapNode endNode = globalMap.getEndNode();
+										LocalMap localMap = endNode.getLocalMap();
+										for (LocalMap localmap : globalMap.getLocalMaps()){
+											if (localMap == localmap){
+												localmap.setEnd(null);
+											}
+										}
+										globalMap.getChosenNodes().add(node);
+										globalMap.setEndNode(node);
+										globalMap.getEndNode().setLocalMap(backend.getLocalMap());
+										backend.getLocalMap().setEnd(node);
+									}
+										
 									//globalMap.getEndNode().getLocalMap().getMiddleNodes().add(endNode);
 									//globalMap.getEndNode().getLocalMap().setEnd(null);
 
-									globalMap.setEndNode(node);
-									globalMap.getEndNode().setLocalMap(backend.getLocalMap());
-									backend.getLocalMap().setEnd(node);
+									//globalMap.setEndNode(node);
+									//globalMap.getEndNode().setLocalMap(backend.getLocalMap());
+									//backend.getLocalMap().setEnd(node);
 								}
-								globalMap.getChosenNodes().add(node);
+								//globalMap.getChosenNodes().add(node);
 							}
 							//	btnRoute.setEnabled(true);
 							repaint();
@@ -1487,6 +1505,18 @@ public class GUIFront extends JFrame {
 								graphics.setColor(Color.GREEN);
 								graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
 							}
+						}
+						if (globalMap.getChosenNodes().size() > 2){
+							for (int i = 1; i < globalMap.getChosenNodes().size() - 1; i++){
+								if (globalMap.getChosenNodes().get(i).getLocalMap() == backend.getLocalMap()){
+									graphics.setColor(Color.ORANGE);
+									graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+								}
+							}
+						}
+						
+						for (MapNode mapnode : globalMap.getMiddleNodes()){
+							
 						}
 
 						// essentially draws the line on the screen 
