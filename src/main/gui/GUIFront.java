@@ -368,7 +368,6 @@ public class GUIFront extends JFrame {
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
-					
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
@@ -381,7 +380,7 @@ public class GUIFront extends JFrame {
 						routes = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1), globalMap);
 						listOfRoutes.add(routes);
 					}
-					//routes = backend.getMeRoutes(globalMap.getStartNode(), globalMap.getEndNode(), globalMap);
+					
 					if (listOfRoutes.get(0).isEmpty()){
 						mapnodes = backend.runAStar(backend.getLocalMap().getStart(), backend.getLocalMap().getEnd());
 					} else {
@@ -523,7 +522,7 @@ public class GUIFront extends JFrame {
 		// add to the tabbed pane
 		mainPanel.add(slidePanel, BorderLayout.CENTER);
 		getContentPane().add(mainPanel);
-		btnNextMap = new JButton("Next Map -->");
+		btnNextMap = new JButton("Next Step-->");
 		btnNextMap.setEnabled(false);
 		btnNextMap.addActionListener(new ActionListener(){
 			@Override
@@ -532,20 +531,20 @@ public class GUIFront extends JFrame {
 				if (index <= 0){
 					btnPreviousMap.setEnabled(false);
 				}
-				if (index < paths.size() - 1){
+				if (index < listOfPaths.size() - 1){
 					btnNextMap.setEnabled(true);
 				}
 				
-				if (index >= paths.size() - 1){
+				if (index >= listOfPaths.size() - 1){
 					btnNextMap.setEnabled(false);
 				}
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(index).get(0).getLocalMap().getMapImageName()).getImage());
-				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
-				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
-				thisRoute = paths.get(index);
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + listOfPaths.get(index).get(index).get(0).getLocalMap().getMapImageName()).getImage());
+				panelMap.setMapNodes(listOfPaths.get(index).get(index).get(0).getLocalMap().getMapNodes());
+				backend.setLocalMap(listOfPaths.get(index).get(index).get(0).getLocalMap());
+				thisRoute = listOfPaths.get(index).get(index);
 				drawLine = true;
 				// TODO: Fill in this mehtod once we know how to draw/load maps
 			}
@@ -553,7 +552,7 @@ public class GUIFront extends JFrame {
 		getContentPane().add(btnNextMap, BorderLayout.SOUTH);
 
 		// Add buttons to move between two maps
-		btnPreviousMap = new JButton("<-- Previous Map");
+		btnPreviousMap = new JButton("<-- Previous Step");
 		/*if (index <= 0){
 			btnPreviousMap.setEnabled(false);
 		}*/
@@ -565,11 +564,11 @@ public class GUIFront extends JFrame {
 				if (index <= 0){
 					btnPreviousMap.setEnabled(false);
 				}
-				if (index < paths.size() - 1){
+				if (index < listOfPaths.size() - 1){
 					btnNextMap.setEnabled(true);
 				}
 				
-				if (index >= paths.size() - 1){
+				if (index >= listOfPaths.size() - 1){
 					btnNextMap.setEnabled(false);
 				}
 				if (index > 0){
@@ -692,6 +691,7 @@ public class GUIFront extends JFrame {
 					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(0).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(0));
+					index++;
 				}
 			});
 			mntmAK2 = new JMenuItem("Floor 2");
@@ -1064,9 +1064,11 @@ public class GUIFront extends JFrame {
 			public void reset() {
 				allowSetting = true; //allow user to re place nodes only once reset is pressed
 				globalMap.getStartNode().getLocalMap().setStart(null);
-				globalMap.getEndNode().getLocalMap().setEnd(null);
+				if (globalMap.getEndNode() != null){
+					globalMap.getEndNode().getLocalMap().setEnd(null);
+					globalMap.setEndNode(null);
+				}
 				globalMap.setStartNode(null);
-				globalMap.setEndNode(null);
 				reset = true;
 				txtAreaDirections.setText(""); // clear directions
 
@@ -1075,7 +1077,9 @@ public class GUIFront extends JFrame {
 				setStart = false;
 				paths.clear();
 				listOfPaths.clear();
-				listOfRoutes.clear();
+				if (listOfRoutes != null){
+					listOfRoutes.clear();
+				}
 				backend.removePath(globalMap.getChosenNodes());
 				btnNextMap.setEnabled(false);
 				btnPreviousMap.setEnabled(false);
