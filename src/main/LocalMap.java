@@ -37,8 +37,8 @@ public class LocalMap implements Serializable{
 		this.mapNodes = mapNodes;
 		this.start = null;
 		this.end = null;
-		ArrayList<MapNode> chosenNodes;
-		ArrayList<MapNode> middleNodes;
+		//ArrayList<MapNode> chosenNodes;
+		//ArrayList<MapNode> middleNodes;
 		
 		//YamlParser yamlParser = new YamlParser(new String[]{"src/data/mapData.yml"});
 		YamlParser yamlParser = new YamlParser(new String[]{Constants.DATA_PATH});

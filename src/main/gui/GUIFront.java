@@ -84,7 +84,8 @@ public class GUIFront extends JFrame {
 	public static ArrayList<MapNode> thisRoute;
 	public static ArrayList<ArrayList<ArrayList<MapNode>>> listOfRoutes;
 	public static ArrayList<ArrayList<ArrayList<MapNode>>> listOfPaths = new ArrayList<ArrayList<ArrayList<MapNode>>>();
-
+	public static ArrayList<LocalMap> tempMaps = new ArrayList<LocalMap>();
+	
 	static AffineTransform transform; // the current state of image transformation
 	static Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
 	static PanHandler panHandle;
@@ -372,9 +373,9 @@ public class GUIFront extends JFrame {
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
-					System.out.println("Start node: " + globalMap.getStartNode().getNodeID());
-					System.out.println("End node: " + globalMap.getEndNode().getNodeID());
-					System.out.println("Number of nodes in globalMap: " + globalMap.getMapNodes().size());
+					//System.out.println("Start node: " + globalMap.getStartNode().getNodeID());
+					//System.out.println("End node: " + globalMap.getEndNode().getNodeID());
+					//System.out.println("Number of nodes in globalMap: " + globalMap.getMapNodes().size());
 					listOfRoutes = new ArrayList<ArrayList<ArrayList<MapNode>>>();
 					for (int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						routes = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1), globalMap);
@@ -422,17 +423,20 @@ public class GUIFront extends JFrame {
 					drawLine = true;
 					//set the initial distance as 0 
 					int distance = 0;
+					ArrayList<MapNode> pathNodes = globalMap.getAllNodes();
 					//update the step by step directions and distance for each waypoint added
-					for (ArrayList<ArrayList<MapNode>> routed : listOfPaths){
-						for (ArrayList<MapNode>wayPoints : routed){
-							String all = "";
-							distance += backend.getDistance(wayPoints);
-							for (String string : backend.displayStepByStep(wayPoints)) {
-								all += string + "\n";
+					/*for (ArrayList<ArrayList<MapNode>> routes : listOfPaths){
+						for (ArrayList<MapNode> route : routes){
+							distance += backend.getDistance(route);
+							for (MapNode mapnode : route){
+								pathNodes.add(mapnode);
 							}
-							allText += all + "\n";
 						}
-					}
+					}*/
+					
+				    for (String string : backend.displayStepByStep(pathNodes)) {
+				    	allText += string + "\n";
+				    }
 
 					// this should only display when the user calculates the
 					// astar algorithm
@@ -541,12 +545,11 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + listOfPaths.get(index).get(index).get(0).getLocalMap().getMapImageName()).getImage());
-				panelMap.setMapNodes(listOfPaths.get(index).get(index).get(0).getLocalMap().getMapNodes());
-				backend.setLocalMap(listOfPaths.get(index).get(index).get(0).getLocalMap());
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + listOfPaths.get(index).get(index).get(0).getLocalMap()/*tempMaps.get(index)*/.getMapImageName()).getImage());
+				panelMap.setMapNodes(listOfPaths.get(index).get(index).get(0).getLocalMap()/*tempMaps.get(index)*/.getMapNodes());
+				backend.setLocalMap(listOfPaths.get(index).get(index).get(0).getLocalMap()/*tempMaps.get(index)*/);
 				thisRoute = listOfPaths.get(index).get(index);
-				drawLine = true;
-				// TODO: Fill in this mehtod once we know how to draw/load maps
+				drawLine = true;	
 			}
 		});
 		getContentPane().add(btnNextMap, BorderLayout.SOUTH);
@@ -1069,6 +1072,7 @@ public class GUIFront extends JFrame {
 					globalMap.setEndNode(null);
 				}
 				globalMap.setStartNode(null);
+				globalMap.getAllNodes().clear();
 				reset = true;
 				txtAreaDirections.setText(""); // clear directions
 
@@ -1274,6 +1278,8 @@ public class GUIFront extends JFrame {
 				public TweenPanel(ArrayList<MapNode> mapNodes, Image mapPath, String panelId){
 
 					setLayout(new BorderLayout());
+					
+					globalMap.setAllNodes(globalMap.getMapNodes());
 
 					this.localNodes = mapNodes;
 
@@ -1306,8 +1312,11 @@ public class GUIFront extends JFrame {
 
 								if(globalMap.getChosenNodes().size() == 0){
 									globalMap.setStartNode(node);
-									globalMap.getStartNode().setLocalMap(backend.getLocalMap());
+									/*globalMap.getStartNode().setLocalMap(backend.getLocalMap());*/
 									globalMap.getChosenNodes().add(node);
+									globalMap.getAllNodes().add(node);
+									//LocalMap temp = backend.saveMap(backend.getLocalMap());
+									//tempMaps.add(temp);
 									backend.getLocalMap().setStart(node);
 									System.out.println("This has happened");
 									btnClear.setEnabled(true);
@@ -1317,8 +1326,10 @@ public class GUIFront extends JFrame {
 									if(globalMap.getChosenNodes().size() == 1){
 										globalMap.getChosenNodes().add(node);
 										globalMap.setEndNode(node);
-										globalMap.getEndNode().setLocalMap(backend.getLocalMap());
+										//globalMap.getEndNode().setLocalMap(backend.getLocalMap());
 										backend.getLocalMap().setEnd(node);
+										LocalMap temp2 = backend.saveMap(backend.getLocalMap());
+										tempMaps.add(temp2);
 									} else {
 										MapNode endNode = globalMap.getEndNode();
 										LocalMap localMap = endNode.getLocalMap();
@@ -1329,7 +1340,7 @@ public class GUIFront extends JFrame {
 										}
 										globalMap.getChosenNodes().add(node);
 										globalMap.setEndNode(node);
-										globalMap.getEndNode().setLocalMap(backend.getLocalMap());
+										//globalMap.getEndNode().setLocalMap(backend.getLocalMap());
 										backend.getLocalMap().setEnd(node);
 									}
 										
