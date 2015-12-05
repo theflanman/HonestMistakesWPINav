@@ -3,26 +3,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Attributes implements Serializable {
-	HashMap<String, String> possibleEntries;
-	String officialName = "none";
-	ArrayList<String> aliases = new ArrayList<String>();
-	boolean isOutside = false;
-	boolean isBikeable = false;
-	boolean isHandicapped = false;
-	boolean isStairs = false;
-	boolean isPOI = false;
-	Types type = Types.OTHER;
+	private HashMap<String, String> possibleEntries;
+	private String officialName = "none";
+	private ArrayList<String> aliases = new ArrayList<String>();
+	private boolean isOutside = false;
+	private boolean isBikeable = false;
+	private boolean isHandicapped = false;
+	private boolean isStairs = false;
+	private boolean isPOI = false;
+	private Types type = Types.OTHER;
+	
 	public Attributes() {
-		super();
-		this.officialName = "";
-		this.aliases = aliases;
-		this.isOutside = isOutside;
-		this.isBikeable = isBikeable;
-		this.isHandicapped = isHandicapped;
-		this.isStairs = isStairs;
-		this.isPOI = isPOI;
 		this.possibleEntries = new HashMap<String, String>();
+		
 		possibleEntries.put("waterfountain", "waterFountain");
 		possibleEntries.put("water fountain", "waterFountain");
 		possibleEntries.put("Waterfountain", "waterFountain");

@@ -56,7 +56,8 @@ public class StepByStep {
 		int i;
 		if (pathNodes.size() == 1) {
 			turnVar = "Welcome to the era of navigation, you have reached your destination.";
-		} else {
+		} 
+		else {
 			for (i = 0; i <= (pathNodes.size() - 1); i++) {
 
 				if (i == 0) {

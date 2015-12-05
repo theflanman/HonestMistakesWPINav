@@ -1,7 +1,5 @@
 package main.gui;
 
-import java.awt.FlowLayout;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -18,7 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-/*
+/**
  * @author Nick Gigliotti
  * Pop-Up Window for Emailing Directions
  */
@@ -27,7 +25,6 @@ public class EmailGUI extends JDialog {
 	private static final long serialVersionUID = 3115264882573369576L;
 	private JTextField txtTo;
 	private JTextField txtSubject;
-
 
 	EmailSender email = new EmailSender();
 	
@@ -38,10 +35,6 @@ public class EmailGUI extends JDialog {
 	String subject = "The Era of Navigationn"; 
 	String body = welcomeMessage.concat(GUIFront.allText);
 
- 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		try {
 			EmailGUI dialog = new EmailGUI();
@@ -113,7 +106,6 @@ public class EmailGUI extends JDialog {
 		getRootPane().setDefaultButton(btnSend);
 		btnSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Emailing Directions");
 				body = txtBody.getText();
 				toEmail[0] = txtTo.getText();
 				subject = txtSubject.getText();
@@ -123,6 +115,4 @@ public class EmailGUI extends JDialog {
 		});
 	}
 
-	{
-	}
 }
