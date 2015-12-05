@@ -292,13 +292,10 @@ public class GUIBack implements Serializable {
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
 		System.out.println(globalNodes.size());
-		MapNode start1 = null;
-		MapNode end1 = null;
-		int j = 0;
 		globalmap.addToMapNodes(start);
-		globalmap.setStartNode(start);
+		//globalmap.setStartNode(start);
 		globalmap.addToMapNodes(end);
-		globalmap.setEndNode(end);
+		//globalmap.setEndNode(end);
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added
 			//immediately add this to a new route
@@ -397,6 +394,23 @@ public class GUIBack implements Serializable {
 	public void setPath(ArrayList<MapNode> path){
 		this.path = path;
 	}
+	
+	public void saveMap() {
+		//get the filename of the map image, remove the image extension,
+		//and slap on a .localmap
+		System.out.println("Preparing to save...");
+		String fileName = this.localMap.getMapImageName();
+		System.out.println(this.localMap.getMapScale());
+		String mapImageName = fileName;
+		fileName = SaveUtil.removeExtension(fileName);
+		//String mapNameNoExtension = fileName;
+		String mapAppend = fileName + "_";
+		fileName = fileName.concat(".localmap");
+		fileName = Constants.LOCAL_MAP_PATH + "/" + fileName;
+		int i = 1;
+		for(MapNode node : this.localMap.getMapNodes()){
+			node.setNodeID(mapAppend + Integer.toString(i++));
+		}
+	}
 }
-
 
