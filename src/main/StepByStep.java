@@ -60,36 +60,36 @@ public class StepByStep {
 
 		} else {
 			for (i = 0; i <= (pathNodes.size() - 1); i++) {
-
-				// Last node in the route
-				if (i == (pathNodes.size() - 1)) {
-					turn = String.format("%d. You have arrived at your destination.", stepNumber);
+				
+				// First node in the path
+				// TODO Make the first direction have a direction
+				if (i == 0) {
+					turn = String.format("%d. Welcome to the era of Navigation, head %s.", stepNumber,
+							direction);
 					stepList.add(turn);
+					stepNumber++;
 
 				}  else {
-					distance = pathNodes.get(i).calcDistance(pathNodes.get(i + 1));
-					for (j = i + 1; j <= (pathNodes.size() - 2); j++) {
+					distance = pathNodes.get(i-1).calcDistance(pathNodes.get(i));
+					for (j = i; j <= (pathNodes.size() - 2); j++) {
 						angle = pathNodes.get(j).calculateAngle(pathNodes.get(j + 1));
 						if (190 > angle && angle > 170) {
 							distance += pathNodes.get(j).calcDistance(pathNodes.get(j + 1));
-							extraIncr ++;
+							i ++;
 						} else {
 							break;
 						}
 					}
 
-					// First node in the path
-					// TODO Make the first direction have a direction
-					if (i == 0) {
-						turn = String.format("%d. Welcome to the era of Navigation, move %d feet.", stepNumber,
-								distance);
+					// Last node in the route
+					if (i == (pathNodes.size() - 1)) {
+						turn = String.format("%d. In %d feet, you will arrive at your destination.", stepNumber, distance);
 						stepList.add(turn);
-						stepNumber++;
 
 					} else {
 						// if the node is stairs
-						if (pathNodes.get(i).getAttributes().isStairs()
-								&& pathNodes.get(i + 1).getAttributes().isStairs()) {
+						if (pathNodes.get(i -1).getAttributes().isStairs()
+								&& pathNodes.get(i).getAttributes().isStairs()) {
 							// If going upstairs
 							// TODO Make direction stairs work
 							/*
@@ -106,16 +106,16 @@ public class StepByStep {
 
 							// case of going straight
 							if (190 > angle && angle > 170) {
+								
 								// If you are going into a building
-
-								if (pathNodes.get(i).getAttributes().getType().equals("door")
-										&& pathNodes.get(i + 1).getAttributes().getType().equals("door")) {
-									turn = String.format("%d. Continue into building.", stepNumber);
+								if (pathNodes.get(i - 1).getAttributes().getType().equals("door")
+										&& pathNodes.get(i).getAttributes().getType().equals("door")) {
+									turn = String.format("%d. In %d feet, continue into building.", stepNumber);
 									stepList.add(turn);
 									stepNumber++;
 
 								} else {
-									turn = String.format("%d. Continue straight for %d feet.", stepNumber,
+									turn = String.format("%d. In %d feet, continue straight.", stepNumber,
 											distance);
 									stepList.add(turn);
 									stepNumber++;
@@ -142,8 +142,8 @@ public class StepByStep {
 								if (250 >= angle && angle >= 190) {
 									direction = "slight left";
 								}
-								turn = String.format("%d. Turn %s, and continue for %d feet.", stepNumber, direction,
-										distance);
+								turn = String.format("%d. In %d feet, turn %s.", stepNumber, distance, direction
+										);
 								stepList.add(turn);
 								stepNumber++;
 								
@@ -151,8 +151,6 @@ public class StepByStep {
 						}
 					}
 				}
-				i += extraIncr;
-				extraIncr = 0;
 			}
 		}
 		return stepList;

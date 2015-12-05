@@ -34,8 +34,8 @@ public class PrintDirectionsTest extends TestCase{
 		StepByStep stepByStep1 = new StepByStep(instructionList1);
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("1. Welcome to the era of Navigation, move 6 feet.");
-		resultSteps.add("2. You have arrived at your destination.");
+		resultSteps.add("1. Welcome to the era of Navigation, head .");
+		resultSteps.add("2. In 6 feet, you will arrive at your destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
@@ -59,8 +59,8 @@ public class PrintDirectionsTest extends TestCase{
 		StepByStep stepByStep1 = new StepByStep(instructionList1);
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("1. Welcome to the era of Navigation, move 4 feet.");
-		resultSteps.add("2. You have arrived at your destination.");
+		resultSteps.add("1. Welcome to the era of Navigation, head .");
+		resultSteps.add("2. In 4 feet, you will arrive at your destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
@@ -88,10 +88,10 @@ public class PrintDirectionsTest extends TestCase{
 		StepByStep stepByStep1 = new StepByStep(instructionList1);
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("1. Welcome to the era of Navigation, move 8 feet.");
-		resultSteps.add("2. Turn back, and continue for 4 feet.");
-		resultSteps.add("3. Turn right, and continue for 4 feet.");
-		resultSteps.add("4. You have arrived at your destination.");
+		resultSteps.add("1. Welcome to the era of Navigation, head .");
+		resultSteps.add("2. In 8 feet, turn back.");
+		resultSteps.add("3. In 4 feet, turn right.");
+		resultSteps.add("4. In 4 feet, you will arrive at your destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
@@ -127,11 +127,11 @@ public class PrintDirectionsTest extends TestCase{
 		StepByStep stepByStep1 = new StepByStep(instructionList1);
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("1. Welcome to the era of Navigation, move 5 feet.");
-		resultSteps.add("2. Turn sharp left, and continue for 5 feet.");
-		resultSteps.add("3. Turn slight left, and continue for 8 feet.");
-		resultSteps.add("4. Turn back, and continue for 4 feet.");
-		resultSteps.add("5. You have arrived at your destination.");
+		resultSteps.add("1. Welcome to the era of Navigation, head .");
+		resultSteps.add("2. In 5 feet, turn sharp left.");
+		resultSteps.add("3. In 5 feet, turn slight left.");
+		resultSteps.add("4. In 8 feet, turn back.");
+		resultSteps.add("5. In 4 feet, you will arrive at your destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
