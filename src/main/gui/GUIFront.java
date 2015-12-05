@@ -374,7 +374,7 @@ public class GUIFront extends JFrame {
 					System.out.println("Start node: " + globalMap.getStartNode().getNodeID());
 					System.out.println("End node: " + globalMap.getEndNode().getNodeID());
 					System.out.println("Number of nodes in globalMap: " + globalMap.getMapNodes().size());
-					routes = backend.getMeRoutes(globalMap.getStartNode(), globalMap.getEndNode());
+					routes = backend.getMeRoutes(globalMap.getStartNode(), globalMap.getEndNode(), globalMap);
 					if (routes.isEmpty()){
 						mapnodes = backend.runAStar(backend.getLocalMap().getStart(), backend.getLocalMap().getEnd());
 					} else {
@@ -399,7 +399,9 @@ public class GUIFront extends JFrame {
 					panelMap.setMapNodes(paths.get(0).get(0).getLocalMap().getMapNodes());
 					backend.setLocalMap(paths.get(0).get(0).getLocalMap());
 					index = 0;
-					btnNextMap.setEnabled(true);
+					if (paths.size() > 1){
+						btnNextMap.setEnabled(true);
+					}
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
 					/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
@@ -1277,7 +1279,7 @@ public class GUIFront extends JFrame {
 						public void mouseClicked(MouseEvent me) {
 							if (allowSetting == true){
 								// figure out where the closest map node is, set that node as a startnode the StartingNode
-								Point clickedAt = me.getPoint();
+								//clickedAt = me.getPoint();
 								MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
 								GUIBack tempBack = backend;
 								System.out.println("Node found is: " + node.getNodeID());
@@ -1291,8 +1293,8 @@ public class GUIFront extends JFrame {
 								}
 								else{
 									MapNode endNode = globalMap.getEndNode();
-									if(endNode != null)
-										globalMap.addToMiddleNodes(endNode);
+									//if(endNode != null)
+										//globalMap.addToMiddleNodes(endNode);
 									//globalMap.getEndNode().getLocalMap().getMiddleNodes().add(endNode);
 									//globalMap.getEndNode().getLocalMap().setEnd(null);
 
@@ -1451,25 +1453,39 @@ public class GUIFront extends JFrame {
 						// Draws the map and places pre-existing node data onto the map as
 						// well start and end nodes if they have been set
 						graphics.drawImage(this.mapImage, 0, 0, this);
-
 						// Sets the color of the start and end nodes to be different
 						graphics.setColor(Color.RED);
-						for (int i = 0; i < globalMap.getChosenNodes().size(); i++) {
-							if(i == 0){
-								if (backend.getLocalMap().getStart() != null){
+						//for (/*int i = 0; i < globalMap.getChosenNodes().size(); i++*/ArrayList<MapNode> mapnode : paths) {
+							//System.out.println(globalMap.getChosenNodes().size());
+							if(!(paths.isEmpty())){
+								if (paths.get(index).get(0) != null){
 									graphics.setColor(Color.RED);
-									graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
+									graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
 								}
-							} 
-							else if(i == globalMap.getChosenNodes().size()-1){
-								if (backend.getLocalMap().getEnd() != null){
+							//} 
+							//else if(i == globalMap.getChosenNodes().size() - 1){
+								if (paths.get(index).get(paths.get(index).size() - 1) != null){
 									graphics.setColor(Color.GREEN);
-									graphics.fillOval((int) backend.getLocalMap().getEnd().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getEnd().getYPos() - (int)panY - 5, 10, 10);
+									graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
 								}
+							//}
+							//else {
+								//graphics.setColor(Color.GREEN);
+								//graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
 							}
-							else {
-								graphics.setColor(Color.ORANGE);
-								graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+						//}
+							
+						if (globalMap.getStartNode() != null){
+							if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
+								graphics.setColor(Color.RED);
+								graphics.fillOval((int) globalMap.getStartNode().getXPos() - (int)panX - 5, (int) globalMap.getStartNode().getYPos() - (int)panY - 5, 10, 10);
+							}
+						}
+						
+						if(globalMap.getEndNode() != null){
+							if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
+								graphics.setColor(Color.GREEN);
+								graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
 							}
 						}
 
