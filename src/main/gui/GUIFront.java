@@ -1439,6 +1439,7 @@ public class GUIFront extends JFrame {
 					Color startNodeColor = colors.getStartNodeColor();
 					Color endNodeColor = colors.getEndNodeColor();
 					Color lineColor = colors.getLineColor();
+					Color outlineColor = colors.getOutlineColor();
 
 					super.paintComponent(g);
 
@@ -1478,6 +1479,8 @@ public class GUIFront extends JFrame {
 						// Test drawing of map nodes
 						for(MapNode n : localNodes){
 							graphics.fillOval((int)n.getXPos() - (int)panX - 5, (int)n.getYPos() - (int)panY - 5, 10, 10);
+							graphics.drawOval((int)n.getXPos() - (int)panX - 5, (int)n.getYPos() - (int)panY - 5, 10, 10);
+
 						}
 
 						// Colors start and end differently
@@ -1492,12 +1495,18 @@ public class GUIFront extends JFrame {
 								if (paths.get(index).get(0) != null){
 									graphics.setColor(startNodeColor);
 									graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+									graphics.setColor(outlineColor);
+									graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+
 								}
 							//} 
 							//else if(i == globalMap.getChosenNodes().size() - 1){
 								if (paths.get(index).get(paths.get(index).size() - 1) != null){
 									graphics.setColor(endNodeColor);
 									graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
+									graphics.setColor(outlineColor);
+									graphics.drawOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
+
 								}
 							//}
 							//else {
@@ -1510,6 +1519,9 @@ public class GUIFront extends JFrame {
 							if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
 								graphics.setColor(startNodeColor);
 								graphics.fillOval((int) globalMap.getStartNode().getXPos() - (int)panX - 5, (int) globalMap.getStartNode().getYPos() - (int)panY - 5, 10, 10);
+								graphics.setColor(outlineColor);
+								graphics.drawOval((int) globalMap.getStartNode().getXPos() - (int)panX - 5, (int) globalMap.getStartNode().getYPos() - (int)panY - 5, 10, 10);
+
 							}
 						}
 						
@@ -1517,6 +1529,9 @@ public class GUIFront extends JFrame {
 							if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
 								graphics.setColor(endNodeColor);
 								graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
+								graphics.setColor(outlineColor);
+								graphics.drawOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
+
 							}
 						}
 

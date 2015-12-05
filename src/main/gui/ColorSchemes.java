@@ -9,7 +9,7 @@ public class ColorSchemes {
 	Color defaultLightGreen = new Color(184, 217, 144);
 	Color defaultLight = new Color(218, 211, 203);
 	Color defaultRed = new Color(223, 106, 73);
-	
+	Color defaultBlack = new Color(0,0,0);
 	
 	
 	private HashMap<String, ColorSetting> colorSchemes;
@@ -23,10 +23,10 @@ public class ColorSchemes {
 		defaultCampus.setOtherButtonsColor(defaultRed);
 		defaultCampus.setLineColor(defaultBlue);
 		defaultCampus.setMainBackColor(defaultLightGreen);
-		defaultCampus.setSideBarColor(defaultDarkGreen);
+		defaultCampus.setSideBarColor(defaultBlue);
 		defaultCampus.setStartNodeColor(defaultDarkGreen);
 		defaultCampus.setEndNodeColor(defaultRed);
-		
+		defaultCampus.setOutlineColor(defaultBlack);		
 		colorSchemes.put("Default Campus", defaultCampus);
 
 		

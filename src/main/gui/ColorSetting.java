@@ -12,7 +12,8 @@ public class ColorSetting {
 	private Color lineColor;
 	private Color startNodeColor;
 	private Color endNodeColor;
-	
+	private Color outlineColor;
+
 	public ColorSetting(){
 		mainBackColor = new Color(95, 172, 213);
 		sideBarColor = new Color(95, 172, 213);
@@ -21,9 +22,10 @@ public class ColorSetting {
 		lineColor = new Color(95, 172, 213);
 		startNodeColor = new Color(95, 172, 213);
 		endNodeColor = new Color(95, 172, 213);
+		outlineColor = new Color(95, 172, 213);
 	}
 	public ColorSetting(Color routeButtonColor, Color otherButtonsColor, Color mainBackColor, Color sideBarColor,
-			Color lineColor, Color startNodeColor, Color endNodeColor) {
+			Color lineColor, Color startNodeColor, Color endNodeColor, Color outlineColor) {
 		this.routeButtonColor = routeButtonColor;
 		this.otherButtonsColor = otherButtonsColor;
 		this.mainBackColor = mainBackColor;
@@ -31,7 +33,9 @@ public class ColorSetting {
 		this.lineColor = lineColor;
 		this.startNodeColor = startNodeColor;
 		this.endNodeColor = endNodeColor;
+		this.outlineColor = outlineColor; 
 	}
+	
 	public Color getRouteButtonColor() {
 		return routeButtonColor;
 	}
@@ -73,6 +77,12 @@ public class ColorSetting {
 	}
 	public void setEndNodeColor(Color endNodeColor) {
 		this.endNodeColor = endNodeColor;
+	}
+	public Color getOutlineColor() {
+		return outlineColor;
+	}
+	public void setOutlineColor(Color outlineColor) {
+		this.outlineColor = outlineColor;
 	}
 	
 }

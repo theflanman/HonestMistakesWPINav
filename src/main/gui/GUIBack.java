@@ -65,6 +65,7 @@ public class GUIBack implements Serializable {
 			String mapAppend = fileParts[fileParts.length-1];
 			mapAppend = SaveUtil.removeExtension(mapAppend) + "_";
 			//setup an array list of nodes for the local map and an array list of strings for linking
+			
 			ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
 			ArrayList<ArrayList<String>> neighborNodes = new ArrayList<ArrayList<String>>();
 			Document dom;
