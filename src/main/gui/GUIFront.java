@@ -82,12 +82,12 @@ public class GUIFront extends JFrame {
 	public static ArrayList<MapNode> allNodes;
 	public static int index = 0;
 	public static ArrayList<MapNode> thisRoute;
-
 	static AffineTransform transform; // the current state of image transformation
 	static Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
 	static PanHandler panHandle;
 	static ZoomHandler zoomHandle;
 
+	
 	// MapPanel components
 	private JPanel contentPane;
 	private static JTextField textFieldEnd, textFieldStart;
@@ -119,6 +119,14 @@ public class GUIFront extends JFrame {
 	 * @throws ClassNotFoundException
 	 */
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
+		ColorSchemes allSchemes = new ColorSchemes();  
+		ColorSetting colors = allSchemes.setColorScheme("Default Campus");
+		
+		Color routeButtonColor = colors.getRouteButtonColor();
+		Color otherButtonsColor = colors.getOtherButtonsColor();
+		Color backgroundColor = colors.getMainBackColor();
+		Color sideBarColor = colors.getSideBarColor();
+		
 		// Instantiate GUIBack to its default
 		GUIBack initial = new GUIBack(/*defaultMapImage, null*/);
 		backends.add(0, initial);
@@ -160,7 +168,7 @@ public class GUIFront extends JFrame {
 		// This will setup the main JFrame to be maximized on start
 		setTitle("Era of Navigation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 820, 699);
+		setBounds(0, 0, 1412, 743);
 		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 		panHandle = new PanHandler();
@@ -172,6 +180,7 @@ public class GUIFront extends JFrame {
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(backgroundColor);
 		setContentPane(contentPane);
 
 		// Image of the default map loaded into backend
@@ -354,6 +363,7 @@ public class GUIFront extends JFrame {
 
 		// Clear button will call all of the reset code
 		btnClear = new JButton("Clear All");
+		btnClear.setBackground(otherButtonsColor);
 		btnClear.setEnabled(false);
 		btnClear.addActionListener(new ActionListener(){
 			@Override
@@ -363,6 +373,7 @@ public class GUIFront extends JFrame {
 		});
 
 		JButton btnRoute = new JButton("Route");
+		btnRoute.setBackground(routeButtonColor);
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
@@ -443,7 +454,9 @@ public class GUIFront extends JFrame {
 		 * Tween related code to make the animations work
 		 */
 		slidePanel = new SLPanel();
+		slidePanel.setBackground(sideBarColor);
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1");
+		panelMap.setBackground(backgroundColor);
 		panels.add(panelMap);
 		panelDirections = new TweenPanel("2");
 
@@ -451,6 +464,7 @@ public class GUIFront extends JFrame {
 		 * Adding new components onto the Step By Step slideout panel
 		 */
 		JPanel stepByStepUI = new JPanel();
+		stepByStepUI.setBackground(sideBarColor);;
 
 		lblClickHere = new JLabel("<<<");
 		lblClickHere.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -458,6 +472,7 @@ public class GUIFront extends JFrame {
 		stepByStepUI.add(lblClickHere);
 
 		lblStepByStep = new JLabel("Step by Step Directions!");
+		lblStepByStep.setBackground(sideBarColor);
 		lblStepByStep.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblStepByStep.setBounds(23, 11, 167, 14);
 		lblStepByStep.setVisible(false);
@@ -478,11 +493,13 @@ public class GUIFront extends JFrame {
 		txtAreaDirections.setVisible(false);
 
 		lblDistance = new JLabel();
+		lblDistance.setBackground(sideBarColor);
 		lblDistance.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblDistance.setVisible(false);
 
 		panelDirections.add(lblDistance, BorderLayout.SOUTH);
 		panelDirections.add(stepByStepUI, BorderLayout.NORTH);
+		panelDirections.setBackground(sideBarColor);
 
 		// Set action to allow for sliding
 		panelDirections.setAction(panelDirectionsAction);
@@ -513,6 +530,7 @@ public class GUIFront extends JFrame {
 		getContentPane().add(mainPanel);
 		btnNextMap = new JButton("Next Map -->");
 		btnNextMap.setEnabled(false);
+		btnNextMap.setBackground(otherButtonsColor);
 		btnNextMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae){
@@ -546,6 +564,7 @@ public class GUIFront extends JFrame {
 			btnPreviousMap.setEnabled(false);
 		}*/
 		btnPreviousMap.setEnabled(false);
+		btnPreviousMap.setBackground(otherButtonsColor);
 		btnPreviousMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
@@ -1231,6 +1250,10 @@ public class GUIFront extends JFrame {
 
 
 			public static class TweenPanel extends JPanel {
+				ColorSchemes allSchemes = new ColorSchemes();  
+				ColorSetting colors = allSchemes.setColorScheme("Default Campus");
+
+						
 				ArrayList<MapNode> localNodes;
 				public ArrayList<MapNode> chosenNodes;
 
@@ -1252,7 +1275,11 @@ public class GUIFront extends JFrame {
 				 * but it functions better as a private class
 				 */
 				public TweenPanel(ArrayList<MapNode> mapNodes, Image mapPath, String panelId){
+					//This part will be connected to JMenue Items for various color schemes
 
+
+
+					
 					setLayout(new BorderLayout());
 
 					this.localNodes = mapNodes;
@@ -1409,6 +1436,10 @@ public class GUIFront extends JFrame {
 
 				@Override
 				protected void paintComponent(Graphics g) {
+					Color startNodeColor = colors.getStartNodeColor();
+					Color endNodeColor = colors.getEndNodeColor();
+					Color lineColor = colors.getLineColor();
+
 					super.paintComponent(g);
 
 					Graphics2D graphics = (Graphics2D) g;
@@ -1454,18 +1485,18 @@ public class GUIFront extends JFrame {
 						// well start and end nodes if they have been set
 						graphics.drawImage(this.mapImage, 0, 0, this);
 						// Sets the color of the start and end nodes to be different
-						graphics.setColor(Color.RED);
+						graphics.setColor(startNodeColor);
 						//for (/*int i = 0; i < globalMap.getChosenNodes().size(); i++*/ArrayList<MapNode> mapnode : paths) {
 							//System.out.println(globalMap.getChosenNodes().size());
 							if(!(paths.isEmpty())){
 								if (paths.get(index).get(0) != null){
-									graphics.setColor(Color.RED);
+									graphics.setColor(startNodeColor);
 									graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
 								}
 							//} 
 							//else if(i == globalMap.getChosenNodes().size() - 1){
 								if (paths.get(index).get(paths.get(index).size() - 1) != null){
-									graphics.setColor(Color.GREEN);
+									graphics.setColor(endNodeColor);
 									graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
 								}
 							//}
@@ -1477,14 +1508,14 @@ public class GUIFront extends JFrame {
 							
 						if (globalMap.getStartNode() != null){
 							if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
-								graphics.setColor(Color.RED);
+								graphics.setColor(startNodeColor);
 								graphics.fillOval((int) globalMap.getStartNode().getXPos() - (int)panX - 5, (int) globalMap.getStartNode().getYPos() - (int)panY - 5, 10, 10);
 							}
 						}
 						
 						if(globalMap.getEndNode() != null){
 							if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
-								graphics.setColor(Color.GREEN);
+								graphics.setColor(endNodeColor);
 								graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
 							}
 						}
@@ -1503,7 +1534,7 @@ public class GUIFront extends JFrame {
 									Color color = new Color(0, 1, 1, (float) alpha);
 									Graphics2D g2 = (Graphics2D) g;
 									g2.setStroke(new BasicStroke(5));
-									g2.setColor(color);
+									g2.setColor(lineColor);
 									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 								}
 								drawLine = false;
@@ -1521,7 +1552,7 @@ public class GUIFront extends JFrame {
 									Color color = new Color(0, 1, 1, (float) alpha);
 									Graphics2D g2 = (Graphics2D) g;
 									g2.setStroke(new BasicStroke(5));
-									g2.setColor(color);
+									g2.setColor(lineColor);
 									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 								}
 								drawLine = false;
@@ -1538,7 +1569,7 @@ public class GUIFront extends JFrame {
 									Color color = new Color(0, 1, 1, (float) alpha);
 									Graphics2D g2 = (Graphics2D) g;
 									g2.setStroke(new BasicStroke(5));
-									g2.setColor(color);
+									g2.setColor(lineColor);
 									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 								}
 								drawLine = true;
