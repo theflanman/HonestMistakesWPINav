@@ -22,8 +22,11 @@ import aurelienribon.slidinglayout.SLKeyframe;
 import aurelienribon.slidinglayout.SLPanel;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.Icon;
@@ -46,8 +49,10 @@ import javax.swing.border.MatteBorder;
 import main.*;
 import main.util.Constants;
 import main.util.Speaker;
+import main.util.WrappableCellRenderer;
 
 import javax.swing.JTextField;
+import javax.swing.ListCellRenderer;
 import javax.swing.SwingConstants;
 import javax.swing.JLayeredPane;
 
@@ -96,8 +101,11 @@ public class GUIFront extends JFrame {
 	// Directions Components
 	private static JLabel lblStepByStep, lblClickHere, lblDistance;
 	private static JScrollPane scrollPane;
-	private static JTextArea txtAreaDirections;
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
+	private DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
+	private ListCellRenderer renderer;
+	private int MAX_LIST_WIDTH = 180; // maximum width of the list in pixels, the size of panelDirections is 200px
+	private static JList<String> listDirections;
 
 	// Menu Bar
 	private JMenuBar menuBar;
@@ -418,14 +426,10 @@ public class GUIFront extends JFrame {
 						String all = "";
 						distance += backend.getDistance(wayPoints);
 						for (String string : backend.displayStepByStep(wayPoints)) {
-							all += string + "\n";
+							listModel.addElement(string); // add it to the list model
 						}
 						allText += all + "\n";
 					}
-
-					// this should only display when the user calculates the
-					// astar algorithm
-					txtAreaDirections.setText(allText);
 
 					lblDistance.setText("Distance in feet:" + distance);
 					//this sets the textarea with the step by step directions
@@ -464,19 +468,20 @@ public class GUIFront extends JFrame {
 		stepByStepUI.add(lblStepByStep);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 30, 180, 322);
+		scrollPane.setSize(new Dimension(180, 400));
 		scrollPane.setVisible(false);
 		stepByStepUI.add(scrollPane);
 
-		txtAreaDirections = new JTextArea();
-		txtAreaDirections.setRows(22);
-		txtAreaDirections.setEditable(false);
-		scrollPane.setViewportView(txtAreaDirections);
-		txtAreaDirections.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		txtAreaDirections.setWrapStyleWord(true);
-		txtAreaDirections.setLineWrap(true);
-		txtAreaDirections.setVisible(false);
-
+		// Create a new list and be able to get the current width ofthe viewport it is contained in (the scrollpane)
+		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 7); // 7 pixels per 1 character
+			
+		listDirections = new JList<String>(listModel);
+		listDirections.setCellRenderer(renderer);
+		listDirections.setFixedCellWidth(MAX_LIST_WIDTH); // give it a set width in pixels
+		scrollPane.setViewportView(listDirections);
+		listDirections.setVisible(false);
+		listDirections.setVisibleRowCount(10); // only shows 10 directions before scrolling
+		
 		lblDistance = new JLabel();
 		lblDistance.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblDistance.setVisible(false);
@@ -1054,7 +1059,7 @@ public class GUIFront extends JFrame {
 				globalMap.setStartNode(null);
 				globalMap.setEndNode(null);
 				reset = true;
-				txtAreaDirections.setText(""); // clear directions
+				listModel.removeAllElements(); // clear directions
 
 				// allows the user to re-input start and end nodes
 				setEnd = false;
@@ -1103,14 +1108,10 @@ public class GUIFront extends JFrame {
 					if(direction < 0){ // moving up, so zoom in	(no greater than 100%)
 						if(zoomAmount <= (.9 + .001))
 							zoomAmount += 0.1;
-					} else { // moving down, zoom out (no less than 0%)
+					} else { // moving down, zoom out (no less than 50%)
 						if(zoomAmount >= 0.5)
 							zoomAmount -= 0.1;
 					}
-
-					// Set it to slightly above 0, weird errors occur if you do exactly 0
-					//if(zoomAmount == 0)
-					//	zoomAmount = 0.00001;
 
 					panelMap.setScale(zoomAmount);
 				}
@@ -1228,6 +1229,7 @@ public class GUIFront extends JFrame {
 				}
 
 			}
+
 
 
 			public static class TweenPanel extends JPanel {
@@ -1419,13 +1421,13 @@ public class GUIFront extends JFrame {
 							lblClickHere.setVisible(true);
 							lblDistance.setVisible(false);
 							scrollPane.setVisible(false);
-							txtAreaDirections.setVisible(false);
+							listDirections.setVisible(false);
 						} else {
 							lblStepByStep.setVisible(true);
 							lblDistance.setVisible(true);
 							lblClickHere.setVisible(false);
 							scrollPane.setVisible(true);
-							txtAreaDirections.setVisible(true);
+							listDirections.setVisible(true);
 						}
 
 					else {
