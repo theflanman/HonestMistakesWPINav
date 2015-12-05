@@ -30,10 +30,11 @@ public class EmailGUI extends JDialog {
 	
 	String welcomeMessage = "The directions for your route are:\n\n";
 	String fromEmail = "EraOfNavigation";
+	
 	String pass = "HonestMistakes";
 	String[] toEmail = { "" };
 	String subject = "The Era of Navigationn"; 
-	String body = welcomeMessage.concat(GUIFront.allText);
+	String body = welcomeMessage.concat(GUIFront.getAllText());
 
 	public static void main(String[] args) {
 		try {

@@ -44,7 +44,7 @@ public class MainDriver {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new GUIFront(localMapList.length, localMapList);
+					new GUIFront(localMapList);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
