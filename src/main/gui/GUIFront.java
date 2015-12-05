@@ -369,6 +369,7 @@ public class GUIFront extends JFrame {
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
+					ArrayList<MapNode> globalNodes = backend.runAStar(globalMap.getStartNode(), globalMap.getEndNode());
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
@@ -423,7 +424,7 @@ public class GUIFront extends JFrame {
 					drawLine = true;
 					//set the initial distance as 0 
 					int distance = 0;
-					ArrayList<MapNode> pathNodes = globalMap.getAllNodes();
+					//ArrayList<MapNode> pathNodes = globalMap.getAllNodes();
 					//update the step by step directions and distance for each waypoint added
 					/*for (ArrayList<ArrayList<MapNode>> routes : listOfPaths){
 						for (ArrayList<MapNode> route : routes){
@@ -434,7 +435,7 @@ public class GUIFront extends JFrame {
 						}
 					}*/
 					
-				    for (String string : backend.displayStepByStep(pathNodes)) {
+				    for (String string : backend.displayStepByStep(globalNodes)) {
 				    	allText += string + "\n";
 				    }
 

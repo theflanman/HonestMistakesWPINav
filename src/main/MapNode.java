@@ -131,6 +131,8 @@ public class MapNode implements Serializable{
 	public double calculateAngle(MapNode nextNode) {
 		MapNode currentNode = this;
 		MapNode previousNode = currentNode.getCameFrom();
+		System.out.println(previousNode.getID());
+		System.out.println(previousNode.getXFeet());
 		double prevX = previousNode.getXFeet();
 		System.out.println(prevX);
 		double prevY = previousNode.getYFeet();
