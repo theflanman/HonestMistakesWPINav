@@ -3,6 +3,7 @@ package tests;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
+import main.Attributes;
 import main.LocalMap;
 import main.MapNode;
 import main.StepByStep;
@@ -132,6 +133,50 @@ public class PrintDirectionsTest extends TestCase{
 		resultSteps.add("3. In 5 feet, turn slight left.");
 		resultSteps.add("4. In 8 feet, turn back.");
 		resultSteps.add("5. In 4 feet, you will arrive at your destination.");
+
+		assertEquals(stepByStep1.printDirection(), resultSteps);
+	}
+	
+	public void testDirection5(){
+		MapNode node1 = new MapNode(3, 1, localMap1);
+		node1.setCameFrom(null);
+		
+		Attributes atr2 = new Attributes();
+		atr2.setStairs(true);
+		
+		MapNode node2 = new MapNode(3, 2, localMap1);
+		node2.setCameFrom(node1);
+		node2.setAttributes(atr2);
+		node2.setNodeID("AK3_59");
+		
+		Attributes atr3 = new Attributes();
+		atr3.setStairs(true);
+		
+		MapNode node3 = new MapNode(3, 6, localMap1);
+		node3.setCameFrom(node2);
+		node3.setAttributes(atr3);
+		node3.setNodeID("AK1_4");
+		
+		Attributes atr4 = new Attributes();
+		atr4.setStairs(true);
+		
+		MapNode node4 = new MapNode(3, 7, localMap1);
+		node4.setCameFrom(node3);
+		node4.setAttributes(atr4);
+		
+		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
+		
+		instructionList1.add(node1);
+		instructionList1.add(node2);
+		instructionList1.add(node3);
+		instructionList1.add(node4);
+		
+		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		
+		ArrayList<String> resultSteps = new ArrayList<String>();
+		resultSteps.add("1. Welcome to the era of Navigation, head .");
+		resultSteps.add("2. Walk down the stairs to floor 1.");
+		resultSteps.add("3. In 1 feet, you will arrive at your destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}

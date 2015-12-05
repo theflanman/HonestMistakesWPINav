@@ -52,6 +52,9 @@ public class StepByStep {
 		int stepNumber = 1;
 		String direction = "";
 		int extraIncr = 0;
+		char floorNum1 = 0;
+		char floorNum2 = 0;
+		String temp = "";
 
 		// Case where there is only 1 node in the route
 		if (pathNodes.size() == 1) {
@@ -62,7 +65,7 @@ public class StepByStep {
 			for (i = 0; i <= (pathNodes.size() - 1); i++) {
 				
 				// First node in the path
-				// TODO Make the first direction have a direction
+				// TODO Make the direction work.
 				if (i == 0) {
 					turn = String.format("%d. Welcome to the era of Navigation, head %s.", stepNumber,
 							direction);
@@ -74,8 +77,10 @@ public class StepByStep {
 					for (j = i; j <= (pathNodes.size() - 2); j++) {
 						angle = pathNodes.get(j).calculateAngle(pathNodes.get(j + 1));
 						if (190 > angle && angle > 170) {
-							distance += pathNodes.get(j).calcDistance(pathNodes.get(j + 1));
-							i ++;
+							if (! pathNodes.get(j - 1).getAttributes().isStairs && ! pathNodes.get(j - 1).getAttributes().type.equals("door")) {
+								distance += pathNodes.get(j).calcDistance(pathNodes.get(j + 1));
+								i ++;
+							}
 						} else {
 							break;
 						}
@@ -87,17 +92,27 @@ public class StepByStep {
 						stepList.add(turn);
 
 					} else {
+						
 						// if the node is stairs
-						if (pathNodes.get(i -1).getAttributes().isStairs()
+						if (pathNodes.get(i - 1).getAttributes().isStairs()
 								&& pathNodes.get(i).getAttributes().isStairs()) {
+							temp = pathNodes.get(i - 1).getNodeID().split("_")[0];
+							System.out.println(temp);
+							floorNum1 = temp.charAt(temp.length() - 1);
+							System.out.println(floorNum1);
+							temp = pathNodes.get(i).getNodeID().split("_")[0];
+							System.out.println(temp);
+							floorNum2 = temp.charAt(temp.length() - 1);
+							System.out.println(floorNum2);
+							
 							// If going upstairs
-							// TODO Make direction stairs work
-							/*
-							 * if () { direction = "up"; } else { direction =
-							 * "down"; }
-							 */
+							 if (floorNum1 < floorNum2) { 
+								 direction = "up";
+							 } else { 
+								 direction ="down";
+							 }
 
-							turn = String.format("%d. Walk %s the stairs for %d feet.", stepNumber, direction, distance);
+							turn = String.format("%d. Walk %s the stairs to floor %c.", stepNumber, direction, floorNum2);
 							stepList.add(turn);
 							stepNumber++;
 
