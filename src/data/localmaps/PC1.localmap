@@ -367,7 +367,6 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_53</Neighbor>
-            <Neighbor>PC1_71</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1575,12 +1574,13 @@
         <Neighbors>
             <Neighbor>PC1_17</Neighbor>
             <Neighbor>PC2_53</Neighbor>
+            <Neighbor>PC2_53</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>

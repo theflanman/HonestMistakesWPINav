@@ -131,12 +131,12 @@ public class MapNode implements Serializable{
 	public double calculateAngle(MapNode nextNode) {
 		MapNode currentNode = this;
 		MapNode previousNode = currentNode.getCameFrom();
-		double prevX = previousNode.getXPos();
-		double prevY = previousNode.getYPos();
-		double currentX = currentNode.getXPos();
-		double currentY = currentNode.getYPos();
-		double nextX = nextNode.getXPos();
-		double nextY = nextNode.getYPos();
+		double prevX = previousNode.getXFeet();
+		double prevY = previousNode.getYFeet();
+		double currentX = currentNode.getXFeet();
+		double currentY = currentNode.getYFeet();
+		double nextX = nextNode.getXFeet();
+		double nextY = nextNode.getYFeet();
 		
 	    double angle1 = Math.atan2(prevY - currentY, prevX - currentX);
 	    double angle2 = Math.atan2(nextY - currentY, nextX - currentX);
