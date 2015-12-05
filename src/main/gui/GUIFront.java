@@ -82,6 +82,8 @@ public class GUIFront extends JFrame {
 	public static ArrayList<MapNode> allNodes;
 	public static int index = 0;
 	public static ArrayList<MapNode> thisRoute;
+	public static ArrayList<ArrayList<ArrayList<MapNode>>> listOfRoutes;
+	public static ArrayList<ArrayList<ArrayList<MapNode>>> listOfPaths = new ArrayList<ArrayList<ArrayList<MapNode>>>();
 
 	static AffineTransform transform; // the current state of image transformation
 	static Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
@@ -374,32 +376,40 @@ public class GUIFront extends JFrame {
 					System.out.println("Start node: " + globalMap.getStartNode().getNodeID());
 					System.out.println("End node: " + globalMap.getEndNode().getNodeID());
 					System.out.println("Number of nodes in globalMap: " + globalMap.getMapNodes().size());
-					routes = backend.getMeRoutes(globalMap.getStartNode(), globalMap.getEndNode(), globalMap);
-					if (routes.isEmpty()){
+					listOfRoutes = new ArrayList<ArrayList<ArrayList<MapNode>>>();
+					for (int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
+						routes = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1), globalMap);
+						listOfRoutes.add(routes);
+					}
+					//routes = backend.getMeRoutes(globalMap.getStartNode(), globalMap.getEndNode(), globalMap);
+					if (listOfRoutes.get(0).isEmpty()){
 						mapnodes = backend.runAStar(backend.getLocalMap().getStart(), backend.getLocalMap().getEnd());
 					} else {
-						for (int i = 0; i < routes.size(); i++){
-							LocalMap localmap = routes.get(i).get(0).getLocalMap();
-							if (localmap.getEnd() == null){
-								int size = routes.get(i).size() - 1;
-								localmap.setStart(routes.get(i).get(size));
-							}
+						for (ArrayList<ArrayList<MapNode>> routed : listOfRoutes){
+							for (int i = 0; i < routed.size(); i++){
+								LocalMap localmap = routed.get(i).get(0).getLocalMap();
+								if (localmap.getEnd() == null){
+									int size = routed.get(i).size() - 1;
+									localmap.setStart(routed.get(i).get(size));
+								}
 
-							if (localmap.getStart() == null){
-								localmap.setEnd(routes.get(i).get(0));
+								if (localmap.getStart() == null){
+									localmap.setEnd(routed.get(i).get(0));
+								}
+								ArrayList<MapNode> route = routed.get(i);
+								paths.add(route);
+								listOfPaths.add(paths);
 							}
-							ArrayList<MapNode> route = routes.get(i);
-							paths.add(route);
 						}
 					}
 					
 					
-					thisRoute = routes.get(0);
+					thisRoute = listOfPaths.get(0).get(0);
 					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(0).get(0).getLocalMap().getMapImageName()).getImage());
-					panelMap.setMapNodes(paths.get(0).get(0).getLocalMap().getMapNodes());
-					backend.setLocalMap(paths.get(0).get(0).getLocalMap());
+					panelMap.setMapNodes(listOfPaths.get(0).get(0).get(0).getLocalMap().getMapNodes());
+					backend.setLocalMap(listOfPaths.get(0).get(0).get(0).getLocalMap());
 					index = 0;
-					if (paths.size() > 1){
+					if (listOfPaths.size() > 1){
 						btnNextMap.setEnabled(true);
 					}
 					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
@@ -414,13 +424,15 @@ public class GUIFront extends JFrame {
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
-					for (ArrayList<MapNode>wayPoints : paths){
-						String all = "";
-						distance += backend.getDistance(wayPoints);
-						for (String string : backend.displayStepByStep(wayPoints)) {
-							all += string + "\n";
+					for (ArrayList<ArrayList<MapNode>> routed : listOfPaths){
+						for (ArrayList<MapNode>wayPoints : routed){
+							String all = "";
+							distance += backend.getDistance(wayPoints);
+							for (String string : backend.displayStepByStep(wayPoints)) {
+								all += string + "\n";
+							}
+							allText += all + "\n";
 						}
-						allText += all + "\n";
 					}
 
 					// this should only display when the user calculates the
@@ -1051,6 +1063,8 @@ public class GUIFront extends JFrame {
 			 */
 			public void reset() {
 				allowSetting = true; //allow user to re place nodes only once reset is pressed
+				globalMap.getStartNode().getLocalMap().setStart(null);
+				globalMap.getEndNode().getLocalMap().setEnd(null);
 				globalMap.setStartNode(null);
 				globalMap.setEndNode(null);
 				reset = true;
@@ -1060,7 +1074,9 @@ public class GUIFront extends JFrame {
 				setEnd = false;
 				setStart = false;
 				paths.clear();
-				backend.removePath(globalMap.getMiddleNodes());
+				listOfPaths.clear();
+				listOfRoutes.clear();
+				backend.removePath(globalMap.getChosenNodes());
 				btnNextMap.setEnabled(false);
 				btnPreviousMap.setEnabled(false);
 
@@ -1475,23 +1491,22 @@ public class GUIFront extends JFrame {
 						graphics.setColor(Color.RED);
 						//for (/*int i = 0; i < globalMap.getChosenNodes().size(); i++*/ArrayList<MapNode> mapnode : paths) {
 							//System.out.println(globalMap.getChosenNodes().size());
-							if(!(paths.isEmpty())){
-								if (paths.get(index).get(0) != null){
-									graphics.setColor(Color.RED);
-									graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-								}
-							//} 
+							if(!(listOfPaths.isEmpty())){
+								for (ArrayList<ArrayList<MapNode>> path : listOfPaths){
+									if (path.get(index).get(0) != null){
+										graphics.setColor(Color.RED);
+										graphics.fillOval((int) path.get(index).get(0).getXPos() - (int)panX - 5, (int) path.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+									}
 							//else if(i == globalMap.getChosenNodes().size() - 1){
-								if (paths.get(index).get(paths.get(index).size() - 1) != null){
-									graphics.setColor(Color.GREEN);
-									graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
+									if (path.get(index).get(path.get(index).size() - 1) != null){
+										graphics.setColor(Color.GREEN);
+										graphics.fillOval((int) path.get(index).get(path.get(index).size() - 1).getXPos() - (int)panX - 5, (int) path.get(index).get(path.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
+									}
 								}
-							//}
 							//else {
 								//graphics.setColor(Color.GREEN);
 								//graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
 							}
-						//}
 							
 						if (globalMap.getStartNode() != null){
 							if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
@@ -1514,16 +1529,13 @@ public class GUIFront extends JFrame {
 								}
 							}
 						}
-						
-						for (MapNode mapnode : globalMap.getMiddleNodes()){
-							
-						}
+
 
 						// essentially draws the line on the screen 
 						if (GUIFront.drawLine = true) {
 							//ArrayList<MapNode> mapNodes = backend.getLocalMap().getChosenNodes();
 							//for (ArrayList<MapNode> mapNodes: backend.getMeRoutes(startNode, endNode)){
-							if (paths.isEmpty()) {
+							if (listOfPaths.isEmpty()) {
 								for (int i = 0; i < mapnodes.size() - 1; i++) {
 									double x1 = backend.getCoordinates(mapnodes).get(i)[0];
 									double y1 = backend.getCoordinates(mapnodes).get(i)[1];
@@ -1558,7 +1570,7 @@ public class GUIFront extends JFrame {
 								removeLine = true;
 							}
 						} else if (GUIFront.removeLine == true) {
-							if (paths.isEmpty()){
+							if (listOfPaths.isEmpty()){
 								for (int i = 0; i < mapnodes.size() - 1; i++) {
 									double x1 = backend.getCoordinates(mapnodes).get(i)[0];
 									double y1 = backend.getCoordinates(mapnodes).get(i)[1];
