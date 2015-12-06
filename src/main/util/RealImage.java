@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.*;
 
-public class RealImage implements ProxyImageInterface {
+public class RealImage implements IProxyImage {
 
 	private String filename;
 	private java.awt.Image image;
@@ -22,7 +22,7 @@ public class RealImage implements ProxyImageInterface {
 	
 	public void loadIn(String filename){
 		try{
-			image = ImageIO.read(new File(filename));
+			image = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + filename));
 		} catch(IOException ioe){
 			ioe.printStackTrace();
 		}

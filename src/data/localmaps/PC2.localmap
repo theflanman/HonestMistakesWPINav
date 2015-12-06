@@ -5,8 +5,8 @@
         <NodeID>PC2_1</NodeID>
         <XPos>202.0</XPos>
         <YPos>203.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>29.2294</XFeet>
+        <YFeet>29.3741</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_2</Neighbor>
@@ -19,17 +19,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_2</NodeID>
         <XPos>286.0</XPos>
         <YPos>203.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>41.3842</XFeet>
+        <YFeet>29.3741</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_3</Neighbor>
@@ -43,17 +41,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_3</NodeID>
         <XPos>290.0</XPos>
         <YPos>260.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>41.963</XFeet>
+        <YFeet>37.622</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_6</Neighbor>
@@ -75,8 +71,8 @@
         <NodeID>PC2_4</NodeID>
         <XPos>271.0</XPos>
         <YPos>260.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>39.213699999999996</XFeet>
+        <YFeet>37.622</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_3</Neighbor>
@@ -90,17 +86,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_5</NodeID>
         <XPos>325.0</XPos>
         <YPos>275.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>47.027499999999996</XFeet>
+        <YFeet>39.7925</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_6</Neighbor>
@@ -121,8 +115,8 @@
         <NodeID>PC2_6</NodeID>
         <XPos>322.0</XPos>
         <YPos>258.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>46.593399999999995</XFeet>
+        <YFeet>37.3326</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_5</Neighbor>
@@ -145,8 +139,8 @@
         <NodeID>PC2_7</NodeID>
         <XPos>331.0</XPos>
         <YPos>239.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>47.8957</XFeet>
+        <YFeet>34.5833</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_6</Neighbor>
@@ -167,8 +161,8 @@
         <NodeID>PC2_8</NodeID>
         <XPos>322.0</XPos>
         <YPos>368.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>46.593399999999995</XFeet>
+        <YFeet>53.2496</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_14</Neighbor>
@@ -189,8 +183,8 @@
         <NodeID>PC2_9</NodeID>
         <XPos>418.0</XPos>
         <YPos>403.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>60.4846</XFeet>
+        <YFeet>58.314099999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_14</Neighbor>
@@ -211,8 +205,8 @@
         <NodeID>PC2_10</NodeID>
         <XPos>534.0</XPos>
         <YPos>402.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>77.2698</XFeet>
+        <YFeet>58.169399999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_49</Neighbor>
@@ -225,17 +219,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_11</NodeID>
         <XPos>251.0</XPos>
         <YPos>404.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>36.3197</XFeet>
+        <YFeet>58.4588</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_13</Neighbor>
@@ -249,17 +241,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_12</NodeID>
         <XPos>266.0</XPos>
         <YPos>368.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>38.4902</XFeet>
+        <YFeet>53.2496</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_13</Neighbor>
@@ -273,17 +263,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_13</NodeID>
         <XPos>269.0</XPos>
         <YPos>404.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>38.924299999999995</XFeet>
+        <YFeet>58.4588</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_12</Neighbor>
@@ -305,8 +293,8 @@
         <NodeID>PC2_14</NodeID>
         <XPos>323.0</XPos>
         <YPos>403.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>46.738099999999996</XFeet>
+        <YFeet>58.314099999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_8</Neighbor>
@@ -321,17 +309,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_15</NodeID>
         <XPos>409.0</XPos>
         <YPos>210.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>59.1823</XFeet>
+        <YFeet>30.387</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_16</Neighbor>
@@ -346,17 +332,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_16</NodeID>
         <XPos>409.0</XPos>
         <YPos>253.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>59.1823</XFeet>
+        <YFeet>36.6091</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_15</Neighbor>
@@ -378,8 +362,8 @@
         <NodeID>PC2_17</NodeID>
         <XPos>381.0</XPos>
         <YPos>255.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>55.1307</XFeet>
+        <YFeet>36.8985</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_6</Neighbor>
@@ -401,8 +385,8 @@
         <NodeID>PC2_18</NodeID>
         <XPos>467.0</XPos>
         <YPos>208.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>67.5749</XFeet>
+        <YFeet>30.0976</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_19</Neighbor>
@@ -417,17 +401,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_19</NodeID>
         <XPos>467.0</XPos>
         <YPos>251.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>67.5749</XFeet>
+        <YFeet>36.3197</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_16</Neighbor>
@@ -449,8 +431,8 @@
         <NodeID>PC2_20</NodeID>
         <XPos>562.0</XPos>
         <YPos>247.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>81.3214</XFeet>
+        <YFeet>35.740899999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_23</Neighbor>
@@ -472,8 +454,8 @@
         <NodeID>PC2_21</NodeID>
         <XPos>564.0</XPos>
         <YPos>276.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>81.6108</XFeet>
+        <YFeet>39.9372</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_20</Neighbor>
@@ -494,8 +476,8 @@
         <NodeID>PC2_22</NodeID>
         <XPos>609.0</XPos>
         <YPos>210.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>88.1223</XFeet>
+        <YFeet>30.387</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_23</Neighbor>
@@ -509,17 +491,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_23</NodeID>
         <XPos>609.0</XPos>
         <YPos>244.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>88.1223</XFeet>
+        <YFeet>35.306799999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_20</Neighbor>
@@ -541,8 +521,8 @@
         <NodeID>PC2_24</NodeID>
         <XPos>673.0</XPos>
         <YPos>211.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>97.3831</XFeet>
+        <YFeet>30.5317</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_25</Neighbor>
@@ -556,17 +536,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_25</NodeID>
         <XPos>673.0</XPos>
         <YPos>247.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>97.3831</XFeet>
+        <YFeet>35.740899999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_26</Neighbor>
@@ -589,8 +567,8 @@
         <NodeID>PC2_26</NodeID>
         <XPos>712.0</XPos>
         <YPos>240.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>103.0264</XFeet>
+        <YFeet>34.728</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_25</Neighbor>
@@ -604,17 +582,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_27</NodeID>
         <XPos>732.0</XPos>
         <YPos>209.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>105.9204</XFeet>
+        <YFeet>30.2423</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_28</Neighbor>
@@ -627,17 +603,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_28</NodeID>
         <XPos>733.0</XPos>
         <YPos>239.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>106.0651</XFeet>
+        <YFeet>34.5833</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_26</Neighbor>
@@ -658,8 +632,8 @@
         <NodeID>PC2_29</NodeID>
         <XPos>712.0</XPos>
         <YPos>294.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>103.0264</XFeet>
+        <YFeet>42.5418</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_30</Neighbor>
@@ -673,17 +647,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_30</NodeID>
         <XPos>677.0</XPos>
         <YPos>297.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>97.9619</XFeet>
+        <YFeet>42.975899999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_29</Neighbor>
@@ -705,8 +677,8 @@
         <NodeID>PC2_31</NodeID>
         <XPos>688.0</XPos>
         <YPos>375.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>99.5536</XFeet>
+        <YFeet>54.262499999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_33</Neighbor>
@@ -720,17 +692,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_32</NodeID>
         <XPos>712.0</XPos>
         <YPos>350.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>103.0264</XFeet>
+        <YFeet>50.644999999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_33</Neighbor>
@@ -744,17 +714,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_33</NodeID>
         <XPos>684.0</XPos>
         <YPos>352.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>98.9748</XFeet>
+        <YFeet>50.9344</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_32</Neighbor>
@@ -776,8 +744,8 @@
         <NodeID>PC2_34</NodeID>
         <XPos>608.0</XPos>
         <YPos>153.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>87.9776</XFeet>
+        <YFeet>22.1391</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_22</Neighbor>
@@ -797,8 +765,8 @@
         <NodeID>PC2_35</NodeID>
         <XPos>465.0</XPos>
         <YPos>150.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>67.2855</XFeet>
+        <YFeet>21.705</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_18</Neighbor>
@@ -818,8 +786,8 @@
         <NodeID>PC2_36</NodeID>
         <XPos>183.0</XPos>
         <YPos>409.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>26.4801</XFeet>
+        <YFeet>59.1823</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_11</Neighbor>
@@ -839,8 +807,8 @@
         <NodeID>PC2_37</NodeID>
         <XPos>195.0</XPos>
         <YPos>258.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>28.2165</XFeet>
+        <YFeet>37.3326</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_4</Neighbor>
@@ -860,8 +828,8 @@
         <NodeID>PC2_38</NodeID>
         <XPos>740.0</XPos>
         <YPos>296.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>107.078</XFeet>
+        <YFeet>42.831199999999995</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_29</Neighbor>
@@ -881,8 +849,8 @@
         <NodeID>PC2_39</NodeID>
         <XPos>739.0</XPos>
         <YPos>344.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>106.9333</XFeet>
+        <YFeet>49.7768</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_32</Neighbor>
@@ -902,8 +870,8 @@
         <NodeID>PC2_40</NodeID>
         <XPos>674.0</XPos>
         <YPos>143.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>97.5278</XFeet>
+        <YFeet>20.6921</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_24</Neighbor>
@@ -923,8 +891,8 @@
         <NodeID>PC2_41</NodeID>
         <XPos>696.0</XPos>
         <YPos>436.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>100.71119999999999</XFeet>
+        <YFeet>63.0892</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_31</Neighbor>
@@ -944,8 +912,8 @@
         <NodeID>PC2_42</NodeID>
         <XPos>405.0</XPos>
         <YPos>155.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>58.6035</XFeet>
+        <YFeet>22.4285</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_15</Neighbor>
@@ -965,8 +933,8 @@
         <NodeID>PC2_43</NodeID>
         <XPos>564.0</XPos>
         <YPos>330.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>81.6108</XFeet>
+        <YFeet>47.751</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_21</Neighbor>
@@ -980,17 +948,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_44</NodeID>
         <XPos>322.0</XPos>
         <YPos>343.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>46.593399999999995</XFeet>
+        <YFeet>49.6321</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_8</Neighbor>
@@ -1012,8 +978,8 @@
         <NodeID>PC2_45</NodeID>
         <XPos>296.0</XPos>
         <YPos>342.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>42.831199999999995</XFeet>
+        <YFeet>49.4874</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_44</Neighbor>
@@ -1026,17 +992,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_46</NodeID>
         <XPos>261.0</XPos>
         <YPos>309.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>37.7667</XFeet>
+        <YFeet>44.7123</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_47</Neighbor>
@@ -1057,8 +1021,8 @@
         <NodeID>PC2_47</NodeID>
         <XPos>289.0</XPos>
         <YPos>308.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>41.8183</XFeet>
+        <YFeet>44.5676</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_46</Neighbor>
@@ -1071,17 +1035,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_48</NodeID>
         <XPos>517.0</XPos>
         <YPos>370.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>74.8099</XFeet>
+        <YFeet>53.539</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_43</Neighbor>
@@ -1102,8 +1064,8 @@
         <NodeID>PC2_49</NodeID>
         <XPos>516.0</XPos>
         <YPos>402.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>74.6652</XFeet>
+        <YFeet>58.169399999999996</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_10</Neighbor>
@@ -1125,8 +1087,8 @@
         <NodeID>PC2_50</NodeID>
         <XPos>475.0</XPos>
         <YPos>399.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>68.7325</XFeet>
+        <YFeet>57.735299999999995</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_9</Neighbor>
@@ -1140,17 +1102,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_51</NodeID>
         <XPos>380.0</XPos>
         <YPos>233.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>54.986</XFeet>
+        <YFeet>33.7151</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_17</Neighbor>
@@ -1163,17 +1123,15 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_52</NodeID>
         <XPos>322.0</XPos>
         <YPos>320.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>46.593399999999995</XFeet>
+        <YFeet>46.304</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_44</Neighbor>
@@ -1187,40 +1145,37 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_53</NodeID>
         <XPos>351.0</XPos>
         <YPos>129.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>50.789699999999996</XFeet>
+        <YFeet>18.6663</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_55</Neighbor>
+            <Neighbor>PC1_71</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>PC200C</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC2_54</NodeID>
         <XPos>320.0</XPos>
         <YPos>223.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>46.304</XFeet>
+        <YFeet>32.2681</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_7</Neighbor>
@@ -1241,8 +1196,8 @@
         <NodeID>PC2_55</NodeID>
         <XPos>320.0</XPos>
         <YPos>128.0</YPos>
-        <XFeet>0.0</XFeet>
-        <YFeet>0.0</YFeet>
+        <XFeet>46.304</XFeet>
+        <YFeet>18.5216</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC2_54</Neighbor>

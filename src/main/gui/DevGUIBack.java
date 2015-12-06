@@ -178,6 +178,7 @@ public class DevGUIBack implements Serializable  {
 		        		neighbors.appendChild(ngbr);
 		        	}
 	        	}
+	        	
 	        	//if there are any cross map neighbors, make sure these are saved
 	        	if(!(node.getCrossMapNeighbors().size() == 0)){
 	        		for(String s: node.getCrossMapNeighbors()){

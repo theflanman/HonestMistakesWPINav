@@ -1,6 +1,6 @@
 package main.util;
 
-public class ProxyImage implements ProxyImageInterface {
+public class ProxyImage implements IProxyImage {
 
 	private RealImage realImage;
 	private String filename;

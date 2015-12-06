@@ -1,6 +1,6 @@
 package main.util;
 
-public interface ProxyImageInterface {
+public interface IProxyImage {
 
 	public java.awt.Image getImage();
 	

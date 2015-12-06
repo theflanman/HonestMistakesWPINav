@@ -51,7 +51,7 @@ import main.MapNode;
 import main.util.Constants;
 import main.util.MapPanel;
 import main.util.ProxyImage;
-import main.util.ProxyImageInterface;
+import main.util.IProxyImage;
 import main.util.SaveUtil;
 import main.Types;
 
@@ -61,8 +61,8 @@ public class DevGUIFront extends JFrame {
 	static ArrayList<MapNode> points2 = new ArrayList<MapNode>(); // Points for the second map
 	static File inputFile;
 	static File inputFile2;
-	static ProxyImageInterface pic;
-	static ProxyImageInterface pic2;
+	static IProxyImage pic;
+	static IProxyImage pic2;
 	static LocalMap local1;
 	static LocalMap local2;
 	String path; // current path
@@ -91,6 +91,7 @@ public class DevGUIFront extends JFrame {
 	private boolean clickMiss;
 
 	private Attributes defaultAttributes;
+	private static DevGUIFront frame;
 
 	/*public enum Type {
 		FOOD, OFFICE, CLASSROOM, WATERFOUNTAIN, BATHROOM, PARKING, WALKING, DOOR, ELEVATOR, LAB, OTHER
@@ -106,7 +107,7 @@ public class DevGUIFront extends JFrame {
 			public void run() {
 
 				try {
-					DevGUIFront frame = new DevGUIFront();
+					frame = new DevGUIFront();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -354,14 +355,16 @@ public class DevGUIFront extends JFrame {
 
 		btnMakeChanges.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				lastClicked.setXPos(Double.parseDouble(xPosField.getText()));
-				lastClicked.setYPos(Double.parseDouble(yPosField.getText()));
-				lastClicked.setZFeet(Double.parseDouble(zPosField.getText()));
-				Graphics g = mapPanel.getGraphics();
-				mapPanel.renderMapPublic(g, points, lastClicked);
-				if (twoMapView) {
-					Graphics g2 = mapPanel2.getGraphics();
-					mapPanel2.renderMapPublic(g2, points2, lastClicked);
+				if(lastClicked != null) {
+					lastClicked.setXPos(Double.parseDouble(xPosField.getText()));
+					lastClicked.setYPos(Double.parseDouble(yPosField.getText()));
+					lastClicked.setZFeet(Double.parseDouble(zPosField.getText()));
+					Graphics g = mapPanel.getGraphics();
+					mapPanel.renderMapPublic(g, points, lastClicked);
+					if (twoMapView) {
+						Graphics g2 = mapPanel2.getGraphics();
+						mapPanel2.renderMapPublic(g2, points2, lastClicked);
+					}
 				}
 			}
 		});
@@ -410,6 +413,10 @@ public class DevGUIFront extends JFrame {
 		getContentPane().add(panel);
 		getContentPane().add(cursorPanel);
 		getContentPane().add(nodeInfoPanel);
+
+		JButton btnLinear = new JButton("Linearize");
+		btnLinear.setBounds(132, 106, 155, 25);
+		nodeInfoPanel.add(btnLinear);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -579,15 +586,25 @@ public class DevGUIFront extends JFrame {
 				}
 			}
 		});
-		
+
 		typeBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				for(MapNode n : selectedNodes) {
-					n.getAttributes().setType((Types) typeBox.getSelectedItem());
+				if(selectedNodes.size() > 1) { //If size is 1, need to set the type using the code below.
+					for(MapNode n : selectedNodes) {
+						n.getAttributes().setType((Types) typeBox.getSelectedItem());
+					}
+				}
+				else if(selectedNodes.size() == 1) {
+					selectedNodes.get(0).getAttributes().setType((Types) typeBox.getSelectedItem());
 				}
 			}
 		});
 
+		btnLinear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.linearizeNodes();
+			}
+		});
 		// This is code that determines what needs to happen on each mouse click in the map panel.
 		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -662,11 +679,11 @@ public class DevGUIFront extends JFrame {
 
 
 						} //end the threshold selection if
-						
+
 
 					}
 					if(clickMiss == true) {
-						blankInfoFields();
+						clearInfoFields();
 					}
 					Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
@@ -781,11 +798,14 @@ public class DevGUIFront extends JFrame {
 					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
 
 					points.remove(nodeToRemove);
+					lastClicked = null;
+					selectedNodes.clear();
+					clearInfoFields();
 					Graphics g = mapPanel.getGraphics();
-					mapPanel.renderMapPublic(g, points);
+					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 					if(twoMapView) {
 						Graphics g2 = mapPanel2.getGraphics();
-						mapPanel2.renderMapPublic(g2, points2);
+						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 					}
 				}
 			}
@@ -863,9 +883,9 @@ public class DevGUIFront extends JFrame {
 
 						}
 					}
-					
+
 					if(clickMiss == true) {
-						blankInfoFields();
+						clearInfoFields();
 					}
 					Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
@@ -967,72 +987,24 @@ public class DevGUIFront extends JFrame {
 								m.removeNeighbor(n);
 							}
 							nodeToRemove = n;
-
-
 						}
 					}
 					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
 
 					points2.remove(nodeToRemove);
-					Graphics g2 = mapPanel2.getGraphics();
-					mapPanel2.renderMapPublic(g2, points2);
+					lastClicked = null;
+					selectedNodes.clear();
+					clearInfoFields();
 					Graphics g = mapPanel.getGraphics();
-					mapPanel.renderMapPublic(g, points);
+					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
+					if(twoMapView) {
+						Graphics g2 = mapPanel2.getGraphics();
+						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
+					}
 				}
 			}
 		}); 
 		mapPanel2.setBackground(Color.WHITE);
-
-
-		//Initialize both map panels
-		/*
-		String inputFileName = "StrattonHallF1.localmap";
-		String inputFileName2 = "StrattonHallF2.localmap";
-
-
-		// load localMap
-		DevGUIBack devGUIBack = new DevGUIBack(null);
-		devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
-		local1 = devGUIBack.getLocalMap();
-		String imagePath = SaveUtil.removeExtension(inputFileName);
-		imagePath = imagePath + ".jpg";
-
-		// set the image
-		try {
-			pic = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath));
-		} catch (IOException e1) {
-			e1.printStackTrace();}
-
-		//  picLabel.setIcon(new ImageIcon(pic));
-		mapPanel.setBgImage(pic);
-
-		// set the points
-		Graphics f = mapPanel.getGraphics();
-		points = local1.getMapNodes();
-		mapPanel.renderMapPublic(f, points, null);
-
-
-		DevGUIBack devGUIBack2 = new DevGUIBack(null);
-		devGUIBack2.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName2); 
-		local2 = devGUIBack2.getLocalMap();
-		String imagePath2 = SaveUtil.removeExtension(inputFileName2);
-		imagePath2 = imagePath2 + ".jpg";
-
-		// set the image
-		try {
-			pic2 = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath2));
-		} catch (IOException e1) {
-			e1.printStackTrace();}
-
-		//  picLabel.setIcon(new ImageIcon(pic));
-		mapPanel2.setBgImage(pic2);
-
-		// set the points
-		Graphics g2 = mapPanel2.getGraphics();
-		points2 = local2.getMapNodes();
-		mapPanel2.renderMapPublic(g2, points2, null);
-
-		 */
 	}
 
 	private void setInfoFields(MapNode n) {
@@ -1054,8 +1026,8 @@ public class DevGUIFront extends JFrame {
 		}
 		textFieldOfficialName.setText(a.getOfficialName());
 	}
-	
-	private void blankInfoFields() {
+
+	private void clearInfoFields() {
 		xPosField.setText("");
 		yPosField.setText("");
 		zPosField.setText("");
@@ -1068,5 +1040,73 @@ public class DevGUIFront extends JFrame {
 		chckbxBikeable.setSelected(false);
 		txtrAliases.setText("");
 		textFieldOfficialName.setText("");
+	}
+
+	//This function uses projection to align points on a line determined by two of the points. Called by "Linearize" button to line up a bunch of selected points.
+	private void linearizeNodes() {
+		double xSlope, ySlope, scaledLength, squaredHypotenuse, dotProduct, point1X, point2X, point1Y, point2Y;
+		if(!twoMapView) {
+			MapNode[] extremePoints = new MapNode[2];
+			extremePoints = findExtremes(); //The two nodes in extremePoints determine the line L.
+			if (extremePoints != null) {
+				MapNode point1 = extremePoints[0];
+				MapNode point2 = extremePoints[1];
+				point1X = point1.getXPos(); //Save the two extreme points.
+				point2X = point2.getXPos();
+				point1Y = point1.getYPos();
+				point2Y = point2.getYPos();
+				System.out.println("Extremes " + point1X + " " + point1Y + " " + point2X + " " + point2Y );
+				xSlope = point2X - point1X; //Determine the slope of the line L.
+				ySlope = point2Y - point1Y;
+				squaredHypotenuse = xSlope*xSlope + ySlope*ySlope; //Take modulus of L, or the dot product with itself.
+				for(MapNode node : selectedNodes) {
+					node.setXPos(node.getXPos() - point1X); //Correction for line not passing through origin
+					node.setYPos(node.getYPos() - point1Y);
+					dotProduct = node.getXPos()*xSlope + node.getYPos()*ySlope; //Dot the vector u determined by a given node with a vector determining L.
+					scaledLength = dotProduct / squaredHypotenuse; //Divide the two previous dot products, this is u*L/L*L.
+					node.setXPos(scaledLength*xSlope + point1X); //The projection of u onto L from the origin is (u*L/L*L)L. Use this as an offset from the first point on the line.
+					node.setYPos(scaledLength*ySlope + point1Y);
+				}
+			}
+		}
+		else {
+			System.out.println("Switch to single map view first please."); 
+		}
+	}
+
+	//Identify the two nodes that should determine the line the rest of the nodes are adjusted to fit. The leftmost and rightmost, or the highest and lowest, are used, whichever difference is greater.
+	private MapNode[] findExtremes() {
+		if(selectedNodes.size() < 3) { //Nothing to do if there are only one or two nodes.
+			return null;
+		}
+		MapNode[] extremes = new MapNode[2];
+		MapNode lowX = selectedNodes.get(0); //Start by setting all extremes to the first node in the list.
+		MapNode highX = selectedNodes.get(0);
+		MapNode lowY = selectedNodes.get(0);
+		MapNode highY = selectedNodes.get(0);
+		for(MapNode node : selectedNodes) { //When a node is farther left, right, up, or down than any previous node, set this as the extreme one.
+			if(node.getXPos() < lowX.getXPos()) {
+				lowX = node;
+			}
+			if(node.getXPos() > highX.getXPos()) {
+				highX = node;
+			}
+			if(node.getYPos() < lowY.getYPos()) {
+				lowY = node;
+			}
+			if(node.getYPos() > highY.getYPos()) {
+				highY = node;
+			}
+		}
+		if(highX.getXPos() - lowX.getXPos() >= highY.getYPos() - lowY.getYPos()) { //Determine whether to use the nodes farthest left and right, or up and down, choose the larger difference.
+			extremes[0] = lowX;
+			extremes[1] = highX;
+		}
+		else {
+			extremes[0] = lowY;
+			extremes[1] = highY;
+		}
+		return extremes;
+
 	}
 }

@@ -21,6 +21,7 @@ import main.Attributes;
 import main.LocalMap;
 import main.Types;
 import main.MapNode;
+import main.GlobalMap;
 import main.StepByStep;
 import main.gui.GUIFront.TweenPanel;
 import main.util.Constants;
@@ -105,13 +106,6 @@ public class GUIBack implements Serializable {
 					loadedNodes.get(i).setYFeet(Double.parseDouble(yFeet));
 					loadedNodes.get(i).setZFeet(Double.parseDouble(zFeet));
 					//debug print
-
-					/*
-					System.out.println(loadedNodes.get(i).getNodeID());
-					System.out.println(loadedNodes.get(i).getXPos());
-					System.out.println(loadedNodes.get(i).getYPos());
-					System.out.println(loadedNodes.get(i).getZPos());
-					 */
 
 					//get the neighbor values and store those node ID's in the neighbor nodes arraylist
 					Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
@@ -216,11 +210,9 @@ public class GUIBack implements Serializable {
 					}
 
 				}
-
-
+				
 			}
-
-
+			
 		}
 
 		return localMapList; 
@@ -285,8 +277,16 @@ public class GUIBack implements Serializable {
 	public void removePath(ArrayList<MapNode> mapNodes) {
 		mapNodes.clear();
 	}
+	
+	/**
+	 * @author Dominic B, Nick G, Andrew P
+	 * @param start
+	 * @param end
+	 * @param globalmap
+	 * @return
+	 */
 
-	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end){
+	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
 		System.out.println("hello");
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
@@ -295,36 +295,10 @@ public class GUIBack implements Serializable {
 		MapNode start1 = null;
 		MapNode end1 = null;
 		int j = 0;
-		/*
-		for(int i = 0; i < globalNodes.size() - 1; i++){
-			if (j == 0) {
-				String startName = globalNodes.get(i).getID();
-				for (MapNode mapnode : globalNodes.get(i).getLocalMap().getMapNodes()){
-					if (mapnode.getID().equals(startName)){
-						start1 = mapnode;
-					}
-				}
-				j++;
-			} 
-			if (!(globalNodes.get(i).getLocalMap().equals(globalNodes.get(i + 1).getLocalMap()))){
-				end1 = globalNodes.get(i);
-				String endName = globalNodes.get(i).getID();
-				for (MapNode mapnode : globalNodes.get(i).getLocalMap().getMapNodes()){
-					if (mapnode.getID().equals(endName)){
-						end1 = mapnode;
-					}
-				}
-				route = this.runAStar(start1, end1);
-				routes.add(route);
-				System.out.println(start1.getID());
-				System.out.println(end1.getID());
-				start1 = null;
-				end1 = null;
-				j = 0;
-			}
-		}
-		 */
-
+		globalmap.addToMapNodes(start);
+		globalmap.setStartNode(start);
+		globalmap.addToMapNodes(end);
+		globalmap.setEndNode(end);
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added
 			//immediately add this to a new route
@@ -386,12 +360,12 @@ public class GUIBack implements Serializable {
 		} else {
 			//this will change to check to make sure the neighbor is valid
 			//MapNode start = temp;
-			//start.getNeighbors().clear();
+			start.getNeighbors().clear();
 			this.localMap.getMapNodes().add(start);
 			this.localMap.getMapNodes().add(temp);
 			this.localMap.linkNodes(start.getNodeID(), temp.getNodeID());
-			//start.addNeighbor(temp); //add the new nodes link with the closest node
-			//temp.addNeighbor(start); //add the new node as a neighbor to the closest node
+			start.addNeighbor(temp); //add the new nodes link with the closest node
+			temp.addNeighbor(start); //add the new node as a neighbor to the closest node
 			return start;
 		}
 	}
