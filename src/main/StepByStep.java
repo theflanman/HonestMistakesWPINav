@@ -131,6 +131,12 @@ public class StepByStep {
 					// TODO Add in a starting reference direction.
 					turn = String.format("Welcome to the era of Navigation.", stepNumber);
 					stepList.add(turn);
+					
+					// If the first node has an official name adds the name to the directions
+					if (! pathNodes.get(i).getAttributes().getOfficialName().isEmpty()) {
+						turn = pathNodes.get(i).getAttributes().getOfficialName();
+						stepList.add(turn);
+					}
 				}
 				else {
 					distance = pathNodes.get(i-1).calcDistance(pathNodes.get(i));
@@ -139,6 +145,12 @@ public class StepByStep {
 					if (i == (pathNodes.size() - 1)) {
 						turn = String.format("%d. Walk %d feet, then you will arrive at your destination.", stepNumber, distance);
 						stepList.add(turn);
+						
+						// If the last node has an official name adds the name to the directions
+						if (! pathNodes.get(i).getAttributes().getOfficialName().isEmpty()) {
+							turn = pathNodes.get(i).getAttributes().getOfficialName();
+							stepList.add(turn);
+						}
 					} 
 					else {
 

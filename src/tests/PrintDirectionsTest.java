@@ -173,6 +173,7 @@ public class PrintDirectionsTest extends TestCase {
 	public void testDirections4() {
 		MapNode node1 = new MapNode(-1, 1, localMap1);
 		node1.setCameFrom(null);
+		node1.getAttributes().setOfficialName("Atwater Kent");;
 		
 		MapNode node2 = new MapNode(2, 5, localMap1);
 		node2.setCameFrom(node1);
@@ -188,6 +189,7 @@ public class PrintDirectionsTest extends TestCase {
 		
 		MapNode node6 = new MapNode(0, -3, localMap1);
 		node6.setCameFrom(node5);
+		node6.getAttributes().setOfficialName("Gordon Library");
 		
 		ArrayList<MapNode> instructionList1 = new ArrayList<MapNode>();
 		instructionList1.add(node1);
@@ -202,10 +204,12 @@ public class PrintDirectionsTest extends TestCase {
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
 		resultSteps.add("Welcome to the era of Navigation.");
+		resultSteps.add("Atwater Kent");
 		resultSteps.add("1. Walk 5 feet, then turn sharp left.");
 		resultSteps.add("2. Walk 5 feet, then turn slight left.");
 		resultSteps.add("3. Walk 7 feet, then turn back.");
 		resultSteps.add("4. Walk 4 feet, then you will arrive at your destination.");
+		resultSteps.add("Gordon Library");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
