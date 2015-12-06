@@ -368,92 +368,84 @@ public class GUIFront extends JFrame {
 		JButton btnRoute = new JButton("Route");
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (btnRoute.isEnabled()) {
-					//ArrayList<MapNode> globalNodes = backend.runAStar(globalMap.getStartNode(), globalMap.getEndNode());
-					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
-					allText = ""; //must set the initial text as empty every time calculate button is pressed
-					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
-					speaker.play();
-					//going to get a list of a routes up to each way point
-					listOfRoutes = new ArrayList<ArrayList<ArrayList<MapNode>>>();
-					//go through the globalMaps chosenNodes and calculate routes for each waypoint set - each route will only go for a current map
-					for (int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
-						routes = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1), globalMap);
-						listOfRoutes.add(routes);
-					}
-					//if no the first list of routes is empty 
-					if (listOfRoutes.isEmpty()){
-						mapnodes = backend.runAStar(backend.getLocalMap().getStart(), backend.getLocalMap().getEnd());
-					} else {
-						for (ArrayList<ArrayList<MapNode>> routed : listOfRoutes){
-							for (int i = 0; i < routed.size(); i++){
-								LocalMap localmap = routed.get(i).get(0).getLocalMap();
-								if (localmap.getEnd() == null){
-									int size = routed.get(i).size() - 1;
-									localmap.setStart(routed.get(i).get(size));
-								}
-
-								if (localmap.getStart() == null){
-									localmap.setEnd(routed.get(i).get(0));
-								}
-								ArrayList<MapNode> route = routed.get(i);
-								paths.add(route);
-								listOfPaths.add(paths);
-							}
-						}
-					}
-					
-					
-					thisRoute = listOfPaths.get(0).get(0);
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(0).get(0).getLocalMap().getMapImageName()).getImage());
-					panelMap.setMapNodes(listOfPaths.get(0).get(0).get(0).getLocalMap().getMapNodes());
-					backend.setLocalMap(listOfPaths.get(0).get(0).get(0).getLocalMap());
-					index = 0;
-					if (listOfPaths.size() > 1){
-						btnNextMap.setEnabled(true);
-					}
-					//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
-					/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
-						ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
-						//wayPoints = backend.getMeRoutes(panelMap.chosenNodes.get(i), panelMap.chosenNodes.get(i + 1));
-						wayPoints = backend.runAStar(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
-						paths.add(wayPoints);
-					}*/
-					//draw the line on the map
-					drawLine = true;
-					//set the initial distance as 0 
-					int distance = 0;
-					//set the list of all routes to be passed to display step by step
-					ArrayList<ArrayList<MapNode>> pathNodes = new ArrayList<ArrayList<MapNode>>();
-					//update the step by step directions and distance for each waypoint added
-					boolean wayPoint = false;
-					for (ArrayList<ArrayList<MapNode>> routes : listOfPaths){
-						for (ArrayList<MapNode> route : routes){
-							//distance += backend.getDistance(routes);
-						}
-						if (routes.size() - 1 > 0){
-							wayPoint = true;
-						}
-						backend.displayStepByStep(routes, wayPoint);
-					}
-					//get the step by step directions for each route
-				    for (String string : backend.displayStepByStep(pathNodes, wayPoint)) {
-				    	allText += string + "\n";
-				    }
-
-					// this should only display when the user calculates the
-					// astar algorithm
-					txtAreaDirections.setText(allText);
-
-					lblDistance.setText("Distance in feet:" + distance);
-					//this sets the textarea with the step by step directions
-					//textArea1.setText(allText);
-					//btnRoute.setEnabled(false);
-					btnClear.setEnabled(true);
-
-
-					//btnEmail_1.setEnabled(true); //this is where email button should be enabled
+				//ArrayList<MapNode> globalNodes = backend.runAStar(globalMap.getStartNode(), globalMap.getEndNode());
+				allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
+				allText = ""; //must set the initial text as empty every time calculate button is pressed
+				Speaker speaker = new Speaker(Constants.BUTTON_PATH);
+				speaker.play();
+				//going to get a list of a routes up to each way point
+				listOfRoutes = new ArrayList<ArrayList<ArrayList<MapNode>>>();
+				//go through the globalMaps chosenNodes and calculate routes for each waypoint set - each route will only go for a current map
+				for (int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
+					routes = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1), globalMap);
+					listOfRoutes.add(routes);
 				}
+				//if the first list of routes is empty 
+				if (listOfRoutes.get(0).isEmpty()){
+					mapnodes = backend.runAStar(backend.getLocalMap().getStart(), backend.getLocalMap().getEnd());
+				} else {
+					for (ArrayList<ArrayList<MapNode>> routed : listOfRoutes){
+						for (int i = 0; i < routed.size(); i++){
+							LocalMap localmap = routed.get(i).get(0).getLocalMap();
+							if (localmap.getEnd() == null){
+								int size = routed.get(i).size() - 1;
+								localmap.setStart(routed.get(i).get(size));
+							}
+
+							if (localmap.getStart() == null){
+								localmap.setEnd(routed.get(i).get(0));
+							}
+							ArrayList<MapNode> route = routed.get(i);
+							paths.add(route);
+							listOfPaths.add(paths);
+						}
+					}
+				}
+					
+					
+				thisRoute = listOfPaths.get(0).get(0);
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(0).get(0).getLocalMap().getMapImageName()).getImage());
+				panelMap.setMapNodes(listOfPaths.get(0).get(0).get(0).getLocalMap().getMapNodes());
+				backend.setLocalMap(listOfPaths.get(0).get(0).get(0).getLocalMap());
+				index = 0;
+				if (listOfPaths.size() > 1){
+					btnNextMap.setEnabled(true);
+				}
+				//basically waypoint stuff -- find a path between every node in the chosenNodes list of mapnodes
+				/*for(int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
+					ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
+					//wayPoints = backend.getMeRoutes(panelMap.chosenNodes.get(i), panelMap.chosenNodes.get(i + 1));
+					wayPoints = backend.runAStar(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
+					paths.add(wayPoints);
+				}*/
+				//draw the line on the map
+				drawLine = true;
+				//set the initial distance as 0 
+				int distance = 0;
+				//set the list of all routes to be passed to display step by step
+				ArrayList<ArrayList<MapNode>> pathNodes = new ArrayList<ArrayList<MapNode>>();
+				//update the step by step directions and distance for each waypoint added
+				boolean wayPoint = false;
+				for (ArrayList<ArrayList<MapNode>> routes : listOfPaths){
+					for (ArrayList<MapNode> route : routes){
+						//distance += backend.getDistance(routes);
+					}
+					if (routes.size() - 1 > 0){
+						wayPoint = true;
+					}
+					backend.displayStepByStep(routes, wayPoint);
+				}
+				//get the step by step directions for each route
+				for (String string : backend.displayStepByStep(pathNodes, wayPoint)) {
+				    allText += string + "\n";
+				}
+
+				// this should only display when the user calculates the
+				// astar algorithm
+				txtAreaDirections.setText(allText);
+				lblDistance.setText("Distance in feet:" + distance);
+				//btnRoute.setEnabled(false);
+				btnClear.setEnabled(true);
 			}
 		});
 
@@ -1190,14 +1182,6 @@ public class GUIFront extends JFrame {
 						globalMap.setEndNode(tmpEnd);*/
 					}
 
-					for (MapNode mapnode : globalMap.getMiddleNodes()){
-						MapNode tmpMiddle;
-						if (mapnode != null){
-							tmpMiddle = mapnode;
-							tmpMiddle.setXPos(tmpMiddle.getXPos() + distanceMovedX);
-							tmpMiddle.setYPos(tmpMiddle.getYPos() + distanceMovedY);
-						}
-					}
 				}
 
 				/**
@@ -1299,31 +1283,22 @@ public class GUIFront extends JFrame {
 						public void mouseClicked(MouseEvent me) {
 							if (allowSetting == true){
 								// figure out where the closest map node is, set that node as a startnode the StartingNode
-								//Point clickedAt = me.getPoint();
 								MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
-								GUIBack tempBack = backend;
 								System.out.println("Node found is: " + node.getNodeID());
 
 								if(globalMap.getChosenNodes().size() == 0){
 									globalMap.setStartNode(node);
-									/*globalMap.getStartNode().setLocalMap(backend.getLocalMap());*/
 									globalMap.getChosenNodes().add(node);
 									globalMap.getAllNodes().add(node);
-									//LocalMap temp = backend.saveMap(backend.getLocalMap());
-									//tempMaps.add(temp);
 									backend.getLocalMap().setStart(node);
 									System.out.println("This has happened");
 									btnClear.setEnabled(true);
 								}
 								else{
-									//MapNode endNode = globalMap.getEndNode();
 									if(globalMap.getChosenNodes().size() == 1){
 										globalMap.getChosenNodes().add(node);
 										globalMap.setEndNode(node);
-										//globalMap.getEndNode().setLocalMap(backend.getLocalMap());
 										backend.getLocalMap().setEnd(node);
-										LocalMap temp2 = backend.saveMap(backend.getLocalMap());
-										tempMaps.add(temp2);
 									} else {
 										MapNode endNode = globalMap.getEndNode();
 										LocalMap localMap = endNode.getLocalMap();
@@ -1334,20 +1309,10 @@ public class GUIFront extends JFrame {
 										}
 										globalMap.getChosenNodes().add(node);
 										globalMap.setEndNode(node);
-										//globalMap.getEndNode().setLocalMap(backend.getLocalMap());
 										backend.getLocalMap().setEnd(node);
 									}
-										
-									//globalMap.getEndNode().getLocalMap().getMiddleNodes().add(endNode);
-									//globalMap.getEndNode().getLocalMap().setEnd(null);
-
-									//globalMap.setEndNode(node);
-									//globalMap.getEndNode().setLocalMap(backend.getLocalMap());
-									//backend.getLocalMap().setEnd(node);
 								}
-								//globalMap.getChosenNodes().add(node);
 							}
-							//	btnRoute.setEnabled(true);
 							repaint();
 						}	
 					});
@@ -1492,23 +1457,21 @@ public class GUIFront extends JFrame {
 						// Draws the map and places pre-existing node data onto the map as
 						// well start and end nodes if they have been set
 						graphics.drawImage(this.mapImage, 0, 0, this);
-						// Sets the color of the start and end nodes to be different
+						// Sets the color of the start and end nodes to be different for each new waypoint
 						graphics.setColor(Color.RED);
-						//for (/*int i = 0; i < globalMap.getChosenNodes().size(); i++*/ArrayList<MapNode> mapnode : paths) {
-							//System.out.println(globalMap.getChosenNodes().size());
-							if(!(listOfPaths.isEmpty())){
-								for (ArrayList<ArrayList<MapNode>> path : listOfPaths){
-									if (path.get(index).get(0) != null){
-										graphics.setColor(Color.RED);
-										graphics.fillOval((int) path.get(index).get(0).getXPos() - (int)panX - 5, (int) path.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-									}
-									if (path.get(index).get(path.get(index).size() - 1) != null){
-										graphics.setColor(Color.GREEN);
-										graphics.fillOval((int) path.get(index).get(path.get(index).size() - 1).getXPos() - (int)panX - 5, (int) path.get(index).get(path.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
-									}
+						if(!(listOfPaths.isEmpty())){
+							for (ArrayList<ArrayList<MapNode>> path : listOfPaths){
+								if (path.get(index).get(0) != null){
+									graphics.setColor(Color.RED);
+									graphics.fillOval((int) path.get(index).get(0).getXPos() - (int)panX - 5, (int) path.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+								}
+								if (path.get(index).get(path.get(index).size() - 1) != null){
+									graphics.setColor(Color.GREEN);
+									graphics.fillOval((int) path.get(index).get(path.get(index).size() - 1).getXPos() - (int)panX - 5, (int) path.get(index).get(path.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
 								}
 							}
-							
+						}
+						//sets the initial colors for the nodes picked
 						if (globalMap.getStartNode() != null){
 							if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
 								graphics.setColor(Color.RED);
@@ -1534,8 +1497,6 @@ public class GUIFront extends JFrame {
 
 						// essentially draws the line on the screen 
 						if (GUIFront.drawLine = true) {
-							//ArrayList<MapNode> mapNodes = backend.getLocalMap().getChosenNodes();
-							//for (ArrayList<MapNode> mapNodes: backend.getMeRoutes(startNode, endNode)){
 							if (listOfPaths.isEmpty()) {
 								for (int i = 0; i < mapnodes.size() - 1; i++) {
 									double x1 = backend.getCoordinates(mapnodes).get(i)[0];
@@ -1553,8 +1514,6 @@ public class GUIFront extends JFrame {
 								removeLine = true;
 							} 
 							else {
-								//for (ArrayList<MapNode> mapNodes : paths){
-								//ArrayList<MapNode>  = paths.get(0);
 								for (int i = 0; i < thisRoute.size() - 1; i++) {
 									double x1 = backend.getCoordinates(thisRoute).get(i)[0];
 									double y1 = backend.getCoordinates(thisRoute).get(i)[1];
@@ -1587,8 +1546,6 @@ public class GUIFront extends JFrame {
 								drawLine = true;
 								removeLine = false;
 							} else {
-								//for (ArrayList<MapNode> mapNodes : backend.getMeRoutes(startNode, endNode)){
-								//for (ArrayList<MapNode> mapNodes : paths){
 								for (int i = 0; i < thisRoute.size() - 1; i++) {
 									double x1 = backend.getCoordinates(thisRoute).get(i)[0];
 									double y1 = backend.getCoordinates(thisRoute).get(i)[1];
@@ -1599,8 +1556,6 @@ public class GUIFront extends JFrame {
 									g2.setColor(Color.white);
 									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 								}
-								//load next map function in another tab pane
-								//
 								drawLine = true;
 								removeLine = false;
 							}
