@@ -15,8 +15,11 @@ public class EmailSender {
 	/*
 	 * @author Nick Gigliotti
 	 */
-    public void sendFromGMail(String fromEmail, String pass, String[] toEmail, String subject, String body) {
+    public void sendFromGMail(String[] toEmail, String subject, String body) {
         Properties props = System.getProperties();
+    	String fromEmail = "EraOfNavigation";
+    	String pass = "HonestMistakes";
+    	
         String host = "smtp.gmail.com";
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", host);
