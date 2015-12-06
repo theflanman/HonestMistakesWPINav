@@ -1,17 +1,18 @@
-package main.gui;
+package main.gui.frontutil;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import main.EmailSender;
+import main.gui.GUIFront;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
