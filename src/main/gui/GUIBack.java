@@ -287,7 +287,6 @@ public class GUIBack implements Serializable {
 	 */
 
 	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
-		System.out.println("hello");
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);

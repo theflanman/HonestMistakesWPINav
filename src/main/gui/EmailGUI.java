@@ -164,7 +164,7 @@ public class EmailGUI extends JDialog {
 			  public void mouseClicked(MouseEvent e) {
 				  if (bodyAreaIndex == 0) {
 					  txtBody.setText("");
-					  txtTo.setForeground(Color.BLACK);
+					  txtBody.setForeground(Color.BLACK);
 					  bodyAreaIndex ++;
 				  }
 			  }
