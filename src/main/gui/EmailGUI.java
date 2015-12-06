@@ -1,6 +1,6 @@
 package main.gui;
 
-import java.awt.FlowLayout;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -14,9 +14,11 @@ import main.EmailSender;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 /*
  * @author Nick Gigliotti
@@ -31,12 +33,12 @@ public class EmailGUI extends JDialog {
 
 	EmailSender email = new EmailSender();
 	
-	String welcomeMessage = "The directions for your route are:\n\n";
-	String fromEmail = "EraOfNavigation";
-	String pass = "HonestMistakes";
-	String[] toEmail = { "" };
-	String subject = "The Era of Navigationn"; 
-	String body = welcomeMessage.concat(GUIFront.allText);
+	String[] toEmail;
+	String subject = "Your trip at WPI"; 
+	String body = "Add a custom message here to be displayed above the directions";
+	String directions = GUIFront.allText; 
+	int toAreaIndex = 0;
+	int bodyAreaIndex = 0;
 
  
 	/**
@@ -53,74 +55,94 @@ public class EmailGUI extends JDialog {
 	}
 
 	public EmailGUI() {
-		setBounds(100, 100, 1056, 653);
+		setUndecorated(true);
+		setType(Type.UTILITY);
+		setBounds(100, 100, 684, 359);
 		getContentPane().setLayout(null);
 		
-		// Email BODY ---------------------------------
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(15, 147, 1004, 407);
-		getContentPane().add(scrollPane);
-		
-		JTextArea txtBody = new JTextArea();
-		txtBody.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		scrollPane.setViewportView(txtBody);
-		txtBody.setText(body);
-		
-		// Email TO -----------------------------------
-		JPanel panelTo = new JPanel();
-		panelTo.setBounds(15, 16, 1004, 37);
-		getContentPane().add(panelTo);
-		panelTo.setLayout(null);
-		
-		JLabel lblTo = new JLabel("TO:");
-		lblTo.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblTo.setBounds(0, 0, 86, 37);
-		panelTo.add(lblTo);
-		
-		txtTo = new JTextField();
-		txtTo.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		txtTo.setBounds(42, 2, 962, 32);
-		panelTo.add(txtTo);
-		txtTo.setColumns(10);
-		
-		// Email SUBJECT -----------------------------
-		JPanel paneSubject = new JPanel();
-		paneSubject.setBounds(15, 79, 1004, 37);
-		getContentPane().add(paneSubject);
-		paneSubject.setLayout(null);
-		
-		JLabel lblSubject = new JLabel("SUBJECT:");
-		lblSubject.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblSubject.setBounds(0, 0, 91, 37);
-		paneSubject.add(lblSubject);
-		
-		txtSubject = new JTextField();
-		txtSubject.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		txtSubject.setBounds(94, 2, 910, 32);
-		paneSubject.add(txtSubject);
-		txtSubject.setText(subject);
-		txtSubject.setColumns(10);
-		
-		JPanel panelButton = new JPanel();
-		panelButton.setBounds(15, 563, 1004, 34);
-		getContentPane().add(panelButton);
-		panelButton.setLayout(null);
-		
-		JButton btnSend = new JButton("SEND");
-		btnSend.setBounds(931, 0, 73, 29);
-		panelButton.add(btnSend);
-		getRootPane().setDefaultButton(btnSend);
-		btnSend.addActionListener(new ActionListener() {
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setBounds(590, 314, 79, 29);
+		getContentPane().add(btnCancel);
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Emailing Directions");
-				body = txtBody.getText();
-				toEmail[0] = txtTo.getText();
-				subject = txtSubject.getText();
-				email.sendFromGMail(fromEmail, pass, toEmail, subject, body);
 				EmailGUI.this.setVisible(false);
 			}
 		});
+		
+		
+		JButton btnSend = new JButton("Send");
+		btnSend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				subject = txtSubject.getText();
+				String[] toEmail = txtTo.getText().split(";");
+				email.sendFromGMail(toEmail, subject, body);
+				EmailGUI.this.setVisible(false);
+			}
+		});
+		btnSend.setBounds(496, 314, 79, 29);
+		getContentPane().add(btnSend);
+		
+		txtTo = new JTextField();
+		txtTo.setText("Type an email followed by a \";\" to add multiple recipents");
+		txtTo.setBounds(120, 71, 530, 29);
+		getContentPane().add(txtTo);
+		txtTo.setColumns(10);
+		txtTo.addMouseListener(new MouseAdapter() {
+			  @Override
+			  public void mouseClicked(MouseEvent e) {
+				  if (toAreaIndex == 0) {
+					  txtTo.setText("");
+					  toAreaIndex ++;
+				  }
+			  }
+			});
+		
+		txtSubject = new JTextField();
+		txtSubject.setText(subject);
+		txtSubject.setColumns(10);
+		txtSubject.setBounds(120, 129, 530, 29);
+		getContentPane().add(txtSubject);
+		
+		JTextArea txtBody = new JTextArea();
+		txtBody.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		txtBody.setText(body);
+		txtBody.setLineWrap(true);
+		txtBody.setBounds(120, 186, 530, 108);
+		getContentPane().add(txtBody);
+		txtBody.addMouseListener(new MouseAdapter() {
+			  @Override
+			  public void mouseClicked(MouseEvent e) {
+				  if (bodyAreaIndex == 0) {
+					  txtBody.setText("");
+					  bodyAreaIndex ++;
+				  }
+			  }
+			});
+		
+		JLabel lblTo = new JLabel("To:");
+		lblTo.setBounds(72, 75, 32, 20);
+		getContentPane().add(lblTo);
+		
+		JLabel lblSubject = new JLabel("Subject:");
+		lblSubject.setBounds(41, 133, 58, 20);
+		getContentPane().add(lblSubject);
+		
+		JLabel lblMessage = new JLabel("Message:");
+		lblMessage.setBounds(36, 186, 69, 20);
+		getContentPane().add(lblMessage);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(65, 105, 225));
+		panel.setForeground(Color.WHITE);
+		panel.setBounds(0, 0, 684, 38);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Email Directions");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(15, 0, 138, 36);
+		panel.add(lblNewLabel);
 	}
 
 	{
