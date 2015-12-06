@@ -11,6 +11,7 @@ import javax.swing.JList;
  * to have HTML-Style line breaks achieved by rendering the cells onto a JLabel
  * @author Trevor
  */
+@SuppressWarnings("serial")
 public class WrappableCellRenderer extends DefaultListCellRenderer {
 	DefaultListCellRenderer defaultRenderer = new DefaultListCellRenderer();
 	int width; // the width of the component it is set in (in pixels)
@@ -41,7 +42,8 @@ public class WrappableCellRenderer extends DefaultListCellRenderer {
 			if(currentLineLength + s.length() > width){ // check if we're about to exceed the character limit
 				fmt += "<br>" + s;
 				currentLineLength = 0;
-			} else {
+			} 
+			else {
 				fmt += " " + s;
 			}
 				
@@ -53,4 +55,4 @@ public class WrappableCellRenderer extends DefaultListCellRenderer {
 		JLabel renderer = (JLabel)defaultRenderer.getListCellRendererComponent(list, fmt, index, isSelected, cellHasFocus);
 		return renderer;
 	}
-} // end renderer class
+}
