@@ -372,7 +372,8 @@ public class GUIFront extends JFrame {
 			}
 		});
 
-		JButton btnRoute = new JButton("Route");
+		btnRoute = new JButton("Route");
+		btnRoute.setEnabled(false);
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
@@ -1081,7 +1082,7 @@ public class GUIFront extends JFrame {
 				lblDistance.setText("");
 				//textArea1.setText("");
 				btnClear.setEnabled(false);
-				//btnRoute.setEnabled(true);
+				btnRoute.setEnabled(false);
 				//btnEmail.setEnabled(false); -- for some reason this does not work -- will be looking into...
 				removeLine = true;
 			}
@@ -1307,8 +1308,11 @@ public class GUIFront extends JFrame {
 									backend.getLocalMap().setEnd(node);
 								}
 								globalMap.getChosenNodes().add(node);
+								
+								// Enable the route button if both start and end have been set
+								if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
+									btnRoute.setEnabled(true);
 							}
-							//	btnRoute.setEnabled(true);
 							repaint();
 						}	
 					});
