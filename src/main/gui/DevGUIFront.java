@@ -81,13 +81,6 @@ public class DevGUIFront extends JFrame {
 
 	private Attributes defaultAttributes;
 	private static DevGUIFront frame;
-<<<<<<< HEAD
-=======
-
-	/*public enum Type {
-		FOOD, OFFICE, CLASSROOM, WATERFOUNTAIN, BATHROOM, PARKING, WALKING, DOOR, ELEVATOR, LAB, OTHER
-	} */
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 
 	public String[] typeList = new String[] {"Food", "Office", "Classroom", "Waterfountain", "Bathroom", "Parking", "Walking", "Door", "Elevator", "Lab", "Other"};
 
@@ -629,11 +622,6 @@ public class DevGUIFront extends JFrame {
 								selectedNodes.add(n);
 
 						} //end the threshold selection if
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 					}
 					if(clickMiss == true) {
 						clearInfoFields();

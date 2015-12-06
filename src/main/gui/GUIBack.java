@@ -97,10 +97,6 @@ public class GUIBack implements Serializable {
 					loadedNodes.get(i).setXFeet(Double.parseDouble(xFeet));
 					loadedNodes.get(i).setYFeet(Double.parseDouble(yFeet));
 					loadedNodes.get(i).setZFeet(Double.parseDouble(zFeet));
-<<<<<<< HEAD
-=======
-					//debug print
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 
 					//get the neighbor values and store those node ID's in the neighbor nodes arraylist
 					Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
@@ -195,14 +191,8 @@ public class GUIBack implements Serializable {
 						}
 					}
 				}
-<<<<<<< HEAD
 			}
 
-=======
-				
-			}
-			
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 		}
 
 		return localMapList; 
@@ -272,32 +262,18 @@ public class GUIBack implements Serializable {
 	 * @param globalmap
 	 * @return
 	 */
-<<<<<<< HEAD
+
 	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
 
-=======
 
-	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
-		System.out.println("hello");
-		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
-		ArrayList<MapNode> route = new ArrayList<MapNode>();
-		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
-		System.out.println(globalNodes.size());
-		MapNode start1 = null;
-		MapNode end1 = null;
-		int j = 0;
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 		globalmap.addToMapNodes(start);
 		globalmap.setStartNode(start);
 		globalmap.addToMapNodes(end);
 		globalmap.setEndNode(end);
-<<<<<<< HEAD
-		
-=======
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
+
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added immediately add this to a new route
 			if (i == 0) {
@@ -359,10 +335,6 @@ public class GUIBack implements Serializable {
 			return temp;
 		else {
 			//this will change to check to make sure the neighbor is valid
-<<<<<<< HEAD
-=======
-			//MapNode start = temp;
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 			start.getNeighbors().clear();
 			this.localMap.getMapNodes().add(start);
 			this.localMap.getMapNodes().add(temp);

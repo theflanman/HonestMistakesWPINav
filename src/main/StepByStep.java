@@ -71,11 +71,8 @@ public class StepByStep {
 
 					// If direction is not going straight
 					if (190 > angle && angle > 170) {
-<<<<<<< HEAD
+
 						if (pathNodes.get(i).getAttributes().isStairs() || pathNodes.get(i).getAttributes().getType().equals("door")) {
-=======
-						if (pathNodes.get(i).getAttributes().isStairs || pathNodes.get(i).getAttributes().type.equals("door")) {
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 							break;
 						}
 						else {
@@ -126,10 +123,6 @@ public class StepByStep {
 			stepList.add(turn);
 		} 
 		else {
-<<<<<<< HEAD
-=======
-
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 			// Iterates through each node in the path
 			for (i = 0; i <= (pathNodes.size() - 1); i++) {
 

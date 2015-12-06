@@ -107,13 +107,9 @@ public class MapNode implements Serializable{
 	public void addNeighbor(MapNode node) {
 		neighbors.add(node);
 	}
-<<<<<<< HEAD
 
-=======
-	
 	//in addition to removing from list of neighbors, also check if its
 	//a cross map neighbor and remove if so.
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 	public void removeNeighbor(MapNode node) {
 		neighbors.remove(node);
 		for(int i = 0; i < this.crossMapNeighbors.size(); i++){
@@ -144,17 +140,13 @@ public class MapNode implements Serializable{
 	public double calculateAngle(MapNode nextNode) {
 		MapNode currentNode = this;
 		MapNode previousNode = currentNode.getCameFrom();
-<<<<<<< HEAD
 
-=======
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 		double prevX = previousNode.getXFeet();
 		double prevY = previousNode.getYFeet();
 		double currentX = currentNode.getXFeet();
 		double currentY = currentNode.getYFeet();
 		double nextX = nextNode.getXFeet();
 		double nextY = nextNode.getYFeet();
-<<<<<<< HEAD
 
 		double angle1 = Math.atan2(prevY - currentY, prevX - currentX);
 		double angle2 = Math.atan2(nextY - currentY, nextX - currentX);
@@ -167,20 +159,7 @@ public class MapNode implements Serializable{
 			resultAngle += 360;
 
 		return resultAngle;
-=======
-		
-	    double angle1 = Math.atan2(prevY - currentY, prevX - currentX);
-	    double angle2 = Math.atan2(nextY - currentY, nextX - currentX);
-		
-	    double radAngle;
-		 radAngle = angle1 - angle2;
-		 
-		 double resultAngle = Math.toDegrees(radAngle);
-			if (resultAngle < 0){
-				resultAngle += 360;
-			}
-			return resultAngle;
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
+
 	}
 
 	/**
