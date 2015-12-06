@@ -428,7 +428,7 @@ public class GUIFront extends JFrame {
 				boolean wayPoint = false;
 				for (ArrayList<ArrayList<MapNode>> routes : listOfPaths){
 					for (ArrayList<MapNode> route : routes){
-						//distance += backend.getDistance(routes);
+						//distance += backend.getDistance(routes); this needs to be commented out for the time being until step by step allows an arraylist<arraylist<mapNode>> to be taken in - does not currently!
 					}
 					if (routes.size() - 1 > 0){
 						wayPoint = true;
@@ -1169,18 +1169,6 @@ public class GUIFront extends JFrame {
 					 * @author Trevor
 					 */
 					MapNode tmpStart, tmpEnd; // temporary variables for clarity
-					if(globalMap.getStartNode() != null){
-						/*tmpStart = globalMap.getStartNode();
-						tmpStart.setXPos(tmpStart.getXPos() + distanceMovedX);
-						tmpStart.setYPos(tmpStart.getYPos() + distanceMovedY);
-						globalMap.setStartNode(tmpStart);*/
-					} 
-					if (globalMap.getEndNode() != null){
-						/*tmpEnd = globalMap.getEndNode();
-						tmpEnd.setXPos(tmpEnd.getXPos() + distanceMovedX);
-						tmpEnd.setYPos(tmpEnd.getYPos() + distanceMovedY);
-						globalMap.setEndNode(tmpEnd);*/
-					}
 
 				}
 

@@ -362,11 +362,8 @@ public class GUIBack implements Serializable {
 			return temp;
 		} else {
 			//this will change to check to make sure the neighbor is valid
-			//MapNode start = temp;
 			start.getNeighbors().clear();
 			this.localMap.getMapNodes().add(start);
-			this.localMap.getMapNodes().add(temp);
-			this.localMap.linkNodes(start.getNodeID(), temp.getNodeID());
 			start.addNeighbor(temp); //add the new nodes link with the closest node
 			temp.addNeighbor(start); //add the new node as a neighbor to the closest node
 			return start;
