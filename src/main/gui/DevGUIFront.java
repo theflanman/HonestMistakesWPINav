@@ -784,11 +784,13 @@ public class DevGUIFront extends JFrame {
 					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
 
 					points.remove(nodeToRemove);
+					lastClicked = null;
+					selectedNodes.clear();
 					Graphics g = mapPanel.getGraphics();
-					mapPanel.renderMapPublic(g, points);
+					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 					if(twoMapView) {
 						Graphics g2 = mapPanel2.getGraphics();
-						mapPanel2.renderMapPublic(g2, points2);
+						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 					}
 				}
 			}
@@ -977,10 +979,14 @@ public class DevGUIFront extends JFrame {
 					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
 
 					points2.remove(nodeToRemove);
-					Graphics g2 = mapPanel2.getGraphics();
-					mapPanel2.renderMapPublic(g2, points2);
+					lastClicked = null;
+					selectedNodes.clear();
 					Graphics g = mapPanel.getGraphics();
-					mapPanel.renderMapPublic(g, points);
+					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
+					if(twoMapView) {
+						Graphics g2 = mapPanel2.getGraphics();
+						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
+					}
 				}
 			}
 		}); 
