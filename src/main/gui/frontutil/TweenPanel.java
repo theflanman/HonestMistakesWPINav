@@ -27,6 +27,7 @@ import aurelienribon.tweenengine.TweenManager;
  * 
  * @author Trevor
  */
+@SuppressWarnings("serial")
 public class TweenPanel extends JPanel {
 	ArrayList<MapNode> localNodes;
 	public ArrayList<MapNode> chosenNodes;

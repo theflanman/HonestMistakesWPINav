@@ -4,14 +4,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.NoninvertibleTransformException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,8 +13,6 @@ import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.slidinglayout.SLConfig;
 import aurelienribon.slidinglayout.SLKeyframe;
 import aurelienribon.slidinglayout.SLPanel;
-import aurelienribon.tweenengine.Tween;
-import aurelienribon.tweenengine.TweenManager;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -50,7 +41,6 @@ import main.util.Constants;
 import main.util.Speaker;
 
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 /** This class contains code for the main applications GUI interface as well as
  *  implementation for its various functionality such as drawing the route.
@@ -68,13 +58,12 @@ public class GUIFront extends JFrame {
 	private static boolean setEnd = false;
 	private static boolean drawLine = false;
 	private static boolean removeLine = false;
-	private static boolean reset = false;
 	private static MapNode startNode = null, endNode = null;
 	private static String allText = "";
 	private static ArrayList<MapNode> mapnodes = new ArrayList<MapNode>();
 	private static ArrayList<ArrayList<MapNode>> paths = new ArrayList<ArrayList<MapNode>>();
 	private static ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
-	private static JButton btnClear, btnRoute;
+	private static JButton btnClear;
 	private static JButton btnPreviousMap;
 	private static JButton btnNextMap;
 	private static boolean allowSetting = true; 
@@ -826,7 +815,6 @@ public class GUIFront extends JFrame {
 		setAllowSetting(true); //allow user to re place nodes only once reset is pressed
 		getGlobalMap().setStartNode(null);
 		getGlobalMap().setEndNode(null);
-		reset = true;
 		getTxtAreaDirections().setText(""); // clear directions
 
 		// allows the user to re-input start and end nodes
