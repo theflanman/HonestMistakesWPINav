@@ -16,12 +16,15 @@ import aurelienribon.slidinglayout.SLPanel;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -35,12 +38,15 @@ import javax.swing.JTextArea;
 import javax.swing.border.MatteBorder;
 
 import main.*;
-import main.gui.frontutil.EmailGUI;
 import main.gui.frontutil.*;
 import main.util.Constants;
 import main.util.Speaker;
+import main.util.WrappableCellRenderer;
 
 import javax.swing.JTextField;
+import javax.swing.ListCellRenderer;
+import javax.swing.SwingConstants;
+import javax.swing.JLayeredPane;
 
 /** This class contains code for the main applications GUI interface as well as
  *  implementation for its various functionality such as drawing the route.
@@ -83,8 +89,10 @@ public class GUIFront extends JFrame {
 	// Directions Components
 	private static JLabel labelStepByStep, labelClickHere, labelDistance;
 	private static JScrollPane scrollPane;
-	private static JTextArea txtAreaDirections;
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
+	private static DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
+	private static ListCellRenderer renderer;
+	private static JList<String> listDirections;
 
 	// Menu Bar
 	private JMenuBar menuBar;
@@ -100,6 +108,7 @@ public class GUIFront extends JFrame {
 	private static SLConfig mainConfig;
 	private static SLConfig panelDirectionsConfig;
 	private static JTabbedPane mainTabPane;
+	private static JTextArea txtAreaDirections;
 
 	/** @description Create the frame.
 	 * 
@@ -329,9 +338,10 @@ public class GUIFront extends JFrame {
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
 
-					routes = getBackend().getMeRoutes(getGlobalMap().getStartNode(), getGlobalMap().getEndNode());
-					if (routes.isEmpty())
-						setMapnodes(getBackend().runAStar(getBackend().getLocalMap().getStartNode(), getBackend().getLocalMap().getEndNode()));
+					routes = backend.getMeRoutes(globalMap.getStartNode(), globalMap.getEndNode(), globalMap);
+					if (routes.isEmpty()){
+						mapnodes = backend.runAStar(backend.getLocalMap().getStartNode(), backend.getLocalMap().getEndNode());
+					} 
 					else {
 						for (int i = 0; i < routes.size(); i++){
 							LocalMap localmap = routes.get(i).get(0).getLocalMap();
@@ -353,16 +363,20 @@ public class GUIFront extends JFrame {
 					panelMap.setMapNodes(getPaths().get(0).get(0).getLocalMap().getMapNodes());
 					getBackend().setLocalMap(getPaths().get(0).get(0).getLocalMap());
 					index = 0;
-					btnNextMap.setEnabled(true);
-					setDrawLine(true); //draw the line on the map
+
+					if (paths.size() > 1)
+						btnNextMap.setEnabled(true);
+
+					drawLine = true; //draw the line on the map
 
 					//update the step by step directions and distance for each waypoint added
 					int distance = 0; //set the initial distance as 0 
 					for (ArrayList<MapNode>wayPoints : getPaths()){
 						String all = "";
-						distance += getBackend().getDistance(wayPoints);
-						for (String string : getBackend().displayStepByStep(wayPoints)) {
-							all += string + "\n";
+
+						distance += backend.getDistance(wayPoints);
+						for (String string : backend.displayStepByStep(wayPoints)) {
+							listModel.addElement(string); // add it to the list model
 						}
 						setAllText(getAllText() + all + "\n");
 					}
@@ -377,12 +391,12 @@ public class GUIFront extends JFrame {
 
 		// initialize panels
 		GUIFront.initPanels(mapImage);
-		
+
 		// TODO probably remove
 		addMouseListener(getPanHandle());
 		addMouseMotionListener(getPanHandle());
 		addMouseWheelListener(getZoomHandle());
-		
+
 		getContentPane().add(btnNextMap, BorderLayout.SOUTH);
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
 		getContentPane().add(mainTabPane);
@@ -787,432 +801,447 @@ public class GUIFront extends JFrame {
 				.play();
 		}};
 
-	/** @description Tells the Tween panel what to do when closing
-	 *  The animation functions come in pairs of action and back-action. 
-	 *  This tells the engine where to move it, and if it needs to move other panels 
-	 */	
-	private final static Runnable panelDirectionsBackAction = new Runnable() {
-		@Override 
-		public void run() {
-			disableActions();
-			setCurrentlyOpen(false);
+		/** @description Tells the Tween panel what to do when closing
+		 *  The animation functions come in pairs of action and back-action. 
+		 *  This tells the engine where to move it, and if it needs to move other panels 
+		 */	
+		private final static Runnable panelDirectionsBackAction = new Runnable() {
+			@Override 
+			public void run() {
+				disableActions();
+				setCurrentlyOpen(false);
 
-			slidePanel.createTransition()
-			.push(new SLKeyframe(mainConfig, 0.6f)
-			.setCallback(new SLKeyframe.Callback() {
-				@Override 
-				public void done() {
-					panelDirections.setAction(panelDirectionsAction);
-					enableActions();
-				}}))
-				.play();
-		}};
+				slidePanel.createTransition()
+				.push(new SLKeyframe(mainConfig, 0.6f)
+				.setCallback(new SLKeyframe.Callback() {
+					@Override 
+					public void done() {
+						panelDirections.setAction(panelDirectionsAction);
+						enableActions();
+					}}))
+					.play();
+			}};
 
-	/** @description Resets all of the relevant information on the form and the background information
-	 * @author Andrew Petit
-	 */
-	public void reset() {
-		setAllowSetting(true); //allow user to re place nodes only once reset is pressed
-		getGlobalMap().setStartNode(null);
-		getGlobalMap().setEndNode(null);
-		getTxtAreaDirections().setText(""); // clear directions
+			/** @description Resets all of the relevant information on the form and the background information
+			 * @author Andrew Petit
+			 */
+			public void reset() {
+				setAllowSetting(true); //allow user to re place nodes only once reset is pressed
+				getGlobalMap().setStartNode(null);
+				getGlobalMap().setEndNode(null);
+				getTxtAreaDirections().setText(""); // clear directions
 
-		// allows the user to re-input start and end nodes
-		setEnd = false;
-		setStart = false;
-		getPaths().clear();
-		getBackend().removePath(getGlobalMap().getMiddleNodes());
-		btnNextMap.setEnabled(false);
-		btnPreviousMap.setEnabled(false);
-		getGlobalMap().getChosenNodes().clear();
-		getLabelDistance().setText("");
-		getBtnClear().setEnabled(false);
-		setRemoveLine(true);
-	}
-
-	/** @description initializes GUIFront constructor
-	 * 
-	 * @param localMapFilenames names of map images
-	 */
-	public static void init(File[] localMapFilenames, ArrayList<MapNode> allNodes){
-		// Instantiate GUIBack to its default
-		GUIBack initGUIBack = new GUIBack();
-		setBackend(initGUIBack);
-
-		// Initialize the GlobalMap variable with all of the LocalMaps and all of their nodes
-		setGlobalMap(new GlobalMap());
-
-		// create a list of all local map filename strings
-		String[] localMapFilenameStrings = new String[localMapFilenames.length];
-		for(int i = 0; i < localMapFilenames.length; i++){
-			String path = localMapFilenames[i].getName();
-			localMapFilenameStrings[i] = path;
-		}
-
-		ArrayList<LocalMap> localMapList = getBackend().loadLocalMaps(localMapFilenameStrings);
-
-		getGlobalMap().setLocalMaps(localMapList);
-
-		for(LocalMap localMap : localMapList){
-			if(localMap.getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE))
-				getBackend().setLocalMap(localMap);
-		}
-
-		// add the collection of nodes to the ArrayList of GlobalMap
-		for (LocalMap local : localMapList) {
-			allNodes.addAll(local.getMapNodes());
-		}
-		getGlobalMap().setMapNodes(allNodes);
-	}
-
-	public static void initPanels(Image mapImage){
-		panelMap = new TweenPanel(getBackend().getLocalMap().getMapNodes(), mapImage, "1");
-		panels.add(panelMap);
-		panelDirections = new TweenPanel("2");
-
-		// Adding new components onto the Step By Step slideout panel
-		JPanel stepByStepUI = new JPanel();
-
-		setLabelClickHere(new JLabel("<<<"));
-		getLabelClickHere().setFont(new Font("Tahoma", Font.BOLD, 13));
-		getLabelClickHere().setVisible(true);
-		stepByStepUI.add(getLabelClickHere());
-
-		setLabelStepByStep(new JLabel("Step by Step Directions!"));
-		getLabelStepByStep().setFont(new Font("Tahoma", Font.BOLD, 13));
-		getLabelStepByStep().setBounds(23, 11, 167, 14);
-		getLabelStepByStep().setVisible(false);
-		stepByStepUI.add(getLabelStepByStep());
-
-		setScrollPane(new JScrollPane());
-		getScrollPane().setBounds(10, 30, 180, 322);
-		getScrollPane().setVisible(false);
-		stepByStepUI.add(getScrollPane());
-
-		panelDirections.add(stepByStepUI, BorderLayout.NORTH);
-
-		setTxtAreaDirections(new JTextArea());
-		getTxtAreaDirections().setRows(22);
-		getTxtAreaDirections().setEditable(false);
-
-		getScrollPane().setViewportView(getTxtAreaDirections());
-
-		getTxtAreaDirections().setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		getTxtAreaDirections().setWrapStyleWord(true);
-		getTxtAreaDirections().setLineWrap(true);
-		getTxtAreaDirections().setVisible(false);
-
-		setLabelDistance(new JLabel());
-		getLabelDistance().setFont(new Font("Tahoma", Font.BOLD, 13));
-		getLabelDistance().setVisible(false);
-
-		panelDirections.add(getLabelDistance(), BorderLayout.SOUTH);
-
-		// Set action to allow for sliding
-		panelDirections.setAction(panelDirectionsAction);
-
-		/* The configuration files describe what will take place for each animation. So by default we want the map larger 
-		 * and the side panel very small. When we click the directions panel we want that to slide out, zoomRatio the map panel, and
-		 * adjust the sizes
-		 */
-		slidePanel = new SLPanel();
-		mainConfig = new SLConfig(slidePanel)
-		.gap(10, 10)
-		.row(1f).col(700).col(50) // 700xH | 50xH
-		.place(0, 0, panelMap)
-		.place(0, 1, panelDirections);
-
-		panelDirectionsConfig = new SLConfig(slidePanel)
-		.gap(10, 10)
-		.row(1f).col(550).col(200) // 550xH | 200xH
-		.place(0, 0, panelMap)
-		.place(0, 1, panelDirections);
-
-		// Initialize tweening
-		slidePanel.setTweenManager(SLAnimator.createTweenManager());
-		slidePanel.initialize(mainConfig);
-
-		// add to the tabbed pane
-		mainTabPane.add(slidePanel, BorderLayout.CENTER);
-
-		btnNextMap = new JButton("Next Map -->");
-		btnNextMap.setEnabled(false);
-		btnNextMap.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent ae){
-				index++;
-				if (index <= 0)
-					btnPreviousMap.setEnabled(false);
-				if (index < getPaths().size() - 1)
-					btnNextMap.setEnabled(true);
-				if (index >= getPaths().size() - 1)
-					btnNextMap.setEnabled(false);
-				if (index > 0)
-					btnPreviousMap.setEnabled(true);
-
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getPaths().get(index).get(0).getLocalMap().getMapImageName()).getImage());
-				panelMap.setMapNodes(getPaths().get(index).get(0).getLocalMap().getMapNodes());
-				getBackend().setLocalMap(getPaths().get(index).get(0).getLocalMap());
-				setThisRoute(getPaths().get(index));
-				setDrawLine(true);
+				// allows the user to re-input start and end nodes
+				setEnd = false;
+				setStart = false;
+				getPaths().clear();
+				getBackend().removePath(getGlobalMap().getMiddleNodes());
+				btnNextMap.setEnabled(false);
+				btnPreviousMap.setEnabled(false);
+				getGlobalMap().getChosenNodes().clear();
+				getLabelDistance().setText("");
+				getBtnClear().setEnabled(false);
+				setRemoveLine(true);
 			}
-		});
 
-		// Add buttons to move between two maps
-		btnPreviousMap = new JButton("<-- Previous Map");
-		btnPreviousMap.setEnabled(false);
-		btnPreviousMap.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent ae) {
-				index--;
-				if (index <= 0)
-					btnPreviousMap.setEnabled(false);
-				if (index < getPaths().size() - 1)
-					btnNextMap.setEnabled(true);
-				if (index >= getPaths().size() - 1)
-					btnNextMap.setEnabled(false);
-				if (index > 0)
-					btnPreviousMap.setEnabled(true);
+			/** @description initializes GUIFront constructor
+			 * 
+			 * @param localMapFilenames names of map images
+			 */
+			public static void init(File[] localMapFilenames, ArrayList<MapNode> allNodes){
+				// Instantiate GUIBack to its default
+				GUIBack initGUIBack = new GUIBack();
+				setBackend(initGUIBack);
 
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getPaths().get(index).get(0).getLocalMap().getMapImageName()).getImage());
-				panelMap.setMapNodes(getPaths().get(index).get(0).getLocalMap().getMapNodes());
-				getBackend().setLocalMap(getPaths().get(index).get(0).getLocalMap());
-				setThisRoute(getPaths().get(index));
-				setDrawLine(true);
+				// Initialize the GlobalMap variable with all of the LocalMaps and all of their nodes
+				setGlobalMap(new GlobalMap());
+
+				// create a list of all local map filename strings
+				String[] localMapFilenameStrings = new String[localMapFilenames.length];
+				for(int i = 0; i < localMapFilenames.length; i++){
+					String path = localMapFilenames[i].getName();
+					localMapFilenameStrings[i] = path;
+				}
+
+				ArrayList<LocalMap> localMapList = getBackend().loadLocalMaps(localMapFilenameStrings);
+
+				getGlobalMap().setLocalMaps(localMapList);
+
+				for(LocalMap localMap : localMapList){
+					if(localMap.getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE))
+						getBackend().setLocalMap(localMap);
+				}
+
+				// add the collection of nodes to the ArrayList of GlobalMap
+				for (LocalMap local : localMapList) {
+					allNodes.addAll(local.getMapNodes());
+				}
+				getGlobalMap().setMapNodes(allNodes);
 			}
-		});
-	}
 
-	public static void groupLayout(JPanel contentPane, JLabel labelInvalidEntry, JButton buttonRoute) {
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(10)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(searchLabelStart)
-												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-												.addGap(18)
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-														.addComponent(searchLabelEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-														.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-														.addGap(18)
-														.addComponent(labelInvalidEntry)
-														.addGap(227)
-														.addComponent(buttonRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-														.addGap(18)
-														.addComponent(getBtnClear()))
-														.addComponent(mainTabPane, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addGap(79)
-																.addComponent(btnPreviousMap)
-																.addPreferredGap(ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
-																.addComponent(btnNextMap)
-																.addGap(170))
-				);
+			public static void initPanels(Image mapImage){
+				panelMap = new TweenPanel(getBackend().getLocalMap().getMapNodes(), mapImage, "1");
+				panels.add(panelMap);
+				panelDirections = new TweenPanel("2");
 
-		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(searchLabelStart)
-										.addGap(6)
-										.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				// Adding new components onto the Step By Step slideout panel
+				JPanel stepByStepUI = new JPanel();
+
+				setLabelClickHere(new JLabel("<<<"));
+				getLabelClickHere().setFont(new Font("Tahoma", Font.BOLD, 13));
+				getLabelClickHere().setVisible(true);
+				stepByStepUI.add(getLabelClickHere());
+
+				setLabelStepByStep(new JLabel("Step by Step Directions!"));
+				getLabelStepByStep().setFont(new Font("Tahoma", Font.BOLD, 13));
+				getLabelStepByStep().setBounds(23, 11, 167, 14);
+				getLabelStepByStep().setVisible(false);
+				stepByStepUI.add(getLabelStepByStep());
+
+				setScrollPane(new JScrollPane());
+				getScrollPane().setBounds(10, 30, 180, 322);
+				getScrollPane().setVisible(false);
+				stepByStepUI.add(getScrollPane());
+
+				// Create a new list and be able to get the current width ofthe viewport it is contained in (the scrollpane)
+				renderer = new WrappableCellRenderer(Constants.MAX_LIST_WIDTH / 7); // 7 pixels per 1 character
+
+				listDirections = new JList<String>(listModel);
+				listDirections.setCellRenderer(renderer);
+				listDirections.setFixedCellWidth(Constants.MAX_LIST_WIDTH); // give it a set width in pixels
+				scrollPane.setViewportView(listDirections);
+				listDirections.setVisible(false);
+				listDirections.setVisibleRowCount(10); // only shows 10 directions before scrolling
+
+				labelDistance = new JLabel();
+				labelDistance.setFont(new Font("Tahoma", Font.BOLD, 13));
+				labelDistance.setVisible(false);
+
+				panelDirections.add(labelDistance, BorderLayout.SOUTH);
+				panelDirections.add(stepByStepUI, BorderLayout.NORTH);
+
+				setTxtAreaDirections(new JTextArea());
+				getTxtAreaDirections().setRows(22);
+				getTxtAreaDirections().setEditable(false);
+
+				getScrollPane().setViewportView(getTxtAreaDirections());
+
+				getTxtAreaDirections().setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+				getTxtAreaDirections().setWrapStyleWord(true);
+				getTxtAreaDirections().setLineWrap(true);
+				getTxtAreaDirections().setVisible(false);
+
+				setLabelDistance(new JLabel());
+				getLabelDistance().setFont(new Font("Tahoma", Font.BOLD, 13));
+				getLabelDistance().setVisible(false);
+
+				panelDirections.add(getLabelDistance(), BorderLayout.SOUTH);
+
+				// Set action to allow for sliding
+				panelDirections.setAction(panelDirectionsAction);
+
+				/* The configuration files describe what will take place for each animation. So by default we want the map larger 
+				 * and the side panel very small. When we click the directions panel we want that to slide out, zoomRatio the map panel, and
+				 * adjust the sizes
+				 */
+				slidePanel = new SLPanel();
+				mainConfig = new SLConfig(slidePanel)
+				.gap(10, 10)
+				.row(1f).col(700).col(50) // 700xH | 50xH
+				.place(0, 0, panelMap)
+				.place(0, 1, panelDirections);
+
+				panelDirectionsConfig = new SLConfig(slidePanel)
+				.gap(10, 10)
+				.row(1f).col(550).col(200) // 550xH | 200xH
+				.place(0, 0, panelMap)
+				.place(0, 1, panelDirections);
+
+				// Initialize tweening
+				slidePanel.setTweenManager(SLAnimator.createTweenManager());
+				slidePanel.initialize(mainConfig);
+
+				// add to the tabbed pane
+				mainTabPane.add(slidePanel, BorderLayout.CENTER);
+
+				btnNextMap = new JButton("Next Map -->");
+				btnNextMap.setEnabled(false);
+				btnNextMap.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent ae){
+						index++;
+						if (index <= 0)
+							btnPreviousMap.setEnabled(false);
+						if (index < getPaths().size() - 1)
+							btnNextMap.setEnabled(true);
+						if (index >= getPaths().size() - 1)
+							btnNextMap.setEnabled(false);
+						if (index > 0)
+							btnPreviousMap.setEnabled(true);
+
+						panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getPaths().get(index).get(0).getLocalMap().getMapImageName()).getImage());
+						panelMap.setMapNodes(getPaths().get(index).get(0).getLocalMap().getMapNodes());
+						getBackend().setLocalMap(getPaths().get(index).get(0).getLocalMap());
+						setThisRoute(getPaths().get(index));
+						setDrawLine(true);
+					}
+				});
+
+				// Add buttons to move between two maps
+				btnPreviousMap = new JButton("<-- Previous Map");
+				btnPreviousMap.setEnabled(false);
+				btnPreviousMap.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent ae) {
+						index--;
+						if (index <= 0)
+							btnPreviousMap.setEnabled(false);
+						if (index < getPaths().size() - 1)
+							btnNextMap.setEnabled(true);
+						if (index >= getPaths().size() - 1)
+							btnNextMap.setEnabled(false);
+						if (index > 0)
+							btnPreviousMap.setEnabled(true);
+
+						panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getPaths().get(index).get(0).getLocalMap().getMapImageName()).getImage());
+						panelMap.setMapNodes(getPaths().get(index).get(0).getLocalMap().getMapNodes());
+						getBackend().setLocalMap(getPaths().get(index).get(0).getLocalMap());
+						setThisRoute(getPaths().get(index));
+						setDrawLine(true);
+					}
+				});
+			}
+
+			public static void groupLayout(JPanel contentPane, JLabel labelInvalidEntry, JButton buttonRoute) {
+				GroupLayout gl_contentPane = new GroupLayout(contentPane);
+				gl_contentPane.setHorizontalGroup(
+						gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+								.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_contentPane.createSequentialGroup()
-												.addComponent(searchLabelEnd)
+												.addGap(10)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addComponent(searchLabelStart)
+														.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+														.addGap(18)
+														.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+																.addComponent(searchLabelEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+																.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+																.addGap(18)
+																.addComponent(labelInvalidEntry)
+																.addGap(227)
+																.addComponent(buttonRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+																.addGap(18)
+																.addComponent(getBtnClear()))
+																.addComponent(mainTabPane, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+																.addGroup(gl_contentPane.createSequentialGroup()
+																		.addGap(79)
+																		.addComponent(btnPreviousMap)
+																		.addPreferredGap(ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+																		.addComponent(btnNextMap)
+																		.addGap(170))
+						);
+
+				gl_contentPane.setVerticalGroup(
+						gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+								.addContainerGap()
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addComponent(searchLabelStart)
 												.addGap(6)
-												.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 												.addGroup(gl_contentPane.createSequentialGroup()
-														.addGap(24)
-														.addComponent(labelInvalidEntry))
+														.addComponent(searchLabelEnd)
+														.addGap(6)
+														.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 														.addGroup(gl_contentPane.createSequentialGroup()
-																.addGap(11)
-																.addComponent(buttonRoute))
+																.addGap(24)
+																.addComponent(labelInvalidEntry))
 																.addGroup(gl_contentPane.createSequentialGroup()
 																		.addGap(11)
-																		.addComponent(getBtnClear())))
-																		.addGap(18)
-																		.addComponent(mainTabPane, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-																		.addGap(18)
-																		.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-																				.addComponent(btnPreviousMap)
-																				.addComponent(btnNextMap))
-																				.addGap(35))
-				);
-		contentPane.setLayout(gl_contentPane);
-	}
+																		.addComponent(buttonRoute))
+																		.addGroup(gl_contentPane.createSequentialGroup()
+																				.addGap(11)
+																				.addComponent(getBtnClear())))
+																				.addGap(18)
+																				.addComponent(mainTabPane, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
+																				.addGap(18)
+																				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+																						.addComponent(btnPreviousMap)
+																						.addComponent(btnNextMap))
+																						.addGap(35))
+						);
+				contentPane.setLayout(gl_contentPane);
+			}
 
-	public static String getAllText() {
-		return allText;
-	}
+			public static String getAllText() {
+				return allText;
+			}
 
-	public static void setAllText(String allText) {
-		GUIFront.allText = allText;
-	}
+			public static void setAllText(String allText) {
+				GUIFront.allText = allText;
+			}
 
-	public static Point2D getMainReferencePoint() {
-		return mainReferencePoint;
-	}
+			public static Point2D getMainReferencePoint() {
+				return mainReferencePoint;
+			}
 
-	public static void setMainReferencePoint(Point2D mainReferencePoint) {
-		GUIFront.mainReferencePoint = mainReferencePoint;
-	}
+			public static void setMainReferencePoint(Point2D mainReferencePoint) {
+				GUIFront.mainReferencePoint = mainReferencePoint;
+			}
 
-	public static TweenPanel getPanelMap() {
-		return panelMap;
-	}
+			public static TweenPanel getPanelMap() {
+				return panelMap;
+			}
 
-	public static void setPanelMap(TweenPanel panelMap) {
-		GUIFront.panelMap = panelMap;
-	}
+			public static void setPanelMap(TweenPanel panelMap) {
+				GUIFront.panelMap = panelMap;
+			}
 
-	public static GUIBack getBackend() {
-		return backend;
-	}
+			public static GUIBack getBackend() {
+				return backend;
+			}
 
-	public static void setBackend(GUIBack backend) {
-		GUIFront.backend = backend;
-	}
+			public static void setBackend(GUIBack backend) {
+				GUIFront.backend = backend;
+			}
 
-	public static GlobalMap getGlobalMap() {
-		return globalMap;
-	}
+			public static GlobalMap getGlobalMap() {
+				return globalMap;
+			}
 
-	public static void setGlobalMap(GlobalMap globalMap) {
-		GUIFront.globalMap = globalMap;
-	}
+			public static void setGlobalMap(GlobalMap globalMap) {
+				GUIFront.globalMap = globalMap;
+			}
 
-	public static AffineTransform getTransform() {
-		return transform;
-	}
+			public static AffineTransform getTransform() {
+				return transform;
+			}
 
-	public static void setTransform(AffineTransform transform) {
-		GUIFront.transform = transform;
-	}
+			public static void setTransform(AffineTransform transform) {
+				GUIFront.transform = transform;
+			}
 
-	public static PanHandler getPanHandle() {
-		return panHandle;
-	}
+			public static PanHandler getPanHandle() {
+				return panHandle;
+			}
 
-	public static void setPanHandle(PanHandler panHandle) {
-		GUIFront.panHandle = panHandle;
-	}
+			public static void setPanHandle(PanHandler panHandle) {
+				GUIFront.panHandle = panHandle;
+			}
 
-	public static ZoomHandler getZoomHandle() {
-		return zoomHandle;
-	}
+			public static ZoomHandler getZoomHandle() {
+				return zoomHandle;
+			}
 
-	public static void setZoomHandle(ZoomHandler zoomHandle) {
-		GUIFront.zoomHandle = zoomHandle;
-	}
+			public static void setZoomHandle(ZoomHandler zoomHandle) {
+				GUIFront.zoomHandle = zoomHandle;
+			}
 
-	public static boolean isAllowSetting() {
-		return allowSetting;
-	}
+			public static boolean isAllowSetting() {
+				return allowSetting;
+			}
 
-	public static void setAllowSetting(boolean allowSetting) {
-		GUIFront.allowSetting = allowSetting;
-	}
+			public static void setAllowSetting(boolean allowSetting) {
+				GUIFront.allowSetting = allowSetting;
+			}
 
-	public static JButton getBtnClear() {
-		return btnClear;
-	}
+			public static JButton getBtnClear() {
+				return btnClear;
+			}
 
-	public static void setBtnClear(JButton btnClear) {
-		GUIFront.btnClear = btnClear;
-	}
+			public static void setBtnClear(JButton btnClear) {
+				GUIFront.btnClear = btnClear;
+			}
 
-	public static boolean isCurrentlyOpen() {
-		return currentlyOpen;
-	}
+			public static boolean isCurrentlyOpen() {
+				return currentlyOpen;
+			}
 
-	public static void setCurrentlyOpen(boolean currentlyOpen) {
-		GUIFront.currentlyOpen = currentlyOpen;
-	}
+			public static void setCurrentlyOpen(boolean currentlyOpen) {
+				GUIFront.currentlyOpen = currentlyOpen;
+			}
 
-	public static JLabel getLabelStepByStep() {
-		return labelStepByStep;
-	}
+			public static JLabel getLabelStepByStep() {
+				return labelStepByStep;
+			}
 
-	public static void setLabelStepByStep(JLabel labelStepByStep) {
-		GUIFront.labelStepByStep = labelStepByStep;
-	}
+			public static void setLabelStepByStep(JLabel labelStepByStep) {
+				GUIFront.labelStepByStep = labelStepByStep;
+			}
 
-	public static JLabel getLabelClickHere() {
-		return labelClickHere;
-	}
+			public static JLabel getLabelClickHere() {
+				return labelClickHere;
+			}
 
-	public static void setLabelClickHere(JLabel labelClickHere) {
-		GUIFront.labelClickHere = labelClickHere;
-	}
+			public static void setLabelClickHere(JLabel labelClickHere) {
+				GUIFront.labelClickHere = labelClickHere;
+			}
 
-	public static JLabel getLabelDistance() {
-		return labelDistance;
-	}
+			public static JLabel getLabelDistance() {
+				return labelDistance;
+			}
 
-	public static void setLabelDistance(JLabel labelDistance) {
-		GUIFront.labelDistance = labelDistance;
-	}
+			public static void setLabelDistance(JLabel labelDistance) {
+				GUIFront.labelDistance = labelDistance;
+			}
 
-	public static JScrollPane getScrollPane() {
-		return scrollPane;
-	}
+			public static JScrollPane getScrollPane() {
+				return scrollPane;
+			}
 
-	public static void setScrollPane(JScrollPane scrollPane) {
-		GUIFront.scrollPane = scrollPane;
-	}
+			public static void setScrollPane(JScrollPane scrollPane) {
+				GUIFront.scrollPane = scrollPane;
+			}
 
-	public static JTextArea getTxtAreaDirections() {
-		return txtAreaDirections;
-	}
+			public static JTextArea getTxtAreaDirections() {
+				return txtAreaDirections;
+			}
 
-	public static void setTxtAreaDirections(JTextArea txtAreaDirections) {
-		GUIFront.txtAreaDirections = txtAreaDirections;
-	}
+			public static void setTxtAreaDirections(JTextArea txtAreaDirections) {
+				GUIFront.txtAreaDirections = txtAreaDirections;
+			}
 
-	public static ArrayList<MapNode> getMapnodes() {
-		return mapnodes;
-	}
+			public static ArrayList<MapNode> getMapnodes() {
+				return mapnodes;
+			}
 
-	public static void setMapnodes(ArrayList<MapNode> mapnodes) {
-		GUIFront.mapnodes = mapnodes;
-	}
+			public static void setMapnodes(ArrayList<MapNode> mapnodes) {
+				GUIFront.mapnodes = mapnodes;
+			}
 
-	public static ArrayList<ArrayList<MapNode>> getPaths() {
-		return paths;
-	}
+			public static ArrayList<ArrayList<MapNode>> getPaths() {
+				return paths;
+			}
 
-	public static void setPaths(ArrayList<ArrayList<MapNode>> paths) {
-		GUIFront.paths = paths;
-	}
+			public static void setPaths(ArrayList<ArrayList<MapNode>> paths) {
+				GUIFront.paths = paths;
+			}
 
-	public static boolean isDrawLine() {
-		return drawLine;
-	}
+			public static boolean isDrawLine() {
+				return drawLine;
+			}
 
-	public static boolean setDrawLine(boolean drawLine) {
-		GUIFront.drawLine = drawLine;
-		return drawLine;
-	}
+			public static boolean setDrawLine(boolean drawLine) {
+				GUIFront.drawLine = drawLine;
+				return drawLine;
+			}
 
-	public static boolean isRemoveLine() {
-		return removeLine;
-	}
+			public static boolean isRemoveLine() {
+				return removeLine;
+			}
 
-	public static void setRemoveLine(boolean removeLine) {
-		GUIFront.removeLine = removeLine;
-	}
+			public static void setRemoveLine(boolean removeLine) {
+				GUIFront.removeLine = removeLine;
+			}
 
-	public static ArrayList<MapNode> getThisRoute() {
-		return thisRoute;
-	}
+			public static ArrayList<MapNode> getThisRoute() {
+				return thisRoute;
+			}
 
-	public static void setThisRoute(ArrayList<MapNode> thisRoute) {
-		GUIFront.thisRoute = thisRoute;
-	}
+			public static void setThisRoute(ArrayList<MapNode> thisRoute) {
+				GUIFront.thisRoute = thisRoute;
+			}
 }

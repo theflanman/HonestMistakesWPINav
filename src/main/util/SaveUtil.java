@@ -1,5 +1,9 @@
 package main.util;
 
+/** Utilities for Saving
+ * 
+ * @author NathanGeorge
+ */
 public class SaveUtil {
 
 	public SaveUtil() {

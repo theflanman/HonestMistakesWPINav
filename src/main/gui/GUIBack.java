@@ -18,6 +18,7 @@ import main.Attributes;
 import main.LocalMap;
 import main.Types;
 import main.MapNode;
+import main.GlobalMap;
 import main.StepByStep;
 import main.util.Constants;
 import main.util.SaveUtil;
@@ -191,6 +192,7 @@ public class GUIBack implements Serializable {
 					}
 				}
 			}
+
 		}
 
 		return localMapList; 
@@ -252,12 +254,24 @@ public class GUIBack implements Serializable {
 	public void removePath(ArrayList<MapNode> mapNodes) {
 		mapNodes.clear();
 	}
-
-	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end){
+	
+	/**
+	 * @author Dominic B, Nick G, Andrew P
+	 * @param start
+	 * @param end
+	 * @param globalmap
+	 * @return
+	 */
+	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
 
+		globalmap.addToMapNodes(start);
+		globalmap.setStartNode(start);
+		globalmap.addToMapNodes(end);
+		globalmap.setEndNode(end);
+		
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added immediately add this to a new route
 			if (i == 0) {
@@ -319,10 +333,12 @@ public class GUIBack implements Serializable {
 			return temp;
 		else {
 			//this will change to check to make sure the neighbor is valid
+			start.getNeighbors().clear();
 			this.localMap.getMapNodes().add(start);
 			this.localMap.getMapNodes().add(temp);
 			this.localMap.linkNodes(start.getNodeID(), temp.getNodeID());
-
+			start.addNeighbor(temp); //add the new nodes link with the closest node
+			temp.addNeighbor(start); //add the new node as a neighbor to the closest node
 			return start;
 		}
 	}

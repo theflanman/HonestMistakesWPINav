@@ -2,7 +2,6 @@ package main.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -11,8 +10,12 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 
-// To play sound using Clip, the process need to be alive.
-// Hence, we use a Swing application.
+/** Playing Sounds
+ * 
+ * @author NathanGeorge
+ *
+ */
+@SuppressWarnings("serial")
 public class Speaker extends JFrame {
    
 	String path;

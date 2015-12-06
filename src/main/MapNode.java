@@ -110,6 +110,11 @@ public class MapNode implements Serializable{
 
 	public void removeNeighbor(MapNode node) {
 		neighbors.remove(node);
+		for(int i = 0; i < this.crossMapNeighbors.size(); i++){
+			if(node.getNodeID().equals(this.crossMapNeighbors.get(i))){
+				this.crossMapNeighbors.remove(i);
+			}
+		}
 	}
 
 	public double aStarHeuristic(MapNode toNode) {
@@ -133,12 +138,13 @@ public class MapNode implements Serializable{
 	public double calculateAngle(MapNode nextNode) {
 		MapNode currentNode = this;
 		MapNode previousNode = currentNode.getCameFrom();
-		double prevX = previousNode.getXPos();
-		double prevY = previousNode.getYPos();
-		double currentX = currentNode.getXPos();
-		double currentY = currentNode.getYPos();
-		double nextX = nextNode.getXPos();
-		double nextY = nextNode.getYPos();
+
+		double prevX = previousNode.getXFeet();
+		double prevY = previousNode.getYFeet();
+		double currentX = currentNode.getXFeet();
+		double currentY = currentNode.getYFeet();
+		double nextX = nextNode.getXFeet();
+		double nextY = nextNode.getYFeet();
 
 		double angle1 = Math.atan2(prevY - currentY, prevX - currentX);
 		double angle2 = Math.atan2(nextY - currentY, nextX - currentX);
@@ -149,6 +155,7 @@ public class MapNode implements Serializable{
 		double resultAngle = Math.toDegrees(radAngle);
 		if (resultAngle < 0)
 			resultAngle += 360;
+
 		return resultAngle;
 	}
 
