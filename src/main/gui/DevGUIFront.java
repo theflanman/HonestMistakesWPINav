@@ -96,6 +96,7 @@ public class DevGUIFront extends JFrame {
 	} */
 
 	public String[] typeList = new String[] {"Food", "Office", "Classroom", "Waterfountain", "Bathroom", "Parking", "Walking", "Door", "Elevator", "Lab", "Other"};
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -382,7 +383,7 @@ public class DevGUIFront extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel(" Cursor Options");
 		cursorPanel.add(lblNewLabel_1);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 
 		cursorPanel.add(rdbtnPlaceNode);
 		buttonGroup.add(rdbtnPlaceNode);
@@ -423,7 +424,7 @@ public class DevGUIFront extends JFrame {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_1.setBounds(920, 349, 301, 312);
+		panel_1.setBounds(920, 349, 294, 312);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 
@@ -435,7 +436,7 @@ public class DevGUIFront extends JFrame {
 		chckbxBikeable.setBounds(8, 215, 113, 25);
 		panel_1.add(chckbxBikeable);
 
-		chckbxHandicapped = new JCheckBox("Handicapped accessable");
+		chckbxHandicapped = new JCheckBox("Handicapped accessible");
 		chckbxHandicapped.setBounds(8, 242, 176, 25);
 		panel_1.add(chckbxHandicapped);
 
@@ -815,6 +816,31 @@ public class DevGUIFront extends JFrame {
 		}); 
 		mapPanel.setBackground(Color.WHITE);
 
+		JPanel highlightPanel = new JPanel();
+		highlightPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		highlightPanel.setBounds(1062, 10, 151, 183);
+		getContentPane().add(highlightPanel);
+		highlightPanel.setLayout(null);
+
+		JLabel lblHighlight = new JLabel(" Select nodes with:");
+		lblHighlight.setBounds(2, 2, 137, 16);
+		highlightPanel.add(lblHighlight);
+
+
+		String[] attributeSelectedOptions = new String[] {"foodLocation", "office", "classRoom", 
+				"waterFountain", "bathRoom", "parking", "walking", "door",
+				"elevator", "laboratory", "other", "is Stairs", "is Bikeable", "is Accessible", 
+				"is Outside", "is POI"};
+		JComboBox attributeSelected = new JComboBox(attributeSelectedOptions);
+		attributeSelected.setSelectedIndex(-1);
+		attributeSelected.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.selectAllNodes(attributeSelected.getSelectedIndex());
+			}
+		});
+		attributeSelected.setBounds(2, 31, 137, 22);
+		highlightPanel.add(attributeSelected);
+
 
 		// This is code for the second map panel.
 
@@ -1010,6 +1036,7 @@ public class DevGUIFront extends JFrame {
 		mapPanel2.setBackground(Color.WHITE);
 	}
 
+	//The info fields on the right  are set to reflect the attributes and location of the point passed as a parameter.
 	private void setInfoFields(MapNode n) {
 		xPosField.setText(""+n.getXPos());
 		yPosField.setText(""+n.getYPos());
@@ -1030,6 +1057,7 @@ public class DevGUIFront extends JFrame {
 		textFieldOfficialName.setText(a.getOfficialName());
 	}
 
+	//All info fields on the right hand side of the GUI are cleared.
 	private void clearInfoFields() {
 		xPosField.setText("");
 		yPosField.setText("");
@@ -1110,6 +1138,95 @@ public class DevGUIFront extends JFrame {
 			extremes[1] = highY;
 		}
 		return extremes;
+	}
 
+	//Selects all nodes with a certain attribute, determined by the index parameter.
+	private void selectAllNodes(int index) {
+		Types typeSelected;
+		selectedNodes.clear();
+		clearInfoFields();
+		if(index < 11 && index > -1) {
+			typeSelected = Types.OTHER;
+			switch(index) {
+			case 0:
+				typeSelected = Types.FOOD;
+				break;
+			case 1:
+				typeSelected = Types.OFFICE;
+				break;
+			case 2:
+				typeSelected = Types.CLASSROOM;
+				break;
+			case 3:
+				typeSelected = Types.WATERFOUNTAIN;
+				break;
+			case 4:
+				typeSelected = Types.BATHROOM;
+				break;
+			case 5:
+				typeSelected = Types.PARKING;
+				break;
+			case 6:
+				typeSelected = Types.WALKING;
+				break;
+			case 7:
+				typeSelected = Types.DOOR;
+				break;
+			case 8:
+				typeSelected = Types.ELEVATOR;
+				break;
+			case 9:
+				typeSelected = Types.LAB;
+				break;
+			case 10:
+				typeSelected = Types.OTHER;
+				break;
+			}
+			for(MapNode node : points) {
+				if(node.getAttributes().getType().equals(typeSelected)) {
+					selectedNodes.add(node);
+				}
+			}
+
+		}
+		else if(index >= 11) {
+			switch(index) {
+			case 11:
+				for(MapNode node : points) {
+					if(node.getAttributes().isStairs()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			case 12:
+				for(MapNode node : points) {
+					if(node.getAttributes().isBikeable()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			case 13:
+				for(MapNode node : points) {
+					if(node.getAttributes().isHandicapped()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			case 14:
+				for(MapNode node : points) {
+					if(node.getAttributes().isOutside()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			case 15:
+				for(MapNode node : points) {
+					if(node.getAttributes().isPOI()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			}
+		}
 	}
 }
