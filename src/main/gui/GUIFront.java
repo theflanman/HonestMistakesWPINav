@@ -369,21 +369,20 @@ public class GUIFront extends JFrame {
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
-					ArrayList<MapNode> globalNodes = backend.runAStar(globalMap.getStartNode(), globalMap.getEndNode());
+					//ArrayList<MapNode> globalNodes = backend.runAStar(globalMap.getStartNode(), globalMap.getEndNode());
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
 					speaker.play();
-					//System.out.println("Start node: " + globalMap.getStartNode().getNodeID());
-					//System.out.println("End node: " + globalMap.getEndNode().getNodeID());
-					//System.out.println("Number of nodes in globalMap: " + globalMap.getMapNodes().size());
+					//going to get a list of a routes up to each way point
 					listOfRoutes = new ArrayList<ArrayList<ArrayList<MapNode>>>();
+					//go through the globalMaps chosenNodes and calculate routes for each waypoint set - each route will only go for a current map
 					for (int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){
 						routes = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1), globalMap);
 						listOfRoutes.add(routes);
 					}
-					
-					if (listOfRoutes.get(0).isEmpty()){
+					//if no the first list of routes is empty 
+					if (listOfRoutes.isEmpty()){
 						mapnodes = backend.runAStar(backend.getLocalMap().getStart(), backend.getLocalMap().getEnd());
 					} else {
 						for (ArrayList<ArrayList<MapNode>> routed : listOfRoutes){
@@ -424,18 +423,21 @@ public class GUIFront extends JFrame {
 					drawLine = true;
 					//set the initial distance as 0 
 					int distance = 0;
-					//ArrayList<MapNode> pathNodes = globalMap.getAllNodes();
+					//set the list of all routes to be passed to display step by step
+					ArrayList<ArrayList<MapNode>> pathNodes = new ArrayList<ArrayList<MapNode>>();
 					//update the step by step directions and distance for each waypoint added
-					/*for (ArrayList<ArrayList<MapNode>> routes : listOfPaths){
+					boolean wayPoint = false;
+					for (ArrayList<ArrayList<MapNode>> routes : listOfPaths){
 						for (ArrayList<MapNode> route : routes){
-							distance += backend.getDistance(route);
-							for (MapNode mapnode : route){
-								pathNodes.add(mapnode);
-							}
+							//distance += backend.getDistance(routes);
 						}
-					}*/
-					
-				    for (String string : backend.displayStepByStep(globalNodes)) {
+						if (routes.size() - 1 > 0){
+							wayPoint = true;
+						}
+						backend.displayStepByStep(routes, wayPoint);
+					}
+					//get the step by step directions for each route
+				    for (String string : backend.displayStepByStep(pathNodes, wayPoint)) {
 				    	allText += string + "\n";
 				    }
 
@@ -695,7 +697,6 @@ public class GUIFront extends JFrame {
 					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(0).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(0));
-					index++;
 				}
 			});
 			mntmAK2 = new JMenuItem("Floor 2");
@@ -763,7 +764,7 @@ public class GUIFront extends JFrame {
 			mntmBoyB.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(7).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(7).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(7).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(7));
 				}
@@ -779,7 +780,7 @@ public class GUIFront extends JFrame {
 			mntmCC1.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(8).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(8).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(8).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(8));
 				}
@@ -788,7 +789,7 @@ public class GUIFront extends JFrame {
 			mntmCC2.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(9).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(9).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(9).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(9));
 				}
@@ -797,7 +798,7 @@ public class GUIFront extends JFrame {
 			mntmCC3.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(10).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(10).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(10).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(10));
 				}
@@ -811,7 +812,7 @@ public class GUIFront extends JFrame {
 			mntmCCM.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(11).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(11).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(11).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(11));
 				}
@@ -823,7 +824,7 @@ public class GUIFront extends JFrame {
 			mntmGL1.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(12).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(12).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(12).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(12));
 				}
@@ -832,7 +833,7 @@ public class GUIFront extends JFrame {
 			mntmGL2.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(13).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(13).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(13).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(13));
 				}
@@ -841,7 +842,7 @@ public class GUIFront extends JFrame {
 			mntmGL3.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(14).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(14).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(14).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(14));
 				}
@@ -850,7 +851,7 @@ public class GUIFront extends JFrame {
 			mntmGLB.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(15).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(15).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(15).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(15));
 				}
@@ -859,7 +860,7 @@ public class GUIFront extends JFrame {
 			mntmGLSB.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(16).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(16).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(16).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(16));
 				}
@@ -876,7 +877,7 @@ public class GUIFront extends JFrame {
 			mntmHH1.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(17).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(17).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(17).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(17));
 				}
@@ -885,7 +886,7 @@ public class GUIFront extends JFrame {
 			mntmHH2.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(18).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(18).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(18).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(18));
 				}
@@ -894,7 +895,7 @@ public class GUIFront extends JFrame {
 			mntmHH3.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(19).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(19).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(19).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(19));
 				}
@@ -909,7 +910,7 @@ public class GUIFront extends JFrame {
 			mntmHHG1.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(20).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(20).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(20).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(20));
 				}
@@ -918,7 +919,7 @@ public class GUIFront extends JFrame {
 			mntmHHG2.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(21).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(21).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(21).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(21));
 				}
@@ -932,7 +933,7 @@ public class GUIFront extends JFrame {
 			mntmPC1.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(22).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(22).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(22).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(22));
 				}
@@ -941,7 +942,7 @@ public class GUIFront extends JFrame {
 			mntmPC2.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(23).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(23).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(23).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(23));
 				}
@@ -955,7 +956,7 @@ public class GUIFront extends JFrame {
 			mntmSH1.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(24).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(24).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(24).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(24));
 				}
@@ -964,7 +965,7 @@ public class GUIFront extends JFrame {
 			mntmSH2.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(25).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(25).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(25).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(25));
 				}
@@ -973,7 +974,7 @@ public class GUIFront extends JFrame {
 			mntmSH3.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(26).getMapImageName()).getImage());
+					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(26).getMapImageName()).getImage());
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(26).getMapNodes());
 					backend.setLocalMap(globalMap.getLocalMaps().get(26));
 				}
@@ -1090,16 +1091,8 @@ public class GUIFront extends JFrame {
 				btnPreviousMap.setEnabled(false);
 
 				globalMap.getChosenNodes().clear();
-				//backend.removePath(backend.getPath()); // this is obsolete now
-
-				//backend.removePath(backend.getPath()); // this is obsolete now
-
-				// if the line needs to be removed
-				// going to need to add a method here - to remove nodes from path
 				lblDistance.setText("");
-				//textArea1.setText("");
 				btnClear.setEnabled(false);
-				//btnRoute.setEnabled(true);
 				//btnEmail.setEnabled(false); -- for some reason this does not work -- will be looking into...
 				removeLine = true;
 			}
@@ -1185,16 +1178,16 @@ public class GUIFront extends JFrame {
 					 */
 					MapNode tmpStart, tmpEnd; // temporary variables for clarity
 					if(globalMap.getStartNode() != null){
-						tmpStart = globalMap.getStartNode();
+						/*tmpStart = globalMap.getStartNode();
 						tmpStart.setXPos(tmpStart.getXPos() + distanceMovedX);
 						tmpStart.setYPos(tmpStart.getYPos() + distanceMovedY);
-						globalMap.setStartNode(tmpStart);
+						globalMap.setStartNode(tmpStart);*/
 					} 
 					if (globalMap.getEndNode() != null){
-						tmpEnd = globalMap.getEndNode();
+						/*tmpEnd = globalMap.getEndNode();
 						tmpEnd.setXPos(tmpEnd.getXPos() + distanceMovedX);
 						tmpEnd.setYPos(tmpEnd.getYPos() + distanceMovedY);
-						globalMap.setEndNode(tmpEnd);
+						globalMap.setEndNode(tmpEnd);*/
 					}
 
 					for (MapNode mapnode : globalMap.getMiddleNodes()){
@@ -1306,7 +1299,7 @@ public class GUIFront extends JFrame {
 						public void mouseClicked(MouseEvent me) {
 							if (allowSetting == true){
 								// figure out where the closest map node is, set that node as a startnode the StartingNode
-								//clickedAt = me.getPoint();
+								//Point clickedAt = me.getPoint();
 								MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
 								GUIBack tempBack = backend;
 								System.out.println("Node found is: " + node.getNodeID());
@@ -1494,10 +1487,6 @@ public class GUIFront extends JFrame {
 						// Scale the map relative to the panels current size and your current viewing window
 						graphics.drawImage(mapImage, 0, 0, this);	
 
-						// Test drawing of map nodes
-						for(MapNode n : localNodes){
-							graphics.fillOval((int)n.getXPos() - (int)panX - 5, (int)n.getYPos() - (int)panY - 5, 10, 10);
-						}
 
 						// Colors start and end differently
 						// Draws the map and places pre-existing node data onto the map as
@@ -1513,21 +1502,17 @@ public class GUIFront extends JFrame {
 										graphics.setColor(Color.RED);
 										graphics.fillOval((int) path.get(index).get(0).getXPos() - (int)panX - 5, (int) path.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
 									}
-							//else if(i == globalMap.getChosenNodes().size() - 1){
 									if (path.get(index).get(path.get(index).size() - 1) != null){
 										graphics.setColor(Color.GREEN);
 										graphics.fillOval((int) path.get(index).get(path.get(index).size() - 1).getXPos() - (int)panX - 5, (int) path.get(index).get(path.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
 									}
 								}
-							//else {
-								//graphics.setColor(Color.GREEN);
-								//graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
 							}
 							
 						if (globalMap.getStartNode() != null){
 							if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
 								graphics.setColor(Color.RED);
-								graphics.fillOval((int) globalMap.getStartNode().getXPos() - (int)panX - 5, (int) globalMap.getStartNode().getYPos() - (int)panY - 5, 10, 10);
+								graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
 							}
 						}
 						
