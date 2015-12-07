@@ -119,20 +119,6 @@ public class GUIFront extends JFrame {
 	private Color routeButtonColor, otherButtonsColor, backgroundColor, sideBarColor;
 	static ColorSchemes allSchemes;
 	static ColorSetting colors;
-
-	SplashLoad splashScreen;
-	
-	private void splashScreenDestruct() {
-	    splashScreen.setScreenVisible(false);
-	  }
-
-	private void splashScreenInit(){
-		ImageIcon myImage = new ImageIcon("src/data/splash/drawing.png");
-	    splashScreen = new SplashLoad(myImage);
-	    splashScreen.setLocationRelativeTo(null);
-	    splashScreen.setProgressMax(100);
-	    splashScreen.setScreenVisible(true);
-	 }
 	
 	/**
 	 * Create the frame.
@@ -141,13 +127,9 @@ public class GUIFront extends JFrame {
 	 * @throws ClassNotFoundException
 	 */
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
-		/*
-		ImageIcon myImage = new ImageIcon("src/data/splash/drawing.png");
-	    splashScreen = new SplashLoad(myImage);
-	    splashScreen.setLocationRelativeTo(null);
-	    splashScreen.setProgressMax(localMapFilenames.length);
-	    splashScreen.setScreenVisible(true);
-	    */
+
+		setVisible(false);
+
 	    allSchemes = new ColorSchemes();  
 	    colors = allSchemes.setColorScheme("Default Campus");
 		
@@ -693,7 +675,10 @@ public class GUIFront extends JFrame {
 		);
 
 		contentPane.setLayout(gl_contentPane);
-		contentPane.setVisible(true);
+		if(backend.splashFlag){	 
+			setVisible(true);
+		}
+		
 		pack();
 	
 

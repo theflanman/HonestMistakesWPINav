@@ -1,89 +1,61 @@
 package main.gui;
 
 import javax.swing.*;
+
+import main.util.Constants;
+
 import java.awt.*;
-
+import javax.swing.*;
+import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 @SuppressWarnings("serial")
-public class SplashLoad extends JWindow{
+public class SplashLoad extends JFrame{
 	
-	 BorderLayout borderLayout1 = new BorderLayout();
-	  JLabel imageLabel = new JLabel();
-	  JPanel southPanel = new JPanel();
-	  FlowLayout southPanelFlowLayout = new FlowLayout();
-	  JProgressBar progressBar = new JProgressBar();
-	  ImageIcon imageIcon;
+	
+    private JLabel imglabel;
+    private ImageIcon img;
+    private static JProgressBar pbar;
+    public Thread t = null;
+    
+	public SplashLoad(){
+		  super("Splash");
+	        this.setBackground(Color.WHITE);
+	        this.setForeground(Color.white);
+		  	setSize(900, 600);
+	        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	        setLocationRelativeTo(null);
+	        setUndecorated(true);
+	        img = new ImageIcon(("src/data/splash/splashfinal.png"));
+	        imglabel = new JLabel(img);
+	        add(imglabel);
+	        setLayout(null);
+	        pbar = new JProgressBar();
+	        pbar.setMinimum(0);
+	        pbar.setMaximum(100);
+	        pbar.setStringPainted(true);
+	        pbar.setForeground(ColorSchemes.defaultBlue);
+	        imglabel.setBounds(0, 0, 900, 600);
+	        imglabel.setBackground(Color.white);
+	        add(pbar);
+	        pbar.setPreferredSize(new Dimension(500, 30));
+	        pbar.setBounds(0, 580, 900, 20);
 
-	  public SplashLoad(ImageIcon imageIcon) {
-	    this.imageIcon = imageIcon;
-	    try {
-	      jbInit();
-	    }
-	    catch(Exception ex) {
-	      ex.printStackTrace();
-	    }
-	  }
-
-	  // note - this class created with JBuilder
-	  void jbInit() throws Exception {
-	    imageLabel.setIcon(imageIcon);
-	    this.getContentPane().setLayout(borderLayout1);
-	    southPanel.setLayout(southPanelFlowLayout);
-	    southPanel.setBackground(Color.BLACK);
-	    this.getContentPane().add(imageLabel, BorderLayout.CENTER);
-	    this.getContentPane().add(southPanel, BorderLayout.SOUTH);
-	    southPanel.add(progressBar, null);
-	    this.pack();
-	  }
-
-	  public void setProgressMax(int maxProgress)
-	  {
-	    progressBar.setMaximum(maxProgress);
-	  }
-
-	  public void setProgress(int progress)
-	  {
-	    final int theProgress = progress;
-	    SwingUtilities.invokeLater(new Runnable() {
-	      public void run() {
-	        progressBar.setValue(theProgress);
-	      }
-	    });
-	  }
-
-	  public void setProgress(String message, int progress)
-	  {
-	    final int theProgress = progress;
-	    final String theMessage = message;
-	    setProgress(progress);
-	    SwingUtilities.invokeLater(new Runnable() {
-	      public void run() {
-	        progressBar.setValue(theProgress);
-	        setMessage(theMessage);
-	      }
-	    });
-	  }
-
-	  public void setScreenVisible(boolean b)
-	  {
-	    final boolean boo = b;
-	    SwingUtilities.invokeLater(new Runnable() {
-	      public void run() {
-	        setVisible(boo);
-	      }
-	    });
-	  }
-
-	  private void setMessage(String message)
-	  {
-	    if (message==null)
-	    {
-	      message = "";
-	      progressBar.setStringPainted(false);
-	    }
-	    else
-	    {
-	      progressBar.setStringPainted(true);
-	    }
-	    progressBar.setString(message);
-	  }
+	        Thread t = new Thread() {
+	 
+	            public void run() {
+	                int i = 0;
+	                while (i <= 100) {
+	                    pbar.setValue(i);
+	                    try {
+	                        sleep(90);
+	                    } catch (InterruptedException ex) {
+	                        Logger.getLogger(SplashLoad.class.getName()).log(Level.SEVERE, null, ex);
+	                    }
+	                    i++;
+	                }
+	            }
+	        };
+	        t.start();
+	}
 }

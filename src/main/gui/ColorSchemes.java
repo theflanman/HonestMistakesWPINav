@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class ColorSchemes {
 	//Default Campus
-	Color defaultBlue = new Color(95, 172, 213);
+	static Color defaultBlue = new Color(95, 172, 213);
 	Color defaultDarkGreen = new Color(96, 164, 79);
 	Color defaultLightGreen = new Color(184, 217, 144);
 	Color defaultLight = new Color(218, 211, 203);

@@ -11,8 +11,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
+import main.gui.GUIBack;
 import main.gui.GUIFront;
-import main.gui.MainSplash;
 import main.gui.SplashLoad;
 import main.util.Constants;
 
@@ -31,7 +31,8 @@ public class MainDriver {
 
 		File[] localMapList = new File(Constants.IMAGES_PATH).listFiles(); // gets a list of localmap filenames
 		//new MainSplash();
-
+		String[] localMapNames = new File(Constants.IMAGES_PATH).list();
+		
 		// Setup tween stuff
 		Tween.registerAccessor(GUIFront.TweenPanel.class, new GUIFront.TweenPanel.Accessor());
 		SLAnimator.start();
@@ -47,6 +48,15 @@ public class MainDriver {
 	            break;
 	        }
 	    }
+	    SplashLoad s=new SplashLoad();
+        s.setVisible(true);
+        Thread t=Thread.currentThread();
+        try {
+			t.sleep(10000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		// Launches the main application
 		EventQueue.invokeLater(new Runnable() {
@@ -54,11 +64,12 @@ public class MainDriver {
 
 				try {
 					new GUIFront(localMapList.length, localMapList);
-
+					if(GUIFront.backend.splashFlag){
+			        s.dispose();
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-
 			}
 		});	
 	}
