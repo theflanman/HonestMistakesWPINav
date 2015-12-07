@@ -57,6 +57,7 @@ import main.util.Constants;
 import main.util.GeneralUtil;
 import main.util.ProxyImage;
 import main.util.IProxyImage;
+import main.util.PanelSave;
 import main.util.Speaker;
 import main.util.WrappableCellRenderer;
 
@@ -467,6 +468,10 @@ public class GUIFront extends JFrame {
 					//textArea1.setText(allText);
 					//btnRoute.setEnabled(false);
 					btnClear.setEnabled(true);
+					
+					//TODO Write ScreenShots Code here for each map in the path
+					PanelSave savePanel = new PanelSave();
+					savePanel.saveImage(contentPane, "test");
 
 
 					//btnEmail_1.setEnabled(true); //this is where email button should be enabled
