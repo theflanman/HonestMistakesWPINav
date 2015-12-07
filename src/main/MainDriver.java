@@ -54,7 +54,7 @@ public class MainDriver {
         s.setVisible(true);
         Thread t=Thread.currentThread();
         try {
-			t.sleep(10000);
+			t.sleep(1100);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

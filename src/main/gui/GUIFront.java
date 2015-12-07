@@ -363,7 +363,7 @@ public class GUIFront extends JFrame {
 		 */
 		mainPanel = new JTabbedPane();
 		mainPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-
+		mainPanel.setBackground(backgroundColor);
 		textFieldStart = new JTextField();
 		textFieldStart.setText("");
 		//give start text field an action

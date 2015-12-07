@@ -61,7 +61,7 @@ public class SplashLoad extends JFrame{
 				while (i <= 100) {
 					pbar.setValue(i);
 					try {
-						sleep(90);
+						sleep(10);
 					} catch (InterruptedException ex) {
 						Logger.getLogger(SplashLoad.class.getName()).log(Level.SEVERE, null, ex);
 					}
