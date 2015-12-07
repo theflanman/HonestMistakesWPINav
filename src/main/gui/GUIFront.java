@@ -723,8 +723,6 @@ public class GUIFront extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
-		System.out.println("IMAGE: " + imagePath);
-		System.out.println("changing street");
 		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
 
 		SLConfig streetViewConfig = new SLConfig(streetViewSLPanel)
@@ -1821,14 +1819,20 @@ public class GUIFront extends JFrame {
 				double zoomRatio;
 
 				String packageName;
+				boolean shouldPaint;
 
 				/**
 				 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
 				 * but it functions better as a private class
 				 */
 				public TweenPanel(ArrayList<MapNode> mapNodes, IProxyImage mapPath, String panelId, String packageName){
+					// determine whether anything should be painted onto this tab
+					if(packageName.equals(Constants.STREET_PATH))
+						this.shouldPaint = false;
+					else
+						this.shouldPaint = true;
+					
 					this.packageName = packageName;
-					System.out.println("PACKAGE NAME: " + packageName);
 
 					setLayout(new BorderLayout());
 
@@ -1928,7 +1932,6 @@ public class GUIFront extends JFrame {
 					});
 
 				}
-
 
 				public ArrayList<MapNode> getMapNodes() {
 					return localNodes;
@@ -2033,102 +2036,104 @@ public class GUIFront extends JFrame {
 						graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);
 
 						// Sets the color of the start and end nodes to be different for each new waypoint
-						graphics.setColor(Color.RED);
-						if(!(paths.isEmpty())){
-							if (paths.get(index).get(0) != null){
-								graphics.setColor(Color.RED);
-								graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-							}
-							if (paths.get(index).get(paths.get(index).size() - 1) != null){
-								graphics.setColor(Color.GREEN);
-								graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
-							}
-						}
-						if (globalMap.getStartNode() != null){
-							if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
-								graphics.setColor(Color.RED);
-								graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
-							}
-						}
-
-						if(globalMap.getEndNode() != null){
-							if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
-								graphics.setColor(Color.GREEN);
-								graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
-							}
-						}
-						if (globalMap.getChosenNodes().size() > 2){
-							for (int i = 1; i < globalMap.getChosenNodes().size() - 1; i++){
-								if (globalMap.getChosenNodes().get(i).getLocalMap() == backend.getLocalMap()){
-									graphics.setColor(Color.ORANGE);
-									graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+						if(this.shouldPaint){
+							graphics.setColor(Color.RED);
+							if(!(paths.isEmpty())){
+								if (paths.get(index).get(0) != null){
+									graphics.setColor(Color.RED);
+									graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+								}
+								if (paths.get(index).get(paths.get(index).size() - 1) != null){
+									graphics.setColor(Color.GREEN);
+									graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
 								}
 							}
-						}
-
-
-						if (GUIFront.drawLine = true) {
-							if (paths.isEmpty()) {
-								for (int i = 0; i < mapnodes.size() - 1; i++) {
-									double x1 = backend.getCoordinates(mapnodes).get(i)[0];
-									double y1 = backend.getCoordinates(mapnodes).get(i)[1];
-									double x2 = backend.getCoordinates(mapnodes).get(i + 1)[0];
-									double y2 = backend.getCoordinates(mapnodes).get(i + 1)[1];
-									double alpha = 0.5;
-									Color color = new Color(0, 1, 1, (float) alpha);
-									Graphics2D g2 = (Graphics2D) g;
-									g2.setStroke(new BasicStroke(5));
-									g2.setColor(color);
-									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+							if (globalMap.getStartNode() != null){
+								if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
+									graphics.setColor(Color.RED);
+									graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
 								}
-								drawLine = false;
-								removeLine = true;
-							} 
-							else {
-								for (int i = 0; i < thisRoute.size() - 1; i++) {
-									double x1 = backend.getCoordinates(thisRoute).get(i)[0];
-									double y1 = backend.getCoordinates(thisRoute).get(i)[1];
-									double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
-									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
-									double alpha = 0.5;
-									Color color = new Color(0, 1, 1, (float) alpha);
-									Graphics2D g2 = (Graphics2D) g;
-									g2.setStroke(new BasicStroke(5));
-									g2.setColor(color);
-									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
-								}
-								drawLine = false;
-								removeLine = true;
 							}
-						} else if (GUIFront.removeLine == true) {
-							if (paths.isEmpty()){
-								for (int i = 0; i < mapnodes.size() - 1; i++) {
-									double x1 = backend.getCoordinates(mapnodes).get(i)[0];
-									double y1 = backend.getCoordinates(mapnodes).get(i)[1];
-									double x2 = backend.getCoordinates(mapnodes).get(i + 1)[0];
-									double y2 = backend.getCoordinates(mapnodes).get(i + 1)[1];
-									double alpha = 0.5;
-									Color color = new Color(0, 1, 1, (float) alpha);
-									Graphics2D g2 = (Graphics2D) g;
-									g2.setStroke(new BasicStroke(5));
-									g2.setColor(color);
-									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+	
+							if(globalMap.getEndNode() != null){
+								if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
+									graphics.setColor(Color.GREEN);
+									graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
 								}
-								drawLine = true;
-								removeLine = false;
-							} else {
-								for (int i = 0; i < thisRoute.size() - 1; i++) {
-									double x1 = backend.getCoordinates(thisRoute).get(i)[0];
-									double y1 = backend.getCoordinates(thisRoute).get(i)[1];
-									double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
-									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
-									Graphics2D g2 = (Graphics2D) g;
-									g2.setStroke(new BasicStroke(5));
-									g2.setColor(Color.white);
-									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+							}
+							if (globalMap.getChosenNodes().size() > 2){
+								for (int i = 1; i < globalMap.getChosenNodes().size() - 1; i++){
+									if (globalMap.getChosenNodes().get(i).getLocalMap() == backend.getLocalMap()){
+										graphics.setColor(Color.ORANGE);
+										graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+									}
 								}
-								drawLine = true;
-								removeLine = false;
+							}
+	
+	
+							if (GUIFront.drawLine = true) { // this should have a "=" not "=="
+								if (paths.isEmpty()) {
+									for (int i = 0; i < mapnodes.size() - 1; i++) {
+										double x1 = backend.getCoordinates(mapnodes).get(i)[0];
+										double y1 = backend.getCoordinates(mapnodes).get(i)[1];
+										double x2 = backend.getCoordinates(mapnodes).get(i + 1)[0];
+										double y2 = backend.getCoordinates(mapnodes).get(i + 1)[1];
+										double alpha = 0.5;
+										Color color = new Color(0, 1, 1, (float) alpha);
+										Graphics2D g2 = (Graphics2D) g;
+										g2.setStroke(new BasicStroke(5));
+										g2.setColor(color);
+										g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+									}
+									drawLine = false;
+									removeLine = true;
+								} 
+								else {
+									for (int i = 0; i < thisRoute.size() - 1; i++) {
+										double x1 = backend.getCoordinates(thisRoute).get(i)[0];
+										double y1 = backend.getCoordinates(thisRoute).get(i)[1];
+										double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
+										double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
+										double alpha = 0.5;
+										Color color = new Color(0, 1, 1, (float) alpha);
+										Graphics2D g2 = (Graphics2D) g;
+										g2.setStroke(new BasicStroke(5));
+										g2.setColor(color);
+										g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+									}
+									drawLine = false;
+									removeLine = true;
+								}
+							} else if (GUIFront.removeLine == true) {
+								if (paths.isEmpty()){
+									for (int i = 0; i < mapnodes.size() - 1; i++) {
+										double x1 = backend.getCoordinates(mapnodes).get(i)[0];
+										double y1 = backend.getCoordinates(mapnodes).get(i)[1];
+										double x2 = backend.getCoordinates(mapnodes).get(i + 1)[0];
+										double y2 = backend.getCoordinates(mapnodes).get(i + 1)[1];
+										double alpha = 0.5;
+										Color color = new Color(0, 1, 1, (float) alpha);
+										Graphics2D g2 = (Graphics2D) g;
+										g2.setStroke(new BasicStroke(5));
+										g2.setColor(color);
+										g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+									}
+									drawLine = true;
+									removeLine = false;
+								} else {
+									for (int i = 0; i < thisRoute.size() - 1; i++) {
+										double x1 = backend.getCoordinates(thisRoute).get(i)[0];
+										double y1 = backend.getCoordinates(thisRoute).get(i)[1];
+										double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
+										double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
+										Graphics2D g2 = (Graphics2D) g;
+										g2.setStroke(new BasicStroke(5));
+										g2.setColor(Color.white);
+										g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+									}
+									drawLine = true;
+									removeLine = false;
+								}
 							}
 						}
 						repaint();
