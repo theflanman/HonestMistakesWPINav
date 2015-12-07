@@ -59,6 +59,7 @@ public class EmailGUI extends JDialog {
 		setType(Type.UTILITY);
 		setBounds(100, 100, 684, 359);
 		getContentPane().setLayout(null);
+		setLocationRelativeTo(null);
 		
 		// Cancel Button
 		JButton btnCancel = new JButton("Cancel");
@@ -68,7 +69,7 @@ public class EmailGUI extends JDialog {
 		// When the cancel button is pressed the window is no longer shown
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EmailGUI.this.setVisible(false);
+				EmailGUI.this.dispose();
 			}
 		});
 		
@@ -186,7 +187,7 @@ public class EmailGUI extends JDialog {
 						body = body.concat("\n").concat(directions);
 						String[] toEmail = txtTo.getText().split(";");
 						email.sendFromGMail(toEmail, subject, body);
-						EmailGUI.this.setVisible(false);
+						EmailGUI.this.dispose();;
 					}
 				});
 	}

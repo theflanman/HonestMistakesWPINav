@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class StepByStep {
 	private ArrayList<MapNode> pathNodes;
+	private boolean isLastWaypoint; //boolean representing if pathNodes is not the waypoint in the path
 
 	public StepByStep(ArrayList<MapNode> pathNodes) {
 		this.pathNodes = pathNodes;
@@ -116,12 +117,8 @@ public class StepByStep {
 		// Will be taken out after being implemented elsewhere
 		this.cleanUpPath();
 
-		// Case where there is only 1 node in the route
-		if (pathNodes.size() == 1) {
-			turn = "Welcome to the era of navigation, you have arrived at your destination.";
-			stepList.add(turn);
-		} 
-		else {
+		// Skips first node in the list
+		if (! (pathNodes.size() == 1)) {
 
 			// Iterates through each node in the path
 			for (i = 0; i <= (pathNodes.size() - 1); i++) {
@@ -143,7 +140,14 @@ public class StepByStep {
 
 					// Last node in the route
 					if (i == (pathNodes.size() - 1)) {
-						turn = String.format("%d. Walk %d feet, then you will arrive at your destination.", stepNumber, distance);
+						
+						// If the list of pathNodes is not the last waypoint set in the directions
+						if (isLastWaypoint) {
+							turn = String.format("%d. Walk %d feet, then you will arrive at your waypoint.", stepNumber, distance);
+						}
+						else {
+							turn = String.format("%d. Walk %d feet, then you will arrive at your final destination.", stepNumber, distance);
+						}
 						stepList.add(turn);
 						
 						// If the last node has an official name adds the name to the directions
