@@ -404,7 +404,24 @@ public class GUIFront extends JFrame {
 					thisRoute = routes.get(0);
 					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + paths.get(0).get(0).getLocalMap().getMapImageName()).getImage());
 					panelMap.setMapNodes(paths.get(0).get(0).getLocalMap().getMapNodes());
+					String previousMap = backend.getLocalMap().getMapImageName();
+					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+					
 					backend.setLocalMap(paths.get(0).get(0).getLocalMap());
+					
+					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+					panelMap.panX = tempPan[0];
+					panelMap.panY = tempPan[1];
+					
+					for(MapNode n : backend.getLocalMap().getMapNodes()){
+						n.setXPos(n.getXPos() - panelMap.panX);
+						n.setYPos(n.getYPos() - panelMap.panY);
+					}
+					
+					panelMap.panX = 0.0;
+					panelMap.panY = 0.0;
+					panelMap.setScale(1.0);
+					
 					index = 0;
 					if (paths.size() > 1){
 						btnNextMap.setEnabled(true);
@@ -1728,8 +1745,8 @@ public class GUIFront extends JFrame {
 					this.mapImage = mapPath;
 					this.panelID = panelID;
 					
-					panX = 0;
-					panY = 0;
+					//panX = 0;
+					//panY = 0;
 					zoomRatio = 1;
 
 					addMouseListener(panHandle);
@@ -1910,10 +1927,6 @@ public class GUIFront extends JFrame {
 
 						// Scale the map relative to the panels current size and your current viewing window
 						graphics.drawImage(mapImage, 0, 0, this);	
-
-						for(MapNode n : localNodes){
-							graphics.fillOval((int)n.getXPos() - (int)panX - 5, (int)n.getYPos() - (int)panY - 5, 10, 10);
-						}
 
 						// Colors start and end differently
 						// Draws the map and places pre-existing node data onto the map as
