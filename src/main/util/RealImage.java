@@ -10,22 +10,23 @@ public class RealImage implements IProxyImage {
 	private String filename;
 	private java.awt.Image image;
 	
-	public RealImage(String filename){
+	protected RealImage(String path, String filename){
 		this.filename = filename;
-		loadIn(filename);
+		loadIn(path, filename);
 	}
 	
 	@Override
-	public java.awt.Image getImage(){
+	public java.awt.Image getImage(String path){
 		return image;
 	}
 	
-	public void loadIn(String filename){
+	private void loadIn(String path, String fileName){
 		try{
-			image = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + filename));
+			System.out.println("RealImage.loadIn: " + path + "/" + fileName);
+			image = ImageIO.read(new File(path + "/" + fileName));
 		} catch(IOException ioe){
 			ioe.printStackTrace();
 		}
 	}
-
+	
 }
