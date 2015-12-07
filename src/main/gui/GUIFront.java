@@ -45,6 +45,7 @@ import javax.swing.border.MatteBorder;
 
 import main.*;
 import main.util.Constants;
+import main.util.SaveUtil;
 import main.util.Speaker;
 
 import javax.swing.JTextField;
@@ -102,6 +103,8 @@ public class GUIFront extends JFrame {
 	// Menu Bar
 	private JMenuBar menuBar;
 	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
+	private JMenu mnColorScheme;
+	private JMenuItem mntmDefaultCampus, mntmGrayscale, mntmWPI, mntmBlackAndYellow, mntmSkyBlue;
 	private JMenu mnAtwaterKent, mnBoyntonHall, mnCampusCenter, mnGordonLibrary, mnHigginsHouse, mnHigginsHouseGarage, mnProjectCenter, mnStrattonHall;
 	private JMenuItem mntmAK1, mntmAK2, mntmAK3, mntmAKB, mntmBoy1, mntmBoy2, mntmBoy3, mntmBoyB, mntmCC1, mntmCC2, mntmCC3, mntmCCM;
 	private JMenuItem mntmGL1, mntmGL2, mntmGL3, mntmGLB, mntmGLSB, mntmHH1, mntmHH2, mntmHH3, mntmHHG1, mntmHHG2, mntmPC1, mntmPC2;
@@ -111,7 +114,25 @@ public class GUIFront extends JFrame {
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
+	private Color routeButtonColor, otherButtonsColor, backgroundColor, sideBarColor;
 
+	ColorSchemes allSchemes;
+	ColorSetting colors;
+
+	SplashLoad splashScreen;
+	
+	private void splashScreenDestruct() {
+	    splashScreen.setScreenVisible(false);
+	  }
+
+	private void splashScreenInit() {
+		ImageIcon myImage = new ImageIcon("src/data/splash/drawing.png");
+	    splashScreen = new SplashLoad(myImage);
+	    splashScreen.setLocationRelativeTo(null);
+	    splashScreen.setProgressMax(100);
+	    splashScreen.setScreenVisible(true);
+	 }
+	
 	/**
 	 * Create the frame.
 	 * 
@@ -119,13 +140,21 @@ public class GUIFront extends JFrame {
 	 * @throws ClassNotFoundException
 	 */
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
-		ColorSchemes allSchemes = new ColorSchemes();  
-		ColorSetting colors = allSchemes.setColorScheme("Default Campus");
 		
-		Color routeButtonColor = colors.getRouteButtonColor();
-		Color otherButtonsColor = colors.getOtherButtonsColor();
-		Color backgroundColor = colors.getMainBackColor();
-		Color sideBarColor = colors.getSideBarColor();
+		ImageIcon myImage = new ImageIcon("src/data/splash/drawing.png");
+	    splashScreen = new SplashLoad(myImage);
+	    splashScreen.setLocationRelativeTo(null);
+	    splashScreen.setProgressMax(localMapFilenames.length);
+	    splashScreen.setScreenVisible(true);
+	    
+	    allSchemes = new ColorSchemes();  
+	    colors = allSchemes.setColorScheme("Default Campus");
+		
+		routeButtonColor = colors.getRouteButtonColor();
+		otherButtonsColor = colors.getOtherButtonsColor();
+		backgroundColor = colors.getMainBackColor();
+		sideBarColor = colors.getSideBarColor();
+		
 		
 		// Instantiate GUIBack to its default
 		GUIBack initial = new GUIBack(/*defaultMapImage, null*/);
@@ -139,13 +168,19 @@ public class GUIFront extends JFrame {
 		for(int i = 0; i < localMapFilenames.length; i++){
 			String path = localMapFilenames[i].getName();
 			localMapFilenameStrings[i] = path;
+			//String xmlFileName = SaveUtil.removeExtension(path) + ".localmap";	
+			//screen.setProgress("Loading" + xmlFileName, 69);  // progress bar with a message
 		}
-
-		backend = initial;
+		for (int i = 0; i < 1000; i++){
+			for(long j = 0; j < 50000; j++){
+				double x = 5*5*8888*8888*8*8*8*(Math.pow(28, 33));
+			}
+			splashScreen.setProgress("Loading", i);
+		}
 		
-
+		backend = initial;
 		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
-
+		
 		globalMap.setLocalMaps(localMapList);
 
 		for(LocalMap localMap : localMapList){
@@ -161,6 +196,7 @@ public class GUIFront extends JFrame {
 		}
 		globalMap.setMapNodes(allNodes);
 		//backend = initial;
+		splashScreenDestruct();
 
 		/**
 		 * GUI related code
@@ -453,6 +489,8 @@ public class GUIFront extends JFrame {
 		/**
 		 * Tween related code to make the animations work
 		 */
+		sideBarColor = colors.getSideBarColor();
+
 		slidePanel = new SLPanel();
 		slidePanel.setBackground(sideBarColor);
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1");
@@ -652,11 +690,21 @@ public class GUIFront extends JFrame {
 						.addComponent(btnNextMap))
 					.addGap(35))
 		);
+
 		contentPane.setLayout(gl_contentPane);
 
 		pack();
 		setVisible(true);
+
 	}
+	
+			public void  setColoring(String scheme){
+				allSchemes.setColorScheme(scheme);
+				panelMap.setColors(scheme);
+				panelDirections.setColors(scheme);
+				routeButtonColor = colors.getRouteButtonColor();
+				
+			}
 	
 	// This goes in GUIFront
 			public void initializeMenuBar(){
@@ -685,6 +733,38 @@ public class GUIFront extends JFrame {
 			// ---- Options -----
 			mnOptions = new JMenu("Options");
 			menuBar.add(mnOptions);
+			
+			//Color Scheme
+			mnColorScheme = new JMenu("Color Scheme");
+			mnOptions.add(mnColorScheme);
+
+			mntmDefaultCampus = new JMenuItem("Default Campus");
+			
+			mntmDefaultCampus.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					setColoring("Default Campus");
+				}
+			});
+			
+			mntmGrayscale = new JMenuItem("Grayscale");
+			
+			mntmGrayscale.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					setColoring("Greyscale");
+
+				}
+			});
+			
+			mntmWPI = new JMenuItem("WPI Theme");
+			mntmBlackAndYellow = new JMenuItem("Black & Yellow");
+			mntmSkyBlue = new JMenuItem("Sky Blue");
+			
+			mnColorScheme.add(mntmDefaultCampus);
+			mnColorScheme.add(mntmGrayscale);
+
+
+
+			
 			
 			// ---- Options -----
 			mnLocations = new JMenu("Locations");
@@ -1275,11 +1355,7 @@ public class GUIFront extends JFrame {
 				 * but it functions better as a private class
 				 */
 				public TweenPanel(ArrayList<MapNode> mapNodes, Image mapPath, String panelId){
-					//This part will be connected to JMenue Items for various color schemes
 
-
-
-					
 					setLayout(new BorderLayout());
 
 					this.localNodes = mapNodes;
@@ -1388,6 +1464,9 @@ public class GUIFront extends JFrame {
 
 				public void setMapImage(Image mapImage) {
 					this.mapImage = mapImage;
+				}
+				public void setColors(String scheme){
+					colors = allSchemes.setColorScheme(scheme);
 				}
 
 				/**

@@ -1,5 +1,6 @@
 package main.gui;
 import java.awt.Image;
+import java.awt.SplashScreen;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,10 +32,9 @@ import main.util.SaveUtil;
 
 @SuppressWarnings("serial")
 public class GUIBack implements Serializable {
-
 	private LocalMap localMap;
 	private ArrayList<MapNode> path;
-
+	
 	/**
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
 	 * TODO: Change to Campus Map when it is complete
@@ -53,6 +54,7 @@ public class GUIBack implements Serializable {
 	 * @param fileName
 	 */
 	public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
+
 		//iterate through each file name
 		System.out.println("Starting load");
 		ArrayList<ArrayList<ArrayList<String>>> allNeighborList = new ArrayList<ArrayList<ArrayList<String>>>();
