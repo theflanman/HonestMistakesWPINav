@@ -108,8 +108,7 @@ public class PrintDirectionsTest extends TestCase {
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
-		resultSteps.add("1. Walk 6 feet, then you will arrive at your destination.");
+		resultSteps.add("1. Walk 6 feet, then you will arrive at your final destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
@@ -133,8 +132,7 @@ public class PrintDirectionsTest extends TestCase {
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
-		resultSteps.add("1. Walk 4 feet, then you will arrive at your destination.");
+		resultSteps.add("1. Walk 4 feet, then you will arrive at your final destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
@@ -162,10 +160,9 @@ public class PrintDirectionsTest extends TestCase {
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
 		resultSteps.add("1. Walk 8 feet, then turn back.");
 		resultSteps.add("2. Walk 4 feet, then turn right.");
-		resultSteps.add("3. Walk 4 feet, then you will arrive at your destination.");
+		resultSteps.add("3. Walk 4 feet, then you will arrive at your final destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
@@ -203,12 +200,11 @@ public class PrintDirectionsTest extends TestCase {
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
 		resultSteps.add("Atwater Kent");
 		resultSteps.add("1. Walk 5 feet, then turn sharp left.");
 		resultSteps.add("2. Walk 5 feet, then turn slight left.");
 		resultSteps.add("3. Walk 7 feet, then turn back.");
-		resultSteps.add("4. Walk 4 feet, then you will arrive at your destination.");
+		resultSteps.add("4. Walk 4 feet, then you will arrive at your final destination.");
 		resultSteps.add("Gordon Library");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
@@ -252,10 +248,9 @@ public class PrintDirectionsTest extends TestCase {
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
 		resultSteps.add("1. Continue walking 1 feet to the stairs.");
 		resultSteps.add("2. Walk down the stairs to floor 1.");
-		resultSteps.add("3. Walk 1 feet, then you will arrive at your destination.");
+		resultSteps.add("3. Walk 1 feet, then you will arrive at your final destination.");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}

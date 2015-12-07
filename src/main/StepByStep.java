@@ -117,17 +117,19 @@ public class StepByStep {
 		// Will be taken out after being implemented elsewhere
 		this.cleanUpPath();
 
-		// Skips first node in the list
-		if (! (pathNodes.size() == 1)) {
+		// If the path is only 1 node in size
+		if (pathNodes.size() == 1) {
+			turn = "You have arrived at your destination";
+			stepList.add(turn);
+		}
+		
+		else {
 
 			// Iterates through each node in the path
 			for (i = 0; i <= (pathNodes.size() - 1); i++) {
 
 				// First node in the path
 				if (i == 0) {
-					// TODO Add in a starting reference direction.
-					turn = String.format("Welcome to the era of Navigation.", stepNumber);
-					stepList.add(turn);
 					
 					// If the first node has an official name adds the name to the directions
 					if (! pathNodes.get(i).getAttributes().getOfficialName().isEmpty()) {
