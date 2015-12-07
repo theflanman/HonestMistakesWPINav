@@ -106,8 +106,15 @@ public class MapNode implements Serializable{
 		neighbors.add(node);
 	}
 	
+	//in addition to removing from list of neighbors, also check if its
+	//a cross map neighbor and remove if so.
 	public void removeNeighbor(MapNode node) {
 		neighbors.remove(node);
+		for(int i = 0; i < this.crossMapNeighbors.size(); i++){
+			if(node.getNodeID().equals(this.crossMapNeighbors.get(i))){
+				this.crossMapNeighbors.remove(i);
+			}
+		}
 	}
 	
 	public double aStarHeuristic(MapNode toNode) {
@@ -131,10 +138,7 @@ public class MapNode implements Serializable{
 	public double calculateAngle(MapNode nextNode) {
 		MapNode currentNode = this;
 		MapNode previousNode = currentNode.getCameFrom();
-		System.out.println(previousNode.getID());
-		System.out.println(previousNode.getXFeet());
 		double prevX = previousNode.getXFeet();
-		System.out.println(prevX);
 		double prevY = previousNode.getYFeet();
 		double currentX = currentNode.getXFeet();
 		double currentY = currentNode.getYFeet();
