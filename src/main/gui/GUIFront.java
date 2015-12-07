@@ -44,6 +44,8 @@ import javax.swing.border.MatteBorder;
 import main.*;
 import main.gui.frontutil.*;
 import main.util.Constants;
+import main.util.ProxyImage;
+import main.util.IProxyImage;
 import main.util.Speaker;
 import main.util.WrappableCellRenderer;
 
@@ -79,7 +81,8 @@ public class GUIFront extends JFrame {
 	private static boolean allowSetting = true; 
 	private static int index = 0;
 	private static ArrayList<MapNode> thisRoute;
-
+	private IProxyImage mapImage;
+	
 	private static AffineTransform transform; // the current state of image transformation
 	private static Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
 	private static PanHandler panHandle;
@@ -150,15 +153,16 @@ public class GUIFront extends JFrame {
 
 		// Image of the default map loaded into backend
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
-		Image mapImage = new ImageIcon(Constants.IMAGES_PATH + "/" + defaultMapImage).getImage();
-		JLabel labelInvalidEntry = new JLabel("Invalid Entry");
-		labelInvalidEntry.setVisible(false);
 
+		mapImage = new ProxyImage(defaultMapImage);
+		JLabel lblInvalidEntry = new JLabel("Invalid Entry");
+		lblInvalidEntry.setVisible(false);
+		
 		// action listener for searching in the start text box
 		Action searchStartAction = new AbstractAction(){
 			@Override 
 			public void actionPerformed(ActionEvent e){
-				labelInvalidEntry.setVisible(false);
+				lblInvalidEntry.setVisible(false);
 				if (textFieldStart.getText().equals("")){
 					//will need some way to alert the user that they need to enter a start location
 					System.out.println("Need to enter a valid start location");
@@ -184,7 +188,7 @@ public class GUIFront extends JFrame {
 					if (valid == false){
 						//tell user this entry is invalid
 						System.out.println("Invalid entry");
-						labelInvalidEntry.setVisible(true);
+						lblInvalidEntry.setVisible(true);
 					}
 				}	
 			}
@@ -195,7 +199,7 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e){
 
-				labelInvalidEntry.setVisible(false);
+				lblInvalidEntry.setVisible(false);
 
 				//if the user presses enter without having entered anything in this box
 				if (textFieldEnd.getText().equals(""))
@@ -296,12 +300,12 @@ public class GUIFront extends JFrame {
 					if (valid == false){
 						// TODO: tell user this entry is invalid
 						System.out.println("Invalid entry");
-						labelInvalidEntry.setVisible(true);
+						lblInvalidEntry.setVisible(true);
 					}
 				}
 			}
 		};
-
+		
 		// GroupLayout code for tabbedpane and textfields (Temporary)
 		mainTabPane = new JTabbedPane();
 		mainTabPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -365,9 +369,10 @@ public class GUIFront extends JFrame {
 					}
 
 					setThisRoute(routes.get(0));
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getPaths().get(0).get(0).getLocalMap().getMapImageName()).getImage());
+					panelMap.setMapImage(new ProxyImage(paths.get(0).get(0).getLocalMap().getMapImageName()));
 					panelMap.setMapNodes(getPaths().get(0).get(0).getLocalMap().getMapNodes());
 					getBackend().setLocalMap(getPaths().get(0).get(0).getLocalMap());
+
 					index = 0;
 
 					if (paths.size() > 1)
@@ -395,7 +400,6 @@ public class GUIFront extends JFrame {
 			}
 		});
 
-
 		// initialize panels
 		GUIFront.initPanels(mapImage);
 
@@ -409,7 +413,7 @@ public class GUIFront extends JFrame {
 		getContentPane().add(mainTabPane);
 
 		// Group Layout code for all components
-		GUIFront.groupLayout(contentPane, labelInvalidEntry, buttonRoute);
+		GUIFront.groupLayout(contentPane, lblInvalidEntry, buttonRoute);
 		pack();
 		setVisible(true);
 	}
@@ -456,36 +460,36 @@ public class GUIFront extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(0).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(0).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(0));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(0).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(0));
 			}
 		});
 		mntmAK2 = new JMenuItem("Floor 2");
 		mntmAK2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(1).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(1).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(1));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(1).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(1).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(1));
 			}
 		});
 		mntmAK3 = new JMenuItem("Floor 3");
 		mntmAK3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(2).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(2).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(2));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(2).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(2).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(2));
 			}
 		});
 		mntmAKB = new JMenuItem("Basement");
 		mntmAKB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(3).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(3).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(3));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(3).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(3).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(3));
 			}
 		});
 		mnAtwaterKent.add(mntmAK1);
@@ -499,36 +503,36 @@ public class GUIFront extends JFrame {
 		mntmBoy1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(4).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(4).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(4));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(4).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(4).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(4));
 			}
 		});
 		mntmBoy2 = new JMenuItem("Floor 2");
 		mntmBoy2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(5).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(5).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(5));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(5).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(5).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(5));
 			}
 		});
 		mntmBoy3 = new JMenuItem("Floor 3");
 		mntmBoy3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(6).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(6).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(6));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(6).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(6).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(6));
 			}
 		});
 		mntmBoyB = new JMenuItem("Basement");
 		mntmBoyB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(7).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(7).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(7));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(7).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(7).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(7));
 			}
 		});
 		mnBoyntonHall.add(mntmBoy1);
@@ -542,27 +546,27 @@ public class GUIFront extends JFrame {
 		mntmCC1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(8).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(8).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(8));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(8).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(8).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(8));
 			}
 		});
 		mntmCC2 = new JMenuItem("Floor 2");
 		mntmCC2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(9).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(9).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(9));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(9).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(9).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(9));
 			}
 		});
 		mntmCC3 = new JMenuItem("Floor 3");
 		mntmCC3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(10).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(10).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(10));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(10).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(10).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(10));
 			}
 		});
 		mnCampusCenter.add(mntmCC1);
@@ -574,9 +578,9 @@ public class GUIFront extends JFrame {
 		mntmCCM.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(11).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(11).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(11));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(11).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(11).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(11));
 			}
 		});
 
@@ -586,45 +590,45 @@ public class GUIFront extends JFrame {
 		mntmGL1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(12).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(12).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(12));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(12).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(12).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(12));
 			}
 		});
 		mntmGL2 = new JMenuItem("Floor 2");
 		mntmGL2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(13).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(13).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(13));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(13).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(13).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(13));
 			}
 		});
 		mntmGL3 = new JMenuItem("Floor 3");
 		mntmGL3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(14).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(14).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(14));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(14).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(14).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(14));
 			}
 		});
 		mntmGLB = new JMenuItem("Basement");
 		mntmGLB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(15).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(15).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(15));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(15).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(15).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(15));
 			}
 		});
 		mntmGLSB = new JMenuItem("Sub Basement");
 		mntmGLSB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(16).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(16).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(16));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(16).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(16).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(16));
 			}
 		});
 		mnGordonLibrary.add(mntmGL1);
@@ -639,27 +643,27 @@ public class GUIFront extends JFrame {
 		mntmHH1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(17).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(17).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(17));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(17).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(17).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(17));
 			}
 		});
 		mntmHH2 = new JMenuItem("Floor 2");
 		mntmHH2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(18).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(18).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(18));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(18).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(18).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(18));
 			}
 		});
 		mntmHH3 = new JMenuItem("Floor 3");
 		mntmHH3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(19).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(19).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(19));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(19).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(19).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(19));
 			}
 		});
 		mnHigginsHouse.add(mntmHH1);
@@ -672,18 +676,18 @@ public class GUIFront extends JFrame {
 		mntmHHG1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(20).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(20).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(20));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(20).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(20).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(20));
 			}
 		});
 		mntmHHG2 = new JMenuItem("Floor 2");
 		mntmHHG2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(21).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(21).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(21));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(21).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(21).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(21));
 			}
 		});
 		mnHigginsHouseGarage.add(mntmHHG1);
@@ -695,18 +699,18 @@ public class GUIFront extends JFrame {
 		mntmPC1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(22).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(22).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(22));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(22).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(22).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(22));
 			}
 		});
 		mntmPC2 = new JMenuItem("Floor 2");
 		mntmPC2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(23).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(23).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(23));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(23).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(23).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(23));
 			}
 		});
 		mnProjectCenter.add(mntmPC1);
@@ -718,36 +722,36 @@ public class GUIFront extends JFrame {
 		mntmSH1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(24).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(24).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(24));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(24).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(24).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(24));
 			}
 		});
 		mntmSH2 = new JMenuItem("Floor 2");
 		mntmSH2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(25).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(25).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(25));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(25).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(25).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(25));
 			}
 		});
 		mntmSH3 = new JMenuItem("Floor 3");
 		mntmSH3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(26).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(26).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(26));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(26).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(26).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(26));
 			}
 		});
 		mntmSHB = new JMenuItem("Basement");
 		mntmSHB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getGlobalMap().getLocalMaps().get(27).getMapImageName()).getImage());
-				panelMap.setMapNodes(getGlobalMap().getLocalMaps().get(27).getMapNodes());
-				getBackend().setLocalMap(getGlobalMap().getLocalMaps().get(27));
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(27).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(27).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(27));
 			}
 		});
 		mnStrattonHall.add(mntmSH1);
@@ -888,7 +892,7 @@ public class GUIFront extends JFrame {
 				getGlobalMap().setMapNodes(allNodes);
 			}
 
-			public static void initPanels(Image mapImage){
+			public static void initPanels(IProxyImage mapImage){
 				panelMap = new TweenPanel(getBackend().getLocalMap().getMapNodes(), mapImage, "1");
 				panels.add(panelMap);
 				panelDirections = new TweenPanel("2");
@@ -989,7 +993,7 @@ public class GUIFront extends JFrame {
 						if (index > 0)
 							btnPreviousMap.setEnabled(true);
 
-						panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getPaths().get(index).get(0).getLocalMap().getMapImageName()).getImage());
+						panelMap.setMapImage(new ProxyImage(getPaths().get(index).get(0).getLocalMap().getMapImageName()));
 						panelMap.setMapNodes(getPaths().get(index).get(0).getLocalMap().getMapNodes());
 						getBackend().setLocalMap(getPaths().get(index).get(0).getLocalMap());
 						setThisRoute(getPaths().get(index));
@@ -1013,7 +1017,7 @@ public class GUIFront extends JFrame {
 						if (index > 0)
 							btnPreviousMap.setEnabled(true);
 
-						panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + getPaths().get(index).get(0).getLocalMap().getMapImageName()).getImage());
+						panelMap.setMapImage(new ProxyImage(getPaths().get(index).get(0).getLocalMap().getMapImageName()));
 						panelMap.setMapNodes(getPaths().get(index).get(0).getLocalMap().getMapNodes());
 						getBackend().setLocalMap(getPaths().get(index).get(0).getLocalMap());
 						setThisRoute(getPaths().get(index));
@@ -1168,6 +1172,14 @@ public class GUIFront extends JFrame {
 
 			public static boolean isCurrentlyOpen() {
 				return currentlyOpen;
+			}
+
+			public Image getMapImage() {
+				return mapImage.getImage();
+			}
+
+			public void setMapImage(IProxyImage mapImage) {
+				this.mapImage = mapImage;
 			}
 
 			public static void setCurrentlyOpen(boolean currentlyOpen) {

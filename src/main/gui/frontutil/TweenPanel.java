@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 
 import main.MapNode;
 import main.gui.GUIFront;
+import main.util.IProxyImage;
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
@@ -35,7 +36,7 @@ public class TweenPanel extends JPanel {
 	private final TweenManager tweenManager = SLAnimator.createTweenManager();
 	private JLabel labelMainPanel = new JLabel();
 	private JLabel labelStep = new JLabel();
-	private Image mapImage;
+	private IProxyImage mapImage;
 	private Runnable action;
 	private boolean actionEnabled = true;
 	private boolean hover = false;
@@ -49,7 +50,7 @@ public class TweenPanel extends JPanel {
 	/** Constructor for a custom panel to do drawing and tweening.
 	 * 
 	 */
-	public TweenPanel(ArrayList<MapNode> mapNodes, Image mapPath, String panelId){
+	public TweenPanel(ArrayList<MapNode> mapNodes, IProxyImage mapPath, String panelId){
 
 		setLayout(new BorderLayout());
 
@@ -170,7 +171,7 @@ public class TweenPanel extends JPanel {
 			graphics.setTransform(GUIFront.getTransform());
 
 			// Scale the map relative to the panels current size and your current viewing window
-			graphics.drawImage(mapImage, 0, 0, this);	
+			graphics.drawImage(mapImage.getImage(), 0, 0, this);	
 
 			// Test drawing of map nodes
 			for(MapNode n : localNodes){
@@ -180,7 +181,7 @@ public class TweenPanel extends JPanel {
 			/* Colors start and end differently; Draws the map and places pre-existing node data onto the map as
 			 * well start and end nodes if they have been set
 			 */
-			graphics.drawImage(this.mapImage, 0, 0, this);
+			graphics.drawImage(this.mapImage.getImage(), 0, 0, this);
 
 			// Sets the color of the start and end nodes to be different
 			graphics.setColor(Color.RED);
@@ -285,11 +286,11 @@ public class TweenPanel extends JPanel {
 		this.localNodes = localNodes;
 	}
 
-	public Image getMapImage() {
+	public IProxyImage getMapImage() {
 		return mapImage;
 	}
 
-	public void setMapImage(Image mapImage) {
+	public void setMapImage(IProxyImage mapImage) {
 		this.mapImage = mapImage;
 	}
 

@@ -40,6 +40,8 @@ import main.LocalMap;
 import main.MapNode;
 import main.util.Constants;
 import main.util.MapPanel;
+import main.util.ProxyImage;
+import main.util.IProxyImage;
 import main.util.SaveUtil;
 import main.Types;
 
@@ -50,8 +52,8 @@ public class DevGUIFront extends JFrame {
 	static ArrayList<MapNode> points2 = new ArrayList<MapNode>(); // Points for the second map
 	static File inputFile;
 	static File inputFile2;
-	static Image pic;
-	static Image pic2;
+	static IProxyImage pic;
+	static IProxyImage pic2;
 	static LocalMap local1;
 	static LocalMap local2;
 	String path; // current path
@@ -154,12 +156,8 @@ public class DevGUIFront extends JFrame {
 					imagePath = imagePath + ".jpg";
 
 					// set the image
-					try {
-						pic = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath));
-					} catch (IOException e1) {
-						e1.printStackTrace();}
-
-					mapPanel.setBgImage(pic);
+					pic = new ProxyImage(imagePath);
+					mapPanel.setBgImage(pic.getImage());
 
 					// set the points
 					Graphics g = mapPanel.getGraphics();
@@ -189,12 +187,8 @@ public class DevGUIFront extends JFrame {
 					imagePath = imagePath + ".jpg";
 
 					// set the image
-					try {
-						pic2 = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + imagePath));
-					} catch (IOException e1) {
-						e1.printStackTrace();}
-
-					mapPanel2.setBgImage(pic2);
+					pic2 = new ProxyImage(imagePath);
+					mapPanel2.setBgImage(pic2.getImage());
 
 					// set the points
 					Graphics g = mapPanel2.getGraphics();
@@ -242,23 +236,19 @@ public class DevGUIFront extends JFrame {
 				int option = chooser.showOpenDialog(DevGUIFront.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
+					
+					String imagePath = SaveUtil.removeExtension(inputFile.getName());
+					imagePath = imagePath + ".jpg";
 
-					try{
-						pic = ImageIO.read(inputFile);
-						String imagePath = SaveUtil.removeExtension(inputFile.getName());
-						imagePath = imagePath + ".jpg";
-
-						mapPanel.setBgImage(pic);
-						selectedNodes.clear();
-						points = new ArrayList<MapNode>();
-						Graphics g = mapPanel.getGraphics();
-						mapPanel.renderMapPublic(g, points, null);
-						local1 = new LocalMap(imagePath, points);
-					}
-					catch(IOException ex){
-						ex.printStackTrace();
-						System.exit(1);
-					}
+					pic = new ProxyImage(imagePath);
+					
+					mapPanel.setBgImage(pic.getImage());
+					
+					selectedNodes.clear();
+					points = new ArrayList<MapNode>();
+					Graphics g = mapPanel.getGraphics();
+					mapPanel.renderMapPublic(g, points, null);
+					local1 = new LocalMap(imagePath, points);
 				}
 			}
 		});
