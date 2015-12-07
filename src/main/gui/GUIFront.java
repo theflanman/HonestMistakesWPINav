@@ -104,7 +104,7 @@ public class GUIFront extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
 	private JMenu mnColorScheme;
-	private JMenuItem mntmDefaultCampus, mntmGrayscale, mntmWPI, mntmBlackAndYellow, mntmSkyBlue;
+	private JMenuItem mntmDefaultCampus, mntmGrayscale, mntmWPI, mntmSkyBlue;
 	private JMenu mnAtwaterKent, mnBoyntonHall, mnCampusCenter, mnGordonLibrary, mnHigginsHouse, mnHigginsHouseGarage, mnProjectCenter, mnStrattonHall;
 	private JMenuItem mntmAK1, mntmAK2, mntmAK3, mntmAKB, mntmBoy1, mntmBoy2, mntmBoy3, mntmBoyB, mntmCC1, mntmCC2, mntmCC3, mntmCCM;
 	private JMenuItem mntmGL1, mntmGL2, mntmGL3, mntmGLB, mntmGLSB, mntmHH1, mntmHH2, mntmHH3, mntmHHG1, mntmHHG2, mntmPC1, mntmPC2;
@@ -115,8 +115,8 @@ public class GUIFront extends JFrame {
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
+	
 	private Color routeButtonColor, otherButtonsColor, backgroundColor, sideBarColor;
-
 	static ColorSchemes allSchemes;
 	static ColorSetting colors;
 
@@ -126,7 +126,7 @@ public class GUIFront extends JFrame {
 	    splashScreen.setScreenVisible(false);
 	  }
 
-	private void splashScreenInit() {
+	private void splashScreenInit(){
 		ImageIcon myImage = new ImageIcon("src/data/splash/drawing.png");
 	    splashScreen = new SplashLoad(myImage);
 	    splashScreen.setLocationRelativeTo(null);
@@ -141,13 +141,13 @@ public class GUIFront extends JFrame {
 	 * @throws ClassNotFoundException
 	 */
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
-		
+		/*
 		ImageIcon myImage = new ImageIcon("src/data/splash/drawing.png");
 	    splashScreen = new SplashLoad(myImage);
 	    splashScreen.setLocationRelativeTo(null);
 	    splashScreen.setProgressMax(localMapFilenames.length);
 	    splashScreen.setScreenVisible(true);
-	    
+	    */
 	    allSchemes = new ColorSchemes();  
 	    colors = allSchemes.setColorScheme("Default Campus");
 		
@@ -172,12 +172,13 @@ public class GUIFront extends JFrame {
 			//String xmlFileName = SaveUtil.removeExtension(path) + ".localmap";	
 			//screen.setProgress("Loading" + xmlFileName, 69);  // progress bar with a message
 		}
+		/*
 		for (int i = 0; i < 1000; i++){
 			for(long j = 0; j < 50000; j++){
 				double x = 5*5*8888*8888*8*8*8*(Math.pow(28, 33));
 			}
 			splashScreen.setProgress("Loading", i);
-		}
+		}*/
 		
 		backend = initial;
 		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
@@ -197,7 +198,6 @@ public class GUIFront extends JFrame {
 		}
 		globalMap.setMapNodes(allNodes);
 		//backend = initial;
-		splashScreenDestruct();
 
 		/**
 		 * GUI related code
@@ -693,9 +693,9 @@ public class GUIFront extends JFrame {
 		);
 
 		contentPane.setLayout(gl_contentPane);
-
+		contentPane.setVisible(true);
 		pack();
-		setVisible(true);
+	
 
 	}
 	
@@ -756,7 +756,6 @@ public class GUIFront extends JFrame {
 		mnOptions.add(mnColorScheme);
 
 		mntmDefaultCampus = new JMenuItem("Default Campus");
-
 		mntmDefaultCampus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				setColoring("Default Campus");
@@ -764,20 +763,29 @@ public class GUIFront extends JFrame {
 		});
 
 		mntmGrayscale = new JMenuItem("Grayscale");
-
 		mntmGrayscale.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				setColoring("Greyscale"); // set the color scheme to grayscale
 			}
 		});
+		
 
 		mntmWPI = new JMenuItem("WPI Theme");
-		mntmBlackAndYellow = new JMenuItem("Black & Yellow");
+		mntmWPI.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				setColoring("WPI Default"); // set the color scheme to grayscale
+			}
+		});
+		
+		
 		mntmSkyBlue = new JMenuItem("Sky Blue");
 
+		
 		mnColorScheme.add(mntmDefaultCampus);
 		mnColorScheme.add(mntmGrayscale);
+		mnColorScheme.add(mntmWPI);
 
+		
 
 
 
@@ -1763,5 +1771,7 @@ public class GUIFront extends JFrame {
 					}
 				} // end Accessor Class
 
-			} // end TweenPanel Class
+				} // end TweenPanel Class
+			
+
 }

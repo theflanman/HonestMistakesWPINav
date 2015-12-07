@@ -34,7 +34,8 @@ import main.util.SaveUtil;
 public class GUIBack implements Serializable {
 	private LocalMap localMap;
 	private ArrayList<MapNode> path;
-	
+	SplashLoad splashScreen;
+
 	/**
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
 	 * TODO: Change to Campus Map when it is complete
@@ -55,12 +56,20 @@ public class GUIBack implements Serializable {
 	 */
 	public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
 
+		ImageIcon myImage = new ImageIcon("src/data/splash/drawing.png");
+	    splashScreen = new SplashLoad(myImage);
+	    //splashScreen.setLocationRelativeTo(null);
+	    splashScreen.setProgressMax(fileNames.length);
+	    splashScreen.setVisible(true);
+	    splashScreen.setAlwaysOnTop(true);
+	    
+	    
 		//iterate through each file name
 		System.out.println("Starting load");
 		ArrayList<ArrayList<ArrayList<String>>> allNeighborList = new ArrayList<ArrayList<ArrayList<String>>>();
 		ArrayList<LocalMap> localMapList = new ArrayList<LocalMap>();
 
-
+		int progress = 1;
 		for(String fileName: fileNames){
 			//find exclusively the file name
 			String fileParts[] = fileName.split("/");
@@ -76,6 +85,8 @@ public class GUIBack implements Serializable {
 			try {
 				DocumentBuilder db = dbf.newDocumentBuilder();
 				String xmlFileName = SaveUtil.removeExtension(fileName) + ".localmap";
+				splashScreen.setProgress(xmlFileName, progress);
+				progress++;
 				dom = db.parse(Constants.LOCAL_MAP_PATH + "/" + xmlFileName);
 				Element doc = dom.getDocumentElement();
 
@@ -184,6 +195,8 @@ public class GUIBack implements Serializable {
 		//time to loop through each local map and link its nodes to itself and other local maps
 		//this will probably feel like black magic (BECAUSE IT IS)
 		for(int i = 0; i< localMapList.size(); i++){
+			splashScreen.setProgress("Linking", i);
+
 			//this is the local map that we're currently linking
 			LocalMap currentLocalMap = localMapList.get(i);
 			//this is the number of nodes we have to look a for neighbors
@@ -217,7 +230,16 @@ public class GUIBack implements Serializable {
 			}
 			
 		}
+	/*	for (int k = 1; k < 100; k++){
+			for(long stay = 1; stay < 100; stay++){
+				String doStuff = k + stay + "doing things";
+				splashScreen.setProgress("Working", k);
 
+			}
+		}*/
+	   // splashScreen.setScreenVisible(false);
+	    splashScreen.dispose();
+	    
 		return localMapList; 
 	}
 	/**@author Andrew Petit

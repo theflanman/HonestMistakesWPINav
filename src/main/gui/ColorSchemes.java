@@ -18,12 +18,16 @@ public class ColorSchemes {
 	Color lighterGrey = new Color(217, 216, 215);
 	Color lightestGrey = new Color(242, 242, 240);
 	
+	//WPI colors
+	Color wpiGrey = new Color(169, 176, 183);
+	Color wpiRed = new Color(172, 43, 55);
+	
 	
 	
 	private HashMap<String, ColorSetting> colorSchemes;
 	ColorSetting defaultCampus = new ColorSetting();
 	ColorSetting greyscale = new ColorSetting();
-	
+	ColorSetting wpiDefault = new ColorSetting();
 
 
 	public ColorSchemes(){
@@ -48,6 +52,18 @@ public class ColorSchemes {
 		greyscale.setEndNodeColor(lightestGrey);
 		greyscale.setOutlineColor(defaultBlack);
 		colorSchemes.put("Greyscale", greyscale);
+		
+		wpiDefault.setRouteButtonColor(wpiGrey);
+		wpiDefault.setOtherButtonsColor(wpiGrey);
+		wpiDefault.setLineColor(defaultBlack);
+		wpiDefault.setMainBackColor(wpiRed);
+		wpiDefault.setSideBarColor(wpiRed);
+		wpiDefault.setStartNodeColor(wpiGrey);
+		wpiDefault.setEndNodeColor(wpiRed);
+		wpiDefault.setOutlineColor(defaultBlack);
+		colorSchemes.put("WPI Default", wpiDefault);
+
+		
 
 	}
 	
