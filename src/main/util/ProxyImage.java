@@ -10,11 +10,11 @@ public class ProxyImage implements IProxyImage {
 	}
 	
 	@Override
-	public java.awt.Image getImage(){
+	public java.awt.Image getImage(String path){
 		if (realImage == null){
-			realImage = new RealImage(filename);
+			realImage = new RealImage(path, filename);
 		}
-		return realImage.getImage();
+		
+		return realImage.getImage(path);
 	}
-
 }

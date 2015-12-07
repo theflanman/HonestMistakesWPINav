@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 import main.gui.DevGUIBack;
 import main.util.Constants;
-import main.util.SaveUtil;
+import main.util.GeneralUtil;
 import main.util.YamlParser;
 
 public class LocalMap implements Serializable{
@@ -48,7 +48,7 @@ public class LocalMap implements Serializable{
 			System.out.println("Loading information from yaml file...");
 			System.out.println("Working with image: " + this.mapImageName);
 			
-			String mapImageJPG = SaveUtil.removeExtension(this.mapImageName);
+			String mapImageJPG = GeneralUtil.removeExtension(this.mapImageName);
 			String[] s = mapImageJPG.split("/");
 			mapImageJPG = s[s.length-1];
 			mapImageJPG = mapImageJPG + ".jpg";
