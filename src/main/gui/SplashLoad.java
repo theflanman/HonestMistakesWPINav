@@ -22,11 +22,11 @@ public class SplashLoad extends JFrame{
 		  super("Splash");
 	        this.setBackground(Color.WHITE);
 	        this.setForeground(Color.white);
-		  	setSize(900, 600);
+		  	setSize(900, 620);
 	        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	        setLocationRelativeTo(null);
 	        setUndecorated(true);
-	        img = new ImageIcon(("src/data/splash/splashfinal.png"));
+	        img = new ImageIcon(("src/data/splash/splashscreen.png"));
 	        imglabel = new JLabel(img);
 	        add(imglabel);
 	        setLayout(null);
@@ -39,7 +39,7 @@ public class SplashLoad extends JFrame{
 	        imglabel.setBackground(Color.white);
 	        add(pbar);
 	        pbar.setPreferredSize(new Dimension(500, 30));
-	        pbar.setBounds(0, 580, 900, 20);
+	        pbar.setBounds(0, 600, 900, 20);
 
 	        Thread t = new Thread() {
 	 
