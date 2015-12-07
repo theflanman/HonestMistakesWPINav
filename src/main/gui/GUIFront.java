@@ -426,12 +426,11 @@ public class GUIFront extends JFrame {
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
 					for (ArrayList<MapNode>wayPoints : paths){
-						String all = "";
 						distance += backend.getDistance(wayPoints);
 						for (String string : backend.displayStepByStep(wayPoints)) {
 							listModel.addElement(string); // add it to the list model
+							allText += string + "\n";
 						}
-						allText += all + "\n";
 					}
 
 					lblDistance.setText("Distance in feet:" + distance);
