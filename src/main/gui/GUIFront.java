@@ -101,7 +101,7 @@ public class GUIFront extends JFrame {
 	public static ArrayList<LocalMap> tempMaps = new ArrayList<LocalMap>();
 	public static HashMap<String, double[]> panValues = new HashMap<String, double[]>();
 	public static double[] panNums = {0.0, 0.0};
-	
+
 	static AffineTransform transform; // the current state of image transformation
 	static Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
 	static PanHandler panHandle;
@@ -129,7 +129,7 @@ public class GUIFront extends JFrame {
 	private JMenuItem mntmAK1, mntmAK2, mntmAK3, mntmAKB, mntmBoy1, mntmBoy2, mntmBoy3, mntmBoyB, mntmCC1, mntmCC2, mntmCC3, mntmCCM;
 	private JMenuItem mntmGL1, mntmGL2, mntmGL3, mntmGLB, mntmGLSB, mntmHH1, mntmHH2, mntmHH3, mntmHHG1, mntmHHG2, mntmPC1, mntmPC2;
 	private JMenuItem mntmSH1, mntmSH2, mntmSH3, mntmSHB, mntmEmail, mntmExit;
-	
+
 	private SLPanel slidePanel;
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
@@ -157,7 +157,7 @@ public class GUIFront extends JFrame {
 		}
 
 		backend = initial;
-	
+
 		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
 
 		globalMap.setLocalMaps(localMapList);
@@ -191,7 +191,7 @@ public class GUIFront extends JFrame {
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		initializeMenuBar();
-		
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -389,7 +389,7 @@ public class GUIFront extends JFrame {
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
-					
+
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH);
@@ -415,29 +415,29 @@ public class GUIFront extends JFrame {
 							paths.add(route);
 						}
 					}
-					
-					
+
+
 					thisRoute = routes.get(0);
 					panelMap.setMapImage(new ProxyImage(paths.get(0).get(0).getLocalMap().getMapImageName()));
 					panelMap.setMapNodes(paths.get(0).get(0).getLocalMap().getMapNodes());
 					String previousMap = backend.getLocalMap().getMapImageName();
 					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
+
 					backend.setLocalMap(paths.get(0).get(0).getLocalMap());
-					
+
 					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
-					
+
 					for(MapNode n : backend.getLocalMap().getMapNodes()){
 						n.setXPos(n.getXPos() - panelMap.panX);
 						n.setYPos(n.getYPos() - panelMap.panY);
 					}
-					
+
 					panelMap.panX = 0.0;
 					panelMap.panY = 0.0;
 					panelMap.setScale(1.0);
-					
+
 					index = 0;
 					if (paths.size() > 1){
 						btnNextMap.setEnabled(true);
@@ -506,14 +506,14 @@ public class GUIFront extends JFrame {
 
 		// Create a new list and be able to get the current width ofthe viewport it is contained in (the scrollpane)
 		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 7); // 7 pixels per 1 character
-			
+
 		listDirections = new JList<String>(listModel);
 		listDirections.setCellRenderer(renderer);
 		listDirections.setFixedCellWidth(MAX_LIST_WIDTH); // give it a set width in pixels
 		scrollPane.setViewportView(listDirections);
 		listDirections.setVisible(false);
 		listDirections.setVisibleRowCount(10); // only shows 10 directions before scrolling
-		
+
 		lblDistance = new JLabel();
 		lblDistance.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblDistance.setVisible(false);
@@ -560,7 +560,7 @@ public class GUIFront extends JFrame {
 				if (index < paths.size() - 1){
 					btnNextMap.setEnabled(true);
 				}
-				
+
 				if (index >= paths.size() - 1){
 					btnNextMap.setEnabled(false);
 				}
@@ -573,20 +573,20 @@ public class GUIFront extends JFrame {
 				String previousMap = backend.getLocalMap().getMapImageName();
 				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
 				backend.setLocalMap(localMap);
-				
+
 				double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
-				
+
 				for(MapNode n : backend.getLocalMap().getMapNodes()){
 					n.setXPos(n.getXPos() - panelMap.panX);
 					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-				
+
 				panelMap.panX = 0.0;
 				panelMap.panY = 0.0;
 				panelMap.setScale(1.0);
-				
+
 				thisRoute = paths.get(index);
 				drawLine = true;
 			}
@@ -609,7 +609,7 @@ public class GUIFront extends JFrame {
 				if (index < paths.size() - 1){
 					btnNextMap.setEnabled(true);
 				}
-				
+
 				if (index >= paths.size() - 1){
 					btnNextMap.setEnabled(false);
 				}
@@ -621,16 +621,16 @@ public class GUIFront extends JFrame {
 				String previousMap = backend.getLocalMap().getMapImageName();
 				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
 				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
-				
+
 				double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
-				
+
 				for(MapNode n : backend.getLocalMap().getMapNodes()){
 					n.setXPos(n.getXPos() - panelMap.panX);
 					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-				
+
 				panelMap.panX = 0.0;
 				panelMap.panY = 0.0;
 				panelMap.setScale(1.0);
@@ -644,897 +644,947 @@ public class GUIFront extends JFrame {
 		// Group Layout code for all components
 		gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(10)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblStart)
-								.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addComponent(lblInvalidEntry)
-							.addGap(227)
-							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnClear))
-						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(79)
-					.addComponent(btnPreviousMap)
-					.addPreferredGap(ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
-					.addComponent(btnNextMap)
-					.addGap(170))
-		);
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(10)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblStart)
+												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+												.addGap(18)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+														.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+														.addGap(18)
+														.addComponent(lblInvalidEntry)
+														.addGap(227)
+														.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+														.addGap(18)
+														.addComponent(btnClear))
+														.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+														.addGroup(gl_contentPane.createSequentialGroup()
+																.addGap(79)
+																.addComponent(btnPreviousMap)
+																.addPreferredGap(ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+																.addComponent(btnNextMap)
+																.addGap(170))
+				);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblStart)
-							.addGap(6)
-							.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblEnd)
-							.addGap(6)
-							.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(24)
-							.addComponent(lblInvalidEntry))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnRoute))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnClear)))
-					.addGap(18)
-					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnPreviousMap)
-						.addComponent(btnNextMap))
-					.addGap(35))
-		);
-		
+						.addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(lblStart)
+										.addGap(6)
+										.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addComponent(lblEnd)
+												.addGap(6)
+												.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+												.addGroup(gl_contentPane.createSequentialGroup()
+														.addGap(24)
+														.addComponent(lblInvalidEntry))
+														.addGroup(gl_contentPane.createSequentialGroup()
+																.addGap(11)
+																.addComponent(btnRoute))
+																.addGroup(gl_contentPane.createSequentialGroup()
+																		.addGap(11)
+																		.addComponent(btnClear)))
+																		.addGap(18)
+																		.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
+																		.addGap(18)
+																		.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+																				.addComponent(btnPreviousMap)
+																				.addComponent(btnNextMap))
+																				.addGap(35))
+				);
+
 		System.out.println("cSV a");
 		GUIFront.changeStreetView(gl_contentPane, Constants.DEFAULT_STREET_IMAGE);
 
 		pack();
 		setVisible(true);
 	}
-	
-		public static void changeStreetView(GroupLayout gl_contentPane, String imagePath){
-			
+
+	public static void changeStreetView(GroupLayout gl_contentPane, String imagePath){
+
 		try{
 			mainPanel.remove(1); // remove 2nd tab
 		} catch(IndexOutOfBoundsException e){
 			// do nothing; there just isn't a 2nd tab 
 		}
-		
+
 		// connect Street View Panel to mainPanel
 		SLPanel streetViewSLPanel = new SLPanel();
 		mainPanel.addTab("Street View", null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
-		
+
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
 		System.out.println("IMAGE: " + imagePath);
 		System.out.println("changing street");
 		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
-				
+
 		SLConfig streetViewConfig = new SLConfig(streetViewSLPanel)
 		.gap(10, 10)
 		.row(1f).col(700).col(50) // 700xH | 50xH
 		.place(0, 0, streetViewTweenPanel);
-		
+
 		streetViewSLPanel.initialize(streetViewConfig);
 		System.out.println("end changing street view");
 	}
-	
-	// This goes in GUIFront
-			public void initializeMenuBar(){
-			// ---- File Menu ----
-			mnFile = new JMenu("File");
-			menuBar.add(mnFile);
-			
-			mntmEmail = new JMenuItem("Email"); // Code to open up the email sender
-			mntmEmail.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){
-					EmailGUI newEmail = new EmailGUI();
-					newEmail.setVisible(true); //Opens EmailGUI Pop-Up
-				}
-			});
-			mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
-			mntmExit.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){
-					System.exit(0); 
-				}
-			});
-			mnFile.add(mntmEmail);
-			mnFile.add(mntmExit);
-			
-			// ---- Options -----
-			mnOptions = new JMenu("Options");
-			menuBar.add(mnOptions);
-			
-			// ---- Options -----
-			mnLocations = new JMenu("Locations");
-			menuBar.add(mnLocations);
-			
-			// Atwater Kent
-			mnAtwaterKent = new JMenu("Atwater Kent");
-			mntmAK1 = new JMenuItem("Floor 1");
-			mntmAK1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(0).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(0));
-					
-					double[] tempPan = panValues.get("AK1.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-					
-				}
-			});
-			mntmAK2 = new JMenuItem("Floor 2");
-			mntmAK2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(1).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(1).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(1));
-					
-					double[] tempPan = panValues.get("AK2.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mntmAK3 = new JMenuItem("Floor 3");
-			mntmAK3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(2).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(2).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(2));
-					
-					double[] tempPan = panValues.get("AK3.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mntmAKB = new JMenuItem("Basement");
-			mntmAKB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(3).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(3).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(3));
-					
-					double[] tempPan = panValues.get("AKB.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mnAtwaterKent.add(mntmAK1);
-			mnAtwaterKent.add(mntmAK2);
-			mnAtwaterKent.add(mntmAK3);
-			mnAtwaterKent.add(mntmAKB);
-			
-			// Boynton Hall
-			mnBoyntonHall = new JMenu("Boynton Hall");
-			mntmBoy1 = new JMenuItem("Floor 1");
-			mntmBoy1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(4).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(4).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(4));
-					
-					double[] tempPan = panValues.get("Boy1.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mntmBoy2 = new JMenuItem("Floor 2");
-			mntmBoy2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(5).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(5).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(5));
-					
-					double[] tempPan = panValues.get("Boy2.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mntmBoy3 = new JMenuItem("Floor 3");
-			mntmBoy3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(6).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(6).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(6));
-					
-					double[] tempPan = panValues.get("Boy3.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mntmBoyB = new JMenuItem("Basement");
-			mntmBoyB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(7).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(7).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(7));
-					
-					double[] tempPan = panValues.get("BoyB.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mnBoyntonHall.add(mntmBoy1);
-			mnBoyntonHall.add(mntmBoy2);
-			mnBoyntonHall.add(mntmBoy3);
-			mnBoyntonHall.add(mntmBoyB);
-			
-			// Campus Center
-			mnCampusCenter = new JMenu("Campus Center");
-			mntmCC1 = new JMenuItem("Floor 1");
-			mntmCC1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(8).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(8).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(8));
-					
-					double[] tempPan = panValues.get("CC1.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mntmCC2 = new JMenuItem("Floor 2");
-			mntmCC2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(9).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(9).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(9));
-					
-					double[] tempPan = panValues.get("CC2.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mntmCC3 = new JMenuItem("Floor 3");
-			mntmCC3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(10).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(10).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(10));
-					
-					double[] tempPan = panValues.get("CC3.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mnCampusCenter.add(mntmCC1);
-			mnCampusCenter.add(mntmCC2);
-			mnCampusCenter.add(mntmCC3);
-			
-			// Campus Map
-			mntmCCM = new JMenuItem("Campus Map");
-			mntmCCM.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(11).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(11).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(11));
-					
-					double[] tempPan = panValues.get("CCM.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			
-			// Gordon Library
-			mnGordonLibrary = new JMenu("Gordon Library");
-			mntmGL1 = new JMenuItem("Floor 1");
-			mntmGL1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(12).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(12).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(12));
-					
-					double[] tempPan = panValues.get("GL1.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-				}
-			});
-			mntmGL2 = new JMenuItem("Floor 2");
-			mntmGL2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(13).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(13).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
 
-					backend.setLocalMap(globalMap.getLocalMaps().get(13));
-					
-					double[] tempPan = panValues.get("GL2.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+	// This goes in GUIFront
+	public void initializeMenuBar(){
+		// ---- File Menu ----
+		mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+
+		mntmEmail = new JMenuItem("Email"); // Code to open up the email sender
+		mntmEmail.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				EmailGUI newEmail = new EmailGUI();
+				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
+			}
+		});
+		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
+		mntmExit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.exit(0); 
+			}
+		});
+		mnFile.add(mntmEmail);
+		mnFile.add(mntmExit);
+
+		// ---- Options -----
+		mnOptions = new JMenu("Options");
+		menuBar.add(mnOptions);
+
+		// ---- Options -----
+		mnLocations = new JMenu("Locations");
+		menuBar.add(mnLocations);
+
+		// Atwater Kent
+		mnAtwaterKent = new JMenu("Atwater Kent");
+		mntmAK1 = new JMenuItem("Floor 1");
+		mntmAK1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(0).getMapImageName());
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(0).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(0));
+
+				double[] tempPan = panValues.get("AK1.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmGL3 = new JMenuItem("Floor 3");
-			mntmGL3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(14).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(14).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(14));
-					
-					double[] tempPan = panValues.get("GL3.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+
+			}
+		});
+		mntmAK2 = new JMenuItem("Floor 2");
+		mntmAK2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(1).getMapImageName());
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(1).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(1).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(1));
+
+				double[] tempPan = panValues.get("AK2.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmGLB = new JMenuItem("Basement");
-			mntmGLB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(15).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(15).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(15));
-					
-					double[] tempPan = panValues.get("GLB.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmAK3 = new JMenuItem("Floor 3");
+		mntmAK3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(2).getMapImageName());
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(2).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(2).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(2));
+
+				double[] tempPan = panValues.get("AK3.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmGLSB = new JMenuItem("Sub Basement");
-			mntmGLSB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(16).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(16).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(16));
-					
-					double[] tempPan = panValues.get("GLSB.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmAKB = new JMenuItem("Basement");
+		mntmAKB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(3).getMapImageName());
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(3).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(3).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(3));
+
+				double[] tempPan = panValues.get("AKB.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mnGordonLibrary.add(mntmGL1);
-			mnGordonLibrary.add(mntmGL2);
-			mnGordonLibrary.add(mntmGL3);
-			mnGordonLibrary.add(mntmGLB);
-			mnGordonLibrary.add(mntmGLSB);
-			
-			// Higgins House
-			mnHigginsHouse = new JMenu("Higgins House");
-			mntmHH1 = new JMenuItem("Floor 1");
-			mntmHH1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(17).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(17).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(17));
-					
-					double[] tempPan = panValues.get("HH1.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mnAtwaterKent.add(mntmAK1);
+		mnAtwaterKent.add(mntmAK2);
+		mnAtwaterKent.add(mntmAK3);
+		mnAtwaterKent.add(mntmAKB);
+
+		// Boynton Hall
+		mnBoyntonHall = new JMenu("Boynton Hall");
+		mntmBoy1 = new JMenuItem("Floor 1");
+		mntmBoy1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(4).getMapImageName());
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(4).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(4).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(4));
+
+				double[] tempPan = panValues.get("Boy1.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmHH2 = new JMenuItem("Floor 2");
-			mntmHH2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(18).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(18).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(18));
-					
-					double[] tempPan = panValues.get("HH2.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmBoy2 = new JMenuItem("Floor 2");
+		mntmBoy2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(5).getMapImageName());
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(5).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(5).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(5));
+
+				double[] tempPan = panValues.get("Boy2.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmHH3 = new JMenuItem("Floor 3");
-			mntmHH3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(19).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(19).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(19));
-					
-					double[] tempPan = panValues.get("HH3.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmBoy3 = new JMenuItem("Floor 3");
+		mntmBoy3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(6).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(6).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(6).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(6));
+
+				double[] tempPan = panValues.get("Boy3.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mnHigginsHouse.add(mntmHH1);
-			mnHigginsHouse.add(mntmHH2);
-			mnHigginsHouse.add(mntmHH3);
-			
-			// Higgins House Garage
-			mnHigginsHouseGarage = new JMenu("Higgins House Garage");
-			mntmHHG1 = new JMenuItem("Floor 1");
-			mntmHHG1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(20).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(20).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(20));
-					
-					double[] tempPan = panValues.get("HHG1.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmBoyB = new JMenuItem("Basement");
+		mntmBoyB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(7).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(7).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(7).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(7));
+
+				double[] tempPan = panValues.get("BoyB.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmHHG2 = new JMenuItem("Floor 2");
-			mntmHHG2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(21).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(21).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(21));
-					
-					double[] tempPan = panValues.get("HHG2.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mnBoyntonHall.add(mntmBoy1);
+		mnBoyntonHall.add(mntmBoy2);
+		mnBoyntonHall.add(mntmBoy3);
+		mnBoyntonHall.add(mntmBoyB);
+
+		// Campus Center
+		mnCampusCenter = new JMenu("Campus Center");
+		mntmCC1 = new JMenuItem("Floor 1");
+		mntmCC1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(8).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(8).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(8).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(8));
+
+				double[] tempPan = panValues.get("CC1.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mnHigginsHouseGarage.add(mntmHHG1);
-			mnHigginsHouseGarage.add(mntmHHG2);
-			
-			// Project Center
-			mnProjectCenter = new JMenu("Project Center");
-			mntmPC1 = new JMenuItem("Floor 1");
-			mntmPC1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(22).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(22).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(22));
-					
-					double[] tempPan = panValues.get("PC1.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmCC2 = new JMenuItem("Floor 2");
+		mntmCC2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(9).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(9).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(9).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(9));
+
+				double[] tempPan = panValues.get("CC2.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmPC2 = new JMenuItem("Floor 2");
-			mntmPC2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(23).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(23).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(23));
-					
-					double[] tempPan = panValues.get("PC2.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmCC3 = new JMenuItem("Floor 3");
+		mntmCC3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(10).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(10).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(10).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(10));
+
+				double[] tempPan = panValues.get("CC3.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mnProjectCenter.add(mntmPC1);
-			mnProjectCenter.add(mntmPC2);
-			
-			// Stratton Hall
-			mnStrattonHall = new JMenu("Stratton Hall");
-			mntmSH1 = new JMenuItem("Floor 1");
-			mntmSH1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(24).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(24).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(24));
-					
-					double[] tempPan = panValues.get("SH1.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mnCampusCenter.add(mntmCC1);
+		mnCampusCenter.add(mntmCC2);
+		mnCampusCenter.add(mntmCC3);
+
+		// Campus Map
+		mntmCCM = new JMenuItem("Campus Map");
+		mntmCCM.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(11).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(11).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(11).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(11));
+
+				double[] tempPan = panValues.get("CCM.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmSH2 = new JMenuItem("Floor 2");
-			mntmSH2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(25).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(25).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(25));
-					
-					double[] tempPan = panValues.get("SH2.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+
+		// Gordon Library
+		mnGordonLibrary = new JMenu("Gordon Library");
+		mntmGL1 = new JMenuItem("Floor 1");
+		mntmGL1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(12).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(12).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(12).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(12));
+
+				double[] tempPan = panValues.get("GL1.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmSH3 = new JMenuItem("Floor 3");
-			mntmSH3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(26).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(26).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(26));
-					
-					double[] tempPan = panValues.get("SH3.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmGL2 = new JMenuItem("Floor 2");
+		mntmGL2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(13).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(13).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(13).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(13));
+
+				double[] tempPan = panValues.get("GL2.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmSHB = new JMenuItem("Basement");
-			mntmSHB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(27).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(27).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(27));
-					
-					double[] tempPan = panValues.get("SHB.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmGL3 = new JMenuItem("Floor 3");
+		mntmGL3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(14).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(14).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(14).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(14));
+
+				double[] tempPan = panValues.get("GL3.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mnStrattonHall.add(mntmSH1);
-			mnStrattonHall.add(mntmSH2);
-			mnStrattonHall.add(mntmSH3);
-			mnStrattonHall.add(mntmSHB);
-			
-			mnLocations.add(mnAtwaterKent); // indices: 0, 1, 2, 3
-			mnLocations.add(mnBoyntonHall); // indices: 4, 5, 6, 7
-			mnLocations.add(mnCampusCenter);// indices: 8, 9, 10
-			mnLocations.add(mntmCCM); // index: 11
-			mnLocations.add(mnGordonLibrary); // indices: 11, 12, 13, 14, 15
-			mnLocations.add(mnHigginsHouse); // indices: 16, 17, 18
-			mnLocations.add(mnHigginsHouseGarage); //indices: 19, 20
-			mnLocations.add(mnProjectCenter); // indices: 21, 22
-			mnLocations.add(mnStrattonHall); // indices 23, 24, 25, 26
-			
-			mnHelp = new JMenu("Help");
-			menuBar.add(mnHelp);
-		}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmGLB = new JMenuItem("Basement");
+		mntmGLB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(15).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(15).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(15).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(15));
+
+				double[] tempPan = panValues.get("GLB.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmGLSB = new JMenuItem("Sub Basement");
+		mntmGLSB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(16).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(16).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(16).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(16));
+
+				double[] tempPan = panValues.get("GLSB.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mnGordonLibrary.add(mntmGL1);
+		mnGordonLibrary.add(mntmGL2);
+		mnGordonLibrary.add(mntmGL3);
+		mnGordonLibrary.add(mntmGLB);
+		mnGordonLibrary.add(mntmGLSB);
+
+		// Higgins House
+		mnHigginsHouse = new JMenu("Higgins House");
+		mntmHH1 = new JMenuItem("Floor 1");
+		mntmHH1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(17).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(17).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(17).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(17));
+
+				double[] tempPan = panValues.get("HH1.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmHH2 = new JMenuItem("Floor 2");
+		mntmHH2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(18).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(18).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(18).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(18));
+
+				double[] tempPan = panValues.get("HH2.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmHH3 = new JMenuItem("Floor 3");
+		mntmHH3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(19).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(19).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(19).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(19));
+
+				double[] tempPan = panValues.get("HH3.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mnHigginsHouse.add(mntmHH1);
+		mnHigginsHouse.add(mntmHH2);
+		mnHigginsHouse.add(mntmHH3);
+
+		// Higgins House Garage
+		mnHigginsHouseGarage = new JMenu("Higgins House Garage");
+		mntmHHG1 = new JMenuItem("Floor 1");
+		mntmHHG1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(20).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(20).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(20).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(20));
+
+				double[] tempPan = panValues.get("HHG1.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmHHG2 = new JMenuItem("Floor 2");
+		mntmHHG2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(21).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(21).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(21).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(21));
+
+				double[] tempPan = panValues.get("HHG2.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mnHigginsHouseGarage.add(mntmHHG1);
+		mnHigginsHouseGarage.add(mntmHHG2);
+
+		// Project Center
+		mnProjectCenter = new JMenu("Project Center");
+		mntmPC1 = new JMenuItem("Floor 1");
+		mntmPC1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){			
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(22).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(22).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(22).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(22));
+
+				double[] tempPan = panValues.get("PC1.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmPC2 = new JMenuItem("Floor 2");
+		mntmPC2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(23).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(23).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(23).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(23));
+
+				double[] tempPan = panValues.get("PC2.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mnProjectCenter.add(mntmPC1);
+		mnProjectCenter.add(mntmPC2);
+
+		// Stratton Hall
+		mnStrattonHall = new JMenu("Stratton Hall");
+		mntmSH1 = new JMenuItem("Floor 1");
+		mntmSH1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(24).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(24).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(24).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(24));
+
+				double[] tempPan = panValues.get("SH1.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmSH2 = new JMenuItem("Floor 2");
+		mntmSH2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(25).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(25).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(25).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(25));
+
+				double[] tempPan = panValues.get("SH2.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmSH3 = new JMenuItem("Floor 3");
+		mntmSH3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(26).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(26).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(26).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(26));
+
+				double[] tempPan = panValues.get("SH3.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mntmSHB = new JMenuItem("Basement");
+		mntmSHB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){			
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(27).getMapImageName());
+
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(27).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(27).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(27));
+
+				double[] tempPan = panValues.get("SHB.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
+				}
+
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
+			}
+		});
+		mnStrattonHall.add(mntmSH1);
+		mnStrattonHall.add(mntmSH2);
+		mnStrattonHall.add(mntmSH3);
+		mnStrattonHall.add(mntmSHB);
+
+		mnLocations.add(mnAtwaterKent); // indices: 0, 1, 2, 3
+		mnLocations.add(mnBoyntonHall); // indices: 4, 5, 6, 7
+		mnLocations.add(mnCampusCenter);// indices: 8, 9, 10
+		mnLocations.add(mntmCCM); // index: 11
+		mnLocations.add(mnGordonLibrary); // indices: 11, 12, 13, 14, 15
+		mnLocations.add(mnHigginsHouse); // indices: 16, 17, 18
+		mnLocations.add(mnHigginsHouseGarage); //indices: 19, 20
+		mnLocations.add(mnProjectCenter); // indices: 21, 22
+		mnLocations.add(mnStrattonHall); // indices 23, 24, 25, 26
+
+		mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+	}
 
 	/**
 	 * Enable/Disable actions
@@ -1574,22 +1624,22 @@ public class GUIFront extends JFrame {
 				.play();
 		}};
 
-	private final Runnable panelDirectionsBackAction = new Runnable() {
-		@Override 
-		public void run() {
-			disableActions();
-			currentlyOpen = false;
+		private final Runnable panelDirectionsBackAction = new Runnable() {
+			@Override 
+			public void run() {
+				disableActions();
+				currentlyOpen = false;
 
-			slidePanel.createTransition()
-			.push(new SLKeyframe(mainConfig, 0.6f)
-					.setCallback(new SLKeyframe.Callback() {
-						@Override 
-						public void done() {
-							panelDirections.setAction(panelDirectionsAction);
-							enableActions();
-						}}))
-			.play();
-		}};
+				slidePanel.createTransition()
+				.push(new SLKeyframe(mainConfig, 0.6f)
+				.setCallback(new SLKeyframe.Callback() {
+					@Override 
+					public void done() {
+						panelDirections.setAction(panelDirectionsAction);
+						enableActions();
+					}}))
+					.play();
+			}};
 
 			/**
 			 * @author Andrew Petit
@@ -1752,7 +1802,7 @@ public class GUIFront extends JFrame {
 				}
 
 			}
-			
+
 			public static class TweenPanel extends JPanel {
 				ArrayList<MapNode> localNodes;
 				public ArrayList<MapNode> chosenNodes;
@@ -1769,7 +1819,7 @@ public class GUIFront extends JFrame {
 
 				double panX, panY;
 				double zoomRatio;
-				
+
 				String packageName;
 
 				/**
@@ -1779,9 +1829,9 @@ public class GUIFront extends JFrame {
 				public TweenPanel(ArrayList<MapNode> mapNodes, IProxyImage mapPath, String panelId, String packageName){
 					this.packageName = packageName;
 					System.out.println("PACKAGE NAME: " + packageName);
-					
+
 					setLayout(new BorderLayout());
-					
+
 					globalMap.setAllNodes(globalMap.getMapNodes());
 
 					this.localNodes = mapNodes;
@@ -1793,7 +1843,7 @@ public class GUIFront extends JFrame {
 
 					this.mapImage = mapPath;
 					this.panelID = panelID;
-					
+
 					zoomRatio = 1;
 
 					addMouseListener(panHandle);
@@ -1985,14 +2035,14 @@ public class GUIFront extends JFrame {
 						// Sets the color of the start and end nodes to be different for each new waypoint
 						graphics.setColor(Color.RED);
 						if(!(paths.isEmpty())){
-								if (paths.get(index).get(0) != null){
-									graphics.setColor(Color.RED);
-									graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-								}
-								if (paths.get(index).get(paths.get(index).size() - 1) != null){
-									graphics.setColor(Color.GREEN);
-									graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
-								}
+							if (paths.get(index).get(0) != null){
+								graphics.setColor(Color.RED);
+								graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+							}
+							if (paths.get(index).get(paths.get(index).size() - 1) != null){
+								graphics.setColor(Color.GREEN);
+								graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
+							}
 						}
 						if (globalMap.getStartNode() != null){
 							if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
@@ -2000,7 +2050,7 @@ public class GUIFront extends JFrame {
 								graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
 							}
 						}
-						
+
 						if(globalMap.getEndNode() != null){
 							if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
 								graphics.setColor(Color.GREEN);
