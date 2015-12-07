@@ -3,17 +3,17 @@ package main;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
+@SuppressWarnings("serial")
 public class MapNode implements Serializable{
-	
+
 	private double xPos;
 	private double yPos;
 	private double zPos;
-	
+
 	private double xFeet;
 	private double yFeet;
 	private double zFeet;
-	
+
 	private String nodeID;
 	private ArrayList<MapNode> neighbors;
 	private ArrayList<String> crossMapNeighbors;
@@ -24,7 +24,7 @@ public class MapNode implements Serializable{
 	private GlobalMap globalMap;
 	private LocalMap localMap;
 	private Attributes attributes;
-	
+
 	// default constructor
 	public MapNode(){
 		xPos = -1.0;
@@ -33,7 +33,7 @@ public class MapNode implements Serializable{
 		xFeet = -1.0;
 		yFeet = -1.0;
 		zFeet = -1.0;
-		
+
 		neighbors = new ArrayList<MapNode>();
 		crossMapNeighbors = new ArrayList<String>();
 		attributes = new Attributes();
@@ -42,7 +42,7 @@ public class MapNode implements Serializable{
 		hScore = -1;
 		cameFrom = null;
 	}
-	
+
 	// constructor
 	public MapNode(LocalMap localMap){
 		neighbors = new ArrayList<MapNode>();
@@ -54,16 +54,16 @@ public class MapNode implements Serializable{
 		cameFrom = null;
 		this.localMap = localMap;
 	}
+
 	public MapNode(double newX, double newY, LocalMap aLocalMap) {
 		xPos = newX;
 		yPos = newY;
 		zPos = 0.0;
-		
+
 		xFeet = xPos * aLocalMap.getMapScale();
 		yFeet = yPos * aLocalMap.getMapScale();
 		zFeet = aLocalMap.getZHeight();
 		neighbors = new ArrayList<MapNode>();
-		//localMap = this.localMap;
 		crossMapNeighbors = new ArrayList<String>();
 		attributes = new Attributes();
 		fScore = -1;
@@ -71,22 +71,23 @@ public class MapNode implements Serializable{
 		hScore = -1;
 		cameFrom = null;
 		attributes = new Attributes();
-		
+
 		this.localMap = aLocalMap;		
 	}
-	
+
 	public void runTransform(){
-		double xPrime, yPrime;
-		xPrime = this.getXFeet()*Math.cos(this.getLocalMap().getTransformAngle()) - this.getYFeet()*Math.sin(this.getLocalMap().getTransformAngle());
-		yPrime = this.getYFeet()*Math.cos(this.getLocalMap().getTransformAngle()) + this.getXFeet()*Math.sin(this.getLocalMap().getTransformAngle());
-		//translate the x and y coordinates of the local map to resemble its location in the global map 
+		double xPrime = this.getXFeet()*Math.cos(this.getLocalMap().getTransformAngle()) - this.getYFeet()*Math.sin(this.getLocalMap().getTransformAngle());
+		double yPrime = this.getYFeet()*Math.cos(this.getLocalMap().getTransformAngle()) + this.getXFeet()*Math.sin(this.getLocalMap().getTransformAngle());
+
+		// translate the x and y coordinates of the local map to resemble its location in the global map 
 		xPrime = xPrime + this.getLocalMap().getXOffset();
 		yPrime = yPrime + this.getLocalMap().getYOffset();
-		//set the new transformed coordinates
+
+		// set the new transformed coordinates
 		this.setXFeet(xPrime);
 		this.setYFeet(yPrime);
 	}
-	
+
 	public LocalMap getLocalMap() {
 		return localMap;
 	}
@@ -98,14 +99,15 @@ public class MapNode implements Serializable{
 	public void setCrossMapNeighbors(ArrayList<String> s){
 		this.crossMapNeighbors = s;
 	}
+
 	public ArrayList<String> getCrossMapNeighbors(){
 		return this.crossMapNeighbors;
 	}
-	
+
 	public void addNeighbor(MapNode node) {
 		neighbors.add(node);
 	}
-	
+
 	//in addition to removing from list of neighbors, also check if its
 	//a cross map neighbor and remove if so.
 	public void removeNeighbor(MapNode node) {
@@ -116,10 +118,10 @@ public class MapNode implements Serializable{
 			}
 		}
 	}
-	
+
 	public double aStarHeuristic(MapNode toNode) {
 		double dist = (double) Math.sqrt(Math.pow((xFeet - toNode.getXFeet()),2) + Math.pow(yFeet - toNode.getYFeet(),2)) + Math.abs(zFeet - toNode.getZFeet());
-		
+
 		return dist;
 	}
 
@@ -138,24 +140,26 @@ public class MapNode implements Serializable{
 	public double calculateAngle(MapNode nextNode) {
 		MapNode currentNode = this;
 		MapNode previousNode = currentNode.getCameFrom();
+
 		double prevX = previousNode.getXFeet();
 		double prevY = previousNode.getYFeet();
 		double currentX = currentNode.getXFeet();
 		double currentY = currentNode.getYFeet();
 		double nextX = nextNode.getXFeet();
 		double nextY = nextNode.getYFeet();
-		
-	    double angle1 = Math.atan2(prevY - currentY, prevX - currentX);
-	    double angle2 = Math.atan2(nextY - currentY, nextX - currentX);
-		
-	    double radAngle;
-		 radAngle = angle1 - angle2;
-		 
-		 double resultAngle = Math.toDegrees(radAngle);
-			if (resultAngle < 0){
-				resultAngle += 360;
-			}
-			return resultAngle;
+
+		double angle1 = Math.atan2(prevY - currentY, prevX - currentX);
+		double angle2 = Math.atan2(nextY - currentY, nextX - currentX);
+
+		double radAngle;
+		radAngle = angle1 - angle2;
+
+		double resultAngle = Math.toDegrees(radAngle);
+		if (resultAngle < 0)
+			resultAngle += 360;
+
+		return resultAngle;
+
 	}
 
 	/**
@@ -168,7 +172,7 @@ public class MapNode implements Serializable{
 		double distance = 0;
 		double distanceXLeg = (toNode.getXFeet() - this.getXFeet());
 		double distanceYLeg = (toNode.getYFeet() - this.getYFeet());
-	
+
 		distance = (Math.sqrt((distanceXLeg * distanceXLeg) + (distanceYLeg * distanceYLeg)));
 		distance = Math.round(distance);
 		return (int)distance;
@@ -177,7 +181,7 @@ public class MapNode implements Serializable{
 	public ArrayList<MapNode> getNeighbors() {
 		return neighbors;
 	}
-	
+
 	public double getXPos() {
 		return xPos;
 	}
@@ -188,8 +192,7 @@ public class MapNode implements Serializable{
 	public double getYPos() {
 		return yPos;
 	}
-	
-	
+
 	public void setYPos(double yPos) {
 		this.yPos = yPos;
 	}
@@ -210,11 +213,11 @@ public class MapNode implements Serializable{
 	public String getID(){
 		return nodeID;
 	}
-	
+
 	public MapNode getCameFrom() {
 		return cameFrom;
 	}
-	
+
 	public void setCameFrom(MapNode cameFrom){
 		this.cameFrom = cameFrom;		
 	}
@@ -225,7 +228,7 @@ public class MapNode implements Serializable{
 	public void setNodeID(String id){
 		this.nodeID = id;
 	}
-	
+
 	public void setGScore(double distance) {
 		gScore = distance;
 	}
@@ -245,7 +248,7 @@ public class MapNode implements Serializable{
 	public void calcFScore() {
 		fScore = gScore + hScore;		
 	}
-	
+
 	public void setXFeet(double xFeet){
 		this.xFeet = xFeet;
 	}
@@ -264,21 +267,21 @@ public class MapNode implements Serializable{
 	public double getZFeet(){
 		return zFeet;
 	}
-	
+
 	public Attributes getAttributes() {
 		return this.attributes;
 	}
-	
-	public void setDefaultAttributes(Attributes dfltA) {
-		Attributes a = this.getAttributes();
-		a.setStairs(dfltA.isStairs());
-		a.setPOI(dfltA.isPOI());
-		a.setBikeable(dfltA.isBikeable());
-		a.setHandicapped(dfltA.isHandicapped());
-		a.setOutside(dfltA.isOutside());
-		a.setType(dfltA.getType());
+
+	public void setDefaultAttributes(Attributes defaultAttributes) {
+		Attributes attributes = this.getAttributes();
+		attributes.setStairs(defaultAttributes.isStairs());
+		attributes.setPOI(defaultAttributes.isPOI());
+		attributes.setBikeable(defaultAttributes.isBikeable());
+		attributes.setHandicapped(defaultAttributes.isHandicapped());
+		attributes.setOutside(defaultAttributes.isOutside());
+		attributes.setType(defaultAttributes.getType());
 	}
-	
+
 	public void setAttributes(Attributes a) {
 		this.attributes = a;
 	}

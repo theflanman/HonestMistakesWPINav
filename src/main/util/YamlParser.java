@@ -11,6 +11,7 @@ import java.util.Set;
 import org.yaml.snakeyaml.Yaml;
 
 /** This class is capable of getting any # of arguments from any # of files.
+ * 
  * @author NathanGeorge
  */
 public class YamlParser {	

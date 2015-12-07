@@ -1,5 +1,9 @@
 package main.util;
 
+/** Holds all Constant values
+ * 
+ * @author NathanGeorge
+ */
 public class Constants {
 
 	// paths
@@ -12,4 +16,8 @@ public class Constants {
 	
 	// sounds
 	public static final String BUTTON_PATH = "src/data/sound/button.wav";
+	
+	// math
+	public static final int MAX_LIST_WIDTH = 180; // maximum width of the list in pixels, the size of panelDirections is 200px
+
 }

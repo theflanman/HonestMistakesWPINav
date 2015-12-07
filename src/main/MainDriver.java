@@ -11,6 +11,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
 import main.gui.GUIFront;
+import main.gui.frontutil.TweenPanel;
 import main.util.Constants;
 
 public class MainDriver {
@@ -29,7 +30,7 @@ public class MainDriver {
 		File[] localMapList = new File(Constants.IMAGES_PATH).listFiles(); // gets a list of localmap filenames
 		
 		// Setup tween stuff
-		Tween.registerAccessor(GUIFront.TweenPanel.class, new GUIFront.TweenPanel.Accessor());
+		Tween.registerAccessor(TweenPanel.class, new TweenPanel.Accessor());
 		SLAnimator.start();
 		
 		// Change the theme away from the standard swing one
@@ -44,7 +45,7 @@ public class MainDriver {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new GUIFront(localMapList.length, localMapList);
+					new GUIFront(localMapList);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -1,25 +1,26 @@
-package main.gui;
+
+package main.gui.frontutil;
+
 
 import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import main.EmailSender;
+import main.gui.GUIFront;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.JTextArea;
 
-/*
+/**
  * @author Nick Gigliotti
  * Pop-Up Window for Emailing Directions
  */
@@ -29,20 +30,15 @@ public class EmailGUI extends JDialog {
 	private JTextField txtTo;
 	private JTextField txtSubject;
 
-
 	EmailSender email = new EmailSender();
 	
 	String[] toEmail;
 	String subject = "Your trip at WPI"; 
 	String body = "Add a custom message here to be displayed above the directions";
-	String directions = GUIFront.allText; 
+	String directions = GUIFront.getAllText(); 
 	int toAreaIndex = 0;
 	int bodyAreaIndex = 0;
 
- 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		try {
 			EmailGUI dialog = new EmailGUI();

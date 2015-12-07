@@ -1,15 +1,9 @@
 package main;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/** TODO write this
- * 
- * @author Connor Flanigan
- *
- */
-
+@SuppressWarnings("serial")
 public class GlobalMap implements Serializable {
 
 	private ArrayList<MapNode> mapNodes, chosenNodes;
@@ -27,11 +21,7 @@ public class GlobalMap implements Serializable {
 		this.endNode = null;
 		this.middleNodes = new ArrayList<MapNode>();
 	}
-	
-	public void navigate(MapNode startNode, MapNode endNode) {
 		
-	}
-	
 	/**
 	 * Sets the list of LocalMaps to the given input
 	 * @param localMaps A list of LocalMaps that has been initialized from GUIFront
