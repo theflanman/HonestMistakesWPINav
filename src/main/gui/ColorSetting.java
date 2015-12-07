@@ -2,7 +2,11 @@ package main.gui;
 
 import java.awt.Color;
 import java.util.HashMap;
-
+/**
+ * 
+ * @author Rayan Alsoby
+ * a class to create a color setting object, which makes us to give information about different components of the gui 
+ */
 public class ColorSetting {
 	
 	private Color mainBackColor;
@@ -24,6 +28,7 @@ public class ColorSetting {
 		endNodeColor = new Color(95, 172, 213);
 		outlineColor = new Color(95, 172, 213);
 	}
+	
 	public ColorSetting(Color routeButtonColor, Color otherButtonsColor, Color mainBackColor, Color sideBarColor,
 			Color lineColor, Color startNodeColor, Color endNodeColor, Color outlineColor) {
 		this.routeButtonColor = routeButtonColor;

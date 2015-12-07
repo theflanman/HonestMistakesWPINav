@@ -34,8 +34,7 @@ import main.util.SaveUtil;
 public class GUIBack implements Serializable {
 	private LocalMap localMap;
 	private ArrayList<MapNode> path;
-	//private SplashLoad splashScreen;
-	public boolean splashFlag = false;
+	public boolean splashFlag = false;//becomes true when done loading maps
 
 	/**
 	 * Constructor: Initializes Backend fields to the default map to be loaded.

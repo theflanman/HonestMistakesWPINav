@@ -30,7 +30,7 @@ public class MainDriver {
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, IOException{		
 
 		File[] localMapList = new File(Constants.IMAGES_PATH).listFiles(); // gets a list of localmap filenames
-		//new MainSplash();
+		
 		String[] localMapNames = new File(Constants.IMAGES_PATH).list();
 		
 		// Setup tween stuff
@@ -48,6 +48,8 @@ public class MainDriver {
 	            break;
 	        }
 	    }
+	    
+	    //initiate the splash screen and create a delay before the program launches
 	    SplashLoad s=new SplashLoad();
         s.setVisible(true);
         Thread t=Thread.currentThread();
@@ -61,9 +63,10 @@ public class MainDriver {
 		// Launches the main application
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-
 				try {
 					new GUIFront(localMapList.length, localMapList);
+					
+					//close the splash screen when the loading is done
 					if(GUIFront.backend.splashFlag){
 			        s.dispose();
 					}

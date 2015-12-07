@@ -673,15 +673,13 @@ public class GUIFront extends JFrame {
 						.addComponent(btnNextMap))
 					.addGap(35))
 		);
-
 		contentPane.setLayout(gl_contentPane);
+		
+		//check if it is done loading then make the gui visible
 		if(backend.splashFlag){	 
 			setVisible(true);
 		}
-		
 		pack();
-	
-
 	}
 	
 
