@@ -111,13 +111,14 @@ public class GUIFront extends JFrame {
 	private JMenuItem mntmSH1, mntmSH2, mntmSH3, mntmSHB, mntmEmail, mntmExit;
 	
 	private SLPanel slidePanel;
+	private JPanel stepByStepUI;
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
 	private Color routeButtonColor, otherButtonsColor, backgroundColor, sideBarColor;
 
-	ColorSchemes allSchemes;
-	ColorSetting colors;
+	static ColorSchemes allSchemes;
+	static ColorSetting colors;
 
 	SplashLoad splashScreen;
 	
@@ -408,7 +409,7 @@ public class GUIFront extends JFrame {
 			}
 		});
 
-		JButton btnRoute = new JButton("Route");
+		btnRoute = new JButton("Route");
 		btnRoute.setBackground(routeButtonColor);
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -501,8 +502,8 @@ public class GUIFront extends JFrame {
 		/**
 		 * Adding new components onto the Step By Step slideout panel
 		 */
-		JPanel stepByStepUI = new JPanel();
-		stepByStepUI.setBackground(sideBarColor);;
+		stepByStepUI = new JPanel();
+		stepByStepUI.setBackground(sideBarColor);
 
 		lblClickHere = new JLabel("<<<");
 		lblClickHere.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -698,396 +699,411 @@ public class GUIFront extends JFrame {
 
 	}
 	
-			public void  setColoring(String scheme){
-				allSchemes.setColorScheme(scheme);
-				panelMap.setColors(scheme);
-				panelDirections.setColors(scheme);
-				routeButtonColor = colors.getRouteButtonColor();
-				
-			}
+
+	public void  setColoring(String scheme){
+		colors = allSchemes.setColorScheme(scheme);
+
+		routeButtonColor = colors.getRouteButtonColor(); // update components
+		otherButtonsColor = colors.getOtherButtonsColor();
+		backgroundColor = colors.getMainBackColor();
+		sideBarColor = colors.getSideBarColor();
+
+		btnRoute.setBackground(routeButtonColor);
+		slidePanel.setBackground(sideBarColor);
+		panelMap.setBackground(backgroundColor);
+		stepByStepUI.setBackground(sideBarColor);
+		lblStepByStep.setBackground(sideBarColor);
+		lblDistance.setBackground(sideBarColor);
+		panelDirections.setBackground(sideBarColor);
+		btnNextMap.setBackground(otherButtonsColor);
+		btnPreviousMap.setBackground(otherButtonsColor);
+		contentPane.setBackground(backgroundColor);
+		btnClear.setBackground(otherButtonsColor);
+
+
+	}
 	
 	// This goes in GUIFront
-			public void initializeMenuBar(){
-			// ---- File Menu ----
-			mnFile = new JMenu("File");
-			menuBar.add(mnFile);
-			
-			mntmEmail = new JMenuItem("Email"); // Code to open up the email sender
-			mntmEmail.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){
-					EmailGUI newEmail = new EmailGUI();
-					newEmail.setVisible(true); //Opens EmailGUI Pop-Up
-				}
-			});
-			mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
-			mntmExit.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){
-					System.exit(0); 
-				}
-			});
-			mnFile.add(mntmEmail);
-			mnFile.add(mntmExit);
-			
-			// ---- Options -----
-			mnOptions = new JMenu("Options");
-			menuBar.add(mnOptions);
-			
-			//Color Scheme
-			mnColorScheme = new JMenu("Color Scheme");
-			mnOptions.add(mnColorScheme);
+	public void initializeMenuBar(){
+		// ---- File Menu ----
+		mnFile = new JMenu("File");
+		menuBar.add(mnFile);
 
-			mntmDefaultCampus = new JMenuItem("Default Campus");
-			
-			mntmDefaultCampus.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-					setColoring("Default Campus");
-				}
-			});
-			
-			mntmGrayscale = new JMenuItem("Grayscale");
-			
-			mntmGrayscale.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-					setColoring("Greyscale");
+		mntmEmail = new JMenuItem("Email"); // Code to open up the email sender
+		mntmEmail.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				EmailGUI newEmail = new EmailGUI();
+				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
+			}
+		});
+		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
+		mntmExit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.exit(0); 
+			}
+		});
+		mnFile.add(mntmEmail);
+		mnFile.add(mntmExit);
 
-				}
-			});
-			
-			mntmWPI = new JMenuItem("WPI Theme");
-			mntmBlackAndYellow = new JMenuItem("Black & Yellow");
-			mntmSkyBlue = new JMenuItem("Sky Blue");
-			
-			mnColorScheme.add(mntmDefaultCampus);
-			mnColorScheme.add(mntmGrayscale);
+		// ---- Options -----
+		mnOptions = new JMenu("Options");
+		menuBar.add(mnOptions);
 
+		//Color Scheme
+		mnColorScheme = new JMenu("Color Scheme");
+		mnOptions.add(mnColorScheme);
+
+		mntmDefaultCampus = new JMenuItem("Default Campus");
+
+		mntmDefaultCampus.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				setColoring("Default Campus");
+			}
+		});
+
+		mntmGrayscale = new JMenuItem("Grayscale");
+
+		mntmGrayscale.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				setColoring("Greyscale"); // set the color scheme to grayscale
+			}
+		});
+
+		mntmWPI = new JMenuItem("WPI Theme");
+		mntmBlackAndYellow = new JMenuItem("Black & Yellow");
+		mntmSkyBlue = new JMenuItem("Sky Blue");
+
+		mnColorScheme.add(mntmDefaultCampus);
+		mnColorScheme.add(mntmGrayscale);
 
 
-			
-			
-			// ---- Options -----
-			mnLocations = new JMenu("Locations");
-			menuBar.add(mnLocations);
-			
-			// Atwater Kent
-			mnAtwaterKent = new JMenu("Atwater Kent");
-			mntmAK1 = new JMenuItem("Floor 1");
-			mntmAK1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(0).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(0));
-				}
-			});
-			mntmAK2 = new JMenuItem("Floor 2");
-			mntmAK2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(1).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(1).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(1));
-				}
-			});
-			mntmAK3 = new JMenuItem("Floor 3");
-			mntmAK3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(2).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(2).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(2));
-				}
-			});
-			mntmAKB = new JMenuItem("Basement");
-			mntmAKB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(3).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(3).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(3));
-				}
-			});
-			mnAtwaterKent.add(mntmAK1);
-			mnAtwaterKent.add(mntmAK2);
-			mnAtwaterKent.add(mntmAK3);
-			mnAtwaterKent.add(mntmAKB);
-			
-			// Boynton Hall
-			mnBoyntonHall = new JMenu("Boynton Hall");
-			mntmBoy1 = new JMenuItem("Floor 1");
-			mntmBoy1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(4).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(4).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(4));
-				}
-			});
-			mntmBoy2 = new JMenuItem("Floor 2");
-			mntmBoy2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(5).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(5).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(5));
-				}
-			});
-			mntmBoy3 = new JMenuItem("Floor 3");
-			mntmBoy3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(6).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(6).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(6));
-				}
-			});
-			mntmBoyB = new JMenuItem("Basement");
-			mntmBoyB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(7).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(7).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(7));
-				}
-			});
-			mnBoyntonHall.add(mntmBoy1);
-			mnBoyntonHall.add(mntmBoy2);
-			mnBoyntonHall.add(mntmBoy3);
-			mnBoyntonHall.add(mntmBoyB);
-			
-			// Campus Center
-			mnCampusCenter = new JMenu("Campus Center");
-			mntmCC1 = new JMenuItem("Floor 1");
-			mntmCC1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(8).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(8).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(8));
-				}
-			});
-			mntmCC2 = new JMenuItem("Floor 2");
-			mntmCC2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(9).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(9).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(9));
-				}
-			});
-			mntmCC3 = new JMenuItem("Floor 3");
-			mntmCC3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(10).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(10).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(10));
-				}
-			});
-			mnCampusCenter.add(mntmCC1);
-			mnCampusCenter.add(mntmCC2);
-			mnCampusCenter.add(mntmCC3);
-			
-			// Campus Map
-			mntmCCM = new JMenuItem("Campus Map");
-			mntmCCM.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(11).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(11).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(11));
-				}
-			});
-			
-			// Gordon Library
-			mnGordonLibrary = new JMenu("Gordon Library");
-			mntmGL1 = new JMenuItem("Floor 1");
-			mntmGL1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(12).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(12).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(12));
-				}
-			});
-			mntmGL2 = new JMenuItem("Floor 2");
-			mntmGL2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(13).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(13).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(13));
-				}
-			});
-			mntmGL3 = new JMenuItem("Floor 3");
-			mntmGL3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(14).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(14).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(14));
-				}
-			});
-			mntmGLB = new JMenuItem("Basement");
-			mntmGLB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(15).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(15).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(15));
-				}
-			});
-			mntmGLSB = new JMenuItem("Sub Basement");
-			mntmGLSB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(16).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(16).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(16));
-				}
-			});
-			mnGordonLibrary.add(mntmGL1);
-			mnGordonLibrary.add(mntmGL2);
-			mnGordonLibrary.add(mntmGL3);
-			mnGordonLibrary.add(mntmGLB);
-			mnGordonLibrary.add(mntmGLSB);
-			
-			// Higgins House
-			mnHigginsHouse = new JMenu("Higgins House");
-			mntmHH1 = new JMenuItem("Floor 1");
-			mntmHH1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(17).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(17).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(17));
-				}
-			});
-			mntmHH2 = new JMenuItem("Floor 2");
-			mntmHH2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(18).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(18).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(18));
-				}
-			});
-			mntmHH3 = new JMenuItem("Floor 3");
-			mntmHH3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(19).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(19).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(19));
-				}
-			});
-			mnHigginsHouse.add(mntmHH1);
-			mnHigginsHouse.add(mntmHH2);
-			mnHigginsHouse.add(mntmHH3);
-			
-			// Higgins House Garage
-			mnHigginsHouseGarage = new JMenu("Higgins House Garage");
-			mntmHHG1 = new JMenuItem("Floor 1");
-			mntmHHG1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(20).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(20).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(20));
-				}
-			});
-			mntmHHG2 = new JMenuItem("Floor 2");
-			mntmHHG2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(21).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(21).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(21));
-				}
-			});
-			mnHigginsHouseGarage.add(mntmHHG1);
-			mnHigginsHouseGarage.add(mntmHHG2);
-			
-			// Project Center
-			mnProjectCenter = new JMenu("Project Center");
-			mntmPC1 = new JMenuItem("Floor 1");
-			mntmPC1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(22).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(22).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(22));
-				}
-			});
-			mntmPC2 = new JMenuItem("Floor 2");
-			mntmPC2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(23).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(23).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(23));
-				}
-			});
-			mnProjectCenter.add(mntmPC1);
-			mnProjectCenter.add(mntmPC2);
-			
-			// Stratton Hall
-			mnStrattonHall = new JMenu("Stratton Hall");
-			mntmSH1 = new JMenuItem("Floor 1");
-			mntmSH1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(24).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(24).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(24));
-				}
-			});
-			mntmSH2 = new JMenuItem("Floor 2");
-			mntmSH2.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(25).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(25).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(25));
-				}
-			});
-			mntmSH3 = new JMenuItem("Floor 3");
-			mntmSH3.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-									panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(26).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(26).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(26));
-				}
-			});
-			mntmSHB = new JMenuItem("Basement");
-			mntmSHB.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(27).getMapImageName()).getImage());
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(27).getMapNodes());
-					backend.setLocalMap(globalMap.getLocalMaps().get(27));
-				}
-			});
-			mnStrattonHall.add(mntmSH1);
-			mnStrattonHall.add(mntmSH2);
-			mnStrattonHall.add(mntmSH3);
-			mnStrattonHall.add(mntmSHB);
-			
-			mnLocations.add(mnAtwaterKent); // indices: 0, 1, 2, 3
-			mnLocations.add(mnBoyntonHall); // indices: 4, 5, 6, 7
-			mnLocations.add(mnCampusCenter);// indices: 8, 9, 10
-			mnLocations.add(mntmCCM); // index: 11
-			mnLocations.add(mnGordonLibrary); // indices: 11, 12, 13, 14, 15
-			mnLocations.add(mnHigginsHouse); // indices: 16, 17, 18
-			mnLocations.add(mnHigginsHouseGarage); //indices: 19, 20
-			mnLocations.add(mnProjectCenter); // indices: 21, 22
-			mnLocations.add(mnStrattonHall); // indices 23, 24, 25, 26
-			
-			mnHelp = new JMenu("Help");
-			menuBar.add(mnHelp);
-		}
+
+
+
+		// ---- Options -----
+		mnLocations = new JMenu("Locations");
+		menuBar.add(mnLocations);
+
+		// Atwater Kent
+		mnAtwaterKent = new JMenu("Atwater Kent");
+		mntmAK1 = new JMenuItem("Floor 1");
+		mntmAK1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(0).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(0));
+			}
+		});
+		mntmAK2 = new JMenuItem("Floor 2");
+		mntmAK2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(1).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(1).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(1));
+			}
+		});
+		mntmAK3 = new JMenuItem("Floor 3");
+		mntmAK3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(2).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(2).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(2));
+			}
+		});
+		mntmAKB = new JMenuItem("Basement");
+		mntmAKB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(3).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(3).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(3));
+			}
+		});
+		mnAtwaterKent.add(mntmAK1);
+		mnAtwaterKent.add(mntmAK2);
+		mnAtwaterKent.add(mntmAK3);
+		mnAtwaterKent.add(mntmAKB);
+
+		// Boynton Hall
+		mnBoyntonHall = new JMenu("Boynton Hall");
+		mntmBoy1 = new JMenuItem("Floor 1");
+		mntmBoy1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(4).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(4).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(4));
+			}
+		});
+		mntmBoy2 = new JMenuItem("Floor 2");
+		mntmBoy2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(5).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(5).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(5));
+			}
+		});
+		mntmBoy3 = new JMenuItem("Floor 3");
+		mntmBoy3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(6).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(6).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(6));
+			}
+		});
+		mntmBoyB = new JMenuItem("Basement");
+		mntmBoyB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(7).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(7).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(7));
+			}
+		});
+		mnBoyntonHall.add(mntmBoy1);
+		mnBoyntonHall.add(mntmBoy2);
+		mnBoyntonHall.add(mntmBoy3);
+		mnBoyntonHall.add(mntmBoyB);
+
+		// Campus Center
+		mnCampusCenter = new JMenu("Campus Center");
+		mntmCC1 = new JMenuItem("Floor 1");
+		mntmCC1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(8).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(8).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(8));
+			}
+		});
+		mntmCC2 = new JMenuItem("Floor 2");
+		mntmCC2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(9).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(9).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(9));
+			}
+		});
+		mntmCC3 = new JMenuItem("Floor 3");
+		mntmCC3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(10).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(10).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(10));
+			}
+		});
+		mnCampusCenter.add(mntmCC1);
+		mnCampusCenter.add(mntmCC2);
+		mnCampusCenter.add(mntmCC3);
+
+		// Campus Map
+		mntmCCM = new JMenuItem("Campus Map");
+		mntmCCM.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(11).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(11).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(11));
+			}
+		});
+
+		// Gordon Library
+		mnGordonLibrary = new JMenu("Gordon Library");
+		mntmGL1 = new JMenuItem("Floor 1");
+		mntmGL1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(12).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(12).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(12));
+			}
+		});
+		mntmGL2 = new JMenuItem("Floor 2");
+		mntmGL2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(13).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(13).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(13));
+			}
+		});
+		mntmGL3 = new JMenuItem("Floor 3");
+		mntmGL3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(14).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(14).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(14));
+			}
+		});
+		mntmGLB = new JMenuItem("Basement");
+		mntmGLB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(15).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(15).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(15));
+			}
+		});
+		mntmGLSB = new JMenuItem("Sub Basement");
+		mntmGLSB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(16).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(16).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(16));
+			}
+		});
+		mnGordonLibrary.add(mntmGL1);
+		mnGordonLibrary.add(mntmGL2);
+		mnGordonLibrary.add(mntmGL3);
+		mnGordonLibrary.add(mntmGLB);
+		mnGordonLibrary.add(mntmGLSB);
+
+		// Higgins House
+		mnHigginsHouse = new JMenu("Higgins House");
+		mntmHH1 = new JMenuItem("Floor 1");
+		mntmHH1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(17).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(17).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(17));
+			}
+		});
+		mntmHH2 = new JMenuItem("Floor 2");
+		mntmHH2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(18).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(18).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(18));
+			}
+		});
+		mntmHH3 = new JMenuItem("Floor 3");
+		mntmHH3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(19).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(19).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(19));
+			}
+		});
+		mnHigginsHouse.add(mntmHH1);
+		mnHigginsHouse.add(mntmHH2);
+		mnHigginsHouse.add(mntmHH3);
+
+		// Higgins House Garage
+		mnHigginsHouseGarage = new JMenu("Higgins House Garage");
+		mntmHHG1 = new JMenuItem("Floor 1");
+		mntmHHG1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(20).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(20).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(20));
+			}
+		});
+		mntmHHG2 = new JMenuItem("Floor 2");
+		mntmHHG2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(21).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(21).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(21));
+			}
+		});
+		mnHigginsHouseGarage.add(mntmHHG1);
+		mnHigginsHouseGarage.add(mntmHHG2);
+
+		// Project Center
+		mnProjectCenter = new JMenu("Project Center");
+		mntmPC1 = new JMenuItem("Floor 1");
+		mntmPC1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(22).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(22).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(22));
+			}
+		});
+		mntmPC2 = new JMenuItem("Floor 2");
+		mntmPC2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(23).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(23).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(23));
+			}
+		});
+		mnProjectCenter.add(mntmPC1);
+		mnProjectCenter.add(mntmPC2);
+
+		// Stratton Hall
+		mnStrattonHall = new JMenu("Stratton Hall");
+		mntmSH1 = new JMenuItem("Floor 1");
+		mntmSH1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(24).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(24).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(24));
+			}
+		});
+		mntmSH2 = new JMenuItem("Floor 2");
+		mntmSH2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(25).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(25).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(25));
+			}
+		});
+		mntmSH3 = new JMenuItem("Floor 3");
+		mntmSH3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(26).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(26).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(26));
+			}
+		});
+		mntmSHB = new JMenuItem("Basement");
+		mntmSHB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				panelMap.setMapImage(new ImageIcon(Constants.IMAGES_PATH + "/" + globalMap.getLocalMaps().get(27).getMapImageName()).getImage());
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(27).getMapNodes());
+				backend.setLocalMap(globalMap.getLocalMaps().get(27));
+			}
+		});
+		mnStrattonHall.add(mntmSH1);
+		mnStrattonHall.add(mntmSH2);
+		mnStrattonHall.add(mntmSH3);
+		mnStrattonHall.add(mntmSHB);
+
+		mnLocations.add(mnAtwaterKent); // indices: 0, 1, 2, 3
+		mnLocations.add(mnBoyntonHall); // indices: 4, 5, 6, 7
+		mnLocations.add(mnCampusCenter);// indices: 8, 9, 10
+		mnLocations.add(mntmCCM); // index: 11
+		mnLocations.add(mnGordonLibrary); // indices: 11, 12, 13, 14, 15
+		mnLocations.add(mnHigginsHouse); // indices: 16, 17, 18
+		mnLocations.add(mnHigginsHouseGarage); //indices: 19, 20
+		mnLocations.add(mnProjectCenter); // indices: 21, 22
+		mnLocations.add(mnStrattonHall); // indices 23, 24, 25, 26
+
+		mnHelp = new JMenu("Help");
+		menuBar.add(mnHelp);
+	}
 
 	/**
 	 * Enable/Disable actions
@@ -1330,8 +1346,8 @@ public class GUIFront extends JFrame {
 
 
 			public static class TweenPanel extends JPanel {
-				ColorSchemes allSchemes = new ColorSchemes();  
-				ColorSetting colors = allSchemes.setColorScheme("Default Campus");
+				//ColorSchemes allSchemes = new ColorSchemes();  
+				//ColorSetting colors = allSchemes.setColorScheme("Default Campus");
 
 						
 				ArrayList<MapNode> localNodes;

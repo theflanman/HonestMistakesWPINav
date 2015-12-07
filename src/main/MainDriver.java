@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +35,10 @@ public class MainDriver {
 		// Setup tween stuff
 		Tween.registerAccessor(GUIFront.TweenPanel.class, new GUIFront.TweenPanel.Accessor());
 		SLAnimator.start();
+		
+		//UIManager.put("nimbusBase", new Color(95, 172, 213));
+		//UIManager.put("nimbusBlueGrey", new Color(184, 217, 144));
+		//UIManager.put("control", new Color(96, 164, 79));
 		
 		// Change the theme away from the standard swing one
 	    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
