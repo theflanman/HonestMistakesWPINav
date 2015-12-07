@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class GlobalMap implements Serializable {
 
-	private ArrayList<MapNode> mapNodes, chosenNodes;
+	private ArrayList<MapNode> mapNodes, chosenNodes, allNodes;
 	private ArrayList<LocalMap> localMaps;
 	private ArrayList<MapNode> path;
 	private MapNode startNode, endNode;
@@ -82,5 +82,12 @@ public class GlobalMap implements Serializable {
 		this.middleNodes.add(node);
 	}
 	
+	public ArrayList<MapNode> getAllNodes() {
+		return allNodes;
+	}
+
+	public void setAllNodes(ArrayList<MapNode> allNodes) {
+		this.allNodes = allNodes;
+	}
 	
 }

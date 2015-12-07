@@ -13,7 +13,7 @@ import main.LocalMap;
 import main.Types;
 import main.MapNode;
 import main.util.Constants;
-import main.util.SaveUtil;
+import main.util.GeneralUtil;
 
 import java.io.File;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -68,7 +68,7 @@ public class DevGUIBack implements Serializable  {
 	public void saveMap() {
 		String fileName = this.localMap.getMapImageName();
 				
-		fileName = SaveUtil.removeExtension(fileName);
+		fileName = GeneralUtil.removeExtension(fileName);
 		//this.localMap.setMapImageName(fileName);
 		fileName = fileName.concat(".localmap");
 		
@@ -94,7 +94,7 @@ public class DevGUIBack implements Serializable  {
 		String fileName = this.localMap.getMapImageName();
 		System.out.println(this.localMap.getMapScale());
 		String mapImageName = fileName;
-		fileName = SaveUtil.removeExtension(fileName);
+		fileName = GeneralUtil.removeExtension(fileName);
 		String mapNameNoExtension = fileName;
 		String mapAppend = fileName + "_";
 		fileName = fileName.concat(".localmap");
@@ -339,8 +339,8 @@ public class DevGUIBack implements Serializable  {
 			System.out.println(part);
 		}
 		String mapAppend = fileParts[fileParts.length-1];
-		String mapNameNoExtension = SaveUtil.removeExtension(mapAppend);
-		mapAppend = SaveUtil.removeExtension(mapAppend) + "_";
+		String mapNameNoExtension = GeneralUtil.removeExtension(mapAppend);
+		mapAppend = GeneralUtil.removeExtension(mapAppend) + "_";
 		ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
 		ArrayList<ArrayList<String>> neighborNodes = new ArrayList<ArrayList<String>>();
 		System.out.println(mapAppend);
