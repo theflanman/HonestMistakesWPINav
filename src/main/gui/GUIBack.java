@@ -245,20 +245,18 @@ public class GUIBack implements Serializable {
 	 * @return String - this is necessary to allow MainGui to push the distance to a label
 	 */
 
-	public int getDistance(ArrayList<ArrayList<MapNode>> mapNodes, boolean wayPoint) {
-		//StepByStep getDistance = new StepByStep(mapNodes, wayPoint);
-		//int distance = getDistance.calculateTotalDistance();
-		int distance = 0;
+	public int getDistance(ArrayList<MapNode> mapNodes) {
+		StepByStep getDistance = new StepByStep(mapNodes);
+		int distance = getDistance.calculateTotalDistance();
 		return distance;
 	}
 	/**
 	 * @return ArrayList<String> - this is necessary to allow GUIFront to convert the strings in the array into rows of the column
 	 */
 	//honestly think we should role with the commented-out code, and get rid of generateStepByStep from Global -- Need someone's opinion though
-	public ArrayList<String> displayStepByStep(ArrayList<ArrayList<MapNode>> mapNodes, boolean wayPoint) {
-		//StepByStep directions = new StepByStep(mapNodes, wayPoint);
-		//ArrayList<String> print = directions.printDirection();
-		ArrayList<String> print = new ArrayList<String>();
+	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes) {
+		StepByStep directions = new StepByStep(mapNodes);
+		ArrayList<String> print = directions.printDirection();
 		return print;
 	}
 
