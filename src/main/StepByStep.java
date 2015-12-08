@@ -8,10 +8,11 @@ import java.util.ArrayList;
  */
 public class StepByStep {
 	private ArrayList<MapNode> pathNodes;
-	private boolean isLastWaypoint; //boolean representing if pathNodes is not the waypoint in the path
+	private boolean isLastWaypoint; //boolean representing if pathNodes is not the last waypoint in the path
 
-	public StepByStep(ArrayList<MapNode> pathNodes) {
+	public StepByStep(ArrayList<MapNode> pathNodes, boolean isLastWaypoint) {
 		this.pathNodes = pathNodes;
+		this.isLastWaypoint = isLastWaypoint;
 	}
 
 	/*

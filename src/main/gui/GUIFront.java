@@ -436,7 +436,6 @@ public class GUIFront extends JFrame {
 							}
 						}
 					}
-					System.out.println(paths.isEmpty());
 					if (paths.isEmpty()){
 						if (!(getNodesOnSameMap.isEmpty())){
 							paths.add(getNodesOnSameMap);
@@ -450,6 +449,7 @@ public class GUIFront extends JFrame {
 							paths.add(getNodesOnSameMap);
 						}
 					}
+
 					//reinitialize getNodesOnSameMap for the next time this fun method is run...
 					getNodesOnSameMap = new ArrayList<MapNode>();
 					
@@ -500,16 +500,18 @@ public class GUIFront extends JFrame {
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
-					for (ArrayList<MapNode>wayPoints : paths){
-						//String all = "";
-						//distance += backend.getDistance(wayPoints);
-						//for (String string : backend.displayStepByStep(wayPoints)) {
-							//listModel.addElement(string); // add it to the list model
-						//}
-						//allText += all + "\n";
+					if (globalMap.getChosenNodes().size() == 2){
+						for (ArrayList<MapNode>wayPoints : paths){
+							String all = "";
+							distance += backend.getDistance(wayPoints, false);
+							for (String string : backend.displayStepByStep(wayPoints, false)) {
+								listModel.addElement(string); // add it to the list model
+							}
+						allText += all + "\n";
+						}
 					}
 
-					//lblDistance.setText("Distance in feet:" + distance);
+					lblDistance.setText("Distance in feet:" + distance);
 					//this sets the textarea with the step by step directions
 					//textArea1.setText(allText);
 					//btnRoute.setEnabled(false);
