@@ -407,32 +407,77 @@ public class GUIFront extends JFrame {
 					speaker.play();
 					
 					
-					//refer to Andrew Petit if you get confused with the next 30 or so lines
+					//refer to Andrew Petit if you get confused with the next 250 or so lines
 					//get me routes for different maps -- waypoint functionallity is added here 
 					ArrayList<MapNode> getNodesOnSameMap = new ArrayList<MapNode>(); //will add all nodes from the same map to this 
+					ArrayList<ArrayList<String>> stepByStep = new ArrayList<ArrayList<String>>();
+					ArrayList<String> directions = new ArrayList<String>();
+					boolean hasWayPoint = true;
 					for (int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){ //for all nodes in chosen nodes (start, end, and waypoints included) 
 						//if the nodes are on the same map add all those nodes into an arraylist together
 						if (globalMap.getChosenNodes().get(i).getLocalMap() == globalMap.getChosenNodes().get(i + 1).getLocalMap()){
 							ArrayList<MapNode> nodesOnSameMap = backend.runAStar(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
+							if (globalMap.getChosenNodes().size() == i + 2){
+								directions = backend.displayStepByStep(nodesOnSameMap, false); //no more waypoints 
+							} else {
+								directions = backend.displayStepByStep(nodesOnSameMap, true); //more waypoints
+							}
+							stepByStep.add(directions); //essentially makes a list of all step by step directions to be added to the jlist
+							directions = new ArrayList<String>(); //reset directions
 							for (MapNode node : nodesOnSameMap){
 								getNodesOnSameMap.add(node);
 							}
 						} else { //if the next node in chosen nodes is not on the same local map as the previous node in chosen nodes
-							if (!(getNodesOnSameMap.isEmpty())){ //check if getNodesOnSameMap is not empty and if it is not add the nodes from the first array gathered from running getmeroutes as the nodes in this array should be on the same map 
+							if (!(getNodesOnSameMap.isEmpty())){ //check if getNodesOnSameMap is not empty and if it is not add the nodes from the first array gathered from running getmeroutes as the nodes in this array should be on the same map
+								ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
 								ArrayList<ArrayList<MapNode>> getNodesOnDifferentMap = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
+								//this is is needed to make waypoints compatible with step by step - basically just add all nodes gathered from getmeroutes and send that to step by step
+								for (ArrayList<MapNode> mapnodes : getNodesOnDifferentMap){
+									for (int k = 0; k < mapnodes.size() - 1; k++){
+										if (globalMap.getChosenNodes().size() == i + 2){
+											wayPoints.add(mapnodes.get(k));
+											hasWayPoint = false; // no more waypoints
+										} else {
+											wayPoints.add(mapnodes.get(k));
+											hasWayPoint = true; // more waypoints
+										}
+									}
+								}
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								stepByStep.add(directions);
+								
 								for (MapNode mapnode : getNodesOnDifferentMap.get(0)){ 
 									getNodesOnSameMap.add(mapnode);
 								}
+								//need to make temporary getNodesOnSameMap add all those nodes to all the nodes that are in getNodesOnDifferentMap
 								paths.add(getNodesOnSameMap);
 								for (int k = 1; k < getNodesOnDifferentMap.size(); k++){ //now for the other lists that have been added into OnDifferentMap -- we need to add those ArrayLists into a new spot in paths as they should NOT be on the same local map
 									paths.add(getNodesOnDifferentMap.get(k));
 								}
+								directions = new ArrayList<String>();
+								wayPoints = new ArrayList<MapNode>();
 								getNodesOnSameMap = new ArrayList<MapNode>(); //reinitialize getNodesOnSameMap to allow the user to place those nodes in the same index of path for the next time a node is placed on the same map 
 							} else { //if getNodesOnSameMap was not empty we should just go ahead an the ArrayList<ArrayList<MapNode>> that getMeRoutes returns to the next index in paths as these nodes should not have the same local map 
 								ArrayList<ArrayList<MapNode>> getNodesOnDifferentMap = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
+								ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
+								for (ArrayList<MapNode> mapnodes : getNodesOnDifferentMap){ //same idea as before go through the list of all nodes from the arraylist of arraylist of mapnodes returned by getmerroutes send that arraylist to step by step
+									for (int k = 0; k < mapnodes.size() - 1; k++){
+										if (globalMap.getChosenNodes().size() == i + 2){
+											wayPoints.add(mapnodes.get(k));
+											hasWayPoint = false; //no more waypoints
+										} else {
+											wayPoints.add(mapnodes.get(k));
+											hasWayPoint = true; //more waypoints
+										}
+									}
+								}
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								stepByStep.add(directions);
 								for (ArrayList<MapNode> mapnodes : getNodesOnDifferentMap){
 									paths.add(mapnodes);
 								}
+								directions = new ArrayList<String>();
+								wayPoints = new ArrayList<MapNode>();
 							}
 						}
 					}
@@ -500,21 +545,14 @@ public class GUIFront extends JFrame {
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
-					if (globalMap.getChosenNodes().size() == 2){
-						for (ArrayList<MapNode>wayPoints : paths){
-							String all = "";
-							distance += backend.getDistance(wayPoints, false);
-							for (String string : backend.displayStepByStep(wayPoints, false)) {
-								listModel.addElement(string); // add it to the list model
-							}
-						allText += all + "\n";
+					for (ArrayList<String> strings: stepByStep){
+						for (String string : strings) {
+							listModel.addElement(string); // add it to the list model
 						}
 					}
 
 					lblDistance.setText("Distance in feet:" + distance);
 					//this sets the textarea with the step by step directions
-					//textArea1.setText(allText);
-					//btnRoute.setEnabled(false);
 					btnClear.setEnabled(true);
 				}
 			}
