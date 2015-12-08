@@ -10,7 +10,7 @@ import main.StepByStep;
 
 public class PrintDirectionsTest extends TestCase {
 	
-	LocalMap localMap1 = new LocalMap("sample.jpg", null);
+	LocalMap localMap1 = new LocalMap("sample.png", null);
 	
 	public void testCleanUp1() {
 		MapNode node1 = new MapNode(3, 1, localMap1);

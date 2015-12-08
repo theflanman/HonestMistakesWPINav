@@ -48,18 +48,18 @@ public class LocalMap implements Serializable{
 			System.out.println("Loading information from yaml file...");
 			System.out.println("Working with image: " + this.mapImageName);
 			
-			String mapImageJPG = GeneralUtil.removeExtension(this.mapImageName);
-			String[] s = mapImageJPG.split("/");
-			mapImageJPG = s[s.length-1];
-			mapImageJPG = mapImageJPG + ".jpg";
+			String mapImagepng = GeneralUtil.removeExtension(this.mapImageName);
+			String[] s = mapImagepng.split("/");
+			mapImagepng = s[s.length-1];
+			mapImagepng = mapImagepng + ".png";
 			System.out.println("Getting image name");
 
-			System.out.println(mapImageJPG);
-			this.mapScale = argList.get("scale-"+ mapImageJPG); // gets the zoomRatio based on the associated mapImageName
-			this.transformAngle = argList.get("angle-"+ mapImageJPG);//gets the transformation angle based on the associated mapImageName
-			this.xOffset = argList.get("xOffset-"+ mapImageJPG);//gets the x coordinate offset based on the associated mapImageName
-			this.yOffset = argList.get("yOffset-"+ mapImageJPG);//gets the y coordinate offset based on the associated mapImageName
-			this.zHeight = argList.get("zHeight-"+ mapImageJPG);//gets the height based on what floor the current local map is on
+			System.out.println(mapImagepng);
+			this.mapScale = argList.get("scale-"+ mapImagepng); // gets the zoomRatio based on the associated mapImageName
+			this.transformAngle = argList.get("angle-"+ mapImagepng);//gets the transformation angle based on the associated mapImageName
+			this.xOffset = argList.get("xOffset-"+ mapImagepng);//gets the x coordinate offset based on the associated mapImageName
+			this.yOffset = argList.get("yOffset-"+ mapImagepng);//gets the y coordinate offset based on the associated mapImageName
+			this.zHeight = argList.get("zHeight-"+ mapImagepng);//gets the height based on what floor the current local map is on
 		}
 
 	}

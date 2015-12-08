@@ -879,7 +879,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(0));
 
-				double[] tempPan = panValues.get("AK1.jpg");
+				double[] tempPan = panValues.get("AK1.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -906,7 +906,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(1));
 
-				double[] tempPan = panValues.get("AK2.jpg");
+				double[] tempPan = panValues.get("AK2.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -932,7 +932,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(2));
 
-				double[] tempPan = panValues.get("AK3.jpg");
+				double[] tempPan = panValues.get("AK3.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -958,7 +958,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(3));
 
-				double[] tempPan = panValues.get("AKB.jpg");
+				double[] tempPan = panValues.get("AKB.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -991,7 +991,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(4));
 
-				double[] tempPan = panValues.get("Boy1.jpg");
+				double[] tempPan = panValues.get("Boy1.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1017,7 +1017,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(5));
 
-				double[] tempPan = panValues.get("Boy2.jpg");
+				double[] tempPan = panValues.get("Boy2.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1044,7 +1044,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(6));
 
-				double[] tempPan = panValues.get("Boy3.jpg");
+				double[] tempPan = panValues.get("Boy3.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1071,7 +1071,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(7));
 
-				double[] tempPan = panValues.get("BoyB.jpg");
+				double[] tempPan = panValues.get("BoyB.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1105,7 +1105,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(8));
 
-				double[] tempPan = panValues.get("CC1.jpg");
+				double[] tempPan = panValues.get("CC1.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1132,7 +1132,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(9));
 
-				double[] tempPan = panValues.get("CC2.jpg");
+				double[] tempPan = panValues.get("CC2.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1159,7 +1159,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(10));
 
-				double[] tempPan = panValues.get("CC3.jpg");
+				double[] tempPan = panValues.get("CC3.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1191,7 +1191,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(11));
 
-				double[] tempPan = panValues.get("CCM.jpg");
+				double[] tempPan = panValues.get("CCM.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1221,7 +1221,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(12));
 
-				double[] tempPan = panValues.get("GL1.jpg");
+				double[] tempPan = panValues.get("GL1.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1248,7 +1248,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(13));
 
-				double[] tempPan = panValues.get("GL2.jpg");
+				double[] tempPan = panValues.get("GL2.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1275,7 +1275,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(14));
 
-				double[] tempPan = panValues.get("GL3.jpg");
+				double[] tempPan = panValues.get("GL3.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1302,7 +1302,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(15));
 
-				double[] tempPan = panValues.get("GLB.jpg");
+				double[] tempPan = panValues.get("GLB.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1329,7 +1329,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(16));
 
-				double[] tempPan = panValues.get("GLSB.jpg");
+				double[] tempPan = panValues.get("GLSB.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1364,7 +1364,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(17));
 
-				double[] tempPan = panValues.get("HH1.jpg");
+				double[] tempPan = panValues.get("HH1.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1391,7 +1391,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(18));
 
-				double[] tempPan = panValues.get("HH2.jpg");
+				double[] tempPan = panValues.get("HH2.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1418,7 +1418,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(19));
 
-				double[] tempPan = panValues.get("HH3.jpg");
+				double[] tempPan = panValues.get("HH3.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1451,7 +1451,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(20));
 
-				double[] tempPan = panValues.get("HHG1.jpg");
+				double[] tempPan = panValues.get("HHG1.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1478,7 +1478,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(21));
 
-				double[] tempPan = panValues.get("HHG2.jpg");
+				double[] tempPan = panValues.get("HHG2.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1510,7 +1510,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(22));
 
-				double[] tempPan = panValues.get("PC1.jpg");
+				double[] tempPan = panValues.get("PC1.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1537,7 +1537,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(23));
 
-				double[] tempPan = panValues.get("PC2.jpg");
+				double[] tempPan = panValues.get("PC2.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1569,7 +1569,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(24));
 
-				double[] tempPan = panValues.get("SH1.jpg");
+				double[] tempPan = panValues.get("SH1.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1596,7 +1596,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(25));
 
-				double[] tempPan = panValues.get("SH2.jpg");
+				double[] tempPan = panValues.get("SH2.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1623,7 +1623,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(26));
 
-				double[] tempPan = panValues.get("SH3.jpg");
+				double[] tempPan = panValues.get("SH3.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1650,7 +1650,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(27));
 
-				double[] tempPan = panValues.get("SHB.jpg");
+				double[] tempPan = panValues.get("SHB.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
