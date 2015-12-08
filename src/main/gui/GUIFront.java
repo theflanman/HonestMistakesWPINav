@@ -122,7 +122,7 @@ public class GUIFront extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
 	private JMenu mnColorScheme;
-	private JMenuItem mntmDefaultCampus, mntmGrayscale, mntmWPI, mntmSkyBlue;
+	private JMenuItem mntmDefaultCampus, mntmGrayscale, mntmWPI, mntmFlowerPower, mntmAllBlue;
 	private JMenu mnAtwaterKent, mnBoyntonHall, mnCampusCenter, mnGordonLibrary, mnHigginsHouse, mnHigginsHouseGarage, mnProjectCenter, mnStrattonHall;
 	private JMenuItem mntmAK1, mntmAK2, mntmAK3, mntmAKB, mntmBoy1, mntmBoy2, mntmBoy3, mntmBoyB, mntmCC1, mntmCC2, mntmCC3, mntmCCM;
 	private JMenuItem mntmGL1, mntmGL2, mntmGL3, mntmGLB, mntmGLSB, mntmHH1, mntmHH2, mntmHH3, mntmHHG1, mntmHHG2, mntmPC1, mntmPC2;
@@ -1093,16 +1093,31 @@ public class GUIFront extends JFrame {
 				setColoring("WPI Default"); // set the color scheme to grayscale
 			}
 		});
+		
+		mntmFlowerPower = new JMenuItem("Flower Power");
+		mntmFlowerPower.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				setColoring("Flower Power");
+			}
+		});
 
+				
+		mntmAllBlue = new JMenuItem("All Blue");
+		mntmAllBlue.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				setColoring("All Blue");
+			}
+		});
 
-		mntmSkyBlue = new JMenuItem("Sky Blue");
 
 
 		mnColorScheme.add(mntmDefaultCampus);
 		mnColorScheme.add(mntmGrayscale);
 		mnColorScheme.add(mntmWPI);
+		mnColorScheme.add(mntmFlowerPower);
+		mnColorScheme.add(mntmAllBlue);
 
-		// ---- Options -----
+		// ---- Locations -----
 		mnLocations = new JMenu("Locations");
 		menuBar.add(mnLocations);
 
@@ -2100,6 +2115,7 @@ public class GUIFront extends JFrame {
 					this.packageName = packageName;
 					
 					setLayout(new BorderLayout());
+					
 					
 					globalMap.setAllNodes(globalMap.getMapNodes());
 

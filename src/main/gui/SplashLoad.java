@@ -31,7 +31,7 @@ public class SplashLoad extends JFrame{
 		super("Splash");
 		this.setBackground(Color.WHITE);
 		this.setForeground(Color.white);
-		setSize(900, 620);
+		setSize(450, 320);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
@@ -40,7 +40,7 @@ public class SplashLoad extends JFrame{
 		img = new ImageIcon(("src/data/splash/splashscreen.png"));
 		imglabel = new JLabel(img);
 		add(imglabel);
-		imglabel.setBounds(0, 0, 900, 600);
+		imglabel.setBounds(0, 0, 450, 300);
 		imglabel.setBackground(Color.white);
 		setLayout(null);
 		
@@ -51,8 +51,8 @@ public class SplashLoad extends JFrame{
 		pbar.setStringPainted(true);
 		pbar.setForeground(ColorSchemes.defaultBlue);
 		add(pbar);
-		pbar.setPreferredSize(new Dimension(500, 30));
-		pbar.setBounds(0, 600, 900, 20);
+		pbar.setPreferredSize(new Dimension(450, 20));
+		pbar.setBounds(0, 300, 450, 20);
 
 		//fake loading progress bar 1 to 100
 		Thread t = new Thread() {
