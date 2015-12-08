@@ -12,8 +12,8 @@ public class PanelSave {
 		BufferedImage img = new BufferedImage(panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_RGB);
 		panel.paint(img.getGraphics());
 		try {
-			ImageIO.write(img, "png", new File("src/data/pathimages/".concat(name.concat(".png"))));
-			System.out.println("panel saved as image");
+			ImageIO.write(img, "png", new File("src/data/pathimages/".concat(name.replace("jpg", "png"))));
+			System.out.println("panel saved as image:".concat(name));
 
 		} catch (Exception e) {
 			System.out.println("panel not saved" + e.getMessage());

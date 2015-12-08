@@ -136,8 +136,7 @@ public class GUIFront extends JFrame {
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
 	
-	// Array list of the Local Maps in the path
-	private ArrayList<LocalMap> pathLocalMaps;
+
 
 	/**
 	 * Create the frame.
@@ -737,6 +736,28 @@ public class GUIFront extends JFrame {
 		streetViewSLPanel.initialize(streetViewConfig);
 		System.out.println("end changing street view");
 	}
+	
+	/*
+	 * @author Nick Gigliotti
+	 * 
+	 * @param a list of MapNodes which represents all the nodes in a path across multiple local maps
+	 * 
+	 * @return a list of LocalMaps that are in the path of nodes give
+	 */
+	public ArrayList<LocalMap> createListOfMaps(ArrayList<MapNode> pathNodes) {
+		// Initializes list
+		ArrayList<LocalMap> pathLocalMaps = new ArrayList<LocalMap>();
+		
+		// Iterates through the list of nodes in the inputed ArrayList
+		for (MapNode node: pathNodes) {
+			
+			// If the return list doesn't contain the current nodes LocalMap, it adds it to the return list
+			if (! pathLocalMaps.contains(node.getLocalMap())){
+				pathLocalMaps.add(node.getLocalMap());
+			}
+		}
+		return pathLocalMaps;
+	}
 
 	// This goes in GUIFront
 	public void initializeMenuBar(){
@@ -748,32 +769,34 @@ public class GUIFront extends JFrame {
 		mntmEmail.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				EmailGUI newEmail = new EmailGUI();
-				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
-				//TODO Write ScreenShots Code here for each map in the path
+				
+				System.out.println("Starts Saving Path Images");
+				
 				PanelSave savePanel = new PanelSave();
 				
-				// Creates a list of localMaps used in the path
-				for (MapNode node: globalMap.getChosenNodes()) {
-					for (LocalMap local: pathLocalMaps) {
-						if (! (local == node.getLocalMap())) {
-							if (local == pathLocalMaps.get(pathLocalMaps.size() - 1)) {
-								pathLocalMaps.add(local);
-							}
-						}
-						else {
-							break;
-						}
+				//TODO Find a variable that includes the list of nodes in a path
+				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(thisRoute);
+				
+				System.out.println(thisRoute.size());
+
+				// Goes through each of the maps in the path and captures and saves an image
+				for (LocalMap local: pathLocalMaps) {
+					savePanel.saveImage(panelMap, local.getMapImageName());
+					if (! (local == pathLocalMaps.get(pathLocalMaps.size() - 1))) {
+						index ++;
+					}
+					else {
+						index = 0;
 					}
 				}
+				System.out.println("Finished Saving Path Images");
 				
-				for (LocalMap local: pathLocalMaps) {
-					
-					savePanel.saveImage(panelMap, "test");
-				}
-				
+				// Email Pop-Up
+				EmailGUI newEmail = new EmailGUI();
+				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
 			}
 		});
+		
 		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
 		mntmExit.addActionListener(new ActionListener(){
 			@Override
