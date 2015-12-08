@@ -91,6 +91,7 @@ public class GUIFront extends JFrame {
 	public static ArrayList<MapNode> allNodes;
 	public static int index = 0;
 	public static int index2 = 0;
+	public static int index3 = 0;
 	public static ArrayList<MapNode> thisRoute = new ArrayList<MapNode>();
 	public static HashMap<String, double[]> panValues = new HashMap<String, double[]>();
 	public static double[] panNums = {0.0, 0.0};
@@ -539,6 +540,7 @@ public class GUIFront extends JFrame {
 					
 					//set the initial index 2 at 0 so that when pressing nextstep button you can go to the next step or previous step
 					index2 = 0;
+					index3 = 1; // this is for the jlist to highlight the step the user is on
 					//if we have more than one arraylist in paths this means that more than one map will be shown to the user
 					if (paths.size() > 1){
 						btnNextMap.setEnabled(true);
@@ -777,6 +779,7 @@ public class GUIFront extends JFrame {
 				if (index2 > 0){
 					btnPreviousStep.setEnabled(true);
 				}
+				listDirections.setSelectedIndex(index2);
 				drawLine3 = false;
 				drawLine2 = true;
 			}
@@ -788,6 +791,7 @@ public class GUIFront extends JFrame {
 		btnPreviousStep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				index2--;
+				index3--;
 				if (index2 <= 0){
 					btnPreviousStep.setEnabled(false);
 				}
@@ -801,6 +805,7 @@ public class GUIFront extends JFrame {
 				if (index2 > 0){
 					btnPreviousStep.setEnabled(true);
 				}
+				listDirections.setSelectedIndex(index2);
 				drawLine2 = false;
 				drawLine3 = true;
 			}
