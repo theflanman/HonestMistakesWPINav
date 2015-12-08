@@ -287,7 +287,7 @@ public class DevGUIFront extends JFrame {
 
 					pic = new ProxyImage(imagePath);
 					
-					mapPanel.setBgImage(pic.getImage(imagePath));
+					mapPanel.setBgImage(pic.getImage(Constants.IMAGES_PATH));
 					
 					selectedNodes.clear();
 					points = new ArrayList<MapNode>();
