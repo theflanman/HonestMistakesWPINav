@@ -628,15 +628,17 @@ public class GUIFront extends JFrame {
 				double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
+				
 
 				for(MapNode n : backend.getLocalMap().getMapNodes()){
 					n.setXPos(n.getXPos() - panelMap.panX);
 					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-
-				panelMap.panX = 0.0;
-				panelMap.panY = 0.0;
-				panelMap.setScale(1.0);
+				
+				panelMap.panX = 0;
+				panelMap.panY = 0;
+				panelMap.setScale(1);
+				
 				thisRoute = paths.get(index);
 				drawLine = true;
 				// TODO: Fill in this method once we know how to draw/load maps
@@ -744,16 +746,18 @@ public class GUIFront extends JFrame {
 	 * 
 	 * @return a list of LocalMaps that are in the path of nodes give
 	 */
-	public ArrayList<LocalMap> createListOfMaps(ArrayList<MapNode> pathNodes) {
+	public ArrayList<LocalMap> createListOfMaps(ArrayList<ArrayList<MapNode>> path) {
 		// Initializes list
 		ArrayList<LocalMap> pathLocalMaps = new ArrayList<LocalMap>();
-		
-		// Iterates through the list of nodes in the inputed ArrayList
-		for (MapNode node: pathNodes) {
-			
-			// If the return list doesn't contain the current nodes LocalMap, it adds it to the return list
-			if (! pathLocalMaps.contains(node.getLocalMap())){
-				pathLocalMaps.add(node.getLocalMap());
+
+		for (ArrayList<MapNode> pathNodes: path) {
+			// Iterates through the list of nodes in the inputed ArrayList
+			for (MapNode node: pathNodes) {
+
+				// If the return list doesn't contain the current nodes LocalMap, it adds it to the return list
+				if (! pathLocalMaps.contains(node.getLocalMap())){
+					pathLocalMaps.add(node.getLocalMap());
+				}
 			}
 		}
 		return pathLocalMaps;
@@ -775,9 +779,7 @@ public class GUIFront extends JFrame {
 				PanelSave savePanel = new PanelSave();
 				
 				//TODO Find a variable that includes the list of nodes in a path
-				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(thisRoute);
-				
-				System.out.println(thisRoute.size());
+				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(paths);
 
 				// Goes through each of the maps in the path and captures and saves an image
 				for (LocalMap local: pathLocalMaps) {
@@ -788,6 +790,29 @@ public class GUIFront extends JFrame {
 					else {
 						index = 0;
 					}
+					
+					LocalMap localMap = paths.get(index).get(0).getLocalMap();
+					panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
+					panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+					String previousMap = backend.getLocalMap().getMapImageName();
+					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+					backend.setLocalMap(localMap);
+
+					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+					panelMap.panX = tempPan[0];
+					panelMap.panY = tempPan[1];
+
+					for(MapNode n : backend.getLocalMap().getMapNodes()){
+						n.setXPos(n.getXPos() - panelMap.panX);
+						n.setYPos(n.getYPos() - panelMap.panY);
+					}
+
+					panelMap.panX = 0;
+					panelMap.panY = 0;
+					panelMap.setScale(1.0);
+
+					thisRoute = paths.get(index);
+					drawLine = true;
 				}
 				System.out.println("Finished Saving Path Images");
 				
