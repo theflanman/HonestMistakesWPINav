@@ -12,7 +12,7 @@ public class LocalMapTests extends TestCase {
 	public void testConstructor(){
 		LocalMap localMap = new LocalMap("sample.jpg", null);
 		
-		assertEquals(.123, localMap.getMapScale());
+		assertEquals(1.0, localMap.getMapScale());
 	}
 	
 	public void testAddNode(){

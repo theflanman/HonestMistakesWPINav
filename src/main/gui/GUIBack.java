@@ -27,7 +27,7 @@ import main.GlobalMap;
 import main.StepByStep;
 import main.gui.GUIFront.TweenPanel;
 import main.util.Constants;
-import main.util.SaveUtil;
+import main.util.GeneralUtil;
 
 
 @SuppressWarnings("serial")
@@ -65,7 +65,7 @@ public class GUIBack implements Serializable {
 			//find exclusively the file name
 			String fileParts[] = fileName.split("/");
 			String mapAppend = fileParts[fileParts.length-1];
-			mapAppend = SaveUtil.removeExtension(mapAppend) + "_";
+			mapAppend = GeneralUtil.removeExtension(mapAppend) + "_";
 			//setup an array list of nodes for the local map and an array list of strings for linking
 			
 			ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
@@ -75,7 +75,7 @@ public class GUIBack implements Serializable {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			try {
 				DocumentBuilder db = dbf.newDocumentBuilder();
-				String xmlFileName = SaveUtil.removeExtension(fileName) + ".localmap";
+				String xmlFileName = GeneralUtil.removeExtension(fileName) + ".localmap";
 				dom = db.parse(Constants.LOCAL_MAP_PATH + "/" + xmlFileName);
 				Element doc = dom.getDocumentElement();
 
@@ -291,7 +291,6 @@ public class GUIBack implements Serializable {
 	 */
 
 	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
-		System.out.println("hello");
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
