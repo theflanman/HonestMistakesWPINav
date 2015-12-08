@@ -2,6 +2,10 @@ package main.gui;
 
 import javax.swing.*;
 
+import main.util.Constants;
+
+import java.awt.*;
+import javax.swing.*;
 import java.awt.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +32,7 @@ public class SplashLoad extends JFrame{
 		this.setBackground(Color.WHITE);
 		this.setForeground(Color.white);
 		setSize(900, 620);
-		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
 		
@@ -52,7 +56,6 @@ public class SplashLoad extends JFrame{
 
 		//fake loading progress bar 1 to 100
 		Thread t = new Thread() {
-			@Override
 			public void run() {
 				int i = 0;
 				while (i <= 100) {

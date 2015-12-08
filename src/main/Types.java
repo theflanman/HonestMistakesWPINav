@@ -46,7 +46,6 @@ public enum Types{
 		}
 	}
 	
-	@Override
 	public String toString(){
 		return this.name;
 	}

@@ -1,6 +1,7 @@
 package main.gui;
 
 import java.awt.Color;
+import java.util.HashMap;
 /**
  * 
  * @author Rayan Alsoby

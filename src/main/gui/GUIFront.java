@@ -12,8 +12,10 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
+import java.awt.image.BufferedImage;
 import java.io.File;
 
+import javax.imageio.ImageIO;
 import javax.swing.JList;
 
 import java.io.IOException;
@@ -28,25 +30,31 @@ import aurelienribon.tweenengine.TweenManager;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import javax.swing.border.MatteBorder;
 
 
 import main.*;
 import main.util.Constants;
+import main.util.GeneralUtil;
 import main.util.ProxyImage;
 import main.util.IProxyImage;
 import main.util.Speaker;
@@ -55,6 +63,7 @@ import main.util.WrappableCellRenderer;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.SwingConstants;
+import javax.swing.JLayeredPane;
 
 /**
  * This class contains code for the main applications GUI interface as well as
@@ -376,7 +385,7 @@ public class GUIFront extends JFrame {
 		 * GroupLayout code for tabbedpane and textfields (Temporary)
 		 */
 		mainPanel = new JTabbedPane();
-		mainPanel.setBorder(new MatteBorder(1, 1, 1, 1, new Color(0, 0, 0)));
+		mainPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		mainPanel.setBackground(backgroundColor);
 		textFieldStart = new JTextField();
 		textFieldStart.setText("");
@@ -408,7 +417,6 @@ public class GUIFront extends JFrame {
 		btnRoute = new JButton("Route");
 		btnRoute.setBackground(routeButtonColor);
 		btnRoute.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
 
@@ -825,7 +833,6 @@ public class GUIFront extends JFrame {
 
 		mntmDefaultCampus = new JMenuItem("Default Campus");
 		mntmDefaultCampus.addActionListener(new ActionListener(){
-			@Override
 			public void actionPerformed(ActionEvent e){
 				setColoring("Default Campus");
 			}
@@ -833,7 +840,6 @@ public class GUIFront extends JFrame {
 
 		mntmGrayscale = new JMenuItem("Grayscale");
 		mntmGrayscale.addActionListener(new ActionListener(){
-			@Override
 			public void actionPerformed(ActionEvent e){
 				setColoring("Greyscale"); // set the color scheme to grayscale
 			}
@@ -842,7 +848,6 @@ public class GUIFront extends JFrame {
 
 		mntmWPI = new JMenuItem("WPI Theme");
 		mntmWPI.addActionListener(new ActionListener(){
-			@Override
 			public void actionPerformed(ActionEvent e){
 				setColoring("WPI Default"); // set the color scheme to grayscale
 			}
