@@ -421,6 +421,7 @@ public class GUIFront extends JFrame {
 						//if the nodes are on the same map add all those nodes into an arraylist together
 						if (globalMap.getChosenNodes().get(i).getLocalMap() == globalMap.getChosenNodes().get(i + 1).getLocalMap()){
 							ArrayList<MapNode> nodesOnSameMap = backend.runAStar(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
+							
 							if (globalMap.getChosenNodes().size() == i + 2){
 								directions = backend.displayStepByStep(nodesOnSameMap, false); //no more waypoints 
 							} else {
@@ -568,6 +569,7 @@ public class GUIFront extends JFrame {
 					lblDistance.setText("Distance in feet:" + distance);
 					//this sets the textarea with the step by step directions
 					btnClear.setEnabled(true);
+					btnRoute.setEnabled(false);
 				}
 			}
 		});
