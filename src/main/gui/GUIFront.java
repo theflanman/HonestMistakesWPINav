@@ -2109,41 +2109,44 @@ public class GUIFront extends JFrame {
 						public void mouseClicked(MouseEvent me) {
 							if (allowSetting == true){
 								// figure out where the closest map node is, set that node as a startnode the StartingNode
-								MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
-								System.out.println("Node found is: " + node.getNodeID());
+								if (mainReferencePoint != null){
+									MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
 								
-								//refer to Andrew Petit if this doesn't make sense
-								if(globalMap.getChosenNodes().size() == 0){//set the start node of the globalnodes list of chosenNodes if that list is empty
-									globalMap.setStartNode(node);
-									globalMap.getChosenNodes().add(node);
-									globalMap.getAllNodes().add(node);
-									backend.getLocalMap().setStart(node);//remember to set the start node of that localMap the user is currently on
-									btnClear.setEnabled(true); //enable clear button if some node has been added
-								}
-								else{
-									if(globalMap.getChosenNodes().size() == 1){//if only the start node has been placed, place the end node
+									System.out.println("Node found is: " + node.getNodeID());
+								
+									//refer to Andrew Petit if this doesn't make sense
+									if(globalMap.getChosenNodes().size() == 0){//set the start node of the globalnodes list of chosenNodes if that list is empty
+										globalMap.setStartNode(node);
 										globalMap.getChosenNodes().add(node);
-										globalMap.setEndNode(node);
-										backend.getLocalMap().setEnd(node);//remember to set the end node of that localmap the user is currently on
-									} else { //this means we need to account for waypoints
-										MapNode endNode = globalMap.getEndNode();
-										LocalMap localMap = endNode.getLocalMap();
-										for (LocalMap localmap : globalMap.getLocalMaps()){ //go back to the localMap we set to be the end, and re make it null as that node is no longer the globalMap's end node
-											if (localMap == localmap){
-												localmap.setEnd(null);
-											}
-										}
-										globalMap.getChosenNodes().add(node);
-										globalMap.setEndNode(node);
-										backend.getLocalMap().setEnd(node); //re set the end node here to the new local map the user is on
+										globalMap.getAllNodes().add(node);
+										backend.getLocalMap().setStart(node);//remember to set the start node of that localMap the user is currently on
+										btnClear.setEnabled(true); //enable clear button if some node has been added
 									}
+									else{
+										if(globalMap.getChosenNodes().size() == 1){//if only the start node has been placed, place the end node
+											globalMap.getChosenNodes().add(node);
+											globalMap.setEndNode(node);
+											backend.getLocalMap().setEnd(node);//remember to set the end node of that localmap the user is currently on
+										} else { //this means we need to account for waypoints
+											MapNode endNode = globalMap.getEndNode();
+											LocalMap localMap = endNode.getLocalMap();
+											for (LocalMap localmap : globalMap.getLocalMaps()){ //go back to the localMap we set to be the end, and re make it null as that node is no longer the globalMap's end node
+												if (localMap == localmap){
+													localmap.setEnd(null);
+												}
+											}
+											globalMap.getChosenNodes().add(node);
+											globalMap.setEndNode(node);
+											backend.getLocalMap().setEnd(node); //re set the end node here to the new local map the user is on
+										}
+									}
+									// Enable the route button if both start and end have been set
+									if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
+										btnRoute.setEnabled(true); //enable the button only if the user has selected a start and a end location
 								}
-								// Enable the route button if both start and end have been set
-								if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
-									btnRoute.setEnabled(true); //enable the button only if the user has selected a start and a end location
+								repaint();
 							}
-							repaint();
-						}	
+						}
 					});
 				}
 
