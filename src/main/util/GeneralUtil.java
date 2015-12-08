@@ -20,5 +20,6 @@ public class GeneralUtil {
 	 */
 	public static String convertToStreetPath(String path){
 		return path.replace("images", "streetimages");
+		
 	}
 }

@@ -48,7 +48,7 @@ public class GUIBack implements Serializable {
 	 * TODO: Change to Campus Map when it is complete
 	 */
 	public GUIBack(){
-		String defaultMapImage = "CCM.jpg";
+		String defaultMapImage = "CCM.png";
 		this.localMap = new LocalMap(defaultMapImage, null);
 		this.path = new ArrayList<MapNode>();
 		}
@@ -297,13 +297,12 @@ public class GUIBack implements Serializable {
 	 * @return
 	 */
 
-	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
+	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end){
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
+		//call step ny step
 		System.out.println(globalNodes.size());
-		globalmap.addToMapNodes(start);
-		globalmap.addToMapNodes(end);
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added
 			//immediately add this to a new route

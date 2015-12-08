@@ -283,4 +283,10 @@ public class MapNode implements Serializable{
 		this.attributes = a;
 	}
 
+	public void removeNeighbors() {
+
+		this.neighbors = new ArrayList<MapNode>();
+		
+	}
+
 }
