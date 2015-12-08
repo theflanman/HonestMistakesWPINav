@@ -87,10 +87,8 @@ public class GUIFront extends JFrame {
 	public static ArrayList<MapNode> allNodes;
 	public static int index = 0;
 	public static ArrayList<MapNode> thisRoute = new ArrayList<MapNode>();
-	public static ArrayList<LocalMap> tempMaps = new ArrayList<LocalMap>();
 	public static HashMap<String, double[]> panValues = new HashMap<String, double[]>();
 	public static double[] panNums = {0.0, 0.0};
-	
 	static AffineTransform transform; // the current state of image transformation
 	static Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
 	static PanHandler panHandle;
@@ -114,15 +112,22 @@ public class GUIFront extends JFrame {
 	// Menu Bar
 	private JMenuBar menuBar;
 	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
+	private JMenu mnColorScheme;
+	private JMenuItem mntmDefaultCampus, mntmGrayscale, mntmWPI, mntmSkyBlue;
 	private JMenu mnAtwaterKent, mnBoyntonHall, mnCampusCenter, mnGordonLibrary, mnHigginsHouse, mnHigginsHouseGarage, mnProjectCenter, mnStrattonHall;
 	private JMenuItem mntmAK1, mntmAK2, mntmAK3, mntmAKB, mntmBoy1, mntmBoy2, mntmBoy3, mntmBoyB, mntmCC1, mntmCC2, mntmCC3, mntmCCM;
 	private JMenuItem mntmGL1, mntmGL2, mntmGL3, mntmGLB, mntmGLSB, mntmHH1, mntmHH2, mntmHH3, mntmHHG1, mntmHHG2, mntmPC1, mntmPC2;
 	private JMenuItem mntmSH1, mntmSH2, mntmSH3, mntmSHB, mntmEmail, mntmExit;
 	
 	private SLPanel slidePanel;
+	private JPanel stepByStepUI;
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
+
+	private Color routeButtonColor, otherButtonsColor, backgroundColor, sideBarColor;
+	static ColorSchemes allSchemes;
+	static ColorSetting colors;
 
 	/**
 	 * Create the frame.
@@ -131,6 +136,18 @@ public class GUIFront extends JFrame {
 	 * @throws ClassNotFoundException
 	 */
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
+
+		setVisible(false);
+
+		allSchemes = new ColorSchemes();  
+		colors = allSchemes.setColorScheme("Default Campus");
+
+		routeButtonColor = colors.getRouteButtonColor();
+		otherButtonsColor = colors.getOtherButtonsColor();
+		backgroundColor = colors.getMainBackColor();
+		sideBarColor = colors.getSideBarColor();
+
+
 		// Instantiate GUIBack to its default
 		GUIBack initial = new GUIBack(/*defaultMapImage, null*/);
 		backends.add(0, initial);
@@ -171,7 +188,7 @@ public class GUIFront extends JFrame {
 		// This will setup the main JFrame to be maximized on start
 		setTitle("Era of Navigation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 820, 699);
+		setBounds(0, 0, 1412, 743);
 		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 		panHandle = new PanHandler();
@@ -183,6 +200,7 @@ public class GUIFront extends JFrame {
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(backgroundColor);
 		setContentPane(contentPane);
 
 		// Image of the default map loaded into backend
@@ -346,7 +364,7 @@ public class GUIFront extends JFrame {
 		 */
 		mainPanel = new JTabbedPane();
 		mainPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-
+		mainPanel.setBackground(backgroundColor);
 		textFieldStart = new JTextField();
 		textFieldStart.setText("");
 		//give start text field an action
@@ -365,6 +383,7 @@ public class GUIFront extends JFrame {
 
 		// Clear button will call all of the reset code
 		btnClear = new JButton("Clear All");
+		btnClear.setBackground(otherButtonsColor);
 		btnClear.setEnabled(false);
 		btnClear.addActionListener(new ActionListener(){
 			@Override
@@ -374,7 +393,7 @@ public class GUIFront extends JFrame {
 		});
 
 		btnRoute = new JButton("Route");
-		btnRoute.setEnabled(false);
+		btnRoute.setBackground(routeButtonColor);
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
@@ -414,13 +433,19 @@ public class GUIFront extends JFrame {
 							}
 						}
 					}
-					//Now comes the fun part, if getNodesOnSameMap this means that a waypoint exists on the last map, we should add the nodes from the waypoint to the last node into the last arraylist of the last set of arraylists on paths. 
-					if (!(getNodesOnSameMap.isEmpty()) && (paths.get(paths.size() - 1).get(0).getLocalMap() == getNodesOnSameMap.get(0).getLocalMap())){
-						for(MapNode mapnode : getNodesOnSameMap){
-							paths.get(paths.size() - 1).add(mapnode);
+					System.out.println(paths.isEmpty());
+					if (paths.isEmpty()){
+						if (!(getNodesOnSameMap.isEmpty())){
+							paths.add(getNodesOnSameMap);
 						}
-					} else if (!(getNodesOnSameMap.isEmpty())){ //if not, but getNodesOnSameMap is not empty we should just go ahead and add those nodes to another index in paths
-						paths.add(getNodesOnSameMap);
+					} else {
+						if (!(getNodesOnSameMap.isEmpty()) && (paths.get(paths.size() - 1).get(0).getLocalMap() == getNodesOnSameMap.get(0).getLocalMap())){
+							for(MapNode mapnode : getNodesOnSameMap){
+								paths.get(paths.size() - 1).add(mapnode);
+							}
+						} else { //if not, but getNodesOnSameMap is not empty we should just go ahead and add those nodes to another index in paths
+							paths.add(getNodesOnSameMap);
+						}
 					}
 					//reinitialize getNodesOnSameMap for the next time this fun method is run...
 					getNodesOnSameMap = new ArrayList<MapNode>();
@@ -484,19 +509,23 @@ public class GUIFront extends JFrame {
 				}
 			}
 		});
-
 		/**
 		 * Tween related code to make the animations work
 		 */
+		sideBarColor = colors.getSideBarColor();
+
 		slidePanel = new SLPanel();
+		slidePanel.setBackground(sideBarColor);
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1", Constants.IMAGES_PATH);
+		panelMap.setBackground(backgroundColor);
 		panels.add(panelMap);
 		panelDirections = new TweenPanel("2");
 
 		/**
 		 * Adding new components onto the Step By Step slideout panel
 		 */
-		JPanel stepByStepUI = new JPanel();
+		stepByStepUI = new JPanel();
+		stepByStepUI.setBackground(sideBarColor);
 
 		lblClickHere = new JLabel("<<<");
 		lblClickHere.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -504,6 +533,7 @@ public class GUIFront extends JFrame {
 		stepByStepUI.add(lblClickHere);
 
 		lblStepByStep = new JLabel("Step by Step Directions!");
+		lblStepByStep.setBackground(sideBarColor);
 		lblStepByStep.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblStepByStep.setBounds(23, 11, 167, 14);
 		lblStepByStep.setVisible(false);
@@ -525,11 +555,13 @@ public class GUIFront extends JFrame {
 		listDirections.setVisibleRowCount(10); // only shows 10 directions before scrolling
 		
 		lblDistance = new JLabel();
+		lblDistance.setBackground(sideBarColor);
 		lblDistance.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblDistance.setVisible(false);
 
 		panelDirections.add(lblDistance, BorderLayout.SOUTH);
 		panelDirections.add(stepByStepUI, BorderLayout.NORTH);
+		panelDirections.setBackground(sideBarColor);
 
 		// Set action to allow for sliding
 		panelDirections.setAction(panelDirectionsAction);
@@ -540,16 +572,16 @@ public class GUIFront extends JFrame {
 		 * adjust the sizes
 		 */
 		mainConfig = new SLConfig(slidePanel)
-		.gap(10, 10)
-		.row(1f).col(700).col(50) // 700xH | 50xH
-		.place(0, 0, panelMap)
-		.place(0, 1, panelDirections);
+				.gap(10, 10)
+				.row(1f).col(700).col(50) // 700xH | 50xH
+				.place(0, 0, panelMap)
+				.place(0, 1, panelDirections);
 
 		panelDirectionsConfig = new SLConfig(slidePanel)
-		.gap(10, 10)
-		.row(1f).col(550).col(200) // 550xH | 200xH
-		.place(0, 0, panelMap)
-		.place(0, 1, panelDirections);
+				.gap(10, 10)
+				.row(1f).col(550).col(200) // 550xH | 200xH
+				.place(0, 0, panelMap)
+				.place(0, 1, panelDirections);
 
 		// Initialize tweening
 		slidePanel.setTweenManager(SLAnimator.createTweenManager());
@@ -560,6 +592,7 @@ public class GUIFront extends JFrame {
 		getContentPane().add(mainPanel);
 		btnNextMap = new JButton("Next Map-->");
 		btnNextMap.setEnabled(false);
+		btnNextMap.setBackground(otherButtonsColor);
 		btnNextMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae){
@@ -609,6 +642,7 @@ public class GUIFront extends JFrame {
 			btnPreviousMap.setEnabled(false);
 		}*/
 		btnPreviousMap.setEnabled(false);
+		btnPreviousMap.setBackground(otherButtonsColor);
 		btnPreviousMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
@@ -653,72 +687,96 @@ public class GUIFront extends JFrame {
 		// Group Layout code for all components
 		gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(10)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblStart)
-								.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addComponent(lblInvalidEntry)
-							.addGap(227)
-							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnClear))
-						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(10)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblStart)
+												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+										.addGap(18)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+												.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+										.addGap(18)
+										.addComponent(lblInvalidEntry)
+										.addGap(227)
+										.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(btnClear))
+								.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(79)
-					.addComponent(btnPreviousMap)
-					.addPreferredGap(ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
-					.addComponent(btnNextMap)
-					.addGap(170))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblStart)
-							.addGap(6)
-							.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblEnd)
-							.addGap(6)
-							.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(24)
-							.addComponent(lblInvalidEntry))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnRoute))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnClear)))
-					.addGap(18)
-					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addGap(79)
 						.addComponent(btnPreviousMap)
-						.addComponent(btnNextMap))
-					.addGap(35))
-		);
-		
+						.addPreferredGap(ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+						.addComponent(btnNextMap)
+						.addGap(170))
+				);
+		gl_contentPane.setVerticalGroup(
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(lblStart)
+										.addGap(6)
+										.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(lblEnd)
+										.addGap(6)
+										.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(24)
+										.addComponent(lblInvalidEntry))
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(11)
+										.addComponent(btnRoute))
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(11)
+										.addComponent(btnClear)))
+						.addGap(18)
+						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnPreviousMap)
+								.addComponent(btnNextMap))
+						.addGap(35))
+				);
+
 		System.out.println("cSV a");
 		GUIFront.changeStreetView(gl_contentPane, Constants.DEFAULT_STREET_IMAGE);
 
+		//check if it is done loading then make the gui visible
+		if(backend.splashFlag){	 
+			setVisible(true);
+		}
 		pack();
-		setVisible(true);
 	}
-	
-		public static void changeStreetView(GroupLayout gl_contentPane, String imagePath){
+		public void  setColoring(String scheme){
+		colors = allSchemes.setColorScheme(scheme);
+
+		routeButtonColor = colors.getRouteButtonColor(); // update components
+		otherButtonsColor = colors.getOtherButtonsColor();
+		backgroundColor = colors.getMainBackColor();
+		sideBarColor = colors.getSideBarColor();
+
+		btnRoute.setBackground(routeButtonColor);
+		slidePanel.setBackground(sideBarColor);
+		panelMap.setBackground(backgroundColor);
+		stepByStepUI.setBackground(sideBarColor);
+		lblStepByStep.setBackground(sideBarColor);
+		lblDistance.setBackground(sideBarColor);
+		panelDirections.setBackground(sideBarColor);
+		btnNextMap.setBackground(otherButtonsColor);
+		btnPreviousMap.setBackground(otherButtonsColor);
+		contentPane.setBackground(backgroundColor);
+		btnClear.setBackground(otherButtonsColor);
+
+
+	} 
+	public static void changeStreetView(GroupLayout gl_contentPane, String imagePath){
 			
 		try{
 			mainPanel.remove(1); // remove 2nd tab
@@ -732,8 +790,6 @@ public class GUIFront extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
-		System.out.println("IMAGE: " + imagePath);
-		System.out.println("changing street");
 		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
 				
 		SLConfig streetViewConfig = new SLConfig(streetViewSLPanel)
@@ -746,85 +802,119 @@ public class GUIFront extends JFrame {
 	}
 	
 	// This goes in GUIFront
-			public void initializeMenuBar(){
-			// ---- File Menu ----
-			mnFile = new JMenu("File");
-			menuBar.add(mnFile);
-			
-			mntmEmail = new JMenuItem("Email"); // Code to open up the email sender
-			mntmEmail.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){
-					EmailGUI newEmail = new EmailGUI();
-					newEmail.setVisible(true); //Opens EmailGUI Pop-Up
+	public void initializeMenuBar(){
+		// ---- File Menu ----
+		mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+
+		mntmEmail = new JMenuItem("Email"); // Code to open up the email sender
+		mntmEmail.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				EmailGUI newEmail = new EmailGUI();
+				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
+			}
+		});
+		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
+		mntmExit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.exit(0); 
+			}
+		});
+		mnFile.add(mntmEmail);
+		mnFile.add(mntmExit);
+
+		// ---- Options -----
+		mnOptions = new JMenu("Options");
+		menuBar.add(mnOptions);
+
+		//Color Scheme
+		mnColorScheme = new JMenu("Color Scheme");
+		mnOptions.add(mnColorScheme);
+
+		mntmDefaultCampus = new JMenuItem("Default Campus");
+		mntmDefaultCampus.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				setColoring("Default Campus");
+			}
+		});
+
+		mntmGrayscale = new JMenuItem("Grayscale");
+		mntmGrayscale.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				setColoring("Greyscale"); // set the color scheme to grayscale
+			}
+		});
+
+
+		mntmWPI = new JMenuItem("WPI Theme");
+		mntmWPI.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				setColoring("WPI Default"); // set the color scheme to grayscale
+			}
+		});
+
+
+		mntmSkyBlue = new JMenuItem("Sky Blue");
+
+
+		mnColorScheme.add(mntmDefaultCampus);
+		mnColorScheme.add(mntmGrayscale);
+		mnColorScheme.add(mntmWPI);
+
+		// ---- Options -----
+		mnLocations = new JMenu("Locations");
+		menuBar.add(mnLocations);
+
+		// Atwater Kent
+		mnAtwaterKent = new JMenu("Atwater Kent");
+		mntmAK1 = new JMenuItem("Floor 1");
+		mntmAK1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(0).getMapImageName());
+				panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(0).getMapImageName()));
+				panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+				backend.setLocalMap(globalMap.getLocalMaps().get(0));
+
+				double[] tempPan = panValues.get("AK1.jpg");
+				panelMap.panX = tempPan[0];
+				panelMap.panY = tempPan[1];
+
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() - panelMap.panX);
+					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-			});
-			mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
-			mntmExit.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){
-					System.exit(0); 
-				}
-			});
-			mnFile.add(mntmEmail);
-			mnFile.add(mntmExit);
-			
-			// ---- Options -----
-			mnOptions = new JMenu("Options");
-			menuBar.add(mnOptions);
-			
-			// ---- Options -----
-			mnLocations = new JMenu("Locations");
-			menuBar.add(mnLocations);
-			
-			// Atwater Kent
-			mnAtwaterKent = new JMenu("Atwater Kent");
-			mntmAK1 = new JMenuItem("Floor 1");
-			mntmAK1.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent e){				
-					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(0).getMapImageName()));
-					panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
-					String previousMap = backend.getLocalMap().getMapImageName();
-					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
-					backend.setLocalMap(globalMap.getLocalMaps().get(0));
-					
-					double[] tempPan = panValues.get("AK1.jpg");
-					panelMap.panX = tempPan[0];
-					panelMap.panY = tempPan[1];
-					
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() - panelMap.panX);
-						n.setYPos(n.getYPos() - panelMap.panY);
-					}
-					
-					panelMap.panX = 0.0;
-					panelMap.panY = 0.0;
-					panelMap.setScale(1.0);
-					
+				panelMap.panX = 0.0;
+				panelMap.panY = 0.0;
+				panelMap.setScale(1.0);
 				}
 			});
 			mntmAK2 = new JMenuItem("Floor 2");
 			mntmAK2.addActionListener(new ActionListener(){
 				@Override
-				public void actionPerformed(ActionEvent e){				
+				public void actionPerformed(ActionEvent e){		
+					GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(1).getMapImageName());
 					panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(1).getMapImageName()));
 					panelMap.setMapNodes(globalMap.getLocalMaps().get(1).getMapNodes());
 					String previousMap = backend.getLocalMap().getMapImageName();
 					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-					
+
 					backend.setLocalMap(globalMap.getLocalMaps().get(1));
-					
+
 					double[] tempPan = panValues.get("AK2.jpg");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
-					
+
 					for(MapNode n : backend.getLocalMap().getMapNodes()){
 						n.setXPos(n.getXPos() - panelMap.panX);
 						n.setYPos(n.getYPos() - panelMap.panY);
 					}
-					
+
 					panelMap.panX = 0.0;
 					panelMap.panY = 0.0;
 					panelMap.setScale(1.0);
@@ -1776,14 +1866,20 @@ public class GUIFront extends JFrame {
 				double zoomRatio;
 				
 				String packageName;
+				boolean shouldPaint;
 
 				/**
 				 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
 				 * but it functions better as a private class
 				 */
 				public TweenPanel(ArrayList<MapNode> mapNodes, IProxyImage mapPath, String panelId, String packageName){
+					// determine whether anything should be painted onto this tab
+					if(packageName.equals(Constants.STREET_PATH))
+						this.shouldPaint = false;
+					else
+						this.shouldPaint = true;
+
 					this.packageName = packageName;
-					System.out.println("PACKAGE NAME: " + packageName);
 					
 					setLayout(new BorderLayout());
 					
@@ -1884,7 +1980,6 @@ public class GUIFront extends JFrame {
 
 				}
 
-
 				public ArrayList<MapNode> getMapNodes() {
 					return localNodes;
 				}
@@ -1899,6 +1994,9 @@ public class GUIFront extends JFrame {
 
 				public void setMapImage(IProxyImage mapImage) {
 					this.mapImage = mapImage;
+				}
+				public void setColors(String scheme){
+					colors = allSchemes.setColorScheme(scheme);
 				}
 
 				/**
@@ -1947,6 +2045,11 @@ public class GUIFront extends JFrame {
 
 				@Override
 				protected void paintComponent(Graphics g) {
+					Color startNodeColor = colors.getStartNodeColor();
+					Color endNodeColor = colors.getEndNodeColor();
+					Color lineColor = colors.getLineColor();
+					Color outlineColor = colors.getOutlineColor();
+
 					super.paintComponent(g);
 
 					Graphics2D graphics = (Graphics2D) g;
@@ -1988,75 +2091,85 @@ public class GUIFront extends JFrame {
 						graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);
 
 						// Sets the color of the start and end nodes to be different for each new waypoint
-						graphics.setColor(Color.RED);
-						if(!(paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
-								if (paths.get(index).get(0) != null){ // make sure that the start node (which it should never be) is not null
-									graphics.setColor(Color.RED);
-									graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-								}
-								if (paths.get(index).get(paths.get(index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
-									graphics.setColor(Color.GREEN);
-									graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
-								}
-						}
-						//drawing for originally placed nodes
-						if (globalMap.getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed 
-							if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
-								graphics.setColor(Color.RED);
-								graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
+						// Sets the color of the start and end nodes to be different for each new waypoint
+						if(this.shouldPaint){
+							// Sets the color of the start and end nodes to be different
+							graphics.setColor(startNodeColor);
+							if(!(paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
+									if (paths.get(index).get(0) != null){ // make sure that the start node (which it should never be) is not null
+										graphics.setColor(startNodeColor);
+										graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+										graphics.setColor(outlineColor);
+										graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+									}
+									if (paths.get(index).get(paths.get(index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
+										graphics.setColor(endNodeColor);
+										graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
+										graphics.setColor(outlineColor);
+										graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+									}
 							}
-						}
+							//drawing for originally placed nodes
+							if (globalMap.getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed 
+								if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
+									graphics.setColor(startNodeColor);
+									graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
+									graphics.setColor(outlineColor);
+									graphics.drawOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
+								}
+							}
 						
-						if(globalMap.getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
-							if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
-								graphics.setColor(Color.GREEN);
-								graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
-							}
-						}
-						if (globalMap.getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
-							for (int i = 1; i < globalMap.getChosenNodes().size() - 1; i++){
-								if (globalMap.getChosenNodes().get(i).getLocalMap() == backend.getLocalMap()){
-									graphics.setColor(Color.ORANGE);
-									graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+							if(globalMap.getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
+								if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
+									graphics.setColor(endNodeColor);
+									graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
+									graphics.setColor(outlineColor);
+									graphics.drawOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
 								}
 							}
-						}
+							if (globalMap.getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
+								for (int i = 1; i < globalMap.getChosenNodes().size() - 1; i++){
+									if (globalMap.getChosenNodes().get(i).getLocalMap() == backend.getLocalMap()){
+										graphics.setColor(Color.ORANGE);
+										graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+										graphics.setColor(outlineColor);
+										graphics.drawOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+									}
+								}
+							}
 
-						//this is where you draw the lines
-						if (GUIFront.drawLine == true) {
-							for (int i = 0; i < thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
-								double x1 = backend.getCoordinates(thisRoute).get(i)[0];
-								double y1 = backend.getCoordinates(thisRoute).get(i)[1];
-								double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
-								double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
-								double alpha = 0.5;
-								Color color = new Color(0, 1, 1, (float) alpha);
-								Graphics2D g2 = (Graphics2D) g;
-								g2.setStroke(new BasicStroke(5));
-								g2.setColor(color);
-								g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
-							}
-							drawLine = false;
-							removeLine = true;
-						//this is where you remove the lines
-						} else if (GUIFront.removeLine == true) { 
-							for (int i = 0; i < thisRoute.size() - 1; i++) {//basically go through the current map and remove all lines for all links between nodes in a route on that map
-								double x1 = backend.getCoordinates(thisRoute).get(i)[0];
-								double y1 = backend.getCoordinates(thisRoute).get(i)[1];
-								double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
-								double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
-								double alpha = 0.5;
-								Color color = new Color(0, 1, 1, (float) alpha);
-								Graphics2D g2 = (Graphics2D) g;
-								g2.setStroke(new BasicStroke(5));
-								g2.setColor(color);
-								g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
-							}
-							drawLine = true;
-							removeLine = false;
-						} 
-						repaint();
-						graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
+							//this is where you draw the lines
+							if (GUIFront.drawLine == true) {
+								for (int i = 0; i < thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
+									double x1 = backend.getCoordinates(thisRoute).get(i)[0];
+									double y1 = backend.getCoordinates(thisRoute).get(i)[1];
+									double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
+									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
+									Graphics2D g2 = (Graphics2D) g;
+									g2.setStroke(new BasicStroke(5));
+									g2.setColor(lineColor);
+									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+								}
+								drawLine = false;
+								removeLine = true;
+								//this is where you remove the lines
+							} else if (GUIFront.removeLine == true) { 
+								for (int i = 0; i < thisRoute.size() - 1; i++) {//basically go through the current map and remove all lines for all links between nodes in a route on that map
+									double x1 = backend.getCoordinates(thisRoute).get(i)[0];
+									double y1 = backend.getCoordinates(thisRoute).get(i)[1];
+									double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
+									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
+									Graphics2D g2 = (Graphics2D) g;
+									g2.setStroke(new BasicStroke(5));
+									g2.setColor(lineColor); // you are going to want to make this transparent ... before next step button is added otherwise this will cause some issues
+									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+								}
+								drawLine = true;
+								removeLine = false;
+							} 
+							repaint();
+							graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
+						}
 					}
 				}
 
