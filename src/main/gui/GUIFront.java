@@ -481,6 +481,7 @@ public class GUIFront extends JFrame {
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1", Constants.IMAGES_PATH);
 		panels.add(panelMap);
 		panelDirections = new TweenPanel("2");
+		
 
 		/**
 		 * Adding new components onto the Step By Step slideout panel
@@ -1583,6 +1584,8 @@ public class GUIFront extends JFrame {
 		menuBar.add(mnHelp);
 	}
 
+	
+	
 	/**
 	 * Enable/Disable actions
 	 */
@@ -1819,6 +1822,8 @@ public class GUIFront extends JFrame {
 
 				String packageName;
 				boolean shouldPaint;
+				
+				Polygon aBuilding;
 
 				/**
 				 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
@@ -1848,6 +1853,13 @@ public class GUIFront extends JFrame {
 					this.panelID = panelID;
 
 					zoomRatio = 1;
+					
+					// Initialize a polygon object
+					aBuilding = new Polygon();
+					aBuilding.addPoint(1019, 598);
+					aBuilding.addPoint(1030, 535);
+					aBuilding.addPoint(1068, 543);
+					aBuilding.addPoint(1056, 604);
 
 					addMouseListener(panHandle);
 					addMouseMotionListener(panHandle);
@@ -1860,6 +1872,31 @@ public class GUIFront extends JFrame {
 								// figure out where the closest map node is, set that node as a startnode the StartingNode
 								MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
 								System.out.println("Node found is: " + node.getNodeID());
+								
+								
+								if(aBuilding.contains(mainReferencePoint)){
+									GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(0).getMapImageName());
+									
+									panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(0).getMapImageName()));
+									panelMap.setMapNodes(globalMap.getLocalMaps().get(0).getMapNodes());
+									String previousMap = backend.getLocalMap().getMapImageName();
+									panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+									backend.setLocalMap(globalMap.getLocalMaps().get(0));
+
+									double[] tempPan = panValues.get("AK1.jpg");
+									panelMap.panX = tempPan[0];
+									panelMap.panY = tempPan[1];
+
+									for(MapNode n : backend.getLocalMap().getMapNodes()){
+										n.setXPos(n.getXPos() - panelMap.panX);
+										n.setYPos(n.getYPos() - panelMap.panY);
+									}
+
+									panelMap.panX = 0.0;
+									panelMap.panY = 0.0;
+									panelMap.setScale(1.0);
+								}
 
 								if(globalMap.getChosenNodes().size() == 0){
 									globalMap.setStartNode(node);
@@ -2027,7 +2064,7 @@ public class GUIFront extends JFrame {
 						graphics.setTransform(transform);
 
 						// Scale the map relative to the panels current size and your current viewing window
-						graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);	
+						//graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);	
 
 						// Colors start and end differently
 						// Draws the map and places pre-existing node data onto the map as
@@ -2036,6 +2073,11 @@ public class GUIFront extends JFrame {
 
 						// Sets the color of the start and end nodes to be different for each new waypoint
 						if(this.shouldPaint){
+							
+							// Draw the panels over the building
+							graphics.setColor(Color.PINK);
+							graphics.fill(aBuilding);
+							
 							graphics.setColor(Color.RED);
 							if(!(paths.isEmpty())){
 								if (paths.get(index).get(0) != null){
