@@ -399,6 +399,7 @@ public class GUIFront extends JFrame {
 		});
 
 		btnRoute = new JButton("Route");
+		btnRoute.setEnabled(false);
 		btnRoute.setBackground(routeButtonColor);
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -661,11 +662,11 @@ public class GUIFront extends JFrame {
 				if (index <= 0){
 					btnPreviousMap.setEnabled(false);
 				}
-				if (index < paths.size() - 1){
+				if (index < paths.size() - 2){
 					btnNextMap.setEnabled(true);
 				}
 
-				if (index >= paths.size() - 1){
+				if (index >= paths.size() - 2){
 					btnNextMap.setEnabled(false);
 				}
 				if (index > 0){
