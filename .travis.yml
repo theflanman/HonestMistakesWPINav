@@ -1,5 +1,4 @@
 language: java
-jdk:
-   -source 7
+source: 7
 notifications:
   slack: honestmistakes:dOo7ymGvz7yvbY5M1XJJbTsb
