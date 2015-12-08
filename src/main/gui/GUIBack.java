@@ -62,7 +62,7 @@ public class GUIBack implements Serializable {
 	 * @param fileName
 	 */
 	public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
-
+		long startTime = System.currentTimeMillis();
 		//iterate through each file name
 		System.out.println("Starting load");
 		ArrayList<ArrayList<ArrayList<String>>> allNeighborList = new ArrayList<ArrayList<ArrayList<String>>>();
@@ -202,6 +202,7 @@ public class GUIBack implements Serializable {
 
 			//go through each node on this local map
 			for(int j = 0; j < numNodes; j++){
+				
 				//this is the list of nodes that need to be linked to this node.
 				ArrayList<String> thisNodesNeighbors = neighborNodes.get(j);
 				int numNeighbors = thisNodesNeighbors.size();
@@ -211,18 +212,35 @@ public class GUIBack implements Serializable {
 					String nodeIDToBeLinked = thisNodesNeighbors.get(k);
 
 					//find that node in the collection of nodes
-					for(MapNode potentialNode : completeNodeList){
-						//if there is a match, link the nodes.
-						if(potentialNode.getNodeID().equals(nodeIDToBeLinked)){
-							MapNode currentNode = currentMapsNodes.get(j);
-							currentNode.addNeighbor(potentialNode);
-
+					String nodeIDToBeLinkedMap = nodeIDToBeLinked.split("_")[0];
+					
+					//if the node ID is in this map, only search this maps node
+					if(nodeIDToBeLinkedMap.equals(currentLocalMap.getMapNodes().get(j).getNodeID().split("_")[0])){
+						for(MapNode potentialNode : currentLocalMap.getMapNodes()){
+							//if there is a match, link the nodes.
+							if(potentialNode.getNodeID().equals(nodeIDToBeLinked)){
+								MapNode currentNode = currentMapsNodes.get(j);
+								currentNode.addNeighbor(potentialNode);
+							}
+						}
+					}
+					//link between maps, need to look in full collection of nodes
+					else{
+						for(MapNode potentialNode : completeNodeList){
+							//if there is a match, link the nodes.
+							if(potentialNode.getNodeID().equals(nodeIDToBeLinked)){
+								MapNode currentNode = currentMapsNodes.get(j);
+								currentNode.addNeighbor(potentialNode);
+							}
 						}
 					}
 				}
 			}
 		}
-
+		
+		long endTime = System.currentTimeMillis();
+		System.out.print("Total time needed (ms): " );
+		System.out.println(endTime-startTime);
 	    splashFlag = true;
 		return localMapList; 
 	}
