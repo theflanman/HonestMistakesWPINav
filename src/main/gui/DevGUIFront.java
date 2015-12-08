@@ -5,18 +5,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.KeyEventDispatcher;
-import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -24,26 +16,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import javax.swing.ButtonGroup;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 
 import java.awt.*;
 import java.io.*;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import main.LocalMap;
@@ -105,6 +83,7 @@ public class DevGUIFront extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 
 				try {
@@ -136,7 +115,7 @@ public class DevGUIFront extends JFrame {
 		setPreferredSize(new Dimension(1380, 760));
 		setResizable(true);
 		setTitle("Map Editor");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 1300, 760);
 
 		// This defines the radio buttons that can be selected for the cursor options, because they are used in the following section of code.
@@ -175,6 +154,7 @@ public class DevGUIFront extends JFrame {
 		JMenuItem mntmLoadMap = new JMenuItem("Load Map");
 		mnFile.add(mntmLoadMap);
 		mntmLoadMap.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
 				chooser.setCurrentDirectory(new File(Constants.LOCAL_MAP_PATH));
@@ -214,6 +194,7 @@ public class DevGUIFront extends JFrame {
 
 		JMenuItem mntmLoadExtraMap = new JMenuItem("Load Extra Map");
 		mntmLoadExtraMap.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
 				chooser.setCurrentDirectory(new File(Constants.LOCAL_MAP_PATH));
@@ -247,6 +228,7 @@ public class DevGUIFront extends JFrame {
 		JMenuItem mntmSaveMap = new JMenuItem("Save Map");
 		mnFile.add(mntmSaveMap);
 		mntmSaveMap.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String fileName = inputFile.getName();
 				fileName = GeneralUtil.removeExtension(fileName);
@@ -268,6 +250,7 @@ public class DevGUIFront extends JFrame {
 
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
@@ -275,6 +258,7 @@ public class DevGUIFront extends JFrame {
 
 		JMenuItem mntmNewMapImage = new JMenuItem("New Map Image");
 		mntmNewMapImage.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser chooser = new JFileChooser();
 				chooser.setCurrentDirectory(new File(Constants.IMAGES_PATH));
@@ -355,6 +339,7 @@ public class DevGUIFront extends JFrame {
 		nodeInfoPanel.add(btnMakeChanges);
 
 		btnMakeChanges.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(lastClicked != null) {
 					lastClicked.setXPos(Double.parseDouble(xPosField.getText()));
@@ -501,6 +486,7 @@ public class DevGUIFront extends JFrame {
 		//	getContentPane().add(panel2);
 
 		mntmShowTwoMaps.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
 				panel.setSize(new Dimension(445, 600));
@@ -515,6 +501,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		mntmShowOneMap.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().remove(panel2);
 				panel.setSize(new Dimension(900, 600));
@@ -526,6 +513,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		btnSetDfltAttr.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				defaultAttributes.setBikeable(chckbxBikeable.isSelected());
 				defaultAttributes.setStairs(chckbxStairs.isSelected());
@@ -537,6 +525,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		btnEditName.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(lastClicked != null) {
 					lastClicked.getAttributes().setOfficialName(textFieldOfficialName.getText());
@@ -548,6 +537,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		chckbxStairs.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				for(MapNode n : selectedNodes) {
 					n.getAttributes().setStairs(chckbxStairs.isSelected());
@@ -557,6 +547,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		chckbxBikeable.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				for(MapNode n : selectedNodes) {
 					n.getAttributes().setBikeable(chckbxBikeable.isSelected());
@@ -565,6 +556,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		chckbxPOI.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				for(MapNode n : selectedNodes) {
 					n.getAttributes().setPOI(chckbxPOI.isSelected());
@@ -573,6 +565,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		chckbxOutside.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				for(MapNode n : selectedNodes) {
 					n.getAttributes().setOutside(chckbxOutside.isSelected());
@@ -581,6 +574,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		chckbxHandicapped.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				for(MapNode n : selectedNodes) {
 					n.getAttributes().setHandicapped(chckbxHandicapped.isSelected());
@@ -589,6 +583,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		typeBox.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(selectedNodes.size() > 1) { //If size is 1, need to set the type using the code below.
 					for(MapNode n : selectedNodes) {
@@ -602,6 +597,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		btnLinear.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.linearizeNodes();
 			}
@@ -832,6 +828,7 @@ public class DevGUIFront extends JFrame {
 		JComboBox attributeSelected = new JComboBox(attributeSelectedOptions);
 		attributeSelected.setSelectedIndex(-1);
 		attributeSelected.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.selectAllNodes(attributeSelected.getSelectedIndex());
 			}

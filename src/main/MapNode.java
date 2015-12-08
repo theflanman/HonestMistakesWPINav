@@ -118,7 +118,7 @@ public class MapNode implements Serializable{
 	}
 	
 	public double aStarHeuristic(MapNode toNode) {
-		double dist = (double) Math.sqrt(Math.pow((xFeet - toNode.getXFeet()),2) + Math.pow(yFeet - toNode.getYFeet(),2)) + Math.abs(zFeet - toNode.getZFeet());
+		double dist = Math.sqrt(Math.pow((xFeet - toNode.getXFeet()),2) + Math.pow(yFeet - toNode.getYFeet(),2)) + Math.abs(zFeet - toNode.getZFeet());
 		
 		return dist;
 	}

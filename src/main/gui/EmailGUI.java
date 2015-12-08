@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 import main.EmailSender;
 
@@ -46,7 +47,7 @@ public class EmailGUI extends JDialog {
 	public static void main(String[] args) {
 		try {
 			EmailGUI dialog = new EmailGUI();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,6 +69,7 @@ public class EmailGUI extends JDialog {
 		
 		// When the cancel button is pressed the window is no longer shown
 		btnCancel.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				EmailGUI.this.dispose();
 			}
@@ -181,6 +183,7 @@ public class EmailGUI extends JDialog {
 				// the email is sent
 				// the window is no longer shown
 				btnSend.addActionListener(new ActionListener() {
+					@Override
 					public void actionPerformed(ActionEvent e) {
 						subject = txtSubject.getText();
 						body = txtBody.getText();

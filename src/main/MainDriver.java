@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
-import main.gui.GUIBack;
 import main.gui.GUIFront;
 import main.gui.SplashLoad;
 import main.util.Constants;
@@ -54,7 +52,7 @@ public class MainDriver {
         s.setVisible(true);
         Thread t=Thread.currentThread();
         try {
-			t.sleep(1100);
+			Thread.sleep(1100);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -62,6 +60,7 @@ public class MainDriver {
 		
 		// Launches the main application
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					new GUIFront(localMapList.length, localMapList);
