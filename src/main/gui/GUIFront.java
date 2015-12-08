@@ -434,14 +434,10 @@ public class GUIFront extends JFrame {
 							}
 						}
 					}
-<<<<<<< HEAD
 
 					LocalMap localMap = paths.get(0).get(0).getLocalMap();
-					
 					GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());					
 
-					thisRoute = routes.get(0);
-=======
 					System.out.println(paths.isEmpty());
 					if (paths.isEmpty()){
 						if (!(getNodesOnSameMap.isEmpty())){
@@ -473,7 +469,6 @@ public class GUIFront extends JFrame {
 					//get the first route to allow calculate route to go back to the initial map when starting to show the route
 					thisRoute = paths.get(0);
 					//the following code is needed for panning, we must update the panX and panY every time the map changes 
->>>>>>> d651e0f1196811e93af85051930243c518f38766
 					panelMap.setMapImage(new ProxyImage(paths.get(0).get(0).getLocalMap().getMapImageName()));
 					panelMap.setMapNodes(paths.get(0).get(0).getLocalMap().getMapNodes());
 					String previousMap = backend.getLocalMap().getMapImageName();
@@ -789,14 +784,8 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setBackground(otherButtonsColor);
 		contentPane.setBackground(backgroundColor);
 		btnClear.setBackground(otherButtonsColor);
-
-
-<<<<<<< HEAD
 	}
-	
-=======
-	} 
->>>>>>> d651e0f1196811e93af85051930243c518f38766
+		
 	public static void changeStreetView(GroupLayout gl_contentPane, String imagePath){
 			
 		try{
