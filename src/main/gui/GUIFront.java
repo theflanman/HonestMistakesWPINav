@@ -106,7 +106,6 @@ public class GUIFront extends JFrame {
 	static PanHandler panHandle;
 	static ZoomHandler zoomHandle;
 
-
 	// MapPanel components
 	private static JPanel contentPane;
 	private static JTextField textFieldEnd, textFieldStart;
@@ -446,6 +445,9 @@ public class GUIFront extends JFrame {
 						}
 					}
 
+					LocalMap localMap = paths.get(0).get(0).getLocalMap();
+					
+					GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());					
 
 					thisRoute = routes.get(0);
 					panelMap.setMapImage(new ProxyImage(paths.get(0).get(0).getLocalMap().getMapImageName()));
@@ -590,7 +592,8 @@ public class GUIFront extends JFrame {
 		btnNextMap.setBackground(otherButtonsColor);
 		btnNextMap.addActionListener(new ActionListener(){
 			@Override
-			public void actionPerformed(ActionEvent ae){				
+			public void actionPerformed(ActionEvent ae){	
+
 				index++;
 				if (index <= 0){
 					btnPreviousMap.setEnabled(false);
@@ -606,8 +609,10 @@ public class GUIFront extends JFrame {
 					btnPreviousMap.setEnabled(true);
 				}
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
+				
+				GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());
 				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
-				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+				panelMap.setMapNodes(localMap.getMapNodes());
 				String previousMap = backend.getLocalMap().getMapImageName();
 				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
 				backend.setLocalMap(localMap);
@@ -655,11 +660,16 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
-				panelMap.setMapImage(new ProxyImage(paths.get(index).get(0).getLocalMap().getMapImageName()));
-				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+				
+				LocalMap localMap = paths.get(index).get(0).getLocalMap();
+				
+				GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());
+				
+				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
+				panelMap.setMapNodes(localMap.getMapNodes());
 				String previousMap = backend.getLocalMap().getMapImageName();
 				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
+				backend.setLocalMap(localMap);
 
 				double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 				panelMap.panX = tempPan[0];
@@ -741,7 +751,6 @@ public class GUIFront extends JFrame {
 						.addGap(35))
 				);
 
-		System.out.println("cSV a");
 		GUIFront.changeStreetView(gl_contentPane, Constants.DEFAULT_STREET_IMAGE);
 
 		//check if it is done loading then make the gui visible
@@ -774,6 +783,7 @@ public class GUIFront extends JFrame {
 
 
 	}
+	
 	public static void changeStreetView(GroupLayout gl_contentPane, String imagePath){
 
 		try{
@@ -796,7 +806,6 @@ public class GUIFront extends JFrame {
 				.place(0, 0, streetViewTweenPanel);
 
 		streetViewSLPanel.initialize(streetViewConfig);
-		System.out.println("end changing street view");
 	}
 
 	// This goes in GUIFront
