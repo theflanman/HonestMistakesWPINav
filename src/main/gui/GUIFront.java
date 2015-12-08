@@ -135,6 +135,9 @@ public class GUIFront extends JFrame {
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
+	
+	// Array list of the Local Maps in the path
+	private ArrayList<LocalMap> pathLocalMaps;
 
 	/**
 	 * Create the frame.
@@ -469,9 +472,6 @@ public class GUIFront extends JFrame {
 					//btnRoute.setEnabled(false);
 					btnClear.setEnabled(true);
 					
-					//TODO Write ScreenShots Code here for each map in the path
-					PanelSave savePanel = new PanelSave();
-					savePanel.saveImage(contentPane, "test");
 
 
 					//btnEmail_1.setEnabled(true); //this is where email button should be enabled
@@ -750,6 +750,28 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				EmailGUI newEmail = new EmailGUI();
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
+				//TODO Write ScreenShots Code here for each map in the path
+				PanelSave savePanel = new PanelSave();
+				
+				// Creates a list of localMaps used in the path
+				for (MapNode node: globalMap.getChosenNodes()) {
+					for (LocalMap local: pathLocalMaps) {
+						if (! (local == node.getLocalMap())) {
+							if (local == pathLocalMaps.get(pathLocalMaps.size() - 1)) {
+								pathLocalMaps.add(local);
+							}
+						}
+						else {
+							break;
+						}
+					}
+				}
+				
+				for (LocalMap local: pathLocalMaps) {
+					
+					savePanel.saveImage(panelMap, "test");
+				}
+				
 			}
 		});
 		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
