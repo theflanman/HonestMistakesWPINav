@@ -157,26 +157,6 @@
 			<version>1.5.0-b01</version>
 		</dependency>
 		<dependency>
-			<groupId>sls</groupId>
-			<artifactId>sliding-layout</artifactId>
-			<version>1</version>
-		</dependency>
-		<dependency>
-			<groupId>sl</groupId>
-			<artifactId>sliding-layout-main</artifactId>
-			<version>1</version>
-		</dependency>
-		<dependency>
-			<groupId>tween-sources</groupId>
-			<artifactId>tween-engine-api-sources</artifactId>
-			<version>1</version>
-		</dependency>
-		<dependency>
-			<groupId>tween-sources</groupId>
-			<artifactId>tween-engine-api</artifactId>
-			<version>1</version>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
