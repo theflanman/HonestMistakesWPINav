@@ -56,7 +56,7 @@ public class EmailSender {
             Multipart multipart = new MimeMultipart();
             MimeBodyPart messageBodyPart = new MimeBodyPart();
             messageBodyPart.setContent(body, "text/html");
-            
+            multipart.addBodyPart(messageBodyPart);
             
             File dir = new File(myDirectoryPath);
             File[] directoryListing = dir.listFiles();
@@ -76,7 +76,6 @@ public class EmailSender {
             		}
             	}
             }
-            
             
             message.setSubject(subject);
             message.setContent(multipart);
