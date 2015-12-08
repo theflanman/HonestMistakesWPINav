@@ -796,8 +796,9 @@ public class DevGUIFront extends JFrame {
 
 						}
 					}
-					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
-
+					
+					//Intent is to remove all neighbors. Foreach loop doesn't like this.
+					nodeToRemove.removeNeighbors();
 					points.remove(nodeToRemove);
 					lastClicked = null;
 					selectedNodes.clear();
@@ -984,7 +985,8 @@ public class DevGUIFront extends JFrame {
 					else {
 						for(MapNode n : points2) {
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) 
+									&& (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								Graphics g = mapPanel.getGraphics();
 								Graphics g2 = mapPanel2.getGraphics();
 								edgeRemovalStarted = false;
