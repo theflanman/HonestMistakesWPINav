@@ -47,8 +47,10 @@ import javax.swing.border.MatteBorder;
 
 import main.*;
 import main.util.Constants;
+import main.util.GeneralUtil;
 import main.util.ProxyImage;
 import main.util.IProxyImage;
+import main.util.PanelSave;
 import main.util.Speaker;
 import main.util.WrappableCellRenderer;
 
@@ -509,6 +511,10 @@ public class GUIFront extends JFrame {
 							localmap.setEnd(paths.get(i).get(0));
 						}
 					}
+					
+					System.out.println("IMAGE NAME: " + paths.get(0).get(0).getLocalMap().getMapImageName());
+					GUIFront.changeStreetView(gl_contentPane, paths.get(0).get(0).getLocalMap().getMapImageName());					
+
 					//get the first route to allow calculate route to go back to the initial map when starting to show the route
 					thisRoute = paths.get(0);
 					//the following code is needed for panning, we must update the panX and panY every time the map changes 
@@ -668,8 +674,10 @@ public class GUIFront extends JFrame {
 				btnPreviousStep.setEnabled(false);
 				btnNextStep.setEnabled(true);
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
+				
+				GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());
 				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
-				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+				panelMap.setMapNodes(localMap.getMapNodes());
 				String previousMap = backend.getLocalMap().getMapImageName();
 				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
 				backend.setLocalMap(localMap);
@@ -718,11 +726,16 @@ public class GUIFront extends JFrame {
 				drawLine2 = false;
 				btnPreviousStep.setEnabled(false);
 				btnNextStep.setEnabled(true);
-				panelMap.setMapImage(new ProxyImage(paths.get(index).get(0).getLocalMap().getMapImageName()));
-				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+				
+				LocalMap localMap = paths.get(index).get(0).getLocalMap();
+				
+				GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());
+				
+				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
+				panelMap.setMapNodes(localMap.getMapNodes());
 				String previousMap = backend.getLocalMap().getMapImageName();
 				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-				backend.setLocalMap(paths.get(index).get(0).getLocalMap());
+				backend.setLocalMap(localMap);
 
 				double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 				panelMap.panX = tempPan[0];
@@ -732,10 +745,11 @@ public class GUIFront extends JFrame {
 					n.setXPos(n.getXPos() - panelMap.panX);
 					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-
-				panelMap.panX = 0.0;
-				panelMap.panY = 0.0;
-				panelMap.setScale(1.0);
+				
+				panelMap.panX = 0;
+				panelMap.panY = 0;
+				panelMap.setScale(1);
+				
 				thisRoute = paths.get(index);
 				drawLine = true;
 			}
@@ -857,7 +871,6 @@ public class GUIFront extends JFrame {
 					.addGap(35))
 		);
 
-		System.out.println("cSV a");
 		GUIFront.changeStreetView(gl_contentPane, Constants.DEFAULT_STREET_IMAGE);
 
 		//check if it is done loading then make the gui visible
@@ -885,9 +898,8 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setBackground(otherButtonsColor);
 		contentPane.setBackground(backgroundColor);
 		btnClear.setBackground(otherButtonsColor);
-
-
-	} 
+	}
+		
 	public static void changeStreetView(GroupLayout gl_contentPane, String imagePath){
 			
 		try{
@@ -910,7 +922,30 @@ public class GUIFront extends JFrame {
 		.place(0, 0, streetViewTweenPanel);
 		
 		streetViewSLPanel.initialize(streetViewConfig);
-		System.out.println("end changing street view");
+	}
+	
+	/*
+	 * @author Nick Gigliotti
+	 * 
+	 * @param a list of MapNodes which represents all the nodes in a path across multiple local maps
+	 * 
+	 * @return a list of LocalMaps that are in the path of nodes give
+	 */
+	public ArrayList<LocalMap> createListOfMaps(ArrayList<ArrayList<MapNode>> path) {
+		// Initializes list
+		ArrayList<LocalMap> pathLocalMaps = new ArrayList<LocalMap>();
+
+		for (ArrayList<MapNode> pathNodes: path) {
+			// Iterates through the list of nodes in the inputed ArrayList
+			for (MapNode node: pathNodes) {
+
+				// If the return list doesn't contain the current nodes LocalMap, it adds it to the return list
+				if (! pathLocalMaps.contains(node.getLocalMap())){
+					pathLocalMaps.add(node.getLocalMap());
+				}
+			}
+		}
+		return pathLocalMaps;
 	}
 	
 	// This goes in GUIFront
@@ -923,6 +958,50 @@ public class GUIFront extends JFrame {
 		mntmEmail.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
+				
+				System.out.println("Starts Saving Path Images");
+				
+				PanelSave savePanel = new PanelSave();
+				
+				//TODO Find a variable that includes the list of nodes in a path
+				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(paths);
+
+				// Goes through each of the maps in the path and captures and saves an image
+				for (LocalMap local: pathLocalMaps) {
+					savePanel.saveImage(panelMap, local.getMapImageName());
+					if (index < paths.size() - 1){
+						index ++;
+					}
+					if (index >= paths.size() - 1){
+						index = 0;
+					}
+					
+					LocalMap localMap = paths.get(index).get(0).getLocalMap();
+					panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
+					panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+					String previousMap = backend.getLocalMap().getMapImageName();
+					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+					backend.setLocalMap(localMap);
+
+					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+					panelMap.panX = tempPan[0];
+					panelMap.panY = tempPan[1];
+
+					for(MapNode n : backend.getLocalMap().getMapNodes()){
+						n.setXPos(n.getXPos() - panelMap.panX);
+						n.setYPos(n.getYPos() - panelMap.panY);
+					}
+
+					panelMap.panX = 0;
+					panelMap.panY = 0;
+					panelMap.setScale(1.0);
+
+					thisRoute = paths.get(index);
+					drawLine = true;
+				}
+				System.out.println("Finished Saving Path Images");
+				
+				// Email Pop-Up
 				EmailGUI newEmail = new EmailGUI();
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
 			}
@@ -993,7 +1072,7 @@ public class GUIFront extends JFrame {
 
 				backend.setLocalMap(globalMap.getLocalMaps().get(0));
 
-				double[] tempPan = panValues.get("AK1.jpg");
+				double[] tempPan = panValues.get("AK1.png");
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
 
@@ -1018,7 +1097,7 @@ public class GUIFront extends JFrame {
 
 					backend.setLocalMap(globalMap.getLocalMaps().get(1));
 
-					double[] tempPan = panValues.get("AK2.jpg");
+					double[] tempPan = panValues.get("AK2.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 
@@ -1043,7 +1122,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(2));
 					
-					double[] tempPan = panValues.get("AK3.jpg");
+					double[] tempPan = panValues.get("AK3.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1068,7 +1147,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(3));
 					
-					double[] tempPan = panValues.get("AKB.jpg");
+					double[] tempPan = panValues.get("AKB.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1100,7 +1179,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(4));
 					
-					double[] tempPan = panValues.get("Boy1.jpg");
+					double[] tempPan = panValues.get("Boy1.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1125,7 +1204,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(5));
 					
-					double[] tempPan = panValues.get("Boy2.jpg");
+					double[] tempPan = panValues.get("Boy2.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1150,7 +1229,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(6));
 					
-					double[] tempPan = panValues.get("Boy3.jpg");
+					double[] tempPan = panValues.get("Boy3.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1175,7 +1254,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(7));
 					
-					double[] tempPan = panValues.get("BoyB.jpg");
+					double[] tempPan = panValues.get("BoyB.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1207,7 +1286,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(8));
 					
-					double[] tempPan = panValues.get("CC1.jpg");
+					double[] tempPan = panValues.get("CC1.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1232,7 +1311,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(9));
 					
-					double[] tempPan = panValues.get("CC2.jpg");
+					double[] tempPan = panValues.get("CC2.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1257,7 +1336,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(10));
 					
-					double[] tempPan = panValues.get("CC3.jpg");
+					double[] tempPan = panValues.get("CC3.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1287,7 +1366,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(11));
 					
-					double[] tempPan = panValues.get("CCM.jpg");
+					double[] tempPan = panValues.get("CCM.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1315,7 +1394,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(12));
 					
-					double[] tempPan = panValues.get("GL1.jpg");
+					double[] tempPan = panValues.get("GL1.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1340,7 +1419,7 @@ public class GUIFront extends JFrame {
 
 					backend.setLocalMap(globalMap.getLocalMaps().get(13));
 					
-					double[] tempPan = panValues.get("GL2.jpg");
+					double[] tempPan = panValues.get("GL2.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1365,7 +1444,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(14));
 					
-					double[] tempPan = panValues.get("GL3.jpg");
+					double[] tempPan = panValues.get("GL3.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1390,7 +1469,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(15));
 					
-					double[] tempPan = panValues.get("GLB.jpg");
+					double[] tempPan = panValues.get("GLB.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1415,7 +1494,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(16));
 					
-					double[] tempPan = panValues.get("GLSB.jpg");
+					double[] tempPan = panValues.get("GLSB.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1448,7 +1527,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(17));
 					
-					double[] tempPan = panValues.get("HH1.jpg");
+					double[] tempPan = panValues.get("HH1.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1473,7 +1552,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(18));
 					
-					double[] tempPan = panValues.get("HH2.jpg");
+					double[] tempPan = panValues.get("HH2.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1498,7 +1577,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(19));
 					
-					double[] tempPan = panValues.get("HH3.jpg");
+					double[] tempPan = panValues.get("HH3.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1529,7 +1608,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(20));
 					
-					double[] tempPan = panValues.get("HHG1.jpg");
+					double[] tempPan = panValues.get("HHG1.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1554,7 +1633,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(21));
 					
-					double[] tempPan = panValues.get("HHG2.jpg");
+					double[] tempPan = panValues.get("HHG2.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1584,7 +1663,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(22));
 					
-					double[] tempPan = panValues.get("PC1.jpg");
+					double[] tempPan = panValues.get("PC1.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1609,7 +1688,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(23));
 					
-					double[] tempPan = panValues.get("PC2.jpg");
+					double[] tempPan = panValues.get("PC2.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1639,7 +1718,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(24));
 					
-					double[] tempPan = panValues.get("SH1.jpg");
+					double[] tempPan = panValues.get("SH1.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1664,7 +1743,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(25));
 					
-					double[] tempPan = panValues.get("SH2.jpg");
+					double[] tempPan = panValues.get("SH2.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1689,7 +1768,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(26));
 					
-					double[] tempPan = panValues.get("SH3.jpg");
+					double[] tempPan = panValues.get("SH3.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -1714,7 +1793,7 @@ public class GUIFront extends JFrame {
 					
 					backend.setLocalMap(globalMap.getLocalMaps().get(27));
 					
-					double[] tempPan = panValues.get("SHB.jpg");
+					double[] tempPan = panValues.get("SHB.png");
 					panelMap.panX = tempPan[0];
 					panelMap.panY = tempPan[1];
 					
@@ -2163,7 +2242,7 @@ public class GUIFront extends JFrame {
 				protected void paintComponent(Graphics g) {
 					Color startNodeColor = colors.getStartNodeColor();
 					Color endNodeColor = colors.getEndNodeColor();
-					//Color lineColor = colors.getLineColor();
+					Color lineColor = colors.getLineColor();
 					double alpha = 0.25;
 					Color color = new Color((float) 0, (float) .5, (float) 1, (float) alpha);
 					Color outlineColor = colors.getOutlineColor();
@@ -2264,7 +2343,7 @@ public class GUIFront extends JFrame {
 									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
 									Graphics2D g2 = (Graphics2D) g;
 									g2.setStroke(new BasicStroke(5));
-									g2.setColor(color);
+									g2.setColor(lineColor);
 									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 								}
 								drawLine = false;
@@ -2278,7 +2357,7 @@ public class GUIFront extends JFrame {
 									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
 									Graphics2D g2 = (Graphics2D) g;
 									g2.setStroke(new BasicStroke(5));
-									g2.setColor(color); // you are going to want to make this transparent ... before next step button is added otherwise this will cause some issues
+									g2.setColor(lineColor); // you are going to want to make this transparent ... before next step button is added otherwise this will cause some issues
 									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 								}
 								drawLine = true;
@@ -2287,14 +2366,14 @@ public class GUIFront extends JFrame {
 							
 							if (drawLine2 == true){
 								Graphics2D g2 = (Graphics2D) g;
-								g2.setStroke(new BasicStroke(3));
+								g2.setStroke(new BasicStroke(2));
 								g2.setColor(Color.YELLOW);
 								g2.drawLine((int) paths.get(index).get(index2 - 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 - 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
 							}
 							
 							if (drawLine3 == true){
 								Graphics2D g2 = (Graphics2D) g;
-								g2.setStroke(new BasicStroke(3));
+								g2.setStroke(new BasicStroke(2));
 								g2.setColor(Color.YELLOW);
 								g2.drawLine((int) paths.get(index).get(index2 + 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 + 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
 							}
