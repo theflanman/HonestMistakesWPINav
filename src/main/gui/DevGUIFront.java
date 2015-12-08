@@ -188,7 +188,7 @@ public class DevGUIFront extends JFrame {
 					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
 					local1 = devGUIBack.getLocalMap();
 					String imagePath = GeneralUtil.removeExtension(inputFileName);
-					imagePath = imagePath + ".jpg";
+					imagePath = imagePath + ".png";
 
 					// set the image
 					/*
@@ -227,7 +227,7 @@ public class DevGUIFront extends JFrame {
 					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName); 
 					local2 = devGUIBack.getLocalMap();
 					String imagePath = GeneralUtil.removeExtension(inputFileName);
-					imagePath = imagePath + ".jpg";
+					imagePath = imagePath + ".png";
 
 					// set the image
 					pic2 = new ProxyImage(imagePath);
@@ -250,7 +250,7 @@ public class DevGUIFront extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String fileName = inputFile.getName();
 				fileName = GeneralUtil.removeExtension(fileName);
-				fileName = fileName + ".jpg";
+				fileName = fileName + ".png";
 				LocalMap thisMap = new LocalMap(fileName, points);
 				DevGUIBack devGUIBack = new DevGUIBack(thisMap);
 				devGUIBack.saveMap();
@@ -258,7 +258,7 @@ public class DevGUIFront extends JFrame {
 				if (twoMapView && !local1.getMapImageName().equals(local2.getMapImageName())) {
 					String fileName2 = inputFile2.getName();
 					fileName2 = GeneralUtil.removeExtension(fileName2);
-					fileName2 = fileName2 + ".jpg";
+					fileName2 = fileName2 + ".png";
 					LocalMap thisMap2 = new LocalMap(fileName2, points2);
 					DevGUIBack devGUIBack2 = new DevGUIBack(thisMap2);
 					devGUIBack2.saveMap();
@@ -283,7 +283,7 @@ public class DevGUIFront extends JFrame {
 					inputFile = chooser.getSelectedFile();
 					
 					String imagePath = GeneralUtil.removeExtension(inputFile.getName());
-					imagePath = imagePath + ".jpg";
+					imagePath = imagePath + ".png";
 
 					pic = new ProxyImage(imagePath);
 					
