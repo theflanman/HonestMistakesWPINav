@@ -44,7 +44,7 @@ public class DistanceTests extends TestCase{
 		instructionList1.add(node2);
 		instructionList1.add(node1);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		
 		assertEquals(stepByStep1.calculateTotalDistance(), 16);
 	}
@@ -57,7 +57,7 @@ public class DistanceTests extends TestCase{
 		instructionList1.add(node2);
 		instructionList1.add(node1);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		
 		assertEquals(stepByStep1.calculateTotalDistance(), 3);
 	}

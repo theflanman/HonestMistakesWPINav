@@ -74,6 +74,8 @@ public class GUIFront extends JFrame {
 	private static boolean setStart = false; // keeps track of whether you have set a start or end node yet
 	private static boolean setEnd = false;
 	public static boolean drawLine = false;
+	public static boolean drawLine2 = false;
+	public static boolean drawLine3 = false;
 	public static boolean removeLine = false;
 	public static boolean reset = false;
 	public static MapNode startNode = null, endNode = null;
@@ -83,11 +85,12 @@ public class GUIFront extends JFrame {
 	public static ArrayList<ArrayList<MapNode>> paths = new ArrayList<ArrayList<MapNode>>();
 	public static ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
-	private JButton btnPreviousMap, btnNextMap;
+	private JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
 	public static boolean allowSetting = true;
 	public static JTabbedPane mainPanel; 
 	public static ArrayList<MapNode> allNodes;
 	public static int index = 0;
+	public static int index2 = 0;
 	public static ArrayList<MapNode> thisRoute = new ArrayList<MapNode>();
 	public static HashMap<String, double[]> panValues = new HashMap<String, double[]>();
 	public static HashMap<String, double[]> defaults = new HashMap<String, double[]>();
@@ -130,8 +133,6 @@ public class GUIFront extends JFrame {
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
-	
-
 
 	private Color routeButtonColor, otherButtonsColor, backgroundColor, sideBarColor;
 	static ColorSchemes allSchemes;
@@ -454,37 +455,80 @@ public class GUIFront extends JFrame {
 					speaker.play();
 					
 					
-					//refer to Andrew Petit if you get confused with the next 30 or so lines
+					//refer to Andrew Petit if you get confused with the next 250 or so lines
 					//get me routes for different maps -- waypoint functionallity is added here 
 					ArrayList<MapNode> getNodesOnSameMap = new ArrayList<MapNode>(); //will add all nodes from the same map to this 
+					ArrayList<ArrayList<String>> stepByStep = new ArrayList<ArrayList<String>>();
+					ArrayList<String> directions = new ArrayList<String>();
+					boolean hasWayPoint = true;
 					for (int i = 0; i < globalMap.getChosenNodes().size() - 1; i++){ //for all nodes in chosen nodes (start, end, and waypoints included) 
 						//if the nodes are on the same map add all those nodes into an arraylist together
 						if (globalMap.getChosenNodes().get(i).getLocalMap() == globalMap.getChosenNodes().get(i + 1).getLocalMap()){
 							ArrayList<MapNode> nodesOnSameMap = backend.runAStar(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
+							if (globalMap.getChosenNodes().size() == i + 2){
+								directions = backend.displayStepByStep(nodesOnSameMap, false); //no more waypoints 
+							} else {
+								directions = backend.displayStepByStep(nodesOnSameMap, true); //more waypoints
+							}
+							stepByStep.add(directions); //essentially makes a list of all step by step directions to be added to the jlist
+							directions = new ArrayList<String>(); //reset directions
 							for (MapNode node : nodesOnSameMap){
 								getNodesOnSameMap.add(node);
 							}
 						} else { //if the next node in chosen nodes is not on the same local map as the previous node in chosen nodes
-							if (!(getNodesOnSameMap.isEmpty())){ //check if getNodesOnSameMap is not empty and if it is not add the nodes from the first array gathered from running getmeroutes as the nodes in this array should be on the same map 
+							if (!(getNodesOnSameMap.isEmpty())){ //check if getNodesOnSameMap is not empty and if it is not add the nodes from the first array gathered from running getmeroutes as the nodes in this array should be on the same map
+								ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
 								ArrayList<ArrayList<MapNode>> getNodesOnDifferentMap = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
+								//this is is needed to make waypoints compatible with step by step - basically just add all nodes gathered from getmeroutes and send that to step by step
+								for (ArrayList<MapNode> mapnodes : getNodesOnDifferentMap){
+									for (int k = 0; k < mapnodes.size() - 1; k++){
+										if (globalMap.getChosenNodes().size() == i + 2){
+											wayPoints.add(mapnodes.get(k));
+											hasWayPoint = false; // no more waypoints
+										} else {
+											wayPoints.add(mapnodes.get(k));
+											hasWayPoint = true; // more waypoints
+										}
+									}
+								}
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								stepByStep.add(directions);
+								
 								for (MapNode mapnode : getNodesOnDifferentMap.get(0)){ 
 									getNodesOnSameMap.add(mapnode);
 								}
+								//need to make temporary getNodesOnSameMap add all those nodes to all the nodes that are in getNodesOnDifferentMap
 								paths.add(getNodesOnSameMap);
 								for (int k = 1; k < getNodesOnDifferentMap.size(); k++){ //now for the other lists that have been added into OnDifferentMap -- we need to add those ArrayLists into a new spot in paths as they should NOT be on the same local map
 									paths.add(getNodesOnDifferentMap.get(k));
 								}
+								directions = new ArrayList<String>();
+								wayPoints = new ArrayList<MapNode>();
 								getNodesOnSameMap = new ArrayList<MapNode>(); //reinitialize getNodesOnSameMap to allow the user to place those nodes in the same index of path for the next time a node is placed on the same map 
 							} else { //if getNodesOnSameMap was not empty we should just go ahead an the ArrayList<ArrayList<MapNode>> that getMeRoutes returns to the next index in paths as these nodes should not have the same local map 
 								ArrayList<ArrayList<MapNode>> getNodesOnDifferentMap = backend.getMeRoutes(globalMap.getChosenNodes().get(i), globalMap.getChosenNodes().get(i + 1));
+								ArrayList<MapNode> wayPoints = new ArrayList<MapNode>();
+								for (ArrayList<MapNode> mapnodes : getNodesOnDifferentMap){ //same idea as before go through the list of all nodes from the arraylist of arraylist of mapnodes returned by getmerroutes send that arraylist to step by step
+									for (int k = 0; k < mapnodes.size() - 1; k++){
+										if (globalMap.getChosenNodes().size() == i + 2){
+											wayPoints.add(mapnodes.get(k));
+											hasWayPoint = false; //no more waypoints
+										} else {
+											wayPoints.add(mapnodes.get(k));
+											hasWayPoint = true; //more waypoints
+										}
+									}
+								}
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								stepByStep.add(directions);
 								for (ArrayList<MapNode> mapnodes : getNodesOnDifferentMap){
 									paths.add(mapnodes);
 								}
+								directions = new ArrayList<String>();
+								wayPoints = new ArrayList<MapNode>();
 							}
 						}
 					}
-
-					System.out.println(paths.isEmpty());
 					if (paths.isEmpty()){
 						if (!(getNodesOnSameMap.isEmpty())){
 							paths.add(getNodesOnSameMap);
@@ -498,6 +542,7 @@ public class GUIFront extends JFrame {
 							paths.add(getNodesOnSameMap);
 						}
 					}
+
 					//reinitialize getNodesOnSameMap for the next time this fun method is run...
 					getNodesOnSameMap = new ArrayList<MapNode>();
 					
@@ -538,31 +583,35 @@ public class GUIFront extends JFrame {
 					
 					//set the initial index at 0 so that when pressing nextMap button you can scroll to the next map or previous map
 					index = 0;
+					
+					//set the initial index 2 at 0 so that when pressing nextstep button you can go to the next step or previous step
+					index2 = 0;
 					//if we have more than one arraylist in paths this means that more than one map will be shown to the user
 					if (paths.size() > 1){
 						btnNextMap.setEnabled(true);
 					}
+					
+					btnNextStep.setEnabled(true);
 					
 					//draw the line on the map
 					drawLine = true;
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
-					for (ArrayList<MapNode>wayPoints : paths){
-						//String all = "";
-						//distance += backend.getDistance(wayPoints);
-						//for (String string : backend.displayStepByStep(wayPoints)) {
-							//listModel.addElement(string); // add it to the list model
-						//}
-						//allText += all + "\n";
+					listModel.addElement("Welcome to the Era of Navigation!");
+					for (ArrayList<String> strings: stepByStep){
+						for (String string : strings) {
+							listModel.addElement(string); // add it to the list model
+						}
+					}
+					
+					for (ArrayList<MapNode> wayPoints : paths){
+						distance += backend.getDistance(wayPoints, true); //the boolean value should not matter here 
 					}
 
-					//lblDistance.setText("Distance in feet:" + distance);
+					lblDistance.setText("Distance in feet:" + distance);
 					//this sets the textarea with the step by step directions
-					//textArea1.setText(allText);
-					//btnRoute.setEnabled(false);
 					btnClear.setEnabled(true);
-					
 					
 					
 				}
@@ -669,6 +718,11 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
+				index2 = 0;
+				drawLine2 = false;
+				drawLine3 = false;
+				btnPreviousStep.setEnabled(false);
+				btnNextStep.setEnabled(true);
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
 				
 				GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());
@@ -698,9 +752,6 @@ public class GUIFront extends JFrame {
 
 		// Add buttons to move between two maps
 		btnPreviousMap = new JButton("<-- Previous Map");
-		/*if (index <= 0){
-			btnPreviousMap.setEnabled(false);
-		}*/
 		btnPreviousMap.setEnabled(false);
 		btnPreviousMap.setBackground(otherButtonsColor);
 		btnPreviousMap.addActionListener(new ActionListener(){
@@ -720,6 +771,11 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
+				index2 = 0;
+				drawLine2 = false;
+				drawLine3 = false;
+				btnPreviousStep.setEnabled(false);
+				btnNextStep.setEnabled(true);
 				
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
 				
@@ -748,67 +804,121 @@ public class GUIFront extends JFrame {
 			}
 		});
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
+		
+		btnNextStep = new JButton("Next Step->");
+		btnNextStep.setEnabled(false);
+		btnNextStep.setBackground(otherButtonsColor);
+		btnNextStep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				index2++;
+				if (index2 <= 0){
+					btnPreviousStep.setEnabled(false);
+				}
+				if (index2 < paths.get(index).size() - 1){
+					btnNextStep.setEnabled(true);
+				}
+
+				if (index2 >= paths.get(index).size() - 1){
+					btnNextStep.setEnabled(false);
+				}
+				if (index2 > 0){
+					btnPreviousStep.setEnabled(true);
+				}
+				drawLine3 = false;
+				drawLine2 = true;
+			}
+		});
+
+		btnPreviousStep = new JButton("<-Previous Step");
+		btnPreviousStep.setEnabled(false);
+		btnPreviousStep.setBackground(otherButtonsColor);
+		btnPreviousStep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				index2--;
+				if (index2 <= 0){
+					btnPreviousStep.setEnabled(false);
+				}
+				if (index2 < paths.get(index).size() - 1){
+					btnNextStep.setEnabled(true);
+				}
+
+				if (index2 >= paths.get(index).size() - 1){
+					btnNextStep.setEnabled(false);
+				}
+				if (index2 > 0){
+					btnPreviousStep.setEnabled(true);
+				}
+				drawLine2 = false;
+				drawLine3 = true;
+			}
+		});
 
 		// Group Layout code for all components
 		gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(10)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblStart)
-												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-										.addGap(18)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-												.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-										.addGap(18)
-										.addComponent(lblInvalidEntry)
-										.addGap(227)
-										.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-										.addGap(18)
-										.addComponent(btnClear))
-								.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblStart)
+								.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addComponent(lblInvalidEntry)
+							.addGap(227)
+							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(btnClear))
+						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(79)
-						.addComponent(btnPreviousMap)
-						.addPreferredGap(ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
-						.addComponent(btnNextMap)
-						.addGap(170))
-				);
+					.addGap(79)
+					.addComponent(btnPreviousMap)
+					.addGap(37)
+					.addComponent(btnPreviousStep)
+					.addGap(75)
+					.addComponent(btnNextStep)
+					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+					.addComponent(btnNextMap)
+					.addGap(170))
+		);
 		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblStart)
-										.addGap(6)
-										.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblEnd)
-										.addGap(6)
-										.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(24)
-										.addComponent(lblInvalidEntry))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(11)
-										.addComponent(btnRoute))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(11)
-										.addComponent(btnClear)))
-						.addGap(18)
-						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnPreviousMap)
-								.addComponent(btnNextMap))
-						.addGap(35))
-				);
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblStart)
+							.addGap(6)
+							.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblEnd)
+							.addGap(6)
+							.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(24)
+							.addComponent(lblInvalidEntry))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(btnRoute))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(btnClear)))
+					.addGap(18)
+					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnPreviousMap)
+						.addComponent(btnNextMap)
+						.addComponent(btnNextStep)
+						.addComponent(btnPreviousStep))
+					.addGap(35))
+		);
 
 		GUIFront.changeStreetView(gl_contentPane, Constants.DEFAULT_STREET_IMAGE);
 
@@ -851,7 +961,7 @@ public class GUIFront extends JFrame {
 		SLPanel streetViewSLPanel = new SLPanel();
 		mainPanel.addTab("Street View", null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
-
+		
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
 		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
 				
@@ -944,7 +1054,6 @@ public class GUIFront extends JFrame {
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
 			}
 		});
-		
 		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
 		mntmExit.addActionListener(new ActionListener(){
 			@Override
@@ -1819,11 +1928,15 @@ public class GUIFront extends JFrame {
 				backend.removePath(globalMap.getChosenNodes());
 				btnNextMap.setEnabled(false);
 				btnPreviousMap.setEnabled(false);
+				btnNextStep.setEnabled(false);
+				btnPreviousStep.setEnabled(false);
 
 				globalMap.getChosenNodes().clear();
 				lblDistance.setText("");
 				btnClear.setEnabled(false);
 				btnRoute.setEnabled(false);
+				drawLine2 = false;
+				drawLine3 = false;
 				removeLine = true;
 			}
 
@@ -2153,6 +2266,8 @@ public class GUIFront extends JFrame {
 					Color startNodeColor = colors.getStartNodeColor();
 					Color endNodeColor = colors.getEndNodeColor();
 					Color lineColor = colors.getLineColor();
+					double alpha = 0.25;
+					Color color = new Color((float) 0, (float) .5, (float) 1, (float) alpha);
 					Color outlineColor = colors.getOutlineColor();
 
 					super.paintComponent(g);
@@ -2195,7 +2310,6 @@ public class GUIFront extends JFrame {
 						// well start and end nodes if they have been set
 						graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);
 
-						// Sets the color of the start and end nodes to be different for each new waypoint
 						// Sets the color of the start and end nodes to be different for each new waypoint
 						if(this.shouldPaint){
 							// Sets the color of the start and end nodes to be different
@@ -2271,7 +2385,21 @@ public class GUIFront extends JFrame {
 								}
 								drawLine = true;
 								removeLine = false;
-							} 
+							}
+							
+							if (drawLine2 == true){
+								Graphics2D g2 = (Graphics2D) g;
+								g2.setStroke(new BasicStroke(2));
+								g2.setColor(Color.YELLOW);
+								g2.drawLine((int) paths.get(index).get(index2 - 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 - 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
+							}
+							
+							if (drawLine3 == true){
+								Graphics2D g2 = (Graphics2D) g;
+								g2.setStroke(new BasicStroke(2));
+								g2.setColor(Color.YELLOW);
+								g2.drawLine((int) paths.get(index).get(index2 + 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 + 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
+							}
 							repaint();
 							graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
 						}
