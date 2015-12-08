@@ -1823,7 +1823,7 @@ public class GUIFront extends JFrame {
 				String packageName;
 				boolean shouldPaint;
 				
-				Polygon aBuilding;
+				Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, gLPolygon, hHPolygon, sHPolygon, fPolygon;
 
 				/**
 				 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
@@ -1854,12 +1854,47 @@ public class GUIFront extends JFrame {
 
 					zoomRatio = 1;
 					
-					// Initialize a polygon object
-					aBuilding = new Polygon();
-					aBuilding.addPoint(1019, 598);
-					aBuilding.addPoint(1030, 535);
-					aBuilding.addPoint(1068, 543);
-					aBuilding.addPoint(1056, 604);
+					// Initialize polygon objects for each building
+					//project center
+					pCPolygon = new Polygon();
+					pCPolygon.addPoint(1019, 598);
+					pCPolygon.addPoint(1030, 535);
+					pCPolygon.addPoint(1068, 543);
+					pCPolygon.addPoint(1056, 604);
+					
+					//Atwater Kent
+					aKPolygon = new Polygon();
+					aKPolygon.addPoint(1109, 241);
+					aKPolygon.addPoint(1067, 311);
+					aKPolygon.addPoint(1089, 325);
+					aKPolygon.addPoint(1082, 339);
+					aKPolygon.addPoint(1159, 381);
+					aKPolygon.addPoint(1168, 369);
+					aKPolygon.addPoint(1189, 381);
+					aKPolygon.addPoint(1229, 310);
+					aKPolygon.addPoint(1195, 289);
+					aKPolygon.addPoint(1176, 318);
+					aKPolygon.addPoint(1128, 290);
+					aKPolygon.addPoint(1144, 260);
+					
+					//Boynton
+					bPolygon = new Polygon();
+					bPolygon.addPoint(1044, 734);
+					bPolygon.addPoint(1037, 775);
+					bPolygon.addPoint(1065, 780);
+					bPolygon.addPoint(1066, 773);
+					bPolygon.addPoint(1117, 782);
+					bPolygon.addPoint(1116, 787);
+					bPolygon.addPoint(1127, 789);
+					bPolygon.addPoint(1127, 783);
+					bPolygon.addPoint(1134, 783);
+					bPolygon.addPoint(1138, 754);
+					bPolygon.addPoint(1072, 743);
+					bPolygon.addPoint(1073, 739);
+					
+					//Campus Center
+					cCPolygon = new Polygon();
+					cCPolygon.addPoint(938, 346);
 
 					addMouseListener(panHandle);
 					addMouseMotionListener(panHandle);
@@ -1873,8 +1908,33 @@ public class GUIFront extends JFrame {
 								MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
 								System.out.println("Node found is: " + node.getNodeID());
 								
+								//Project Center
+								if(pCPolygon.contains(mainReferencePoint)){
+									GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(22).getMapImageName());
+
+									panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(22).getMapImageName()));
+									panelMap.setMapNodes(globalMap.getLocalMaps().get(22).getMapNodes());
+									String previousMap = backend.getLocalMap().getMapImageName();
+									panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+									backend.setLocalMap(globalMap.getLocalMaps().get(22));
+
+									double[] tempPan = panValues.get("PC1.jpg");
+									panelMap.panX = tempPan[0];
+									panelMap.panY = tempPan[1];
+
+									for(MapNode n : backend.getLocalMap().getMapNodes()){
+										n.setXPos(n.getXPos() - panelMap.panX);
+										n.setYPos(n.getYPos() - panelMap.panY);
+									}
+
+									panelMap.panX = 0.0;
+									panelMap.panY = 0.0;
+									panelMap.setScale(1.0);
+								}
 								
-								if(aBuilding.contains(mainReferencePoint)){
+								//AK
+								if(aKPolygon.contains(mainReferencePoint)){
 									GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(0).getMapImageName());
 									
 									panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(0).getMapImageName()));
@@ -1885,6 +1945,30 @@ public class GUIFront extends JFrame {
 									backend.setLocalMap(globalMap.getLocalMaps().get(0));
 
 									double[] tempPan = panValues.get("AK1.jpg");
+									panelMap.panX = tempPan[0];
+									panelMap.panY = tempPan[1];
+
+									for(MapNode n : backend.getLocalMap().getMapNodes()){
+										n.setXPos(n.getXPos() - panelMap.panX);
+										n.setYPos(n.getYPos() - panelMap.panY);
+									}
+
+									panelMap.panX = 0.0;
+									panelMap.panY = 0.0;
+									panelMap.setScale(1.0);
+								}
+								
+								//Boynton
+								if(bPolygon.contains(mainReferencePoint)){
+									GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(4).getMapImageName());
+									panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(4).getMapImageName()));
+									panelMap.setMapNodes(globalMap.getLocalMaps().get(4).getMapNodes());
+									String previousMap = backend.getLocalMap().getMapImageName();
+									panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+
+									backend.setLocalMap(globalMap.getLocalMaps().get(4));
+
+									double[] tempPan = panValues.get("Boy1.jpg");
 									panelMap.panX = tempPan[0];
 									panelMap.panY = tempPan[1];
 
@@ -2076,7 +2160,8 @@ public class GUIFront extends JFrame {
 							
 							// Draw the panels over the building
 							graphics.setColor(Color.PINK);
-							graphics.fill(aBuilding);
+							graphics.fill(aKPolygon);
+							graphics.fill(bPolygon);
 							
 							graphics.setColor(Color.RED);
 							if(!(paths.isEmpty())){
