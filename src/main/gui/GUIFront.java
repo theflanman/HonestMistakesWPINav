@@ -435,9 +435,6 @@ public class GUIFront extends JFrame {
 						}
 					}
 
-					LocalMap localMap = paths.get(0).get(0).getLocalMap();
-					GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());					
-
 					System.out.println(paths.isEmpty());
 					if (paths.isEmpty()){
 						if (!(getNodesOnSameMap.isEmpty())){
@@ -466,6 +463,10 @@ public class GUIFront extends JFrame {
 							localmap.setEnd(paths.get(i).get(0));
 						}
 					}
+					
+					System.out.println("IMAGE NAME: " + paths.get(0).get(0).getLocalMap().getMapImageName());
+					GUIFront.changeStreetView(gl_contentPane, paths.get(0).get(0).getLocalMap().getMapImageName());					
+
 					//get the first route to allow calculate route to go back to the initial map when starting to show the route
 					thisRoute = paths.get(0);
 					//the following code is needed for panning, we must update the panX and panY every time the map changes 
@@ -511,6 +512,7 @@ public class GUIFront extends JFrame {
 					//textArea1.setText(allText);
 					//btnRoute.setEnabled(false);
 					btnClear.setEnabled(true);
+					
 				}
 			}
 		});
@@ -798,9 +800,7 @@ public class GUIFront extends JFrame {
 		SLPanel streetViewSLPanel = new SLPanel();
 		mainPanel.addTab("Street View", null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
-		
-		String jpgStreet = GeneralUtil.removeExtension(imagePath);
-		jpgStreet = jpgStreet + ".jpg";
+
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
 		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
 				
