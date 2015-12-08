@@ -1017,7 +1017,7 @@ public class DevGUIFront extends JFrame {
 							nodeToRemove = n;
 						}
 					}
-					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
+					nodeToRemove.removeNeighbors();
 
 					points2.remove(nodeToRemove);
 					lastClicked = null;
