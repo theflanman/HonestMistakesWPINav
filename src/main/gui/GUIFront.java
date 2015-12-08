@@ -545,10 +545,15 @@ public class GUIFront extends JFrame {
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
+					listModel.addElement("Welcome to the Era of Navigation!");
 					for (ArrayList<String> strings: stepByStep){
 						for (String string : strings) {
 							listModel.addElement(string); // add it to the list model
 						}
+					}
+					
+					for (ArrayList<MapNode> wayPoints : paths){
+						distance += backend.getDistance(wayPoints, true); //the boolean value should not matter here 
 					}
 
 					lblDistance.setText("Distance in feet:" + distance);
