@@ -98,6 +98,7 @@ public class DevGUIFront extends JFrame {
 	} */
 
 	public String[] typeList = new String[] {"Food", "Office", "Classroom", "Waterfountain", "Bathroom", "Parking", "Walking", "Door", "Elevator", "Lab", "Other"};
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -187,7 +188,7 @@ public class DevGUIFront extends JFrame {
 					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
 					local1 = devGUIBack.getLocalMap();
 					String imagePath = GeneralUtil.removeExtension(inputFileName);
-					imagePath = imagePath + ".jpg";
+					imagePath = imagePath + ".png";
 
 					// set the image
 					/*
@@ -226,7 +227,7 @@ public class DevGUIFront extends JFrame {
 					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName); 
 					local2 = devGUIBack.getLocalMap();
 					String imagePath = GeneralUtil.removeExtension(inputFileName);
-					imagePath = imagePath + ".jpg";
+					imagePath = imagePath + ".png";
 
 					// set the image
 					pic2 = new ProxyImage(imagePath);
@@ -249,7 +250,7 @@ public class DevGUIFront extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String fileName = inputFile.getName();
 				fileName = GeneralUtil.removeExtension(fileName);
-				fileName = fileName + ".jpg";
+				fileName = fileName + ".png";
 				LocalMap thisMap = new LocalMap(fileName, points);
 				DevGUIBack devGUIBack = new DevGUIBack(thisMap);
 				devGUIBack.saveMap();
@@ -257,7 +258,7 @@ public class DevGUIFront extends JFrame {
 				if (twoMapView && !local1.getMapImageName().equals(local2.getMapImageName())) {
 					String fileName2 = inputFile2.getName();
 					fileName2 = GeneralUtil.removeExtension(fileName2);
-					fileName2 = fileName2 + ".jpg";
+					fileName2 = fileName2 + ".png";
 					LocalMap thisMap2 = new LocalMap(fileName2, points2);
 					DevGUIBack devGUIBack2 = new DevGUIBack(thisMap2);
 					devGUIBack2.saveMap();
@@ -282,7 +283,7 @@ public class DevGUIFront extends JFrame {
 					inputFile = chooser.getSelectedFile();
 					
 					String imagePath = GeneralUtil.removeExtension(inputFile.getName());
-					imagePath = imagePath + ".jpg";
+					imagePath = imagePath + ".png";
 
 					pic = new ProxyImage(imagePath);
 					
@@ -379,7 +380,7 @@ public class DevGUIFront extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel(" Cursor Options");
 		cursorPanel.add(lblNewLabel_1);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 
 		cursorPanel.add(rdbtnPlaceNode);
 		buttonGroup.add(rdbtnPlaceNode);
@@ -420,7 +421,7 @@ public class DevGUIFront extends JFrame {
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		panel_1.setBounds(920, 349, 301, 312);
+		panel_1.setBounds(920, 349, 294, 312);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 
@@ -432,7 +433,7 @@ public class DevGUIFront extends JFrame {
 		chckbxBikeable.setBounds(8, 215, 113, 25);
 		panel_1.add(chckbxBikeable);
 
-		chckbxHandicapped = new JCheckBox("Handicapped accessable");
+		chckbxHandicapped = new JCheckBox("Handicapped accessible");
 		chckbxHandicapped.setBounds(8, 242, 176, 25);
 		panel_1.add(chckbxHandicapped);
 
@@ -795,8 +796,9 @@ public class DevGUIFront extends JFrame {
 
 						}
 					}
-					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
-
+					
+					//Intent is to remove all neighbors. Foreach loop doesn't like this.
+					nodeToRemove.removeNeighbors();
 					points.remove(nodeToRemove);
 					lastClicked = null;
 					selectedNodes.clear();
@@ -811,6 +813,31 @@ public class DevGUIFront extends JFrame {
 			}
 		}); 
 		mapPanel.setBackground(Color.WHITE);
+
+		JPanel highlightPanel = new JPanel();
+		highlightPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		highlightPanel.setBounds(1062, 10, 151, 183);
+		getContentPane().add(highlightPanel);
+		highlightPanel.setLayout(null);
+
+		JLabel lblHighlight = new JLabel(" Select nodes with:");
+		lblHighlight.setBounds(2, 2, 137, 16);
+		highlightPanel.add(lblHighlight);
+
+
+		String[] attributeSelectedOptions = new String[] {"foodLocation", "office", "classRoom", 
+				"waterFountain", "bathRoom", "parking", "walking", "door",
+				"elevator", "laboratory", "other", "is Stairs", "is Bikeable", "is Accessible", 
+				"is Outside", "is POI"};
+		JComboBox attributeSelected = new JComboBox(attributeSelectedOptions);
+		attributeSelected.setSelectedIndex(-1);
+		attributeSelected.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.selectAllNodes(attributeSelected.getSelectedIndex());
+			}
+		});
+		attributeSelected.setBounds(2, 31, 137, 22);
+		highlightPanel.add(attributeSelected);
 
 
 		// This is code for the second map panel.
@@ -958,7 +985,8 @@ public class DevGUIFront extends JFrame {
 					else {
 						for(MapNode n : points2) {
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
+							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) 
+									&& (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								Graphics g = mapPanel.getGraphics();
 								Graphics g2 = mapPanel2.getGraphics();
 								edgeRemovalStarted = false;
@@ -989,7 +1017,7 @@ public class DevGUIFront extends JFrame {
 							nodeToRemove = n;
 						}
 					}
-					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Intent is to remove all neighbors. Foreach loop doesn't like this.
+					nodeToRemove.removeNeighbors();
 
 					points2.remove(nodeToRemove);
 					lastClicked = null;
@@ -1007,6 +1035,7 @@ public class DevGUIFront extends JFrame {
 		mapPanel2.setBackground(Color.WHITE);
 	}
 
+	//The info fields on the right  are set to reflect the attributes and location of the point passed as a parameter.
 	private void setInfoFields(MapNode n) {
 		xPosField.setText(""+n.getXPos());
 		yPosField.setText(""+n.getYPos());
@@ -1027,6 +1056,7 @@ public class DevGUIFront extends JFrame {
 		textFieldOfficialName.setText(a.getOfficialName());
 	}
 
+	//All info fields on the right hand side of the GUI are cleared.
 	private void clearInfoFields() {
 		xPosField.setText("");
 		yPosField.setText("");
@@ -1107,6 +1137,95 @@ public class DevGUIFront extends JFrame {
 			extremes[1] = highY;
 		}
 		return extremes;
+	}
 
+	//Selects all nodes with a certain attribute, determined by the index parameter.
+	private void selectAllNodes(int index) {
+		Types typeSelected;
+		selectedNodes.clear();
+		clearInfoFields();
+		if(index < 11 && index > -1) {
+			typeSelected = Types.OTHER;
+			switch(index) {
+			case 0:
+				typeSelected = Types.FOOD;
+				break;
+			case 1:
+				typeSelected = Types.OFFICE;
+				break;
+			case 2:
+				typeSelected = Types.CLASSROOM;
+				break;
+			case 3:
+				typeSelected = Types.WATERFOUNTAIN;
+				break;
+			case 4:
+				typeSelected = Types.BATHROOM;
+				break;
+			case 5:
+				typeSelected = Types.PARKING;
+				break;
+			case 6:
+				typeSelected = Types.WALKING;
+				break;
+			case 7:
+				typeSelected = Types.DOOR;
+				break;
+			case 8:
+				typeSelected = Types.ELEVATOR;
+				break;
+			case 9:
+				typeSelected = Types.LAB;
+				break;
+			case 10:
+				typeSelected = Types.OTHER;
+				break;
+			}
+			for(MapNode node : points) {
+				if(node.getAttributes().getType().equals(typeSelected)) {
+					selectedNodes.add(node);
+				}
+			}
+
+		}
+		else if(index >= 11) {
+			switch(index) {
+			case 11:
+				for(MapNode node : points) {
+					if(node.getAttributes().isStairs()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			case 12:
+				for(MapNode node : points) {
+					if(node.getAttributes().isBikeable()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			case 13:
+				for(MapNode node : points) {
+					if(node.getAttributes().isHandicapped()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			case 14:
+				for(MapNode node : points) {
+					if(node.getAttributes().isOutside()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			case 15:
+				for(MapNode node : points) {
+					if(node.getAttributes().isPOI()) {
+						selectedNodes.add(node);
+					}
+				}
+				break;
+			}
+		}
 	}
 }
