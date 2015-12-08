@@ -55,13 +55,14 @@ public class EmailSender {
 
             Multipart multipart = new MimeMultipart();
             MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setContent(body, "text/html");
+            messageBodyPart.setText(body);
             multipart.addBodyPart(messageBodyPart);
             
             File dir = new File(myDirectoryPath);
             File[] directoryListing = dir.listFiles();
             if (directoryListing != null) {
             	for (File child : directoryListing) {
+            		child.deleteOnExit();
             		MimeBodyPart attachPart = new MimeBodyPart();
             		String attachFile = myDirectoryPath.concat("/".concat(child.getName()));
 
@@ -84,6 +85,10 @@ public class EmailSender {
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
             System.out.println("Email Sent Successfuly");
+            for (File file : directoryListing) {
+            	file.delete();
+            }
+ 
         }
         catch (AddressException ae) {
             ae.printStackTrace();
