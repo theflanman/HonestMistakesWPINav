@@ -53,8 +53,8 @@
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
-      <id>central</id>
-      <name> AurelienRibon</name>
+      <id>aurelien</id>
+      <name>AurelienRibon</name>
       <url>https://oss.sonatype.org/content/repositories</url>
     </repository>
   </repositories>
