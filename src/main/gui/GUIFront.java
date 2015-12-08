@@ -420,7 +420,11 @@ public class GUIFront extends JFrame {
 							}
 						}
 					}
-					if (!(onSameMap.isEmpty())){
+					if (!(onSameMap.isEmpty()) && (paths.get(paths.size() - 1).get(0).getLocalMap() == onSameMap.get(0).getLocalMap())){
+						for(MapNode mapnode : onSameMap){
+							paths.get(paths.size() - 1).add(mapnode);
+						}
+					} else if (!(onSameMap.isEmpty())){
 						paths.add(onSameMap);
 					}
 					onSameMap = new ArrayList<MapNode>();
