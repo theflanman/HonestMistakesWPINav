@@ -1930,15 +1930,16 @@ public class GUIFront extends JFrame {
 							if(backend.getLocalMap().getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE)){
 							
 								// Draw the panels over the building
-								graphics.setColor(Color.PINK);
-								graphics.fill(aKPolygon);
-								graphics.fill(bPolygon);
-								graphics.fill(cCPolygon);
-								graphics.fill(gLPolygon);
-								graphics.fill(pCPolygon);
-								graphics.fill(hHPolygon);
+								graphics.setColor(Color.RED);
+								graphics.setStroke(new BasicStroke (7));
+								graphics.draw(aKPolygon);
+								graphics.draw(bPolygon);
+								graphics.draw(cCPolygon);
+								graphics.draw(gLPolygon);
+								graphics.draw(pCPolygon);
+								graphics.draw(hHPolygon);
 								//graphics.fill(hHGPolygon);
-								graphics.fill(sHPolygon);
+								graphics.draw(sHPolygon);
 							}
 
 							graphics.setColor(Color.RED);
