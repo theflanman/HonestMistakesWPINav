@@ -50,6 +50,7 @@ import main.util.Constants;
 import main.util.GeneralUtil;
 import main.util.ProxyImage;
 import main.util.IProxyImage;
+import main.util.PanelSave;
 import main.util.Speaker;
 import main.util.WrappableCellRenderer;
 
@@ -125,6 +126,8 @@ public class GUIFront extends JFrame {
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
+	
+
 
 	private Color routeButtonColor, otherButtonsColor, backgroundColor, sideBarColor;
 	static ColorSchemes allSchemes;
@@ -683,15 +686,17 @@ public class GUIFront extends JFrame {
 				double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 				panelMap.panX = tempPan[0];
 				panelMap.panY = tempPan[1];
+				
 
 				for(MapNode n : backend.getLocalMap().getMapNodes()){
 					n.setXPos(n.getXPos() - panelMap.panX);
 					n.setYPos(n.getYPos() - panelMap.panY);
 				}
-
-				panelMap.panX = 0.0;
-				panelMap.panY = 0.0;
-				panelMap.setScale(1.0);
+				
+				panelMap.panX = 0;
+				panelMap.panY = 0;
+				panelMap.setScale(1);
+				
 				thisRoute = paths.get(index);
 				drawLine = true;
 			}
@@ -812,6 +817,30 @@ public class GUIFront extends JFrame {
 		streetViewSLPanel.initialize(streetViewConfig);
 	}
 	
+	/*
+	 * @author Nick Gigliotti
+	 * 
+	 * @param a list of MapNodes which represents all the nodes in a path across multiple local maps
+	 * 
+	 * @return a list of LocalMaps that are in the path of nodes give
+	 */
+	public ArrayList<LocalMap> createListOfMaps(ArrayList<ArrayList<MapNode>> path) {
+		// Initializes list
+		ArrayList<LocalMap> pathLocalMaps = new ArrayList<LocalMap>();
+
+		for (ArrayList<MapNode> pathNodes: path) {
+			// Iterates through the list of nodes in the inputed ArrayList
+			for (MapNode node: pathNodes) {
+
+				// If the return list doesn't contain the current nodes LocalMap, it adds it to the return list
+				if (! pathLocalMaps.contains(node.getLocalMap())){
+					pathLocalMaps.add(node.getLocalMap());
+				}
+			}
+		}
+		return pathLocalMaps;
+	}
+	
 	// This goes in GUIFront
 	public void initializeMenuBar(){
 		// ---- File Menu ----
@@ -822,10 +851,55 @@ public class GUIFront extends JFrame {
 		mntmEmail.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
+				
+				System.out.println("Starts Saving Path Images");
+				
+				PanelSave savePanel = new PanelSave();
+				
+				//TODO Find a variable that includes the list of nodes in a path
+				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(paths);
+
+				// Goes through each of the maps in the path and captures and saves an image
+				for (LocalMap local: pathLocalMaps) {
+					savePanel.saveImage(panelMap, local.getMapImageName());
+					if (index < paths.size() - 1){
+						index ++;
+					}
+					if (index >= paths.size() - 1){
+						index = 0;
+					}
+					
+					LocalMap localMap = paths.get(index).get(0).getLocalMap();
+					panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
+					panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+					String previousMap = backend.getLocalMap().getMapImageName();
+					panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+					backend.setLocalMap(localMap);
+
+					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+					panelMap.panX = tempPan[0];
+					panelMap.panY = tempPan[1];
+
+					for(MapNode n : backend.getLocalMap().getMapNodes()){
+						n.setXPos(n.getXPos() - panelMap.panX);
+						n.setYPos(n.getYPos() - panelMap.panY);
+					}
+
+					panelMap.panX = 0;
+					panelMap.panY = 0;
+					panelMap.setScale(1.0);
+
+					thisRoute = paths.get(index);
+					drawLine = true;
+				}
+				System.out.println("Finished Saving Path Images");
+				
+				// Email Pop-Up
 				EmailGUI newEmail = new EmailGUI();
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
 			}
 		});
+		
 		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
 		mntmExit.addActionListener(new ActionListener(){
 			@Override
