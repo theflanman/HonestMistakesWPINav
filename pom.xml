@@ -35,6 +35,11 @@
   		<artifactId>mail</artifactId>
   		<version>1.5.0-b01</version>
   	</dependency>
+  	<dependency>
+  		<groupId>aurelienribon</groupId>
+  		<artifactId>tweenengine</artifactId>
+  		<version>6.3.3</version>
+  	</dependency>
   </dependencies><repositories>
     <repository>
       <snapshots>
@@ -43,6 +48,14 @@
       <id>central</id>
       <name>Central Repository</name>
       <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>aurelien</id>
+      <name>AurelienRibon</name>
+      <url>https://code.google.com/p/java-universal-tween-engine/downloads/list</url>
     </repository>
   </repositories>
   <properties>
