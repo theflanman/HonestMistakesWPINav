@@ -786,8 +786,12 @@ public class GUIFront extends JFrame {
 		SLPanel streetViewSLPanel = new SLPanel();
 		mainPanel.addTab("Street View", null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
-
-		IProxyImage streetViewPath = new ProxyImage(imagePath);
+		String jpgStreet = GeneralUtil.removeExtension(imagePath);
+		jpgStreet = jpgStreet + ".jpg";
+		System.out.println("!!!!!!!!!!!!!!!!!! down here");
+		System.out.println(jpgStreet);
+		
+		IProxyImage streetViewPath = new ProxyImage(jpgStreet);
 		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
 
 		SLConfig streetViewConfig = new SLConfig(streetViewSLPanel)
