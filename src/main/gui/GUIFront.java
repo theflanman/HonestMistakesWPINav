@@ -671,6 +671,7 @@ public class GUIFront extends JFrame {
 				}
 				index2 = 0;
 				drawLine2 = false;
+				drawLine3 = false;
 				btnPreviousStep.setEnabled(false);
 				btnNextStep.setEnabled(true);
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
@@ -724,6 +725,7 @@ public class GUIFront extends JFrame {
 				}
 				index2 = 0;
 				drawLine2 = false;
+				drawLine3 = false;
 				btnPreviousStep.setEnabled(false);
 				btnNextStep.setEnabled(true);
 				
