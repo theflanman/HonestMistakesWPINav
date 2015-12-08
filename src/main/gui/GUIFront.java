@@ -72,6 +72,8 @@ public class GUIFront extends JFrame {
 	private static boolean setStart = false; // keeps track of whether you have set a start or end node yet
 	private static boolean setEnd = false;
 	public static boolean drawLine = false;
+	public static boolean drawLine2 = false;
+	public static boolean drawLine3 = false;
 	public static boolean removeLine = false;
 	public static boolean reset = false;
 	public static MapNode startNode = null, endNode = null;
@@ -81,11 +83,12 @@ public class GUIFront extends JFrame {
 	public static ArrayList<ArrayList<MapNode>> paths = new ArrayList<ArrayList<MapNode>>();
 	public static ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
-	private JButton btnPreviousMap, btnNextMap;
+	private JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
 	public static boolean allowSetting = true;
 	public static JTabbedPane mainPanel; 
 	public static ArrayList<MapNode> allNodes;
 	public static int index = 0;
+	public static int index2 = 0;
 	public static ArrayList<MapNode> thisRoute = new ArrayList<MapNode>();
 	public static HashMap<String, double[]> panValues = new HashMap<String, double[]>();
 	public static double[] panNums = {0.0, 0.0};
@@ -482,10 +485,15 @@ public class GUIFront extends JFrame {
 					
 					//set the initial index at 0 so that when pressing nextMap button you can scroll to the next map or previous map
 					index = 0;
+					
+					//set the initial index 2 at 0 so that when pressing nextstep button you can go to the next step or previous step
+					index2 = 0;
 					//if we have more than one arraylist in paths this means that more than one map will be shown to the user
 					if (paths.size() > 1){
 						btnNextMap.setEnabled(true);
 					}
+					
+					btnNextStep.setEnabled(true);
 					
 					//draw the line on the map
 					drawLine = true;
@@ -610,6 +618,8 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
+				index2 = 0;
+				drawLine2 = false;
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
 				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
@@ -638,9 +648,6 @@ public class GUIFront extends JFrame {
 
 		// Add buttons to move between two maps
 		btnPreviousMap = new JButton("<-- Previous Map");
-		/*if (index <= 0){
-			btnPreviousMap.setEnabled(false);
-		}*/
 		btnPreviousMap.setEnabled(false);
 		btnPreviousMap.setBackground(otherButtonsColor);
 		btnPreviousMap.addActionListener(new ActionListener(){
@@ -660,6 +667,8 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
+				index2 = 0;
+				drawLine2 = false;
 				panelMap.setMapImage(new ProxyImage(paths.get(index).get(0).getLocalMap().getMapImageName()));
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
 				String previousMap = backend.getLocalMap().getMapImageName();
@@ -683,67 +692,121 @@ public class GUIFront extends JFrame {
 			}
 		});
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
+		
+		btnNextStep = new JButton("Next Step->");
+		btnNextStep.setEnabled(false);
+		btnNextStep.setBackground(otherButtonsColor);
+		btnNextStep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				index2++;
+				if (index2 <= 0){
+					btnPreviousStep.setEnabled(false);
+				}
+				if (index2 < paths.get(index).size() - 1){
+					btnNextStep.setEnabled(true);
+				}
+
+				if (index2 >= paths.get(index).size() - 1){
+					btnNextStep.setEnabled(false);
+				}
+				if (index2 > 0){
+					btnPreviousStep.setEnabled(true);
+				}
+				drawLine3 = false;
+				drawLine2 = true;
+			}
+		});
+
+		btnPreviousStep = new JButton("<-Previous Step");
+		btnPreviousStep.setEnabled(false);
+		btnPreviousStep.setBackground(otherButtonsColor);
+		btnPreviousStep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				index2--;
+				if (index2 <= 0){
+					btnPreviousStep.setEnabled(false);
+				}
+				if (index2 < paths.get(index).size() - 1){
+					btnNextStep.setEnabled(true);
+				}
+
+				if (index2 >= paths.get(index).size() - 1){
+					btnNextStep.setEnabled(false);
+				}
+				if (index2 > 0){
+					btnPreviousStep.setEnabled(true);
+				}
+				drawLine2 = false;
+				drawLine3 = true;
+			}
+		});
 
 		// Group Layout code for all components
 		gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(10)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblStart)
-												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-										.addGap(18)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-												.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-										.addGap(18)
-										.addComponent(lblInvalidEntry)
-										.addGap(227)
-										.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-										.addGap(18)
-										.addComponent(btnClear))
-								.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblStart)
+								.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addComponent(lblInvalidEntry)
+							.addGap(227)
+							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(btnClear))
+						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addGap(79)
-						.addComponent(btnPreviousMap)
-						.addPreferredGap(ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
-						.addComponent(btnNextMap)
-						.addGap(170))
-				);
+					.addGap(79)
+					.addComponent(btnPreviousMap)
+					.addGap(37)
+					.addComponent(btnPreviousStep)
+					.addGap(75)
+					.addComponent(btnNextStep)
+					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+					.addComponent(btnNextMap)
+					.addGap(170))
+		);
 		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblStart)
-										.addGap(6)
-										.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblEnd)
-										.addGap(6)
-										.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(24)
-										.addComponent(lblInvalidEntry))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(11)
-										.addComponent(btnRoute))
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(11)
-										.addComponent(btnClear)))
-						.addGap(18)
-						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnPreviousMap)
-								.addComponent(btnNextMap))
-						.addGap(35))
-				);
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblStart)
+							.addGap(6)
+							.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblEnd)
+							.addGap(6)
+							.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(24)
+							.addComponent(lblInvalidEntry))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(btnRoute))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(btnClear)))
+					.addGap(18)
+					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnPreviousMap)
+						.addComponent(btnNextMap)
+						.addComponent(btnNextStep)
+						.addComponent(btnPreviousStep))
+					.addGap(35))
+		);
 
 		System.out.println("cSV a");
 		GUIFront.changeStreetView(gl_contentPane, Constants.DEFAULT_STREET_IMAGE);
@@ -1714,11 +1777,15 @@ public class GUIFront extends JFrame {
 				backend.removePath(globalMap.getChosenNodes());
 				btnNextMap.setEnabled(false);
 				btnPreviousMap.setEnabled(false);
+				btnNextStep.setEnabled(false);
+				btnPreviousStep.setEnabled(false);
 
 				globalMap.getChosenNodes().clear();
 				lblDistance.setText("");
 				btnClear.setEnabled(false);
 				btnRoute.setEnabled(false);
+				drawLine2 = false;
+				drawLine3 = false;
 				removeLine = true;
 			}
 
@@ -2047,7 +2114,9 @@ public class GUIFront extends JFrame {
 				protected void paintComponent(Graphics g) {
 					Color startNodeColor = colors.getStartNodeColor();
 					Color endNodeColor = colors.getEndNodeColor();
-					Color lineColor = colors.getLineColor();
+					//Color lineColor = colors.getLineColor();
+					double alpha = 0.25;
+					Color color = new Color((float) 0, (float) .5, (float) 1, (float) alpha);
 					Color outlineColor = colors.getOutlineColor();
 
 					super.paintComponent(g);
@@ -2090,7 +2159,6 @@ public class GUIFront extends JFrame {
 						// well start and end nodes if they have been set
 						graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);
 
-						// Sets the color of the start and end nodes to be different for each new waypoint
 						// Sets the color of the start and end nodes to be different for each new waypoint
 						if(this.shouldPaint){
 							// Sets the color of the start and end nodes to be different
@@ -2147,7 +2215,7 @@ public class GUIFront extends JFrame {
 									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
 									Graphics2D g2 = (Graphics2D) g;
 									g2.setStroke(new BasicStroke(5));
-									g2.setColor(lineColor);
+									g2.setColor(color);
 									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 								}
 								drawLine = false;
@@ -2161,12 +2229,26 @@ public class GUIFront extends JFrame {
 									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
 									Graphics2D g2 = (Graphics2D) g;
 									g2.setStroke(new BasicStroke(5));
-									g2.setColor(lineColor); // you are going to want to make this transparent ... before next step button is added otherwise this will cause some issues
+									g2.setColor(color); // you are going to want to make this transparent ... before next step button is added otherwise this will cause some issues
 									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 								}
 								drawLine = true;
 								removeLine = false;
-							} 
+							}
+							
+							if (drawLine2 == true){
+								Graphics2D g2 = (Graphics2D) g;
+								g2.setStroke(new BasicStroke(3));
+								g2.setColor(Color.YELLOW);
+								g2.drawLine((int) paths.get(index).get(index2 - 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 - 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
+							}
+							
+							if (drawLine3 == true){
+								Graphics2D g2 = (Graphics2D) g;
+								g2.setStroke(new BasicStroke(3));
+								g2.setColor(Color.YELLOW);
+								g2.drawLine((int) paths.get(index).get(index2 + 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 + 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
+							}
 							repaint();
 							graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
 						}
