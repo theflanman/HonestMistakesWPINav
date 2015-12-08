@@ -620,6 +620,8 @@ public class GUIFront extends JFrame {
 				}
 				index2 = 0;
 				drawLine2 = false;
+				btnPreviousStep.setEnabled(false);
+				btnNextStep.setEnabled(true);
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
 				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
@@ -669,6 +671,8 @@ public class GUIFront extends JFrame {
 				}
 				index2 = 0;
 				drawLine2 = false;
+				btnPreviousStep.setEnabled(false);
+				btnNextStep.setEnabled(true);
 				panelMap.setMapImage(new ProxyImage(paths.get(index).get(0).getLocalMap().getMapImageName()));
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
 				String previousMap = backend.getLocalMap().getMapImageName();
