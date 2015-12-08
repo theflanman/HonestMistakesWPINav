@@ -1,34 +1,27 @@
 package main.gui;
-import main.Attributes;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.KeyEventDispatcher;
-import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.swing.ButtonGroup;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -36,24 +29,21 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 
-import java.awt.*;
-import java.io.*;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-
+import main.Attributes;
 import main.LocalMap;
 import main.MapNode;
+import main.Types;
 import main.util.Constants;
+import main.util.GeneralUtil;
+import main.util.IProxyImage;
 import main.util.MapPanel;
 import main.util.ProxyImage;
-import main.util.IProxyImage;
-import main.util.GeneralUtil;
-import main.Types;
 
 public class DevGUIFront extends JFrame {
 	static HashMap<String, ArrayList<MapNode>> localMap = new HashMap<String, ArrayList<MapNode>>(); // path to file, Integer data
@@ -67,27 +57,27 @@ public class DevGUIFront extends JFrame {
 	static LocalMap local2;
 	String path; // current path
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField xPosField;
-	private JTextField yPosField;
-	private JTextField zPosField;
+	private final JTextField xPosField;
+	private final JTextField yPosField;
+	private final JTextField zPosField;
 	private MapNode lastClicked;
 	private MapNode edgeStart;
 	private MapNode edgeRemove;
 	private MapNode nodeToRemove;
 	private boolean multiSelect;
-	private ArrayList<MapNode> selectedNodes = new ArrayList<MapNode>();
-	private ArrayList<MapNode> selectedNodes2 = new ArrayList<MapNode>();
+	private final ArrayList<MapNode> selectedNodes = new ArrayList<MapNode>();
+	private final ArrayList<MapNode> selectedNodes2 = new ArrayList<MapNode>();
 	private boolean edgeStarted = false;
 	private boolean edgeRemovalStarted = false;
 	private boolean twoMapView = false;
-	private JTextField textFieldOfficialName;
-	private JComboBox typeBox;
-	private JTextArea txtrAliases;
-	private JCheckBox chckbxStairs;
-	private JCheckBox chckbxPOI;
-	private JCheckBox chckbxHandicapped;
-	private JCheckBox chckbxBikeable;
-	private JCheckBox chckbxOutside;
+	private final JTextField textFieldOfficialName;
+	private final JComboBox typeBox;
+	private final JTextArea txtrAliases;
+	private final JCheckBox chckbxStairs;
+	private final JCheckBox chckbxPOI;
+	private final JCheckBox chckbxHandicapped;
+	private final JCheckBox chckbxBikeable;
+	private final JCheckBox chckbxOutside;
 	private boolean clickMiss;
 
 	private Attributes defaultAttributes;
@@ -105,12 +95,13 @@ public class DevGUIFront extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 
 				try {
 					frame = new DevGUIFront();
 					frame.setVisible(true);
-				} catch (Exception e) {
+				} catch (final Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -140,22 +131,22 @@ public class DevGUIFront extends JFrame {
 		setBounds(0, 0, 1300, 760);
 
 		// This defines the radio buttons that can be selected for the cursor options, because they are used in the following section of code.
-		JRadioButton rdbtnSelectNode = new JRadioButton("Select Node");
-		JRadioButton rdbtnRemoveEdge = new JRadioButton("Remove Edge");
-		JRadioButton rdbtnRemoveNode = new JRadioButton("Remove Node");
-		JRadioButton rdbtnPlaceNode = new JRadioButton("Place Node");
-		JRadioButton rdbtnMakeEdge = new JRadioButton("Make Edge");
-		JMenuBar menuBar = new JMenuBar();
+		final JRadioButton rdbtnSelectNode = new JRadioButton("Select Node");
+		final JRadioButton rdbtnRemoveEdge = new JRadioButton("Remove Edge");
+		final JRadioButton rdbtnRemoveNode = new JRadioButton("Remove Node");
+		final JRadioButton rdbtnPlaceNode = new JRadioButton("Place Node");
+		final JRadioButton rdbtnMakeEdge = new JRadioButton("Make Edge");
+		final JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
 
 
-		MapPanel mapPanel = new MapPanel();
-		MapPanel mapPanel2 = new MapPanel();
+		final MapPanel mapPanel = new MapPanel();
+		final MapPanel mapPanel2 = new MapPanel();
 
-		int threshold = 10; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
+		final int threshold = 10; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
 
-		Attributes defaultAttributes = new Attributes();
+		final Attributes defaultAttributes = new Attributes();
 		defaultAttributes.setBikeable(false);
 		defaultAttributes.setHandicapped(true);
 		defaultAttributes.setOutside(false);
@@ -169,22 +160,23 @@ public class DevGUIFront extends JFrame {
 
 		// This is code for the file menu with the save map, load map, load new image, dropdown menu.
 
-		JMenu mnFile = new JMenu("File");
+		final JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 
-		JMenuItem mntmLoadMap = new JMenuItem("Load Map");
+		final JMenuItem mntmLoadMap = new JMenuItem("Load Map");
 		mnFile.add(mntmLoadMap);
 		mntmLoadMap.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser chooser = new JFileChooser();
+				final JFileChooser chooser = new JFileChooser();
 				chooser.setCurrentDirectory(new File(Constants.LOCAL_MAP_PATH));
-				int option = chooser.showOpenDialog(DevGUIFront.this);
+				final int option = chooser.showOpenDialog(DevGUIFront.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
-					String inputFileName = inputFile.getName();
+					final String inputFileName = inputFile.getName();
 
 					// load localMap
-					DevGUIBack devGUIBack = new DevGUIBack(null);
+					final DevGUIBack devGUIBack = new DevGUIBack(null);
 					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName);
 					local1 = devGUIBack.getLocalMap();
 					String imagePath = GeneralUtil.removeExtension(inputFileName);
@@ -204,7 +196,7 @@ public class DevGUIFront extends JFrame {
 					mapPanel.setBgImage(pic.getImage(Constants.IMAGES_PATH));
 
 					// set the points
-					Graphics g = mapPanel.getGraphics();
+					final Graphics g = mapPanel.getGraphics();
 					selectedNodes.clear();
 					points = local1.getMapNodes();
 					mapPanel.renderMapPublic(g, points, null);
@@ -212,18 +204,19 @@ public class DevGUIFront extends JFrame {
 			}
 		});
 
-		JMenuItem mntmLoadExtraMap = new JMenuItem("Load Extra Map");
+		final JMenuItem mntmLoadExtraMap = new JMenuItem("Load Extra Map");
 		mntmLoadExtraMap.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser chooser = new JFileChooser();
+				final JFileChooser chooser = new JFileChooser();
 				chooser.setCurrentDirectory(new File(Constants.LOCAL_MAP_PATH));
-				int option = chooser.showOpenDialog(DevGUIFront.this);
+				final int option = chooser.showOpenDialog(DevGUIFront.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile2 = chooser.getSelectedFile();
-					String inputFileName = inputFile2.getName();
+					final String inputFileName = inputFile2.getName();
 
 					// load localMap
-					DevGUIBack devGUIBack = new DevGUIBack(null);
+					final DevGUIBack devGUIBack = new DevGUIBack(null);
 					devGUIBack.loadMap(Constants.LOCAL_MAP_PATH + "/" + inputFileName); 
 					local2 = devGUIBack.getLocalMap();
 					String imagePath = GeneralUtil.removeExtension(inputFileName);
@@ -236,7 +229,7 @@ public class DevGUIFront extends JFrame {
 					mapPanel2.setBgImage(pic2.getImage(imagePath));
 
 					// set the points
-					Graphics g = mapPanel2.getGraphics();
+					final Graphics g = mapPanel2.getGraphics();
 					selectedNodes.clear();
 					points2 = local2.getMapNodes();
 					mapPanel2.renderMapPublic(g, points2, null);
@@ -244,41 +237,44 @@ public class DevGUIFront extends JFrame {
 			}
 		});
 
-		JMenuItem mntmSaveMap = new JMenuItem("Save Map");
+		final JMenuItem mntmSaveMap = new JMenuItem("Save Map");
 		mnFile.add(mntmSaveMap);
 		mntmSaveMap.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String fileName = inputFile.getName();
 				fileName = GeneralUtil.removeExtension(fileName);
 				fileName = fileName + ".jpg";
-				LocalMap thisMap = new LocalMap(fileName, points);
-				DevGUIBack devGUIBack = new DevGUIBack(thisMap);
+				final LocalMap thisMap = new LocalMap(fileName, points);
+				final DevGUIBack devGUIBack = new DevGUIBack(thisMap);
 				devGUIBack.saveMap();
 
 				if (twoMapView && !local1.getMapImageName().equals(local2.getMapImageName())) {
 					String fileName2 = inputFile2.getName();
 					fileName2 = GeneralUtil.removeExtension(fileName2);
 					fileName2 = fileName2 + ".jpg";
-					LocalMap thisMap2 = new LocalMap(fileName2, points2);
-					DevGUIBack devGUIBack2 = new DevGUIBack(thisMap2);
+					final LocalMap thisMap2 = new LocalMap(fileName2, points2);
+					final DevGUIBack devGUIBack2 = new DevGUIBack(thisMap2);
 					devGUIBack2.saveMap();
 				}
 			}
 		});
 
-		JMenuItem mntmExit = new JMenuItem("Exit");
+		final JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
 
-		JMenuItem mntmNewMapImage = new JMenuItem("New Map Image");
+		final JMenuItem mntmNewMapImage = new JMenuItem("New Map Image");
 		mntmNewMapImage.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser chooser = new JFileChooser();
+				final JFileChooser chooser = new JFileChooser();
 				chooser.setCurrentDirectory(new File(Constants.IMAGES_PATH));
-				int option = chooser.showOpenDialog(DevGUIFront.this);
+				final int option = chooser.showOpenDialog(DevGUIFront.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
 					
@@ -291,7 +287,7 @@ public class DevGUIFront extends JFrame {
 					
 					selectedNodes.clear();
 					points = new ArrayList<MapNode>();
-					Graphics g = mapPanel.getGraphics();
+					final Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points, null);
 					local1 = new LocalMap(imagePath, points);
 				}
@@ -301,36 +297,36 @@ public class DevGUIFront extends JFrame {
 		mnFile.add(mntmExit);
 
 		// This is the View menu, allowing a developer to switch to showing one or two maps at a time.
-		JMenu mnView = new JMenu("View");
+		final JMenu mnView = new JMenu("View");
 		menuBar.add(mnView);
 
-		JMenuItem mntmShowTwoMaps = new JMenuItem("Show Two Maps");
+		final JMenuItem mntmShowTwoMaps = new JMenuItem("Show Two Maps");
 		mnView.add(mntmShowTwoMaps);
 
-		JMenuItem mntmShowOneMap = new JMenuItem("Show One Map");
+		final JMenuItem mntmShowOneMap = new JMenuItem("Show One Map");
 		mnView.add(mntmShowOneMap);
 
 		// This is code for the panel showing information on the current selected node.
 
-		JPanel nodeInfoPanel = new JPanel();
+		final JPanel nodeInfoPanel = new JPanel();
 		nodeInfoPanel.setBounds(920, 203, 294, 136);
 		nodeInfoPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		nodeInfoPanel.setLayout(null);
 
 		// Labels
-		JLabel lblNodeInformation = new JLabel(" Node Information");
+		final JLabel lblNodeInformation = new JLabel(" Node Information");
 		lblNodeInformation.setBounds(2, 2, 133, 16);
 		nodeInfoPanel.add(lblNodeInformation);
 
-		JLabel lblXposition = new JLabel(" x-position");
+		final JLabel lblXposition = new JLabel(" x-position");
 		lblXposition.setBounds(2, 26, 67, 16);
 		nodeInfoPanel.add(lblXposition);
 
-		JLabel lblYposition = new JLabel(" y-position");
+		final JLabel lblYposition = new JLabel(" y-position");
 		lblYposition.setBounds(2, 53, 73, 16);
 		nodeInfoPanel.add(lblYposition);
 
-		JLabel lblZposition = new JLabel(" z-feet");
+		final JLabel lblZposition = new JLabel(" z-feet");
 		lblZposition.setBounds(2, 80, 55, 16);
 		nodeInfoPanel.add(lblZposition);
 
@@ -350,20 +346,21 @@ public class DevGUIFront extends JFrame {
 		nodeInfoPanel.add(zPosField);
 		zPosField.setColumns(10);
 
-		JButton btnMakeChanges = new JButton("Edit Node");
+		final JButton btnMakeChanges = new JButton("Edit Node");
 		btnMakeChanges.setBounds(4, 106, 115, 25);
 		nodeInfoPanel.add(btnMakeChanges);
 
 		btnMakeChanges.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(lastClicked != null) {
 					lastClicked.setXPos(Double.parseDouble(xPosField.getText()));
 					lastClicked.setYPos(Double.parseDouble(yPosField.getText()));
 					lastClicked.setZFeet(Double.parseDouble(zPosField.getText()));
-					Graphics g = mapPanel.getGraphics();
+					final Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points, lastClicked);
 					if (twoMapView) {
-						Graphics g2 = mapPanel2.getGraphics();
+						final Graphics g2 = mapPanel2.getGraphics();
 						mapPanel2.renderMapPublic(g2, points2, lastClicked);
 					}
 				}
@@ -372,13 +369,13 @@ public class DevGUIFront extends JFrame {
 
 		// This is code for the panel with the radio buttons for the cursor options
 
-		JPanel cursorPanel = new JPanel();
+		final JPanel cursorPanel = new JPanel();
 		cursorPanel.setBounds(920, 10, 130, 183);
 		cursorPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 
 		cursorPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
-		JLabel lblNewLabel_1 = new JLabel(" Cursor Options");
+		final JLabel lblNewLabel_1 = new JLabel(" Cursor Options");
 		cursorPanel.add(lblNewLabel_1);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 
@@ -401,7 +398,7 @@ public class DevGUIFront extends JFrame {
 
 		// This is code pertaining to the panel holding the map panel.
 
-		JPanel panel = new JPanel();
+		final JPanel panel = new JPanel();
 		panel.setLocation(10, 13);
 		//	panel.setPreferredSize(new Dimension(1000, 800));
 		//	panel.setSize(new Dimension(1192, 653));
@@ -415,17 +412,17 @@ public class DevGUIFront extends JFrame {
 		getContentPane().add(cursorPanel);
 		getContentPane().add(nodeInfoPanel);
 
-		JButton btnLinear = new JButton("Linearize");
+		final JButton btnLinear = new JButton("Linearize");
 		btnLinear.setBounds(132, 106, 155, 25);
 		nodeInfoPanel.add(btnLinear);
 
-		JPanel panel_1 = new JPanel();
+		final JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_1.setBounds(920, 349, 294, 312);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel(" Attributes");
+		final JLabel lblNewLabel = new JLabel(" Attributes");
 		lblNewLabel.setBounds(2, 2, 66, 16);
 		panel_1.add(lblNewLabel);
 
@@ -449,7 +446,7 @@ public class DevGUIFront extends JFrame {
 		chckbxStairs.setBounds(8, 188, 113, 25);
 		panel_1.add(chckbxStairs);
 
-		JLabel lblNewLabel_2 = new JLabel("Name");
+		final JLabel lblNewLabel_2 = new JLabel("Name");
 		lblNewLabel_2.setBounds(12, 31, 56, 16);
 		panel_1.add(lblNewLabel_2);
 
@@ -458,7 +455,7 @@ public class DevGUIFront extends JFrame {
 		panel_1.add(textFieldOfficialName);
 		textFieldOfficialName.setColumns(10);
 
-		JLabel lblNewLabel_3 = new JLabel("Aliases");
+		final JLabel lblNewLabel_3 = new JLabel("Aliases");
 		lblNewLabel_3.setBounds(12, 55, 56, 16);
 		panel_1.add(lblNewLabel_3);
 
@@ -470,20 +467,20 @@ public class DevGUIFront extends JFrame {
 
 		typeBox.setSelectedIndex(-1);
 
-		JButton btnEditName = new JButton("Edit Name");
+		final JButton btnEditName = new JButton("Edit Name");
 		btnEditName.setBounds(12, 276, 97, 25);
 		panel_1.add(btnEditName);
 
-		JButton btnSetDfltAttr = new JButton("Set Default Attributes");
+		final JButton btnSetDfltAttr = new JButton("Set Default Attributes");
 		btnSetDfltAttr.setBounds(121, 276, 168, 25);
 		panel_1.add(btnSetDfltAttr);
 
 		txtrAliases = new JTextArea();
-		JScrollPane scrollpane = new JScrollPane(txtrAliases);
+		final JScrollPane scrollpane = new JScrollPane(txtrAliases);
 		scrollpane.setBounds(14, 73, 277, 68);
 		panel_1.add(scrollpane);
 		txtrAliases.setLineWrap(true);
-		JPanel panel2 = new JPanel();
+		final JPanel panel2 = new JPanel();
 		panel2.setLocation(465, 10);
 
 		//	
@@ -501,6 +498,7 @@ public class DevGUIFront extends JFrame {
 		//	getContentPane().add(panel2);
 
 		mntmShowTwoMaps.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
 				panel.setSize(new Dimension(445, 600));
@@ -509,12 +507,13 @@ public class DevGUIFront extends JFrame {
 				mnFile.add(mntmLoadExtraMap);
 				twoMapView = true;
 				mntmSaveMap.setText("Save Maps");
-				Graphics g2 = mapPanel2.getGraphics();
+				final Graphics g2 = mapPanel2.getGraphics();
 				mapPanel2.renderMapPublic(g2, points2, lastClicked);
 			}
 		});
 
 		mntmShowOneMap.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				getContentPane().remove(panel2);
 				panel.setSize(new Dimension(900, 600));
@@ -526,6 +525,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		btnSetDfltAttr.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				defaultAttributes.setBikeable(chckbxBikeable.isSelected());
 				defaultAttributes.setStairs(chckbxStairs.isSelected());
@@ -537,19 +537,21 @@ public class DevGUIFront extends JFrame {
 		});
 
 		btnEditName.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(lastClicked != null) {
 					lastClicked.getAttributes().setOfficialName(textFieldOfficialName.getText());
-					String aliases[] = txtrAliases.getText().split("\\r?\\n");
-					ArrayList<String>aliasesArray = new ArrayList<>(Arrays.asList(aliases)) ;
+					final String aliases[] = txtrAliases.getText().split("\\r?\\n");
+					final ArrayList<String>aliasesArray = new ArrayList<>(Arrays.asList(aliases)) ;
 					lastClicked.getAttributes().setAliases(aliasesArray);
 				}
 			}
 		});
 
 		chckbxStairs.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				for(MapNode n : selectedNodes) {
+				for(final MapNode n : selectedNodes) {
 					n.getAttributes().setStairs(chckbxStairs.isSelected());
 				}
 
@@ -557,41 +559,46 @@ public class DevGUIFront extends JFrame {
 		});
 
 		chckbxBikeable.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				for(MapNode n : selectedNodes) {
+				for(final MapNode n : selectedNodes) {
 					n.getAttributes().setBikeable(chckbxBikeable.isSelected());
 				}
 			}
 		});
 
 		chckbxPOI.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				for(MapNode n : selectedNodes) {
+				for(final MapNode n : selectedNodes) {
 					n.getAttributes().setPOI(chckbxPOI.isSelected());
 				}
 			}
 		});
 
 		chckbxOutside.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				for(MapNode n : selectedNodes) {
+				for(final MapNode n : selectedNodes) {
 					n.getAttributes().setOutside(chckbxOutside.isSelected());
 				}
 			}
 		});
 
 		chckbxHandicapped.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				for(MapNode n : selectedNodes) {
+				for(final MapNode n : selectedNodes) {
 					n.getAttributes().setHandicapped(chckbxHandicapped.isSelected());
 				}
 			}
 		});
 
 		typeBox.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(selectedNodes.size() > 1) { //If size is 1, need to set the type using the code below.
-					for(MapNode n : selectedNodes) {
+					for(final MapNode n : selectedNodes) {
 						n.getAttributes().setType((Types) typeBox.getSelectedItem());
 					}
 				}
@@ -602,6 +609,7 @@ public class DevGUIFront extends JFrame {
 		});
 
 		btnLinear.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.linearizeNodes();
 			}
@@ -610,13 +618,13 @@ public class DevGUIFront extends JFrame {
 		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
-				Point offset = mapPanel.getLocationOnScreen();
+				final Point offset = mapPanel.getLocationOnScreen();
 				if(rdbtnPlaceNode.isSelected()){
 					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
 					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
-					Point p = me.getLocationOnScreen();
-					MapNode n = new MapNode((double) p.x - offset.x - mapPanel.getXOffset(), (double) p.y - offset.y - mapPanel.getYOffset(), local1); // make a new mapnode with those points
-					Graphics g = mapPanel.getGraphics();
+					final Point p = me.getLocationOnScreen();
+					final MapNode n = new MapNode((double) p.x - offset.x - mapPanel.getXOffset(), (double) p.y - offset.y - mapPanel.getYOffset(), local1); // make a new mapnode with those points
+					final Graphics g = mapPanel.getGraphics();
 
 					points.add(n);
 					n.setDefaultAttributes(defaultAttributes);
@@ -626,7 +634,7 @@ public class DevGUIFront extends JFrame {
 					selectedNodes.add(n);
 					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 					if(twoMapView) {
-						Graphics g2 = mapPanel2.getGraphics();
+						final Graphics g2 = mapPanel2.getGraphics();
 						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 					}
 				} else if (rdbtnSelectNode.isSelected()){
@@ -643,20 +651,20 @@ public class DevGUIFront extends JFrame {
 					}
 
 					clickMiss = true; //If the for-loop finishes and this is not changed to false, the info fields will be cleared and no nodes will be shown as clicked.
-					for(MapNode n : points){
-						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+					for(final MapNode n : points){
+						final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
 						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX() - mapPanel.getXOffset()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY() - mapPanel.getYOffset()) <= threshold )){
 							setInfoFields(n);
 							clickMiss = false;
 							if(multiSelect){
-								MapNode lastPoint = lastClicked;
-								MapNode currentPoint  = n;
-								double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
-								double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
-								double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
-								double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
-								for(MapNode mn : points){
+								final MapNode lastPoint = lastClicked;
+								final MapNode currentPoint  = n;
+								final double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
+								final double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
+								final double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
+								final double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
+								for(final MapNode mn : points){
 									if(mn.getXPos() >= minX && mn.getXPos() <= maxX &&
 											mn.getYPos() >= minY && mn.getYPos() <= maxY){
 										if(!selectedNodes.contains(mn)){
@@ -686,18 +694,18 @@ public class DevGUIFront extends JFrame {
 					if(clickMiss == true) {
 						clearInfoFields();
 					}
-					Graphics g = mapPanel.getGraphics();
+					final Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 					if(twoMapView) {
-						Graphics g2 = mapPanel2.getGraphics();
+						final Graphics g2 = mapPanel2.getGraphics();
 						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 					}
 				}
 				else if(rdbtnMakeEdge.isSelected()) {
 					edgeRemovalStarted = false;
 					if(edgeStarted == false) {
-						for(MapNode n : points){
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+						for(final MapNode n : points){
+							final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX() - mapPanel.getXOffset()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY() - mapPanel.getYOffset()) <= threshold )){
 								edgeStart = n;
 								edgeStarted = true;
@@ -705,10 +713,10 @@ public class DevGUIFront extends JFrame {
 								lastClicked = n;
 								selectedNodes.clear();
 								selectedNodes.add(n);
-								Graphics g = mapPanel.getGraphics();
+								final Graphics g = mapPanel.getGraphics();
 								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 								if(twoMapView) {
-									Graphics g2 = mapPanel2.getGraphics();
+									final Graphics g2 = mapPanel2.getGraphics();
 									mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								}
 							}
@@ -716,10 +724,10 @@ public class DevGUIFront extends JFrame {
 
 					}
 					else {
-						for(MapNode n : points) {
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+						for(final MapNode n : points) {
+							final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
-								Graphics g = mapPanel.getGraphics();
+								final Graphics g = mapPanel.getGraphics();
 								edgeStarted = false;
 								n.addNeighbor(edgeStart);
 								edgeStart.addNeighbor(n);
@@ -729,7 +737,7 @@ public class DevGUIFront extends JFrame {
 								selectedNodes.add(n);
 								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 								if(twoMapView) {
-									Graphics g2 = mapPanel2.getGraphics();
+									final Graphics g2 = mapPanel2.getGraphics();
 									mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								}
 							}
@@ -739,8 +747,8 @@ public class DevGUIFront extends JFrame {
 				else if(rdbtnRemoveEdge.isSelected()) {
 					edgeStarted = false;
 					if(edgeRemovalStarted == false) {
-						for(MapNode n : points){
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+						for(final MapNode n : points){
+							final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX()- mapPanel.getXOffset() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								edgeRemove = n;
 								edgeRemovalStarted = true;
@@ -748,10 +756,10 @@ public class DevGUIFront extends JFrame {
 								lastClicked = n;
 								selectedNodes.clear();
 								selectedNodes.add(n);
-								Graphics g = mapPanel.getGraphics();
+								final Graphics g = mapPanel.getGraphics();
 								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 								if(twoMapView) {
-									Graphics g2 = mapPanel2.getGraphics();
+									final Graphics g2 = mapPanel2.getGraphics();
 									mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								}
 							}
@@ -759,10 +767,10 @@ public class DevGUIFront extends JFrame {
 
 					}
 					else {
-						for(MapNode n : points) {
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+						for(final MapNode n : points) {
+							final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX()- mapPanel.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
-								Graphics g = mapPanel.getGraphics();
+								final Graphics g = mapPanel.getGraphics();
 								edgeRemovalStarted = false;
 								n.removeNeighbor(edgeRemove);
 								edgeRemove.removeNeighbor(n);
@@ -772,7 +780,7 @@ public class DevGUIFront extends JFrame {
 								selectedNodes.add(n);
 								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 								if(twoMapView) {
-									Graphics g2 = mapPanel2.getGraphics();
+									final Graphics g2 = mapPanel2.getGraphics();
 									mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								}
 							}
@@ -783,11 +791,11 @@ public class DevGUIFront extends JFrame {
 				else if(rdbtnRemoveNode.isSelected()) {
 					edgeStarted = false;
 					edgeRemovalStarted = false;
-					for(MapNode n : points){
-						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+					for(final MapNode n : points){
+						final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
 						if((Math.abs(me.getLocationOnScreen().getX()- mapPanel.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
-							for(MapNode m : n.getNeighbors()) {
+							for(final MapNode m : n.getNeighbors()) {
 								//	n.removeNeighbor(m);
 								m.removeNeighbor(n);
 							}
@@ -803,10 +811,10 @@ public class DevGUIFront extends JFrame {
 					lastClicked = null;
 					selectedNodes.clear();
 					clearInfoFields();
-					Graphics g = mapPanel.getGraphics();
+					final Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 					if(twoMapView) {
-						Graphics g2 = mapPanel2.getGraphics();
+						final Graphics g2 = mapPanel2.getGraphics();
 						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 					}
 				}
@@ -814,24 +822,25 @@ public class DevGUIFront extends JFrame {
 		}); 
 		mapPanel.setBackground(Color.WHITE);
 
-		JPanel highlightPanel = new JPanel();
+		final JPanel highlightPanel = new JPanel();
 		highlightPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		highlightPanel.setBounds(1062, 10, 151, 183);
 		getContentPane().add(highlightPanel);
 		highlightPanel.setLayout(null);
 
-		JLabel lblHighlight = new JLabel(" Select nodes with:");
+		final JLabel lblHighlight = new JLabel(" Select nodes with:");
 		lblHighlight.setBounds(2, 2, 137, 16);
 		highlightPanel.add(lblHighlight);
 
 
-		String[] attributeSelectedOptions = new String[] {"foodLocation", "office", "classRoom", 
+		final String[] attributeSelectedOptions = new String[] {"foodLocation", "office", "classRoom", 
 				"waterFountain", "bathRoom", "parking", "walking", "door",
 				"elevator", "laboratory", "other", "is Stairs", "is Bikeable", "is Accessible", 
 				"is Outside", "is POI"};
-		JComboBox attributeSelected = new JComboBox(attributeSelectedOptions);
+		final JComboBox attributeSelected = new JComboBox(attributeSelectedOptions);
 		attributeSelected.setSelectedIndex(-1);
 		attributeSelected.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.selectAllNodes(attributeSelected.getSelectedIndex());
 			}
@@ -845,14 +854,14 @@ public class DevGUIFront extends JFrame {
 		mapPanel2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
-				Point offset = mapPanel2.getLocationOnScreen();
+				final Point offset = mapPanel2.getLocationOnScreen();
 				if(rdbtnPlaceNode.isSelected()){
 					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
 					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
-					Point p = me.getLocationOnScreen();
-					MapNode n = new MapNode((double) p.x - offset.x - mapPanel2.getXOffset(), (double) p.y - offset.y - mapPanel2.getYOffset(), local2); // make a new mapnode with those points
-					Graphics g = mapPanel.getGraphics();
-					Graphics g2 = mapPanel2.getGraphics();
+					final Point p = me.getLocationOnScreen();
+					final MapNode n = new MapNode((double) p.x - offset.x - mapPanel2.getXOffset(), (double) p.y - offset.y - mapPanel2.getYOffset(), local2); // make a new mapnode with those points
+					final Graphics g = mapPanel.getGraphics();
+					final Graphics g2 = mapPanel2.getGraphics();
 					points2.add(n);
 					n.setDefaultAttributes(defaultAttributes);
 					setInfoFields(n);
@@ -874,20 +883,20 @@ public class DevGUIFront extends JFrame {
 						multiSelect = false;
 					}
 					clickMiss = true;
-					for(MapNode n : points2){
-						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+					for(final MapNode n : points2){
+						final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
 						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX() - mapPanel2.getXOffset()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY() - mapPanel2.getYOffset()) <= threshold )){
 							setInfoFields(n);
 							clickMiss = false;
 							if(multiSelect){
-								MapNode lastPoint = lastClicked;
-								MapNode currentPoint  = n;
-								double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
-								double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
-								double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
-								double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
-								for(MapNode mn : points2){
+								final MapNode lastPoint = lastClicked;
+								final MapNode currentPoint  = n;
+								final double minX = Math.min(currentPoint.getXPos(), lastPoint.getXPos());
+								final double maxX = Math.max(currentPoint.getXPos(), lastPoint.getXPos());
+								final double minY = Math.min(currentPoint.getYPos(), lastPoint.getYPos());
+								final double maxY = Math.max(currentPoint.getYPos(), lastPoint.getYPos());
+								for(final MapNode mn : points2){
 									if(mn.getXPos() >= minX && mn.getXPos() <= maxX &&
 											mn.getYPos() >= minY && mn.getYPos() <= maxY){
 										if(!selectedNodes.contains(mn)){
@@ -914,10 +923,10 @@ public class DevGUIFront extends JFrame {
 					if(clickMiss == true) {
 						clearInfoFields();
 					}
-					Graphics g = mapPanel.getGraphics();
+					final Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 					if(twoMapView) {
-						Graphics g2 = mapPanel2.getGraphics();
+						final Graphics g2 = mapPanel2.getGraphics();
 						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 					}
 				}
@@ -926,8 +935,8 @@ public class DevGUIFront extends JFrame {
 				else if(rdbtnMakeEdge.isSelected()) {
 					edgeRemovalStarted = false;
 					if(edgeStarted == false) {
-						for(MapNode n : points2){
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+						for(final MapNode n : points2){
+							final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								edgeStart = n;
 								edgeStarted = true;
@@ -935,8 +944,8 @@ public class DevGUIFront extends JFrame {
 								lastClicked = n;
 								selectedNodes.clear();
 								selectedNodes.add(n);
-								Graphics g = mapPanel.getGraphics();
-								Graphics g2 = mapPanel2.getGraphics();
+								final Graphics g = mapPanel.getGraphics();
+								final Graphics g2 = mapPanel2.getGraphics();
 								mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 							}
@@ -944,11 +953,11 @@ public class DevGUIFront extends JFrame {
 
 					}
 					else {
-						for(MapNode n : points2) {
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+						for(final MapNode n : points2) {
+							final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
-								Graphics g = mapPanel.getGraphics();
-								Graphics g2 = mapPanel2.getGraphics();
+								final Graphics g = mapPanel.getGraphics();
+								final Graphics g2 = mapPanel2.getGraphics();
 								edgeStarted = false;
 								n.addNeighbor(edgeStart);
 								edgeStart.addNeighbor(n);
@@ -965,8 +974,8 @@ public class DevGUIFront extends JFrame {
 				else if(rdbtnRemoveEdge.isSelected()) {
 					edgeStarted = false;
 					if(edgeRemovalStarted == false) {
-						for(MapNode n : points2){
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+						for(final MapNode n : points2){
+							final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() -offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								edgeRemove = n;
 								edgeRemovalStarted = true;
@@ -974,8 +983,8 @@ public class DevGUIFront extends JFrame {
 								lastClicked = n;
 								selectedNodes.clear();
 								selectedNodes.add(n);
-								Graphics g = mapPanel.getGraphics();
-								Graphics g2 = mapPanel2.getGraphics();
+								final Graphics g = mapPanel.getGraphics();
+								final Graphics g2 = mapPanel2.getGraphics();
 								mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 								mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 							}
@@ -983,12 +992,12 @@ public class DevGUIFront extends JFrame {
 
 					}
 					else {
-						for(MapNode n : points2) {
-							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+						for(final MapNode n : points2) {
+							final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) 
 									&& (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
-								Graphics g = mapPanel.getGraphics();
-								Graphics g2 = mapPanel2.getGraphics();
+								final Graphics g = mapPanel.getGraphics();
+								final Graphics g2 = mapPanel2.getGraphics();
 								edgeRemovalStarted = false;
 								n.removeNeighbor(edgeRemove);
 								edgeRemove.removeNeighbor(n);
@@ -1006,11 +1015,11 @@ public class DevGUIFront extends JFrame {
 				else if(rdbtnRemoveNode.isSelected()) {
 					edgeStarted = false;
 					edgeRemovalStarted = false;
-					for(MapNode n : points2){
-						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
+					for(final MapNode n : points2){
+						final Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
 						if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
-							for(MapNode m : n.getNeighbors()) {
+							for(final MapNode m : n.getNeighbors()) {
 								//	n.removeNeighbor(m);
 								m.removeNeighbor(n);
 							}
@@ -1023,10 +1032,10 @@ public class DevGUIFront extends JFrame {
 					lastClicked = null;
 					selectedNodes.clear();
 					clearInfoFields();
-					Graphics g = mapPanel.getGraphics();
+					final Graphics g = mapPanel.getGraphics();
 					mapPanel.renderMapPublic(g, points, selectedNodes, lastClicked);
 					if(twoMapView) {
-						Graphics g2 = mapPanel2.getGraphics();
+						final Graphics g2 = mapPanel2.getGraphics();
 						mapPanel2.renderMapPublic(g2, points2, selectedNodes, lastClicked);
 					}
 				}
@@ -1041,7 +1050,7 @@ public class DevGUIFront extends JFrame {
 		yPosField.setText(""+n.getYPos());
 		zPosField.setText(""+n.getZFeet());
 		//		zPosField.setText(""+n.getZPos());
-		Attributes a = n.getAttributes();
+		final Attributes a = n.getAttributes();
 		typeBox.setSelectedItem(a.getType());
 		chckbxStairs.setSelected(a.isStairs());
 		chckbxHandicapped.setSelected(a.isHandicapped());
@@ -1049,7 +1058,7 @@ public class DevGUIFront extends JFrame {
 		chckbxPOI.setSelected(a.isPOI());
 		chckbxBikeable.setSelected(a.isBikeable());
 		txtrAliases.setText("");
-		for(String s : a.getAliases()) {
+		for(final String s : a.getAliases()) {
 			txtrAliases.append(s);
 			txtrAliases.append("\n");
 		}
@@ -1079,8 +1088,8 @@ public class DevGUIFront extends JFrame {
 			MapNode[] extremePoints = new MapNode[2];
 			extremePoints = findExtremes(); //The two nodes in extremePoints determine the line L.
 			if (extremePoints != null) {
-				MapNode point1 = extremePoints[0];
-				MapNode point2 = extremePoints[1];
+				final MapNode point1 = extremePoints[0];
+				final MapNode point2 = extremePoints[1];
 				point1X = point1.getXPos(); //Save the two extreme points.
 				point2X = point2.getXPos();
 				point1Y = point1.getYPos();
@@ -1089,7 +1098,7 @@ public class DevGUIFront extends JFrame {
 				xSlope = point2X - point1X; //Determine the slope of the line L.
 				ySlope = point2Y - point1Y;
 				squaredHypotenuse = xSlope*xSlope + ySlope*ySlope; //Take modulus of L, or the dot product with itself.
-				for(MapNode node : selectedNodes) {
+				for(final MapNode node : selectedNodes) {
 					node.setXPos(node.getXPos() - point1X); //Correction for line not passing through origin
 					node.setYPos(node.getYPos() - point1Y);
 					dotProduct = node.getXPos()*xSlope + node.getYPos()*ySlope; //Dot the vector u determined by a given node with a vector determining L.
@@ -1109,12 +1118,12 @@ public class DevGUIFront extends JFrame {
 		if(selectedNodes.size() < 3) { //Nothing to do if there are only one or two nodes.
 			return null;
 		}
-		MapNode[] extremes = new MapNode[2];
+		final MapNode[] extremes = new MapNode[2];
 		MapNode lowX = selectedNodes.get(0); //Start by setting all extremes to the first node in the list.
 		MapNode highX = selectedNodes.get(0);
 		MapNode lowY = selectedNodes.get(0);
 		MapNode highY = selectedNodes.get(0);
-		for(MapNode node : selectedNodes) { //When a node is farther left, right, up, or down than any previous node, set this as the extreme one.
+		for(final MapNode node : selectedNodes) { //When a node is farther left, right, up, or down than any previous node, set this as the extreme one.
 			if(node.getXPos() < lowX.getXPos()) {
 				lowX = node;
 			}
@@ -1181,7 +1190,7 @@ public class DevGUIFront extends JFrame {
 				typeSelected = Types.OTHER;
 				break;
 			}
-			for(MapNode node : points) {
+			for(final MapNode node : points) {
 				if(node.getAttributes().getType().equals(typeSelected)) {
 					selectedNodes.add(node);
 				}
@@ -1191,35 +1200,35 @@ public class DevGUIFront extends JFrame {
 		else if(index >= 11) {
 			switch(index) {
 			case 11:
-				for(MapNode node : points) {
+				for(final MapNode node : points) {
 					if(node.getAttributes().isStairs()) {
 						selectedNodes.add(node);
 					}
 				}
 				break;
 			case 12:
-				for(MapNode node : points) {
+				for(final MapNode node : points) {
 					if(node.getAttributes().isBikeable()) {
 						selectedNodes.add(node);
 					}
 				}
 				break;
 			case 13:
-				for(MapNode node : points) {
+				for(final MapNode node : points) {
 					if(node.getAttributes().isHandicapped()) {
 						selectedNodes.add(node);
 					}
 				}
 				break;
 			case 14:
-				for(MapNode node : points) {
+				for(final MapNode node : points) {
 					if(node.getAttributes().isOutside()) {
 						selectedNodes.add(node);
 					}
 				}
 				break;
 			case 15:
-				for(MapNode node : points) {
+				for(final MapNode node : points) {
 					if(node.getAttributes().isPOI()) {
 						selectedNodes.add(node);
 					}

@@ -1,4 +1,8 @@
 language: java
 source: 7
+script: 
+   - mvn install:install-file -Dfile=tween-engine-api.jar -DgroupId=aurelienribon -DartifactId=tweenengine -Dversion=6.3.3 -Dpackaging=jar
+   - mvn install:install-file -Dfile=tween-engine-api-sources.jar -DgroupId=aurelienribon -DartifactId=tweenengine -Dversion=6.3.3 -Dpackaging=jar -Dclassifier=sources
+   - mvn install:install-file -DgroupId=com.aurelienribon -DartifactId=tween-engine-api -Dpackaging=jar -Dversion=6.3.3 -Dfile=tween-engine-api.jar -DgeneratePom=true
 notifications:
   slack: honestmistakes:dOo7ymGvz7yvbY5M1XJJbTsb
