@@ -116,7 +116,7 @@ public class StepByStep {
 		
 		// Removes the nodes that are unnecessary
 		// Will be taken out after being implemented elsewhere
-		//this.cleanUpPath();
+		this.cleanUpPath();
 
 		// If the path is only 1 node in size
 		if (pathNodes.size() == 1) {
