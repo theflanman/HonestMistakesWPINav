@@ -149,7 +149,7 @@ public class StepByStep {
 							turn = String.format("%d. Walk %d feet, then you will arrive at your waypoint.", stepNumber, distance);
 						}
 						else {
-							turn = String.format("%d. Walk %d feet, then you will arrive at your final destination.", stepNumber, distance);
+							turn = String.format("%d. Walk %d feet, then you will arrive at your final destination. ENDHERE", stepNumber, distance);
 						}
 						stepList.add(turn);
 						
