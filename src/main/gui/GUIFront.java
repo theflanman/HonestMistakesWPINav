@@ -294,11 +294,20 @@ public class GUIFront extends JFrame {
 
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
 					MapNode n = backend.getLocalMap().getMapNodes().get(0);
-					if (globalMap.getStartNode() == null){
+					/*if (globalMap.getStartNode() == null && textFieldStart.getText() != ""){
 						globalMap.setStartNode(n);	
 						globalMap.getChosenNodes().add(0, globalMap.getStartNode());
 						LocalMap localmap = globalMap.getStartNode().getLocalMap();
-						localmap.setStart(globalMap.getStartNode());
+						localmap.setStart(globalMap.getStartNode());*/
+					/*}*/ if (textFieldStart.getText() != "") {
+						for (MapNode mapnode : globalMap.getMapNodes()){
+							if (mapnode.getAttributes().getOfficialName() == textFieldStart.getText()){
+								globalMap.setStartNode(mapnode);	
+								globalMap.getChosenNodes().add(0, globalMap.getStartNode());
+								LocalMap localmap = globalMap.getStartNode().getLocalMap();
+								localmap.setStart(globalMap.getStartNode());
+							}
+						}
 					}
 
 					for (MapNode mapnode : globalMap.getMapNodes()){
@@ -518,6 +527,7 @@ public class GUIFront extends JFrame {
 		textFieldStart.addActionListener(actionStart);
 
 		textFieldEnd = new JTextField("");
+		textFieldEnd.setVisible(false);
 		textFieldEnd.setColumns(10);
 		//give end text field an action		
 		textFieldEnd.addActionListener(actionEnd);
@@ -526,6 +536,7 @@ public class GUIFront extends JFrame {
 		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		lblEnd = new JLabel("Ending Location");
+		lblEnd.setVisible(false);
 		lblEnd.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		// Clear button will call all of the reset code
