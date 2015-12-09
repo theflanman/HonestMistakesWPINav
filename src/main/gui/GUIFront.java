@@ -201,6 +201,7 @@ public class GUIFront extends JFrame {
 		setBounds(0, 0, 1412, 743);
 		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
+				
 		panHandle = new PanHandler();
 		zoomHandle = new ZoomHandler();
 
@@ -212,8 +213,6 @@ public class GUIFront extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(backgroundColor);
 		setContentPane(contentPane);
-		
-		
 		
 		// Adding default values for pan and zoom to the hashmap
 		
@@ -699,6 +698,7 @@ public class GUIFront extends JFrame {
 
 		// add to the tabbed pane
 		mainPanel.add(slidePanel, BorderLayout.CENTER);
+		mainPanel.setTitleAt(0, "Map View");
 		getContentPane().add(mainPanel);
 		btnNextMap = new JButton("Next Map-->");
 		btnNextMap.setEnabled(false);
@@ -1643,7 +1643,7 @@ public class GUIFront extends JFrame {
 				double zoomRatio;
 				
 				String packageName;
-				boolean shouldPaint;
+				boolean isMapView;
 				
 				Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, gLPolygon, hHPolygon, sHPolygon, fPolygon;
 				
@@ -1654,15 +1654,14 @@ public class GUIFront extends JFrame {
 				public TweenPanel(ArrayList<MapNode> mapNodes, IProxyImage mapPath, String panelId, String packageName){
 					// determine whether anything should be painted onto this tab
 					if(packageName.equals(Constants.STREET_PATH))
-						this.shouldPaint = false;
+						this.isMapView = false;
 					else
-						this.shouldPaint = true;
+						this.isMapView = true;
 
 					this.packageName = packageName;
 					
 					setLayout(new BorderLayout());
-					
-					
+										
 					globalMap.setAllNodes(globalMap.getMapNodes());
 
 					this.localNodes = mapNodes;
@@ -1670,6 +1669,7 @@ public class GUIFront extends JFrame {
 					labelMainPanel.setFont(new Font("Sans", Font.BOLD, 90));
 					labelMainPanel.setVerticalAlignment(SwingConstants.CENTER);
 					labelMainPanel.setHorizontalAlignment(SwingConstants.CENTER);
+					System.out.println("PANEL ID: " + panelID);
 					labelMainPanel.setText(panelID);
 
 					this.mapImage = mapPath;
@@ -1683,7 +1683,8 @@ public class GUIFront extends JFrame {
 					addMouseMotionListener(panHandle);
 					addMouseWheelListener(zoomHandle);
 
-					addMouseListener(new MouseAdapter() {
+					if(this.isMapView){
+						addMouseListener(new MouseAdapter() {
 						@Override
 						public void mouseClicked(MouseEvent me) {
 							if (allowSetting == true){
@@ -2026,6 +2027,7 @@ public class GUIFront extends JFrame {
 							repaint();
 						}	
 					});
+					}
 				}
 
 				/**
@@ -2259,7 +2261,8 @@ public class GUIFront extends JFrame {
 							lblDistance.setVisible(false);
 							scrollPane.setVisible(false);
 							listDirections.setVisible(false);
-						} else {
+						} 
+						else {
 							lblStepByStep.setVisible(true);
 							lblDistance.setVisible(true);
 							lblClickHere.setVisible(false);
@@ -2289,7 +2292,7 @@ public class GUIFront extends JFrame {
 						graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);
 
 						// Sets the color of the start and end nodes to be different for each new waypoint
-						if(this.shouldPaint){
+						if(this.isMapView){
 							
 							// if this is the campus map, draw the building polygons
 							if(backend.getLocalMap().getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE)){
