@@ -288,11 +288,12 @@ public class GUIFront extends JFrame {
 					Attributes attribute = new Attributes(); //will most likely need some other way of obtaining this information
 
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
-					MapNode n = allNodes.get(0);
+					MapNode n = globalMap.getAllNodes().get(0);
 					if (startNode == null){
 						startNode = n;
 
-						globalMap.setStartNode(startNode);
+						globalMap.setStartNode(startNode);				
+						
 						if (!setStart){
 							globalMap.getChosenNodes().add(0, startNode);
 						} else {
@@ -308,6 +309,22 @@ public class GUIFront extends JFrame {
 							endNode = mapnode;
 							System.out.println("This is the ending node");
 							globalMap.setEndNode(endNode);
+							panelMap.setMapImage(new ProxyImage(globalMap.getEndNode().getLocalMap().getMapImageName()));
+							panelMap.setMapNodes(globalMap.getEndNode().getLocalMap().getMapNodes());
+							String previousMap = backend.getLocalMap().getMapImageName();
+							panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+							backend.setLocalMap(globalMap.getEndNode().getLocalMap());
+							double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+							double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+							panelMap.panX = defPan[0];
+							panelMap.panY = defPan[1];
+							panelMap.setScale(defPan[2]);
+							offsetX = defPan[0] - tempPan[0];
+							offsetY = defPan[1] - tempPan[1];
+							for(MapNode node : backend.getLocalMap().getMapNodes()){
+								node.setXPos(node.getXPos() + offsetX);
+								node.setYPos(node.getYPos() + offsetY);
+							}	
 							if (!setEnd) {
 								globalMap.getChosenNodes().add(1, endNode);
 								System.out.println(globalMap.getChosenNodes().size());					
@@ -331,12 +348,28 @@ public class GUIFront extends JFrame {
 								globalMap.setEndNode(endNode);
 								if (!setEnd) {
 									globalMap.getChosenNodes().add(1, endNode);
+									panelMap.setMapImage(new ProxyImage(globalMap.getEndNode().getLocalMap().getMapImageName()));
+									panelMap.setMapNodes(globalMap.getEndNode().getLocalMap().getMapNodes());
+									String previousMap = backend.getLocalMap().getMapImageName();
+									panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+									backend.setLocalMap(globalMap.getEndNode().getLocalMap());
+									double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+									double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+									panelMap.panX = defPan[0];
+									panelMap.panY = defPan[1];
+									panelMap.setScale(defPan[2]);
+									offsetX = defPan[0] - tempPan[0];
+									offsetY = defPan[1] - tempPan[1];
+									for(MapNode node2 : backend.getLocalMap().getMapNodes()){
+										node2.setXPos(node2.getXPos() + offsetX);
+										node2.setYPos(node2.getYPos() + offsetY);
+									}	
 									System.out.println(globalMap.getChosenNodes().size());					
 								} else {
 									globalMap.getChosenNodes().set(1, endNode);
 								}
 								setEnd = true;
-								//btnCalculateRoute.setEnabled(true);
+								btnRoute.setEnabled(true);
 							}
 						} 
 						else if(!(textFieldStart.getText().equals(""))){ //if there is something entered in the start field as well as the end field we can go ahead and place both at the same time...
@@ -369,7 +402,7 @@ public class GUIFront extends JFrame {
 										globalMap.getChosenNodes().set(1, endNode);
 									}
 									setEnd = true;
-									//btnCalculateRoute.setEnabled(true);
+									btnRoute.setEnabled(true);
 									valid = true;
 								}
 							}
@@ -403,6 +436,22 @@ public class GUIFront extends JFrame {
 							startNode = mapnode; //set the startNode and place it on the map
 							System.out.println("This is the starting node");
 							globalMap.setStartNode(startNode);
+							panelMap.setMapImage(new ProxyImage(globalMap.getStartNode().getLocalMap().getMapImageName()));
+							panelMap.setMapNodes(globalMap.getStartNode().getLocalMap().getMapNodes());
+							String previousMap = backend.getLocalMap().getMapImageName();
+							panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+							backend.setLocalMap(globalMap.getStartNode().getLocalMap());
+							double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+							double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+							panelMap.panX = defPan[0];
+							panelMap.panY = defPan[1];
+							panelMap.setScale(defPan[2]);
+							offsetX = defPan[0] - tempPan[0];
+							offsetY = defPan[1] - tempPan[1];
+							for(MapNode node : backend.getLocalMap().getMapNodes()){
+								node.setXPos(node.getXPos() + offsetX);
+								node.setYPos(node.getYPos() + offsetY);
+							}	
 							if (!setStart) {
 								globalMap.getChosenNodes().add(0, startNode);
 								System.out.println(globalMap.getChosenNodes().size());					
