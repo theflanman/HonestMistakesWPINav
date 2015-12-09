@@ -954,6 +954,8 @@ public class GUIFront extends JFrame {
 		}
 		pack();
 		setLocationRelativeTo(null);
+		
+		changeMapTo(11 ,0 ,0 ,1);
 	}
 
 	public void  setColoring(String scheme){
@@ -1783,8 +1785,6 @@ public class GUIFront extends JFrame {
 
 			if(this.isMapView){
 				zoomRatio = zoomHandle.zoomAmount; // get the initialized zoom amount
-				panX = -500; // default pan X
-				panY = -250; // default pan
 			}
 			else{
 				zoomRatio = 1;
