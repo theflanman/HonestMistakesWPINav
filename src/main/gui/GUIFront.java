@@ -78,6 +78,7 @@ public class GUIFront extends JFrame {
 	public static boolean drawLine2 = false;
 	public static boolean drawLine3 = false;
 	public static boolean removeLine = false;
+	public static boolean drawNodes = true;
 	public static boolean reset = false;
 	public static MapNode startNode = null, endNode = null;
 	public static String allText = "";
@@ -603,6 +604,8 @@ public class GUIFront extends JFrame {
 					
 					//draw the line on the map
 					drawLine = true;
+					drawNodes = true;
+					
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
@@ -756,6 +759,7 @@ public class GUIFront extends JFrame {
 
 				thisRoute = paths.get(index);
 				drawLine = true;
+				drawNodes = true;
 			}
 		});
 		getContentPane().add(btnNextMap, BorderLayout.SOUTH);
@@ -811,6 +815,7 @@ public class GUIFront extends JFrame {
 				
 				thisRoute = paths.get(index);
 				drawLine = true;
+				drawNodes = true;
 			}
 		});
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
@@ -991,7 +996,7 @@ public class GUIFront extends JFrame {
 	 * 
 	 * @return a list of LocalMaps that are in the path of nodes give
 	 */
-	public ArrayList<LocalMap> createListOfMaps(ArrayList<ArrayList<MapNode>> path) {
+	public static ArrayList<LocalMap> createListOfMaps(ArrayList<ArrayList<MapNode>> path) {
 		// Initializes list
 		ArrayList<LocalMap> pathLocalMaps = new ArrayList<LocalMap>();
 
@@ -1055,6 +1060,7 @@ public class GUIFront extends JFrame {
 
 					thisRoute = paths.get(index);
 					drawLine = true;
+					drawNodes = true;
 					
 					savePanel.saveImage(panelMap, "Map #" + countFiles + "_" + local.getMapImageName());
 					countFiles ++;
@@ -1093,6 +1099,7 @@ public class GUIFront extends JFrame {
 
 				thisRoute = paths.get(index);
 				drawLine = true;
+				drawNodes = true;
 			}
 		});
 		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
@@ -1495,6 +1502,19 @@ public class GUIFront extends JFrame {
 			n.setXPos(n.getXPos() + offsetX);
 			n.setYPos(n.getYPos() + offsetY);
 		}
+		
+		// Only draws nodes and the line on the correct maps
+		ArrayList<LocalMap> localMaps = createListOfMaps(paths);
+		if(localMaps.contains(backend.getLocalMap())){ // if drawing, and if this map is in the path list, DRAW
+			drawLine = true;
+			drawNodes = true;
+		}
+		else{
+			drawLine = false;
+			
+			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
+				drawNodes = false;
+		}
 	}
 	
 	
@@ -1587,6 +1607,7 @@ public class GUIFront extends JFrame {
 				drawLine2 = false;
 				drawLine3 = false;
 				removeLine = true;
+				drawNodes = true;
 			}
 
 			/**
@@ -2455,7 +2476,9 @@ public class GUIFront extends JFrame {
 							// Sets the color of the start and end nodes to be different
 							graphics.setStroke(new BasicStroke(1));
 							graphics.setColor(startNodeColor);
-							if(!(paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
+							
+							if(drawNodes){
+								if(!(paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
 									if (paths.get(index).get(0) != null){ // make sure that the start node (which it should never be) is not null
 										graphics.setColor(startNodeColor);
 										graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
@@ -2468,32 +2491,33 @@ public class GUIFront extends JFrame {
 										graphics.setColor(outlineColor);
 										graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
 									}
-							}
-							//drawing for originally placed nodes
-							if (globalMap.getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed 
-								if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
-									graphics.setColor(startNodeColor);
-									graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
-									graphics.setColor(outlineColor);
-									graphics.drawOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
 								}
-							}
-						
-							if(globalMap.getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
-								if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
-									graphics.setColor(endNodeColor);
-									graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
-									graphics.setColor(outlineColor);
-									graphics.drawOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
-								}
-							}
-							if (globalMap.getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
-								for (int i = 1; i < globalMap.getChosenNodes().size() - 1; i++){
-									if (globalMap.getChosenNodes().get(i).getLocalMap() == backend.getLocalMap()){
-										graphics.setColor(Color.ORANGE);
-										graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+								//drawing for originally placed nodes
+								if (globalMap.getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed 
+									if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
+										graphics.setColor(startNodeColor);
+										graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
 										graphics.setColor(outlineColor);
-										graphics.drawOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+										graphics.drawOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
+									}
+								}
+
+								if(globalMap.getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
+									if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
+										graphics.setColor(endNodeColor);
+										graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
+										graphics.setColor(outlineColor);
+										graphics.drawOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
+									}
+								}
+								if (globalMap.getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
+									for (int i = 1; i < globalMap.getChosenNodes().size() - 1; i++){
+										if (globalMap.getChosenNodes().get(i).getLocalMap() == backend.getLocalMap()){
+											graphics.setColor(Color.ORANGE);
+											graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+											graphics.setColor(outlineColor);
+											graphics.drawOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+										}
 									}
 								}
 							}
@@ -2510,23 +2534,7 @@ public class GUIFront extends JFrame {
 									g2.setColor(lineColor);
 									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
 								}
-								drawLine = false;
-								removeLine = true;
-								//this is where you remove the lines
-							} else if (GUIFront.removeLine == true) { 
-								for (int i = 0; i < thisRoute.size() - 1; i++) {//basically go through the current map and remove all lines for all links between nodes in a route on that map
-									double x1 = backend.getCoordinates(thisRoute).get(i)[0];
-									double y1 = backend.getCoordinates(thisRoute).get(i)[1];
-									double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
-									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
-									Graphics2D g2 = (Graphics2D) g;
-									g2.setStroke(new BasicStroke(5));
-									g2.setColor(lineColor); // you are going to want to make this transparent ... before next step button is added otherwise this will cause some issues
-									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
-								}
-								drawLine = true;
-								removeLine = false;
-							}
+							} 
 							
 							if (drawLine2 == true){
 								Graphics2D g2 = (Graphics2D) g;
