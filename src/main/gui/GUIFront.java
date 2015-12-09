@@ -231,7 +231,7 @@ public class GUIFront extends JFrame {
 		defaults.put("CC2.png", new double[]{-80.0, -110.0, 0.66});
 		defaults.put("CC3.png", new double[]{-80.0, -120.0, 0.80});
 
-		defaults.put("CCM.png", new double[]{-250.0, -220.0, 0.40});
+		defaults.put("CCM.png", new double[]{-300.0, -220.0, 0.40});
 
 		defaults.put("GL1.png", new double[]{-80.0, -110.0, 0.74});
 		defaults.put("GL2.png", new double[]{-80.0, -110.0, 0.74});
