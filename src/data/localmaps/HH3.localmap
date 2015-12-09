@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <MapNodes>
-    <ImageName>HH3.jpg</ImageName>
+    <ImageName>HH3.png</ImageName>
     <Node>
         <NodeID>HH3_1</NodeID>
-        <XPos>163.0</XPos>
-        <YPos>145.0</YPos>
-        <XFeet>32.3881</XFeet>
-        <YFeet>28.8115</YFeet>
+        <XPos>174.0</XPos>
+        <YPos>147.0</YPos>
+        <XFeet>34.5738</XFeet>
+        <YFeet>29.2089</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HH3_3</Neighbor>
-            <Neighbor>HH3_2</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH201</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -25,15 +24,13 @@
     </Node>
     <Node>
         <NodeID>HH3_2</NodeID>
-        <XPos>161.0</XPos>
-        <YPos>73.0</YPos>
-        <XFeet>31.990699999999997</XFeet>
-        <YFeet>14.505099999999999</YFeet>
+        <XPos>193.0</XPos>
+        <YPos>145.0</YPos>
+        <XFeet>38.3491</XFeet>
+        <YFeet>28.8115</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_1</Neighbor>
-            <Neighbor>HH3_3</Neighbor>
-            <Neighbor>HH3_4</Neighbor>
+            <Neighbor>HH3_12</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -48,17 +45,18 @@
     </Node>
     <Node>
         <NodeID>HH3_3</NodeID>
-        <XPos>173.0</XPos>
-        <YPos>99.0</YPos>
-        <XFeet>34.375099999999996</XFeet>
-        <YFeet>19.6713</YFeet>
+        <XPos>160.0</XPos>
+        <YPos>130.0</YPos>
+        <XFeet>31.791999999999998</XFeet>
+        <YFeet>25.831</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HH3_4</Neighbor>
             <Neighbor>HH3_1</Neighbor>
-            <Neighbor>HH3_2</Neighbor>
+            <Neighbor>HH3_15</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH200</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -70,15 +68,15 @@
     </Node>
     <Node>
         <NodeID>HH3_4</NodeID>
-        <XPos>231.0</XPos>
-        <YPos>76.0</YPos>
-        <XFeet>45.899699999999996</XFeet>
-        <YFeet>15.101199999999999</YFeet>
+        <XPos>179.0</XPos>
+        <YPos>122.0</YPos>
+        <XFeet>35.567299999999996</XFeet>
+        <YFeet>24.2414</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_2</Neighbor>
-            <Neighbor>HH3_7</Neighbor>
-            <Neighbor>HH3_6</Neighbor>
+            <Neighbor>HH3_3</Neighbor>
+            <Neighbor>HH3_14</Neighbor>
+            <Neighbor>HH3_15</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -93,16 +91,18 @@
     </Node>
     <Node>
         <NodeID>HH3_5</NodeID>
-        <XPos>193.0</XPos>
-        <YPos>142.0</YPos>
-        <XFeet>38.3491</XFeet>
-        <YFeet>28.2154</YFeet>
+        <XPos>208.0</XPos>
+        <YPos>120.0</YPos>
+        <XFeet>41.3296</XFeet>
+        <YFeet>23.843999999999998</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HH3_12</Neighbor>
             <Neighbor>HH3_6</Neighbor>
+            <Neighbor>HH3_7</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH204</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -114,17 +114,17 @@
     </Node>
     <Node>
         <NodeID>HH3_6</NodeID>
-        <XPos>232.0</XPos>
-        <YPos>134.0</YPos>
-        <XFeet>46.0984</XFeet>
-        <YFeet>26.625799999999998</YFeet>
+        <XPos>209.0</XPos>
+        <YPos>95.0</YPos>
+        <XFeet>41.528299999999994</XFeet>
+        <YFeet>18.8765</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HH3_5</Neighbor>
-            <Neighbor>HH3_4</Neighbor>
+            <Neighbor>HH3_7</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH203</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -136,15 +136,16 @@
     </Node>
     <Node>
         <NodeID>HH3_7</NodeID>
-        <XPos>274.0</XPos>
-        <YPos>74.0</YPos>
-        <XFeet>54.443799999999996</XFeet>
-        <YFeet>14.7038</YFeet>
+        <XPos>236.0</XPos>
+        <YPos>95.0</YPos>
+        <XFeet>46.8932</XFeet>
+        <YFeet>18.8765</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_54</Neighbor>
             <Neighbor>HH3_8</Neighbor>
-            <Neighbor>HH3_4</Neighbor>
+            <Neighbor>HH3_5</Neighbor>
+            <Neighbor>HH3_6</Neighbor>
+            <Neighbor>HH3_22</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -159,17 +160,18 @@
     </Node>
     <Node>
         <NodeID>HH3_8</NodeID>
-        <XPos>273.0</XPos>
-        <YPos>134.0</YPos>
-        <XFeet>54.245099999999994</XFeet>
-        <YFeet>26.625799999999998</YFeet>
+        <XPos>245.0</XPos>
+        <YPos>110.0</YPos>
+        <XFeet>48.6815</XFeet>
+        <YFeet>21.857</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_7</Neighbor>
             <Neighbor>HH3_9</Neighbor>
+            <Neighbor>HH3_12</Neighbor>
+            <Neighbor>HH3_7</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH205</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -181,14 +183,15 @@
     </Node>
     <Node>
         <NodeID>HH3_9</NodeID>
-        <XPos>306.0</XPos>
-        <YPos>136.0</YPos>
-        <XFeet>60.8022</XFeet>
-        <YFeet>27.0232</YFeet>
+        <XPos>245.0</XPos>
+        <YPos>132.0</YPos>
+        <XFeet>48.6815</XFeet>
+        <YFeet>26.228399999999997</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_8</Neighbor>
             <Neighbor>HH3_10</Neighbor>
+            <Neighbor>HH3_12</Neighbor>
+            <Neighbor>HH3_8</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -203,17 +206,18 @@
     </Node>
     <Node>
         <NodeID>HH3_10</NodeID>
-        <XPos>339.0</XPos>
-        <YPos>140.0</YPos>
-        <XFeet>67.35929999999999</XFeet>
-        <YFeet>27.817999999999998</YFeet>
+        <XPos>243.0</XPos>
+        <YPos>151.0</YPos>
+        <XFeet>48.284099999999995</XFeet>
+        <YFeet>30.0037</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_9</Neighbor>
             <Neighbor>HH3_11</Neighbor>
+            <Neighbor>HH3_9</Neighbor>
+            <Neighbor>HH3_12</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH209</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -225,14 +229,14 @@
     </Node>
     <Node>
         <NodeID>HH3_11</NodeID>
-        <XPos>347.0</XPos>
-        <YPos>86.0</YPos>
-        <XFeet>68.9489</XFeet>
-        <YFeet>17.0882</YFeet>
+        <XPos>209.0</XPos>
+        <YPos>152.0</YPos>
+        <XFeet>41.528299999999994</XFeet>
+        <YFeet>30.202399999999997</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_55</Neighbor>
             <Neighbor>HH3_10</Neighbor>
+            <Neighbor>HH3_12</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -247,15 +251,18 @@
     </Node>
     <Node>
         <NodeID>HH3_12</NodeID>
-        <XPos>319.0</XPos>
-        <YPos>59.0</YPos>
-        <XFeet>63.385299999999994</XFeet>
-        <YFeet>11.7233</YFeet>
+        <XPos>225.0</XPos>
+        <YPos>133.0</YPos>
+        <XFeet>44.707499999999996</XFeet>
+        <YFeet>26.4271</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_55</Neighbor>
-            <Neighbor>HH3_54</Neighbor>
-            <Neighbor>HH3_13</Neighbor>
+            <Neighbor>HH3_10</Neighbor>
+            <Neighbor>HH3_9</Neighbor>
+            <Neighbor>HH3_11</Neighbor>
+            <Neighbor>HH3_2</Neighbor>
+            <Neighbor>HH3_5</Neighbor>
+            <Neighbor>HH3_8</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -270,16 +277,18 @@
     </Node>
     <Node>
         <NodeID>HH3_13</NodeID>
-        <XPos>319.0</XPos>
-        <YPos>28.0</YPos>
-        <XFeet>63.385299999999994</XFeet>
-        <YFeet>5.563599999999999</YFeet>
+        <XPos>192.0</XPos>
+        <YPos>96.0</YPos>
+        <XFeet>38.1504</XFeet>
+        <YFeet>19.0752</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_12</Neighbor>
+            <Neighbor>HH3_18</Neighbor>
+            <Neighbor>HH3_14</Neighbor>
+            <Neighbor>HH3_15</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH208</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -291,15 +300,18 @@
     </Node>
     <Node>
         <NodeID>HH3_14</NodeID>
-        <XPos>385.0</XPos>
-        <YPos>159.0</YPos>
-        <XFeet>76.4995</XFeet>
-        <YFeet>31.5933</YFeet>
+        <XPos>191.0</XPos>
+        <YPos>114.0</YPos>
+        <XFeet>37.951699999999995</XFeet>
+        <YFeet>22.651799999999998</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_15</Neighbor>
-            <Neighbor>HH3_59</Neighbor>
-            <Neighbor>HH3_64</Neighbor>
+            <Neighbor>HH3_13</Neighbor>
+            <Neighbor>HH3_14</Neighbor>
+            <Neighbor>HH3_14</Neighbor>
+            <Neighbor>HH3_4</Neighbor>
+            <Neighbor>HH3_14</Neighbor>
+            <Neighbor>HH3_14</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -314,15 +326,18 @@
     </Node>
     <Node>
         <NodeID>HH3_15</NodeID>
-        <XPos>385.0</XPos>
-        <YPos>132.0</YPos>
-        <XFeet>76.4995</XFeet>
-        <YFeet>26.228399999999997</YFeet>
+        <XPos>160.0</XPos>
+        <YPos>105.0</YPos>
+        <XFeet>31.791999999999998</XFeet>
+        <YFeet>20.8635</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HH3_3</Neighbor>
             <Neighbor>HH3_16</Neighbor>
-            <Neighbor>HH3_14</Neighbor>
-            <Neighbor>HH3_56</Neighbor>
+            <Neighbor>HH3_18</Neighbor>
+            <Neighbor>HH3_13</Neighbor>
+            <Neighbor>HH3_4</Neighbor>
+            <Neighbor>HH3_17</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -337,18 +352,17 @@
     </Node>
     <Node>
         <NodeID>HH3_16</NodeID>
-        <XPos>438.0</XPos>
-        <YPos>133.0</YPos>
-        <XFeet>87.03059999999999</XFeet>
-        <YFeet>26.4271</YFeet>
+        <XPos>159.0</XPos>
+        <YPos>71.0</YPos>
+        <XFeet>31.5933</XFeet>
+        <YFeet>14.1077</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_63</Neighbor>
-            <Neighbor>HH3_21</Neighbor>
+            <Neighbor>HH3_17</Neighbor>
             <Neighbor>HH3_15</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH217</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -360,19 +374,18 @@
     </Node>
     <Node>
         <NodeID>HH3_17</NodeID>
-        <XPos>440.0</XPos>
-        <YPos>224.0</YPos>
-        <XFeet>87.428</XFeet>
-        <YFeet>44.508799999999994</YFeet>
+        <XPos>174.0</XPos>
+        <YPos>68.0</YPos>
+        <XFeet>34.5738</XFeet>
+        <YFeet>13.5116</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_31</Neighbor>
-            <Neighbor>HH3_63</Neighbor>
-            <Neighbor>HH3_53</Neighbor>
             <Neighbor>HH3_18</Neighbor>
+            <Neighbor>HH3_16</Neighbor>
+            <Neighbor>HH3_15</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH249</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -384,15 +397,16 @@
     </Node>
     <Node>
         <NodeID>HH3_18</NodeID>
-        <XPos>539.0</XPos>
-        <YPos>224.0</YPos>
-        <XFeet>107.0993</XFeet>
-        <YFeet>44.508799999999994</YFeet>
+        <XPos>192.0</XPos>
+        <YPos>70.0</YPos>
+        <XFeet>38.1504</XFeet>
+        <YFeet>13.908999999999999</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HH3_23</Neighbor>
             <Neighbor>HH3_17</Neighbor>
-            <Neighbor>HH3_19</Neighbor>
-            <Neighbor>HH3_29</Neighbor>
+            <Neighbor>HH3_13</Neighbor>
+            <Neighbor>HH3_15</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -407,16 +421,13 @@
     </Node>
     <Node>
         <NodeID>HH3_19</NodeID>
-        <XPos>536.0</XPos>
-        <YPos>187.0</YPos>
-        <XFeet>106.50319999999999</XFeet>
-        <YFeet>37.1569</YFeet>
+        <XPos>207.0</XPos>
+        <YPos>52.0</YPos>
+        <XFeet>41.1309</XFeet>
+        <YFeet>10.3324</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_19</Neighbor>
-            <Neighbor>HH3_19</Neighbor>
-            <Neighbor>HH3_20</Neighbor>
-            <Neighbor>HH3_18</Neighbor>
+            <Neighbor>HH3_23</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -431,15 +442,13 @@
     </Node>
     <Node>
         <NodeID>HH3_20</NodeID>
-        <XPos>529.0</XPos>
-        <YPos>127.0</YPos>
-        <XFeet>105.11229999999999</XFeet>
-        <YFeet>25.2349</YFeet>
+        <XPos>228.0</XPos>
+        <YPos>54.0</YPos>
+        <XFeet>45.303599999999996</XFeet>
+        <YFeet>10.7298</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_19</Neighbor>
             <Neighbor>HH3_22</Neighbor>
-            <Neighbor>HH3_21</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -454,14 +463,13 @@
     </Node>
     <Node>
         <NodeID>HH3_21</NodeID>
-        <XPos>490.0</XPos>
-        <YPos>128.0</YPos>
-        <XFeet>97.363</XFeet>
-        <YFeet>25.4336</YFeet>
+        <XPos>248.0</XPos>
+        <YPos>51.0</YPos>
+        <XFeet>49.2776</XFeet>
+        <YFeet>10.1337</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_20</Neighbor>
-            <Neighbor>HH3_16</Neighbor>
+            <Neighbor>HH3_24</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -476,14 +484,16 @@
     </Node>
     <Node>
         <NodeID>HH3_22</NodeID>
-        <XPos>569.0</XPos>
-        <YPos>126.0</YPos>
-        <XFeet>113.0603</XFeet>
-        <YFeet>25.036199999999997</YFeet>
+        <XPos>231.0</XPos>
+        <YPos>78.0</YPos>
+        <XFeet>45.899699999999996</XFeet>
+        <YFeet>15.4986</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_23</Neighbor>
+            <Neighbor>HH3_7</Neighbor>
             <Neighbor>HH3_20</Neighbor>
+            <Neighbor>HH3_23</Neighbor>
+            <Neighbor>HH3_24</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -498,15 +508,17 @@
     </Node>
     <Node>
         <NodeID>HH3_23</NodeID>
-        <XPos>616.0</XPos>
-        <YPos>148.0</YPos>
-        <XFeet>122.3992</XFeet>
-        <YFeet>29.4076</YFeet>
+        <XPos>206.0</XPos>
+        <YPos>74.0</YPos>
+        <XFeet>40.932199999999995</XFeet>
+        <YFeet>14.7038</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_24</Neighbor>
-            <Neighbor>HH3_30</Neighbor>
             <Neighbor>HH3_22</Neighbor>
+            <Neighbor>HH3_19</Neighbor>
+            <Neighbor>HH3_18</Neighbor>
+            <Neighbor>HH3_23</Neighbor>
+            <Neighbor>HH3_23</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -521,14 +533,15 @@
     </Node>
     <Node>
         <NodeID>HH3_24</NodeID>
-        <XPos>651.0</XPos>
-        <YPos>144.0</YPos>
-        <XFeet>129.3537</XFeet>
-        <YFeet>28.6128</YFeet>
+        <XPos>250.0</XPos>
+        <YPos>76.0</YPos>
+        <XFeet>49.675</XFeet>
+        <YFeet>15.101199999999999</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HH3_21</Neighbor>
+            <Neighbor>HH3_22</Neighbor>
             <Neighbor>HH3_25</Neighbor>
-            <Neighbor>HH3_23</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -543,14 +556,15 @@
     </Node>
     <Node>
         <NodeID>HH3_25</NodeID>
-        <XPos>747.0</XPos>
-        <YPos>142.0</YPos>
-        <XFeet>148.4289</XFeet>
-        <YFeet>28.2154</YFeet>
+        <XPos>272.0</XPos>
+        <YPos>77.0</YPos>
+        <XFeet>54.0464</XFeet>
+        <YFeet>15.2999</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_26</Neighbor>
             <Neighbor>HH3_24</Neighbor>
+            <Neighbor>HH3_27</Neighbor>
+            <Neighbor>HH3_38</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -565,14 +579,14 @@
     </Node>
     <Node>
         <NodeID>HH3_26</NodeID>
-        <XPos>751.0</XPos>
-        <YPos>196.0</YPos>
-        <XFeet>149.22369999999998</XFeet>
-        <YFeet>38.9452</YFeet>
+        <XPos>292.0</XPos>
+        <YPos>56.0</YPos>
+        <XFeet>58.020399999999995</XFeet>
+        <YFeet>11.127199999999998</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_28</Neighbor>
-            <Neighbor>HH3_25</Neighbor>
+            <Neighbor>HH3_27</Neighbor>
+            <Neighbor>HH2_152</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -587,14 +601,15 @@
     </Node>
     <Node>
         <NodeID>HH3_27</NodeID>
-        <XPos>653.0</XPos>
-        <YPos>224.0</YPos>
-        <XFeet>129.75109999999998</XFeet>
-        <YFeet>44.508799999999994</YFeet>
+        <XPos>293.0</XPos>
+        <YPos>77.0</YPos>
+        <XFeet>58.2191</XFeet>
+        <YFeet>15.2999</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_29</Neighbor>
-            <Neighbor>HH3_28</Neighbor>
+            <Neighbor>HH3_25</Neighbor>
+            <Neighbor>HH3_26</Neighbor>
+            <Neighbor>HH3_53</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -609,14 +624,15 @@
     </Node>
     <Node>
         <NodeID>HH3_28</NodeID>
-        <XPos>706.0</XPos>
-        <YPos>209.0</YPos>
-        <XFeet>140.2822</XFeet>
-        <YFeet>41.528299999999994</YFeet>
+        <XPos>291.0</XPos>
+        <YPos>92.0</YPos>
+        <XFeet>57.8217</XFeet>
+        <YFeet>18.2804</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_27</Neighbor>
-            <Neighbor>HH3_26</Neighbor>
+            <Neighbor>HH3_35</Neighbor>
+            <Neighbor>HH3_29</Neighbor>
+            <Neighbor>HH3_38</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -631,15 +647,15 @@
     </Node>
     <Node>
         <NodeID>HH3_29</NodeID>
-        <XPos>623.0</XPos>
-        <YPos>222.0</YPos>
-        <XFeet>123.7901</XFeet>
-        <YFeet>44.111399999999996</YFeet>
+        <XPos>291.0</XPos>
+        <YPos>112.0</YPos>
+        <XFeet>57.8217</XFeet>
+        <YFeet>22.254399999999997</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_18</Neighbor>
-            <Neighbor>HH3_30</Neighbor>
-            <Neighbor>HH3_27</Neighbor>
+            <Neighbor>HH3_38</Neighbor>
+            <Neighbor>HH3_31</Neighbor>
+            <Neighbor>HH3_28</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -654,14 +670,14 @@
     </Node>
     <Node>
         <NodeID>HH3_30</NodeID>
-        <XPos>622.0</XPos>
-        <YPos>190.0</YPos>
-        <XFeet>123.5914</XFeet>
-        <YFeet>37.753</YFeet>
+        <XPos>293.0</XPos>
+        <YPos>151.0</YPos>
+        <XFeet>58.2191</XFeet>
+        <YFeet>30.0037</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_29</Neighbor>
-            <Neighbor>HH3_23</Neighbor>
+            <Neighbor>HH3_36</Neighbor>
+            <Neighbor>HH3_31</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -676,14 +692,20 @@
     </Node>
     <Node>
         <NodeID>HH3_31</NodeID>
-        <XPos>414.0</XPos>
-        <YPos>225.0</YPos>
-        <XFeet>82.2618</XFeet>
-        <YFeet>44.707499999999996</YFeet>
+        <XPos>292.0</XPos>
+        <YPos>138.0</YPos>
+        <XFeet>58.020399999999995</XFeet>
+        <YFeet>27.420599999999997</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_32</Neighbor>
-            <Neighbor>HH3_17</Neighbor>
+            <Neighbor>HH3_31</Neighbor>
+            <Neighbor>HH3_31</Neighbor>
+            <Neighbor>HH3_30</Neighbor>
+            <Neighbor>HH3_31</Neighbor>
+            <Neighbor>HH3_31</Neighbor>
+            <Neighbor>HH3_37</Neighbor>
+            <Neighbor>HH3_29</Neighbor>
+            <Neighbor>HH3_39</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -698,18 +720,19 @@
     </Node>
     <Node>
         <NodeID>HH3_32</NodeID>
-        <XPos>416.0</XPos>
-        <YPos>288.0</YPos>
-        <XFeet>82.6592</XFeet>
-        <YFeet>57.2256</YFeet>
+        <XPos>261.0</XPos>
+        <YPos>151.0</YPos>
+        <XFeet>51.860699999999994</XFeet>
+        <YFeet>30.0037</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HH3_32</Neighbor>
+            <Neighbor>HH3_32</Neighbor>
+            <Neighbor>HH3_36</Neighbor>
             <Neighbor>HH3_33</Neighbor>
-            <Neighbor>HH3_60</Neighbor>
-            <Neighbor>HH3_31</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH250</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -721,14 +744,17 @@
     </Node>
     <Node>
         <NodeID>HH3_33</NodeID>
-        <XPos>396.0</XPos>
-        <YPos>288.0</YPos>
-        <XFeet>78.6852</XFeet>
-        <YFeet>57.2256</YFeet>
+        <XPos>262.0</XPos>
+        <YPos>132.0</YPos>
+        <XFeet>52.0594</XFeet>
+        <YFeet>26.228399999999997</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_34</Neighbor>
+            <Neighbor>HH3_37</Neighbor>
             <Neighbor>HH3_32</Neighbor>
+            <Neighbor>HH3_34</Neighbor>
+            <Neighbor>HH3_38</Neighbor>
+            <Neighbor>HH3_35</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -743,17 +769,16 @@
     </Node>
     <Node>
         <NodeID>HH3_34</NodeID>
-        <XPos>337.0</XPos>
-        <YPos>289.0</YPos>
-        <XFeet>66.9619</XFeet>
-        <YFeet>57.424299999999995</YFeet>
+        <XPos>260.0</XPos>
+        <YPos>112.0</YPos>
+        <XFeet>51.662</XFeet>
+        <YFeet>22.254399999999997</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_35</Neighbor>
             <Neighbor>HH3_33</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH253</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -765,15 +790,15 @@
     </Node>
     <Node>
         <NodeID>HH3_35</NodeID>
-        <XPos>373.0</XPos>
-        <YPos>323.0</YPos>
-        <XFeet>74.1151</XFeet>
-        <YFeet>64.1801</YFeet>
+        <XPos>259.0</XPos>
+        <YPos>94.0</YPos>
+        <XFeet>51.4633</XFeet>
+        <YFeet>18.677799999999998</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_36</Neighbor>
-            <Neighbor>HH3_37</Neighbor>
-            <Neighbor>HH3_34</Neighbor>
+            <Neighbor>HH3_33</Neighbor>
+            <Neighbor>HH3_28</Neighbor>
+            <Neighbor>HH3_38</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -788,14 +813,15 @@
     </Node>
     <Node>
         <NodeID>HH3_36</NodeID>
-        <XPos>381.0</XPos>
-        <YPos>362.0</YPos>
-        <XFeet>75.70469999999999</XFeet>
-        <YFeet>71.9294</YFeet>
+        <XPos>275.0</XPos>
+        <YPos>151.0</YPos>
+        <XFeet>54.6425</XFeet>
+        <YFeet>30.0037</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HH3_30</Neighbor>
+            <Neighbor>HH3_32</Neighbor>
             <Neighbor>HH3_37</Neighbor>
-            <Neighbor>HH3_35</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -810,15 +836,16 @@
     </Node>
     <Node>
         <NodeID>HH3_37</NodeID>
-        <XPos>401.0</XPos>
-        <YPos>365.0</YPos>
-        <XFeet>79.67869999999999</XFeet>
-        <YFeet>72.5255</YFeet>
+        <XPos>275.9230769230769</XPos>
+        <YPos>134.3846153846154</YPos>
+        <XFeet>54.82591538461538</XFeet>
+        <YFeet>26.702223076923076</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_60</Neighbor>
             <Neighbor>HH3_36</Neighbor>
-            <Neighbor>HH3_35</Neighbor>
+            <Neighbor>HH3_31</Neighbor>
+            <Neighbor>HH3_33</Neighbor>
+            <Neighbor>HH3_38</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -833,19 +860,21 @@
     </Node>
     <Node>
         <NodeID>HH3_38</NodeID>
-        <XPos>454.0</XPos>
-        <YPos>374.0</YPos>
-        <XFeet>90.2098</XFeet>
-        <YFeet>74.3138</YFeet>
+        <XPos>274.0</XPos>
+        <YPos>112.0</YPos>
+        <XFeet>54.443799999999996</XFeet>
+        <YFeet>22.254399999999997</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_51</Neighbor>
-            <Neighbor>HH3_39</Neighbor>
-            <Neighbor>HH3_60</Neighbor>
-            <Neighbor>HH3_65</Neighbor>
+            <Neighbor>HH3_37</Neighbor>
+            <Neighbor>HH3_29</Neighbor>
+            <Neighbor>HH3_33</Neighbor>
+            <Neighbor>HH3_28</Neighbor>
+            <Neighbor>HH3_25</Neighbor>
+            <Neighbor>HH3_35</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH259</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -857,14 +886,16 @@
     </Node>
     <Node>
         <NodeID>HH3_39</NodeID>
-        <XPos>485.0</XPos>
-        <YPos>437.0</YPos>
-        <XFeet>96.36949999999999</XFeet>
-        <YFeet>86.83189999999999</YFeet>
+        <XPos>323.0</XPos>
+        <YPos>139.0</YPos>
+        <XFeet>64.1801</XFeet>
+        <YFeet>27.6193</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_61</Neighbor>
-            <Neighbor>HH3_38</Neighbor>
+            <Neighbor>HH3_31</Neighbor>
+            <Neighbor>HH3_40</Neighbor>
+            <Neighbor>HH3_49</Neighbor>
+            <Neighbor>HH3_44</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -879,19 +910,16 @@
     </Node>
     <Node>
         <NodeID>HH3_40</NodeID>
-        <XPos>472.0</XPos>
-        <YPos>482.0</YPos>
-        <XFeet>93.7864</XFeet>
-        <YFeet>95.7734</YFeet>
+        <XPos>320.0</XPos>
+        <YPos>152.0</YPos>
+        <XFeet>63.583999999999996</XFeet>
+        <YFeet>30.202399999999997</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HH3_39</Neighbor>
             <Neighbor>HH3_40</Neighbor>
             <Neighbor>HH3_40</Neighbor>
-            <Neighbor>HH3_40</Neighbor>
-            <Neighbor>HH3_40</Neighbor>
-            <Neighbor>HH3_47</Neighbor>
-            <Neighbor>HH3_45</Neighbor>
-            <Neighbor>HH3_61</Neighbor>
+            <Neighbor>HH3_42</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -906,16 +934,14 @@
     </Node>
     <Node>
         <NodeID>HH3_41</NodeID>
-        <XPos>530.0</XPos>
-        <YPos>459.0</YPos>
-        <XFeet>105.31099999999999</XFeet>
-        <YFeet>91.2033</YFeet>
+        <XPos>355.0</XPos>
+        <YPos>153.0</YPos>
+        <XFeet>70.5385</XFeet>
+        <YFeet>30.4011</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HH3_42</Neighbor>
-            <Neighbor>HH3_41</Neighbor>
-            <Neighbor>HH3_41</Neighbor>
-            <Neighbor>HH3_62</Neighbor>
+            <Neighbor>HH3_43</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -930,14 +956,15 @@
     </Node>
     <Node>
         <NodeID>HH3_42</NodeID>
-        <XPos>552.0</XPos>
-        <YPos>460.0</YPos>
-        <XFeet>109.68239999999999</XFeet>
-        <YFeet>91.402</YFeet>
+        <XPos>337.0</XPos>
+        <YPos>153.0</YPos>
+        <XFeet>66.9619</XFeet>
+        <YFeet>30.4011</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_44</Neighbor>
+            <Neighbor>HH3_40</Neighbor>
             <Neighbor>HH3_41</Neighbor>
+            <Neighbor>HH3_49</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -952,15 +979,14 @@
     </Node>
     <Node>
         <NodeID>HH3_43</NodeID>
-        <XPos>567.0</XPos>
-        <YPos>480.0</YPos>
-        <XFeet>112.6629</XFeet>
-        <YFeet>95.37599999999999</YFeet>
+        <XPos>356.0</XPos>
+        <YPos>136.0</YPos>
+        <XFeet>70.7372</XFeet>
+        <YFeet>27.0232</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_46</Neighbor>
-            <Neighbor>HH3_47</Neighbor>
-            <Neighbor>HH3_44</Neighbor>
+            <Neighbor>HH3_41</Neighbor>
+            <Neighbor>HH3_49</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -975,17 +1001,19 @@
     </Node>
     <Node>
         <NodeID>HH3_44</NodeID>
-        <XPos>570.0</XPos>
-        <YPos>460.0</YPos>
-        <XFeet>113.25899999999999</XFeet>
-        <YFeet>91.402</YFeet>
+        <XPos>323.0</XPos>
+        <YPos>116.0</YPos>
+        <XFeet>64.1801</XFeet>
+        <YFeet>23.0492</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_42</Neighbor>
-            <Neighbor>HH3_43</Neighbor>
+            <Neighbor>HH3_48</Neighbor>
+            <Neighbor>HH3_45</Neighbor>
+            <Neighbor>HH3_49</Neighbor>
+            <Neighbor>HH3_39</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH264</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -997,17 +1025,15 @@
     </Node>
     <Node>
         <NodeID>HH3_45</NodeID>
-        <XPos>479.0</XPos>
-        <YPos>538.0</YPos>
-        <XFeet>95.17729999999999</XFeet>
-        <YFeet>106.9006</YFeet>
+        <XPos>321.0</XPos>
+        <YPos>94.0</YPos>
+        <XFeet>63.7827</XFeet>
+        <YFeet>18.677799999999998</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_47</Neighbor>
+            <Neighbor>HH3_48</Neighbor>
+            <Neighbor>HH3_44</Neighbor>
             <Neighbor>HH3_46</Neighbor>
-            <Neighbor>HH3_47</Neighbor>
-            <Neighbor>HH3_47</Neighbor>
-            <Neighbor>HH3_40</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1022,15 +1048,16 @@
     </Node>
     <Node>
         <NodeID>HH3_46</NodeID>
-        <XPos>567.0</XPos>
-        <YPos>536.0</YPos>
-        <XFeet>112.6629</XFeet>
-        <YFeet>106.50319999999999</YFeet>
+        <XPos>346.0</XPos>
+        <YPos>93.0</YPos>
+        <XFeet>68.75019999999999</XFeet>
+        <YFeet>18.4791</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_47</Neighbor>
+            <Neighbor>HH3_48</Neighbor>
             <Neighbor>HH3_45</Neighbor>
-            <Neighbor>HH3_43</Neighbor>
+            <Neighbor>HH3_47</Neighbor>
+            <Neighbor>HH3_54</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1045,23 +1072,18 @@
     </Node>
     <Node>
         <NodeID>HH3_47</NodeID>
-        <XPos>520.0</XPos>
-        <YPos>516.0</YPos>
-        <XFeet>103.324</XFeet>
-        <YFeet>102.52919999999999</YFeet>
+        <XPos>369.0</XPos>
+        <YPos>101.0</YPos>
+        <XFeet>73.32029999999999</XFeet>
+        <YFeet>20.0687</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HH3_48</Neighbor>
             <Neighbor>HH3_46</Neighbor>
-            <Neighbor>HH3_45</Neighbor>
-            <Neighbor>HH3_47</Neighbor>
-            <Neighbor>HH3_47</Neighbor>
-            <Neighbor>HH3_45</Neighbor>
-            <Neighbor>HH3_43</Neighbor>
-            <Neighbor>HH3_45</Neighbor>
-            <Neighbor>HH3_40</Neighbor>
+            <Neighbor>HH3_58</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH263</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1073,16 +1095,20 @@
     </Node>
     <Node>
         <NodeID>HH3_48</NodeID>
-        <XPos>573.0</XPos>
-        <YPos>367.0</YPos>
-        <XFeet>113.8551</XFeet>
-        <YFeet>72.9229</YFeet>
+        <XPos>355.0</XPos>
+        <YPos>116.0</YPos>
+        <XFeet>70.5385</XFeet>
+        <YFeet>23.0492</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_52</Neighbor>
+            <Neighbor>HH3_49</Neighbor>
+            <Neighbor>HH3_47</Neighbor>
+            <Neighbor>HH3_44</Neighbor>
+            <Neighbor>HH3_46</Neighbor>
+            <Neighbor>HH3_45</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH267</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1094,16 +1120,17 @@
     </Node>
     <Node>
         <NodeID>HH3_49</NodeID>
-        <XPos>522.0</XPos>
-        <YPos>435.0</YPos>
-        <XFeet>103.72139999999999</XFeet>
-        <YFeet>86.4345</YFeet>
+        <XPos>338.0</XPos>
+        <YPos>130.0</YPos>
+        <XFeet>67.1606</XFeet>
+        <YFeet>25.831</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_61</Neighbor>
-            <Neighbor>HH3_62</Neighbor>
-            <Neighbor>HH3_50</Neighbor>
-            <Neighbor>HH3_52</Neighbor>
+            <Neighbor>HH3_43</Neighbor>
+            <Neighbor>HH3_42</Neighbor>
+            <Neighbor>HH3_39</Neighbor>
+            <Neighbor>HH3_48</Neighbor>
+            <Neighbor>HH3_44</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1118,15 +1145,13 @@
     </Node>
     <Node>
         <NodeID>HH3_50</NodeID>
-        <XPos>504.0</XPos>
-        <YPos>395.0</YPos>
-        <XFeet>100.14479999999999</XFeet>
-        <YFeet>78.48649999999999</YFeet>
+        <XPos>311.0</XPos>
+        <YPos>27.0</YPos>
+        <XFeet>61.7957</XFeet>
+        <YFeet>5.3649</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HH3_52</Neighbor>
-            <Neighbor>HH3_49</Neighbor>
-            <Neighbor>HH3_51</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1141,14 +1166,13 @@
     </Node>
     <Node>
         <NodeID>HH3_51</NodeID>
-        <XPos>502.0</XPos>
-        <YPos>375.0</YPos>
-        <XFeet>99.7474</XFeet>
-        <YFeet>74.51249999999999</YFeet>
+        <XPos>334.0</XPos>
+        <YPos>25.0</YPos>
+        <XFeet>66.3658</XFeet>
+        <YFeet>4.967499999999999</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_50</Neighbor>
-            <Neighbor>HH3_38</Neighbor>
+            <Neighbor>HH3_52</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1163,18 +1187,18 @@
     </Node>
     <Node>
         <NodeID>HH3_52</NodeID>
-        <XPos>541.0</XPos>
-        <YPos>395.0</YPos>
-        <XFeet>107.49669999999999</XFeet>
-        <YFeet>78.48649999999999</YFeet>
+        <XPos>321.0</XPos>
+        <YPos>58.0</YPos>
+        <XFeet>63.7827</XFeet>
+        <YFeet>11.5246</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_48</Neighbor>
+            <Neighbor>HH3_53</Neighbor>
+            <Neighbor>HH3_51</Neighbor>
             <Neighbor>HH3_50</Neighbor>
-            <Neighbor>HH3_49</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH265</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1186,16 +1210,18 @@
     </Node>
     <Node>
         <NodeID>HH3_53</NodeID>
-        <XPos>462.0</XPos>
-        <YPos>179.0</YPos>
-        <XFeet>91.79939999999999</XFeet>
-        <YFeet>35.567299999999996</YFeet>
+        <XPos>321.0</XPos>
+        <YPos>76.0</YPos>
+        <XFeet>63.7827</XFeet>
+        <YFeet>15.101199999999999</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_17</Neighbor>
+            <Neighbor>HH3_54</Neighbor>
+            <Neighbor>HH3_52</Neighbor>
+            <Neighbor>HH3_27</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH220</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1207,18 +1233,18 @@
     </Node>
     <Node>
         <NodeID>HH3_54</NodeID>
-        <XPos>319.0</XPos>
-        <YPos>73.0</YPos>
-        <XFeet>63.385299999999994</XFeet>
-        <YFeet>14.505099999999999</YFeet>
+        <XPos>342.939226519337</XPos>
+        <YPos>74.84530386740332</YPos>
+        <XFeet>68.14202430939226</XFeet>
+        <YFeet>14.871761878453038</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HH3_55</Neighbor>
-            <Neighbor>HH3_12</Neighbor>
-            <Neighbor>HH3_7</Neighbor>
+            <Neighbor>HH3_53</Neighbor>
+            <Neighbor>HH3_46</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH207</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1230,15 +1256,13 @@
     </Node>
     <Node>
         <NodeID>HH3_55</NodeID>
-        <XPos>346.0</XPos>
-        <YPos>71.0</YPos>
-        <XFeet>68.75019999999999</XFeet>
-        <YFeet>14.1077</YFeet>
+        <XPos>357.0055248618785</XPos>
+        <YPos>74.10497237569061</YPos>
+        <XFeet>70.93699779005524</XFeet>
+        <YFeet>14.724658011049723</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HH3_56</Neighbor>
-            <Neighbor>HH3_11</Neighbor>
-            <Neighbor>HH3_12</Neighbor>
             <Neighbor>HH3_54</Neighbor>
         </Neighbors>
         <Attributes>
@@ -1254,16 +1278,15 @@
     </Node>
     <Node>
         <NodeID>HH3_56</NodeID>
-        <XPos>384.0</XPos>
-        <YPos>69.0</YPos>
-        <XFeet>76.3008</XFeet>
-        <YFeet>13.710299999999998</YFeet>
+        <XPos>376.9502762430939</XPos>
+        <YPos>73.05524861878453</YPos>
+        <XFeet>74.90001988950276</XFeet>
+        <YFeet>14.516077900552485</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_15</Neighbor>
-            <Neighbor>HH3_57</Neighbor>
-            <Neighbor>HH3_58</Neighbor>
+            <Neighbor>HH3_76</Neighbor>
             <Neighbor>HH3_55</Neighbor>
+            <Neighbor>HH3_57</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1278,14 +1301,15 @@
     </Node>
     <Node>
         <NodeID>HH3_57</NodeID>
-        <XPos>429.0</XPos>
-        <YPos>71.0</YPos>
-        <XFeet>85.2423</XFeet>
-        <YFeet>14.1077</YFeet>
+        <XPos>386.0</XPos>
+        <YPos>99.0</YPos>
+        <XFeet>76.6982</XFeet>
+        <YFeet>19.6713</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_56</Neighbor>
             <Neighbor>HH3_58</Neighbor>
+            <Neighbor>HH3_56</Neighbor>
+            <Neighbor>HH3_76</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1300,17 +1324,20 @@
     </Node>
     <Node>
         <NodeID>HH3_58</NodeID>
-        <XPos>427.0</XPos>
-        <YPos>93.0</YPos>
-        <XFeet>84.8449</XFeet>
-        <YFeet>18.4791</YFeet>
+        <XPos>386.0</XPos>
+        <YPos>118.0</YPos>
+        <XFeet>76.6982</XFeet>
+        <YFeet>23.4466</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_56</Neighbor>
+            <Neighbor>HH3_59</Neighbor>
+            <Neighbor>HH3_69</Neighbor>
+            <Neighbor>HH3_66</Neighbor>
+            <Neighbor>HH3_47</Neighbor>
             <Neighbor>HH3_57</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH211</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1322,16 +1349,19 @@
     </Node>
     <Node>
         <NodeID>HH3_59</NodeID>
-        <XPos>408.0</XPos>
-        <YPos>173.0</YPos>
-        <XFeet>81.0696</XFeet>
-        <YFeet>34.375099999999996</YFeet>
+        <XPos>370.0</XPos>
+        <YPos>128.0</YPos>
+        <XFeet>73.51899999999999</XFeet>
+        <YFeet>25.4336</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_14</Neighbor>
+            <Neighbor>HH3_66</Neighbor>
+            <Neighbor>HH3_66</Neighbor>
+            <Neighbor>HH3_60</Neighbor>
+            <Neighbor>HH3_58</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH216</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1343,15 +1373,16 @@
     </Node>
     <Node>
         <NodeID>HH3_60</NodeID>
-        <XPos>421.0</XPos>
-        <YPos>370.0</YPos>
-        <XFeet>83.6527</XFeet>
-        <YFeet>73.51899999999999</YFeet>
+        <XPos>370.0</XPos>
+        <YPos>147.0</YPos>
+        <XFeet>73.51899999999999</XFeet>
+        <YFeet>29.2089</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_38</Neighbor>
-            <Neighbor>HH3_37</Neighbor>
-            <Neighbor>HH3_32</Neighbor>
+            <Neighbor>HH3_60</Neighbor>
+            <Neighbor>HH3_60</Neighbor>
+            <Neighbor>HH3_66</Neighbor>
+            <Neighbor>HH3_59</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1366,19 +1397,16 @@
     </Node>
     <Node>
         <NodeID>HH3_61</NodeID>
-        <XPos>486.0</XPos>
-        <YPos>457.0</YPos>
-        <XFeet>96.56819999999999</XFeet>
-        <YFeet>90.8059</YFeet>
+        <XPos>340.0</XPos>
+        <YPos>169.0</YPos>
+        <XFeet>67.55799999999999</XFeet>
+        <YFeet>33.5803</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_49</Neighbor>
             <Neighbor>HH3_62</Neighbor>
-            <Neighbor>HH3_39</Neighbor>
-            <Neighbor>HH3_40</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HH262</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1390,15 +1418,14 @@
     </Node>
     <Node>
         <NodeID>HH3_62</NodeID>
-        <XPos>519.0</XPos>
-        <YPos>459.0</YPos>
-        <XFeet>103.1253</XFeet>
-        <YFeet>91.2033</YFeet>
+        <XPos>357.0</XPos>
+        <YPos>169.0</YPos>
+        <XFeet>70.93589999999999</XFeet>
+        <YFeet>33.5803</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_41</Neighbor>
-            <Neighbor>HH3_49</Neighbor>
             <Neighbor>HH3_61</Neighbor>
+            <Neighbor>HH3_63</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1413,14 +1440,15 @@
     </Node>
     <Node>
         <NodeID>HH3_63</NodeID>
-        <XPos>439.0</XPos>
-        <YPos>172.0</YPos>
-        <XFeet>87.2293</XFeet>
-        <YFeet>34.1764</YFeet>
+        <XPos>381.0</XPos>
+        <YPos>169.0</YPos>
+        <XFeet>75.70469999999999</XFeet>
+        <YFeet>33.5803</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_17</Neighbor>
-            <Neighbor>HH3_16</Neighbor>
+            <Neighbor>HH3_62</Neighbor>
+            <Neighbor>HH3_64</Neighbor>
+            <Neighbor>HH3_66</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1435,13 +1463,14 @@
     </Node>
     <Node>
         <NodeID>HH3_64</NodeID>
-        <XPos>342.0</XPos>
-        <YPos>174.0</YPos>
-        <XFeet>67.9554</XFeet>
-        <YFeet>34.5738</YFeet>
+        <XPos>403.0</XPos>
+        <YPos>169.0</YPos>
+        <XFeet>80.0761</XFeet>
+        <YFeet>33.5803</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_14</Neighbor>
+            <Neighbor>HH3_65</Neighbor>
+            <Neighbor>HH3_63</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1456,14 +1485,3932 @@
     </Node>
     <Node>
         <NodeID>HH3_65</NodeID>
-        <XPos>452.0</XPos>
-        <YPos>352.0</YPos>
-        <XFeet>89.8124</XFeet>
-        <YFeet>69.94239999999999</YFeet>
+        <XPos>420.0</XPos>
+        <YPos>170.0</YPos>
+        <XFeet>83.454</XFeet>
+        <YFeet>33.778999999999996</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HH3_38</Neighbor>
-            <Neighbor>HH2_61</Neighbor>
+            <Neighbor>HH3_64</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_66</NodeID>
+        <XPos>382.0</XPos>
+        <YPos>149.0</YPos>
+        <XFeet>75.90339999999999</XFeet>
+        <YFeet>29.606299999999997</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_63</Neighbor>
+            <Neighbor>HH3_60</Neighbor>
+            <Neighbor>HH3_67</Neighbor>
+            <Neighbor>HH3_59</Neighbor>
+            <Neighbor>HH3_59</Neighbor>
+            <Neighbor>HH3_58</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_67</NodeID>
+        <XPos>401.0</XPos>
+        <YPos>149.0</YPos>
+        <XFeet>79.67869999999999</XFeet>
+        <YFeet>29.606299999999997</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_66</Neighbor>
+            <Neighbor>HH3_68</Neighbor>
+            <Neighbor>HH3_69</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_68</NodeID>
+        <XPos>420.0</XPos>
+        <YPos>149.0</YPos>
+        <XFeet>83.454</XFeet>
+        <YFeet>29.606299999999997</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_67</Neighbor>
+            <Neighbor>HH3_70</Neighbor>
+            <Neighbor>HH3_86</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_69</NodeID>
+        <XPos>402.0</XPos>
+        <YPos>126.0</YPos>
+        <XFeet>79.8774</XFeet>
+        <YFeet>25.036199999999997</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_67</Neighbor>
+            <Neighbor>HH3_58</Neighbor>
+            <Neighbor>HH3_69</Neighbor>
+            <Neighbor>HH3_69</Neighbor>
+            <Neighbor>HH3_70</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_70</NodeID>
+        <XPos>419.0</XPos>
+        <YPos>127.0</YPos>
+        <XFeet>83.25529999999999</XFeet>
+        <YFeet>25.2349</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_68</Neighbor>
+            <Neighbor>HH3_69</Neighbor>
+            <Neighbor>HH3_71</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_71</NodeID>
+        <XPos>435.0</XPos>
+        <YPos>127.0</YPos>
+        <XFeet>86.4345</XFeet>
+        <YFeet>25.2349</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_70</Neighbor>
+            <Neighbor>HH3_79</Neighbor>
+            <Neighbor>HH3_86</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_72</NodeID>
+        <XPos>405.0</XPos>
+        <YPos>107.0</YPos>
+        <XFeet>80.4735</XFeet>
+        <YFeet>21.2609</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>none</Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_73</NodeID>
+        <XPos>419.0</XPos>
+        <YPos>107.0</YPos>
+        <XFeet>83.25529999999999</XFeet>
+        <YFeet>21.2609</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>none</Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_74</NodeID>
+        <XPos>437.0</XPos>
+        <YPos>104.0</YPos>
+        <XFeet>86.83189999999999</XFeet>
+        <YFeet>20.6648</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>none</Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_75</NodeID>
+        <XPos>403.0</XPos>
+        <YPos>88.0</YPos>
+        <XFeet>80.0761</XFeet>
+        <YFeet>17.485599999999998</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_78</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_76</NodeID>
+        <XPos>400.1491712707182</XPos>
+        <YPos>71.8342541436464</YPos>
+        <XFeet>79.50964033149171</XFeet>
+        <YFeet>14.273466298342539</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_77</Neighbor>
+            <Neighbor>HH3_56</Neighbor>
+            <Neighbor>HH3_57</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_77</NodeID>
+        <XPos>417.0497237569061</XPos>
+        <YPos>70.94475138121547</YPos>
+        <XFeet>82.86778011049724</XFeet>
+        <YFeet>14.096722099447513</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_78</Neighbor>
+            <Neighbor>HH3_76</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_78</NodeID>
+        <XPos>435.0</XPos>
+        <YPos>70.0</YPos>
+        <XFeet>86.4345</XFeet>
+        <YFeet>13.908999999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_75</Neighbor>
+            <Neighbor>HH3_77</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_79</NodeID>
+        <XPos>462.0</XPos>
+        <YPos>126.12171770897486</YPos>
+        <XFeet>91.79939999999999</XFeet>
+        <YFeet>25.060385308773302</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_71</Neighbor>
+            <Neighbor>HH3_88</Neighbor>
+            <Neighbor>HH3_87</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_80</NodeID>
+        <XPos>509.0142209282795</XPos>
+        <YPos>126.31224455517608</YPos>
+        <XFeet>101.14112569844913</XFeet>
+        <YFeet>25.098242993113484</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_114</Neighbor>
+            <Neighbor>HH3_81</Neighbor>
+            <Neighbor>HH3_145</Neighbor>
+            <Neighbor>HH3_115</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_81</NodeID>
+        <XPos>538.9975085381558</XPos>
+        <YPos>126.47088628856167</YPos>
+        <XFeet>107.09880494653154</XFeet>
+        <YFeet>25.129765105537203</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_80</Neighbor>
+            <Neighbor>HH3_82</Neighbor>
+            <Neighbor>HH3_115</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_82</NodeID>
+        <XPos>559.9969206651364</XPos>
+        <YPos>126.58199428923352</YPos>
+        <XFeet>111.27138813616259</XFeet>
+        <YFeet>25.151842265270698</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_83</Neighbor>
+            <Neighbor>HH3_141</Neighbor>
+            <Neighbor>HH3_81</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_83</NodeID>
+        <XPos>584.9962208163037</XPos>
+        <YPos>126.71426571860478</YPos>
+        <XFeet>116.23874907619953</XFeet>
+        <YFeet>25.178124598286768</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_142</Neighbor>
+            <Neighbor>HH3_82</Neighbor>
+            <Neighbor>HH3_84</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_84</NodeID>
+        <XPos>619.0111415934158</XPos>
+        <YPos>126.89423884440961</YPos>
+        <XFeet>122.99751383461171</XFeet>
+        <YFeet>25.213885258384188</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_83</Neighbor>
+            <Neighbor>HH3_85</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_85</NodeID>
+        <XPos>639.0</XPos>
+        <YPos>127.0</YPos>
+        <XFeet>126.96929999999999</XFeet>
+        <YFeet>25.2349</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_84</Neighbor>
+            <Neighbor>HH3_120</Neighbor>
+            <Neighbor>HH3_146</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_86</NodeID>
+        <XPos>439.0</XPos>
+        <YPos>150.0</YPos>
+        <XFeet>87.2293</XFeet>
+        <YFeet>29.805</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_68</Neighbor>
+            <Neighbor>HH3_71</Neighbor>
+            <Neighbor>HH3_87</Neighbor>
+            <Neighbor>HH3_90</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_87</NodeID>
+        <XPos>462.0</XPos>
+        <YPos>156.0</YPos>
+        <XFeet>91.79939999999999</XFeet>
+        <YFeet>30.9972</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_86</Neighbor>
+            <Neighbor>HH3_89</Neighbor>
+            <Neighbor>HH3_79</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_88</NodeID>
+        <XPos>482.0</XPos>
+        <YPos>143.0</YPos>
+        <XFeet>95.7734</XFeet>
+        <YFeet>28.414099999999998</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_89</Neighbor>
+            <Neighbor>HH3_88</Neighbor>
+            <Neighbor>HH3_88</Neighbor>
+            <Neighbor>HH3_79</Neighbor>
+            <Neighbor>HH3_144</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_89</NodeID>
+        <XPos>480.0</XPos>
+        <YPos>158.0</YPos>
+        <XFeet>95.37599999999999</XFeet>
+        <YFeet>31.394599999999997</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_87</Neighbor>
+            <Neighbor>HH3_89</Neighbor>
+            <Neighbor>HH3_89</Neighbor>
+            <Neighbor>HH3_88</Neighbor>
+            <Neighbor>HH3_89</Neighbor>
+            <Neighbor>HH3_89</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_90</NodeID>
+        <XPos>436.0</XPos>
+        <YPos>172.0</YPos>
+        <XFeet>86.63319999999999</XFeet>
+        <YFeet>34.1764</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_86</Neighbor>
+            <Neighbor>HH3_147</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_91</NodeID>
+        <XPos>457.0</XPos>
+        <YPos>172.0</YPos>
+        <XFeet>90.8059</XFeet>
+        <YFeet>34.1764</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_92</Neighbor>
+            <Neighbor>HH3_92</Neighbor>
+            <Neighbor>HH3_91</Neighbor>
+            <Neighbor>HH3_91</Neighbor>
+            <Neighbor>HH3_232</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_92</NodeID>
+        <XPos>458.11049723756906</XPos>
+        <YPos>193.09944751381215</YPos>
+        <XFeet>91.02655580110496</XFeet>
+        <YFeet>38.36886022099447</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_91</Neighbor>
+            <Neighbor>HH3_93</Neighbor>
+            <Neighbor>HH3_94</Neighbor>
+            <Neighbor>HH3_147</Neighbor>
+            <Neighbor>HH3_91</Neighbor>
+            <Neighbor>HH3_232</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_93</NodeID>
+        <XPos>475.0</XPos>
+        <YPos>204.0</YPos>
+        <XFeet>94.3825</XFeet>
+        <YFeet>40.5348</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_92</Neighbor>
+            <Neighbor>HH3_94</Neighbor>
+            <Neighbor>HH2_154</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_94</NodeID>
+        <XPos>459.21270718232046</XPos>
+        <YPos>214.0414364640884</YPos>
+        <XFeet>91.24556491712707</XFeet>
+        <YFeet>42.530033425414366</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_92</Neighbor>
+            <Neighbor>HH3_93</Neighbor>
+            <Neighbor>HH3_95</Neighbor>
+            <Neighbor>HH3_158</Neighbor>
+            <Neighbor>HH3_157</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_95</NodeID>
+        <XPos>460.0</XPos>
+        <YPos>229.0</YPos>
+        <XFeet>91.402</XFeet>
+        <YFeet>45.5023</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_94</Neighbor>
+            <Neighbor>HH3_95</Neighbor>
+            <Neighbor>HH3_95</Neighbor>
+            <Neighbor>HH3_96</Neighbor>
+            <Neighbor>HH3_158</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_96</NodeID>
+        <XPos>496.0</XPos>
+        <YPos>227.0</YPos>
+        <XFeet>98.5552</XFeet>
+        <YFeet>45.1049</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_95</Neighbor>
+            <Neighbor>HH3_97</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_97</NodeID>
+        <XPos>520.0</XPos>
+        <YPos>227.0</YPos>
+        <XFeet>103.324</XFeet>
+        <YFeet>45.1049</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_96</Neighbor>
+            <Neighbor>HH3_98</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_98</NodeID>
+        <XPos>538.0</XPos>
+        <YPos>227.0</YPos>
+        <XFeet>106.9006</XFeet>
+        <YFeet>45.1049</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_97</Neighbor>
+            <Neighbor>HH3_98</Neighbor>
+            <Neighbor>HH3_98</Neighbor>
+            <Neighbor>HH3_99</Neighbor>
+            <Neighbor>HH3_111</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_99</NodeID>
+        <XPos>566.0</XPos>
+        <YPos>227.0</YPos>
+        <XFeet>112.46419999999999</XFeet>
+        <YFeet>45.1049</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_98</Neighbor>
+            <Neighbor>HH3_100</Neighbor>
+            <Neighbor>HH3_109</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_100</NodeID>
+        <XPos>601.0</XPos>
+        <YPos>227.0</YPos>
+        <XFeet>119.41869999999999</XFeet>
+        <YFeet>45.1049</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_99</Neighbor>
+            <Neighbor>HH3_108</Neighbor>
+            <Neighbor>HH3_139</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_101</NodeID>
+        <XPos>642.0</XPos>
+        <YPos>227.0</YPos>
+        <XFeet>127.5654</XFeet>
+        <YFeet>45.1049</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_102</Neighbor>
+            <Neighbor>HH3_106</Neighbor>
+            <Neighbor>HH3_139</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_102</NodeID>
+        <XPos>668.0</XPos>
+        <YPos>227.0</YPos>
+        <XFeet>132.7316</XFeet>
+        <YFeet>45.1049</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_101</Neighbor>
+            <Neighbor>HH3_104</Neighbor>
+            <Neighbor>HH3_103</Neighbor>
+            <Neighbor>HH3_135</Neighbor>
+            <Neighbor>HH3_136</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_103</NodeID>
+        <XPos>705.0</XPos>
+        <YPos>247.0</YPos>
+        <XFeet>140.0835</XFeet>
+        <YFeet>49.0789</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_104</Neighbor>
+            <Neighbor>HH3_105</Neighbor>
+            <Neighbor>HH3_102</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_104</NodeID>
+        <XPos>703.0</XPos>
+        <YPos>227.0</YPos>
+        <XFeet>139.68609999999998</XFeet>
+        <YFeet>45.1049</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_102</Neighbor>
+            <Neighbor>HH3_105</Neighbor>
+            <Neighbor>HH3_103</Neighbor>
+            <Neighbor>HH3_137</Neighbor>
+            <Neighbor>HH3_136</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_105</NodeID>
+        <XPos>747.0</XPos>
+        <YPos>227.0</YPos>
+        <XFeet>148.4289</XFeet>
+        <YFeet>45.1049</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_104</Neighbor>
+            <Neighbor>HH3_103</Neighbor>
+            <Neighbor>HH3_138</Neighbor>
+            <Neighbor>HH3_138</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_106</NodeID>
+        <XPos>643.0</XPos>
+        <YPos>200.0</YPos>
+        <XFeet>127.7641</XFeet>
+        <YFeet>39.739999999999995</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_101</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_107</NodeID>
+        <XPos>626.0</XPos>
+        <YPos>203.0</YPos>
+        <XFeet>124.38619999999999</XFeet>
+        <YFeet>40.336099999999995</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_139</Neighbor>
+            <Neighbor>HH3_140</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_108</NodeID>
+        <XPos>600.0</XPos>
+        <YPos>201.0</YPos>
+        <XFeet>119.22</XFeet>
+        <YFeet>39.9387</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_100</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_109</NodeID>
+        <XPos>564.0</XPos>
+        <YPos>201.0</YPos>
+        <XFeet>112.06679999999999</XFeet>
+        <YFeet>39.9387</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_99</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_110</NodeID>
+        <XPos>550.0</XPos>
+        <YPos>202.0</YPos>
+        <XFeet>109.285</XFeet>
+        <YFeet>40.1374</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_111</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_111</NodeID>
+        <XPos>535.0</XPos>
+        <YPos>198.0</YPos>
+        <XFeet>106.30449999999999</XFeet>
+        <YFeet>39.3426</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_98</Neighbor>
+            <Neighbor>HH3_110</Neighbor>
+            <Neighbor>HH3_143</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_112</NodeID>
+        <XPos>562.0</XPos>
+        <YPos>175.0</YPos>
+        <XFeet>111.6694</XFeet>
+        <YFeet>34.7725</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_141</Neighbor>
+            <Neighbor>HH3_143</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_113</NodeID>
+        <XPos>496.0</XPos>
+        <YPos>180.0</YPos>
+        <XFeet>98.5552</XFeet>
+        <YFeet>35.766</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_143</Neighbor>
+            <Neighbor>HH3_114</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_114</NodeID>
+        <XPos>494.0</XPos>
+        <YPos>160.0</YPos>
+        <XFeet>98.1578</XFeet>
+        <YFeet>31.791999999999998</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_113</Neighbor>
+            <Neighbor>HH3_80</Neighbor>
+            <Neighbor>HH3_145</Neighbor>
+            <Neighbor>HH3_115</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_115</NodeID>
+        <XPos>533.0</XPos>
+        <YPos>157.0</YPos>
+        <XFeet>105.9071</XFeet>
+        <YFeet>31.195899999999998</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_141</Neighbor>
+            <Neighbor>HH3_114</Neighbor>
+            <Neighbor>HH3_80</Neighbor>
+            <Neighbor>HH3_81</Neighbor>
+            <Neighbor>HH3_143</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_116</NodeID>
+        <XPos>581.0</XPos>
+        <YPos>199.0</YPos>
+        <XFeet>115.4447</XFeet>
+        <YFeet>39.5413</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_119</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_117</NodeID>
+        <XPos>599.0</XPos>
+        <YPos>175.0</YPos>
+        <XFeet>119.0213</XFeet>
+        <YFeet>34.7725</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_119</Neighbor>
+            <Neighbor>HH3_140</Neighbor>
+            <Neighbor>HH3_121</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_118</NodeID>
+        <XPos>643.0</XPos>
+        <YPos>178.0</YPos>
+        <XFeet>127.7641</XFeet>
+        <YFeet>35.3686</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_140</Neighbor>
+            <Neighbor>HH3_146</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_119</NodeID>
+        <XPos>578.0</XPos>
+        <YPos>178.0</YPos>
+        <XFeet>114.84859999999999</XFeet>
+        <YFeet>35.3686</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_116</Neighbor>
+            <Neighbor>HH3_117</Neighbor>
+            <Neighbor>HH3_142</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_120</NodeID>
+        <XPos>651.0</XPos>
+        <YPos>145.0</YPos>
+        <XFeet>129.3537</XFeet>
+        <YFeet>28.8115</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_120</Neighbor>
+            <Neighbor>HH3_120</Neighbor>
+            <Neighbor>HH3_85</Neighbor>
+            <Neighbor>HH3_146</Neighbor>
+            <Neighbor>HH3_122</Neighbor>
+            <Neighbor>HH3_126</Neighbor>
+            <Neighbor>HH3_127</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_121</NodeID>
+        <XPos>609.0</XPos>
+        <YPos>148.0</YPos>
+        <XFeet>121.00829999999999</XFeet>
+        <YFeet>29.4076</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_121</Neighbor>
+            <Neighbor>HH3_121</Neighbor>
+            <Neighbor>HH3_146</Neighbor>
+            <Neighbor>HH3_142</Neighbor>
+            <Neighbor>HH3_117</Neighbor>
+            <Neighbor>HH3_140</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_122</NodeID>
+        <XPos>664.0</XPos>
+        <YPos>130.0</YPos>
+        <XFeet>131.9368</XFeet>
+        <YFeet>25.831</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_120</Neighbor>
+            <Neighbor>HH3_126</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_123</NodeID>
+        <XPos>694.0</XPos>
+        <YPos>125.0</YPos>
+        <XFeet>137.8978</XFeet>
+        <YFeet>24.8375</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_126</Neighbor>
+            <Neighbor>HH3_125</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_124</NodeID>
+        <XPos>745.0</XPos>
+        <YPos>127.0</YPos>
+        <XFeet>148.0315</XFeet>
+        <YFeet>25.2349</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_130</Neighbor>
+            <Neighbor>HH3_125</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_125</NodeID>
+        <XPos>720.0</XPos>
+        <YPos>140.0</YPos>
+        <XFeet>143.064</XFeet>
+        <YFeet>27.817999999999998</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_124</Neighbor>
+            <Neighbor>HH3_126</Neighbor>
+            <Neighbor>HH3_123</Neighbor>
+            <Neighbor>HH3_129</Neighbor>
+            <Neighbor>HH3_130</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_126</NodeID>
+        <XPos>685.2007434944238</XPos>
+        <YPos>141.53903345724908</YPos>
+        <XFeet>136.149387732342</XFeet>
+        <YFeet>28.12380594795539</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_125</Neighbor>
+            <Neighbor>HH3_120</Neighbor>
+            <Neighbor>HH3_122</Neighbor>
+            <Neighbor>HH3_123</Neighbor>
+            <Neighbor>HH3_126</Neighbor>
+            <Neighbor>HH3_126</Neighbor>
+            <Neighbor>HH3_128</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_127</NodeID>
+        <XPos>664.0</XPos>
+        <YPos>159.0</YPos>
+        <XFeet>131.9368</XFeet>
+        <YFeet>31.5933</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_128</Neighbor>
+            <Neighbor>HH3_120</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_128</NodeID>
+        <XPos>685.9730763780643</XPos>
+        <YPos>159.261584242596</YPos>
+        <XFeet>136.30285027632138</XFeet>
+        <YFeet>31.645276789003823</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_127</Neighbor>
+            <Neighbor>HH3_129</Neighbor>
+            <Neighbor>HH3_126</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_129</NodeID>
+        <XPos>718.992206319966</XPos>
+        <YPos>159.65466912285675</YPos>
+        <XFeet>142.86375139577726</XFeet>
+        <YFeet>31.723382754711633</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_128</Neighbor>
+            <Neighbor>HH3_130</Neighbor>
+            <Neighbor>HH3_125</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_130</NodeID>
+        <XPos>748.0</XPos>
+        <YPos>160.0</YPos>
+        <XFeet>148.6276</XFeet>
+        <YFeet>31.791999999999998</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_129</Neighbor>
+            <Neighbor>HH3_124</Neighbor>
+            <Neighbor>HH3_125</Neighbor>
+            <Neighbor>HH3_131</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_131</NodeID>
+        <XPos>749.0</XPos>
+        <YPos>180.0</YPos>
+        <XFeet>148.8263</XFeet>
+        <YFeet>35.766</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_130</Neighbor>
+            <Neighbor>HH3_132</Neighbor>
+            <Neighbor>HH3_138</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_132</NodeID>
+        <XPos>721.9802103515085</XPos>
+        <YPos>180.0</YPos>
+        <XFeet>143.45746779684472</XFeet>
+        <YFeet>35.766</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_131</Neighbor>
+            <Neighbor>HH3_133</Neighbor>
+            <Neighbor>HH3_137</Neighbor>
+            <Neighbor>HH3_136</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_133</NodeID>
+        <XPos>686.9968170495433</XPos>
+        <YPos>180.0</YPos>
+        <XFeet>136.50626754774424</XFeet>
+        <YFeet>35.766</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_132</Neighbor>
+            <Neighbor>HH3_134</Neighbor>
+            <Neighbor>HH3_136</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_134</NodeID>
+        <XPos>664.0</XPos>
+        <YPos>180.0</YPos>
+        <XFeet>131.9368</XFeet>
+        <YFeet>35.766</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_133</Neighbor>
+            <Neighbor>HH3_135</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_135</NodeID>
+        <XPos>666.083595505618</XPos>
+        <YPos>204.48224719101123</YPos>
+        <XFeet>132.3508104269663</XFeet>
+        <YFeet>40.630622516853926</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_134</Neighbor>
+            <Neighbor>HH3_102</Neighbor>
+            <Neighbor>HH3_136</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_136</NodeID>
+        <XPos>688.104513064133</XPos>
+        <YPos>204.0308788598575</YPos>
+        <XFeet>136.72636674584322</XFeet>
+        <YFeet>40.540935629453685</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_135</Neighbor>
+            <Neighbor>HH3_133</Neighbor>
+            <Neighbor>HH3_137</Neighbor>
+            <Neighbor>HH3_132</Neighbor>
+            <Neighbor>HH3_104</Neighbor>
+            <Neighbor>HH3_102</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_137</NodeID>
+        <XPos>720.0320665083135</XPos>
+        <YPos>202.92992874109262</YPos>
+        <XFeet>143.07037161520188</XFeet>
+        <YFeet>40.3221768408551</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_136</Neighbor>
+            <Neighbor>HH3_138</Neighbor>
+            <Neighbor>HH3_104</Neighbor>
+            <Neighbor>HH3_132</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_138</NodeID>
+        <XPos>747.0</XPos>
+        <YPos>202.0</YPos>
+        <XFeet>148.4289</XFeet>
+        <YFeet>40.1374</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_137</Neighbor>
+            <Neighbor>HH3_131</Neighbor>
+            <Neighbor>HH3_105</Neighbor>
+            <Neighbor>HH3_105</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_139</NodeID>
+        <XPos>624.0</XPos>
+        <YPos>225.0</YPos>
+        <XFeet>123.9888</XFeet>
+        <YFeet>44.707499999999996</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_101</Neighbor>
+            <Neighbor>HH3_100</Neighbor>
+            <Neighbor>HH3_107</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_140</NodeID>
+        <XPos>621.0</XPos>
+        <YPos>177.0</YPos>
+        <XFeet>123.39269999999999</XFeet>
+        <YFeet>35.1699</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_117</Neighbor>
+            <Neighbor>HH3_118</Neighbor>
+            <Neighbor>HH3_107</Neighbor>
+            <Neighbor>HH3_121</Neighbor>
+            <Neighbor>HH3_146</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_141</NodeID>
+        <XPos>560.0</XPos>
+        <YPos>151.0</YPos>
+        <XFeet>111.27199999999999</XFeet>
+        <YFeet>30.0037</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_82</Neighbor>
+            <Neighbor>HH3_112</Neighbor>
+            <Neighbor>HH3_115</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_142</NodeID>
+        <XPos>583.0</XPos>
+        <YPos>150.0</YPos>
+        <XFeet>115.84209999999999</XFeet>
+        <YFeet>29.805</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_119</Neighbor>
+            <Neighbor>HH3_83</Neighbor>
+            <Neighbor>HH3_121</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_143</NodeID>
+        <XPos>534.0</XPos>
+        <YPos>181.0</YPos>
+        <XFeet>106.10579999999999</XFeet>
+        <YFeet>35.9647</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_112</Neighbor>
+            <Neighbor>HH3_111</Neighbor>
+            <Neighbor>HH3_113</Neighbor>
+            <Neighbor>HH3_115</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_144</NodeID>
+        <XPos>483.0</XPos>
+        <YPos>126.0</YPos>
+        <XFeet>95.9721</XFeet>
+        <YFeet>25.036199999999997</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_145</Neighbor>
+            <Neighbor>HH3_88</Neighbor>
+            <Neighbor>HH3_145</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_145</NodeID>
+        <XPos>495.0</XPos>
+        <YPos>124.0</YPos>
+        <XFeet>98.3565</XFeet>
+        <YFeet>24.6388</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_144</Neighbor>
+            <Neighbor>HH3_145</Neighbor>
+            <Neighbor>HH3_145</Neighbor>
+            <Neighbor>HH3_114</Neighbor>
+            <Neighbor>HH3_144</Neighbor>
+            <Neighbor>HH3_80</Neighbor>
+            <Neighbor>HH3_145</Neighbor>
+            <Neighbor>HH3_145</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_146</NodeID>
+        <XPos>628.0</XPos>
+        <YPos>144.0</YPos>
+        <XFeet>124.78359999999999</XFeet>
+        <YFeet>28.6128</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_120</Neighbor>
+            <Neighbor>HH3_85</Neighbor>
+            <Neighbor>HH3_121</Neighbor>
+            <Neighbor>HH3_118</Neighbor>
+            <Neighbor>HH3_140</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_147</NodeID>
+        <XPos>436.0</XPos>
+        <YPos>191.0</YPos>
+        <XFeet>86.63319999999999</XFeet>
+        <YFeet>37.951699999999995</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_92</Neighbor>
+            <Neighbor>HH3_90</Neighbor>
+            <Neighbor>HH3_157</Neighbor>
+            <Neighbor>HH3_148</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_148</NodeID>
+        <XPos>412.0</XPos>
+        <YPos>192.0</YPos>
+        <XFeet>81.86439999999999</XFeet>
+        <YFeet>38.1504</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_147</Neighbor>
+            <Neighbor>HH3_149</Neighbor>
+            <Neighbor>HH3_156</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_149</NodeID>
+        <XPos>388.0</XPos>
+        <YPos>194.0</YPos>
+        <XFeet>77.09559999999999</XFeet>
+        <YFeet>38.547799999999995</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_148</Neighbor>
+            <Neighbor>HH3_150</Neighbor>
+            <Neighbor>HH3_155</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_150</NodeID>
+        <XPos>360.0</XPos>
+        <YPos>192.0</YPos>
+        <XFeet>71.532</XFeet>
+        <YFeet>38.1504</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_149</Neighbor>
+            <Neighbor>HH3_151</Neighbor>
+            <Neighbor>HH3_154</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_151</NodeID>
+        <XPos>343.0</XPos>
+        <YPos>192.0</YPos>
+        <XFeet>68.1541</XFeet>
+        <YFeet>38.1504</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_150</Neighbor>
+            <Neighbor>HH3_151</Neighbor>
+            <Neighbor>HH3_151</Neighbor>
+            <Neighbor>HH3_153</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_152</NodeID>
+        <XPos>342.0</XPos>
+        <YPos>231.0</YPos>
+        <XFeet>67.9554</XFeet>
+        <YFeet>45.899699999999996</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_161</Neighbor>
+            <Neighbor>HH3_153</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_153</NodeID>
+        <XPos>342.4605781865966</XPos>
+        <YPos>213.03745072273324</YPos>
+        <XFeet>68.04691688567674</XFeet>
+        <YFeet>42.330541458607094</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_151</Neighbor>
+            <Neighbor>HH3_154</Neighbor>
+            <Neighbor>HH3_152</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_154</NodeID>
+        <XPos>361.9937930256179</XPos>
+        <YPos>211.88330888161607</YPos>
+        <XFeet>71.92816667419027</XFeet>
+        <YFeet>42.10121347477711</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_153</Neighbor>
+            <Neighbor>HH3_161</Neighbor>
+            <Neighbor>HH3_150</Neighbor>
+            <Neighbor>HH3_155</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_155</NodeID>
+        <XPos>386.923259225821</XPos>
+        <YPos>211.0</YPos>
+        <XFeet>76.88165160817063</XFeet>
+        <YFeet>41.9257</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_154</Neighbor>
+            <Neighbor>HH3_149</Neighbor>
+            <Neighbor>HH3_160</Neighbor>
+            <Neighbor>HH3_156</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_156</NodeID>
+        <XPos>411.9057668434714</XPos>
+        <YPos>209.22841665726216</YPos>
+        <XFeet>81.84567587179775</XFeet>
+        <YFeet>41.57368638979799</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_156</Neighbor>
+            <Neighbor>HH3_156</Neighbor>
+            <Neighbor>HH3_148</Neighbor>
+            <Neighbor>HH3_157</Neighbor>
+            <Neighbor>HH3_159</Neighbor>
+            <Neighbor>HH3_155</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_157</NodeID>
+        <XPos>435.0</XPos>
+        <YPos>208.0</YPos>
+        <XFeet>86.4345</XFeet>
+        <YFeet>41.3296</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_94</Neighbor>
+            <Neighbor>HH3_147</Neighbor>
+            <Neighbor>HH3_158</Neighbor>
+            <Neighbor>HH3_156</Neighbor>
+            <Neighbor>HH3_159</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_158</NodeID>
+        <XPos>437.02354968408963</XPos>
+        <YPos>229.38943136128663</YPos>
+        <XFeet>86.8365793222286</XFeet>
+        <YFeet>45.579680011487646</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_95</Neighbor>
+            <Neighbor>HH3_94</Neighbor>
+            <Neighbor>HH3_157</Neighbor>
+            <Neighbor>HH3_159</Neighbor>
+            <Neighbor>HH3_159</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_159</NodeID>
+        <XPos>412.9626651349799</XPos>
+        <YPos>229.7972429638139</YPos>
+        <XFeet>82.0556815623205</XFeet>
+        <YFeet>45.66071217690982</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_160</Neighbor>
+            <Neighbor>HH3_157</Neighbor>
+            <Neighbor>HH3_158</Neighbor>
+            <Neighbor>HH3_158</Neighbor>
+            <Neighbor>HH3_156</Neighbor>
+            <Neighbor>HH3_162</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_160</NodeID>
+        <XPos>387.0209649626651</XPos>
+        <YPos>230.23693279724296</YPos>
+        <XFeet>76.90106573808156</XFeet>
+        <YFeet>45.748078546812174</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_161</Neighbor>
+            <Neighbor>HH3_155</Neighbor>
+            <Neighbor>HH3_159</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_161</NodeID>
+        <XPos>361.0114876507754</XPos>
+        <YPos>230.67777139574957</YPos>
+        <XFeet>71.73298259620907</XFeet>
+        <YFeet>45.83567317633544</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_152</Neighbor>
+            <Neighbor>HH3_154</Neighbor>
+            <Neighbor>HH3_160</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_162</NodeID>
+        <XPos>417.0</XPos>
+        <YPos>251.0</YPos>
+        <XFeet>82.8579</XFeet>
+        <YFeet>49.8737</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_163</Neighbor>
+            <Neighbor>HH3_159</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_163</NodeID>
+        <XPos>416.0</XPos>
+        <YPos>285.0</YPos>
+        <XFeet>82.6592</XFeet>
+        <YFeet>56.62949999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_164</Neighbor>
+            <Neighbor>HH3_162</Neighbor>
+            <Neighbor>HH3_170</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_164</NodeID>
+        <XPos>396.0</XPos>
+        <YPos>292.0</YPos>
+        <XFeet>78.6852</XFeet>
+        <YFeet>58.020399999999995</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_165</Neighbor>
+            <Neighbor>HH3_163</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_165</NodeID>
+        <XPos>378.0</XPos>
+        <YPos>290.0</YPos>
+        <XFeet>75.1086</XFeet>
+        <YFeet>57.623</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_188</Neighbor>
+            <Neighbor>HH3_164</Neighbor>
+            <Neighbor>HH3_166</Neighbor>
+            <Neighbor>HH3_193</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_166</NodeID>
+        <XPos>367.0</XPos>
+        <YPos>316.0</YPos>
+        <XFeet>72.9229</XFeet>
+        <YFeet>62.789199999999994</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_190</Neighbor>
+            <Neighbor>HH3_188</Neighbor>
+            <Neighbor>HH3_167</Neighbor>
+            <Neighbor>HH3_165</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_167</NodeID>
+        <XPos>382.0</XPos>
+        <YPos>337.0</YPos>
+        <XFeet>75.90339999999999</XFeet>
+        <YFeet>66.9619</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_168</Neighbor>
+            <Neighbor>HH3_174</Neighbor>
+            <Neighbor>HH3_171</Neighbor>
+            <Neighbor>HH3_166</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_168</NodeID>
+        <XPos>393.0</XPos>
+        <YPos>363.0</YPos>
+        <XFeet>78.0891</XFeet>
+        <YFeet>72.12809999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_195</Neighbor>
+            <Neighbor>HH3_173</Neighbor>
+            <Neighbor>HH3_174</Neighbor>
+            <Neighbor>HH3_167</Neighbor>
+            <Neighbor>HH3_174</Neighbor>
+            <Neighbor>HH3_171</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_169</NodeID>
+        <XPos>413.0</XPos>
+        <YPos>355.0</YPos>
+        <XFeet>82.06309999999999</XFeet>
+        <YFeet>70.5385</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_170</Neighbor>
+            <Neighbor>HH3_177</Neighbor>
+            <Neighbor>HH3_169</Neighbor>
+            <Neighbor>HH3_169</Neighbor>
+            <Neighbor>HH3_195</Neighbor>
+            <Neighbor>HH3_175</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_170</NodeID>
+        <XPos>415.0</XPos>
+        <YPos>317.0</YPos>
+        <XFeet>82.4605</XFeet>
+        <YFeet>62.987899999999996</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_163</Neighbor>
+            <Neighbor>HH3_169</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_171</NodeID>
+        <XPos>394.0</XPos>
+        <YPos>320.0</YPos>
+        <XFeet>78.28779999999999</XFeet>
+        <YFeet>63.583999999999996</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_167</Neighbor>
+            <Neighbor>HH3_168</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_172</NodeID>
+        <XPos>370.0</XPos>
+        <YPos>379.0</YPos>
+        <XFeet>73.51899999999999</XFeet>
+        <YFeet>75.3073</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_173</Neighbor>
+            <Neighbor>HH3_174</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_173</NodeID>
+        <XPos>391.0</XPos>
+        <YPos>379.0</YPos>
+        <XFeet>77.6917</XFeet>
+        <YFeet>75.3073</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_168</Neighbor>
+            <Neighbor>HH3_172</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_174</NodeID>
+        <XPos>370.0</XPos>
+        <YPos>353.0</YPos>
+        <XFeet>73.51899999999999</XFeet>
+        <YFeet>70.1411</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_172</Neighbor>
+            <Neighbor>HH3_168</Neighbor>
+            <Neighbor>HH3_168</Neighbor>
+            <Neighbor>HH3_167</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_175</NodeID>
+        <XPos>428.0</XPos>
+        <YPos>381.0</YPos>
+        <XFeet>85.0436</XFeet>
+        <YFeet>75.70469999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_194</Neighbor>
+            <Neighbor>HH3_176</Neighbor>
+            <Neighbor>HH3_177</Neighbor>
+            <Neighbor>HH3_194</Neighbor>
+            <Neighbor>HH3_195</Neighbor>
+            <Neighbor>HH3_169</Neighbor>
+            <Neighbor>HH3_195</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_176</NodeID>
+        <XPos>449.0</XPos>
+        <YPos>382.0</YPos>
+        <XFeet>89.21629999999999</XFeet>
+        <YFeet>75.90339999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_175</Neighbor>
+            <Neighbor>HH3_179</Neighbor>
+            <Neighbor>HH3_177</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_177</NodeID>
+        <XPos>436.0</XPos>
+        <YPos>355.0</YPos>
+        <XFeet>86.63319999999999</XFeet>
+        <YFeet>70.5385</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_169</Neighbor>
+            <Neighbor>HH3_178</Neighbor>
+            <Neighbor>HH3_176</Neighbor>
+            <Neighbor>HH3_179</Neighbor>
+            <Neighbor>HH3_175</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_178</NodeID>
+        <XPos>469.0</XPos>
+        <YPos>357.0</YPos>
+        <XFeet>93.1903</XFeet>
+        <YFeet>70.93589999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_177</Neighbor>
+            <Neighbor>HH2_156</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_179</NodeID>
+        <XPos>466.0</XPos>
+        <YPos>378.0</YPos>
+        <XFeet>92.5942</XFeet>
+        <YFeet>75.1086</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_176</Neighbor>
+            <Neighbor>HH3_187</Neighbor>
+            <Neighbor>HH3_180</Neighbor>
+            <Neighbor>HH3_177</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_180</NodeID>
+        <XPos>465.0</XPos>
+        <YPos>400.0</YPos>
+        <XFeet>92.3955</XFeet>
+        <YFeet>79.47999999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_179</Neighbor>
+            <Neighbor>HH3_183</Neighbor>
+            <Neighbor>HH3_184</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_181</NodeID>
+        <XPos>486.0</XPos>
+        <YPos>445.0</YPos>
+        <XFeet>96.56819999999999</XFeet>
+        <YFeet>88.4215</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_182</Neighbor>
+            <Neighbor>HH3_223</Neighbor>
+            <Neighbor>HH3_222</Neighbor>
+            <Neighbor>HH3_210</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_182</NodeID>
+        <XPos>486.0</XPos>
+        <YPos>424.0</YPos>
+        <XFeet>96.56819999999999</XFeet>
+        <YFeet>84.24879999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_183</Neighbor>
+            <Neighbor>HH3_181</Neighbor>
+            <Neighbor>HH3_184</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_183</NodeID>
+        <XPos>462.0</XPos>
+        <YPos>425.0</YPos>
+        <XFeet>91.79939999999999</XFeet>
+        <YFeet>84.44749999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_180</Neighbor>
+            <Neighbor>HH3_182</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_184</NodeID>
+        <XPos>488.0</XPos>
+        <YPos>397.0</YPos>
+        <XFeet>96.9656</XFeet>
+        <YFeet>78.8839</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_182</Neighbor>
+            <Neighbor>HH3_180</Neighbor>
+            <Neighbor>HH3_187</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_185</NodeID>
+        <XPos>504.0</XPos>
+        <YPos>426.0</YPos>
+        <XFeet>100.14479999999999</XFeet>
+        <YFeet>84.6462</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_196</Neighbor>
+            <Neighbor>HH3_220</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_186</NodeID>
+        <XPos>504.0</XPos>
+        <YPos>377.0</YPos>
+        <XFeet>100.14479999999999</XFeet>
+        <YFeet>74.9099</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_187</Neighbor>
+            <Neighbor>HH3_196</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_187</NodeID>
+        <XPos>484.0</XPos>
+        <YPos>374.0</YPos>
+        <XFeet>96.1708</XFeet>
+        <YFeet>74.3138</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_179</Neighbor>
+            <Neighbor>HH3_186</Neighbor>
+            <Neighbor>HH3_184</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_188</NodeID>
+        <XPos>350.0</XPos>
+        <YPos>288.0</YPos>
+        <XFeet>69.545</XFeet>
+        <YFeet>57.2256</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_192</Neighbor>
+            <Neighbor>HH3_191</Neighbor>
+            <Neighbor>HH3_193</Neighbor>
+            <Neighbor>HH3_189</Neighbor>
+            <Neighbor>HH3_166</Neighbor>
+            <Neighbor>HH3_190</Neighbor>
+            <Neighbor>HH3_165</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_189</NodeID>
+        <XPos>311.0</XPos>
+        <YPos>299.0</YPos>
+        <XFeet>61.7957</XFeet>
+        <YFeet>59.4113</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_191</Neighbor>
+            <Neighbor>HH3_188</Neighbor>
+            <Neighbor>HH3_189</Neighbor>
+            <Neighbor>HH3_189</Neighbor>
+            <Neighbor>HH3_190</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_190</NodeID>
+        <XPos>336.0</XPos>
+        <YPos>321.0</YPos>
+        <XFeet>66.7632</XFeet>
+        <YFeet>63.7827</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_190</Neighbor>
+            <Neighbor>HH3_190</Neighbor>
+            <Neighbor>HH3_166</Neighbor>
+            <Neighbor>HH3_189</Neighbor>
+            <Neighbor>HH3_188</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_191</NodeID>
+        <XPos>326.0</XPos>
+        <YPos>259.0</YPos>
+        <XFeet>64.7762</XFeet>
+        <YFeet>51.4633</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_189</Neighbor>
+            <Neighbor>HH3_192</Neighbor>
+            <Neighbor>HH3_188</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_192</NodeID>
+        <XPos>347.0</XPos>
+        <YPos>252.0</YPos>
+        <XFeet>68.9489</XFeet>
+        <YFeet>50.072399999999995</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_191</Neighbor>
+            <Neighbor>HH3_193</Neighbor>
+            <Neighbor>HH3_188</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_193</NodeID>
+        <XPos>364.0</XPos>
+        <YPos>270.0</YPos>
+        <XFeet>72.32679999999999</XFeet>
+        <YFeet>53.648999999999994</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_192</Neighbor>
+            <Neighbor>HH3_188</Neighbor>
+            <Neighbor>HH3_165</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_194</NodeID>
+        <XPos>409.0</XPos>
+        <YPos>382.0</YPos>
+        <XFeet>81.2683</XFeet>
+        <YFeet>75.90339999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_195</Neighbor>
+            <Neighbor>HH3_175</Neighbor>
+            <Neighbor>HH3_175</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_195</NodeID>
+        <XPos>409.0</XPos>
+        <YPos>368.0</YPos>
+        <XFeet>81.2683</XFeet>
+        <YFeet>73.1216</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_169</Neighbor>
+            <Neighbor>HH3_168</Neighbor>
+            <Neighbor>HH3_194</Neighbor>
+            <Neighbor>HH3_175</Neighbor>
+            <Neighbor>HH3_175</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_196</NodeID>
+        <XPos>504.0</XPos>
+        <YPos>401.0</YPos>
+        <XFeet>100.14479999999999</XFeet>
+        <YFeet>79.67869999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_186</Neighbor>
+            <Neighbor>HH3_185</Neighbor>
+            <Neighbor>HH3_226</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_197</NodeID>
+        <XPos>519.0</XPos>
+        <YPos>377.0</YPos>
+        <XFeet>103.1253</XFeet>
+        <YFeet>74.9099</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_224</Neighbor>
+            <Neighbor>HH3_226</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_198</NodeID>
+        <XPos>570.0</XPos>
+        <YPos>356.0</YPos>
+        <XFeet>113.25899999999999</XFeet>
+        <YFeet>70.7372</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_199</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_199</NodeID>
+        <XPos>573.0</XPos>
+        <YPos>375.0</YPos>
+        <XFeet>113.8551</XFeet>
+        <YFeet>74.51249999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_198</Neighbor>
+            <Neighbor>HH3_225</Neighbor>
+            <Neighbor>HH3_200</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_200</NodeID>
+        <XPos>573.0</XPos>
+        <YPos>401.0</YPos>
+        <XFeet>113.8551</XFeet>
+        <YFeet>79.67869999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_199</Neighbor>
+            <Neighbor>HH3_201</Neighbor>
+            <Neighbor>HH3_228</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_201</NodeID>
+        <XPos>572.0</XPos>
+        <YPos>427.0</YPos>
+        <XFeet>113.65639999999999</XFeet>
+        <YFeet>84.8449</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_200</Neighbor>
+            <Neighbor>HH3_228</Neighbor>
+            <Neighbor>HH3_202</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_202</NodeID>
+        <XPos>542.1978642752757</XPos>
+        <YPos>426.56173329816585</YPos>
+        <XFeet>107.73471563149728</XFeet>
+        <YFeet>84.75781640634555</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_220</Neighbor>
+            <Neighbor>HH3_201</Neighbor>
+            <Neighbor>HH3_228</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_203</NodeID>
+        <XPos>570.0</XPos>
+        <YPos>449.0</YPos>
+        <XFeet>113.25899999999999</XFeet>
+        <YFeet>89.21629999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_219</Neighbor>
+            <Neighbor>HH3_204</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_204</NodeID>
+        <XPos>567.0</XPos>
+        <YPos>488.0</YPos>
+        <XFeet>112.6629</XFeet>
+        <YFeet>96.9656</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_219</Neighbor>
+            <Neighbor>HH3_217</Neighbor>
+            <Neighbor>HH3_203</Neighbor>
+            <Neighbor>HH3_205</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_205</NodeID>
+        <XPos>568.0</XPos>
+        <YPos>513.0</YPos>
+        <XFeet>112.8616</XFeet>
+        <YFeet>101.9331</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_204</Neighbor>
+            <Neighbor>HH3_206</Neighbor>
+            <Neighbor>HH3_208</Neighbor>
+            <Neighbor>HH3_216</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_206</NodeID>
+        <XPos>568.0</XPos>
+        <YPos>546.0</YPos>
+        <XFeet>112.8616</XFeet>
+        <YFeet>108.49019999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_205</Neighbor>
+            <Neighbor>HH3_208</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_207</NodeID>
+        <XPos>469.0</XPos>
+        <YPos>542.0</YPos>
+        <XFeet>93.1903</XFeet>
+        <YFeet>107.69539999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_208</Neighbor>
+            <Neighbor>HH3_215</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_208</NodeID>
+        <XPos>517.879800346338</XPos>
+        <YPos>543.9749414281349</YPos>
+        <XFeet>102.90271632881736</XFeet>
+        <YFeet>108.0878208617704</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_209</Neighbor>
+            <Neighbor>HH3_206</Neighbor>
+            <Neighbor>HH3_205</Neighbor>
+            <Neighbor>HH3_216</Neighbor>
+            <Neighbor>HH3_207</Neighbor>
+            <Neighbor>HH3_215</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_209</NodeID>
+        <XPos>518.0</XPos>
+        <YPos>557.0</YPos>
+        <XFeet>102.9266</XFeet>
+        <YFeet>110.6759</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_208</Neighbor>
+            <Neighbor>HH3_209</Neighbor>
+            <Neighbor>HH3_209</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_210</NodeID>
+        <XPos>474.0</XPos>
+        <YPos>473.0</YPos>
+        <XFeet>94.18379999999999</XFeet>
+        <YFeet>93.98509999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_181</Neighbor>
+            <Neighbor>HH3_223</Neighbor>
+            <Neighbor>HH3_213</Neighbor>
+            <Neighbor>HH3_211</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_211</NodeID>
+        <XPos>475.0</XPos>
+        <YPos>492.0</YPos>
+        <XFeet>94.3825</XFeet>
+        <YFeet>97.76039999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_210</Neighbor>
+            <Neighbor>HH3_214</Neighbor>
+            <Neighbor>HH3_215</Neighbor>
+            <Neighbor>HH3_216</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_212</NodeID>
+        <XPos>520.9132075471698</XPos>
+        <YPos>490.0037735849057</YPos>
+        <XFeet>103.50545433962263</XFeet>
+        <YFeet>97.36374981132074</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_214</Neighbor>
+            <Neighbor>HH3_217</Neighbor>
+            <Neighbor>HH3_216</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_213</NodeID>
+        <XPos>497.0</XPos>
+        <YPos>472.0</YPos>
+        <XFeet>98.75389999999999</XFeet>
+        <YFeet>93.7864</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_210</Neighbor>
+            <Neighbor>HH3_231</Neighbor>
+            <Neighbor>HH3_222</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_214</NodeID>
+        <XPos>495.1358490566038</XPos>
+        <YPos>491.1245283018868</YPos>
+        <XFeet>98.38349320754716</XFeet>
+        <YFeet>97.5864437735849</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_211</Neighbor>
+            <Neighbor>HH3_212</Neighbor>
+            <Neighbor>HH3_216</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_215</NodeID>
+        <XPos>469.0</XPos>
+        <YPos>518.0</YPos>
+        <XFeet>93.1903</XFeet>
+        <YFeet>102.9266</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_207</Neighbor>
+            <Neighbor>HH3_211</Neighbor>
+            <Neighbor>HH3_216</Neighbor>
+            <Neighbor>HH3_208</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_216</NodeID>
+        <XPos>512.0</XPos>
+        <YPos>514.0</YPos>
+        <XFeet>101.7344</XFeet>
+        <YFeet>102.1318</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_208</Neighbor>
+            <Neighbor>HH3_217</Neighbor>
+            <Neighbor>HH3_212</Neighbor>
+            <Neighbor>HH3_214</Neighbor>
+            <Neighbor>HH3_205</Neighbor>
+            <Neighbor>HH3_215</Neighbor>
+            <Neighbor>HH3_211</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_217</NodeID>
+        <XPos>540.9622641509434</XPos>
+        <YPos>489.1320754716981</YPos>
+        <XFeet>107.48920188679244</XFeet>
+        <YFeet>97.1905433962264</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_212</Neighbor>
+            <Neighbor>HH3_204</Neighbor>
+            <Neighbor>HH3_216</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_218</NodeID>
+        <XPos>541.0</XPos>
+        <YPos>473.0</YPos>
+        <XFeet>107.49669999999999</XFeet>
+        <YFeet>93.98509999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_218</Neighbor>
+            <Neighbor>HH3_218</Neighbor>
+            <Neighbor>HH3_230</Neighbor>
+            <Neighbor>HH3_229</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_219</NodeID>
+        <XPos>560.0</XPos>
+        <YPos>463.0</YPos>
+        <XFeet>111.27199999999999</XFeet>
+        <YFeet>91.9981</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_203</Neighbor>
+            <Neighbor>HH3_204</Neighbor>
+            <Neighbor>HH3_230</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_220</NodeID>
+        <XPos>521.3479582746588</XPos>
+        <YPos>426.25511703345086</YPos>
+        <XFeet>103.5918393091747</XFeet>
+        <YFeet>84.69689175454668</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_185</Neighbor>
+            <Neighbor>HH3_202</Neighbor>
+            <Neighbor>HH3_221</Neighbor>
+            <Neighbor>HH3_227</Neighbor>
+            <Neighbor>HH3_226</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_221</NodeID>
+        <XPos>523.0</XPos>
+        <YPos>445.0</YPos>
+        <XFeet>103.92009999999999</XFeet>
+        <YFeet>88.4215</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_220</Neighbor>
+            <Neighbor>HH3_230</Neighbor>
+            <Neighbor>HH3_231</Neighbor>
+            <Neighbor>HH3_222</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_222</NodeID>
+        <XPos>503.0</XPos>
+        <YPos>447.0</YPos>
+        <XFeet>99.94609999999999</XFeet>
+        <YFeet>88.8189</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_181</Neighbor>
+            <Neighbor>HH3_221</Neighbor>
+            <Neighbor>HH3_213</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_223</NodeID>
+        <XPos>464.0</XPos>
+        <YPos>446.0</YPos>
+        <XFeet>92.1968</XFeet>
+        <YFeet>88.6202</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_181</Neighbor>
+            <Neighbor>HH3_210</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_224</NodeID>
+        <XPos>538.0479452054794</XPos>
+        <YPos>376.2945205479452</YPos>
+        <XFeet>106.91012671232876</XFeet>
+        <YFeet>74.7697212328767</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_225</Neighbor>
+            <Neighbor>HH3_197</Neighbor>
+            <Neighbor>HH3_227</Neighbor>
+            <Neighbor>HH3_226</Neighbor>
+            <Neighbor>HH3_227</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_225</NodeID>
+        <XPos>555.0246575342466</XPos>
+        <YPos>375.6657534246575</YPos>
+        <XFeet>110.28339945205478</XFeet>
+        <YFeet>74.64478520547944</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_199</Neighbor>
+            <Neighbor>HH3_224</Neighbor>
+            <Neighbor>HH3_228</Neighbor>
+            <Neighbor>HH3_227</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_226</NodeID>
+        <XPos>521.0</XPos>
+        <YPos>401.0</YPos>
+        <XFeet>103.5227</XFeet>
+        <YFeet>79.67869999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_226</Neighbor>
+            <Neighbor>HH3_226</Neighbor>
+            <Neighbor>HH3_227</Neighbor>
+            <Neighbor>HH3_196</Neighbor>
+            <Neighbor>HH3_197</Neighbor>
+            <Neighbor>HH3_224</Neighbor>
+            <Neighbor>HH3_220</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_227</NodeID>
+        <XPos>538.0</XPos>
+        <YPos>401.0</YPos>
+        <XFeet>106.9006</XFeet>
+        <YFeet>79.67869999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_228</Neighbor>
+            <Neighbor>HH3_226</Neighbor>
+            <Neighbor>HH3_224</Neighbor>
+            <Neighbor>HH3_225</Neighbor>
+            <Neighbor>HH3_224</Neighbor>
+            <Neighbor>HH3_220</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_228</NodeID>
+        <XPos>557.0</XPos>
+        <YPos>401.0</YPos>
+        <XFeet>110.6759</XFeet>
+        <YFeet>79.67869999999999</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_225</Neighbor>
+            <Neighbor>HH3_200</Neighbor>
+            <Neighbor>HH3_228</Neighbor>
+            <Neighbor>HH3_228</Neighbor>
+            <Neighbor>HH3_201</Neighbor>
+            <Neighbor>HH3_202</Neighbor>
+            <Neighbor>HH3_227</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_229</NodeID>
+        <XPos>543.0</XPos>
+        <YPos>445.0</YPos>
+        <XFeet>107.8941</XFeet>
+        <YFeet>88.4215</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_230</Neighbor>
+            <Neighbor>HH3_218</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_230</NodeID>
+        <XPos>530.0</XPos>
+        <YPos>460.0</YPos>
+        <XFeet>105.31099999999999</XFeet>
+        <YFeet>91.402</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_231</Neighbor>
+            <Neighbor>HH3_218</Neighbor>
+            <Neighbor>HH3_229</Neighbor>
+            <Neighbor>HH3_219</Neighbor>
+            <Neighbor>HH3_221</Neighbor>
+            <Neighbor>HH3_230</Neighbor>
+            <Neighbor>HH3_230</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_231</NodeID>
+        <XPos>520.0</XPos>
+        <YPos>472.0</YPos>
+        <XFeet>103.324</XFeet>
+        <YFeet>93.7864</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_213</Neighbor>
+            <Neighbor>HH3_230</Neighbor>
+            <Neighbor>HH3_221</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HH3_232</NodeID>
+        <XPos>468.0</XPos>
+        <YPos>172.0</YPos>
+        <XFeet>92.99159999999999</XFeet>
+        <YFeet>34.1764</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HH3_92</Neighbor>
+            <Neighbor>HH3_91</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
