@@ -2275,8 +2275,7 @@ public class GUIFront extends JFrame {
 								return; 
 							}
 							// }}
-
-						
+	
 							//refer to Andrew Petit if this doesn't make sense
 							if(globalMap.getChosenNodes().size() == 0){//set the start node of the globalnodes list of chosenNodes if that list is empty
 								globalMap.setStartNode(node);
