@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <MapNodes>
-    <ImageName>CC3.jpg</ImageName>
+    <ImageName>CC3.png</ImageName>
     <Node>
         <NodeID>CC3_1</NodeID>
-        <XPos>292.0</XPos>
-        <YPos>316.0</YPos>
-        <XFeet>28.095072</XFeet>
-        <YFeet>30.404256</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>156.0</XPos>
+        <YPos>129.0</YPos>
+        <XFeet>15.009696</XFeet>
+        <YFeet>12.411864</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_3</Neighbor>
-            <Neighbor>CC2_2</Neighbor>
+            <Neighbor>CC3_222</Neighbor>
+            <Neighbor>CC3_2</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>true</Stairs>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -25,19 +25,19 @@
     </Node>
     <Node>
         <NodeID>CC3_2</NodeID>
-        <XPos>277.0</XPos>
-        <YPos>308.0</YPos>
-        <XFeet>26.651832</XFeet>
-        <YFeet>29.634528</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>157.0</XPos>
+        <YPos>117.0</YPos>
+        <XFeet>15.105912</XFeet>
+        <YFeet>11.257272</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_3</Neighbor>
+            <Neighbor>CC3_1</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>true</Stairs>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -46,19 +46,17 @@
     </Node>
     <Node>
         <NodeID>CC3_3</NodeID>
-        <XPos>254.0</XPos>
-        <YPos>357.0</YPos>
-        <XFeet>24.438864</XFeet>
-        <YFeet>34.349112</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>115.0</XPos>
+        <YPos>135.0</YPos>
+        <XFeet>11.06484</XFeet>
+        <YFeet>12.98916</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_5</Neighbor>
+            <Neighbor>CC3_3</Neighbor>
             <Neighbor>CC3_4</Neighbor>
+            <Neighbor>CC3_5</Neighbor>
+            <Neighbor>CC3_6</Neighbor>
             <Neighbor>CC3_7</Neighbor>
-            <Neighbor>CC3_14</Neighbor>
-            <Neighbor>CC3_2</Neighbor>
-            <Neighbor>CC3_1</Neighbor>
-            <Neighbor>CC3_47</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -73,15 +71,16 @@
     </Node>
     <Node>
         <NodeID>CC3_4</NodeID>
-        <XPos>191.0</XPos>
-        <YPos>380.0</YPos>
-        <XFeet>18.377256</XFeet>
-        <YFeet>36.56208</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>116.0</XPos>
+        <YPos>116.0</YPos>
+        <XFeet>11.161056</XFeet>
+        <YFeet>11.161056</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_6</Neighbor>
             <Neighbor>CC3_3</Neighbor>
-            <Neighbor>CC3_14</Neighbor>
+            <Neighbor>CC3_4</Neighbor>
+            <Neighbor>CC3_5</Neighbor>
+            <Neighbor>CC3_6</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -96,16 +95,16 @@
     </Node>
     <Node>
         <NodeID>CC3_5</NodeID>
-        <XPos>220.0</XPos>
-        <YPos>411.0</YPos>
-        <XFeet>21.16752</XFeet>
-        <YFeet>39.544776</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>138.0</XPos>
+        <YPos>116.0</YPos>
+        <XFeet>13.277808</XFeet>
+        <YFeet>11.161056</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_6</Neighbor>
             <Neighbor>CC3_3</Neighbor>
-            <Neighbor>CC3_10</Neighbor>
-            <Neighbor>CC3_7</Neighbor>
+            <Neighbor>CC3_4</Neighbor>
+            <Neighbor>CC3_5</Neighbor>
+            <Neighbor>CC3_6</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -120,14 +119,16 @@
     </Node>
     <Node>
         <NodeID>CC3_6</NodeID>
-        <XPos>170.0</XPos>
-        <YPos>434.0</YPos>
-        <XFeet>16.35672</XFeet>
-        <YFeet>41.757743999999995</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>139.0</XPos>
+        <YPos>131.0</YPos>
+        <XFeet>13.374023999999999</XFeet>
+        <YFeet>12.604296</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_3</Neighbor>
             <Neighbor>CC3_4</Neighbor>
             <Neighbor>CC3_5</Neighbor>
+            <Neighbor>CC3_6</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -142,16 +143,17 @@
     </Node>
     <Node>
         <NodeID>CC3_7</NodeID>
-        <XPos>277.0</XPos>
-        <YPos>391.0</YPos>
-        <XFeet>26.651832</XFeet>
-        <YFeet>37.620456</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>118.0</XPos>
+        <YPos>152.0</YPos>
+        <XFeet>11.353487999999999</XFeet>
+        <YFeet>14.624832</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_10</Neighbor>
+            <Neighbor>CC3_7</Neighbor>
+            <Neighbor>CC3_14</Neighbor>
             <Neighbor>CC3_8</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
             <Neighbor>CC3_3</Neighbor>
-            <Neighbor>CC3_5</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -166,14 +168,21 @@
     </Node>
     <Node>
         <NodeID>CC3_8</NodeID>
-        <XPos>293.0</XPos>
-        <YPos>398.0</YPos>
-        <XFeet>28.191288</XFeet>
-        <YFeet>38.293968</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>118.0</XPos>
+        <YPos>161.0</YPos>
+        <XFeet>11.353487999999999</XFeet>
+        <YFeet>15.490775999999999</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC3_7</Neighbor>
+            <Neighbor>CC3_14</Neighbor>
+            <Neighbor>CC3_8</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_10</Neighbor>
             <Neighbor>CC3_9</Neighbor>
+            <Neighbor>CC3_8</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_19</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -188,17 +197,18 @@
     </Node>
     <Node>
         <NodeID>CC3_9</NodeID>
-        <XPos>315.0</XPos>
-        <YPos>398.0</YPos>
-        <XFeet>30.30804</XFeet>
-        <YFeet>38.293968</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>118.0</XPos>
+        <YPos>176.0</YPos>
+        <XFeet>11.353487999999999</XFeet>
+        <YFeet>16.934016</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_10</Neighbor>
+            <Neighbor>CC3_9</Neighbor>
             <Neighbor>CC3_8</Neighbor>
-            <Neighbor>CC3_47</Neighbor>
-            <Neighbor>CC3_68</Neighbor>
-            <Neighbor>CC3_75</Neighbor>
-            <Neighbor>CC3_13</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_22</Neighbor>
+            <Neighbor>CC3_28</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -213,15 +223,20 @@
     </Node>
     <Node>
         <NodeID>CC3_10</NodeID>
-        <XPos>252.0</XPos>
-        <YPos>441.0</YPos>
-        <XFeet>24.246432</XFeet>
-        <YFeet>42.431256</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>141.0</XPos>
+        <YPos>182.0</YPos>
+        <XFeet>13.566455999999999</XFeet>
+        <YFeet>17.511312</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_5</Neighbor>
-            <Neighbor>CC3_7</Neighbor>
             <Neighbor>CC3_11</Neighbor>
+            <Neighbor>CC3_13</Neighbor>
+            <Neighbor>CC3_10</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_10</Neighbor>
+            <Neighbor>CC3_9</Neighbor>
+            <Neighbor>CC3_8</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -236,14 +251,17 @@
     </Node>
     <Node>
         <NodeID>CC3_11</NodeID>
-        <XPos>282.0</XPos>
-        <YPos>448.0</YPos>
-        <XFeet>27.132911999999997</XFeet>
-        <YFeet>43.104768</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>158.0</XPos>
+        <YPos>182.0</YPos>
+        <XFeet>15.202128</XFeet>
+        <YFeet>17.511312</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_11</Neighbor>
+            <Neighbor>CC3_13</Neighbor>
             <Neighbor>CC3_10</Neighbor>
-            <Neighbor>CC3_12</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_219</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -258,14 +276,16 @@
     </Node>
     <Node>
         <NodeID>CC3_12</NodeID>
-        <XPos>282.0</XPos>
-        <YPos>520.0</YPos>
-        <XFeet>27.132911999999997</XFeet>
-        <YFeet>50.03232</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>155.0</XPos>
+        <YPos>152.0</YPos>
+        <XFeet>14.91348</XFeet>
+        <YFeet>14.624832</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_11</Neighbor>
+            <Neighbor>CC3_14</Neighbor>
+            <Neighbor>CC3_12</Neighbor>
             <Neighbor>CC3_13</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -280,18 +300,20 @@
     </Node>
     <Node>
         <NodeID>CC3_13</NodeID>
-        <XPos>318.0</XPos>
-        <YPos>522.0</YPos>
-        <XFeet>30.596688</XFeet>
-        <YFeet>50.224751999999995</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>156.0</XPos>
+        <YPos>167.0</YPos>
+        <XFeet>15.009696</XFeet>
+        <YFeet>16.068072</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_14</Neighbor>
             <Neighbor>CC3_12</Neighbor>
-            <Neighbor>CC3_75</Neighbor>
-            <Neighbor>CC3_9</Neighbor>
-            <Neighbor>CC3_68</Neighbor>
-            <Neighbor>CC3_69</Neighbor>
-            <Neighbor>CC3_74</Neighbor>
+            <Neighbor>CC3_13</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_11</Neighbor>
+            <Neighbor>CC3_13</Neighbor>
+            <Neighbor>CC3_10</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -306,14 +328,19 @@
     </Node>
     <Node>
         <NodeID>CC3_14</NodeID>
-        <XPos>201.0</XPos>
-        <YPos>325.0</YPos>
-        <XFeet>19.339416</XFeet>
-        <YFeet>31.2702</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>136.0</XPos>
+        <YPos>152.0</YPos>
+        <XFeet>13.085376</XFeet>
+        <YFeet>14.624832</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_3</Neighbor>
-            <Neighbor>CC3_4</Neighbor>
+            <Neighbor>CC3_7</Neighbor>
+            <Neighbor>CC3_14</Neighbor>
+            <Neighbor>CC3_8</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_14</Neighbor>
+            <Neighbor>CC3_12</Neighbor>
+            <Neighbor>CC3_13</Neighbor>
             <Neighbor>CC3_15</Neighbor>
         </Neighbors>
         <Attributes>
@@ -329,14 +356,28 @@
     </Node>
     <Node>
         <NodeID>CC3_15</NodeID>
-        <XPos>180.0</XPos>
-        <YPos>325.0</YPos>
-        <XFeet>17.31888</XFeet>
-        <YFeet>31.2702</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>137.0</XPos>
+        <YPos>163.0</YPos>
+        <XFeet>13.181592</XFeet>
+        <YFeet>15.683207999999999</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_7</Neighbor>
             <Neighbor>CC3_14</Neighbor>
-            <Neighbor>CC3_16</Neighbor>
+            <Neighbor>CC3_8</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_14</Neighbor>
+            <Neighbor>CC3_12</Neighbor>
+            <Neighbor>CC3_13</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_11</Neighbor>
+            <Neighbor>CC3_13</Neighbor>
+            <Neighbor>CC3_10</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
+            <Neighbor>CC3_10</Neighbor>
+            <Neighbor>CC3_9</Neighbor>
+            <Neighbor>CC3_8</Neighbor>
+            <Neighbor>CC3_15</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -351,103 +392,15 @@
     </Node>
     <Node>
         <NodeID>CC3_16</NodeID>
-        <XPos>177.0</XPos>
-        <YPos>305.0</YPos>
-        <XFeet>17.030231999999998</XFeet>
-        <YFeet>29.345879999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>99.0</XPos>
+        <YPos>118.0</YPos>
+        <XFeet>9.525383999999999</XFeet>
+        <YFeet>11.353487999999999</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_15</Neighbor>
             <Neighbor>CC3_17</Neighbor>
-            <Neighbor>CC3_18</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName/>
-            <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CC3_17</NodeID>
-        <XPos>153.0</XPos>
-        <YPos>305.0</YPos>
-        <XFeet>14.721048</XFeet>
-        <YFeet>29.345879999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>
             <Neighbor>CC3_16</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName/>
-            <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CC3_18</NodeID>
-        <XPos>177.0</XPos>
-        <YPos>287.0</YPos>
-        <XFeet>17.030231999999998</XFeet>
-        <YFeet>27.613992</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>
-            <Neighbor>CC3_16</Neighbor>
-            <Neighbor>CC3_19</Neighbor>
-            <Neighbor>CC3_26</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName/>
-            <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CC3_19</NodeID>
-        <XPos>218.0</XPos>
-        <YPos>285.0</YPos>
-        <XFeet>20.975088</XFeet>
-        <YFeet>27.42156</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>
             <Neighbor>CC3_18</Neighbor>
-            <Neighbor>CC3_20</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName/>
-            <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CC3_20</NodeID>
-        <XPos>220.0</XPos>
-        <YPos>263.0</YPos>
-        <XFeet>21.16752</XFeet>
-        <YFeet>25.304807999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>
-            <Neighbor>CC3_19</Neighbor>
-            <Neighbor>CC3_22</Neighbor>
             <Neighbor>CC3_21</Neighbor>
         </Neighbors>
         <Attributes>
@@ -462,14 +415,122 @@
         </Attributes>
     </Node>
     <Node>
-        <NodeID>CC3_21</NodeID>
-        <XPos>247.0</XPos>
-        <YPos>264.0</YPos>
-        <XFeet>23.765352</XFeet>
-        <YFeet>25.401024</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <NodeID>CC3_17</NodeID>
+        <XPos>83.0</XPos>
+        <YPos>117.0</YPos>
+        <XFeet>7.9859279999999995</XFeet>
+        <YFeet>11.257272</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_17</Neighbor>
+            <Neighbor>CC3_16</Neighbor>
+            <Neighbor>CC3_18</Neighbor>
+            <Neighbor>CC3_21</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_18</NodeID>
+        <XPos>99.0</XPos>
+        <YPos>131.0</YPos>
+        <XFeet>9.525383999999999</XFeet>
+        <YFeet>12.604296</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_17</Neighbor>
+            <Neighbor>CC3_16</Neighbor>
+            <Neighbor>CC3_18</Neighbor>
+            <Neighbor>CC3_21</Neighbor>
+            <Neighbor>CC3_21</Neighbor>
             <Neighbor>CC3_20</Neighbor>
+            <Neighbor>CC3_19</Neighbor>
+            <Neighbor>CC3_18</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_19</NodeID>
+        <XPos>101.0</XPos>
+        <YPos>159.0</YPos>
+        <XFeet>9.717816</XFeet>
+        <YFeet>15.298344</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_21</Neighbor>
+            <Neighbor>CC3_20</Neighbor>
+            <Neighbor>CC3_19</Neighbor>
+            <Neighbor>CC3_18</Neighbor>
+            <Neighbor>CC3_8</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_20</NodeID>
+        <XPos>86.0</XPos>
+        <YPos>158.0</YPos>
+        <XFeet>8.274576</XFeet>
+        <YFeet>15.202128</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_21</Neighbor>
+            <Neighbor>CC3_20</Neighbor>
+            <Neighbor>CC3_19</Neighbor>
+            <Neighbor>CC3_18</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_21</NodeID>
+        <XPos>83.0</XPos>
+        <YPos>134.0</YPos>
+        <XFeet>7.9859279999999995</XFeet>
+        <YFeet>12.892944</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_17</Neighbor>
+            <Neighbor>CC3_16</Neighbor>
+            <Neighbor>CC3_18</Neighbor>
+            <Neighbor>CC3_21</Neighbor>
+            <Neighbor>CC3_21</Neighbor>
+            <Neighbor>CC3_20</Neighbor>
+            <Neighbor>CC3_19</Neighbor>
+            <Neighbor>CC3_18</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -484,15 +545,17 @@
     </Node>
     <Node>
         <NodeID>CC3_22</NodeID>
-        <XPos>221.0</XPos>
-        <YPos>246.0</YPos>
-        <XFeet>21.263735999999998</XFeet>
-        <YFeet>23.669135999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>101.0</XPos>
+        <YPos>176.0</YPos>
+        <XFeet>9.717816</XFeet>
+        <YFeet>16.934016</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_20</Neighbor>
-            <Neighbor>CC3_24</Neighbor>
+            <Neighbor>CC3_27</Neighbor>
+            <Neighbor>CC3_22</Neighbor>
             <Neighbor>CC3_23</Neighbor>
+            <Neighbor>CC3_26</Neighbor>
+            <Neighbor>CC3_9</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -507,13 +570,20 @@
     </Node>
     <Node>
         <NodeID>CC3_23</NodeID>
-        <XPos>247.0</XPos>
-        <YPos>248.0</YPos>
-        <XFeet>23.765352</XFeet>
-        <YFeet>23.861568</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>102.0</XPos>
+        <YPos>192.0</YPos>
+        <XFeet>9.814032</XFeet>
+        <YFeet>18.473472</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_27</Neighbor>
             <Neighbor>CC3_22</Neighbor>
+            <Neighbor>CC3_23</Neighbor>
+            <Neighbor>CC3_26</Neighbor>
+            <Neighbor>CC3_25</Neighbor>
+            <Neighbor>CC3_26</Neighbor>
+            <Neighbor>CC3_23</Neighbor>
+            <Neighbor>CC3_24</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -528,14 +598,16 @@
     </Node>
     <Node>
         <NodeID>CC3_24</NodeID>
-        <XPos>219.0</XPos>
-        <YPos>229.0</YPos>
-        <XFeet>21.071303999999998</XFeet>
-        <YFeet>22.033464</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>100.0</XPos>
+        <YPos>210.0</YPos>
+        <XFeet>9.621599999999999</XFeet>
+        <YFeet>20.20536</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_22</Neighbor>
             <Neighbor>CC3_25</Neighbor>
+            <Neighbor>CC3_26</Neighbor>
+            <Neighbor>CC3_23</Neighbor>
+            <Neighbor>CC3_24</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -550,12 +622,15 @@
     </Node>
     <Node>
         <NodeID>CC3_25</NodeID>
-        <XPos>197.0</XPos>
-        <YPos>231.0</YPos>
-        <XFeet>18.954552</XFeet>
-        <YFeet>22.225896</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>84.0</XPos>
+        <YPos>208.0</YPos>
+        <XFeet>8.082144</XFeet>
+        <YFeet>20.012928</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_25</Neighbor>
+            <Neighbor>CC3_26</Neighbor>
+            <Neighbor>CC3_23</Neighbor>
             <Neighbor>CC3_24</Neighbor>
         </Neighbors>
         <Attributes>
@@ -571,15 +646,20 @@
     </Node>
     <Node>
         <NodeID>CC3_26</NodeID>
-        <XPos>175.0</XPos>
-        <YPos>259.0</YPos>
-        <XFeet>16.837799999999998</XFeet>
-        <YFeet>24.919943999999997</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>83.0</XPos>
+        <YPos>190.0</YPos>
+        <XFeet>7.9859279999999995</XFeet>
+        <YFeet>18.28104</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_18</Neighbor>
             <Neighbor>CC3_27</Neighbor>
-            <Neighbor>CC3_30</Neighbor>
+            <Neighbor>CC3_22</Neighbor>
+            <Neighbor>CC3_23</Neighbor>
+            <Neighbor>CC3_26</Neighbor>
+            <Neighbor>CC3_25</Neighbor>
+            <Neighbor>CC3_26</Neighbor>
+            <Neighbor>CC3_23</Neighbor>
+            <Neighbor>CC3_24</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -594,15 +674,16 @@
     </Node>
     <Node>
         <NodeID>CC3_27</NodeID>
-        <XPos>127.0</XPos>
-        <YPos>256.0</YPos>
-        <XFeet>12.219432</XFeet>
-        <YFeet>24.631296</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>85.0</XPos>
+        <YPos>177.0</YPos>
+        <XFeet>8.17836</XFeet>
+        <YFeet>17.030231999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_27</Neighbor>
+            <Neighbor>CC3_22</Neighbor>
+            <Neighbor>CC3_23</Neighbor>
             <Neighbor>CC3_26</Neighbor>
-            <Neighbor>CC3_28</Neighbor>
-            <Neighbor>CC3_29</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -617,13 +698,17 @@
     </Node>
     <Node>
         <NodeID>CC3_28</NodeID>
-        <XPos>124.0</XPos>
-        <YPos>227.0</YPos>
-        <XFeet>11.930784</XFeet>
-        <YFeet>21.841032</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>118.0</XPos>
+        <YPos>198.0</YPos>
+        <XFeet>11.353487999999999</XFeet>
+        <YFeet>19.050767999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_27</Neighbor>
+            <Neighbor>CC3_28</Neighbor>
+            <Neighbor>CC3_29</Neighbor>
+            <Neighbor>CC3_32</Neighbor>
+            <Neighbor>CC3_33</Neighbor>
+            <Neighbor>CC3_9</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -638,15 +723,20 @@
     </Node>
     <Node>
         <NodeID>CC3_29</NodeID>
-        <XPos>123.0</XPos>
-        <YPos>288.0</YPos>
-        <XFeet>11.834567999999999</XFeet>
-        <YFeet>27.710207999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>133.0</XPos>
+        <YPos>198.0</YPos>
+        <XFeet>12.796728</XFeet>
+        <YFeet>19.050767999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_28</Neighbor>
             <Neighbor>CC3_29</Neighbor>
+            <Neighbor>CC3_32</Neighbor>
+            <Neighbor>CC3_33</Neighbor>
             <Neighbor>CC3_29</Neighbor>
-            <Neighbor>CC3_27</Neighbor>
+            <Neighbor>CC3_30</Neighbor>
+            <Neighbor>CC3_31</Neighbor>
+            <Neighbor>CC3_32</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -661,15 +751,16 @@
     </Node>
     <Node>
         <NodeID>CC3_30</NodeID>
-        <XPos>176.0</XPos>
-        <YPos>184.0</YPos>
-        <XFeet>16.934016</XFeet>
-        <YFeet>17.703744</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>156.0</XPos>
+        <YPos>199.0</YPos>
+        <XFeet>15.009696</XFeet>
+        <YFeet>19.146984</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_26</Neighbor>
-            <Neighbor>CC3_37</Neighbor>
+            <Neighbor>CC3_29</Neighbor>
+            <Neighbor>CC3_30</Neighbor>
             <Neighbor>CC3_31</Neighbor>
+            <Neighbor>CC3_32</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -684,14 +775,66 @@
     </Node>
     <Node>
         <NodeID>CC3_31</NodeID>
-        <XPos>119.0</XPos>
-        <YPos>175.0</YPos>
-        <XFeet>11.449703999999999</XFeet>
-        <YFeet>16.837799999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>155.0</XPos>
+        <YPos>213.0</YPos>
+        <XFeet>14.91348</XFeet>
+        <YFeet>20.494008</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_29</Neighbor>
             <Neighbor>CC3_30</Neighbor>
-            <Neighbor>CC3_34</Neighbor>
+            <Neighbor>CC3_31</Neighbor>
+            <Neighbor>CC3_32</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_32</NodeID>
+        <XPos>137.0</XPos>
+        <YPos>213.0</YPos>
+        <XFeet>13.181592</XFeet>
+        <YFeet>20.494008</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_28</Neighbor>
+            <Neighbor>CC3_29</Neighbor>
+            <Neighbor>CC3_32</Neighbor>
+            <Neighbor>CC3_33</Neighbor>
+            <Neighbor>CC3_29</Neighbor>
+            <Neighbor>CC3_30</Neighbor>
+            <Neighbor>CC3_31</Neighbor>
+            <Neighbor>CC3_32</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_33</NodeID>
+        <XPos>124.0</XPos>
+        <YPos>212.0</YPos>
+        <XFeet>11.930784</XFeet>
+        <YFeet>20.397792</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_28</Neighbor>
+            <Neighbor>CC3_29</Neighbor>
             <Neighbor>CC3_32</Neighbor>
             <Neighbor>CC3_33</Neighbor>
         </Neighbors>
@@ -707,57 +850,16 @@
         </Attributes>
     </Node>
     <Node>
-        <NodeID>CC3_32</NodeID>
-        <XPos>98.0</XPos>
-        <YPos>175.0</YPos>
-        <XFeet>9.429167999999999</XFeet>
-        <YFeet>16.837799999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>
-            <Neighbor>CC3_31</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName/>
-            <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CC3_33</NodeID>
-        <XPos>119.0</XPos>
-        <YPos>200.0</YPos>
-        <XFeet>11.449703999999999</XFeet>
-        <YFeet>19.243199999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>
-            <Neighbor>CC3_31</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName/>
-            <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
         <NodeID>CC3_34</NodeID>
-        <XPos>119.0</XPos>
-        <YPos>159.0</YPos>
-        <XFeet>11.449703999999999</XFeet>
-        <YFeet>15.298344</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>128.0</XPos>
+        <YPos>256.0</YPos>
+        <XFeet>12.315648</XFeet>
+        <YFeet>24.631296</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_31</Neighbor>
-            <Neighbor>CC3_36</Neighbor>
+            <Neighbor>CC3_34</Neighbor>
+            <Neighbor>CC3_40</Neighbor>
+            <Neighbor>CC3_48</Neighbor>
             <Neighbor>CC3_35</Neighbor>
         </Neighbors>
         <Attributes>
@@ -773,13 +875,14 @@
     </Node>
     <Node>
         <NodeID>CC3_35</NodeID>
-        <XPos>98.0</XPos>
-        <YPos>160.0</YPos>
-        <XFeet>9.429167999999999</XFeet>
-        <YFeet>15.394559999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>127.0</XPos>
+        <YPos>233.0</YPos>
+        <XFeet>12.219432</XFeet>
+        <YFeet>22.418328</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC3_34</Neighbor>
+            <Neighbor>CC3_36</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -794,13 +897,17 @@
     </Node>
     <Node>
         <NodeID>CC3_36</NodeID>
-        <XPos>119.0</XPos>
-        <YPos>123.0</YPos>
-        <XFeet>11.449703999999999</XFeet>
-        <YFeet>11.834567999999999</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>109.0</XPos>
+        <YPos>232.0</YPos>
+        <XFeet>10.487544</XFeet>
+        <YFeet>22.322112</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_34</Neighbor>
+            <Neighbor>CC3_39</Neighbor>
+            <Neighbor>CC3_36</Neighbor>
+            <Neighbor>CC3_37</Neighbor>
+            <Neighbor>CC3_38</Neighbor>
+            <Neighbor>CC3_35</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -815,14 +922,15 @@
     </Node>
     <Node>
         <NodeID>CC3_37</NodeID>
-        <XPos>178.0</XPos>
-        <YPos>146.0</YPos>
-        <XFeet>17.126448</XFeet>
-        <YFeet>14.047536</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>109.0</XPos>
+        <YPos>246.0</YPos>
+        <XFeet>10.487544</XFeet>
+        <YFeet>23.669135999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_30</Neighbor>
-            <Neighbor>CC3_45</Neighbor>
+            <Neighbor>CC3_39</Neighbor>
+            <Neighbor>CC3_36</Neighbor>
+            <Neighbor>CC3_37</Neighbor>
             <Neighbor>CC3_38</Neighbor>
         </Neighbors>
         <Attributes>
@@ -838,15 +946,16 @@
     </Node>
     <Node>
         <NodeID>CC3_38</NodeID>
-        <XPos>241.0</XPos>
-        <YPos>152.0</YPos>
-        <XFeet>23.188056</XFeet>
-        <YFeet>14.624832</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>87.0</XPos>
+        <YPos>243.0</YPos>
+        <XFeet>8.370792</XFeet>
+        <YFeet>23.380488</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_37</Neighbor>
-            <Neighbor>CC3_42</Neighbor>
             <Neighbor>CC3_39</Neighbor>
+            <Neighbor>CC3_36</Neighbor>
+            <Neighbor>CC3_37</Neighbor>
+            <Neighbor>CC3_38</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -861,13 +970,65 @@
     </Node>
     <Node>
         <NodeID>CC3_39</NodeID>
-        <XPos>242.0</XPos>
-        <YPos>183.0</YPos>
-        <XFeet>23.284271999999998</XFeet>
-        <YFeet>17.607528</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>87.0</XPos>
+        <YPos>229.0</YPos>
+        <XFeet>8.370792</XFeet>
+        <YFeet>22.033464</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_39</Neighbor>
+            <Neighbor>CC3_36</Neighbor>
+            <Neighbor>CC3_37</Neighbor>
             <Neighbor>CC3_38</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_40</NodeID>
+        <XPos>127.0</XPos>
+        <YPos>283.0</YPos>
+        <XFeet>12.219432</XFeet>
+        <YFeet>27.229128</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_40</Neighbor>
+            <Neighbor>CC3_41</Neighbor>
+            <Neighbor>CC3_34</Neighbor>
+            <Neighbor>CC3_40</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_41</NodeID>
+        <XPos>113.0</XPos>
+        <YPos>286.0</YPos>
+        <XFeet>10.872408</XFeet>
+        <YFeet>27.517775999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_43</Neighbor>
+            <Neighbor>CC3_42</Neighbor>
+            <Neighbor>CC3_41</Neighbor>
+            <Neighbor>CC3_47</Neighbor>
+            <Neighbor>CC3_44</Neighbor>
             <Neighbor>CC3_40</Neighbor>
             <Neighbor>CC3_41</Neighbor>
         </Neighbors>
@@ -883,57 +1044,17 @@
         </Attributes>
     </Node>
     <Node>
-        <NodeID>CC3_40</NodeID>
-        <XPos>205.0</XPos>
-        <YPos>192.0</YPos>
-        <XFeet>19.72428</XFeet>
-        <YFeet>18.473472</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>
-            <Neighbor>CC3_39</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName/>
-            <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>CC3_41</NodeID>
-        <XPos>236.0</XPos>
-        <YPos>204.0</YPos>
-        <XFeet>22.706975999999997</XFeet>
-        <YFeet>19.628064</YFeet>
-        <ZFeet>0.0</ZFeet>
-        <Neighbors>
-            <Neighbor>CC3_39</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName/>
-            <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
         <NodeID>CC3_42</NodeID>
-        <XPos>259.0</XPos>
-        <YPos>151.0</YPos>
-        <XFeet>24.919943999999997</XFeet>
-        <YFeet>14.528616</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>112.0</XPos>
+        <YPos>268.0</YPos>
+        <XFeet>10.776192</XFeet>
+        <YFeet>25.785888</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_38</Neighbor>
             <Neighbor>CC3_43</Neighbor>
+            <Neighbor>CC3_42</Neighbor>
+            <Neighbor>CC3_41</Neighbor>
+            <Neighbor>CC3_47</Neighbor>
             <Neighbor>CC3_44</Neighbor>
         </Neighbors>
         <Attributes>
@@ -949,15 +1070,17 @@
     </Node>
     <Node>
         <NodeID>CC3_43</NodeID>
-        <XPos>259.0</XPos>
-        <YPos>127.0</YPos>
-        <XFeet>24.919943999999997</XFeet>
-        <YFeet>12.219432</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>89.0</XPos>
+        <YPos>269.0</YPos>
+        <XFeet>8.563224</XFeet>
+        <YFeet>25.882103999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC3_43</Neighbor>
-            <Neighbor>CC3_43</Neighbor>
             <Neighbor>CC3_42</Neighbor>
+            <Neighbor>CC3_41</Neighbor>
+            <Neighbor>CC3_47</Neighbor>
+            <Neighbor>CC3_44</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -972,13 +1095,21 @@
     </Node>
     <Node>
         <NodeID>CC3_44</NodeID>
-        <XPos>261.0</XPos>
-        <YPos>189.0</YPos>
-        <XFeet>25.112375999999998</XFeet>
-        <YFeet>18.184824</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>89.0</XPos>
+        <YPos>286.0</YPos>
+        <XFeet>8.563224</XFeet>
+        <YFeet>27.517775999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_47</Neighbor>
+            <Neighbor>CC3_45</Neighbor>
+            <Neighbor>CC3_46</Neighbor>
+            <Neighbor>CC3_44</Neighbor>
+            <Neighbor>CC3_43</Neighbor>
             <Neighbor>CC3_42</Neighbor>
+            <Neighbor>CC3_41</Neighbor>
+            <Neighbor>CC3_47</Neighbor>
+            <Neighbor>CC3_44</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -993,14 +1124,16 @@
     </Node>
     <Node>
         <NodeID>CC3_45</NodeID>
-        <XPos>179.0</XPos>
-        <YPos>127.0</YPos>
-        <XFeet>17.222663999999998</XFeet>
-        <YFeet>12.219432</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>86.0</XPos>
+        <YPos>326.0</YPos>
+        <XFeet>8.274576</XFeet>
+        <YFeet>31.366415999999997</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_37</Neighbor>
+            <Neighbor>CC3_47</Neighbor>
+            <Neighbor>CC3_45</Neighbor>
             <Neighbor>CC3_46</Neighbor>
+            <Neighbor>CC3_44</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1015,13 +1148,16 @@
     </Node>
     <Node>
         <NodeID>CC3_46</NodeID>
-        <XPos>160.0</XPos>
-        <YPos>127.0</YPos>
-        <XFeet>15.394559999999998</XFeet>
-        <YFeet>12.219432</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>99.0</XPos>
+        <YPos>327.0</YPos>
+        <XFeet>9.525383999999999</XFeet>
+        <YFeet>31.462632</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_47</Neighbor>
             <Neighbor>CC3_45</Neighbor>
+            <Neighbor>CC3_46</Neighbor>
+            <Neighbor>CC3_44</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1036,16 +1172,21 @@
     </Node>
     <Node>
         <NodeID>CC3_47</NodeID>
-        <XPos>315.0</XPos>
-        <YPos>353.0</YPos>
-        <XFeet>30.30804</XFeet>
-        <YFeet>33.964248</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>98.0</XPos>
+        <YPos>294.0</YPos>
+        <XFeet>9.429167999999999</XFeet>
+        <YFeet>28.287504</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_3</Neighbor>
-            <Neighbor>CC3_9</Neighbor>
-            <Neighbor>CC3_48</Neighbor>
-            <Neighbor>CC3_76</Neighbor>
+            <Neighbor>CC3_47</Neighbor>
+            <Neighbor>CC3_45</Neighbor>
+            <Neighbor>CC3_46</Neighbor>
+            <Neighbor>CC3_44</Neighbor>
+            <Neighbor>CC3_43</Neighbor>
+            <Neighbor>CC3_42</Neighbor>
+            <Neighbor>CC3_41</Neighbor>
+            <Neighbor>CC3_47</Neighbor>
+            <Neighbor>CC3_44</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1060,16 +1201,15 @@
     </Node>
     <Node>
         <NodeID>CC3_48</NodeID>
-        <XPos>374.0</XPos>
-        <YPos>351.0</YPos>
-        <XFeet>35.984784</XFeet>
-        <YFeet>33.771816</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>146.0</XPos>
+        <YPos>260.0</YPos>
+        <XFeet>14.047536</XFeet>
+        <YFeet>25.01616</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_47</Neighbor>
+            <Neighbor>CC3_50</Neighbor>
+            <Neighbor>CC3_34</Neighbor>
             <Neighbor>CC3_49</Neighbor>
-            <Neighbor>CC3_76</Neighbor>
-            <Neighbor>CC3_68</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1084,16 +1224,13 @@
     </Node>
     <Node>
         <NodeID>CC3_49</NodeID>
-        <XPos>415.0</XPos>
-        <YPos>354.0</YPos>
-        <XFeet>39.92964</XFeet>
-        <YFeet>34.060463999999996</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>152.0</XPos>
+        <YPos>290.0</YPos>
+        <XFeet>14.624832</XFeet>
+        <YFeet>27.902639999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC3_48</Neighbor>
-            <Neighbor>CC3_50</Neighbor>
-            <Neighbor>CC3_77</Neighbor>
-            <Neighbor>CC3_69</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1108,18 +1245,15 @@
     </Node>
     <Node>
         <NodeID>CC3_50</NodeID>
-        <XPos>468.0</XPos>
-        <YPos>355.0</YPos>
-        <XFeet>45.029088</XFeet>
-        <YFeet>34.15668</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>178.0</XPos>
+        <YPos>259.0</YPos>
+        <XFeet>17.126448</XFeet>
+        <YFeet>24.919943999999997</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_49</Neighbor>
-            <Neighbor>CC3_50</Neighbor>
-            <Neighbor>CC3_50</Neighbor>
-            <Neighbor>CC3_78</Neighbor>
-            <Neighbor>CC3_51</Neighbor>
-            <Neighbor>CC3_70</Neighbor>
+            <Neighbor>CC3_52</Neighbor>
+            <Neighbor>CC3_48</Neighbor>
+            <Neighbor>CC3_53</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1134,17 +1268,12 @@
     </Node>
     <Node>
         <NodeID>CC3_51</NodeID>
-        <XPos>506.0</XPos>
-        <YPos>355.0</YPos>
-        <XFeet>48.685296</XFeet>
-        <YFeet>34.15668</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>196.0</XPos>
+        <YPos>249.0</YPos>
+        <XFeet>18.858335999999998</XFeet>
+        <YFeet>23.957784</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_51</Neighbor>
-            <Neighbor>CC3_51</Neighbor>
-            <Neighbor>CC3_50</Neighbor>
-            <Neighbor>CC3_71</Neighbor>
-            <Neighbor>CC3_78</Neighbor>
             <Neighbor>CC3_52</Neighbor>
         </Neighbors>
         <Attributes>
@@ -1160,16 +1289,15 @@
     </Node>
     <Node>
         <NodeID>CC3_52</NodeID>
-        <XPos>564.0</XPos>
-        <YPos>357.0</YPos>
-        <XFeet>54.265823999999995</XFeet>
-        <YFeet>34.349112</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>179.0</XPos>
+        <YPos>245.0</YPos>
+        <XFeet>17.222663999999998</XFeet>
+        <YFeet>23.57292</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC3_51</Neighbor>
-            <Neighbor>CC3_72</Neighbor>
-            <Neighbor>CC3_56</Neighbor>
-            <Neighbor>CC3_53</Neighbor>
+            <Neighbor>CC3_50</Neighbor>
+            <Neighbor>CC3_218</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1184,14 +1312,15 @@
     </Node>
     <Node>
         <NodeID>CC3_53</NodeID>
-        <XPos>564.0</XPos>
-        <YPos>331.0</YPos>
-        <XFeet>54.265823999999995</XFeet>
-        <YFeet>31.847496</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>179.0</XPos>
+        <YPos>289.0</YPos>
+        <XFeet>17.222663999999998</XFeet>
+        <YFeet>27.806424</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_52</Neighbor>
+            <Neighbor>CC3_50</Neighbor>
             <Neighbor>CC3_54</Neighbor>
+            <Neighbor>CC3_95</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1206,14 +1335,17 @@
     </Node>
     <Node>
         <NodeID>CC3_54</NodeID>
-        <XPos>573.0</XPos>
-        <YPos>311.0</YPos>
-        <XFeet>55.131768</XFeet>
-        <YFeet>29.923175999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>197.0</XPos>
+        <YPos>286.0</YPos>
+        <XFeet>18.954552</XFeet>
+        <YFeet>27.517775999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_53</Neighbor>
             <Neighbor>CC3_55</Neighbor>
+            <Neighbor>CC3_54</Neighbor>
+            <Neighbor>CC3_56</Neighbor>
+            <Neighbor>CC3_53</Neighbor>
+            <Neighbor>CC3_229</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1228,19 +1360,22 @@
     </Node>
     <Node>
         <NodeID>CC3_55</NodeID>
-        <XPos>594.0</XPos>
-        <YPos>318.0</YPos>
-        <XFeet>57.152304</XFeet>
-        <YFeet>30.596688</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>217.0</XPos>
+        <YPos>285.0</YPos>
+        <XFeet>20.878871999999998</XFeet>
+        <YFeet>27.42156</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_55</Neighbor>
             <Neighbor>CC3_54</Neighbor>
+            <Neighbor>CC3_56</Neighbor>
+            <Neighbor>CC3_229</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>false</Handicapped>
-            <Stairs>true</Stairs>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -1249,17 +1384,18 @@
     </Node>
     <Node>
         <NodeID>CC3_56</NodeID>
-        <XPos>619.0</XPos>
-        <YPos>357.0</YPos>
-        <XFeet>59.557703999999994</XFeet>
-        <YFeet>34.349112</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>219.0</XPos>
+        <YPos>264.0</YPos>
+        <XFeet>21.071303999999998</XFeet>
+        <YFeet>25.401024</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_58</Neighbor>
+            <Neighbor>CC3_55</Neighbor>
+            <Neighbor>CC3_54</Neighbor>
             <Neighbor>CC3_56</Neighbor>
-            <Neighbor>CC3_56</Neighbor>
+            <Neighbor>CC3_61</Neighbor>
             <Neighbor>CC3_57</Neighbor>
-            <Neighbor>CC3_52</Neighbor>
+            <Neighbor>CC3_229</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1274,12 +1410,16 @@
     </Node>
     <Node>
         <NodeID>CC3_57</NodeID>
-        <XPos>615.0</XPos>
-        <YPos>377.0</YPos>
-        <XFeet>59.17284</XFeet>
-        <YFeet>36.273432</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>242.0</XPos>
+        <YPos>265.0</YPos>
+        <XFeet>23.284271999999998</XFeet>
+        <YFeet>25.497239999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_57</Neighbor>
+            <Neighbor>CC3_60</Neighbor>
+            <Neighbor>CC3_59</Neighbor>
+            <Neighbor>CC3_58</Neighbor>
             <Neighbor>CC3_56</Neighbor>
         </Neighbors>
         <Attributes>
@@ -1295,16 +1435,15 @@
     </Node>
     <Node>
         <NodeID>CC3_58</NodeID>
-        <XPos>633.0</XPos>
-        <YPos>358.0</YPos>
-        <XFeet>60.904728</XFeet>
-        <YFeet>34.445327999999996</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>246.0</XPos>
+        <YPos>285.0</YPos>
+        <XFeet>23.669135999999998</XFeet>
+        <YFeet>27.42156</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_57</Neighbor>
             <Neighbor>CC3_60</Neighbor>
             <Neighbor>CC3_59</Neighbor>
-            <Neighbor>CC3_56</Neighbor>
-            <Neighbor>CC3_58</Neighbor>
             <Neighbor>CC3_58</Neighbor>
         </Neighbors>
         <Attributes>
@@ -1320,12 +1459,15 @@
     </Node>
     <Node>
         <NodeID>CC3_59</NodeID>
-        <XPos>634.0</XPos>
-        <YPos>336.0</YPos>
-        <XFeet>61.000944</XFeet>
-        <YFeet>32.328576</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>261.0</XPos>
+        <YPos>290.0</YPos>
+        <XFeet>25.112375999999998</XFeet>
+        <YFeet>27.902639999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_57</Neighbor>
+            <Neighbor>CC3_60</Neighbor>
+            <Neighbor>CC3_59</Neighbor>
             <Neighbor>CC3_58</Neighbor>
         </Neighbors>
         <Attributes>
@@ -1341,14 +1483,15 @@
     </Node>
     <Node>
         <NodeID>CC3_60</NodeID>
-        <XPos>637.0</XPos>
-        <YPos>380.0</YPos>
-        <XFeet>61.289592</XFeet>
-        <YFeet>36.56208</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>269.0</XPos>
+        <YPos>270.0</YPos>
+        <XFeet>25.882103999999998</XFeet>
+        <YFeet>25.97832</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_62</Neighbor>
-            <Neighbor>CC3_61</Neighbor>
+            <Neighbor>CC3_57</Neighbor>
+            <Neighbor>CC3_60</Neighbor>
+            <Neighbor>CC3_59</Neighbor>
             <Neighbor>CC3_58</Neighbor>
         </Neighbors>
         <Attributes>
@@ -1364,13 +1507,18 @@
     </Node>
     <Node>
         <NodeID>CC3_61</NodeID>
-        <XPos>658.0</XPos>
-        <YPos>381.0</YPos>
-        <XFeet>63.310128</XFeet>
-        <YFeet>36.658296</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>220.0</XPos>
+        <YPos>250.0</YPos>
+        <XFeet>21.16752</XFeet>
+        <YFeet>24.054</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_60</Neighbor>
+            <Neighbor>CC3_68</Neighbor>
+            <Neighbor>CC3_61</Neighbor>
+            <Neighbor>CC3_66</Neighbor>
+            <Neighbor>CC3_67</Neighbor>
+            <Neighbor>CC3_56</Neighbor>
+            <Neighbor>CC3_62</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1385,14 +1533,17 @@
     </Node>
     <Node>
         <NodeID>CC3_62</NodeID>
-        <XPos>635.0</XPos>
-        <YPos>436.0</YPos>
-        <XFeet>61.097159999999995</XFeet>
-        <YFeet>41.950176</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>243.0</XPos>
+        <YPos>248.0</YPos>
+        <XFeet>23.380488</XFeet>
+        <YFeet>23.861568</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_65</Neighbor>
+            <Neighbor>CC3_64</Neighbor>
             <Neighbor>CC3_63</Neighbor>
-            <Neighbor>CC3_60</Neighbor>
+            <Neighbor>CC3_62</Neighbor>
+            <Neighbor>CC3_61</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1407,15 +1558,15 @@
     </Node>
     <Node>
         <NodeID>CC3_63</NodeID>
-        <XPos>589.0</XPos>
-        <YPos>437.0</YPos>
-        <XFeet>56.671223999999995</XFeet>
-        <YFeet>42.046392</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>259.0</XPos>
+        <YPos>250.0</YPos>
+        <XFeet>24.919943999999997</XFeet>
+        <YFeet>24.054</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_66</Neighbor>
-            <Neighbor>CC3_73</Neighbor>
+            <Neighbor>CC3_65</Neighbor>
             <Neighbor>CC3_64</Neighbor>
+            <Neighbor>CC3_63</Neighbor>
             <Neighbor>CC3_62</Neighbor>
         </Neighbors>
         <Attributes>
@@ -1431,14 +1582,16 @@
     </Node>
     <Node>
         <NodeID>CC3_64</NodeID>
-        <XPos>587.0</XPos>
-        <YPos>399.0</YPos>
-        <XFeet>56.478792</XFeet>
-        <YFeet>38.390184</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>270.0</XPos>
+        <YPos>229.0</YPos>
+        <XFeet>25.97832</XFeet>
+        <YFeet>22.033464</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_63</Neighbor>
             <Neighbor>CC3_65</Neighbor>
+            <Neighbor>CC3_64</Neighbor>
+            <Neighbor>CC3_63</Neighbor>
+            <Neighbor>CC3_62</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1453,13 +1606,16 @@
     </Node>
     <Node>
         <NodeID>CC3_65</NodeID>
-        <XPos>611.0</XPos>
-        <YPos>402.0</YPos>
-        <XFeet>58.787976</XFeet>
-        <YFeet>38.678832</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>248.0</XPos>
+        <YPos>229.0</YPos>
+        <XFeet>23.861568</XFeet>
+        <YFeet>22.033464</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_65</Neighbor>
             <Neighbor>CC3_64</Neighbor>
+            <Neighbor>CC3_63</Neighbor>
+            <Neighbor>CC3_62</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1474,14 +1630,15 @@
     </Node>
     <Node>
         <NodeID>CC3_66</NodeID>
-        <XPos>587.0</XPos>
-        <YPos>511.0</YPos>
-        <XFeet>56.478792</XFeet>
-        <YFeet>49.166376</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>213.0</XPos>
+        <YPos>225.0</YPos>
+        <XFeet>20.494008</XFeet>
+        <YFeet>21.6486</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_74</Neighbor>
-            <Neighbor>CC3_63</Neighbor>
+            <Neighbor>CC3_68</Neighbor>
+            <Neighbor>CC3_61</Neighbor>
+            <Neighbor>CC3_66</Neighbor>
             <Neighbor>CC3_67</Neighbor>
         </Neighbors>
         <Attributes>
@@ -1497,13 +1654,16 @@
     </Node>
     <Node>
         <NodeID>CC3_67</NodeID>
-        <XPos>657.0</XPos>
-        <YPos>511.0</YPos>
-        <XFeet>63.213912</XFeet>
-        <YFeet>49.166376</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>224.0</XPos>
+        <YPos>225.0</YPos>
+        <XFeet>21.552384</XFeet>
+        <YFeet>21.6486</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_68</Neighbor>
+            <Neighbor>CC3_61</Neighbor>
             <Neighbor>CC3_66</Neighbor>
+            <Neighbor>CC3_67</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1518,17 +1678,17 @@
     </Node>
     <Node>
         <NodeID>CC3_68</NodeID>
-        <XPos>369.0</XPos>
-        <YPos>398.0</YPos>
-        <XFeet>35.503704</XFeet>
-        <YFeet>38.293968</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>212.0</XPos>
+        <YPos>234.0</YPos>
+        <XFeet>20.397792</XFeet>
+        <YFeet>22.514544</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_48</Neighbor>
-            <Neighbor>CC3_9</Neighbor>
+            <Neighbor>CC3_68</Neighbor>
+            <Neighbor>CC3_61</Neighbor>
+            <Neighbor>CC3_66</Neighbor>
+            <Neighbor>CC3_67</Neighbor>
             <Neighbor>CC3_69</Neighbor>
-            <Neighbor>CC3_75</Neighbor>
-            <Neighbor>CC3_13</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1543,18 +1703,13 @@
     </Node>
     <Node>
         <NodeID>CC3_69</NodeID>
-        <XPos>417.0</XPos>
-        <YPos>395.0</YPos>
-        <XFeet>40.122071999999996</XFeet>
-        <YFeet>38.00532</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>195.0</XPos>
+        <YPos>233.0</YPos>
+        <XFeet>18.76212</XFeet>
+        <YFeet>22.418328</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_49</Neighbor>
             <Neighbor>CC3_68</Neighbor>
-            <Neighbor>CC3_70</Neighbor>
-            <Neighbor>CC3_75</Neighbor>
-            <Neighbor>CC3_70</Neighbor>
-            <Neighbor>CC3_13</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1569,17 +1724,16 @@
     </Node>
     <Node>
         <NodeID>CC3_70</NodeID>
-        <XPos>468.0</XPos>
-        <YPos>399.0</YPos>
-        <XFeet>45.029088</XFeet>
-        <YFeet>38.390184</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>262.0</XPos>
+        <YPos>118.0</YPos>
+        <XFeet>25.208592</XFeet>
+        <YFeet>11.353487999999999</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_50</Neighbor>
-            <Neighbor>CC3_69</Neighbor>
             <Neighbor>CC3_71</Neighbor>
-            <Neighbor>CC3_69</Neighbor>
-            <Neighbor>CC3_75</Neighbor>
+            <Neighbor>CC3_72</Neighbor>
+            <Neighbor>CC3_73</Neighbor>
+            <Neighbor>CC3_70</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1594,16 +1748,17 @@
     </Node>
     <Node>
         <NodeID>CC3_71</NodeID>
-        <XPos>510.0</XPos>
-        <YPos>397.0</YPos>
-        <XFeet>49.07016</XFeet>
-        <YFeet>38.197752</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>262.0</XPos>
+        <YPos>129.0</YPos>
+        <XFeet>25.208592</XFeet>
+        <YFeet>12.411864</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_51</Neighbor>
-            <Neighbor>CC3_70</Neighbor>
+            <Neighbor>CC3_71</Neighbor>
             <Neighbor>CC3_72</Neighbor>
-            <Neighbor>CC3_75</Neighbor>
+            <Neighbor>CC3_73</Neighbor>
+            <Neighbor>CC3_70</Neighbor>
+            <Neighbor>CC3_74</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1618,16 +1773,16 @@
     </Node>
     <Node>
         <NodeID>CC3_72</NodeID>
-        <XPos>562.0</XPos>
-        <YPos>400.0</YPos>
-        <XFeet>54.073392</XFeet>
-        <YFeet>38.486399999999996</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>285.0</XPos>
+        <YPos>129.0</YPos>
+        <XFeet>27.42156</XFeet>
+        <YFeet>12.411864</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_52</Neighbor>
             <Neighbor>CC3_71</Neighbor>
+            <Neighbor>CC3_72</Neighbor>
             <Neighbor>CC3_73</Neighbor>
-            <Neighbor>CC3_75</Neighbor>
+            <Neighbor>CC3_70</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1642,16 +1797,16 @@
     </Node>
     <Node>
         <NodeID>CC3_73</NodeID>
-        <XPos>563.0</XPos>
-        <YPos>432.0</YPos>
-        <XFeet>54.169608</XFeet>
-        <YFeet>41.565312</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>283.0</XPos>
+        <YPos>117.0</YPos>
+        <XFeet>27.229128</XFeet>
+        <YFeet>11.257272</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
+            <Neighbor>CC3_71</Neighbor>
             <Neighbor>CC3_72</Neighbor>
-            <Neighbor>CC3_75</Neighbor>
-            <Neighbor>CC3_74</Neighbor>
-            <Neighbor>CC3_63</Neighbor>
+            <Neighbor>CC3_73</Neighbor>
+            <Neighbor>CC3_70</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1666,16 +1821,21 @@
     </Node>
     <Node>
         <NodeID>CC3_74</NodeID>
-        <XPos>560.0</XPos>
-        <YPos>514.0</YPos>
-        <XFeet>53.880959999999995</XFeet>
-        <YFeet>49.455023999999995</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>257.0</XPos>
+        <YPos>148.0</YPos>
+        <XFeet>24.727511999999997</XFeet>
+        <YFeet>14.239968</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_73</Neighbor>
+            <Neighbor>CC3_82</Neighbor>
+            <Neighbor>CC3_74</Neighbor>
+            <Neighbor>CC3_83</Neighbor>
+            <Neighbor>CC3_77</Neighbor>
+            <Neighbor>CC3_74</Neighbor>
             <Neighbor>CC3_75</Neighbor>
-            <Neighbor>CC3_13</Neighbor>
-            <Neighbor>CC3_66</Neighbor>
+            <Neighbor>CC3_76</Neighbor>
+            <Neighbor>CC3_77</Neighbor>
+            <Neighbor>CC3_71</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1690,21 +1850,16 @@
     </Node>
     <Node>
         <NodeID>CC3_75</NodeID>
-        <XPos>435.0</XPos>
-        <YPos>469.0</YPos>
-        <XFeet>41.85396</XFeet>
-        <YFeet>45.125304</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>289.0</XPos>
+        <YPos>148.0</YPos>
+        <XFeet>27.806424</XFeet>
+        <YFeet>14.239968</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_73</Neighbor>
-            <Neighbor>CC3_9</Neighbor>
-            <Neighbor>CC3_68</Neighbor>
-            <Neighbor>CC3_69</Neighbor>
-            <Neighbor>CC3_70</Neighbor>
-            <Neighbor>CC3_71</Neighbor>
-            <Neighbor>CC3_72</Neighbor>
             <Neighbor>CC3_74</Neighbor>
-            <Neighbor>CC3_13</Neighbor>
+            <Neighbor>CC3_75</Neighbor>
+            <Neighbor>CC3_76</Neighbor>
+            <Neighbor>CC3_77</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1719,15 +1874,16 @@
     </Node>
     <Node>
         <NodeID>CC3_76</NodeID>
-        <XPos>404.0</XPos>
-        <YPos>312.0</YPos>
-        <XFeet>38.871264</XFeet>
-        <YFeet>30.019392</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>289.0</XPos>
+        <YPos>171.0</YPos>
+        <XFeet>27.806424</XFeet>
+        <YFeet>16.452935999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_79</Neighbor>
-            <Neighbor>CC3_48</Neighbor>
-            <Neighbor>CC3_47</Neighbor>
+            <Neighbor>CC3_74</Neighbor>
+            <Neighbor>CC3_75</Neighbor>
+            <Neighbor>CC3_76</Neighbor>
+            <Neighbor>CC3_77</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1742,14 +1898,21 @@
     </Node>
     <Node>
         <NodeID>CC3_77</NodeID>
-        <XPos>425.0</XPos>
-        <YPos>332.0</YPos>
-        <XFeet>40.891799999999996</XFeet>
-        <YFeet>31.943711999999998</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>256.0</XPos>
+        <YPos>169.0</YPos>
+        <XFeet>24.631296</XFeet>
+        <YFeet>16.260504</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_79</Neighbor>
-            <Neighbor>CC3_49</Neighbor>
+            <Neighbor>CC3_82</Neighbor>
+            <Neighbor>CC3_74</Neighbor>
+            <Neighbor>CC3_83</Neighbor>
+            <Neighbor>CC3_77</Neighbor>
+            <Neighbor>CC3_74</Neighbor>
+            <Neighbor>CC3_75</Neighbor>
+            <Neighbor>CC3_76</Neighbor>
+            <Neighbor>CC3_77</Neighbor>
+            <Neighbor>CC3_78</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1764,15 +1927,17 @@
     </Node>
     <Node>
         <NodeID>CC3_78</NodeID>
-        <XPos>455.0</XPos>
-        <YPos>329.0</YPos>
-        <XFeet>43.778279999999995</XFeet>
-        <YFeet>31.655064</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>259.0</XPos>
+        <YPos>190.0</YPos>
+        <XFeet>24.919943999999997</XFeet>
+        <YFeet>18.28104</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
-            <Neighbor>CC3_50</Neighbor>
+            <Neighbor>CC3_78</Neighbor>
             <Neighbor>CC3_79</Neighbor>
-            <Neighbor>CC3_51</Neighbor>
+            <Neighbor>CC3_80</Neighbor>
+            <Neighbor>CC3_81</Neighbor>
+            <Neighbor>CC3_77</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1787,15 +1952,4042 @@
     </Node>
     <Node>
         <NodeID>CC3_79</NodeID>
-        <XPos>439.0</XPos>
-        <YPos>293.0</YPos>
-        <XFeet>42.238824</XFeet>
-        <YFeet>28.191288</YFeet>
-        <ZFeet>0.0</ZFeet>
+        <XPos>289.0</XPos>
+        <YPos>190.0</YPos>
+        <XFeet>27.806424</XFeet>
+        <YFeet>18.28104</YFeet>
+        <ZFeet>13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC3_78</Neighbor>
+            <Neighbor>CC3_79</Neighbor>
+            <Neighbor>CC3_80</Neighbor>
+            <Neighbor>CC3_81</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_80</NodeID>
+        <XPos>283.0</XPos>
+        <YPos>206.0</YPos>
+        <XFeet>27.229128</XFeet>
+        <YFeet>19.820496</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_78</Neighbor>
+            <Neighbor>CC3_79</Neighbor>
+            <Neighbor>CC3_80</Neighbor>
+            <Neighbor>CC3_81</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_81</NodeID>
+        <XPos>259.0</XPos>
+        <YPos>206.0</YPos>
+        <XFeet>24.919943999999997</XFeet>
+        <YFeet>19.820496</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_78</Neighbor>
+            <Neighbor>CC3_79</Neighbor>
+            <Neighbor>CC3_80</Neighbor>
+            <Neighbor>CC3_81</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_82</NodeID>
+        <XPos>239.0</XPos>
+        <YPos>146.0</YPos>
+        <XFeet>22.995624</XFeet>
+        <YFeet>14.047536</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_86</Neighbor>
+            <Neighbor>CC3_82</Neighbor>
+            <Neighbor>CC3_83</Neighbor>
+            <Neighbor>CC3_87</Neighbor>
+            <Neighbor>CC3_82</Neighbor>
+            <Neighbor>CC3_74</Neighbor>
+            <Neighbor>CC3_83</Neighbor>
             <Neighbor>CC3_77</Neighbor>
-            <Neighbor>CC3_76</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_83</NodeID>
+        <XPos>241.0</XPos>
+        <YPos>169.0</YPos>
+        <XFeet>23.188056</XFeet>
+        <YFeet>16.260504</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_86</Neighbor>
+            <Neighbor>CC3_82</Neighbor>
+            <Neighbor>CC3_83</Neighbor>
+            <Neighbor>CC3_87</Neighbor>
+            <Neighbor>CC3_82</Neighbor>
+            <Neighbor>CC3_74</Neighbor>
+            <Neighbor>CC3_83</Neighbor>
+            <Neighbor>CC3_77</Neighbor>
+            <Neighbor>CC3_88</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_84</NodeID>
+        <XPos>196.0</XPos>
+        <YPos>169.0</YPos>
+        <XFeet>18.858335999999998</XFeet>
+        <YFeet>16.260504</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_86</Neighbor>
+            <Neighbor>CC3_85</Neighbor>
+            <Neighbor>CC3_86</Neighbor>
+            <Neighbor>CC3_87</Neighbor>
+            <Neighbor>CC3_84</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_85</NodeID>
+        <XPos>194.0</XPos>
+        <YPos>146.0</YPos>
+        <XFeet>18.665903999999998</XFeet>
+        <YFeet>14.047536</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_87</Neighbor>
+            <Neighbor>CC3_85</Neighbor>
+            <Neighbor>CC3_86</Neighbor>
+            <Neighbor>CC3_87</Neighbor>
+            <Neighbor>CC3_84</Neighbor>
+            <Neighbor>CC3_220</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_86</NodeID>
+        <XPos>218.0</XPos>
+        <YPos>144.0</YPos>
+        <XFeet>20.975088</XFeet>
+        <YFeet>13.855103999999999</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_84</Neighbor>
+            <Neighbor>CC3_85</Neighbor>
+            <Neighbor>CC3_86</Neighbor>
+            <Neighbor>CC3_87</Neighbor>
+            <Neighbor>CC3_84</Neighbor>
+            <Neighbor>CC3_86</Neighbor>
+            <Neighbor>CC3_82</Neighbor>
+            <Neighbor>CC3_83</Neighbor>
+            <Neighbor>CC3_87</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_87</NodeID>
+        <XPos>220.0</XPos>
+        <YPos>168.0</YPos>
+        <XFeet>21.16752</XFeet>
+        <YFeet>16.164288</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_85</Neighbor>
+            <Neighbor>CC3_85</Neighbor>
+            <Neighbor>CC3_86</Neighbor>
+            <Neighbor>CC3_87</Neighbor>
+            <Neighbor>CC3_84</Neighbor>
+            <Neighbor>CC3_86</Neighbor>
+            <Neighbor>CC3_82</Neighbor>
+            <Neighbor>CC3_83</Neighbor>
+            <Neighbor>CC3_87</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_88</NodeID>
+        <XPos>239.0</XPos>
+        <YPos>188.0</YPos>
+        <XFeet>22.995624</XFeet>
+        <YFeet>18.088608</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_83</Neighbor>
+            <Neighbor>CC3_89</Neighbor>
+            <Neighbor>CC3_90</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_89</NodeID>
+        <XPos>235.0</XPos>
+        <YPos>205.0</YPos>
+        <XFeet>22.61076</XFeet>
+        <YFeet>19.72428</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_88</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_90</NodeID>
+        <XPos>222.0</XPos>
+        <YPos>187.0</YPos>
+        <XFeet>21.359952</XFeet>
+        <YFeet>17.992392</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_88</Neighbor>
+            <Neighbor>CC3_92</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_91</NodeID>
+        <XPos>196.0</XPos>
+        <YPos>188.0</YPos>
+        <XFeet>18.858335999999998</XFeet>
+        <YFeet>18.088608</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_91</Neighbor>
+            <Neighbor>CC3_92</Neighbor>
+            <Neighbor>CC3_93</Neighbor>
+            <Neighbor>CC3_94</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_92</NodeID>
+        <XPos>208.0</XPos>
+        <YPos>189.0</YPos>
+        <XFeet>20.012928</XFeet>
+        <YFeet>18.184824</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_91</Neighbor>
+            <Neighbor>CC3_92</Neighbor>
+            <Neighbor>CC3_93</Neighbor>
+            <Neighbor>CC3_94</Neighbor>
+            <Neighbor>CC3_90</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_93</NodeID>
+        <XPos>209.0</XPos>
+        <YPos>203.0</YPos>
+        <XFeet>20.109144</XFeet>
+        <YFeet>19.531848</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_91</Neighbor>
+            <Neighbor>CC3_92</Neighbor>
+            <Neighbor>CC3_93</Neighbor>
+            <Neighbor>CC3_94</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_94</NodeID>
+        <XPos>195.0</XPos>
+        <YPos>203.0</YPos>
+        <XFeet>18.76212</XFeet>
+        <YFeet>19.531848</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_91</Neighbor>
+            <Neighbor>CC3_92</Neighbor>
+            <Neighbor>CC3_93</Neighbor>
+            <Neighbor>CC3_94</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_95</NodeID>
+        <XPos>179.0</XPos>
+        <YPos>305.0</YPos>
+        <XFeet>17.222663999999998</XFeet>
+        <YFeet>29.345879999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_95</Neighbor>
+            <Neighbor>CC3_100</Neighbor>
+            <Neighbor>CC3_96</Neighbor>
+            <Neighbor>CC3_53</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_96</NodeID>
+        <XPos>154.0</XPos>
+        <YPos>305.0</YPos>
+        <XFeet>14.817264</XFeet>
+        <YFeet>29.345879999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_95</Neighbor>
+            <Neighbor>CC3_99</Neighbor>
+            <Neighbor>CC3_97</Neighbor>
+            <Neighbor>CC3_98</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_97</NodeID>
+        <XPos>124.0</XPos>
+        <YPos>305.0</YPos>
+        <XFeet>11.930784</XFeet>
+        <YFeet>29.345879999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_98</Neighbor>
+            <Neighbor>CC3_96</Neighbor>
+            <Neighbor>CC3_99</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_98</NodeID>
+        <XPos>123.0</XPos>
+        <YPos>334.0</YPos>
+        <XFeet>11.834567999999999</XFeet>
+        <YFeet>32.136144</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_97</Neighbor>
+            <Neighbor>CC3_99</Neighbor>
+            <Neighbor>CC3_96</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_99</NodeID>
+        <XPos>155.0</XPos>
+        <YPos>335.0</YPos>
+        <XFeet>14.91348</XFeet>
+        <YFeet>32.23236</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_98</Neighbor>
+            <Neighbor>CC3_96</Neighbor>
+            <Neighbor>CC3_97</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_100</NodeID>
+        <XPos>178.0</XPos>
+        <YPos>326.0</YPos>
+        <XFeet>17.126448</XFeet>
+        <YFeet>31.366415999999997</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_215</Neighbor>
+            <Neighbor>CC3_100</Neighbor>
+            <Neighbor>CC3_95</Neighbor>
+            <Neighbor>CC3_100</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_101</NodeID>
+        <XPos>205.0</XPos>
+        <YPos>418.0</YPos>
+        <XFeet>19.72428</XFeet>
+        <YFeet>40.218288</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_103</Neighbor>
+            <Neighbor>CC3_109</Neighbor>
+            <Neighbor>CC3_104</Neighbor>
+            <Neighbor>CC3_105</Neighbor>
+            <Neighbor>CC3_106</Neighbor>
+            <Neighbor>CC3_107</Neighbor>
+            <Neighbor>CC3_108</Neighbor>
+            <Neighbor>CC3_119</Neighbor>
+            <Neighbor>CC3_101</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_102</NodeID>
+        <XPos>185.0</XPos>
+        <YPos>393.0</YPos>
+        <XFeet>17.79996</XFeet>
+        <YFeet>37.812888</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_103</Neighbor>
+            <Neighbor>CC3_109</Neighbor>
+            <Neighbor>CC3_104</Neighbor>
+            <Neighbor>CC3_105</Neighbor>
+            <Neighbor>CC3_106</Neighbor>
+            <Neighbor>CC3_107</Neighbor>
+            <Neighbor>CC3_108</Neighbor>
+            <Neighbor>CC3_216</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_103</NodeID>
+        <XPos>153.0</XPos>
+        <YPos>396.0</YPos>
+        <XFeet>14.721048</XFeet>
+        <YFeet>38.101535999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_103</Neighbor>
+            <Neighbor>CC3_109</Neighbor>
+            <Neighbor>CC3_104</Neighbor>
+            <Neighbor>CC3_105</Neighbor>
+            <Neighbor>CC3_106</Neighbor>
+            <Neighbor>CC3_107</Neighbor>
+            <Neighbor>CC3_108</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_104</NodeID>
+        <XPos>127.0</XPos>
+        <YPos>418.0</YPos>
+        <XFeet>12.219432</XFeet>
+        <YFeet>40.218288</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_103</Neighbor>
+            <Neighbor>CC3_109</Neighbor>
+            <Neighbor>CC3_104</Neighbor>
+            <Neighbor>CC3_105</Neighbor>
+            <Neighbor>CC3_106</Neighbor>
+            <Neighbor>CC3_107</Neighbor>
+            <Neighbor>CC3_108</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_105</NodeID>
+        <XPos>128.0</XPos>
+        <YPos>451.0</YPos>
+        <XFeet>12.315648</XFeet>
+        <YFeet>43.393415999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_103</Neighbor>
+            <Neighbor>CC3_109</Neighbor>
+            <Neighbor>CC3_104</Neighbor>
+            <Neighbor>CC3_105</Neighbor>
+            <Neighbor>CC3_106</Neighbor>
+            <Neighbor>CC3_107</Neighbor>
+            <Neighbor>CC3_108</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_106</NodeID>
+        <XPos>150.0</XPos>
+        <YPos>478.0</YPos>
+        <XFeet>14.4324</XFeet>
+        <YFeet>45.991248</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_103</Neighbor>
+            <Neighbor>CC3_109</Neighbor>
+            <Neighbor>CC3_104</Neighbor>
+            <Neighbor>CC3_105</Neighbor>
+            <Neighbor>CC3_106</Neighbor>
+            <Neighbor>CC3_107</Neighbor>
+            <Neighbor>CC3_108</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_107</NodeID>
+        <XPos>180.0</XPos>
+        <YPos>474.0</YPos>
+        <XFeet>17.31888</XFeet>
+        <YFeet>45.606384</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_103</Neighbor>
+            <Neighbor>CC3_109</Neighbor>
+            <Neighbor>CC3_104</Neighbor>
+            <Neighbor>CC3_105</Neighbor>
+            <Neighbor>CC3_106</Neighbor>
+            <Neighbor>CC3_107</Neighbor>
+            <Neighbor>CC3_108</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_108</NodeID>
+        <XPos>202.0</XPos>
+        <YPos>452.0</YPos>
+        <XFeet>19.435632</XFeet>
+        <YFeet>43.489632</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_103</Neighbor>
+            <Neighbor>CC3_109</Neighbor>
+            <Neighbor>CC3_104</Neighbor>
+            <Neighbor>CC3_105</Neighbor>
+            <Neighbor>CC3_106</Neighbor>
+            <Neighbor>CC3_107</Neighbor>
+            <Neighbor>CC3_108</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_109</NodeID>
+        <XPos>168.0</XPos>
+        <YPos>432.0</YPos>
+        <XFeet>16.164288</XFeet>
+        <YFeet>41.565312</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_103</Neighbor>
+            <Neighbor>CC3_109</Neighbor>
+            <Neighbor>CC3_104</Neighbor>
+            <Neighbor>CC3_105</Neighbor>
+            <Neighbor>CC3_106</Neighbor>
+            <Neighbor>CC3_107</Neighbor>
+            <Neighbor>CC3_108</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_110</NodeID>
+        <XPos>414.0</XPos>
+        <YPos>308.0</YPos>
+        <XFeet>39.833424</XFeet>
+        <YFeet>29.634528</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_118</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_114</Neighbor>
+            <Neighbor>CC3_113</Neighbor>
+            <Neighbor>CC3_115</Neighbor>
+            <Neighbor>CC3_116</Neighbor>
+            <Neighbor>CC3_117</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+            <Neighbor>CC3_204</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_111</NodeID>
+        <XPos>429.0</XPos>
+        <YPos>321.0</YPos>
+        <XFeet>41.276664</XFeet>
+        <YFeet>30.885336</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_118</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_114</Neighbor>
+            <Neighbor>CC3_113</Neighbor>
+            <Neighbor>CC3_115</Neighbor>
+            <Neighbor>CC3_116</Neighbor>
+            <Neighbor>CC3_117</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_112</NodeID>
+        <XPos>449.0</XPos>
+        <YPos>320.0</YPos>
+        <XFeet>43.200984</XFeet>
+        <YFeet>30.789119999999997</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_118</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_114</Neighbor>
+            <Neighbor>CC3_113</Neighbor>
+            <Neighbor>CC3_115</Neighbor>
+            <Neighbor>CC3_116</Neighbor>
+            <Neighbor>CC3_117</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_200</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_113</NodeID>
+        <XPos>465.0</XPos>
+        <YPos>302.0</YPos>
+        <XFeet>44.74044</XFeet>
+        <YFeet>29.057232</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_118</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_114</Neighbor>
+            <Neighbor>CC3_113</Neighbor>
+            <Neighbor>CC3_115</Neighbor>
+            <Neighbor>CC3_116</Neighbor>
+            <Neighbor>CC3_117</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_114</NodeID>
+        <XPos>466.0</XPos>
+        <YPos>279.0</YPos>
+        <XFeet>44.836656</XFeet>
+        <YFeet>26.844264</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_118</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_114</Neighbor>
+            <Neighbor>CC3_113</Neighbor>
+            <Neighbor>CC3_115</Neighbor>
+            <Neighbor>CC3_116</Neighbor>
+            <Neighbor>CC3_117</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_115</NodeID>
+        <XPos>451.0</XPos>
+        <YPos>264.0</YPos>
+        <XFeet>43.393415999999995</XFeet>
+        <YFeet>25.401024</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_118</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_114</Neighbor>
+            <Neighbor>CC3_113</Neighbor>
+            <Neighbor>CC3_115</Neighbor>
+            <Neighbor>CC3_116</Neighbor>
+            <Neighbor>CC3_117</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_116</NodeID>
+        <XPos>431.0</XPos>
+        <YPos>264.0</YPos>
+        <XFeet>41.469096</XFeet>
+        <YFeet>25.401024</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_118</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_114</Neighbor>
+            <Neighbor>CC3_113</Neighbor>
+            <Neighbor>CC3_115</Neighbor>
+            <Neighbor>CC3_116</Neighbor>
+            <Neighbor>CC3_117</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_117</NodeID>
+        <XPos>414.0</XPos>
+        <YPos>283.0</YPos>
+        <XFeet>39.833424</XFeet>
+        <YFeet>27.229128</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_118</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_114</Neighbor>
+            <Neighbor>CC3_113</Neighbor>
+            <Neighbor>CC3_115</Neighbor>
+            <Neighbor>CC3_116</Neighbor>
+            <Neighbor>CC3_117</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_118</NodeID>
+        <XPos>442.0</XPos>
+        <YPos>295.0</YPos>
+        <XFeet>42.527471999999996</XFeet>
+        <YFeet>28.38372</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_118</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_114</Neighbor>
+            <Neighbor>CC3_113</Neighbor>
+            <Neighbor>CC3_115</Neighbor>
+            <Neighbor>CC3_116</Neighbor>
+            <Neighbor>CC3_117</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_119</NodeID>
+        <XPos>240.0</XPos>
+        <YPos>415.0</YPos>
+        <XFeet>23.091839999999998</XFeet>
+        <YFeet>39.92964</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_119</Neighbor>
+            <Neighbor>CC3_217</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_120</Neighbor>
+            <Neighbor>CC3_119</Neighbor>
+            <Neighbor>CC3_119</Neighbor>
+            <Neighbor>CC3_101</Neighbor>
+            <Neighbor>CC3_216</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_120</NodeID>
+        <XPos>251.0</XPos>
+        <YPos>440.0</YPos>
+        <XFeet>24.150216</XFeet>
+        <YFeet>42.33504</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_120</Neighbor>
+            <Neighbor>CC3_121</Neighbor>
+            <Neighbor>CC3_120</Neighbor>
+            <Neighbor>CC3_119</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_121</NodeID>
+        <XPos>267.0</XPos>
+        <YPos>448.0</YPos>
+        <XFeet>25.689671999999998</XFeet>
+        <YFeet>43.104768</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_122</Neighbor>
+            <Neighbor>CC3_121</Neighbor>
+            <Neighbor>CC3_124</Neighbor>
+            <Neighbor>CC3_123</Neighbor>
+            <Neighbor>CC3_120</Neighbor>
+            <Neighbor>CC3_121</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_122</NodeID>
+        <XPos>280.0</XPos>
+        <YPos>455.0</YPos>
+        <XFeet>26.940479999999997</XFeet>
+        <YFeet>43.778279999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_122</Neighbor>
+            <Neighbor>CC3_121</Neighbor>
+            <Neighbor>CC3_124</Neighbor>
+            <Neighbor>CC3_123</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_123</NodeID>
+        <XPos>294.0</XPos>
+        <YPos>445.0</YPos>
+        <XFeet>28.287504</XFeet>
+        <YFeet>42.81612</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_122</Neighbor>
+            <Neighbor>CC3_121</Neighbor>
+            <Neighbor>CC3_124</Neighbor>
+            <Neighbor>CC3_123</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_124</NodeID>
+        <XPos>274.0</XPos>
+        <YPos>433.0</YPos>
+        <XFeet>26.363184</XFeet>
+        <YFeet>41.661528</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_122</Neighbor>
+            <Neighbor>CC3_121</Neighbor>
+            <Neighbor>CC3_124</Neighbor>
+            <Neighbor>CC3_123</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_125</NodeID>
+        <XPos>277.0</XPos>
+        <YPos>471.0</YPos>
+        <XFeet>26.651832</XFeet>
+        <YFeet>45.317736</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_125</Neighbor>
+            <Neighbor>CC3_126</Neighbor>
+            <Neighbor>CC3_128</Neighbor>
+            <Neighbor>CC3_127</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_126</NodeID>
+        <XPos>294.0</XPos>
+        <YPos>472.0</YPos>
+        <XFeet>28.287504</XFeet>
+        <YFeet>45.413951999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_125</Neighbor>
+            <Neighbor>CC3_126</Neighbor>
+            <Neighbor>CC3_128</Neighbor>
+            <Neighbor>CC3_127</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_127</NodeID>
+        <XPos>275.0</XPos>
+        <YPos>524.0</YPos>
+        <XFeet>26.4594</XFeet>
+        <YFeet>50.417184</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_125</Neighbor>
+            <Neighbor>CC3_126</Neighbor>
+            <Neighbor>CC3_128</Neighbor>
+            <Neighbor>CC3_127</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_128</NodeID>
+        <XPos>293.0</XPos>
+        <YPos>525.0</YPos>
+        <XFeet>28.191288</XFeet>
+        <YFeet>50.5134</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_125</Neighbor>
+            <Neighbor>CC3_126</Neighbor>
+            <Neighbor>CC3_128</Neighbor>
+            <Neighbor>CC3_127</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_129</NodeID>
+        <XPos>315.0</XPos>
+        <YPos>525.0</YPos>
+        <XFeet>30.30804</XFeet>
+        <YFeet>50.5134</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_130</Neighbor>
+            <Neighbor>CC3_129</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_156</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_130</NodeID>
+        <XPos>312.0</XPos>
+        <YPos>472.0</YPos>
+        <XFeet>30.019392</XFeet>
+        <YFeet>45.413951999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_131</Neighbor>
+            <Neighbor>CC3_130</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_130</Neighbor>
+            <Neighbor>CC3_129</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_156</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_131</NodeID>
+        <XPos>313.0</XPos>
+        <YPos>430.0</YPos>
+        <XFeet>30.115607999999998</XFeet>
+        <YFeet>41.372879999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_132</Neighbor>
+            <Neighbor>CC3_137</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_131</Neighbor>
+            <Neighbor>CC3_131</Neighbor>
+            <Neighbor>CC3_130</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_132</NodeID>
+        <XPos>313.0</XPos>
+        <YPos>397.0</YPos>
+        <XFeet>30.115607999999998</XFeet>
+        <YFeet>38.197752</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_132</Neighbor>
+            <Neighbor>CC3_137</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_131</Neighbor>
+            <Neighbor>CC3_132</Neighbor>
+            <Neighbor>CC3_133</Neighbor>
+            <Neighbor>CC3_157</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_133</NodeID>
+        <XPos>298.0</XPos>
+        <YPos>399.0</YPos>
+        <XFeet>28.672368</XFeet>
+        <YFeet>38.390184</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_135</Neighbor>
+            <Neighbor>CC3_136</Neighbor>
+            <Neighbor>CC3_133</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_133</Neighbor>
+            <Neighbor>CC3_132</Neighbor>
+            <Neighbor>CC3_133</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_134</NodeID>
+        <XPos>272.0</XPos>
+        <YPos>390.0</YPos>
+        <XFeet>26.170752</XFeet>
+        <YFeet>37.52424</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_217</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_119</Neighbor>
+            <Neighbor>CC3_217</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_211</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_133</Neighbor>
+            <Neighbor>CC3_120</Neighbor>
+            <Neighbor>CC3_208</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_135</NodeID>
+        <XPos>284.0</XPos>
+        <YPos>413.0</YPos>
+        <XFeet>27.325343999999998</XFeet>
+        <YFeet>39.737207999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_135</Neighbor>
+            <Neighbor>CC3_136</Neighbor>
+            <Neighbor>CC3_133</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_136</NodeID>
+        <XPos>294.0</XPos>
+        <YPos>418.0</YPos>
+        <XFeet>28.287504</XFeet>
+        <YFeet>40.218288</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_135</Neighbor>
+            <Neighbor>CC3_136</Neighbor>
+            <Neighbor>CC3_133</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_137</NodeID>
+        <XPos>375.0</XPos>
+        <YPos>399.0</YPos>
+        <XFeet>36.080999999999996</XFeet>
+        <YFeet>38.390184</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_132</Neighbor>
+            <Neighbor>CC3_137</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_131</Neighbor>
+            <Neighbor>CC3_137</Neighbor>
+            <Neighbor>CC3_138</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_158</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_138</NodeID>
+        <XPos>414.0</XPos>
+        <YPos>399.0</YPos>
+        <XFeet>39.833424</XFeet>
+        <YFeet>38.390184</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_137</Neighbor>
+            <Neighbor>CC3_138</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_138</Neighbor>
+            <Neighbor>CC3_139</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_159</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_139</NodeID>
+        <XPos>465.0</XPos>
+        <YPos>398.0</YPos>
+        <XFeet>44.74044</XFeet>
+        <YFeet>38.293968</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_138</Neighbor>
+            <Neighbor>CC3_139</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_140</Neighbor>
+            <Neighbor>CC3_139</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_160</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_140</NodeID>
+        <XPos>506.0</XPos>
+        <YPos>398.0</YPos>
+        <XFeet>48.685296</XFeet>
+        <YFeet>38.293968</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_140</Neighbor>
+            <Neighbor>CC3_139</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_140</Neighbor>
+            <Neighbor>CC3_141</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_161</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_141</NodeID>
+        <XPos>565.0</XPos>
+        <YPos>399.0</YPos>
+        <XFeet>54.36204</XFeet>
+        <YFeet>38.390184</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_140</Neighbor>
+            <Neighbor>CC3_141</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_162</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_142</NodeID>
+        <XPos>373.0</XPos>
+        <YPos>432.0</YPos>
+        <XFeet>35.888568</XFeet>
+        <YFeet>41.565312</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_132</Neighbor>
+            <Neighbor>CC3_137</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_131</Neighbor>
+            <Neighbor>CC3_131</Neighbor>
+            <Neighbor>CC3_130</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_137</Neighbor>
+            <Neighbor>CC3_138</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_143</NodeID>
+        <XPos>415.0</XPos>
+        <YPos>431.0</YPos>
+        <XFeet>39.92964</XFeet>
+        <YFeet>41.469096</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_137</Neighbor>
+            <Neighbor>CC3_138</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_138</Neighbor>
+            <Neighbor>CC3_139</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_144</NodeID>
+        <XPos>466.0</XPos>
+        <YPos>430.0</YPos>
+        <XFeet>44.836656</XFeet>
+        <YFeet>41.372879999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_138</Neighbor>
+            <Neighbor>CC3_139</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_140</Neighbor>
+            <Neighbor>CC3_139</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_145</NodeID>
+        <XPos>507.0</XPos>
+        <YPos>428.0</YPos>
+        <XFeet>48.781512</XFeet>
+        <YFeet>41.180448</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_140</Neighbor>
+            <Neighbor>CC3_139</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_140</Neighbor>
+            <Neighbor>CC3_141</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_151</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_146</NodeID>
+        <XPos>568.0</XPos>
+        <YPos>434.0</YPos>
+        <XFeet>54.650687999999995</XFeet>
+        <YFeet>41.757743999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_140</Neighbor>
+            <Neighbor>CC3_141</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_151</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_225</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_147</NodeID>
+        <XPos>372.0</XPos>
+        <YPos>471.0</YPos>
+        <XFeet>35.792352</XFeet>
+        <YFeet>45.317736</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_131</Neighbor>
+            <Neighbor>CC3_130</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_130</Neighbor>
+            <Neighbor>CC3_129</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_156</Neighbor>
+            <Neighbor>CC3_156</Neighbor>
+            <Neighbor>CC3_155</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_148</NodeID>
+        <XPos>416.0</XPos>
+        <YPos>467.0</YPos>
+        <XFeet>40.025856</XFeet>
+        <YFeet>44.932871999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_142</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_156</Neighbor>
+            <Neighbor>CC3_155</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_155</Neighbor>
+            <Neighbor>CC3_154</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_149</NodeID>
+        <XPos>471.0</XPos>
+        <YPos>468.0</YPos>
+        <XFeet>45.317736</XFeet>
+        <YFeet>45.029088</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_143</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_155</Neighbor>
+            <Neighbor>CC3_154</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_153</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_154</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_150</NodeID>
+        <XPos>514.0</XPos>
+        <YPos>468.0</YPos>
+        <XFeet>49.455023999999995</XFeet>
+        <YFeet>45.029088</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_144</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_151</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_153</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_154</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_151</Neighbor>
+            <Neighbor>CC3_152</Neighbor>
+            <Neighbor>CC3_153</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_151</NodeID>
+        <XPos>566.0</XPos>
+        <YPos>471.0</YPos>
+        <XFeet>54.458256</XFeet>
+        <YFeet>45.317736</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_151</Neighbor>
+            <Neighbor>CC3_145</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_151</Neighbor>
+            <Neighbor>CC3_152</Neighbor>
+            <Neighbor>CC3_153</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_152</NodeID>
+        <XPos>568.0</XPos>
+        <YPos>517.0</YPos>
+        <XFeet>54.650687999999995</XFeet>
+        <YFeet>49.743672</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_151</Neighbor>
+            <Neighbor>CC3_152</Neighbor>
+            <Neighbor>CC3_153</Neighbor>
+            <Neighbor>CC3_152</Neighbor>
+            <Neighbor>CC3_194</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_153</NodeID>
+        <XPos>518.0</XPos>
+        <YPos>516.0</YPos>
+        <XFeet>49.839887999999995</XFeet>
+        <YFeet>49.647456</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_153</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_154</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_151</Neighbor>
+            <Neighbor>CC3_152</Neighbor>
+            <Neighbor>CC3_153</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_154</NodeID>
+        <XPos>469.0</XPos>
+        <YPos>515.0</YPos>
+        <XFeet>45.125304</XFeet>
+        <YFeet>49.55124</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_155</Neighbor>
+            <Neighbor>CC3_154</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_153</Neighbor>
+            <Neighbor>CC3_150</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_154</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_155</NodeID>
+        <XPos>415.0</XPos>
+        <YPos>516.0</YPos>
+        <XFeet>39.92964</XFeet>
+        <YFeet>49.647456</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_156</Neighbor>
+            <Neighbor>CC3_155</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_155</Neighbor>
+            <Neighbor>CC3_154</Neighbor>
+            <Neighbor>CC3_149</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_156</NodeID>
+        <XPos>369.0</XPos>
+        <YPos>519.0</YPos>
+        <XFeet>35.503704</XFeet>
+        <YFeet>49.936104</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_130</Neighbor>
+            <Neighbor>CC3_129</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+            <Neighbor>CC3_156</Neighbor>
+            <Neighbor>CC3_156</Neighbor>
+            <Neighbor>CC3_155</Neighbor>
+            <Neighbor>CC3_148</Neighbor>
+            <Neighbor>CC3_147</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_157</NodeID>
+        <XPos>312.0</XPos>
+        <YPos>357.0</YPos>
+        <XFeet>30.019392</XFeet>
+        <YFeet>34.349112</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_157</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_158</Neighbor>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_208</Neighbor>
+            <Neighbor>CC3_157</Neighbor>
+            <Neighbor>CC3_132</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_158</NodeID>
+        <XPos>373.0</XPos>
+        <YPos>357.0</YPos>
+        <XFeet>35.888568</XFeet>
+        <YFeet>34.349112</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+            <Neighbor>CC3_159</Neighbor>
+            <Neighbor>CC3_158</Neighbor>
+            <Neighbor>CC3_157</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_158</Neighbor>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_137</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_159</NodeID>
+        <XPos>417.0</XPos>
+        <YPos>359.0</YPos>
+        <XFeet>40.122071999999996</XFeet>
+        <YFeet>34.541544</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_200</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+            <Neighbor>CC3_159</Neighbor>
+            <Neighbor>CC3_160</Neighbor>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+            <Neighbor>CC3_159</Neighbor>
+            <Neighbor>CC3_158</Neighbor>
+            <Neighbor>CC3_138</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_160</NodeID>
+        <XPos>464.0</XPos>
+        <YPos>359.0</YPos>
+        <XFeet>44.644224</XFeet>
+        <YFeet>34.541544</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_201</Neighbor>
+            <Neighbor>CC3_161</Neighbor>
+            <Neighbor>CC3_200</Neighbor>
+            <Neighbor>CC3_160</Neighbor>
+            <Neighbor>CC3_200</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+            <Neighbor>CC3_159</Neighbor>
+            <Neighbor>CC3_160</Neighbor>
+            <Neighbor>CC3_139</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_161</NodeID>
+        <XPos>505.0</XPos>
+        <YPos>361.0</YPos>
+        <XFeet>48.589079999999996</XFeet>
+        <YFeet>34.733976</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_201</Neighbor>
+            <Neighbor>CC3_161</Neighbor>
+            <Neighbor>CC3_200</Neighbor>
+            <Neighbor>CC3_160</Neighbor>
+            <Neighbor>CC3_140</Neighbor>
+            <Neighbor>CC3_162</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_162</NodeID>
+        <XPos>565.0</XPos>
+        <YPos>360.0</YPos>
+        <XFeet>54.36204</XFeet>
+        <YFeet>34.63776</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_141</Neighbor>
+            <Neighbor>CC3_201</Neighbor>
+            <Neighbor>CC3_161</Neighbor>
+            <Neighbor>CC3_163</Neighbor>
+            <Neighbor>CC3_167</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_163</NodeID>
+        <XPos>560.0</XPos>
+        <YPos>336.0</YPos>
+        <XFeet>53.880959999999995</XFeet>
+        <YFeet>32.328576</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_162</Neighbor>
+            <Neighbor>CC3_164</Neighbor>
+            <Neighbor>CC3_165</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_164</NodeID>
+        <XPos>588.0</XPos>
+        <YPos>336.0</YPos>
+        <XFeet>56.575008</XFeet>
+        <YFeet>32.328576</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_163</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_165</NodeID>
+        <XPos>571.0</XPos>
+        <YPos>311.0</YPos>
+        <XFeet>54.939336</XFeet>
+        <YFeet>29.923175999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_163</Neighbor>
+            <Neighbor>CC3_166</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_166</NodeID>
+        <XPos>587.0</XPos>
+        <YPos>315.0</YPos>
+        <XFeet>56.478792</XFeet>
+        <YFeet>30.30804</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_165</Neighbor>
+            <Neighbor>CC2_214</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_167</NodeID>
+        <XPos>592.0</XPos>
+        <YPos>358.0</YPos>
+        <XFeet>56.959872</XFeet>
+        <YFeet>34.445327999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_162</Neighbor>
+            <Neighbor>CC3_168</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_168</NodeID>
+        <XPos>617.0</XPos>
+        <YPos>359.0</YPos>
+        <XFeet>59.365272</XFeet>
+        <YFeet>34.541544</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_168</Neighbor>
+            <Neighbor>CC3_170</Neighbor>
+            <Neighbor>CC3_169</Neighbor>
+            <Neighbor>CC3_168</Neighbor>
+            <Neighbor>CC3_167</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_169</NodeID>
+        <XPos>616.0</XPos>
+        <YPos>380.0</YPos>
+        <XFeet>59.269056</XFeet>
+        <YFeet>36.56208</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_169</Neighbor>
+            <Neighbor>CC3_168</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_170</NodeID>
+        <XPos>632.0</XPos>
+        <YPos>358.0</YPos>
+        <XFeet>60.808512</XFeet>
+        <YFeet>34.445327999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_174</Neighbor>
+            <Neighbor>CC3_170</Neighbor>
+            <Neighbor>CC3_170</Neighbor>
+            <Neighbor>CC3_172</Neighbor>
+            <Neighbor>CC3_168</Neighbor>
+            <Neighbor>CC3_170</Neighbor>
+            <Neighbor>CC3_170</Neighbor>
+            <Neighbor>CC3_171</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_171</NodeID>
+        <XPos>632.0</XPos>
+        <YPos>335.0</YPos>
+        <XFeet>60.808512</XFeet>
+        <YFeet>32.23236</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_170</Neighbor>
+            <Neighbor>CC3_171</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_172</NodeID>
+        <XPos>651.0</XPos>
+        <YPos>358.0</YPos>
+        <XFeet>62.636616</XFeet>
+        <YFeet>34.445327999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_170</Neighbor>
+            <Neighbor>CC3_172</Neighbor>
+            <Neighbor>CC3_172</Neighbor>
+            <Neighbor>CC3_173</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_173</NodeID>
+        <XPos>672.0</XPos>
+        <YPos>358.0</YPos>
+        <XFeet>64.657152</XFeet>
+        <YFeet>34.445327999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_172</Neighbor>
+            <Neighbor>CC3_173</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_174</NodeID>
+        <XPos>634.0</XPos>
+        <YPos>381.0</YPos>
+        <XFeet>61.000944</XFeet>
+        <YFeet>36.658296</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_174</Neighbor>
+            <Neighbor>CC3_176</Neighbor>
+            <Neighbor>CC3_174</Neighbor>
+            <Neighbor>CC3_170</Neighbor>
+            <Neighbor>CC3_174</Neighbor>
+            <Neighbor>CC3_175</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_175</NodeID>
+        <XPos>655.0</XPos>
+        <YPos>379.0</YPos>
+        <XFeet>63.02148</XFeet>
+        <YFeet>36.465863999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_174</Neighbor>
+            <Neighbor>CC3_175</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_176</NodeID>
+        <XPos>635.0</XPos>
+        <YPos>401.0</YPos>
+        <XFeet>61.097159999999995</XFeet>
+        <YFeet>38.582616</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_180</Neighbor>
+            <Neighbor>CC3_176</Neighbor>
+            <Neighbor>CC3_177</Neighbor>
+            <Neighbor>CC3_176</Neighbor>
+            <Neighbor>CC3_174</Neighbor>
+            <Neighbor>CC3_176</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_177</NodeID>
+        <XPos>655.0</XPos>
+        <YPos>402.0</YPos>
+        <XFeet>63.02148</XFeet>
+        <YFeet>38.678832</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_177</Neighbor>
+            <Neighbor>CC3_176</Neighbor>
+            <Neighbor>CC3_177</Neighbor>
+            <Neighbor>CC3_178</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_178</NodeID>
+        <XPos>679.0</XPos>
+        <YPos>402.0</YPos>
+        <XFeet>65.330664</XFeet>
+        <YFeet>38.678832</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_178</Neighbor>
+            <Neighbor>CC3_179</Neighbor>
+            <Neighbor>CC3_177</Neighbor>
+            <Neighbor>CC3_178</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_179</NodeID>
+        <XPos>679.0</XPos>
+        <YPos>385.0</YPos>
+        <XFeet>65.330664</XFeet>
+        <YFeet>37.04316</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_178</Neighbor>
+            <Neighbor>CC3_179</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_180</NodeID>
+        <XPos>635.0</XPos>
+        <YPos>422.0</YPos>
+        <XFeet>61.097159999999995</XFeet>
+        <YFeet>40.603152</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_180</Neighbor>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_181</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_180</Neighbor>
+            <Neighbor>CC3_176</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_181</NodeID>
+        <XPos>656.0</XPos>
+        <YPos>419.0</YPos>
+        <XFeet>63.117695999999995</XFeet>
+        <YFeet>40.314504</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_180</Neighbor>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_181</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_182</Neighbor>
+            <Neighbor>CC3_181</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_183</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_182</NodeID>
+        <XPos>674.0</XPos>
+        <YPos>420.0</YPos>
+        <XFeet>64.849584</XFeet>
+        <YFeet>40.41072</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_182</Neighbor>
+            <Neighbor>CC3_181</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_183</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_183</NodeID>
+        <XPos>674.0</XPos>
+        <YPos>438.0</YPos>
+        <XFeet>64.849584</XFeet>
+        <YFeet>42.142607999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_182</Neighbor>
+            <Neighbor>CC3_181</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_183</Neighbor>
+            <Neighbor>CC3_183</Neighbor>
+            <Neighbor>CC3_184</Neighbor>
+            <Neighbor>CC3_185</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_184</NodeID>
+        <XPos>675.0</XPos>
+        <YPos>464.0</YPos>
+        <XFeet>64.94579999999999</XFeet>
+        <YFeet>44.644224</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_183</Neighbor>
+            <Neighbor>CC3_184</Neighbor>
+            <Neighbor>CC3_185</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_185</NodeID>
+        <XPos>654.0</XPos>
+        <YPos>464.0</YPos>
+        <XFeet>62.925264</XFeet>
+        <YFeet>44.644224</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_186</Neighbor>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_185</Neighbor>
+            <Neighbor>CC3_183</Neighbor>
+            <Neighbor>CC3_184</Neighbor>
+            <Neighbor>CC3_185</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_186</NodeID>
+        <XPos>638.0</XPos>
+        <YPos>464.0</YPos>
+        <XFeet>61.385808</XFeet>
+        <YFeet>44.644224</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_186</Neighbor>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_185</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_187</NodeID>
+        <XPos>635.0</XPos>
+        <YPos>440.0</YPos>
+        <XFeet>61.097159999999995</XFeet>
+        <YFeet>42.33504</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_186</Neighbor>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_185</Neighbor>
+            <Neighbor>CC3_180</Neighbor>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_181</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_188</NodeID>
+        <XPos>659.0</XPos>
+        <YPos>441.0</YPos>
+        <XFeet>63.406344</XFeet>
+        <YFeet>42.431256</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_186</Neighbor>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_185</Neighbor>
+            <Neighbor>CC3_180</Neighbor>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_181</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_182</Neighbor>
+            <Neighbor>CC3_181</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+            <Neighbor>CC3_183</Neighbor>
+            <Neighbor>CC3_183</Neighbor>
+            <Neighbor>CC3_184</Neighbor>
+            <Neighbor>CC3_185</Neighbor>
+            <Neighbor>CC3_188</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_189</NodeID>
+        <XPos>603.0</XPos>
+        <YPos>437.0</YPos>
+        <XFeet>58.018248</XFeet>
+        <YFeet>42.046392</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_187</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+            <Neighbor>CC3_190</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_225</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_190</NodeID>
+        <XPos>611.0</XPos>
+        <YPos>460.0</YPos>
+        <XFeet>58.787976</XFeet>
+        <YFeet>44.25936</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_192</Neighbor>
+            <Neighbor>CC3_193</Neighbor>
+            <Neighbor>CC3_190</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+            <Neighbor>CC3_190</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_191</NodeID>
+        <XPos>587.0</XPos>
+        <YPos>459.0</YPos>
+        <XFeet>56.478792</XFeet>
+        <YFeet>44.163143999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_192</Neighbor>
+            <Neighbor>CC3_193</Neighbor>
+            <Neighbor>CC3_190</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+            <Neighbor>CC3_190</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+            <Neighbor>CC3_225</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_192</NodeID>
+        <XPos>587.0</XPos>
+        <YPos>492.0</YPos>
+        <XFeet>56.478792</XFeet>
+        <YFeet>47.338271999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_192</Neighbor>
+            <Neighbor>CC3_193</Neighbor>
+            <Neighbor>CC3_190</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+            <Neighbor>CC3_192</Neighbor>
+            <Neighbor>CC3_194</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_193</NodeID>
+        <XPos>616.0</XPos>
+        <YPos>492.0</YPos>
+        <XFeet>59.269056</XFeet>
+        <YFeet>47.338271999999996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_192</Neighbor>
+            <Neighbor>CC3_193</Neighbor>
+            <Neighbor>CC3_190</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_194</NodeID>
+        <XPos>588.0</XPos>
+        <YPos>517.0</YPos>
+        <XFeet>56.575008</XFeet>
+        <YFeet>49.743672</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_152</Neighbor>
+            <Neighbor>CC3_194</Neighbor>
+            <Neighbor>CC3_192</Neighbor>
+            <Neighbor>CC3_194</Neighbor>
+            <Neighbor>CC3_194</Neighbor>
+            <Neighbor>CC3_195</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_195</NodeID>
+        <XPos>619.0</XPos>
+        <YPos>515.0</YPos>
+        <XFeet>59.557703999999994</XFeet>
+        <YFeet>49.55124</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_194</Neighbor>
+            <Neighbor>CC3_195</Neighbor>
+            <Neighbor>CC3_195</Neighbor>
+            <Neighbor>CC3_196</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_196</NodeID>
+        <XPos>643.0</XPos>
+        <YPos>515.0</YPos>
+        <XFeet>61.866887999999996</XFeet>
+        <YFeet>49.55124</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_195</Neighbor>
+            <Neighbor>CC3_196</Neighbor>
+            <Neighbor>CC3_197</Neighbor>
+            <Neighbor>CC3_198</Neighbor>
+            <Neighbor>CC3_196</Neighbor>
+            <Neighbor>CC3_199</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_197</NodeID>
+        <XPos>640.0</XPos>
+        <YPos>489.0</YPos>
+        <XFeet>61.578239999999994</XFeet>
+        <YFeet>47.049624</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_197</Neighbor>
+            <Neighbor>CC3_198</Neighbor>
+            <Neighbor>CC3_196</Neighbor>
+            <Neighbor>CC3_199</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_198</NodeID>
+        <XPos>675.0</XPos>
+        <YPos>489.0</YPos>
+        <XFeet>64.94579999999999</XFeet>
+        <YFeet>47.049624</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_197</Neighbor>
+            <Neighbor>CC3_198</Neighbor>
+            <Neighbor>CC3_196</Neighbor>
+            <Neighbor>CC3_199</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_199</NodeID>
+        <XPos>673.0</XPos>
+        <YPos>514.0</YPos>
+        <XFeet>64.753368</XFeet>
+        <YFeet>49.455023999999995</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_197</Neighbor>
+            <Neighbor>CC3_198</Neighbor>
+            <Neighbor>CC3_196</Neighbor>
+            <Neighbor>CC3_199</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_200</NodeID>
+        <XPos>460.0</XPos>
+        <YPos>338.0</YPos>
+        <XFeet>44.25936</XFeet>
+        <YFeet>32.521008</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_201</Neighbor>
+            <Neighbor>CC3_161</Neighbor>
+            <Neighbor>CC3_200</Neighbor>
+            <Neighbor>CC3_160</Neighbor>
+            <Neighbor>CC3_200</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+            <Neighbor>CC3_159</Neighbor>
+            <Neighbor>CC3_160</Neighbor>
+            <Neighbor>CC3_112</Neighbor>
+            <Neighbor>CC3_200</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_201</NodeID>
+        <XPos>502.0</XPos>
+        <YPos>341.0</YPos>
+        <XFeet>48.300432</XFeet>
+        <YFeet>32.809656</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_201</Neighbor>
+            <Neighbor>CC3_161</Neighbor>
+            <Neighbor>CC3_200</Neighbor>
+            <Neighbor>CC3_160</Neighbor>
+            <Neighbor>CC3_162</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_202</NodeID>
+        <XPos>421.0</XPos>
+        <YPos>340.0</YPos>
+        <XFeet>40.506935999999996</XFeet>
+        <YFeet>32.71344</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_200</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+            <Neighbor>CC3_159</Neighbor>
+            <Neighbor>CC3_160</Neighbor>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+            <Neighbor>CC3_159</Neighbor>
+            <Neighbor>CC3_158</Neighbor>
+            <Neighbor>CC3_111</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_203</NodeID>
+        <XPos>376.0</XPos>
+        <YPos>337.0</YPos>
+        <XFeet>36.177216</XFeet>
+        <YFeet>32.424792</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_202</Neighbor>
+            <Neighbor>CC3_159</Neighbor>
+            <Neighbor>CC3_158</Neighbor>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_204</Neighbor>
+            <Neighbor>CC3_205</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_157</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_158</Neighbor>
+            <Neighbor>CC3_203</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_204</NodeID>
+        <XPos>376.0</XPos>
+        <YPos>311.0</YPos>
+        <XFeet>36.177216</XFeet>
+        <YFeet>29.923175999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_204</Neighbor>
+            <Neighbor>CC3_205</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_110</Neighbor>
+            <Neighbor>CC3_204</Neighbor>
+            <Neighbor>CC3_204</Neighbor>
+            <Neighbor>CC3_207</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_205</NodeID>
+        <XPos>328.0</XPos>
+        <YPos>310.0</YPos>
+        <XFeet>31.558847999999998</XFeet>
+        <YFeet>29.82696</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_204</Neighbor>
+            <Neighbor>CC3_205</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_205</Neighbor>
+            <Neighbor>CC3_207</Neighbor>
+            <Neighbor>CC3_208</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_206</NodeID>
+        <XPos>327.0</XPos>
+        <YPos>336.0</YPos>
+        <XFeet>31.462632</XFeet>
+        <YFeet>32.328576</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_204</Neighbor>
+            <Neighbor>CC3_205</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_157</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_158</Neighbor>
+            <Neighbor>CC3_203</Neighbor>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_208</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_207</NodeID>
+        <XPos>350.0</XPos>
+        <YPos>282.0</YPos>
+        <XFeet>33.675599999999996</XFeet>
+        <YFeet>27.132911999999997</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_205</Neighbor>
+            <Neighbor>CC3_207</Neighbor>
+            <Neighbor>CC3_204</Neighbor>
+            <Neighbor>CC3_207</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_208</NodeID>
+        <XPos>295.0</XPos>
+        <YPos>353.0</YPos>
+        <XFeet>28.38372</XFeet>
+        <YFeet>33.964248</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_208</Neighbor>
+            <Neighbor>CC3_157</Neighbor>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_208</Neighbor>
+            <Neighbor>CC3_205</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_209</NodeID>
+        <XPos>278.0</XPos>
+        <YPos>347.0</YPos>
+        <XFeet>26.748047999999997</XFeet>
+        <YFeet>33.386952</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_211</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_208</Neighbor>
+            <Neighbor>CC3_157</Neighbor>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_206</Neighbor>
+            <Neighbor>CC3_208</Neighbor>
+            <Neighbor>CC3_210</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_210</NodeID>
+        <XPos>289.0</XPos>
+        <YPos>319.0</YPos>
+        <XFeet>27.806424</XFeet>
+        <YFeet>30.692904</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC2_156</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_211</NodeID>
+        <XPos>260.0</XPos>
+        <YPos>338.0</YPos>
+        <XFeet>25.01616</XFeet>
+        <YFeet>32.521008</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_214</Neighbor>
+            <Neighbor>CC3_211</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_211</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_212</NodeID>
+        <XPos>261.0</XPos>
+        <YPos>365.0</YPos>
+        <XFeet>25.112375999999998</XFeet>
+        <YFeet>35.11884</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_217</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_214</Neighbor>
+            <Neighbor>CC3_211</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_209</Neighbor>
+            <Neighbor>CC3_211</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_213</NodeID>
+        <XPos>230.0</XPos>
+        <YPos>364.0</YPos>
+        <XFeet>22.12968</XFeet>
+        <YFeet>35.022624</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_217</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_216</Neighbor>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_214</Neighbor>
+            <Neighbor>CC3_215</Neighbor>
+            <Neighbor>CC3_214</Neighbor>
+            <Neighbor>CC3_211</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_213</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_214</NodeID>
+        <XPos>232.0</XPos>
+        <YPos>337.0</YPos>
+        <XFeet>22.322112</XFeet>
+        <YFeet>32.424792</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_216</Neighbor>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_214</Neighbor>
+            <Neighbor>CC3_215</Neighbor>
+            <Neighbor>CC3_214</Neighbor>
+            <Neighbor>CC3_211</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_213</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_215</NodeID>
+        <XPos>205.0</XPos>
+        <YPos>328.0</YPos>
+        <XFeet>19.72428</XFeet>
+        <YFeet>31.558847999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_216</Neighbor>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_214</Neighbor>
+            <Neighbor>CC3_215</Neighbor>
+            <Neighbor>CC3_215</Neighbor>
+            <Neighbor>CC3_100</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_216</NodeID>
+        <XPos>204.0</XPos>
+        <YPos>361.0</YPos>
+        <XFeet>19.628064</XFeet>
+        <YFeet>34.733976</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_216</Neighbor>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_214</Neighbor>
+            <Neighbor>CC3_215</Neighbor>
+            <Neighbor>CC3_216</Neighbor>
+            <Neighbor>CC3_102</Neighbor>
+            <Neighbor>CC3_217</Neighbor>
+            <Neighbor>CC3_119</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_217</NodeID>
+        <XPos>234.0</XPos>
+        <YPos>390.0</YPos>
+        <XFeet>22.514544</XFeet>
+        <YFeet>37.52424</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_213</Neighbor>
+            <Neighbor>CC3_212</Neighbor>
+            <Neighbor>CC3_217</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_119</Neighbor>
+            <Neighbor>CC3_217</Neighbor>
+            <Neighbor>CC3_134</Neighbor>
+            <Neighbor>CC3_216</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_218</NodeID>
+        <XPos>177.0</XPos>
+        <YPos>217.0</YPos>
+        <XFeet>17.030231999999998</XFeet>
+        <YFeet>20.878871999999998</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_219</Neighbor>
+            <Neighbor>CC3_52</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_219</NodeID>
+        <XPos>177.0</XPos>
+        <YPos>185.0</YPos>
+        <XFeet>17.030231999999998</XFeet>
+        <YFeet>17.79996</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_221</Neighbor>
+            <Neighbor>CC3_11</Neighbor>
+            <Neighbor>CC3_218</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_220</NodeID>
+        <XPos>177.0</XPos>
+        <YPos>146.0</YPos>
+        <XFeet>17.030231999999998</XFeet>
+        <YFeet>14.047536</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_222</Neighbor>
+            <Neighbor>CC3_85</Neighbor>
+            <Neighbor>CC3_221</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_221</NodeID>
+        <XPos>177.0</XPos>
+        <YPos>163.0</YPos>
+        <XFeet>17.030231999999998</XFeet>
+        <YFeet>15.683207999999999</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_219</Neighbor>
+            <Neighbor>CC3_220</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_222</NodeID>
+        <XPos>175.0</XPos>
+        <YPos>130.0</YPos>
+        <XFeet>16.837799999999998</XFeet>
+        <YFeet>12.50808</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_223</Neighbor>
+            <Neighbor>CC3_1</Neighbor>
+            <Neighbor>CC3_220</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_223</NodeID>
+        <XPos>189.0</XPos>
+        <YPos>117.0</YPos>
+        <XFeet>18.184824</XFeet>
+        <YFeet>11.257272</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_224</Neighbor>
+            <Neighbor>CC3_222</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_224</NodeID>
+        <XPos>219.0</XPos>
+        <YPos>117.0</YPos>
+        <XFeet>21.071303999999998</XFeet>
+        <YFeet>11.257272</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_223</Neighbor>
+            <Neighbor>CC2_116</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_225</NodeID>
+        <XPos>588.0</XPos>
+        <YPos>424.0</YPos>
+        <XFeet>56.575008</XFeet>
+        <YFeet>40.795584</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_225</Neighbor>
+            <Neighbor>CC3_146</Neighbor>
+            <Neighbor>CC3_191</Neighbor>
+            <Neighbor>CC3_189</Neighbor>
+            <Neighbor>CC3_226</Neighbor>
+            <Neighbor>CC3_225</Neighbor>
+            <Neighbor>CC3_228</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_226</NodeID>
+        <XPos>588.0</XPos>
+        <YPos>397.0</YPos>
+        <XFeet>56.575008</XFeet>
+        <YFeet>38.197752</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_226</Neighbor>
+            <Neighbor>CC3_225</Neighbor>
+            <Neighbor>CC3_228</Neighbor>
+            <Neighbor>CC3_226</Neighbor>
+            <Neighbor>CC3_227</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_227</NodeID>
+        <XPos>612.0</XPos>
+        <YPos>398.0</YPos>
+        <XFeet>58.884192</XFeet>
+        <YFeet>38.293968</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_226</Neighbor>
+            <Neighbor>CC3_227</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_228</NodeID>
+        <XPos>589.0</XPos>
+        <YPos>381.0</YPos>
+        <XFeet>56.671223999999995</XFeet>
+        <YFeet>36.658296</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_226</Neighbor>
+            <Neighbor>CC3_225</Neighbor>
+            <Neighbor>CC3_228</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CC3_229</NodeID>
+        <XPos>199.0</XPos>
+        <YPos>268.0</YPos>
+        <XFeet>19.146984</XFeet>
+        <YFeet>25.785888</YFeet>
+        <ZFeet>13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CC3_56</Neighbor>
+            <Neighbor>CC3_54</Neighbor>
+            <Neighbor>CC3_55</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
