@@ -682,7 +682,6 @@ public class GUIFront extends JFrame {
 						}
 					}
 					allText = allText.replace("ENDHERE", " ");
-					System.out.println(allText);
 
 					for (ArrayList<MapNode> wayPoints : paths){
 						distance += backend.getDistance(wayPoints, true); //the boolean value should not matter here 
@@ -869,7 +868,7 @@ public class GUIFront extends JFrame {
 					btnPreviousMap.setEnabled(false);
 					btnPreviousStep.setEnabled(false);
 				}
-				if (index >= paths.size() - 2){
+				if (index >= paths.size() - 1){
 					btnNextMap.setEnabled(false);
 					btnNextStep.setEnabled(false);
 				}
@@ -877,7 +876,7 @@ public class GUIFront extends JFrame {
 					btnPreviousMap.setEnabled(true);
 					btnPreviousStep.setEnabled(true);
 				}
-				if (index < paths.size() - 2){
+				if (index < paths.size() - 1){
 					btnNextStep.setEnabled(true);
 					btnNextMap.setEnabled(true);
 				}
