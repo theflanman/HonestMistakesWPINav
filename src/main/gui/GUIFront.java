@@ -232,6 +232,7 @@ public class GUIFront extends JFrame {
 
 		defaults.put("CCM.png", new double[]{-300.0, -220.0, 0.40});
 
+
 		defaults.put("GL1.png", new double[]{-80.0, -110.0, 0.74});
 		defaults.put("GL2.png", new double[]{-80.0, -110.0, 0.74});
 		defaults.put("GL3.png", new double[]{-80.0, -110.0, 0.74});
@@ -1013,20 +1014,18 @@ public class GUIFront extends JFrame {
 				
 				System.out.println("Starts Saving Path Images");
 				
+				int holdIndex = index;
 				PanelSave savePanel = new PanelSave();
 				
 				//TODO Find a variable that includes the list of nodes in a path
 				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(paths);
+				index = 0;
+				
+				int countFiles = 1;
 
 				// Goes through each of the maps in the path and captures and saves an image
 				for (LocalMap local: pathLocalMaps) {
-					savePanel.saveImage(panelMap, local.getMapImageName());
-					if (index < paths.size() - 1){
-						index ++;
-					}
-					if (index >= paths.size() - 1){
-						index = 0;
-					}
+					
 					
 					LocalMap localMap = paths.get(index).get(0).getLocalMap();
 					panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
@@ -1049,12 +1048,44 @@ public class GUIFront extends JFrame {
 
 					thisRoute = paths.get(index);
 					drawLine = true;
+					
+					savePanel.saveImage(panelMap, "Map #" + countFiles + "_" + local.getMapImageName());
+					countFiles ++;
+					if (index < paths.size() - 1){
+						index ++;
+					}
+					if (index >= paths.size() - 1){
+						index = 0;
+					}
 				}
 				System.out.println("Finished Saving Path Images");
 				
+				index = holdIndex;
 				// Email Pop-Up
 				EmailGUI newEmail = new EmailGUI();
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
+				
+				LocalMap localMap = paths.get(index).get(0).getLocalMap();
+				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
+				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
+				String previousMap = backend.getLocalMap().getMapImageName();
+				panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+				backend.setLocalMap(localMap);
+
+				double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+				double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+				panelMap.panX = defPan[0];
+				panelMap.panY = defPan[1];
+				panelMap.setScale(defPan[2]);
+				offsetX = defPan[0] - tempPan[0];
+				offsetY = defPan[1] - tempPan[1];
+				for(MapNode n : backend.getLocalMap().getMapNodes()){
+					n.setXPos(n.getXPos() + offsetX);
+					n.setYPos(n.getYPos() + offsetY);
+				}
+
+				thisRoute = paths.get(index);
+				drawLine = true;
 			}
 		});
 		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
