@@ -443,12 +443,7 @@ public class GUIFront extends JFrame {
 					for (MapNode mapnode : globalMap.getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
-							//startNode = mapnode; //set the startNode and place it on the map
-							/*globalMap.setStartNode(node);
-							globalMap.getChosenNodes().add(node);
-							globalMap.getAllNodes().add(node);
-							backend.getLocalMap().setStart(node);//remember to set the start node of that localMap the user is currently on
-							btnClear.setEnabled(true); //enable clear button if some node has been added*/
+							btnClear.setEnabled(true); //enable clear button if some node has been added
 							System.out.println("This is the starting node");
 							mapnode.setXFeet(mapnode.getLocalMap().getMapScale()*mapnode.getXPos());
 							mapnode.setYFeet(mapnode.getLocalMap().getMapScale()*mapnode.getYPos());
@@ -457,13 +452,13 @@ public class GUIFront extends JFrame {
 								globalMap.setStartNode(mapnode);
 								globalMap.getChosenNodes().add(globalMap.getStartNode());
 							}
-							//LocalMap localmap = globalMap.getStartNode().getLocalMap();
-							//localmap.setStart(globalMap.getStartNode());
+							LocalMap localmap = globalMap.getStartNode().getLocalMap();
+							localmap.setStart(globalMap.getStartNode());
 							panelMap.setMapImage(new ProxyImage(globalMap.getStartNode().getLocalMap().getMapImageName()));
 							panelMap.setMapNodes(globalMap.getStartNode().getLocalMap().getMapNodes());
 							String previousMap = backend.getLocalMap().getMapImageName();
 							panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-							backend.setLocalMap(globalMap.getStartNode().getLocalMap());
+							backend.setLocalMap(localmap);
 							backend.getLocalMap().setStart(globalMap.getStartNode());
 							double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 							double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
@@ -1770,7 +1765,7 @@ public class GUIFront extends JFrame {
 			globalMap.setEndNode(null);
 		}
 		globalMap.setStartNode(null);
-		globalMap.getAllNodes().clear();
+		//globalMap.getAllNodes().clear();
 		reset = true;
 		listModel.removeAllElements(); // clear directions
 
