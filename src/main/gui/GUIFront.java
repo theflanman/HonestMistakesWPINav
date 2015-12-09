@@ -19,6 +19,7 @@ import javax.swing.JList;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.slidinglayout.SLConfig;
 import aurelienribon.slidinglayout.SLKeyframe;
@@ -45,6 +46,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
 import javax.swing.border.MatteBorder;
 
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import main.*;
 import main.util.Constants;
@@ -97,7 +101,7 @@ public class GUIFront extends JFrame {
 	public static HashMap<String, double[]> defaults = new HashMap<String, double[]>();
 	public static double offsetX = 0;
 	public static double offsetY = 0;
-	
+
 	public static double[] panNums = {0.0, 0.0};
 	static AffineTransform transform; // the current state of image transformation
 	static Point2D mainReferencePoint; // the reference point indicating where the click started from during transformation
@@ -109,6 +113,7 @@ public class GUIFront extends JFrame {
 	private static JTextField textFieldEnd, textFieldStart;
 	private JLabel lblStart, lblEnd;
 	private static GroupLayout gl_contentPane;
+	private static boolean[] mapViewButtons;
 
 	// Directions Components
 	private static JLabel lblStepByStep, lblClickHere, lblDistance;
@@ -128,7 +133,7 @@ public class GUIFront extends JFrame {
 	private JMenuItem mntmAK1, mntmAK2, mntmAK3, mntmAKB, mntmBoy1, mntmBoy2, mntmBoy3, mntmBoyB, mntmCC1, mntmCC2, mntmCC3, mntmCCM;
 	private JMenuItem mntmGL1, mntmGL2, mntmGL3, mntmGLB, mntmGLSB, mntmHH1, mntmHH2, mntmHH3, mntmHHG1, mntmHHG2, mntmPC1, mntmPC2;
 	private JMenuItem mntmSH1, mntmSH2, mntmSH3, mntmSHB, mntmEmail, mntmExit;
-	
+
 	private SLPanel slidePanel;
 	private JPanel stepByStepUI;
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
@@ -173,7 +178,7 @@ public class GUIFront extends JFrame {
 		}
 
 		backend = initial;
-	
+
 		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
 
 		globalMap.setLocalMaps(localMapList);
@@ -201,21 +206,21 @@ public class GUIFront extends JFrame {
 		setBounds(0, 0, 1412, 743);
 		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
-				
+
 		panHandle = new PanHandler();
 		zoomHandle = new ZoomHandler();
 
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		initializeMenuBar();
-		
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(backgroundColor);
 		setContentPane(contentPane);
-		
+
 		// Adding default values for pan and zoom to the hashmap
-		
+
 		defaults.put("AK1.png", new double[]{-80.0, -125.0, 0.78});
 		defaults.put("AK2.png", new double[]{-80.0, -130.0, 0.80});
 		defaults.put("AK3.png", new double[]{-80.0, -120.0, 0.78});
@@ -252,7 +257,7 @@ public class GUIFront extends JFrame {
 		defaults.put("SH2.png", new double[]{-80.0, -140.0, 0.90});
 		defaults.put("SH3.png", new double[]{-80.0, -110.0, 0.90});
 		defaults.put("SHB.png", new double[]{-80.0, -110.0, 0.90});
-		
+
 
 		// Image of the default map loaded into backend
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
@@ -416,6 +421,33 @@ public class GUIFront extends JFrame {
 		mainPanel = new JTabbedPane();
 		mainPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		mainPanel.setBackground(backgroundColor);
+		mapViewButtons = new boolean[2];
+		mainPanel.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				System.out.println("in CHANGE LISTENER!");
+				
+				if(mainPanel.getSelectedIndex() == 0){					
+					btnRoute.setEnabled(mapViewButtons[0]);
+					btnClear.setEnabled(mapViewButtons[1]);
+				}
+				else if(mainPanel.getSelectedIndex() == 1){
+					storeButtonStates();
+					
+					btnClear.setEnabled(false);
+					btnRoute.setEnabled(false);	
+				}
+			}
+			
+			private void storeButtonStates(){
+				if(btnRoute.isEnabled()) mapViewButtons[0] = true;
+				else mapViewButtons[0] = false;
+				
+				if(btnClear.isEnabled()) mapViewButtons[1] = true;
+				else mapViewButtons[1] = false;
+			}
+		});
+		
 		textFieldStart = new JTextField();
 		textFieldStart.setText("");
 		//give start text field an action
@@ -444,17 +476,18 @@ public class GUIFront extends JFrame {
 		});
 
 		btnRoute = new JButton("Route");
+		btnRoute.setEnabled(false);
 		btnRoute.setBackground(routeButtonColor);
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
-					
+
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH); //sets the speaker to play the designated sound for calculate route
 					speaker.play();
-					
-					
+
+
 					//refer to Andrew Petit if you get confused with the next 250 or so lines
 					//get me routes for different maps -- waypoint functionallity is added here 
 					ArrayList<MapNode> getNodesOnSameMap = new ArrayList<MapNode>(); //will add all nodes from the same map to this 
@@ -493,7 +526,7 @@ public class GUIFront extends JFrame {
 								}
 								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
 								stepByStep.add(directions);
-								
+
 								for (MapNode mapnode : getNodesOnDifferentMap.get(0)){ 
 									getNodesOnSameMap.add(mapnode);
 								}
@@ -545,7 +578,7 @@ public class GUIFront extends JFrame {
 
 					//reinitialize getNodesOnSameMap for the next time this fun method is run...
 					getNodesOnSameMap = new ArrayList<MapNode>();
-					
+
 					//for each route set start and end values for that routes local map
 					for (int i = 0; i < paths.size() - 1; i++){
 						LocalMap localmap = paths.get(i).get(0).getLocalMap();
@@ -557,7 +590,7 @@ public class GUIFront extends JFrame {
 							localmap.setEnd(paths.get(i).get(0));
 						}
 					}
-					
+
 					System.out.println("IMAGE NAME: " + paths.get(0).get(0).getLocalMap().getMapImageName());
 					GUIFront.changeStreetView(gl_contentPane, paths.get(0).get(0).getLocalMap().getMapImageName());					
 
@@ -580,19 +613,19 @@ public class GUIFront extends JFrame {
 						n.setXPos(n.getXPos() + offsetX);
 						n.setYPos(n.getYPos() + offsetY);
 					}					
-					
+
 					//set the initial index at 0 so that when pressing nextMap button you can scroll to the next map or previous map
 					index = 0;
-					
+
 					//set the initial index 2 at 0 so that when pressing nextstep button you can go to the next step or previous step
 					index2 = 0;
 					//if we have more than one arraylist in paths this means that more than one map will be shown to the user
 					if (paths.size() > 1){
 						btnNextMap.setEnabled(true);
 					}
-					
+
 					btnNextStep.setEnabled(true);
-					
+
 					//draw the line on the map
 					drawLine = true;
 					//set the initial distance as 0 
@@ -604,17 +637,17 @@ public class GUIFront extends JFrame {
 							listModel.addElement(string); // add it to the list model
 						}
 					}
-					
+
 					for (ArrayList<MapNode> wayPoints : paths){
 						distance += backend.getDistance(wayPoints, true); //the boolean value should not matter here 
 					}
 
 					lblDistance.setText("Distance in feet:" + distance);
-					//this sets the textarea with the step by step directions
+
 					btnClear.setEnabled(true);
-					
-					
+					btnRoute.setEnabled(false);
 				}
+
 			}
 		});
 		/**
@@ -628,7 +661,6 @@ public class GUIFront extends JFrame {
 		panelMap.setBackground(backgroundColor);
 		panels.add(panelMap);
 		panelDirections = new TweenPanel("2");
-		
 
 		/**
 		 * Adding new components onto the Step By Step slideout panel
@@ -655,14 +687,14 @@ public class GUIFront extends JFrame {
 
 		// Create a new list and be able to get the current width ofthe viewport it is contained in (the scrollpane)
 		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 7); // 7 pixels per 1 character
-			
+
 		listDirections = new JList<String>(listModel);
 		listDirections.setCellRenderer(renderer);
 		listDirections.setFixedCellWidth(MAX_LIST_WIDTH); // give it a set width in pixels
 		scrollPane.setViewportView(listDirections);
 		listDirections.setVisible(false);
 		listDirections.setVisibleRowCount(10); // only shows 10 directions before scrolling
-		
+
 		lblDistance = new JLabel();
 		lblDistance.setBackground(sideBarColor);
 		lblDistance.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -681,16 +713,16 @@ public class GUIFront extends JFrame {
 		 * adjust the sizes
 		 */
 		mainConfig = new SLConfig(slidePanel)
-				.gap(10, 10)
-				.row(1f).col(700).col(50) // 700xH | 50xH
-				.place(0, 0, panelMap)
-				.place(0, 1, panelDirections);
+		.gap(10, 10)
+		.row(1f).col(700).col(50) // 700xH | 50xH
+		.place(0, 0, panelMap)
+		.place(0, 1, panelDirections);
 
 		panelDirectionsConfig = new SLConfig(slidePanel)
-				.gap(10, 10)
-				.row(1f).col(550).col(200) // 550xH | 200xH
-				.place(0, 0, panelMap)
-				.place(0, 1, panelDirections);
+		.gap(10, 10)
+		.row(1f).col(550).col(200) // 550xH | 200xH
+		.place(0, 0, panelMap)
+		.place(0, 1, panelDirections);
 
 		// Initialize tweening
 		slidePanel.setTweenManager(SLAnimator.createTweenManager());
@@ -726,7 +758,7 @@ public class GUIFront extends JFrame {
 				btnPreviousStep.setEnabled(false);
 				btnNextStep.setEnabled(true);
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
-				
+
 				GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());
 				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
 				panelMap.setMapNodes(localMap.getMapNodes());
@@ -778,11 +810,11 @@ public class GUIFront extends JFrame {
 				drawLine3 = false;
 				btnPreviousStep.setEnabled(false);
 				btnNextStep.setEnabled(true);
-				
+
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
-				
+
 				GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());
-				
+
 				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
 				panelMap.setMapNodes(localMap.getMapNodes());
 				String previousMap = backend.getLocalMap().getMapImageName();
@@ -800,13 +832,13 @@ public class GUIFront extends JFrame {
 					n.setXPos(n.getXPos() + offsetX);
 					n.setYPos(n.getYPos() + offsetY);
 				}
-				
+
 				thisRoute = paths.get(index);
 				drawLine = true;
 			}
 		});
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
-		
+
 		btnNextStep = new JButton("Next Step->");
 		btnNextStep.setEnabled(false);
 		btnNextStep.setBackground(otherButtonsColor);
@@ -858,69 +890,69 @@ public class GUIFront extends JFrame {
 		// Group Layout code for all components
 		gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(10)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblStart)
-								.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addComponent(lblInvalidEntry)
-							.addGap(227)
-							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnClear))
-						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(79)
-					.addComponent(btnPreviousMap)
-					.addGap(37)
-					.addComponent(btnPreviousStep)
-					.addGap(75)
-					.addComponent(btnNextStep)
-					.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-					.addComponent(btnNextMap)
-					.addGap(170))
-		);
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addGap(10)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblStart)
+												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+												.addGap(18)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+														.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+														.addGap(18)
+														.addComponent(lblInvalidEntry)
+														.addGap(227)
+														.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+														.addGap(18)
+														.addComponent(btnClear))
+														.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+														.addGroup(gl_contentPane.createSequentialGroup()
+																.addGap(79)
+																.addComponent(btnPreviousMap)
+																.addGap(37)
+																.addComponent(btnPreviousStep)
+																.addGap(75)
+																.addComponent(btnNextStep)
+																.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+																.addComponent(btnNextMap)
+																.addGap(170))
+				);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblStart)
-							.addGap(6)
-							.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblEnd)
-							.addGap(6)
-							.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(24)
-							.addComponent(lblInvalidEntry))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnRoute))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnClear)))
-					.addGap(18)
-					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnPreviousMap)
-						.addComponent(btnNextMap)
-						.addComponent(btnNextStep)
-						.addComponent(btnPreviousStep))
-					.addGap(35))
-		);
+						.addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(lblStart)
+										.addGap(6)
+										.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addGroup(gl_contentPane.createSequentialGroup()
+												.addComponent(lblEnd)
+												.addGap(6)
+												.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+												.addGroup(gl_contentPane.createSequentialGroup()
+														.addGap(24)
+														.addComponent(lblInvalidEntry))
+														.addGroup(gl_contentPane.createSequentialGroup()
+																.addGap(11)
+																.addComponent(btnRoute))
+																.addGroup(gl_contentPane.createSequentialGroup()
+																		.addGap(11)
+																		.addComponent(btnClear)))
+																		.addGap(18)
+																		.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
+																		.addGap(18)
+																		.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+																				.addComponent(btnPreviousMap)
+																				.addComponent(btnNextMap)
+																				.addComponent(btnNextStep)
+																				.addComponent(btnPreviousStep))
+																				.addGap(35))
+				);
 
 		GUIFront.changeStreetView(gl_contentPane, Constants.DEFAULT_STREET_IMAGE);
 
@@ -931,7 +963,8 @@ public class GUIFront extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
-		public void  setColoring(String scheme){
+	
+	public void  setColoring(String scheme){
 		colors = allSchemes.setColorScheme(scheme);
 
 		routeButtonColor = colors.getRouteButtonColor(); // update components
@@ -951,15 +984,15 @@ public class GUIFront extends JFrame {
 		contentPane.setBackground(backgroundColor);
 		btnClear.setBackground(otherButtonsColor);
 	}
-		
+
 	public static void changeStreetView(GroupLayout gl_contentPane, String imagePath){
-			
+
 		try{
 			mainPanel.remove(1); // remove 2nd tab
 		} catch(IndexOutOfBoundsException e){
 			// do nothing; there just isn't a 2nd tab 
 		}
-		
+
 		// connect Street View Panel to mainPanel
 		SLPanel streetViewSLPanel = new SLPanel();
 		mainPanel.addTab("Street View", null, streetViewSLPanel, null);
@@ -967,15 +1000,16 @@ public class GUIFront extends JFrame {
 		
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
 		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
-				
+
 		SLConfig streetViewConfig = new SLConfig(streetViewSLPanel)
 		.gap(10, 10)
 		.row(1f).col(700).col(50) // 700xH | 50xH
 		.place(0, 0, streetViewTweenPanel);
-		
+
 		streetViewSLPanel.initialize(streetViewConfig);
+		
 	}
-	
+
 	/*
 	 * @author Nick Gigliotti
 	 * 
@@ -999,7 +1033,7 @@ public class GUIFront extends JFrame {
 		}
 		return pathLocalMaps;
 	}
-	
+
 	// This goes in GUIFront
 	public void initializeMenuBar(){
 		// ---- File Menu ----
@@ -1010,11 +1044,11 @@ public class GUIFront extends JFrame {
 		mntmEmail.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				
+
 				System.out.println("Starts Saving Path Images");
-				
+
 				PanelSave savePanel = new PanelSave();
-				
+
 				//TODO Find a variable that includes the list of nodes in a path
 				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(paths);
 
@@ -1027,7 +1061,7 @@ public class GUIFront extends JFrame {
 					if (index >= paths.size() - 1){
 						index = 0;
 					}
-					
+
 					LocalMap localMap = paths.get(index).get(0).getLocalMap();
 					panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
 					panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
@@ -1051,7 +1085,7 @@ public class GUIFront extends JFrame {
 					drawLine = true;
 				}
 				System.out.println("Finished Saving Path Images");
-				
+
 				// Email Pop-Up
 				EmailGUI newEmail = new EmailGUI();
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
@@ -1070,7 +1104,7 @@ public class GUIFront extends JFrame {
 		// ---- Options -----
 		mnOptions = new JMenu("Options");
 		menuBar.add(mnOptions);
-		
+
 		// ---- Options -----
 		mnLocations = new JMenu("Locations");
 		menuBar.add(mnLocations);
@@ -1078,7 +1112,7 @@ public class GUIFront extends JFrame {
 		//Color Scheme
 		mnColorScheme = new JMenu("Color Scheme");
 		mnOptions.add(mnColorScheme);
-		
+
 		mntmDefaultCampus = new JMenuItem("Default Campus");
 		mntmDefaultCampus.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -1100,7 +1134,7 @@ public class GUIFront extends JFrame {
 				setColoring("WPI Default"); // set the color scheme to grayscale
 			}
 		});
-		
+
 		mntmFlowerPower = new JMenuItem("Flower Power");
 		mntmFlowerPower.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -1108,7 +1142,7 @@ public class GUIFront extends JFrame {
 			}
 		});
 
-				
+
 		mntmAllBlue = new JMenuItem("All Blue");
 		mntmAllBlue.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -1384,17 +1418,17 @@ public class GUIFront extends JFrame {
 		mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
 	}
-	
+
 	/**
 	 * Changes the map to the .localmap at the given index in the file system
 	 * @param index The index of the map to be loaded (AK = 0, SHB = 27)
 	 * @param panX The default panning horizontal value for the map to be loaded
 	 * @param panY The default panning vertical value for the map to be loaded
- 	 * @param scale The default zoom scale for the map to be loaded
+	 * @param scale The default zoom scale for the map to be loaded
 	 */
 	public static void changeMapTo(int index, int panX, int panY, double scale){
 		GUIFront.changeStreetView(gl_contentPane, globalMap.getLocalMaps().get(index).getMapImageName());
-		
+
 		panelMap.setMapImage(new ProxyImage(globalMap.getLocalMaps().get(index).getMapImageName()));
 		panelMap.setMapNodes(globalMap.getLocalMaps().get(index).getMapNodes());
 		String previousMap = backend.getLocalMap().getMapImageName();
@@ -1414,8 +1448,8 @@ public class GUIFront extends JFrame {
 			n.setYPos(n.getYPos() + offsetY);
 		}
 	}
-	
-	
+
+
 	/**
 	 * Enable/Disable actions
 	 */
@@ -1454,22 +1488,22 @@ public class GUIFront extends JFrame {
 				.play();
 		}};
 
-	private final Runnable panelDirectionsBackAction = new Runnable() {
-		@Override 
-		public void run() {
-			disableActions();
-			currentlyOpen = false;
+		private final Runnable panelDirectionsBackAction = new Runnable() {
+			@Override 
+			public void run() {
+				disableActions();
+				currentlyOpen = false;
 
-			slidePanel.createTransition()
-			.push(new SLKeyframe(mainConfig, 0.6f)
-					.setCallback(new SLKeyframe.Callback() {
-						@Override 
-						public void done() {
-							panelDirections.setAction(panelDirectionsAction);
-							enableActions();
-						}}))
-			.play();
-		}};
+				slidePanel.createTransition()
+				.push(new SLKeyframe(mainConfig, 0.6f)
+				.setCallback(new SLKeyframe.Callback() {
+					@Override 
+					public void done() {
+						panelDirections.setAction(panelDirectionsAction);
+						enableActions();
+					}}))
+					.play();
+			}};
 
 			/**
 			 * @author Andrew Petit
@@ -1624,7 +1658,7 @@ public class GUIFront extends JFrame {
 				}
 
 			}
-			
+
 			public static class TweenPanel extends JPanel {
 				ArrayList<MapNode> localNodes;
 				public ArrayList<MapNode> chosenNodes;
@@ -1641,12 +1675,12 @@ public class GUIFront extends JFrame {
 
 				double panX, panY;
 				double zoomRatio;
-				
+
 				String packageName;
 				boolean isMapView;
-				
+
 				Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, gLPolygon, hHPolygon, sHPolygon, fPolygon;
-				
+
 				/**
 				 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
 				 * but it functions better as a private class
@@ -1659,9 +1693,9 @@ public class GUIFront extends JFrame {
 						this.isMapView = true;
 
 					this.packageName = packageName;
-					
+
 					setLayout(new BorderLayout());
-										
+
 					globalMap.setAllNodes(globalMap.getMapNodes());
 
 					this.localNodes = mapNodes;
@@ -1674,9 +1708,9 @@ public class GUIFront extends JFrame {
 
 					this.mapImage = mapPath;
 					this.panelID = panelID;
-					
+
 					zoomRatio = 1;
-					
+
 					initializePolygons();
 
 					addMouseListener(panHandle);
@@ -1685,229 +1719,229 @@ public class GUIFront extends JFrame {
 
 					if(this.isMapView){
 						addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseClicked(MouseEvent me) {
-							if (allowSetting == true){
-								
-								// Reset the main reference point incase we are clicking away from a popup menu
-								try {
-									mainReferencePoint = transform.inverseTransform(me.getPoint(), null);
-								} catch (NoninvertibleTransformException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
-								
-								// figure out where the closest map node is, set that node as a startnode the StartingNode
-								MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
-								System.out.println("Node found is: " + node.getNodeID());
-								
-								//AK
-								if(aKPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Atwater Kent"))
+							@Override
+							public void mouseClicked(MouseEvent me) {
+								if (allowSetting == true){
+
+									// Reset the main reference point incase we are clicking away from a popup menu
+									try {
+										mainReferencePoint = transform.inverseTransform(me.getPoint(), null);
+									} catch (NoninvertibleTransformException e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
+
+									// figure out where the closest map node is, set that node as a startnode the StartingNode
+									MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
+									System.out.println("Node found is: " + node.getNodeID());
+
+									//AK
+									if(aKPolygon.contains(mainReferencePoint)){
+										JPopupMenu popupMenu = new JPopupMenu();
+
+										popupMenu.add(new JMenuItem("Atwater Kent"))
 										.setFont(new Font("Helvetica", Font.BOLD, 12));
-									popupMenu.addSeparator();
-									
-									popupMenu.add(new JMenuItem("Floor 1"))
+										popupMenu.addSeparator();
+
+										popupMenu.add(new JMenuItem("Floor 1"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(0, 0, 0, 1); // atwater kent 1
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 2"))
+										popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(1, 0, 0, 1); // atwater kent 2
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 3"))
+										popupMenu.add(new JMenuItem("Floor 3"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(2, 0, 0, 1); // atwater kent 3
 											}
 										});
-									popupMenu.add(new JMenuItem("Basement"))
+										popupMenu.add(new JMenuItem("Basement"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(3, 0, 0, 1); // atwater kent basement
 											}
 										});
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());							
-									return; 
-								}
-								
-								//Boynton
-								if(bPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Boynton Hall"))
+
+										popupMenu.show(panelMap, me.getX(), me.getY());							
+										return; 
+									}
+
+									//Boynton
+									if(bPolygon.contains(mainReferencePoint)){
+										JPopupMenu popupMenu = new JPopupMenu();
+
+										popupMenu.add(new JMenuItem("Boynton Hall"))
 										.setFont(new Font("Helvetica", Font.BOLD, 12));
-									popupMenu.addSeparator();
-									
-									popupMenu.add(new JMenuItem("Floor 1"))
+										popupMenu.addSeparator();
+
+										popupMenu.add(new JMenuItem("Floor 1"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(4, 0, 0, 1); // boynton hall 1
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 2"))
+										popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(5, 0, 0, 1); // boynton hall 2
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 3"))
+										popupMenu.add(new JMenuItem("Floor 3"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(6, 0, 0, 1); // boynton hall 3
 											}
 										});
-									popupMenu.add(new JMenuItem("Basement"))
+										popupMenu.add(new JMenuItem("Basement"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(7, 0, 0, 1); // boynton hall basement
 											}
 										});
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}
-								
-								//Campus Center
-								if(cCPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Campus Center"))
+
+										popupMenu.show(panelMap, me.getX(), me.getY());
+										return; 
+									}
+
+									//Campus Center
+									if(cCPolygon.contains(mainReferencePoint)){
+										JPopupMenu popupMenu = new JPopupMenu();
+
+										popupMenu.add(new JMenuItem("Campus Center"))
 										.setFont(new Font("Helvetica", Font.BOLD, 12));
-									popupMenu.addSeparator();
-									
-									popupMenu.add(new JMenuItem("Floor 1"))
+										popupMenu.addSeparator();
+
+										popupMenu.add(new JMenuItem("Floor 1"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(8, 0, 0, 1); // campus center 1
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 2"))
+										popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(9, 0, 0, 1); // campus center 2
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 3"))
+										popupMenu.add(new JMenuItem("Floor 3"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(10, 0, 0, 1); // campus center 3
 											}
 										});
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}
-								
-								//Library
-								if(gLPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Gordon Library"))
+
+										popupMenu.show(panelMap, me.getX(), me.getY());
+										return; 
+									}
+
+									//Library
+									if(gLPolygon.contains(mainReferencePoint)){
+										JPopupMenu popupMenu = new JPopupMenu();
+
+										popupMenu.add(new JMenuItem("Gordon Library"))
 										.setFont(new Font("Helvetica", Font.BOLD, 12));
-									popupMenu.addSeparator();
-									
-									popupMenu.add(new JMenuItem("Floor 1"))
+										popupMenu.addSeparator();
+
+										popupMenu.add(new JMenuItem("Floor 1"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(12, 0, 0, 1); // library 1
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 2"))
+										popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(13, 0, 0, 1); // library 2
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 3"))
+										popupMenu.add(new JMenuItem("Floor 3"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(14, 0, 0, 1); // library 3
 											}
 										});
-									popupMenu.add(new JMenuItem("Basement"))
+										popupMenu.add(new JMenuItem("Basement"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(15, 0, 0, 1); // library basement
 											}
 										});
-									popupMenu.add(new JMenuItem("Sub Basement"))
-									.addActionListener(new ActionListener(){
-										@Override
-										public void actionPerformed(ActionEvent arg0) {
-											changeMapTo(16, 0, 0, 1); // library sub basement
-										}
-									});
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}
-								
-								//Higgins
-								if(hHPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Higgins House"))
+										popupMenu.add(new JMenuItem("Sub Basement"))
+										.addActionListener(new ActionListener(){
+											@Override
+											public void actionPerformed(ActionEvent arg0) {
+												changeMapTo(16, 0, 0, 1); // library sub basement
+											}
+										});
+
+										popupMenu.show(panelMap, me.getX(), me.getY());
+										return; 
+									}
+
+									//Higgins
+									if(hHPolygon.contains(mainReferencePoint)){
+										JPopupMenu popupMenu = new JPopupMenu();
+
+										popupMenu.add(new JMenuItem("Higgins House"))
 										.setFont(new Font("Helvetica", Font.BOLD, 12));
-									popupMenu.addSeparator();
-									
-									popupMenu.add(new JMenuItem("Floor 1"))
+										popupMenu.addSeparator();
+
+										popupMenu.add(new JMenuItem("Floor 1"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(17, 0, 0, 1); // higgins house 1
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 2"))
+										popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(18, 0, 0, 1); // higgins house 2
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 3"))
+										popupMenu.add(new JMenuItem("Floor 3"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(19, 0, 0, 1); // higgins house 3
 											}
 										});
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}
-								
-								// Higgins House Garage
-								/*
+
+										popupMenu.show(panelMap, me.getX(), me.getY());
+										return; 
+									}
+
+									// Higgins House Garage
+									/*
 								if(hHGPolygon.contains(mainReferencePoint)){
 									JPopupMenu popupMenu = new JPopupMenu();
-									
+
 									popupMenu.add(new JMenuItem("Higgins House Garage"))
 										.setFont(new Font("Helvetica", Font.BOLD, 12));
 									popupMenu.addSeparator();
-									
+
 									popupMenu.add(new JMenuItem("Floor 1"))
 										.addActionListener(new ActionListener(){
 											@Override
@@ -1923,110 +1957,110 @@ public class GUIFront extends JFrame {
 											}
 										});
 								}*/
-								
-								//Project Center
-								if(pCPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Project Center"))
+
+									//Project Center
+									if(pCPolygon.contains(mainReferencePoint)){
+										JPopupMenu popupMenu = new JPopupMenu();
+
+										popupMenu.add(new JMenuItem("Project Center"))
 										.setFont(new Font("Helvetica", Font.BOLD, 12));
-									popupMenu.addSeparator();
-									
-									popupMenu.add(new JMenuItem("Floor 1"))
+										popupMenu.addSeparator();
+
+										popupMenu.add(new JMenuItem("Floor 1"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(22, 0, 0, 1); // project center 1
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 2"))
+										popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(23, 0, 0, 1); // project center 2
 											}
 										});
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}
-								
-								
-								//Stratton
-								if(sHPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									System.out.println("X: " + mainReferencePoint.getX() + "\tY: " + mainReferencePoint.getY());
-									
-									popupMenu.add(new JMenuItem("Stratton Hall"))
+
+										popupMenu.show(panelMap, me.getX(), me.getY());
+										return; 
+									}
+
+
+									//Stratton
+									if(sHPolygon.contains(mainReferencePoint)){
+										JPopupMenu popupMenu = new JPopupMenu();
+										System.out.println("X: " + mainReferencePoint.getX() + "\tY: " + mainReferencePoint.getY());
+
+										popupMenu.add(new JMenuItem("Stratton Hall"))
 										.setFont(new Font("Helvetica", Font.BOLD, 12));
-									popupMenu.addSeparator();
-									
-									popupMenu.add(new JMenuItem("Floor 1"))
+										popupMenu.addSeparator();
+
+										popupMenu.add(new JMenuItem("Floor 1"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(24, 0, 0, 1); // stratton hall 1
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 2"))
+										popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(25, 0, 0, 1); // stratton hall 2
 											}
 										});
-									popupMenu.add(new JMenuItem("Floor 3"))
+										popupMenu.add(new JMenuItem("Floor 3"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
 												changeMapTo(26, 0, 0, 1); // stratton hall 3
 											}
 										});
-									popupMenu.add(new JMenuItem("Basement"))
-									.addActionListener(new ActionListener(){
-										@Override
-										public void actionPerformed(ActionEvent arg0) {
-											changeMapTo(27, 0, 0, 1); // stratton hall basement 3
-										}
-									});
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}
-								
-								//refer to Andrew Petit if this doesn't make sense
-								if(globalMap.getChosenNodes().size() == 0){//set the start node of the globalnodes list of chosenNodes if that list is empty
-									globalMap.setStartNode(node);
-									globalMap.getChosenNodes().add(node);
-									globalMap.getAllNodes().add(node);
-									backend.getLocalMap().setStart(node);//remember to set the start node of that localMap the user is currently on
-									btnClear.setEnabled(true); //enable clear button if some node has been added
-								}
-								else{
-									if(globalMap.getChosenNodes().size() == 1){//if only the start node has been placed, place the end node
-										globalMap.getChosenNodes().add(node);
-										globalMap.setEndNode(node);
-										backend.getLocalMap().setEnd(node);//remember to set the end node of that localmap the user is currently on
-									} else { //this means we need to account for waypoints
-										MapNode endNode = globalMap.getEndNode();
-										LocalMap localMap = endNode.getLocalMap();
-										for (LocalMap localmap : globalMap.getLocalMaps()){ //go back to the localMap we set to be the end, and re make it null as that node is no longer the globalMap's end node
-											if (localMap == localmap){
-												localmap.setEnd(null);
+										popupMenu.add(new JMenuItem("Basement"))
+										.addActionListener(new ActionListener(){
+											@Override
+											public void actionPerformed(ActionEvent arg0) {
+												changeMapTo(27, 0, 0, 1); // stratton hall basement 3
 											}
-										}
-										globalMap.getChosenNodes().add(node);
-										globalMap.setEndNode(node);
-										backend.getLocalMap().setEnd(node); //re set the end node here to the new local map the user is on
+										});
+
+										popupMenu.show(panelMap, me.getX(), me.getY());
+										return; 
 									}
+
+									//refer to Andrew Petit if this doesn't make sense
+									if(globalMap.getChosenNodes().size() == 0){//set the start node of the globalnodes list of chosenNodes if that list is empty
+										globalMap.setStartNode(node);
+										globalMap.getChosenNodes().add(node);
+										globalMap.getAllNodes().add(node);
+										backend.getLocalMap().setStart(node);//remember to set the start node of that localMap the user is currently on
+										btnClear.setEnabled(true); //enable clear button if some node has been added
+									}
+									else{
+										if(globalMap.getChosenNodes().size() == 1){//if only the start node has been placed, place the end node
+											globalMap.getChosenNodes().add(node);
+											globalMap.setEndNode(node);
+											backend.getLocalMap().setEnd(node);//remember to set the end node of that localmap the user is currently on
+										} else { //this means we need to account for waypoints
+											MapNode endNode = globalMap.getEndNode();
+											LocalMap localMap = endNode.getLocalMap();
+											for (LocalMap localmap : globalMap.getLocalMaps()){ //go back to the localMap we set to be the end, and re make it null as that node is no longer the globalMap's end node
+												if (localMap == localmap){
+													localmap.setEnd(null);
+												}
+											}
+											globalMap.getChosenNodes().add(node);
+											globalMap.setEndNode(node);
+											backend.getLocalMap().setEnd(node); //re set the end node here to the new local map the user is on
+										}
+									}
+									// Enable the route button if both start and end have been set
+									if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
+										btnRoute.setEnabled(true); //enable the button only if the user has selected a start and a end location
 								}
-								// Enable the route button if both start and end have been set
-								if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
-									btnRoute.setEnabled(true); //enable the button only if the user has selected a start and a end location
-							}
-							repaint();
-						}	
-					});
+								repaint();
+							}	
+						});
 					}
 				}
 
@@ -2065,7 +2099,7 @@ public class GUIFront extends JFrame {
 					});
 
 				}
-				
+
 				/**
 				 * Block of code to initialize all of the polygons representing clickable regions on buildings. Seperated
 				 * for readability.
@@ -2085,7 +2119,7 @@ public class GUIFront extends JFrame {
 					aKPolygon.addPoint(1176, 318);
 					aKPolygon.addPoint(1128, 290);
 					aKPolygon.addPoint(1144, 260);
-					
+
 					//Boynton
 					bPolygon = new Polygon();
 					bPolygon.addPoint(1044, 734);
@@ -2100,7 +2134,7 @@ public class GUIFront extends JFrame {
 					bPolygon.addPoint(1138, 754);
 					bPolygon.addPoint(1072, 743);
 					bPolygon.addPoint(1073, 739);
-					
+
 					//Campus Center
 					cCPolygon = new Polygon();
 					cCPolygon.addPoint(938, 346);
@@ -2126,7 +2160,7 @@ public class GUIFront extends JFrame {
 					cCPolygon.addPoint(884, 372);
 					cCPolygon.addPoint(873, 364);
 					cCPolygon.addPoint(890, 340);
-					
+
 					//Library
 					gLPolygon = new Polygon();
 					gLPolygon.addPoint(1245, 512);
@@ -2134,7 +2168,7 @@ public class GUIFront extends JFrame {
 					gLPolygon.addPoint(1279, 640);
 					gLPolygon.addPoint(1220, 628);
 					gLPolygon.addPoint(1226, 568);
-					
+
 					//Higgins House
 					hHPolygon = new Polygon();
 					hHPolygon.addPoint(800, 305);
@@ -2149,21 +2183,21 @@ public class GUIFront extends JFrame {
 					hHPolygon.addPoint(862, 241);
 					hHPolygon.addPoint(849, 258);
 					hHPolygon.addPoint(839, 253);
-					
+
 					//project center
 					pCPolygon = new Polygon();
 					pCPolygon.addPoint(1019, 598);
 					pCPolygon.addPoint(1030, 535);
 					pCPolygon.addPoint(1068, 543);
 					pCPolygon.addPoint(1056, 604);
-					
+
 					//Stratton
 					sHPolygon = new Polygon();
 					sHPolygon.addPoint(1014, 613);
 					sHPolygon.addPoint(1052, 618);
 					sHPolygon.addPoint(1038, 701);
 					sHPolygon.addPoint(1000, 695);
-					
+
 					//Fuller
 					fPolygon = new Polygon();
 					fPolygon.addPoint(1225, 445);
@@ -2293,10 +2327,10 @@ public class GUIFront extends JFrame {
 
 						// Sets the color of the start and end nodes to be different for each new waypoint
 						if(this.isMapView){
-							
+
 							// if this is the campus map, draw the building polygons
 							if(backend.getLocalMap().getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE)){
-							
+
 								// Draw the panels over the building
 								graphics.setColor(lineColor);
 								graphics.setStroke(new BasicStroke (7));
@@ -2314,18 +2348,18 @@ public class GUIFront extends JFrame {
 							graphics.setStroke(new BasicStroke(1));
 							graphics.setColor(startNodeColor);
 							if(!(paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
-									if (paths.get(index).get(0) != null){ // make sure that the start node (which it should never be) is not null
-										graphics.setColor(startNodeColor);
-										graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-										graphics.setColor(outlineColor);
-										graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-									}
-									if (paths.get(index).get(paths.get(index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
-										graphics.setColor(endNodeColor);
-										graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
-										graphics.setColor(outlineColor);
-										graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-									}
+								if (paths.get(index).get(0) != null){ // make sure that the start node (which it should never be) is not null
+									graphics.setColor(startNodeColor);
+									graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+									graphics.setColor(outlineColor);
+									graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+								}
+								if (paths.get(index).get(paths.get(index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
+									graphics.setColor(endNodeColor);
+									graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
+									graphics.setColor(outlineColor);
+									graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+								}
 							}
 							//drawing for originally placed nodes
 							if (globalMap.getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed 
@@ -2336,7 +2370,7 @@ public class GUIFront extends JFrame {
 									graphics.drawOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
 								}
 							}
-						
+
 							if(globalMap.getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
 								if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
 									graphics.setColor(endNodeColor);
@@ -2385,14 +2419,14 @@ public class GUIFront extends JFrame {
 								drawLine = true;
 								removeLine = false;
 							}
-							
+
 							if (drawLine2 == true){
 								Graphics2D g2 = (Graphics2D) g;
 								g2.setStroke(new BasicStroke(2));
 								g2.setColor(Color.YELLOW);
 								g2.drawLine((int) paths.get(index).get(index2 - 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 - 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
 							}
-							
+
 							if (drawLine3 == true){
 								Graphics2D g2 = (Graphics2D) g;
 								g2.setStroke(new BasicStroke(2));
