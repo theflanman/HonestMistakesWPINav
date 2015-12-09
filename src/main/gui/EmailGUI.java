@@ -39,14 +39,13 @@ public class EmailGUI extends JDialog {
 	String directions = GUIFront.allText; 
 	int toAreaIndex = 0;
 	int bodyAreaIndex = 0;
-
- 
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			EmailGUI dialog = new EmailGUI();
+			EmailGUI dialog = new EmailGUI(null, null, null, null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -54,17 +53,20 @@ public class EmailGUI extends JDialog {
 		}
 	}
 
-	public EmailGUI() {
-		getContentPane().setBackground(new Color(95, 172, 213));
+	public EmailGUI(Color background1, Color background2, Color button1, Color button2) {
+		getContentPane().setBackground(background2);
 		setUndecorated(true);
 		setType(Type.UTILITY);
 		setBounds(100, 100, 684, 359);
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
 		
+		
+		
 		// Cancel Button
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(590, 314, 79, 29);
+		btnCancel.setBackground(button1);
 		getContentPane().add(btnCancel);
 		
 		// When the cancel button is pressed the window is no longer shown
@@ -128,7 +130,7 @@ public class EmailGUI extends JDialog {
 		
 		// Top Bar panel
 		JPanel topPanel = new JPanel();
-		topPanel.setBackground(new Color(218, 211, 203));
+		topPanel.setBackground(button1);
 		topPanel.setForeground(Color.WHITE);
 		topPanel.setBounds(0, 0, 684, 38);
 		getContentPane().add(topPanel);
@@ -143,7 +145,7 @@ public class EmailGUI extends JDialog {
 		
 		// Body panel
 		JPanel bodyPanel = new JPanel();
-		bodyPanel.setBackground(new Color(95, 172, 213));
+		bodyPanel.setBackground(background2);
 		bodyPanel.setBounds(121, 189, 529, 98);
 		getContentPane().add(bodyPanel);
 		bodyPanel.setLayout(null);
@@ -175,6 +177,7 @@ public class EmailGUI extends JDialog {
 		// Send Button
 				JButton btnSend = new JButton("Send");
 				btnSend.setBounds(496, 314, 79, 29);
+				btnSend.setBackground(button2);
 				getContentPane().add(btnSend);
 				
 				// When the send button is pressed:

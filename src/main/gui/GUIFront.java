@@ -1226,7 +1226,7 @@ public class GUIFront extends JFrame {
 
 				index = holdIndex;
 				// Email Pop-Up
-				EmailGUI newEmail = new EmailGUI();
+				EmailGUI newEmail = new EmailGUI(backgroundColor, sideBarColor, routeButtonColor, otherButtonsColor);
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
 
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
