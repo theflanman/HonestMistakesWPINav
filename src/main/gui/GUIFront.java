@@ -221,7 +221,7 @@ public class GUIFront extends JFrame {
 		setContentPane(contentPane);
 
 		// Adding default values for pan and zoom to the hashmap
-		
+
 		defaults.put("AK1.png", new double[]{-80.0, -125.0, 0.78}); // 0
 		defaults.put("AK2.png", new double[]{-80.0, -130.0, 0.80});
 		defaults.put("AK3.png", new double[]{-80.0, -120.0, 0.78});
@@ -244,7 +244,7 @@ public class GUIFront extends JFrame {
 		defaults.put("FL3.png", new double[]{-80.0, -110.0, 0.7}); // 14
 		defaults.put("FLB.png", new double[]{-80.0, -110.0, 0.7}); // 15
 		defaults.put("FLSB.png", new double[]{-80.0, -110.0, 0.7}); // 16
-		
+
 		defaults.put("GL1.png", new double[]{-80.0, -110.0, 0.74}); // 17
 		defaults.put("GL2.png", new double[]{-80.0, -110.0, 0.74});
 		defaults.put("GL3.png", new double[]{-80.0, -110.0, 0.74});
@@ -433,28 +433,28 @@ public class GUIFront extends JFrame {
 		mainPanel.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				
+
 				if(mainPanel.getSelectedIndex() == 0){					
 					btnRoute.setEnabled(mapViewButtons[0]);
 					btnClear.setEnabled(mapViewButtons[1]);
 				}
 				else if(mainPanel.getSelectedIndex() == 1){
 					storeButtonStates();
-										
+
 					btnClear.setEnabled(false);
 					btnRoute.setEnabled(false);	
 				}
 			}
-			
+
 			private void storeButtonStates(){
 				if(btnRoute.isEnabled()) mapViewButtons[0] = true;
 				else mapViewButtons[0] = false;
-				
+
 				if(btnClear.isEnabled()) mapViewButtons[1] = true;
 				else mapViewButtons[1] = false;
 			}
 		});
-		
+
 		textFieldStart = new JTextField();
 		textFieldStart.setText("");
 		//give start text field an action
@@ -970,7 +970,7 @@ public class GUIFront extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
-	
+
 	public void  setColoring(String scheme){
 		colors = allSchemes.setColorScheme(scheme);
 
@@ -1004,7 +1004,7 @@ public class GUIFront extends JFrame {
 		SLPanel streetViewSLPanel = new SLPanel();
 		mainPanel.addTab("Street View", null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
-		
+
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
 		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
 
@@ -1014,7 +1014,7 @@ public class GUIFront extends JFrame {
 		.place(0, 0, streetViewTweenPanel);
 
 		streetViewSLPanel.initialize(streetViewConfig);
-		
+
 	}
 
 	/*
@@ -1053,14 +1053,14 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e){
 
 				System.out.println("Starts Saving Path Images");
-				
+
 				int holdIndex = index;
 				PanelSave savePanel = new PanelSave();
 
 				//TODO Find a variable that includes the list of nodes in a path
 				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(paths);
 				index = 0;
-				
+
 				int countFiles = 1;
 
 				// Goes through each of the maps in the path and captures and saves an image
@@ -1072,8 +1072,8 @@ public class GUIFront extends JFrame {
 					if (index >= paths.size() - 1){
 						index = 0;
 					}
-					
-					
+
+
 					LocalMap localMap = paths.get(index).get(0).getLocalMap();
 					panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
 					panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
@@ -1095,7 +1095,7 @@ public class GUIFront extends JFrame {
 
 					thisRoute = paths.get(index);
 					drawLine = true;
-					
+
 					savePanel.saveImage(panelMap, "Map #" + countFiles + "_" + local.getMapImageName());
 					countFiles ++;
 					if (index < paths.size() - 1){
@@ -1106,12 +1106,12 @@ public class GUIFront extends JFrame {
 					}
 				}
 				System.out.println("Finished Saving Path Images");
-	
+
 				index = holdIndex;
 				// Email Pop-Up
 				EmailGUI newEmail = new EmailGUI();
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
-				
+
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
 				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
@@ -1348,7 +1348,7 @@ public class GUIFront extends JFrame {
 		mnFullerLabs.add(mntmFL3);
 		mnFullerLabs.add(mntmFLB);
 		mnFullerLabs.add(mntmFLSB);
-		
+
 		// Gordon Library
 		mnGordonLibrary = new JMenu("Gordon Library");
 		mntmGL1 = new JMenuItem("Floor 1");
@@ -1576,1084 +1576,1091 @@ public class GUIFront extends JFrame {
 		}
 	};
 
-		private final Runnable panelDirectionsBackAction = new Runnable() {
-			@Override 
-			public void run() {
-				disableActions();
-				currentlyOpen = false;
+	private final Runnable panelDirectionsBackAction = new Runnable() {
+		@Override 
+		public void run() {
+			disableActions();
+			currentlyOpen = false;
 
-				slidePanel.createTransition()
-				.push(new SLKeyframe(mainConfig, 0.6f)
-				.setCallback(new SLKeyframe.Callback() {
-					@Override 
-					public void done() {
-						panelDirections.setAction(panelDirectionsAction);
-						enableActions();
-					}}))
-					.play();
+			slidePanel.createTransition()
+			.push(new SLKeyframe(mainConfig, 0.6f)
+			.setCallback(new SLKeyframe.Callback() {
+				@Override 
+				public void done() {
+					panelDirections.setAction(panelDirectionsAction);
+					enableActions();
+				}}))
+				.play();
+		}
+	};
+
+	/**
+	 * @author Andrew Petit
+	 * @description Resets all of the relevant information on the form and the background information
+	 */
+	public void reset() {
+		System.out.println("RESET HAS BEEN CALLED!");
+		allowSetting = true; //allow user to re place nodes only once reset is pressed
+		globalMap.getStartNode().getLocalMap().setStart(null);
+		if (globalMap.getEndNode() != null){
+			globalMap.getEndNode().getLocalMap().setEnd(null);
+			globalMap.setEndNode(null);
+		}
+		globalMap.setStartNode(null);
+		globalMap.getAllNodes().clear();
+		reset = true;
+		listModel.removeAllElements(); // clear directions
+
+		// allows the user to re-input start and end nodes
+		setEnd = false;
+		setStart = false;
+		paths.clear();
+		thisRoute.clear();
+		backend.removePath(globalMap.getChosenNodes());
+		btnNextMap.setEnabled(false);
+		btnPreviousMap.setEnabled(false);
+		btnNextStep.setEnabled(false);
+		btnPreviousStep.setEnabled(false);
+
+		globalMap.getChosenNodes().clear();
+		lblDistance.setText("");
+		btnClear.setEnabled(false);
+		btnRoute.setEnabled(false);
+		drawLine2 = false;
+		drawLine3 = false;
+		removeLine = true;
+	}
+
+	/**
+	 * A class to handle zooming based on scrolling of the mouse wheel. 
+	 * Current implementation allows for between 50% and 200% zoom. Anything less than 50%
+	 * with the current map sizes makes the images disappear.
+	 * TODO: Potentially add double click functionality ? 
+	 * TODO: Potentially add button functionality ?
+	 * 
+	 * @author Gatrie
+	 */
+	class ZoomHandler implements MouseWheelListener {
+
+		double zoomAmount;
+
+		public ZoomHandler(){
+			this.zoomAmount = 0.5; // default zoom amount
+		}
+
+		@Override
+		public void mouseWheelMoved(MouseWheelEvent mwe) {
+			int direction = mwe.getWheelRotation();
+
+			if(direction < 0){ // moving up, so zoom in	(no greater than 100%)
+				if(zoomAmount <= (.9 + .001))
+					zoomAmount += 0.1;
+			} else { // moving down, zoom out (no less than 50%)
+				if(zoomAmount >= 0.5)
+					zoomAmount -= 0.1;
 			}
-		};
 
+			panelMap.setScale(zoomAmount);
+		}
+
+	}
+
+	/**
+	 * Handles events related to panning the map image efficiently. 
+	 * Created with reference to code at: http://web.eecs.utk.edu/
+	 * @author Trevor
+	 */
+	class PanHandler implements MouseListener, MouseMotionListener {
+		double startX, startY; // reference points of original transformation
+		AffineTransform startTransform; // original state of transformation
+
+		@Override
+		public void mouseDragged(MouseEvent me) {
+			// now we want to start in reference to the initial transformation of THIS object, ie startTransform
+			try {
+				mainReferencePoint = startTransform.inverseTransform(me.getPoint(), null);
+			} catch (NoninvertibleTransformException e){
+				e.printStackTrace();
+			}
+
+			// Now figure out the difference
+			double distanceMovedX = mainReferencePoint.getX() - startX;
+			double distanceMovedY = mainReferencePoint.getY() - startY;
+
+			// reset the start points to the clicked point (remember, this is stored in mainReferencePoint)
+			startX = mainReferencePoint.getX();
+			startY = mainReferencePoint.getY();
+
+			panelMap.panX += distanceMovedX;
+			panelMap.panY += distanceMovedY;
+
+			// Update the map node locations relative to the map image
+			for(MapNode n : backend.getLocalMap().getMapNodes()){
+				n.setXPos(n.getXPos() + distanceMovedX);
+				n.setYPos(n.getYPos() + distanceMovedY);
+
+			}
+		}
+
+		/**
+		 * Will save the point clicked at and the state of the initial transformation as
+		 * panning is likely to occur.
+		 */
+		@Override
+		public void mousePressed(MouseEvent me) {
 			/**
-			 * @author Andrew Petit
-			 * @description Resets all of the relevant information on the form and the background information
+			 * Suppose that T:U->V is a linear transformation. If there is a function S:V->U such that
+			 *	S*T=I   T*S=I, then T is invertible.
+			 *	
+			 *	Check to make sure the current transformation is invertible and get that point
 			 */
-			public void reset() {
-				allowSetting = true; //allow user to re place nodes only once reset is pressed
-				globalMap.getStartNode().getLocalMap().setStart(null);
-				if (globalMap.getEndNode() != null){
-					globalMap.getEndNode().getLocalMap().setEnd(null);
-					globalMap.setEndNode(null);
-				}
-				globalMap.setStartNode(null);
-				globalMap.getAllNodes().clear();
-				reset = true;
-				listModel.removeAllElements(); // clear directions
-
-				// allows the user to re-input start and end nodes
-				setEnd = false;
-				setStart = false;
-				paths.clear();
-				thisRoute.clear();
-				backend.removePath(globalMap.getChosenNodes());
-				btnNextMap.setEnabled(false);
-				btnPreviousMap.setEnabled(false);
-				btnNextStep.setEnabled(false);
-				btnPreviousStep.setEnabled(false);
-
-				globalMap.getChosenNodes().clear();
-				lblDistance.setText("");
-				btnClear.setEnabled(false);
-				btnRoute.setEnabled(false);
-				drawLine2 = false;
-				drawLine3 = false;
-				removeLine = true;
+			try {
+				mainReferencePoint = transform.inverseTransform(me.getPoint(), null);
+			} catch (NoninvertibleTransformException e) {
+				e.printStackTrace();
 			}
 
-			/**
-			 * A class to handle zooming based on scrolling of the mouse wheel. 
-			 * Current implementation allows for between 50% and 200% zoom. Anything less than 50%
-			 * with the current map sizes makes the images disappear.
-			 * TODO: Potentially add double click functionality ? 
-			 * TODO: Potentially add button functionality ?
-			 * 
-			 * @author Gatrie
-			 */
-			class ZoomHandler implements MouseWheelListener {
+			// save the starting points and initial transformation
+			startX = mainReferencePoint.getX();
+			startY = mainReferencePoint.getY();
+			startTransform = transform;
+		}
 
-				double zoomAmount;
+		@Override
+		public void mouseReleased(MouseEvent me) {
+		}
 
-				public ZoomHandler(){
-					this.zoomAmount = 0.5; // default zoom amount
-				}
+		@Override
+		public void mouseMoved(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+		}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+		}
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+		}
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+		}
 
-				@Override
-				public void mouseWheelMoved(MouseWheelEvent mwe) {
-					int direction = mwe.getWheelRotation();
+	}
 
-					if(direction < 0){ // moving up, so zoom in	(no greater than 100%)
-						if(zoomAmount <= (.9 + .001))
-							zoomAmount += 0.1;
-					} else { // moving down, zoom out (no less than 50%)
-						if(zoomAmount >= 0.5)
-							zoomAmount -= 0.1;
-					}
+	public static class TweenPanel extends JPanel {
+		ArrayList<MapNode> localNodes;
+		public ArrayList<MapNode> chosenNodes;
 
-					panelMap.setScale(zoomAmount);
-				}
+		private final TweenManager tweenManager = SLAnimator.createTweenManager();
+		private JLabel labelMainPanel = new JLabel();
+		private JLabel labelStep = new JLabel();
+		private IProxyImage mapImage;
+		private Runnable action;
+		private boolean actionEnabled = true;
+		private boolean hover = false;
+		private int borderThickness = 2;
+		private String panelID;
 
+		double panX, panY;
+		double zoomRatio;
+
+		String packageName;
+		boolean isMapView;
+
+		Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, fLPolygon, gLPolygon, hHPolygon, hHGPolygon, sHPolygon, fPolygon;
+
+		/**
+		 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
+		 * but it functions better as a private class
+		 */
+		public TweenPanel(ArrayList<MapNode> mapNodes, IProxyImage mapPath, 
+				String panelId, String packageName){
+
+			// determine whether anything should be painted onto this tab
+			if(packageName.equals(Constants.STREET_PATH))
+				this.isMapView = false;
+			else
+				this.isMapView = true;
+
+			this.packageName = packageName;
+
+			setLayout(new BorderLayout());
+
+			globalMap.setAllNodes(globalMap.getMapNodes());
+
+			this.localNodes = mapNodes;
+
+			labelMainPanel.setFont(new Font("Sans", Font.BOLD, 90));
+			labelMainPanel.setVerticalAlignment(SwingConstants.CENTER);
+			labelMainPanel.setHorizontalAlignment(SwingConstants.CENTER);
+			System.out.println("PANEL ID: " + panelID);
+			labelMainPanel.setText(panelID);
+
+			this.mapImage = mapPath;
+
+			if(this.isMapView){
+				zoomRatio = zoomHandle.zoomAmount; // get the initialized zoom amount
+				panX = -500; // default pan X
+				panY = -250; // default pan
+			}
+			else{
+				zoomRatio = 1;
+				panX = 0;
+				panY = 0;
 			}
 
-			/**
-			 * Handles events related to panning the map image efficiently. 
-			 * Created with reference to code at: http://web.eecs.utk.edu/
-			 * @author Trevor
-			 */
-			class PanHandler implements MouseListener, MouseMotionListener {
-				double startX, startY; // reference points of original transformation
-				AffineTransform startTransform; // original state of transformation
+			initializePolygons();
 
-				@Override
-				public void mouseDragged(MouseEvent me) {
-					// now we want to start in reference to the initial transformation of THIS object, ie startTransform
-					try {
-						mainReferencePoint = startTransform.inverseTransform(me.getPoint(), null);
-					} catch (NoninvertibleTransformException e){
-						e.printStackTrace();
-					}
+			addMouseListener(panHandle);
+			addMouseMotionListener(panHandle);
+			addMouseWheelListener(zoomHandle);
 
-					// Now figure out the difference
-					double distanceMovedX = mainReferencePoint.getX() - startX;
-					double distanceMovedY = mainReferencePoint.getY() - startY;
+			if(this.isMapView){		
+				addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent me) {
+						if (allowSetting == true){
 
-					// reset the start points to the clicked point (remember, this is stored in mainReferencePoint)
-					startX = mainReferencePoint.getX();
-					startY = mainReferencePoint.getY();
-
-					panelMap.panX += distanceMovedX;
-					panelMap.panY += distanceMovedY;
-
-					// Update the map node locations relative to the map image
-					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						n.setXPos(n.getXPos() + distanceMovedX);
-						n.setYPos(n.getYPos() + distanceMovedY);
-
-					}
-				}
-
-				/**
-				 * Will save the point clicked at and the state of the initial transformation as
-				 * panning is likely to occur.
-				 */
-				@Override
-				public void mousePressed(MouseEvent me) {
-					/**
-					 * Suppose that T:U->V is a linear transformation. If there is a function S:V->U such that
-					 *	S*T=I   T*S=I, then T is invertible.
-					 *	
-					 *	Check to make sure the current transformation is invertible and get that point
-					 */
-					try {
-						mainReferencePoint = transform.inverseTransform(me.getPoint(), null);
-					} catch (NoninvertibleTransformException e) {
-						e.printStackTrace();
-					}
-
-					// save the starting points and initial transformation
-					startX = mainReferencePoint.getX();
-					startY = mainReferencePoint.getY();
-					startTransform = transform;
-				}
-
-				@Override
-				public void mouseReleased(MouseEvent me) {
-				}
-
-				@Override
-				public void mouseMoved(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-				}
-				@Override
-				public void mouseClicked(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-				}
-				@Override
-				public void mouseEntered(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-				}
-				@Override
-				public void mouseExited(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-				}
-
-			}
-
-			public static class TweenPanel extends JPanel {
-				ArrayList<MapNode> localNodes;
-				public ArrayList<MapNode> chosenNodes;
-
-				private final TweenManager tweenManager = SLAnimator.createTweenManager();
-				private JLabel labelMainPanel = new JLabel();
-				private JLabel labelStep = new JLabel();
-				private IProxyImage mapImage;
-				private Runnable action;
-				private boolean actionEnabled = true;
-				private boolean hover = false;
-				private int borderThickness = 2;
-				private String panelID;
-
-				double panX, panY;
-				double zoomRatio;
-
-				String packageName;
-				boolean isMapView;
-				
-				Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, fLPolygon, gLPolygon, hHPolygon, hHGPolygon, sHPolygon, fPolygon;
-
-				/**
-				 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
-				 * but it functions better as a private class
-				 */
-				public TweenPanel(ArrayList<MapNode> mapNodes, IProxyImage mapPath, 
-						String panelId, String packageName){
-					
-					// determine whether anything should be painted onto this tab
-					if(packageName.equals(Constants.STREET_PATH))
-						this.isMapView = false;
-					else
-						this.isMapView = true;
-
-					this.packageName = packageName;
-
-					setLayout(new BorderLayout());
-
-					globalMap.setAllNodes(globalMap.getMapNodes());
-
-					this.localNodes = mapNodes;
-
-					labelMainPanel.setFont(new Font("Sans", Font.BOLD, 90));
-					labelMainPanel.setVerticalAlignment(SwingConstants.CENTER);
-					labelMainPanel.setHorizontalAlignment(SwingConstants.CENTER);
-					System.out.println("PANEL ID: " + panelID);
-					labelMainPanel.setText(panelID);
-
-					this.mapImage = mapPath;
-					
-					if(this.isMapView){
-						zoomRatio = zoomHandle.zoomAmount; // get the initialized zoom amount
-						panX = -500; // default pan X
-						panY = -250; // default pan
-					}
-					else{
-						zoomRatio = 1;
-						panX = 0;
-						panY = 0;
-					}
-					
-					initializePolygons();
-
-					addMouseListener(panHandle);
-					addMouseMotionListener(panHandle);
-					addMouseWheelListener(zoomHandle);
-
-					if(this.isMapView){		
-						addMouseListener(new MouseAdapter() {
-							@Override
-							public void mouseClicked(MouseEvent me) {
-								if (allowSetting == true){
-
-									// Reset the main reference point incase we are clicking away from a popup menu
-									try {
-										mainReferencePoint = transform.inverseTransform(me.getPoint(), null);
-									} catch (NoninvertibleTransformException e1) {
-										// TODO Auto-generated catch block
-										e1.printStackTrace();
-									}
-
-									// figure out where the closest map node is, set that node as a startnode the StartingNode
-									MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
-									System.out.println("Node found is: " + node.getNodeID());
-
-// {{
-
-									//AK
-									if(aKPolygon.contains(mainReferencePoint)){
-										JPopupMenu popupMenu = new JPopupMenu();
-
-										popupMenu.add(new JMenuItem("Atwater Kent"))
-										.setFont(new Font("Helvetica", Font.BOLD, 12));
-										popupMenu.addSeparator();
-
-										popupMenu.add(new JMenuItem("Floor 1"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(0, 0, 0, 1); // atwater kent 1
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 2"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(1, 0, 0, 1); // atwater kent 2
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 3"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(2, 0, 0, 1); // atwater kent 3
-											}
-										});
-										popupMenu.add(new JMenuItem("Basement"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(3, 0, 0, 1); // atwater kent basement
-											}
-										});
-
-										popupMenu.show(panelMap, me.getX(), me.getY());							
-										return; 
-									}
-
-									//Boynton
-									if(bPolygon.contains(mainReferencePoint)){
-										JPopupMenu popupMenu = new JPopupMenu();
-
-										popupMenu.add(new JMenuItem("Boynton Hall"))
-										.setFont(new Font("Helvetica", Font.BOLD, 12));
-										popupMenu.addSeparator();
-
-										popupMenu.add(new JMenuItem("Floor 1"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(4, 0, 0, 1); // boynton hall 1
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 2"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(5, 0, 0, 1); // boynton hall 2
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 3"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(6, 0, 0, 1); // boynton hall 3
-											}
-										});
-										popupMenu.add(new JMenuItem("Basement"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(7, 0, 0, 1); // boynton hall basement
-											}
-										});
-
-										popupMenu.show(panelMap, me.getX(), me.getY());
-										return; 
-									}
-
-									//Campus Center
-									if(cCPolygon.contains(mainReferencePoint)){
-										JPopupMenu popupMenu = new JPopupMenu();
-
-										popupMenu.add(new JMenuItem("Campus Center"))
-										.setFont(new Font("Helvetica", Font.BOLD, 12));
-										popupMenu.addSeparator();
-
-										popupMenu.add(new JMenuItem("Floor 1"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(8, 0, 0, 1); // campus center 1
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 2"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(9, 0, 0, 1); // campus center 2
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 3"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(10, 0, 0, 1); // campus center 3
-											}
-										});
-									
-										popupMenu.show(panelMap, me.getX(), me.getY());
-										return; 
-									}
-								
-								// Fuller Labs
-								if(fLPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Fuller Labs"))
-										.setFont(new Font("Helvetica", Font.BOLD, 12));
-									popupMenu.addSeparator();
-									
-									popupMenu.add(new JMenuItem("Floor 1"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(12, 0, 0, 1); // fuller labs 1
-											}
-										});	
-									popupMenu.add(new JMenuItem("Floor 2"))
-									.addActionListener(new ActionListener(){
-										@Override
-										public void actionPerformed(ActionEvent arg0) {
-											changeMapTo(13, 0, 0, 1); // fuller labs 2
-										}
-									});	
-									popupMenu.add(new JMenuItem("Floor 3"))
-									.addActionListener(new ActionListener(){
-										@Override
-										public void actionPerformed(ActionEvent arg0) {
-											changeMapTo(14, 0, 0, 1); // fuller labs 3
-										}
-									});	
-									popupMenu.add(new JMenuItem("Basement"))
-									.addActionListener(new ActionListener(){
-										@Override
-										public void actionPerformed(ActionEvent arg0) {
-											changeMapTo(15, 0, 0, 1); // fuller labs basement
-										}
-									});	
-									popupMenu.add(new JMenuItem("Sub Basement"))
-									.addActionListener(new ActionListener(){
-										@Override
-										public void actionPerformed(ActionEvent arg0) {
-											changeMapTo(16, 0, 0, 1); // fuller labs sub basement
-										}
-									});	
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}								
-								
-								//Library
-								if(gLPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Gordon Library"))
-										.setFont(new Font("Helvetica", Font.BOLD, 12));
-										popupMenu.addSeparator();
-
-										popupMenu.add(new JMenuItem("Floor 1"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(17, 0, 0, 1); // library 1
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 2"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(18, 0, 0, 1); // library 2
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 3"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(19, 0, 0, 1); // library 3
-											}
-										});
-										popupMenu.add(new JMenuItem("Basement"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(20, 0, 0, 1); // library basement
-											}
-										});
-
-									popupMenu.add(new JMenuItem("Sub Basement"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(21, 0, 0, 1); // library sub basement
-											}
-										});
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}
-								
-								//Higgins
-								if(hHPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Higgins House"))
-										.setFont(new Font("Helvetica", Font.BOLD, 12));
-										popupMenu.addSeparator();
-
-										popupMenu.add(new JMenuItem("Floor 1"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(22, 0, 0, 1); // higgins house 1
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 2"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(23, 0, 0, 1); // higgins house 2
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 3"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(24, 0, 0, 1); // higgins house 3
-											}
-										});
-
-									
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}
-								
-								//Project Center
-								if(pCPolygon.contains(mainReferencePoint)){
-									JPopupMenu popupMenu = new JPopupMenu();
-									
-									popupMenu.add(new JMenuItem("Project Center"))
-										.setFont(new Font("Helvetica", Font.BOLD, 12));
-										popupMenu.addSeparator();
-
-										popupMenu.add(new JMenuItem("Floor 1"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(27, 0, 0, 1); // project center 1
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 2"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(28, 0, 0, 1); // project center 2
-											}
-										});
-
-									popupMenu.show(panelMap, me.getX(), me.getY());
-									return; 
-								}
-
-
-									//Stratton
-									if(sHPolygon.contains(mainReferencePoint)){
-										JPopupMenu popupMenu = new JPopupMenu();
-										System.out.println("X: " + mainReferencePoint.getX() + "\tY: " + mainReferencePoint.getY());
-
-										popupMenu.add(new JMenuItem("Stratton Hall"))
-										.setFont(new Font("Helvetica", Font.BOLD, 12));
-										popupMenu.addSeparator();
-
-										popupMenu.add(new JMenuItem("Floor 1"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(29, 0, 0, 1); // stratton hall 1
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 2"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(30, 0, 0, 1); // stratton hall 2
-											}
-										});
-										popupMenu.add(new JMenuItem("Floor 3"))
-										.addActionListener(new ActionListener(){
-											@Override
-											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(31, 0, 0, 1); // stratton hall 3
-											}
-										});
-
-										popupMenu.add(new JMenuItem("Basement"))
-											.addActionListener(new ActionListener(){
-												@Override
-												public void actionPerformed(ActionEvent arg0) {
-													changeMapTo(32, 0, 0, 1); // stratton hall basement 3
-												}
-											});
-									
-										popupMenu.show(panelMap, me.getX(), me.getY());
-										return; 
-									}
-// }}
-								
-									//refer to Andrew Petit if this doesn't make sense
-									if(globalMap.getChosenNodes().size() == 0){//set the start node of the globalnodes list of chosenNodes if that list is empty
-										globalMap.setStartNode(node);
-										globalMap.getChosenNodes().add(node);
-										globalMap.getAllNodes().add(node);
-										backend.getLocalMap().setStart(node);//remember to set the start node of that localMap the user is currently on
-										btnClear.setEnabled(true); //enable clear button if some node has been added
-									}
-									else{
-										if(globalMap.getChosenNodes().size() == 1){//if only the start node has been placed, place the end node
-											globalMap.getChosenNodes().add(node);
-											globalMap.getAllNodes().add(node);
-											backend.getLocalMap().setStart(node);//remember to set the start node of that localMap the user is currently on
-											btnClear.setEnabled(true); //enable clear button if some node has been added
-										}
-										else{
-											if(globalMap.getChosenNodes().size() == 1){//if only the start node has been placed, place the end node
-												globalMap.getChosenNodes().add(node);
-												globalMap.setEndNode(node);
-												backend.getLocalMap().setEnd(node);//remember to set the end node of that localmap the user is currently on
-											} else { //this means we need to account for waypoints
-												MapNode endNode = globalMap.getEndNode();
-												LocalMap localMap = endNode.getLocalMap();
-												for (LocalMap localmap : globalMap.getLocalMaps()){ //go back to the localMap we set to be the end, and re make it null as that node is no longer the globalMap's end node
-													if (localMap == localmap){
-														localmap.setEnd(null);
-													}
-												}
-												globalMap.getChosenNodes().add(node);
-												globalMap.setEndNode(node);
-												backend.getLocalMap().setEnd(node); //re set the end node here to the new local map the user is on
-											}
-										}
-										// Enable the route button if both start and end have been set
-										if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
-											btnRoute.setEnabled(true); //enable the button only if the user has selected a start and a end location
-									}
-									
-									repaint();
-								
-								}	
+							// Reset the main reference point incase we are clicking away from a popup menu
+							try {
+								mainReferencePoint = transform.inverseTransform(me.getPoint(), null);
+							} catch (NoninvertibleTransformException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
 							}
-						});
+
+							// figure out where the closest map node is, set that node as a startnode the StartingNode
+							MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
+							System.out.println("The Node found is " + node.getNodeID());
+
+							// {{
+
+							//AK
+							if(aKPolygon.contains(mainReferencePoint)){
+								JPopupMenu popupMenu = new JPopupMenu();
+
+								popupMenu.add(new JMenuItem("Atwater Kent"))
+								.setFont(new Font("Helvetica", Font.BOLD, 12));
+								popupMenu.addSeparator();
+
+								popupMenu.add(new JMenuItem("Floor 1"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(0, 0, 0, 1); // atwater kent 1
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 2"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(1, 0, 0, 1); // atwater kent 2
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 3"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(2, 0, 0, 1); // atwater kent 3
+									}
+								});
+								popupMenu.add(new JMenuItem("Basement"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(3, 0, 0, 1); // atwater kent basement
+									}
+								});
+
+								popupMenu.show(panelMap, me.getX(), me.getY());							
+								return; 
+							}
+
+							//Boynton
+							if(bPolygon.contains(mainReferencePoint)){
+								JPopupMenu popupMenu = new JPopupMenu();
+
+								popupMenu.add(new JMenuItem("Boynton Hall"))
+								.setFont(new Font("Helvetica", Font.BOLD, 12));
+								popupMenu.addSeparator();
+
+								popupMenu.add(new JMenuItem("Floor 1"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(4, 0, 0, 1); // boynton hall 1
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 2"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(5, 0, 0, 1); // boynton hall 2
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 3"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(6, 0, 0, 1); // boynton hall 3
+									}
+								});
+								popupMenu.add(new JMenuItem("Basement"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(7, 0, 0, 1); // boynton hall basement
+									}
+								});
+
+								popupMenu.show(panelMap, me.getX(), me.getY());
+								return; 
+							}
+
+							//Campus Center
+							if(cCPolygon.contains(mainReferencePoint)){
+								JPopupMenu popupMenu = new JPopupMenu();
+
+								popupMenu.add(new JMenuItem("Campus Center"))
+								.setFont(new Font("Helvetica", Font.BOLD, 12));
+								popupMenu.addSeparator();
+
+								popupMenu.add(new JMenuItem("Floor 1"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(8, 0, 0, 1); // campus center 1
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 2"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(9, 0, 0, 1); // campus center 2
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 3"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(10, 0, 0, 1); // campus center 3
+									}
+								});
+
+								popupMenu.show(panelMap, me.getX(), me.getY());
+								return; 
+							}
+
+							// Fuller Labs
+							if(fLPolygon.contains(mainReferencePoint)){
+								JPopupMenu popupMenu = new JPopupMenu();
+
+								popupMenu.add(new JMenuItem("Fuller Labs"))
+								.setFont(new Font("Helvetica", Font.BOLD, 12));
+								popupMenu.addSeparator();
+
+								popupMenu.add(new JMenuItem("Floor 1"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(12, 0, 0, 1); // fuller labs 1
+									}
+								});	
+								popupMenu.add(new JMenuItem("Floor 2"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(13, 0, 0, 1); // fuller labs 2
+									}
+								});	
+								popupMenu.add(new JMenuItem("Floor 3"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(14, 0, 0, 1); // fuller labs 3
+									}
+								});	
+								popupMenu.add(new JMenuItem("Basement"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(15, 0, 0, 1); // fuller labs basement
+									}
+								});	
+								popupMenu.add(new JMenuItem("Sub Basement"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(16, 0, 0, 1); // fuller labs sub basement
+									}
+								});	
+
+								popupMenu.show(panelMap, me.getX(), me.getY());
+								return; 
+							}								
+
+							//Library
+							if(gLPolygon.contains(mainReferencePoint)){
+								JPopupMenu popupMenu = new JPopupMenu();
+
+								popupMenu.add(new JMenuItem("Gordon Library"))
+								.setFont(new Font("Helvetica", Font.BOLD, 12));
+								popupMenu.addSeparator();
+
+								popupMenu.add(new JMenuItem("Floor 1"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(17, 0, 0, 1); // library 1
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 2"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(18, 0, 0, 1); // library 2
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 3"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(19, 0, 0, 1); // library 3
+									}
+								});
+								popupMenu.add(new JMenuItem("Basement"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(20, 0, 0, 1); // library basement
+									}
+								});
+
+								popupMenu.add(new JMenuItem("Sub Basement"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(21, 0, 0, 1); // library sub basement
+									}
+								});
+
+								popupMenu.show(panelMap, me.getX(), me.getY());
+								return; 
+							}
+
+							//Higgins
+							if(hHPolygon.contains(mainReferencePoint)){
+								JPopupMenu popupMenu = new JPopupMenu();
+
+								popupMenu.add(new JMenuItem("Higgins House"))
+								.setFont(new Font("Helvetica", Font.BOLD, 12));
+								popupMenu.addSeparator();
+
+								popupMenu.add(new JMenuItem("Floor 1"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(22, 0, 0, 1); // higgins house 1
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 2"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(23, 0, 0, 1); // higgins house 2
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 3"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(24, 0, 0, 1); // higgins house 3
+									}
+								});
+
+
+								popupMenu.show(panelMap, me.getX(), me.getY());
+								return; 
+							}
+
+							//Project Center
+							if(pCPolygon.contains(mainReferencePoint)){
+								JPopupMenu popupMenu = new JPopupMenu();
+
+								popupMenu.add(new JMenuItem("Project Center"))
+								.setFont(new Font("Helvetica", Font.BOLD, 12));
+								popupMenu.addSeparator();
+
+								popupMenu.add(new JMenuItem("Floor 1"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(27, 0, 0, 1); // project center 1
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 2"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(28, 0, 0, 1); // project center 2
+									}
+								});
+
+								popupMenu.show(panelMap, me.getX(), me.getY());
+								return; 
+							}
+
+
+							//Stratton
+							if(sHPolygon.contains(mainReferencePoint)){
+								JPopupMenu popupMenu = new JPopupMenu();
+								System.out.println("X: " + mainReferencePoint.getX() + "\tY: " + mainReferencePoint.getY());
+
+								popupMenu.add(new JMenuItem("Stratton Hall"))
+								.setFont(new Font("Helvetica", Font.BOLD, 12));
+								popupMenu.addSeparator();
+
+								popupMenu.add(new JMenuItem("Floor 1"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(29, 0, 0, 1); // stratton hall 1
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 2"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(30, 0, 0, 1); // stratton hall 2
+									}
+								});
+								popupMenu.add(new JMenuItem("Floor 3"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(31, 0, 0, 1); // stratton hall 3
+									}
+								});
+
+								popupMenu.add(new JMenuItem("Basement"))
+								.addActionListener(new ActionListener(){
+									@Override
+									public void actionPerformed(ActionEvent arg0) {
+										changeMapTo(32, 0, 0, 1); // stratton hall basement 3
+									}
+								});
+
+								popupMenu.show(panelMap, me.getX(), me.getY());
+								return; 
+							}
+							// }}
+
+							if(globalMap.getStartNode() != null)
+								System.out.println("START NODE: " + globalMap.getStartNode().getNodeID());
+							
+							//refer to Andrew Petit if this doesn't make sense
+							if(globalMap.getChosenNodes().size() == 0){//set the start node of the globalnodes list of chosenNodes if that list is empty
+								globalMap.setStartNode(node);
+								globalMap.getChosenNodes().add(node);
+								globalMap.getAllNodes().add(node);
+								backend.getLocalMap().setStart(node);//remember to set the start node of that localMap the user is currently on
+								btnClear.setEnabled(true); //enable clear button if some node has been added
+							}
+							else{
+								if(globalMap.getChosenNodes().size() == 1){//if only the start node has been placed, place the end node
+									globalMap.getChosenNodes().add(node);
+									globalMap.setEndNode(node);
+									globalMap.getAllNodes().add(node);
+									backend.getLocalMap().setEnd(node);//remember to set the start node of that localMap the user is currently on
+									btnClear.setEnabled(true); //enable clear button if some node has been added
+								}
+								else{
+									//this means we need to account for waypoints
+									MapNode endNode = globalMap.getEndNode();
+									LocalMap localMap = endNode.getLocalMap();
+									for (LocalMap localmap : globalMap.getLocalMaps()){ //go back to the localMap we set to be the end, and re make it null as that node is no longer the globalMap's end node
+										if (localMap == localmap){
+											localmap.setEnd(null);
+										}
+									}
+									globalMap.getChosenNodes().add(node);
+									globalMap.setEndNode(node);
+									backend.getLocalMap().setEnd(node); //re set the end node here to the new local map the user is on
+
+								}
+								// Enable the route button if both start and end have been set
+								if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
+									btnRoute.setEnabled(true); //enable the button only if the user has selected a start and a end location
+							}
+
+							repaint();
+
+						}	
 					}
-					
-				}
+				});
+			}
 
-				/**
-				 * Constructor for Step by Step Directions panel. There needs to be two seperate ones as they both don't need map images
-				 */
-				public TweenPanel(String panelID) {
-					setLayout(new BorderLayout());
+		}
 
-					labelStep.setFont(new Font("Sans", Font.BOLD, 90));
-					labelMainPanel.setVerticalAlignment(SwingConstants.CENTER);
-					labelMainPanel.setHorizontalAlignment(SwingConstants.CENTER);
-					labelMainPanel.setText("Step by Step Directions");
+		/**
+		 * Constructor for Step by Step Directions panel. There needs to be two seperate ones as they both don't need map images
+		 */
+		public TweenPanel(String panelID) {
+			setLayout(new BorderLayout());
 
-					this.panelID = panelID;
+			labelStep.setFont(new Font("Sans", Font.BOLD, 90));
+			labelMainPanel.setVerticalAlignment(SwingConstants.CENTER);
+			labelMainPanel.setHorizontalAlignment(SwingConstants.CENTER);
+			labelMainPanel.setText("Step by Step Directions");
 
-					addMouseListener(new MouseAdapter() {
-						@Override
-						public void mouseEntered(MouseEvent e) {
-							hover = true;
-							if (actionEnabled) 
-								showBorder();
-						}
+			this.panelID = panelID;
 
-						@Override
-						public void mouseExited(MouseEvent e) {
-							hover = false;
-							hideBorder();
-						}
-
-						@Override
-						public void mouseReleased(MouseEvent e) {
-							if (action != null && actionEnabled)
-								action.run();
-						}
-					});
-
-				}
-
-				/**
-				 * Block of code to initialize all of the polygons representing clickable regions on buildings. Seperated
-				 * for readability.
-				 */
-				private void initializePolygons(){				
-					//Atwater Kent
-					aKPolygon = new Polygon();
-					aKPolygon.addPoint(1109, 241);
-					aKPolygon.addPoint(1067, 311);
-					aKPolygon.addPoint(1089, 325);
-					aKPolygon.addPoint(1082, 339);
-					aKPolygon.addPoint(1159, 381);
-					aKPolygon.addPoint(1168, 369);
-					aKPolygon.addPoint(1189, 381);
-					aKPolygon.addPoint(1229, 310);
-					aKPolygon.addPoint(1195, 289);
-					aKPolygon.addPoint(1176, 318);
-					aKPolygon.addPoint(1128, 290);
-					aKPolygon.addPoint(1144, 260);
-
-					//Boynton
-					bPolygon = new Polygon();
-					bPolygon.addPoint(1044, 734);
-					bPolygon.addPoint(1037, 775);
-					bPolygon.addPoint(1065, 780);
-					bPolygon.addPoint(1066, 773);
-					bPolygon.addPoint(1117, 782);
-					bPolygon.addPoint(1116, 787);
-					bPolygon.addPoint(1127, 789);
-					bPolygon.addPoint(1127, 783);
-					bPolygon.addPoint(1134, 783);
-					bPolygon.addPoint(1138, 754);
-					bPolygon.addPoint(1072, 743);
-					bPolygon.addPoint(1073, 739);
-
-					//Campus Center
-					cCPolygon = new Polygon();
-					cCPolygon.addPoint(938, 346);
-					cCPolygon.addPoint(920, 450);
-					cCPolygon.addPoint(899, 448);
-					cCPolygon.addPoint(910, 457);
-					cCPolygon.addPoint(911, 467);
-					cCPolygon.addPoint(904, 477);
-					cCPolygon.addPoint(893, 479);
-					cCPolygon.addPoint(882, 473);
-					cCPolygon.addPoint(881, 458);
-					cCPolygon.addPoint(875, 476);
-					cCPolygon.addPoint(813, 466);
-					cCPolygon.addPoint(821, 418);
-					cCPolygon.addPoint(834, 420);
-					cCPolygon.addPoint(850, 431);
-					cCPolygon.addPoint(857, 422);
-					cCPolygon.addPoint(850, 417);
-					cCPolygon.addPoint(860, 405);
-					cCPolygon.addPoint(854, 391);
-					cCPolygon.addPoint(860, 383);
-					cCPolygon.addPoint(875, 383);
-					cCPolygon.addPoint(884, 372);
-					cCPolygon.addPoint(873, 364);
-					cCPolygon.addPoint(890, 340);
-					
-					// Fuller Labs
-					fLPolygon = new Polygon();
-					fLPolygon.addPoint(1225, 445);
-					fLPolygon.addPoint(1301, 408);
-					fLPolygon.addPoint(1284, 371);
-					fLPolygon.addPoint(1305, 359);
-					fLPolygon.addPoint(1274, 300);
-					fLPolygon.addPoint(1242, 314);
-					fLPolygon.addPoint(1255, 341);
-					fLPolygon.addPoint(1211, 363);
-					fLPolygon.addPoint(1220, 382);
-					fLPolygon.addPoint(1199, 393);
-										
-					//Library
-					gLPolygon = new Polygon();
-					gLPolygon.addPoint(1245, 512);
-					gLPolygon.addPoint(1304, 525);
-					gLPolygon.addPoint(1279, 640);
-					gLPolygon.addPoint(1220, 628);
-					gLPolygon.addPoint(1226, 568);
-
-					//Higgins House
-					hHPolygon = new Polygon();
-					hHPolygon.addPoint(800, 305);
-					hHPolygon.addPoint(775, 288);
-					hHPolygon.addPoint(787, 271);
-					hHPolygon.addPoint(757, 250);
-					hHPolygon.addPoint(766, 235);
-					hHPolygon.addPoint(791, 250);
-					hHPolygon.addPoint(808, 231);
-					hHPolygon.addPoint(834, 246);
-					hHPolygon.addPoint(847, 231);
-					hHPolygon.addPoint(862, 241);
-					hHPolygon.addPoint(849, 258);
-					hHPolygon.addPoint(839, 253);
-					
-					// Higgins House Garage
-					hHGPolygon = new Polygon();
-					hHGPolygon.addPoint(875, 167);
-					hHGPolygon.addPoint(890, 178);
-					hHGPolygon.addPoint(870, 206);
-					hHGPolygon.addPoint(855, 196);
-					
-					//project center
-					pCPolygon = new Polygon();
-					pCPolygon.addPoint(1019, 598);
-					pCPolygon.addPoint(1030, 535);
-					pCPolygon.addPoint(1068, 543);
-					pCPolygon.addPoint(1056, 604);
-
-					//Stratton
-					sHPolygon = new Polygon();
-					sHPolygon.addPoint(1014, 613);
-					sHPolygon.addPoint(1052, 618);
-					sHPolygon.addPoint(1038, 701);
-					sHPolygon.addPoint(1000, 695);
-
-					//Fuller
-					fPolygon = new Polygon();
-					fPolygon.addPoint(1225, 445);
-					fPolygon.addPoint(1301, 408);
-					fPolygon.addPoint(1284, 371);
-					fPolygon.addPoint(1305, 359);
-					fPolygon.addPoint(1274, 300);
-					fPolygon.addPoint(1242, 314);
-					fPolygon.addPoint(1255, 341);
-					fPolygon.addPoint(1211, 363);
-					fPolygon.addPoint(1220, 382);
-					fPolygon.addPoint(1199, 393);
-
-				}
-
-				public ArrayList<MapNode> getMapNodes() {
-					return localNodes;
-				}
-
-				public void setMapNodes(ArrayList<MapNode> localNodes) {
-					this.localNodes = localNodes;
-				}
-
-				public Image getMapImage() {
-					return mapImage.getImage(packageName);
-				}
-
-				public void setMapImage(IProxyImage mapImage) {
-					this.mapImage = mapImage;
-				}
-				public void setColors(String scheme){
-					colors = allSchemes.setColorScheme(scheme);
-				}
-
-				/**
-				 * Sets the action of the panel
-				 * @param action The action (or animation) to perform
-				 */
-				public void setAction(Runnable action) {
-					this.action = action;
-				}
-
-				/**
-				 * Enables the component to do an action and if mouse is hovering highlight the border
-				 */
-				public void enableAction() {
-					actionEnabled = true; 
-					if (hover)
+			addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					hover = true;
+					if (actionEnabled) 
 						showBorder();
 				}
 
-				/**
-				 * Disable the component from doing any actions
-				 */
-				public void disableAction() {
-					actionEnabled = false;
-				}
-
-				/**
-				 * Actual tween animation to show the border. Will highlight with specified border thickness
-				 */
-				private void showBorder() {
-					tweenManager.killTarget(borderThickness);
-					Tween.to(TweenPanel.this, Accessor.BORDER_THICKNESS, 0.4f)
-					.target(10)
-					.start(tweenManager);
-				}
-
-				/**
-				 * Hides the highlighted border once the mouse leaves the component
-				 */
-				private void hideBorder() {
-					tweenManager.killTarget(borderThickness);
-					Tween.to(TweenPanel.this, Accessor.BORDER_THICKNESS, 0.4f)
-					.target(2)
-					.start(tweenManager);
+				@Override
+				public void mouseExited(MouseEvent e) {
+					hover = false;
+					hideBorder();
 				}
 
 				@Override
-				protected void paintComponent(Graphics g) {
-					Color startNodeColor = colors.getStartNodeColor();
-					Color endNodeColor = colors.getEndNodeColor();
-					Color lineColor = colors.getLineColor();
-					double alpha = 0.25;
-					Color color = new Color((float) 0, (float) .5, (float) 1, (float) alpha);
-					Color outlineColor = colors.getOutlineColor();
+				public void mouseReleased(MouseEvent e) {
+					if (action != null && actionEnabled)
+						action.run();
+				}
+			});
 
-					super.paintComponent(g);
+		}
 
-					Graphics2D graphics = (Graphics2D) g;
+		/**
+		 * Block of code to initialize all of the polygons representing clickable regions on buildings. Seperated
+		 * for readability.
+		 */
+		private void initializePolygons(){				
+			//Atwater Kent
+			aKPolygon = new Polygon();
+			aKPolygon.addPoint(1109, 241);
+			aKPolygon.addPoint(1067, 311);
+			aKPolygon.addPoint(1089, 325);
+			aKPolygon.addPoint(1082, 339);
+			aKPolygon.addPoint(1159, 381);
+			aKPolygon.addPoint(1168, 369);
+			aKPolygon.addPoint(1189, 381);
+			aKPolygon.addPoint(1229, 310);
+			aKPolygon.addPoint(1195, 289);
+			aKPolygon.addPoint(1176, 318);
+			aKPolygon.addPoint(1128, 290);
+			aKPolygon.addPoint(1144, 260);
 
-					if(this.mapImage == null) // StepByStep
-						if(!currentlyOpen){
-							lblStepByStep.setVisible(false);
-							lblClickHere.setVisible(true);
-							lblDistance.setVisible(false);
-							scrollPane.setVisible(false);
-							listDirections.setVisible(false);
-						} 
-						else {
-							lblStepByStep.setVisible(true);
-							lblDistance.setVisible(true);
-							lblClickHere.setVisible(false);
-							scrollPane.setVisible(true);
-							listDirections.setVisible(true);
-						}
+			//Boynton
+			bPolygon = new Polygon();
+			bPolygon.addPoint(1044, 734);
+			bPolygon.addPoint(1037, 775);
+			bPolygon.addPoint(1065, 780);
+			bPolygon.addPoint(1066, 773);
+			bPolygon.addPoint(1117, 782);
+			bPolygon.addPoint(1116, 787);
+			bPolygon.addPoint(1127, 789);
+			bPolygon.addPoint(1127, 783);
+			bPolygon.addPoint(1134, 783);
+			bPolygon.addPoint(1138, 754);
+			bPolygon.addPoint(1072, 743);
+			bPolygon.addPoint(1073, 739);
 
-					else {
-						// Save the current transformed state incase something goes wrong
-						AffineTransform saveTransform = graphics.getTransform();
-						transform = new AffineTransform(saveTransform);
+			//Campus Center
+			cCPolygon = new Polygon();
+			cCPolygon.addPoint(938, 346);
+			cCPolygon.addPoint(920, 450);
+			cCPolygon.addPoint(899, 448);
+			cCPolygon.addPoint(910, 457);
+			cCPolygon.addPoint(911, 467);
+			cCPolygon.addPoint(904, 477);
+			cCPolygon.addPoint(893, 479);
+			cCPolygon.addPoint(882, 473);
+			cCPolygon.addPoint(881, 458);
+			cCPolygon.addPoint(875, 476);
+			cCPolygon.addPoint(813, 466);
+			cCPolygon.addPoint(821, 418);
+			cCPolygon.addPoint(834, 420);
+			cCPolygon.addPoint(850, 431);
+			cCPolygon.addPoint(857, 422);
+			cCPolygon.addPoint(850, 417);
+			cCPolygon.addPoint(860, 405);
+			cCPolygon.addPoint(854, 391);
+			cCPolygon.addPoint(860, 383);
+			cCPolygon.addPoint(875, 383);
+			cCPolygon.addPoint(884, 372);
+			cCPolygon.addPoint(873, 364);
+			cCPolygon.addPoint(890, 340);
 
-						// account for changes in zoom
-						transform.translate(getWidth() / 2, getHeight() /2);
-						transform.scale(zoomRatio, zoomRatio);
-						transform.translate(-getWidth() / 2, -getHeight() / 2);
+			// Fuller Labs
+			fLPolygon = new Polygon();
+			fLPolygon.addPoint(1225, 445);
+			fLPolygon.addPoint(1301, 408);
+			fLPolygon.addPoint(1284, 371);
+			fLPolygon.addPoint(1305, 359);
+			fLPolygon.addPoint(1274, 300);
+			fLPolygon.addPoint(1242, 314);
+			fLPolygon.addPoint(1255, 341);
+			fLPolygon.addPoint(1211, 363);
+			fLPolygon.addPoint(1220, 382);
+			fLPolygon.addPoint(1199, 393);
 
-						transform.translate(panX, panY); // move to designated location
-						graphics.setTransform(transform);
+			//Library
+			gLPolygon = new Polygon();
+			gLPolygon.addPoint(1245, 512);
+			gLPolygon.addPoint(1304, 525);
+			gLPolygon.addPoint(1279, 640);
+			gLPolygon.addPoint(1220, 628);
+			gLPolygon.addPoint(1226, 568);
 
-						// Scale the map relative to the panels current size and your current viewing window
-						//graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);	
+			//Higgins House
+			hHPolygon = new Polygon();
+			hHPolygon.addPoint(800, 305);
+			hHPolygon.addPoint(775, 288);
+			hHPolygon.addPoint(787, 271);
+			hHPolygon.addPoint(757, 250);
+			hHPolygon.addPoint(766, 235);
+			hHPolygon.addPoint(791, 250);
+			hHPolygon.addPoint(808, 231);
+			hHPolygon.addPoint(834, 246);
+			hHPolygon.addPoint(847, 231);
+			hHPolygon.addPoint(862, 241);
+			hHPolygon.addPoint(849, 258);
+			hHPolygon.addPoint(839, 253);
 
-						// Colors start and end differently
-						// Draws the map and places pre-existing node data onto the map as
-						// well start and end nodes if they have been set
-						graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);
+			// Higgins House Garage
+			hHGPolygon = new Polygon();
+			hHGPolygon.addPoint(875, 167);
+			hHGPolygon.addPoint(890, 178);
+			hHGPolygon.addPoint(870, 206);
+			hHGPolygon.addPoint(855, 196);
 
-						// Sets the color of the start and end nodes to be different for each new waypoint
-						if(this.isMapView){
+			//project center
+			pCPolygon = new Polygon();
+			pCPolygon.addPoint(1019, 598);
+			pCPolygon.addPoint(1030, 535);
+			pCPolygon.addPoint(1068, 543);
+			pCPolygon.addPoint(1056, 604);
 
-							// if this is the campus map, draw the building polygons
-							if(backend.getLocalMap().getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE)){
+			//Stratton
+			sHPolygon = new Polygon();
+			sHPolygon.addPoint(1014, 613);
+			sHPolygon.addPoint(1052, 618);
+			sHPolygon.addPoint(1038, 701);
+			sHPolygon.addPoint(1000, 695);
 
-								// Draw the panels over the building
-								graphics.setColor(lineColor);
-								graphics.setStroke(new BasicStroke (7));
-								graphics.draw(aKPolygon);
-								graphics.draw(bPolygon);
-								graphics.draw(cCPolygon);
-								graphics.draw(fLPolygon);
-								graphics.draw(gLPolygon);
-								graphics.draw(pCPolygon);
-								graphics.draw(hHPolygon);
-								graphics.draw(hHGPolygon);
-								graphics.draw(sHPolygon);
-							}
+			//Fuller
+			fPolygon = new Polygon();
+			fPolygon.addPoint(1225, 445);
+			fPolygon.addPoint(1301, 408);
+			fPolygon.addPoint(1284, 371);
+			fPolygon.addPoint(1305, 359);
+			fPolygon.addPoint(1274, 300);
+			fPolygon.addPoint(1242, 314);
+			fPolygon.addPoint(1255, 341);
+			fPolygon.addPoint(1211, 363);
+			fPolygon.addPoint(1220, 382);
+			fPolygon.addPoint(1199, 393);
 
-							// Sets the color of the start and end nodes to be different
-							graphics.setStroke(new BasicStroke(1));
+		}
+
+		public ArrayList<MapNode> getMapNodes() {
+			return localNodes;
+		}
+
+		public void setMapNodes(ArrayList<MapNode> localNodes) {
+			this.localNodes = localNodes;
+		}
+
+		public Image getMapImage() {
+			return mapImage.getImage(packageName);
+		}
+
+		public void setMapImage(IProxyImage mapImage) {
+			this.mapImage = mapImage;
+		}
+		public void setColors(String scheme){
+			colors = allSchemes.setColorScheme(scheme);
+		}
+
+		/**
+		 * Sets the action of the panel
+		 * @param action The action (or animation) to perform
+		 */
+		public void setAction(Runnable action) {
+			this.action = action;
+		}
+
+		/**
+		 * Enables the component to do an action and if mouse is hovering highlight the border
+		 */
+		public void enableAction() {
+			actionEnabled = true; 
+			if (hover)
+				showBorder();
+		}
+
+		/**
+		 * Disable the component from doing any actions
+		 */
+		public void disableAction() {
+			actionEnabled = false;
+		}
+
+		/**
+		 * Actual tween animation to show the border. Will highlight with specified border thickness
+		 */
+		private void showBorder() {
+			tweenManager.killTarget(borderThickness);
+			Tween.to(TweenPanel.this, Accessor.BORDER_THICKNESS, 0.4f)
+			.target(10)
+			.start(tweenManager);
+		}
+
+		/**
+		 * Hides the highlighted border once the mouse leaves the component
+		 */
+		private void hideBorder() {
+			tweenManager.killTarget(borderThickness);
+			Tween.to(TweenPanel.this, Accessor.BORDER_THICKNESS, 0.4f)
+			.target(2)
+			.start(tweenManager);
+		}
+
+		@Override
+		protected void paintComponent(Graphics g) {
+			Color startNodeColor = colors.getStartNodeColor();
+			Color endNodeColor = colors.getEndNodeColor();
+			Color lineColor = colors.getLineColor();
+			double alpha = 0.25;
+			Color color = new Color((float) 0, (float) .5, (float) 1, (float) alpha);
+			Color outlineColor = colors.getOutlineColor();
+
+			super.paintComponent(g);
+
+			Graphics2D graphics = (Graphics2D) g;
+
+			if(this.mapImage == null) // StepByStep
+				if(!currentlyOpen){
+					lblStepByStep.setVisible(false);
+					lblClickHere.setVisible(true);
+					lblDistance.setVisible(false);
+					scrollPane.setVisible(false);
+					listDirections.setVisible(false);
+				} 
+				else {
+					lblStepByStep.setVisible(true);
+					lblDistance.setVisible(true);
+					lblClickHere.setVisible(false);
+					scrollPane.setVisible(true);
+					listDirections.setVisible(true);
+				}
+
+			else {
+				// Save the current transformed state incase something goes wrong
+				AffineTransform saveTransform = graphics.getTransform();
+				transform = new AffineTransform(saveTransform);
+
+				// account for changes in zoom
+				transform.translate(getWidth() / 2, getHeight() /2);
+				transform.scale(zoomRatio, zoomRatio);
+				transform.translate(-getWidth() / 2, -getHeight() / 2);
+
+				transform.translate(panX, panY); // move to designated location
+				graphics.setTransform(transform);
+
+				// Scale the map relative to the panels current size and your current viewing window
+				//graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);	
+
+				// Colors start and end differently
+				// Draws the map and places pre-existing node data onto the map as
+				// well start and end nodes if they have been set
+				graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);
+
+				// Sets the color of the start and end nodes to be different for each new waypoint
+				if(this.isMapView){
+
+					// if this is the campus map, draw the building polygons
+					if(backend.getLocalMap().getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE)){
+
+						// Draw the panels over the building
+						graphics.setColor(lineColor);
+						graphics.setStroke(new BasicStroke (7));
+						graphics.draw(aKPolygon);
+						graphics.draw(bPolygon);
+						graphics.draw(cCPolygon);
+						graphics.draw(fLPolygon);
+						graphics.draw(gLPolygon);
+						graphics.draw(pCPolygon);
+						graphics.draw(hHPolygon);
+						graphics.draw(hHGPolygon);
+						graphics.draw(sHPolygon);
+					}
+
+					// Sets the color of the start and end nodes to be different
+					graphics.setStroke(new BasicStroke(1));
+					graphics.setColor(startNodeColor);
+					
+					if(!(paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
+						if (paths.get(index).get(0) != null){ // make sure that the start node (which it should never be) is not null
 							graphics.setColor(startNodeColor);
-							if(!(paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
-								if (paths.get(index).get(0) != null){ // make sure that the start node (which it should never be) is not null
-									graphics.setColor(startNodeColor);
-									graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-									graphics.setColor(outlineColor);
-									graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-								}
-								if (paths.get(index).get(paths.get(index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
-									graphics.setColor(endNodeColor);
-									graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
-									graphics.setColor(outlineColor);
-									graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
-								}
-							}
-							//drawing for originally placed nodes
-							if (globalMap.getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed 
-								if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
-									graphics.setColor(startNodeColor);
-									graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
-									graphics.setColor(outlineColor);
-									graphics.drawOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
-								}
-							}
-
-							if(globalMap.getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
-								if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
-									graphics.setColor(endNodeColor);
-									graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
-									graphics.setColor(outlineColor);
-									graphics.drawOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
-								}
-							}
-							if (globalMap.getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
-								for (int i = 1; i < globalMap.getChosenNodes().size() - 1; i++){
-									if (globalMap.getChosenNodes().get(i).getLocalMap() == backend.getLocalMap()){
-										graphics.setColor(Color.ORANGE);
-										graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
-										graphics.setColor(outlineColor);
-										graphics.drawOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
-									}
-								}
-							}
-
-							//this is where you draw the lines
-							if (GUIFront.drawLine == true) {
-								for (int i = 0; i < thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
-									double x1 = backend.getCoordinates(thisRoute).get(i)[0];
-									double y1 = backend.getCoordinates(thisRoute).get(i)[1];
-									double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
-									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
-									Graphics2D g2 = (Graphics2D) g;
-									g2.setStroke(new BasicStroke(5));
-									g2.setColor(lineColor);
-									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
-								}
-								drawLine = false;
-								removeLine = true;
-								//this is where you remove the lines
-							} else if (GUIFront.removeLine == true) { 
-								for (int i = 0; i < thisRoute.size() - 1; i++) {//basically go through the current map and remove all lines for all links between nodes in a route on that map
-									double x1 = backend.getCoordinates(thisRoute).get(i)[0];
-									double y1 = backend.getCoordinates(thisRoute).get(i)[1];
-									double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
-									double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
-									Graphics2D g2 = (Graphics2D) g;
-									g2.setStroke(new BasicStroke(5));
-									g2.setColor(lineColor); // you are going to want to make this transparent ... before next step button is added otherwise this will cause some issues
-									g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
-								}
-								drawLine = true;
-								removeLine = false;
-							}
-
-							if (drawLine2 == true){
-								Graphics2D g2 = (Graphics2D) g;
-								g2.setStroke(new BasicStroke(2));
-								g2.setColor(Color.YELLOW);
-								g2.drawLine((int) paths.get(index).get(index2 - 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 - 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
-							}
-
-							if (drawLine3 == true){
-								Graphics2D g2 = (Graphics2D) g;
-								g2.setStroke(new BasicStroke(2));
-								g2.setColor(Color.YELLOW);
-								g2.drawLine((int) paths.get(index).get(index2 + 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 + 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
-							}
-							repaint();
-							graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
+							graphics.fillOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+							graphics.setColor(outlineColor);
+							graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
+						}
+						if (paths.get(index).get(paths.get(index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
+							graphics.setColor(endNodeColor);
+							graphics.fillOval((int) paths.get(index).get(paths.get(index).size() - 1).getXPos() - (int)panX - 5, (int) paths.get(index).get(paths.get(index).size() - 1).getYPos() - (int)panY - 5, 10, 10);
+							graphics.setColor(outlineColor);
+							graphics.drawOval((int) paths.get(index).get(0).getXPos() - (int)panX - 5, (int) paths.get(index).get(0).getYPos() - (int)panY - 5, 10, 10);
 						}
 					}
-				}
-
-				public String getID(){
-					return this.panelID;
-				}
-				public void setScale(double scaleAmt){
-					this.zoomRatio = scaleAmt;
-				}
-
-				/**
-				 * Tween accessor class.
-				 * This class handles all of the relevant information regarding the target components tweening information
-				 */
-				public static class Accessor extends SLAnimator.ComponentAccessor {
-					public static final int BORDER_THICKNESS = 100;
-
-					/**
-					 * Gets the thickness values to be used in animation
-					 * @param target The component we are creating an animation on
-					 * @param tweenType A variable used to decide which kind of animation we want to do, in this case there's only one option
-					 * @param returnValues A list of values containing the desired borderThickness to draw
-					 * @return returnVal Inidicates success or failure
-					 */
-					@Override
-					public int getValues(Component target, int tweenType, float[] returnValues) {
-						TweenPanel tp = (TweenPanel) target;
-
-						int ret = super.getValues(target, tweenType, returnValues);
-						if (ret >= 0) return ret;
-
-						switch (tweenType) {
-						case BORDER_THICKNESS: returnValues[0] = tp.borderThickness; return 1;
-						default: return -1;
+					//drawing for originally placed nodes
+					if (globalMap.getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed
+						if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
+							System.out.println("displaying start node: ");
+							System.out.println((int) backend.getLocalMap().getStart().getXPos());
+							System.out.println((int)panX - 5);
+							System.out.println((int) backend.getLocalMap().getStart().getYPos());
+							System.out.println((int)panY - 5);
+							graphics.setColor(startNodeColor);
+							graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
+							graphics.setColor(outlineColor);
+							graphics.drawOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
 						}
 					}
 
-					/**
-					 * Sets the animation values to the specified 
-					 * @param target The component we are creating an animation on
-					 * @param tweenType A variable used to decide which kind of animation we want to do, in this case there's only one option
-					 * @param newValues A list of values containing the desired borderThickness to draw, with a value at index 0
-					 */
-					@Override
-					public void setValues(Component target, int tweenType, float[] newValues) {
-						TweenPanel tp = (TweenPanel) target;
-
-						super.setValues(target, tweenType, newValues);
-
-						switch (tweenType) {
-						case BORDER_THICKNESS:
-							tp.borderThickness = Math.round(newValues[0]);
-							tp.repaint();
-							break;
+					if(globalMap.getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
+						if (globalMap.getEndNode().getLocalMap() == backend.getLocalMap()){
+							graphics.setColor(endNodeColor);
+							graphics.fillOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
+							graphics.setColor(outlineColor);
+							graphics.drawOval((int) globalMap.getEndNode().getXPos() - (int)panX - 5, (int) globalMap.getEndNode().getYPos() - (int)panY - 5, 10, 10);
 						}
 					}
-				} // end Accessor Class
+					if (globalMap.getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
+						for (int i = 1; i < globalMap.getChosenNodes().size() - 1; i++){
+							if (globalMap.getChosenNodes().get(i).getLocalMap() == backend.getLocalMap()){
+								graphics.setColor(Color.ORANGE);
+								graphics.fillOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+								graphics.setColor(outlineColor);
+								graphics.drawOval((int) globalMap.getChosenNodes().get(i).getXPos() - (int)panX - 5, (int) globalMap.getChosenNodes().get(i).getYPos() - (int)panY - 5, 10, 10);
+							}
+						}
+					}
 
-			} // end TweenPanel Class
+					//this is where you draw the lines
+					if (GUIFront.drawLine == true) {
+						for (int i = 0; i < thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
+							double x1 = backend.getCoordinates(thisRoute).get(i)[0];
+							double y1 = backend.getCoordinates(thisRoute).get(i)[1];
+							double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
+							double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
+							Graphics2D g2 = (Graphics2D) g;
+							g2.setStroke(new BasicStroke(5));
+							g2.setColor(lineColor);
+							g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+						}
+						drawLine = false;
+						removeLine = true;
+						//this is where you remove the lines
+					} else if (GUIFront.removeLine == true) { 
+						for (int i = 0; i < thisRoute.size() - 1; i++) {//basically go through the current map and remove all lines for all links between nodes in a route on that map
+							double x1 = backend.getCoordinates(thisRoute).get(i)[0];
+							double y1 = backend.getCoordinates(thisRoute).get(i)[1];
+							double x2 = backend.getCoordinates(thisRoute).get(i + 1)[0];
+							double y2 = backend.getCoordinates(thisRoute).get(i + 1)[1];
+							Graphics2D g2 = (Graphics2D) g;
+							g2.setStroke(new BasicStroke(5));
+							g2.setColor(lineColor); // you are going to want to make this transparent ... before next step button is added otherwise this will cause some issues
+							g2.drawLine((int) x1 - (int)panX, (int) y1 - (int)panY, (int) x2 - (int)panX, (int) y2 - (int)panY);
+						}
+						drawLine = true;
+						removeLine = false;
+					}
+
+					if (drawLine2 == true){
+						Graphics2D g2 = (Graphics2D) g;
+						g2.setStroke(new BasicStroke(2));
+						g2.setColor(Color.YELLOW);
+						g2.drawLine((int) paths.get(index).get(index2 - 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 - 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
+					}
+
+					if (drawLine3 == true){
+						Graphics2D g2 = (Graphics2D) g;
+						g2.setStroke(new BasicStroke(2));
+						g2.setColor(Color.YELLOW);
+						g2.drawLine((int) paths.get(index).get(index2 + 1).getXPos() - (int)panX, (int) paths.get(index).get(index2 + 1).getYPos() - (int)panY, (int) paths.get(index).get(index2).getXPos() - (int)panX, (int) paths.get(index).get(index2).getYPos() - (int)panY);
+					}
+					repaint();
+					graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
+				}
+			}
+		}
+
+		public String getID(){
+			return this.panelID;
+		}
+		public void setScale(double scaleAmt){
+			this.zoomRatio = scaleAmt;
+		}
+
+		/**
+		 * Tween accessor class.
+		 * This class handles all of the relevant information regarding the target components tweening information
+		 */
+		public static class Accessor extends SLAnimator.ComponentAccessor {
+			public static final int BORDER_THICKNESS = 100;
+
+			/**
+			 * Gets the thickness values to be used in animation
+			 * @param target The component we are creating an animation on
+			 * @param tweenType A variable used to decide which kind of animation we want to do, in this case there's only one option
+			 * @param returnValues A list of values containing the desired borderThickness to draw
+			 * @return returnVal Inidicates success or failure
+			 */
+			@Override
+			public int getValues(Component target, int tweenType, float[] returnValues) {
+				TweenPanel tp = (TweenPanel) target;
+
+				int ret = super.getValues(target, tweenType, returnValues);
+				if (ret >= 0) return ret;
+
+				switch (tweenType) {
+				case BORDER_THICKNESS: returnValues[0] = tp.borderThickness; return 1;
+				default: return -1;
+				}
+			}
+
+			/**
+			 * Sets the animation values to the specified 
+			 * @param target The component we are creating an animation on
+			 * @param tweenType A variable used to decide which kind of animation we want to do, in this case there's only one option
+			 * @param newValues A list of values containing the desired borderThickness to draw, with a value at index 0
+			 */
+			@Override
+			public void setValues(Component target, int tweenType, float[] newValues) {
+				TweenPanel tp = (TweenPanel) target;
+
+				super.setValues(target, tweenType, newValues);
+
+				switch (tweenType) {
+				case BORDER_THICKNESS:
+					tp.borderThickness = Math.round(newValues[0]);
+					tp.repaint();
+					break;
+				}
+			}
+		} // end Accessor Class
+
+	} // end TweenPanel Class
 }
