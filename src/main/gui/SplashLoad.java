@@ -31,7 +31,7 @@ public class SplashLoad extends JFrame{
 		super("Splash");
 		this.setBackground(Color.WHITE);
 		this.setForeground(Color.white);
-		setSize(450, 320);
+		setSize(450, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setUndecorated(true);
@@ -43,7 +43,7 @@ public class SplashLoad extends JFrame{
 		imglabel.setBounds(0, 0, 450, 300);
 		imglabel.setBackground(Color.white);
 		setLayout(null);
-		
+		/*
 		//progress bar settings
 		pbar = new JProgressBar();
 		pbar.setMinimum(0);
@@ -69,6 +69,6 @@ public class SplashLoad extends JFrame{
 				}
 			}
 		};
-		t.start();
+		t.start();*/
 	}
 }

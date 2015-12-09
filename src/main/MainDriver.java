@@ -52,14 +52,14 @@ public class MainDriver {
 	    //initiate the splash screen and create a delay before the program launches
 	    SplashLoad s=new SplashLoad();
         s.setVisible(true);
-        Thread t=Thread.currentThread();
+       /* Thread t=Thread.currentThread();
         try {
 			t.sleep(1100);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+		*/
 		// Launches the main application
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
