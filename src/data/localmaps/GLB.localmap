@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<MapNodes>
+    <ImageName>GLB.jpg</ImageName>
+    <Node>
+        <NodeID>GLB_1</NodeID>
+        <XPos>323.0</XPos>
+        <YPos>309.0</YPos>
+        <XFeet>88.8896</XFeet>
+        <YFeet>85.0368</YFeet>
+        <ZFeet>-13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>GLB_2</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>GLB_2</NodeID>
+        <XPos>455.0</XPos>
+        <YPos>311.0</YPos>
+        <XFeet>125.216</XFeet>
+        <YFeet>85.5872</YFeet>
+        <ZFeet>-13.0</ZFeet>
+        <Neighbors>
+            <Neighbor>GLB_1</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+</MapNodes>
