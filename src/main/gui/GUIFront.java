@@ -124,8 +124,9 @@ public class GUIFront extends JFrame {
 	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
 	private JMenu mnColorScheme;
 	private JMenuItem mntmDefaultCampus, mntmGrayscale, mntmWPI, mntmFlowerPower, mntmAllBlue;
-	private JMenu mnAtwaterKent, mnBoyntonHall, mnCampusCenter, mnGordonLibrary, mnHigginsHouse, mnHigginsHouseGarage, mnProjectCenter, mnStrattonHall;
+	private JMenu mnAtwaterKent, mnBoyntonHall, mnCampusCenter, mnFullerLabs, mnGordonLibrary, mnHigginsHouse, mnHigginsHouseGarage, mnProjectCenter, mnStrattonHall;
 	private JMenuItem mntmAK1, mntmAK2, mntmAK3, mntmAKB, mntmBoy1, mntmBoy2, mntmBoy3, mntmBoyB, mntmCC1, mntmCC2, mntmCC3, mntmCCM;
+	private JMenuItem mntmFL1, mntmFL2, mntmFL3, mntmFLB, mntmFLSB;
 	private JMenuItem mntmGL1, mntmGL2, mntmGL3, mntmGLB, mntmGLSB, mntmHH1, mntmHH2, mntmHH3, mntmHHG1, mntmHHG2, mntmPC1, mntmPC2;
 	private JMenuItem mntmSH1, mntmSH2, mntmSH3, mntmSHB, mntmEmail, mntmExit;
 	
@@ -216,43 +217,49 @@ public class GUIFront extends JFrame {
 		
 		// Adding default values for pan and zoom to the hashmap
 		
-		defaults.put("AK1.png", new double[]{-80.0, -125.0, 0.78});
+		defaults.put("AK1.png", new double[]{-80.0, -125.0, 0.78}); // 0
 		defaults.put("AK2.png", new double[]{-80.0, -130.0, 0.80});
 		defaults.put("AK3.png", new double[]{-80.0, -120.0, 0.78});
-		defaults.put("AKB.png", new double[]{-80.0, -180.0, 0.80});
+		defaults.put("AKB.png", new double[]{-80.0, -180.0, 0.80}); // 3
 
-		defaults.put("Boy1.png", new double[]{-80.0, -140.0, 0.90});
+		defaults.put("Boy1.png", new double[]{-80.0, -140.0, 0.90}); // 4
 		defaults.put("Boy2.png", new double[]{-80.0, -140.0, 0.90});
 		defaults.put("Boy3.png", new double[]{-80.0, -140.0, 0.90});
-		defaults.put("BoyB.png", new double[]{-80.0, -140.0, 0.90});
+		defaults.put("BoyB.png", new double[]{-80.0, -140.0, 0.90}); // 7
 
-		defaults.put("CC1.png", new double[]{-80.0, -110.0, 0.68});
+		defaults.put("CC1.png", new double[]{-80.0, -110.0, 0.68}); // 8
 		defaults.put("CC2.png", new double[]{-80.0, -110.0, 0.66});
-		defaults.put("CC3.png", new double[]{-80.0, -120.0, 0.80});
+		defaults.put("CC3.png", new double[]{-80.0, -120.0, 0.80}); // 10
 
-		defaults.put("CCM.png", new double[]{-300.0, -220.0, 0.40});
+		defaults.put("CCM.png", new double[]{-500.0, -250.0, 0.40}); // 11
 
 
-		defaults.put("GL1.png", new double[]{-80.0, -110.0, 0.74});
+		defaults.put("FL1.png", new double[]{-80.0, -110.0, 0.7}); // 12
+		defaults.put("FL2.png", new double[]{-80.0, -110.0, 0.7}); // 13
+		defaults.put("FL3.png", new double[]{-80.0, -110.0, 0.7}); // 14
+		defaults.put("FLB.png", new double[]{-80.0, -110.0, 0.7}); // 15
+		defaults.put("FLSB.png", new double[]{-80.0, -110.0, 0.7}); // 16
+		
+		defaults.put("GL1.png", new double[]{-80.0, -110.0, 0.74}); // 17
 		defaults.put("GL2.png", new double[]{-80.0, -110.0, 0.74});
 		defaults.put("GL3.png", new double[]{-80.0, -110.0, 0.74});
 		defaults.put("GLB.png", new double[]{-80.0, -110.0, 0.74});
-		defaults.put("GLSB.png", new double[]{-80.0, -110.0, 0.74});
+		defaults.put("GLSB.png", new double[]{-80.0, -110.0, 0.74}); //21
 
-		defaults.put("HH1.png", new double[]{-80.0, -110.0, 0.65});
+		defaults.put("HH1.png", new double[]{-80.0, -110.0, 0.65}); // 22
 		defaults.put("HH2.png", new double[]{-80.0, -110.0, 0.65});
-		defaults.put("HH3.png", new double[]{-80.0, -110.0, 0.65});
+		defaults.put("HH3.png", new double[]{-80.0, -110.0, 0.65}); // 24
 
-		defaults.put("HHG1.png", new double[]{-80.0, -95.0, 0.86});
-		defaults.put("HHG2.png", new double[]{-80.0, -95.0, 0.86});
+		defaults.put("HHG1.png", new double[]{-80.0, -95.0, 0.86}); // 25
+		defaults.put("HHG2.png", new double[]{-80.0, -95.0, 0.86}); // 26
 
-		defaults.put("PC1.png", new double[]{-80.0, -140.0, 0.80});
-		defaults.put("PC2.png", new double[]{-80.0, -110.0, 0.82});
+		defaults.put("PC1.png", new double[]{-80.0, -140.0, 0.80}); // 27
+		defaults.put("PC2.png", new double[]{-80.0, -110.0, 0.82}); // 28
 
-		defaults.put("SH1.png", new double[]{-80.0, -110.0, 0.82});
+		defaults.put("SH1.png", new double[]{-80.0, -110.0, 0.82}); // 29
 		defaults.put("SH2.png", new double[]{-80.0, -140.0, 0.90});
 		defaults.put("SH3.png", new double[]{-80.0, -110.0, 0.90});
-		defaults.put("SHB.png", new double[]{-80.0, -110.0, 0.90});
+		defaults.put("SHB.png", new double[]{-80.0, -110.0, 0.90}); // 32
 		
 
 		// Image of the default map loaded into backend
@@ -1259,41 +1266,84 @@ public class GUIFront extends JFrame {
 			}
 		});
 
+		// Fuller Labs
+		mnFullerLabs = new JMenu("Fuller Labs");
+		mntmFL1 = new JMenuItem("Floor 1");
+		mntmFL1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				changeMapTo(12, 0, 0, 1);
+			}
+		});
+		mntmFL2 = new JMenuItem("Floor 2");
+		mntmFL2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				changeMapTo(13, 0, 0, 1);
+			}
+		});
+		mntmFL3 = new JMenuItem("Floor 3");
+		mntmFL3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				changeMapTo(14, 0, 0, 1);
+			}
+		});
+		mntmFLB = new JMenuItem("Basement");
+		mntmFLB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				changeMapTo(15, 0, 0, 1);
+			}
+		});
+		mntmFLSB = new JMenuItem("Sub Basement");
+		mntmFLSB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				changeMapTo(16, 0, 0, 1);
+			}
+		});
+		mnFullerLabs.add(mntmFL1);
+		mnFullerLabs.add(mntmFL2);
+		mnFullerLabs.add(mntmFL3);
+		mnFullerLabs.add(mntmFLB);
+		mnFullerLabs.add(mntmFLSB);
+		
 		// Gordon Library
 		mnGordonLibrary = new JMenu("Gordon Library");
 		mntmGL1 = new JMenuItem("Floor 1");
 		mntmGL1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				changeMapTo(12, 0, 0, 1);
+				changeMapTo(17, 0, 0, 1);
 			}
 		});
 		mntmGL2 = new JMenuItem("Floor 2");
 		mntmGL2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				changeMapTo(13, 0, 0, 1);
+				changeMapTo(18, 0, 0, 1);
 			}
 		});
 		mntmGL3 = new JMenuItem("Floor 3");
 		mntmGL3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				changeMapTo(14, 0, 0, 1);
+				changeMapTo(19, 0, 0, 1);
 			}
 		});
 		mntmGLB = new JMenuItem("Basement");
 		mntmGLB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				changeMapTo(15, 0, 0, 1);
+				changeMapTo(20, 0, 0, 1);
 			}
 		});
 		mntmGLSB = new JMenuItem("Sub Basement");
 		mntmGLSB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				changeMapTo(16, 0, 0, 1);
+				changeMapTo(21, 0, 0, 1);
 			}
 		});
 		mnGordonLibrary.add(mntmGL1);
@@ -1308,21 +1358,21 @@ public class GUIFront extends JFrame {
 		mntmHH1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				changeMapTo(17, 0, 0, 1);
+				changeMapTo(22, 0, 0, 1);
 			}
 		});
 		mntmHH2 = new JMenuItem("Floor 2");
 		mntmHH2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				changeMapTo(18, 0, 0, 1);
+				changeMapTo(23, 0, 0, 1);
 			}
 		});
 		mntmHH3 = new JMenuItem("Floor 3");
 		mntmHH3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				changeMapTo(19, 0, 0, 1);
+				changeMapTo(24, 0, 0, 1);
 			}
 		});
 		mnHigginsHouse.add(mntmHH1);
@@ -1335,14 +1385,14 @@ public class GUIFront extends JFrame {
 		mntmHHG1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				changeMapTo(20, 0, 0, 1);
+				changeMapTo(25, 0, 0, 1);
 			}
 		});
 		mntmHHG2 = new JMenuItem("Floor 2");
 		mntmHHG2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				changeMapTo(21, 0, 0, 1);
+				changeMapTo(26, 0, 0, 1);
 			}
 		});
 		mnHigginsHouseGarage.add(mntmHHG1);
@@ -1354,14 +1404,14 @@ public class GUIFront extends JFrame {
 		mntmPC1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){			
-				changeMapTo(22, 0, 0, 1);
+				changeMapTo(27, 0, 0, 1);
 			}
 		});
 		mntmPC2 = new JMenuItem("Floor 2");
 		mntmPC2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				changeMapTo(23, 0, 0, 1);
+				changeMapTo(28, 0, 0, 1);
 			}
 		});
 		mnProjectCenter.add(mntmPC1);
@@ -1373,28 +1423,28 @@ public class GUIFront extends JFrame {
 		mntmSH1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				changeMapTo(24, 0, 0, 1);
+				changeMapTo(29, 0, 0, 1);
 			}
 		});
 		mntmSH2 = new JMenuItem("Floor 2");
 		mntmSH2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				changeMapTo(25, 0, 0, 1);
+				changeMapTo(30, 0, 0, 1);
 			}
 		});
 		mntmSH3 = new JMenuItem("Floor 3");
 		mntmSH3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				changeMapTo(26, 0, 0, 1);
+				changeMapTo(31, 0, 0, 1);
 			}
 		});
 		mntmSHB = new JMenuItem("Basement");
 		mntmSHB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){			
-				changeMapTo(27, 0, 0, 1);
+				changeMapTo(32, 0, 0, 1);
 			}
 		});
 		mnStrattonHall.add(mntmSH1);
@@ -1406,11 +1456,12 @@ public class GUIFront extends JFrame {
 		mnLocations.add(mnBoyntonHall); // indices: 4, 5, 6, 7
 		mnLocations.add(mnCampusCenter);// indices: 8, 9, 10
 		mnLocations.add(mntmCCM); // index: 11
-		mnLocations.add(mnGordonLibrary); // indices: 11, 12, 13, 14, 15
-		mnLocations.add(mnHigginsHouse); // indices: 16, 17, 18
-		mnLocations.add(mnHigginsHouseGarage); //indices: 19, 20
-		mnLocations.add(mnProjectCenter); // indices: 21, 22
-		mnLocations.add(mnStrattonHall); // indices 23, 24, 25, 26
+		mnLocations.add(mnFullerLabs); // indices 12, 13, 14, 15, 16
+		mnLocations.add(mnGordonLibrary); // indices: 17, 18, 19, 20, 21
+		mnLocations.add(mnHigginsHouse); // indices: 22, 23, 24
+		mnLocations.add(mnHigginsHouseGarage); //indices: 25, 26
+		mnLocations.add(mnProjectCenter); // indices: 27, 28
+		mnLocations.add(mnStrattonHall); // indices 29, 30, 31, 32
 
 		mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
@@ -1552,7 +1603,7 @@ public class GUIFront extends JFrame {
 				double zoomAmount;
 
 				public ZoomHandler(){
-					this.zoomAmount = 1; // the amount to zoom 
+					this.zoomAmount = 0.5; // default zoom amount
 				}
 
 				@Override
@@ -1676,7 +1727,7 @@ public class GUIFront extends JFrame {
 				String packageName;
 				boolean isMapView;
 				
-				Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, gLPolygon, hHPolygon, sHPolygon, fPolygon;
+				Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, fLPolygon, gLPolygon, hHPolygon, hHGPolygon, sHPolygon;
 				
 				/**
 				 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
@@ -1704,9 +1755,10 @@ public class GUIFront extends JFrame {
 					labelMainPanel.setText(panelID);
 
 					this.mapImage = mapPath;
-					this.panelID = panelID;
 					
-					zoomRatio = 1;
+					zoomRatio = zoomHandle.zoomAmount; // get the initialized zoom amount
+					panX = -500; // default pan X
+					panY = -250; // default pan Y
 					
 					initializePolygons();
 
@@ -1848,6 +1900,54 @@ public class GUIFront extends JFrame {
 									return; 
 								}
 								
+								// Fuller Labs
+								if(fLPolygon.contains(mainReferencePoint)){
+									JPopupMenu popupMenu = new JPopupMenu();
+									
+									popupMenu.add(new JMenuItem("Fuller Labs"))
+										.setFont(new Font("Helvetica", Font.BOLD, 12));
+									popupMenu.addSeparator();
+									
+									popupMenu.add(new JMenuItem("Floor 1"))
+										.addActionListener(new ActionListener(){
+											@Override
+											public void actionPerformed(ActionEvent arg0) {
+												changeMapTo(12, 0, 0, 1); // fuller labs 1
+											}
+										});	
+									popupMenu.add(new JMenuItem("Floor 2"))
+									.addActionListener(new ActionListener(){
+										@Override
+										public void actionPerformed(ActionEvent arg0) {
+											changeMapTo(13, 0, 0, 1); // fuller labs 2
+										}
+									});	
+									popupMenu.add(new JMenuItem("Floor 3"))
+									.addActionListener(new ActionListener(){
+										@Override
+										public void actionPerformed(ActionEvent arg0) {
+											changeMapTo(14, 0, 0, 1); // fuller labs 3
+										}
+									});	
+									popupMenu.add(new JMenuItem("Basement"))
+									.addActionListener(new ActionListener(){
+										@Override
+										public void actionPerformed(ActionEvent arg0) {
+											changeMapTo(15, 0, 0, 1); // fuller labs basement
+										}
+									});	
+									popupMenu.add(new JMenuItem("Sub Basement"))
+									.addActionListener(new ActionListener(){
+										@Override
+										public void actionPerformed(ActionEvent arg0) {
+											changeMapTo(16, 0, 0, 1); // fuller labs sub basement
+										}
+									});	
+									
+									popupMenu.show(panelMap, me.getX(), me.getY());
+									return; 
+								}								
+								
 								//Library
 								if(gLPolygon.contains(mainReferencePoint)){
 									JPopupMenu popupMenu = new JPopupMenu();
@@ -1860,37 +1960,37 @@ public class GUIFront extends JFrame {
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(12, 0, 0, 1); // library 1
+												changeMapTo(17, 0, 0, 1); // library 1
 											}
 										});
 									popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(13, 0, 0, 1); // library 2
+												changeMapTo(18, 0, 0, 1); // library 2
 											}
 										});
 									popupMenu.add(new JMenuItem("Floor 3"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(14, 0, 0, 1); // library 3
+												changeMapTo(19, 0, 0, 1); // library 3
 											}
 										});
 									popupMenu.add(new JMenuItem("Basement"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(15, 0, 0, 1); // library basement
+												changeMapTo(20, 0, 0, 1); // library basement
 											}
 										});
 									popupMenu.add(new JMenuItem("Sub Basement"))
-									.addActionListener(new ActionListener(){
-										@Override
-										public void actionPerformed(ActionEvent arg0) {
-											changeMapTo(16, 0, 0, 1); // library sub basement
-										}
-									});
+										.addActionListener(new ActionListener(){
+											@Override
+											public void actionPerformed(ActionEvent arg0) {
+												changeMapTo(21, 0, 0, 1); // library sub basement
+											}
+										});
 									
 									popupMenu.show(panelMap, me.getX(), me.getY());
 									return; 
@@ -1908,21 +2008,21 @@ public class GUIFront extends JFrame {
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(17, 0, 0, 1); // higgins house 1
+												changeMapTo(22, 0, 0, 1); // higgins house 1
 											}
 										});
 									popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(18, 0, 0, 1); // higgins house 2
+												changeMapTo(23, 0, 0, 1); // higgins house 2
 											}
 										});
 									popupMenu.add(new JMenuItem("Floor 3"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(19, 0, 0, 1); // higgins house 3
+												changeMapTo(24, 0, 0, 1); // higgins house 3
 											}
 										});
 									
@@ -1931,7 +2031,6 @@ public class GUIFront extends JFrame {
 								}
 								
 								// Higgins House Garage
-								/*
 								if(hHGPolygon.contains(mainReferencePoint)){
 									JPopupMenu popupMenu = new JPopupMenu();
 									
@@ -1943,17 +2042,20 @@ public class GUIFront extends JFrame {
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(20, 0, 0, 1); // higgins house garage 1
+												changeMapTo(25, 0, 0, 1); // higgins house garage 1
 											}
 										});
 									popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(21, 0, 0, 1); // higgins house garage 2
+												changeMapTo(26, 0, 0, 1); // higgins house garage 2
 											}
 										});
-								}*/
+									
+									popupMenu.show(panelMap, me.getX(), me.getY());
+									return; 
+								}
 								
 								//Project Center
 								if(pCPolygon.contains(mainReferencePoint)){
@@ -1967,14 +2069,14 @@ public class GUIFront extends JFrame {
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(22, 0, 0, 1); // project center 1
+												changeMapTo(27, 0, 0, 1); // project center 1
 											}
 										});
 									popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(23, 0, 0, 1); // project center 2
+												changeMapTo(28, 0, 0, 1); // project center 2
 											}
 										});
 									
@@ -1996,30 +2098,30 @@ public class GUIFront extends JFrame {
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(24, 0, 0, 1); // stratton hall 1
+												changeMapTo(29, 0, 0, 1); // stratton hall 1
 											}
 										});
 									popupMenu.add(new JMenuItem("Floor 2"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(25, 0, 0, 1); // stratton hall 2
+												changeMapTo(30, 0, 0, 1); // stratton hall 2
 											}
 										});
 									popupMenu.add(new JMenuItem("Floor 3"))
 										.addActionListener(new ActionListener(){
 											@Override
 											public void actionPerformed(ActionEvent arg0) {
-												changeMapTo(26, 0, 0, 1); // stratton hall 3
+												changeMapTo(31, 0, 0, 1); // stratton hall 3
 											}
 										});
 									popupMenu.add(new JMenuItem("Basement"))
-									.addActionListener(new ActionListener(){
-										@Override
-										public void actionPerformed(ActionEvent arg0) {
-											changeMapTo(27, 0, 0, 1); // stratton hall basement 3
-										}
-									});
+										.addActionListener(new ActionListener(){
+											@Override
+											public void actionPerformed(ActionEvent arg0) {
+												changeMapTo(32, 0, 0, 1); // stratton hall basement 3
+											}
+										});
 									
 									popupMenu.show(panelMap, me.getX(), me.getY());
 									return; 
@@ -2158,6 +2260,20 @@ public class GUIFront extends JFrame {
 					cCPolygon.addPoint(873, 364);
 					cCPolygon.addPoint(890, 340);
 					
+					// Fuller Labs
+					fLPolygon = new Polygon();
+					fLPolygon.addPoint(1225, 445);
+					fLPolygon.addPoint(1301, 408);
+					fLPolygon.addPoint(1284, 371);
+					fLPolygon.addPoint(1305, 359);
+					fLPolygon.addPoint(1274, 300);
+					fLPolygon.addPoint(1242, 314);
+					fLPolygon.addPoint(1255, 341);
+					fLPolygon.addPoint(1211, 363);
+					fLPolygon.addPoint(1220, 382);
+					fLPolygon.addPoint(1199, 393);
+					
+					
 					//Library
 					gLPolygon = new Polygon();
 					gLPolygon.addPoint(1245, 512);
@@ -2181,6 +2297,13 @@ public class GUIFront extends JFrame {
 					hHPolygon.addPoint(849, 258);
 					hHPolygon.addPoint(839, 253);
 					
+					// Higgins House Garage
+					hHGPolygon = new Polygon();
+					hHGPolygon.addPoint(875, 167);
+					hHGPolygon.addPoint(890, 178);
+					hHGPolygon.addPoint(870, 206);
+					hHGPolygon.addPoint(855, 196);
+					
 					//project center
 					pCPolygon = new Polygon();
 					pCPolygon.addPoint(1019, 598);
@@ -2194,19 +2317,6 @@ public class GUIFront extends JFrame {
 					sHPolygon.addPoint(1052, 618);
 					sHPolygon.addPoint(1038, 701);
 					sHPolygon.addPoint(1000, 695);
-					
-					//Fuller
-					fPolygon = new Polygon();
-					fPolygon.addPoint(1225, 445);
-					fPolygon.addPoint(1301, 408);
-					fPolygon.addPoint(1284, 371);
-					fPolygon.addPoint(1305, 359);
-					fPolygon.addPoint(1274, 300);
-					fPolygon.addPoint(1242, 314);
-					fPolygon.addPoint(1255, 341);
-					fPolygon.addPoint(1211, 363);
-					fPolygon.addPoint(1220, 382);
-					fPolygon.addPoint(1199, 393);
 				}
 
 				public ArrayList<MapNode> getMapNodes() {
@@ -2334,10 +2444,11 @@ public class GUIFront extends JFrame {
 								graphics.draw(aKPolygon);
 								graphics.draw(bPolygon);
 								graphics.draw(cCPolygon);
+								graphics.draw(fLPolygon);
 								graphics.draw(gLPolygon);
 								graphics.draw(pCPolygon);
 								graphics.draw(hHPolygon);
-								//graphics.fill(hHGPolygon);
+								graphics.draw(hHGPolygon);
 								graphics.draw(sHPolygon);
 							}
 
