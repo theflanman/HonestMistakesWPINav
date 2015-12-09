@@ -153,7 +153,7 @@ public class DevGUIFront extends JFrame {
 		MapPanel mapPanel = new MapPanel();
 		MapPanel mapPanel2 = new MapPanel();
 
-		int threshold = 10; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
+		int threshold = 5; //threshold is a radius for selecting nodes on the map - they are very tiny otherwise and hard to click precisely
 
 		Attributes defaultAttributes = new Attributes();
 		defaultAttributes.setBikeable(false);
@@ -838,6 +838,19 @@ public class DevGUIFront extends JFrame {
 		});
 		attributeSelected.setBounds(2, 31, 137, 22);
 		highlightPanel.add(attributeSelected);
+		
+		JButton btnMakeEdges = new JButton("Connect Edges");
+		btnMakeEdges.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(MapNode n: selectedNodes) {
+					for(MapNode m : selectedNodes) {
+						n.addNeighbor(m);
+					}
+				}
+			}
+		});
+		btnMakeEdges.setBounds(12, 66, 127, 104);
+		highlightPanel.add(btnMakeEdges);
 
 
 		// This is code for the second map panel.
