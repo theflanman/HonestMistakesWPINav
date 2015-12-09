@@ -119,7 +119,7 @@ public class GUIFront extends JFrame {
 	private static boolean[] mapViewButtons;
 
 	// Directions Components
-	private static JLabel lblStepByStep, lblClickHere, lblDistance;
+	private static JLabel lblStepByStep, lblClickHere, lblDistance, lblInvalidEntry;
 	private static JScrollPane scrollPane;
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 	private DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
@@ -274,7 +274,7 @@ public class GUIFront extends JFrame {
 		// Image of the default map loaded into backend
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
 		IProxyImage mapPath = new ProxyImage(defaultMapImage);
-		JLabel lblInvalidEntry = new JLabel("Invalid Entry");
+		lblInvalidEntry = new JLabel("Invalid Entry");
 		lblInvalidEntry.setVisible(false);
 		Action actionEnd = new AbstractAction()
 		{
@@ -293,38 +293,45 @@ public class GUIFront extends JFrame {
 					Attributes attribute = new Attributes(); //will most likely need some other way of obtaining this information
 
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
-					MapNode n = backend.getLocalMap().getMapNodes().get(0);
-					/*if (globalMap.getStartNode() == null && textFieldStart.getText() != ""){
-						globalMap.setStartNode(n);	
-						globalMap.getChosenNodes().add(0, globalMap.getStartNode());
-						LocalMap localmap = globalMap.getStartNode().getLocalMap();
-						localmap.setStart(globalMap.getStartNode());*/
-					/*}*/ if (textFieldStart.getText() != "") {
-						for (MapNode mapnode : globalMap.getMapNodes()){
-							if (mapnode.getAttributes().getOfficialName() == textFieldStart.getText()){
-								globalMap.setStartNode(mapnode);	
-								globalMap.getChosenNodes().add(0, globalMap.getStartNode());
+					String startString = textFieldStart.getText();
+					if (!(startString.equals(""))){
+						for (MapNode mapnode : globalMap.getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+							if(startString.equals(mapnode.getAttributes().getOfficialName())){
+								startNode = mapnode; //set the startNode and then draw it on the map
+								System.out.println("This is the starting node");
+								globalMap.setStartNode(startNode);
+								globalMap.getChosenNodes().add(globalMap.getStartNode());
 								LocalMap localmap = globalMap.getStartNode().getLocalMap();
-								localmap.setStart(globalMap.getStartNode());
+								localmap.setStart(startNode);
+								btnClear.setEnabled(true);
 							}
 						}
+					} else {
+							MapNode n = backend.getLocalMap().getMapNodes().get(0);
+							globalMap.setStartNode(n);	
+							globalMap.getChosenNodes().add(globalMap.getStartNode());
+							LocalMap localmap = globalMap.getStartNode().getLocalMap();
+							localmap.setStart(globalMap.getStartNode());
+							btnClear.setEnabled(true);
 					}
+					
 
 					for (MapNode mapnode : globalMap.getMapNodes()){
 						// this follows a similar pattern to how the original nodes are set with the radio buttons
 						if(endString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(endString)*/){
 							//if endstring is the official name or one of a few different accepted aliases we will allow the end node to be placed
+							valid = true;
 							endNode = mapnode;
 							System.out.println("This is the ending node");
 							globalMap.setEndNode(endNode);
-							globalMap.getChosenNodes().add(1, endNode);
+							globalMap.getChosenNodes().add(endNode);
 							LocalMap localmap = globalMap.getEndNode().getLocalMap();
 							localmap.setEnd(endNode);
 							panelMap.setMapImage(new ProxyImage(globalMap.getEndNode().getLocalMap().getMapImageName()));
 							panelMap.setMapNodes(globalMap.getEndNode().getLocalMap().getMapNodes());
 							String previousMap = backend.getLocalMap().getMapImageName();
 							panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
-							backend.setLocalMap(globalMap.getEndNode().getLocalMap());
+							backend.setLocalMap(localmap);
 							double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 							double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
 							panelMap.panX = defPan[0];
@@ -337,11 +344,10 @@ public class GUIFront extends JFrame {
 								node.setYPos(node.getYPos() + offsetY);
 							}	
 							btnRoute.setEnabled(true);
-							valid = true;
 						} 
 					}
 
-					if (attribute.getPossibleEntries().containsKey(endString)){ //check if the entry in the text field is an attribute not an official name
+					/*if (attribute.getPossibleEntries().containsKey(endString)){ //check if the entry in the text field is an attribute not an official name
 						String findNearestThing = attribute.getPossibleEntries().get(endString);
 						if(globalMap.getStartNode() != null){ //if there is no valid start node, this cannot be done - why? because you need a valid start node to find the closest node with the given attribute
 							valid = true;
@@ -374,18 +380,6 @@ public class GUIFront extends JFrame {
 							}
 						} 
 						else if(!(textFieldStart.getText().equals(""))){ //if there is something entered in the start field as well as the end field we can go ahead and place both at the same time...
-							String startString = textFieldStart.getText();
-							for (MapNode mapnode : globalMap.getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
-								if(startString.equals(mapnode.getAttributes().getOfficialName())){
-									startNode = mapnode; //set the startNode and then draw it on the map
-									System.out.println("This is the starting node");
-									globalMap.setStartNode(startNode);
-									globalMap.getChosenNodes().add(0, globalMap.getStartNode());
-									LocalMap localmap = globalMap.getStartNode().getLocalMap();
-									localmap.setStart(startNode);
-								}
-							}
-
 							if (globalMap.getStartNode() != null){ //make sure that the startNode value is still not null, otherwise this won't work if it is
 								MapNode node = backend.findNearestAttributedNode(findNearestThing, globalMap.getStartNode()); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
 								if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
@@ -414,10 +408,10 @@ public class GUIFront extends JFrame {
 									}	
 									setEnd = true;
 									valid = true;
-								}
-							}
-						}
-					}
+								}*/
+							//}
+						//}
+					//}
 					if (valid == false){
 						// TODO: tell user this entry is invalid
 						System.out.println("Invalid entry");
@@ -522,7 +516,7 @@ public class GUIFront extends JFrame {
 		textFieldStart.addActionListener(actionStart);
 
 		textFieldEnd = new JTextField("");
-		textFieldEnd.setVisible(false);
+		//textFieldEnd.setVisible(false);
 		textFieldEnd.setColumns(10);
 		//give end text field an action		
 		textFieldEnd.addActionListener(actionEnd);
@@ -531,10 +525,10 @@ public class GUIFront extends JFrame {
 		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		lblEnd = new JLabel("Ending Location");
-		lblEnd.setVisible(false);
+		//lblEnd.setVisible(false);
 		lblEnd.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		// Clear button will call all of the reset code
+		// Clear button will call all of the code
 		btnClear = new JButton("Clear All");
 		btnClear.setBackground(otherButtonsColor);
 		btnClear.setEnabled(false);
@@ -1779,6 +1773,9 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setEnabled(false);
 		btnNextStep.setEnabled(false);
 		btnPreviousStep.setEnabled(false);
+		lblInvalidEntry.setVisible(false);
+		textFieldEnd.setText("");
+		textFieldStart.setText("");
 
 		globalMap.getChosenNodes().clear();
 		lblDistance.setText("");
