@@ -2527,11 +2527,6 @@ public class GUIFront extends JFrame {
 					//drawing for originally placed nodes
 					if (globalMap.getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed
 						if (globalMap.getStartNode().getLocalMap() == backend.getLocalMap()){
-							System.out.println("displaying start node: ");
-							System.out.println((int) backend.getLocalMap().getStart().getXPos());
-							System.out.println((int)panX - 5);
-							System.out.println((int) backend.getLocalMap().getStart().getYPos());
-							System.out.println((int)panY - 5);
 							graphics.setColor(startNodeColor);
 							graphics.fillOval((int) backend.getLocalMap().getStart().getXPos() - (int)panX - 5, (int) backend.getLocalMap().getStart().getYPos() - (int)panY - 5, 10, 10);
 							graphics.setColor(outlineColor);
