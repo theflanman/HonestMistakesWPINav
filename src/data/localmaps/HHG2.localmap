@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <MapNodes>
-    <ImageName>HHG2.jpg</ImageName>
+    <ImageName>HHG2.png</ImageName>
     <Node>
         <NodeID>HHG2_1</NodeID>
-        <XPos>761.0</XPos>
-        <YPos>192.0</YPos>
-        <XFeet>97.56020000000001</XFeet>
-        <YFeet>24.614400000000003</YFeet>
+        <XPos>758.0</XPos>
+        <YPos>363.0</YPos>
+        <XFeet>97.1756</XFeet>
+        <YFeet>46.5366</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_2</Neighbor>
+            <Neighbor>HHG2_65</Neighbor>
+            <Neighbor>HHG2_66</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -24,14 +25,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_2</NodeID>
-        <XPos>680.0</XPos>
-        <YPos>194.0</YPos>
-        <XFeet>87.176</XFeet>
-        <YFeet>24.870800000000003</YFeet>
+        <XPos>685.0092591527746</XPos>
+        <YPos>363.57322571345986</YPos>
+        <XFeet>87.8181870233857</XFeet>
+        <YFeet>46.61008753646556</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_1</Neighbor>
-            <Neighbor>HHG2_3</Neighbor>
+            <Neighbor>HHG2_41</Neighbor>
+            <Neighbor>HHG2_65</Neighbor>
+            <Neighbor>HHG2_66</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -46,14 +48,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_3</NodeID>
-        <XPos>679.0</XPos>
-        <YPos>223.0</YPos>
-        <XFeet>87.04780000000001</XFeet>
-        <YFeet>28.588600000000003</YFeet>
+        <XPos>677.0</XPos>
+        <YPos>326.0</YPos>
+        <XFeet>86.79140000000001</XFeet>
+        <YFeet>41.793200000000006</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_2</Neighbor>
             <Neighbor>HHG2_4</Neighbor>
+            <Neighbor>HHG2_64</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -68,39 +70,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_4</NodeID>
-        <XPos>679.0</XPos>
-        <YPos>261.0</YPos>
-        <XFeet>87.04780000000001</XFeet>
-        <YFeet>33.4602</YFeet>
+        <XPos>751.0</XPos>
+        <YPos>320.0</YPos>
+        <XFeet>96.27820000000001</XFeet>
+        <YFeet>41.024</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_4</Neighbor>
-            <Neighbor>HHG2_4</Neighbor>
-            <Neighbor>HHG2_5</Neighbor>
             <Neighbor>HHG2_3</Neighbor>
+            <Neighbor>HHG2_64</Neighbor>
             <Neighbor>HHG2_6</Neighbor>
-        </Neighbors>
-        <Attributes>
-            <OfficialName>HHG205G</OfficialName>
-            <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
-            <Outside>false</Outside>
-            <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
-        </Attributes>
-    </Node>
-    <Node>
-        <NodeID>HHG2_5</NodeID>
-        <XPos>707.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>90.6374</XFeet>
-        <YFeet>33.5884</YFeet>
-        <ZFeet>26.0</ZFeet>
-        <Neighbors>
-            <Neighbor>HHG2_4</Neighbor>
-            <Neighbor>HHG2_7</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -114,14 +92,15 @@
         </Attributes>
     </Node>
     <Node>
-        <NodeID>HHG2_6</NodeID>
-        <XPos>648.0</XPos>
-        <YPos>260.0</YPos>
-        <XFeet>83.0736</XFeet>
-        <YFeet>33.332</YFeet>
+        <NodeID>HHG2_5</NodeID>
+        <XPos>680.0</XPos>
+        <YPos>282.0</YPos>
+        <XFeet>87.176</XFeet>
+        <YFeet>36.1524</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_4</Neighbor>
+            <Neighbor>HHG2_12</Neighbor>
+            <Neighbor>HHG2_13</Neighbor>
             <Neighbor>HHG2_10</Neighbor>
         </Neighbors>
         <Attributes>
@@ -136,18 +115,41 @@
         </Attributes>
     </Node>
     <Node>
-        <NodeID>HHG2_7</NodeID>
-        <XPos>749.0</XPos>
-        <YPos>260.0</YPos>
-        <XFeet>96.02180000000001</XFeet>
-        <YFeet>33.332</YFeet>
+        <NodeID>HHG2_6</NodeID>
+        <XPos>763.0</XPos>
+        <YPos>240.0</YPos>
+        <XFeet>97.81660000000001</XFeet>
+        <YFeet>30.768</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_5</Neighbor>
-            <Neighbor>HHG2_8</Neighbor>
+            <Neighbor>HHG2_11</Neighbor>
+            <Neighbor>HHG2_64</Neighbor>
+            <Neighbor>HHG2_4</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HHG204G</OfficialName>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_7</NodeID>
+        <XPos>778.0</XPos>
+        <YPos>161.0</YPos>
+        <XFeet>99.73960000000001</XFeet>
+        <YFeet>20.6402</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_8</Neighbor>
+            <Neighbor>HHG1_1</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -159,13 +161,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_8</NodeID>
-        <XPos>749.0</XPos>
-        <YPos>320.0</YPos>
-        <XFeet>96.02180000000001</XFeet>
-        <YFeet>41.024</YFeet>
+        <XPos>760.0</XPos>
+        <YPos>200.0</YPos>
+        <XFeet>97.432</XFeet>
+        <YFeet>25.64</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HHG2_9</Neighbor>
+            <Neighbor>HHG2_8</Neighbor>
+            <Neighbor>HHG2_8</Neighbor>
             <Neighbor>HHG2_7</Neighbor>
         </Neighbors>
         <Attributes>
@@ -181,12 +185,13 @@
     </Node>
     <Node>
         <NodeID>HHG2_9</NodeID>
-        <XPos>673.0</XPos>
-        <YPos>321.0</YPos>
-        <XFeet>86.27860000000001</XFeet>
-        <YFeet>41.1522</YFeet>
+        <XPos>685.0</XPos>
+        <YPos>198.0</YPos>
+        <XFeet>87.81700000000001</XFeet>
+        <YFeet>25.3836</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HHG2_10</Neighbor>
             <Neighbor>HHG2_8</Neighbor>
         </Neighbors>
         <Attributes>
@@ -202,16 +207,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_10</NodeID>
-        <XPos>613.0</XPos>
-        <YPos>259.0</YPos>
-        <XFeet>78.5866</XFeet>
-        <YFeet>33.2038</YFeet>
+        <XPos>684.0</XPos>
+        <YPos>243.0</YPos>
+        <XFeet>87.6888</XFeet>
+        <YFeet>31.152600000000003</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_6</Neighbor>
-            <Neighbor>HHG2_11</Neighbor>
             <Neighbor>HHG2_12</Neighbor>
-            <Neighbor>HHG2_17</Neighbor>
+            <Neighbor>HHG2_5</Neighbor>
+            <Neighbor>HHG2_9</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -226,15 +230,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_11</NodeID>
-        <XPos>617.0</XPos>
-        <YPos>328.0</YPos>
-        <XFeet>79.0994</XFeet>
-        <YFeet>42.049600000000005</YFeet>
+        <XPos>728.0</XPos>
+        <YPos>239.0</YPos>
+        <XFeet>93.3296</XFeet>
+        <YFeet>30.6398</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_10</Neighbor>
-            <Neighbor>HHG2_17</Neighbor>
-            <Neighbor>HHG2_15</Neighbor>
+            <Neighbor>HHG2_6</Neighbor>
+            <Neighbor>HHG2_13</Neighbor>
+            <Neighbor>HHG2_64</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -249,14 +253,18 @@
     </Node>
     <Node>
         <NodeID>HHG2_12</NodeID>
-        <XPos>613.0</XPos>
-        <YPos>144.0</YPos>
-        <XFeet>78.5866</XFeet>
-        <YFeet>18.460800000000003</YFeet>
+        <XPos>652.0</XPos>
+        <YPos>260.0</YPos>
+        <XFeet>83.58640000000001</XFeet>
+        <YFeet>33.332</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HHG2_48</Neighbor>
+            <Neighbor>HHG2_49</Neighbor>
             <Neighbor>HHG2_10</Neighbor>
-            <Neighbor>HHG2_14</Neighbor>
+            <Neighbor>HHG2_5</Neighbor>
+            <Neighbor>HHG2_13</Neighbor>
+            <Neighbor>HHG2_42</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -271,13 +279,16 @@
     </Node>
     <Node>
         <NodeID>HHG2_13</NodeID>
-        <XPos>352.0</XPos>
-        <YPos>144.0</YPos>
-        <XFeet>45.126400000000004</XFeet>
-        <YFeet>18.460800000000003</YFeet>
+        <XPos>708.0</XPos>
+        <YPos>257.0</YPos>
+        <XFeet>90.7656</XFeet>
+        <YFeet>32.9474</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_14</Neighbor>
+            <Neighbor>HHG2_5</Neighbor>
+            <Neighbor>HHG2_12</Neighbor>
+            <Neighbor>HHG2_11</Neighbor>
+            <Neighbor>HHG2_64</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -292,14 +303,17 @@
     </Node>
     <Node>
         <NodeID>HHG2_14</NodeID>
-        <XPos>463.0</XPos>
-        <YPos>147.0</YPos>
-        <XFeet>59.35660000000001</XFeet>
-        <YFeet>18.8454</YFeet>
+        <XPos>330.0</XPos>
+        <YPos>265.0</YPos>
+        <XFeet>42.306000000000004</XFeet>
+        <YFeet>33.973</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_12</Neighbor>
-            <Neighbor>HHG2_13</Neighbor>
+            <Neighbor>HHG2_60</Neighbor>
+            <Neighbor>HHG2_30</Neighbor>
+            <Neighbor>HHG2_15</Neighbor>
+            <Neighbor>HHG2_54</Neighbor>
+            <Neighbor>HHG2_45</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -314,14 +328,16 @@
     </Node>
     <Node>
         <NodeID>HHG2_15</NodeID>
-        <XPos>383.0</XPos>
-        <YPos>328.0</YPos>
-        <XFeet>49.1006</XFeet>
-        <YFeet>42.049600000000005</YFeet>
+        <XPos>278.0</XPos>
+        <YPos>294.0</YPos>
+        <XFeet>35.6396</XFeet>
+        <YFeet>37.6908</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_17</Neighbor>
-            <Neighbor>HHG2_11</Neighbor>
+            <Neighbor>HHG2_14</Neighbor>
+            <Neighbor>HHG2_30</Neighbor>
+            <Neighbor>HHG2_16</Neighbor>
+            <Neighbor>HHG2_58</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -336,16 +352,16 @@
     </Node>
     <Node>
         <NodeID>HHG2_16</NodeID>
-        <XPos>332.0</XPos>
-        <YPos>267.0</YPos>
-        <XFeet>42.562400000000004</XFeet>
-        <YFeet>34.229400000000005</YFeet>
+        <XPos>300.0</XPos>
+        <YPos>211.0</YPos>
+        <XFeet>38.46</XFeet>
+        <YFeet>27.0502</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_17</Neighbor>
-            <Neighbor>HHG2_22</Neighbor>
-            <Neighbor>HHG2_20</Neighbor>
-            <Neighbor>HHG2_39</Neighbor>
+            <Neighbor>HHG2_63</Neighbor>
+            <Neighbor>HHG2_60</Neighbor>
+            <Neighbor>HHG2_31</Neighbor>
+            <Neighbor>HHG2_15</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -360,17 +376,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_17</NodeID>
-        <XPos>488.0</XPos>
-        <YPos>256.0</YPos>
-        <XFeet>62.561600000000006</XFeet>
-        <YFeet>32.8192</YFeet>
+        <XPos>232.0</XPos>
+        <YPos>166.0</YPos>
+        <XFeet>29.742400000000004</XFeet>
+        <YFeet>21.281200000000002</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_10</Neighbor>
-            <Neighbor>HHG2_11</Neighbor>
-            <Neighbor>HHG2_15</Neighbor>
-            <Neighbor>HHG2_16</Neighbor>
-            <Neighbor>HHG2_39</Neighbor>
+            <Neighbor>HHG2_27</Neighbor>
+            <Neighbor>HHG2_19</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -385,15 +398,13 @@
     </Node>
     <Node>
         <NodeID>HHG2_18</NodeID>
-        <XPos>301.0</XPos>
-        <YPos>214.0</YPos>
-        <XFeet>38.5882</XFeet>
-        <YFeet>27.434800000000003</YFeet>
+        <XPos>130.0</XPos>
+        <YPos>158.0</YPos>
+        <XFeet>16.666</XFeet>
+        <YFeet>20.2556</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_22</Neighbor>
             <Neighbor>HHG2_19</Neighbor>
-            <Neighbor>HHG2_21</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -408,16 +419,17 @@
     </Node>
     <Node>
         <NodeID>HHG2_19</NodeID>
-        <XPos>294.0</XPos>
-        <YPos>157.0</YPos>
-        <XFeet>37.6908</XFeet>
-        <YFeet>20.1274</YFeet>
+        <XPos>190.0</XPos>
+        <YPos>163.2701566679404</YPos>
+        <XFeet>24.358</XFeet>
+        <YFeet>20.93123408482996</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HHG2_17</Neighbor>
             <Neighbor>HHG2_18</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HHG202G</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -429,15 +441,13 @@
     </Node>
     <Node>
         <NodeID>HHG2_20</NodeID>
-        <XPos>277.0</XPos>
-        <YPos>297.0</YPos>
-        <XFeet>35.5114</XFeet>
-        <YFeet>38.0754</YFeet>
+        <XPos>129.0</XPos>
+        <YPos>372.0</YPos>
+        <XFeet>16.5378</XFeet>
+        <YFeet>47.690400000000004</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HHG2_21</Neighbor>
-            <Neighbor>HHG2_34</Neighbor>
-            <Neighbor>HHG2_16</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -452,18 +462,17 @@
     </Node>
     <Node>
         <NodeID>HHG2_21</NodeID>
-        <XPos>274.0</XPos>
-        <YPos>253.0</YPos>
-        <XFeet>35.1268</XFeet>
-        <YFeet>32.4346</YFeet>
+        <XPos>186.0149397985093</XPos>
+        <YPos>370.61502170529934</YPos>
+        <XFeet>23.847115282168893</XFeet>
+        <YFeet>47.51284578261938</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_22</Neighbor>
+            <Neighbor>HHG2_23</Neighbor>
             <Neighbor>HHG2_20</Neighbor>
-            <Neighbor>HHG2_18</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HHG201G</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -475,15 +484,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_22</NodeID>
-        <XPos>304.0</XPos>
-        <YPos>256.0</YPos>
-        <XFeet>38.9728</XFeet>
-        <YFeet>32.8192</YFeet>
+        <XPos>300.1176509132607</XPos>
+        <YPos>367.8432959292325</YPos>
+        <XFeet>38.475082847080024</XFeet>
+        <YFeet>47.15751053812761</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_16</Neighbor>
-            <Neighbor>HHG2_21</Neighbor>
-            <Neighbor>HHG2_18</Neighbor>
+            <Neighbor>HHG2_38</Neighbor>
+            <Neighbor>HHG2_23</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -498,14 +506,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_23</NodeID>
-        <XPos>300.0</XPos>
-        <YPos>368.0</YPos>
-        <XFeet>38.46</XFeet>
-        <YFeet>47.177600000000005</YFeet>
+        <XPos>243.98073552297484</XPos>
+        <YPos>369.2069456957982</YPos>
+        <XFeet>31.278330294045375</XFeet>
+        <YFeet>47.33233043820133</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_32</Neighbor>
-            <Neighbor>HHG2_38</Neighbor>
+            <Neighbor>HHG2_22</Neighbor>
+            <Neighbor>HHG2_21</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -520,14 +528,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_24</NodeID>
-        <XPos>363.0</XPos>
-        <YPos>370.0</YPos>
-        <XFeet>46.5366</XFeet>
-        <YFeet>47.434000000000005</YFeet>
+        <XPos>111.0</XPos>
+        <YPos>320.0</YPos>
+        <XFeet>14.230200000000002</XFeet>
+        <YFeet>41.024</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HHG2_25</Neighbor>
             <Neighbor>HHG2_32</Neighbor>
-            <Neighbor>HHG2_35</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -542,14 +550,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_25</NodeID>
-        <XPos>723.0</XPos>
-        <YPos>369.0</YPos>
-        <XFeet>92.68860000000001</XFeet>
-        <YFeet>47.305800000000005</YFeet>
+        <XPos>183.05404005180833</XPos>
+        <YPos>320.9650094649796</YPos>
+        <XFeet>23.46752793464183</XFeet>
+        <YFeet>41.14771421341038</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_35</Neighbor>
             <Neighbor>HHG2_26</Neighbor>
+            <Neighbor>HHG2_24</Neighbor>
+            <Neighbor>HHG2_36</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -564,14 +573,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_26</NodeID>
-        <XPos>723.0</XPos>
-        <YPos>400.0</YPos>
-        <XFeet>92.68860000000001</XFeet>
-        <YFeet>51.28</YFeet>
+        <XPos>237.03096542791667</XPos>
+        <YPos>321.68791471555244</YPos>
+        <XFeet>30.387369767858917</XFeet>
+        <YFeet>41.24039066653383</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HHG2_58</Neighbor>
             <Neighbor>HHG2_25</Neighbor>
-            <Neighbor>CCM_179</Neighbor>
+            <Neighbor>HHG2_29</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -586,15 +596,19 @@
     </Node>
     <Node>
         <NodeID>HHG2_27</NodeID>
-        <XPos>106.0</XPos>
-        <YPos>312.0</YPos>
-        <XFeet>13.589200000000002</XFeet>
-        <YFeet>39.998400000000004</YFeet>
+        <XPos>232.99965908377968</XPos>
+        <YPos>196.93538216671158</YPos>
+        <XFeet>29.870556294540556</XFeet>
+        <YFeet>25.247115993772425</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_29</Neighbor>
-            <Neighbor>HHG2_30</Neighbor>
-            <Neighbor>CCM_180</Neighbor>
+            <Neighbor>HHG2_28</Neighbor>
+            <Neighbor>HHG2_27</Neighbor>
+            <Neighbor>HHG2_27</Neighbor>
+            <Neighbor>HHG2_27</Neighbor>
+            <Neighbor>HHG2_27</Neighbor>
+            <Neighbor>HHG2_34</Neighbor>
+            <Neighbor>HHG2_17</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -609,14 +623,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_28</NodeID>
-        <XPos>231.0</XPos>
-        <YPos>179.0</YPos>
-        <XFeet>29.6142</XFeet>
-        <YFeet>22.9478</YFeet>
+        <XPos>234.03264201701737</XPos>
+        <YPos>228.90200191729247</YPos>
+        <XFeet>30.00298470658163</XFeet>
+        <YFeet>29.345236645796895</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_30</Neighbor>
-            <Neighbor>HHG2_37</Neighbor>
+            <Neighbor>HHG2_29</Neighbor>
+            <Neighbor>HHG2_27</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -631,15 +645,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_29</NodeID>
-        <XPos>229.0</XPos>
-        <YPos>311.0</YPos>
-        <XFeet>29.3578</XFeet>
-        <YFeet>39.870200000000004</YFeet>
+        <XPos>235.71749808029472</XPos>
+        <YPos>276.0</YPos>
+        <XFeet>30.218983253893786</XFeet>
+        <YFeet>35.3832</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_34</Neighbor>
-            <Neighbor>HHG2_30</Neighbor>
-            <Neighbor>HHG2_27</Neighbor>
+            <Neighbor>HHG2_36</Neighbor>
+            <Neighbor>HHG2_26</Neighbor>
+            <Neighbor>HHG2_28</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -654,19 +668,18 @@
     </Node>
     <Node>
         <NodeID>HHG2_30</NodeID>
-        <XPos>181.0</XPos>
-        <YPos>264.0</YPos>
-        <XFeet>23.2042</XFeet>
-        <YFeet>33.8448</YFeet>
+        <XPos>261.0</XPos>
+        <YPos>276.0</YPos>
+        <XFeet>33.4602</XFeet>
+        <YFeet>35.3832</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_29</Neighbor>
+            <Neighbor>HHG2_14</Neighbor>
+            <Neighbor>HHG2_15</Neighbor>
             <Neighbor>HHG2_31</Neighbor>
-            <Neighbor>HHG2_28</Neighbor>
-            <Neighbor>HHG2_27</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>HHG200G</OfficialName>
+            <OfficialName/>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -678,12 +691,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_31</NodeID>
-        <XPos>122.0</XPos>
-        <YPos>198.0</YPos>
-        <XFeet>15.640400000000001</XFeet>
-        <YFeet>25.3836</YFeet>
+        <XPos>262.0</XPos>
+        <YPos>236.0</YPos>
+        <XFeet>33.5884</XFeet>
+        <YFeet>30.255200000000002</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HHG2_16</Neighbor>
+            <Neighbor>HHG2_60</Neighbor>
             <Neighbor>HHG2_30</Neighbor>
         </Neighbors>
         <Attributes>
@@ -699,16 +714,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_32</NodeID>
-        <XPos>331.0</XPos>
-        <YPos>369.0</YPos>
-        <XFeet>42.434200000000004</XFeet>
-        <YFeet>47.305800000000005</YFeet>
+        <XPos>126.0</XPos>
+        <YPos>272.0</YPos>
+        <XFeet>16.153200000000002</XFeet>
+        <YFeet>34.870400000000004</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_33</Neighbor>
-            <Neighbor>HHG2_23</Neighbor>
             <Neighbor>HHG2_24</Neighbor>
-            <Neighbor>CCM_178</Neighbor>
+            <Neighbor>HHG2_36</Neighbor>
+            <Neighbor>HHG2_33</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -723,14 +737,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_33</NodeID>
-        <XPos>327.0</XPos>
-        <YPos>320.0</YPos>
-        <XFeet>41.921400000000006</XFeet>
-        <YFeet>41.024</YFeet>
+        <XPos>125.48660640920296</XPos>
+        <YPos>231.95529991783073</YPos>
+        <XFeet>16.087382941659822</XFeet>
+        <YFeet>29.7366694494659</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_34</Neighbor>
             <Neighbor>HHG2_32</Neighbor>
+            <Neighbor>HHG2_59</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -745,17 +759,17 @@
     </Node>
     <Node>
         <NodeID>HHG2_34</NodeID>
-        <XPos>280.0</XPos>
-        <YPos>320.0</YPos>
-        <XFeet>35.896</XFeet>
-        <YFeet>41.024</YFeet>
+        <XPos>171.31911692742284</XPos>
+        <YPos>195.25893276849246</YPos>
+        <XFeet>21.96311079009561</XFeet>
+        <YFeet>25.032195180920734</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
+            <Neighbor>HHG2_59</Neighbor>
+            <Neighbor>HHG2_35</Neighbor>
             <Neighbor>HHG2_34</Neighbor>
             <Neighbor>HHG2_34</Neighbor>
-            <Neighbor>HHG2_20</Neighbor>
-            <Neighbor>HHG2_33</Neighbor>
-            <Neighbor>HHG2_29</Neighbor>
+            <Neighbor>HHG2_27</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -770,14 +784,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_35</NodeID>
-        <XPos>524.0</XPos>
-        <YPos>369.0</YPos>
-        <XFeet>67.1768</XFeet>
-        <YFeet>47.305800000000005</YFeet>
+        <XPos>171.25022521453946</XPos>
+        <YPos>230.44997193287787</YPos>
+        <XFeet>21.95427887250396</XFeet>
+        <YFeet>29.543686401794947</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_24</Neighbor>
-            <Neighbor>HHG2_25</Neighbor>
+            <Neighbor>HHG2_34</Neighbor>
+            <Neighbor>HHG2_36</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -792,13 +806,16 @@
     </Node>
     <Node>
         <NodeID>HHG2_36</NodeID>
-        <XPos>164.0</XPos>
-        <YPos>150.0</YPos>
-        <XFeet>21.024800000000003</XFeet>
-        <YFeet>19.23</YFeet>
+        <XPos>171.1624382962529</XPos>
+        <YPos>275.2929980421684</YPos>
+        <XFeet>21.943024589579622</XFeet>
+        <YFeet>35.29256234900599</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_37</Neighbor>
+            <Neighbor>HHG2_32</Neighbor>
+            <Neighbor>HHG2_35</Neighbor>
+            <Neighbor>HHG2_25</Neighbor>
+            <Neighbor>HHG2_29</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -813,14 +830,14 @@
     </Node>
     <Node>
         <NodeID>HHG2_37</NodeID>
-        <XPos>228.0</XPos>
-        <YPos>148.0</YPos>
-        <XFeet>29.2296</XFeet>
-        <YFeet>18.9736</YFeet>
+        <XPos>335.0</XPos>
+        <YPos>323.0</YPos>
+        <XFeet>42.947</XFeet>
+        <YFeet>41.4086</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_36</Neighbor>
-            <Neighbor>HHG2_28</Neighbor>
+            <Neighbor>HHG2_58</Neighbor>
+            <Neighbor>HHG2_38</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -835,13 +852,15 @@
     </Node>
     <Node>
         <NodeID>HHG2_38</NodeID>
-        <XPos>135.0</XPos>
-        <YPos>374.0</YPos>
-        <XFeet>17.307000000000002</XFeet>
-        <YFeet>47.9468</YFeet>
+        <XPos>334.0733229584732</XPos>
+        <YPos>367.01846179048243</YPos>
+        <XFeet>42.82820000327627</XFeet>
+        <YFeet>47.05176680153985</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_23</Neighbor>
+            <Neighbor>HHG2_37</Neighbor>
+            <Neighbor>HHG2_22</Neighbor>
+            <Neighbor>HHG2_57</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -856,14 +875,645 @@
     </Node>
     <Node>
         <NodeID>HHG2_39</NodeID>
-        <XPos>352.0</XPos>
+        <XPos>409.0</XPos>
+        <YPos>366.0</YPos>
+        <XFeet>52.433800000000005</XFeet>
+        <YFeet>46.921200000000006</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_57</Neighbor>
+            <Neighbor>HHG2_40</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_40</NodeID>
+        <XPos>493.0184623995806</XPos>
+        <YPos>365.0810068397939</YPos>
+        <XFeet>63.204966879626234</XFeet>
+        <YFeet>46.80338507686158</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_39</Neighbor>
+            <Neighbor>HHG2_41</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_41</NodeID>
+        <XPos>590.0011092773284</XPos>
+        <YPos>364.3193630161466</YPos>
+        <XFeet>75.6381422093535</XFeet>
+        <YFeet>46.70574233867</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_40</Neighbor>
+            <Neighbor>HHG2_2</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_42</NodeID>
+        <XPos>589.0</XPos>
+        <YPos>330.0</YPos>
+        <XFeet>75.5098</XFeet>
+        <YFeet>42.306000000000004</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_48</Neighbor>
+            <Neighbor>HHG2_12</Neighbor>
+            <Neighbor>HHG2_43</Neighbor>
+            <Neighbor>HHG2_47</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_43</NodeID>
+        <XPos>493.9783977286755</XPos>
+        <YPos>328.9442044192075</YPos>
+        <XFeet>63.3280305888162</XFeet>
+        <YFeet>42.1706470065424</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_42</Neighbor>
+            <Neighbor>HHG2_43</Neighbor>
+            <Neighbor>HHG2_43</Neighbor>
+            <Neighbor>HHG2_47</Neighbor>
+            <Neighbor>HHG2_44</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_44</NodeID>
+        <XPos>409.0</XPos>
+        <YPos>328.0</YPos>
+        <XFeet>52.433800000000005</XFeet>
+        <YFeet>42.049600000000005</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_43</Neighbor>
+            <Neighbor>HHG2_45</Neighbor>
+            <Neighbor>HHG2_46</Neighbor>
+            <Neighbor>HHG2_47</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_45</NodeID>
+        <XPos>383.6609744573759</XPos>
+        <YPos>264.1667550550097</YPos>
+        <XFeet>49.18533692543559</XFeet>
+        <YFeet>33.866177998052244</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_54</Neighbor>
+            <Neighbor>HHG2_14</Neighbor>
+            <Neighbor>HHG2_46</Neighbor>
+            <Neighbor>HHG2_44</Neighbor>
+            <Neighbor>HHG2_55</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_46</NodeID>
+        <XPos>442.0350982074844</XPos>
+        <YPos>263.26032456199556</YPos>
+        <XFeet>56.6688995901995</XFeet>
+        <YFeet>33.74997360884783</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_45</Neighbor>
+            <Neighbor>HHG2_47</Neighbor>
+            <Neighbor>HHG2_44</Neighbor>
+            <Neighbor>HHG2_55</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_47</NodeID>
+        <XPos>489.14796208622204</XPos>
+        <YPos>262.5287583526984</YPos>
+        <XFeet>62.70876873945367</XFeet>
+        <YFeet>33.65618682081593</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_46</Neighbor>
+            <Neighbor>HHG2_48</Neighbor>
+            <Neighbor>HHG2_43</Neighbor>
+            <Neighbor>HHG2_42</Neighbor>
+            <Neighbor>HHG2_44</Neighbor>
+            <Neighbor>HHG2_55</Neighbor>
+            <Neighbor>HHG2_56</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_48</NodeID>
+        <XPos>582.1565920026228</XPos>
+        <YPos>261.0845249689034</YPos>
+        <XFeet>74.63247509473625</XFeet>
+        <YFeet>33.47103610101342</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_47</Neighbor>
+            <Neighbor>HHG2_49</Neighbor>
+            <Neighbor>HHG2_12</Neighbor>
+            <Neighbor>HHG2_42</Neighbor>
+            <Neighbor>HHG2_56</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_49</NodeID>
+        <XPos>624.0</XPos>
         <YPos>188.0</YPos>
-        <XFeet>45.126400000000004</XFeet>
+        <XFeet>79.99680000000001</XFeet>
         <YFeet>24.1016</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
-            <Neighbor>HHG2_17</Neighbor>
+            <Neighbor>HHG2_50</Neighbor>
+            <Neighbor>HHG2_56</Neighbor>
+            <Neighbor>HHG2_48</Neighbor>
+            <Neighbor>HHG2_12</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_50</NodeID>
+        <XPos>623.0</XPos>
+        <YPos>149.0</YPos>
+        <XFeet>79.8686</XFeet>
+        <YFeet>19.1018</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_51</Neighbor>
+            <Neighbor>HHG2_49</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_51</NodeID>
+        <XPos>560.0</XPos>
+        <YPos>150.0</YPos>
+        <XFeet>71.792</XFeet>
+        <YFeet>19.23</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_52</Neighbor>
+            <Neighbor>HHG2_50</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_52</NodeID>
+        <XPos>472.0</XPos>
+        <YPos>151.0</YPos>
+        <XFeet>60.510400000000004</XFeet>
+        <YFeet>19.3582</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_53</Neighbor>
+            <Neighbor>HHG2_51</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_53</NodeID>
+        <XPos>369.0</XPos>
+        <YPos>148.0</YPos>
+        <XFeet>47.305800000000005</XFeet>
+        <YFeet>18.9736</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_52</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_54</NodeID>
+        <XPos>371.0</XPos>
+        <YPos>188.0</YPos>
+        <XFeet>47.562200000000004</XFeet>
+        <YFeet>24.1016</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_55</Neighbor>
+            <Neighbor>HHG2_45</Neighbor>
+            <Neighbor>HHG2_14</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_55</NodeID>
+        <XPos>473.0</XPos>
+        <YPos>188.0</YPos>
+        <XFeet>60.638600000000004</XFeet>
+        <YFeet>24.1016</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_56</Neighbor>
+            <Neighbor>HHG2_54</Neighbor>
+            <Neighbor>HHG2_46</Neighbor>
+            <Neighbor>HHG2_45</Neighbor>
+            <Neighbor>HHG2_47</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_56</NodeID>
+        <XPos>562.0</XPos>
+        <YPos>188.0</YPos>
+        <XFeet>72.0484</XFeet>
+        <YFeet>24.1016</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_49</Neighbor>
+            <Neighbor>HHG2_55</Neighbor>
+            <Neighbor>HHG2_48</Neighbor>
+            <Neighbor>HHG2_47</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_57</NodeID>
+        <XPos>368.03475444709454</XPos>
+        <YPos>366.5568315449281</YPos>
+        <XFeet>47.18205552011752</XFeet>
+        <YFeet>46.992585804059786</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_38</Neighbor>
+            <Neighbor>HHG2_39</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_58</NodeID>
+        <XPos>279.03682375211713</XPos>
+        <YPos>322.25049317525156</YPos>
+        <XFeet>35.772520805021415</XFeet>
+        <YFeet>41.312513225067256</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_15</Neighbor>
+            <Neighbor>HHG2_37</Neighbor>
+            <Neighbor>HHG2_26</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_59</NodeID>
+        <XPos>125.0</XPos>
+        <YPos>194.0</YPos>
+        <XFeet>16.025000000000002</XFeet>
+        <YFeet>24.870800000000003</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_33</Neighbor>
+            <Neighbor>HHG2_34</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_60</NodeID>
+        <XPos>315.0</XPos>
+        <YPos>232.0</YPos>
+        <XFeet>40.383</XFeet>
+        <YFeet>29.742400000000004</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
             <Neighbor>HHG2_16</Neighbor>
+            <Neighbor>HHG2_31</Neighbor>
+            <Neighbor>HHG2_14</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_61</NodeID>
+        <XPos>274.0</XPos>
+        <YPos>155.0</YPos>
+        <XFeet>35.1268</XFeet>
+        <YFeet>19.871000000000002</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_63</Neighbor>
+            <Neighbor>HHG2_62</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_62</NodeID>
+        <XPos>316.0</XPos>
+        <YPos>155.0</YPos>
+        <XFeet>40.5112</XFeet>
+        <YFeet>19.871000000000002</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_63</Neighbor>
+            <Neighbor>HHG2_61</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_63</NodeID>
+        <XPos>293.0</XPos>
+        <YPos>178.0</YPos>
+        <XFeet>37.5626</XFeet>
+        <YFeet>22.8196</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_62</Neighbor>
+            <Neighbor>HHG2_61</Neighbor>
+            <Neighbor>HHG2_16</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_64</NodeID>
+        <XPos>734.0</XPos>
+        <YPos>282.0</YPos>
+        <XFeet>94.09880000000001</XFeet>
+        <YFeet>36.1524</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_6</Neighbor>
+            <Neighbor>HHG2_4</Neighbor>
+            <Neighbor>HHG2_11</Neighbor>
+            <Neighbor>HHG2_13</Neighbor>
+            <Neighbor>HHG2_3</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_65</NodeID>
+        <XPos>724.0</XPos>
+        <YPos>396.0</YPos>
+        <XFeet>92.8168</XFeet>
+        <YFeet>50.7672</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_1</Neighbor>
+            <Neighbor>HHG2_66</Neighbor>
+            <Neighbor>HHG2_2</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName/>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>HHG2_66</NodeID>
+        <XPos>721.0</XPos>
+        <YPos>362.0</YPos>
+        <XFeet>92.43220000000001</XFeet>
+        <YFeet>46.4084</YFeet>
+        <ZFeet>26.0</ZFeet>
+        <Neighbors>
+            <Neighbor>HHG2_65</Neighbor>
+            <Neighbor>HHG2_66</Neighbor>
+            <Neighbor>HHG2_66</Neighbor>
+            <Neighbor>HHG2_1</Neighbor>
+            <Neighbor>HHG2_2</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

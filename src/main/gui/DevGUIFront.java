@@ -224,7 +224,7 @@ public class DevGUIFront extends JFrame {
 					pic2 = new ProxyImage(imagePath);
 
 					//  picLabel.setIcon(new ImageIcon(pic));
-					mapPanel2.setBgImage(pic2.getImage(imagePath));
+					mapPanel2.setBgImage(pic2.getImage(Constants.IMAGES_PATH));
 
 					// set the points
 					Graphics g = mapPanel2.getGraphics();
