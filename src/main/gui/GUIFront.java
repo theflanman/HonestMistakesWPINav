@@ -678,6 +678,7 @@ public class GUIFront extends JFrame {
 					for (ArrayList<String> strings: stepByStep){
 						for (String string : strings) {
 							listModel.addElement(string); // add it to the list model
+							allText += string + "\n";
 						}
 					}
 
@@ -1190,7 +1191,6 @@ public class GUIFront extends JFrame {
 
 				// Goes through each of the maps in the path and captures and saves an image
 				for (LocalMap local: pathLocalMaps) {
-					savePanel.saveImage(panelMap, local.getMapImageName());
 					if (index < paths.size() - 1){
 						index ++;
 					}
