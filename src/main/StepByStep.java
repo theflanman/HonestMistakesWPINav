@@ -146,12 +146,15 @@ public class StepByStep {
 						
 						// If the list of pathNodes is not the last waypoint set in the directions
 						if (isLastWaypoint) {
-							turn = String.format("%d. Walk %d feet, then you will arrive at your waypoint.", stepNumber, distance);
+							turn = String.format("%d. Walk %d feet", stepNumber, distance);
+							stepList.add(turn);
+							String waypoint = "You have arrived at your waypoint.";
+							stepList.add(waypoint);
 						}
 						else {
 							turn = String.format("%d. Walk %d feet, then you will arrive at your final destination. ENDHERE", stepNumber, distance);
+							stepList.add(turn);
 						}
-						stepList.add(turn);
 						
 						// If the last node has an official name adds the name to the directions
 						if (! pathNodes.get(i).getAttributes().getOfficialName().isEmpty()) {

@@ -306,6 +306,8 @@ public class GUIBack implements Serializable {
 			//immediately add this to a new route
 			if (i == 0) {
 				route.add(globalNodes.get(i));
+				StepByStep temp = new StepByStep(route, false);
+				route = temp.cleanUpPath();
 				globalNodes.get(i).getLocalMap().setStart(globalNodes.get(i));
 			}
 			//this isnt the first node and it isnt the last node
@@ -313,6 +315,8 @@ public class GUIBack implements Serializable {
 				//if this is on the same local map as the last one...
 				if(globalNodes.get(i).getLocalMap().equals(globalNodes.get(i-1).getLocalMap())){
 					route.add(globalNodes.get(i));
+					StepByStep temp = new StepByStep(route, false);
+					route = temp.cleanUpPath();
 				}
 				//time to move onto a new route, add this one to routes and clear it
 				else{
@@ -320,11 +324,15 @@ public class GUIBack implements Serializable {
 					routes.add(route);
 					route = new ArrayList<MapNode>();
 					route.add(globalNodes.get(i));
+					StepByStep temp = new StepByStep(route, false);
+					route = temp.cleanUpPath();
 				}
 			}//end else if
 			else {
 				globalNodes.get(i-1).getLocalMap().setEnd(globalNodes.get(i-1));
 				route.add(globalNodes.get(i));
+				StepByStep temp = new StepByStep(route, false);
+				route = temp.cleanUpPath();
 				routes.add(route);
 			}
 
