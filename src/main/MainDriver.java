@@ -38,8 +38,8 @@ public class MainDriver {
 		SLAnimator.start();
 		
 		//UIManager.put("nimbusBase", new Color(95, 172, 213));
-		//UIManager.put("nimbusBlueGrey", new Color(184, 217, 144));
-		//UIManager.put("control", new Color(96, 164, 79));
+		//UIManager.put("nimbusBlueGrey", new Color(151, 206, 251));
+		//UIManager.put("control", new Color(95, 172, 213));
 		
 		// Change the theme away from the standard swing one
 	    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {

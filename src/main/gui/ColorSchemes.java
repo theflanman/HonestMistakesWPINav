@@ -16,6 +16,8 @@ public class ColorSchemes {
 	Color defaultRed = new Color(223, 106, 73);	
 	Color defaultBlack = new Color(0,0,0);
 	
+	// Alt Default Campus
+	
 	//Greyscale
 	Color darkestGrey = new Color(64, 60, 58);
 	Color darkerGrey = new Color(115, 114, 111);
@@ -44,6 +46,7 @@ public class ColorSchemes {
 
 	private HashMap<String, ColorSetting> colorSchemes;
 	ColorSetting defaultCampus = new ColorSetting();
+	ColorSetting altDefaultCampus = new ColorSetting();
 	ColorSetting greyscale = new ColorSetting();
 	ColorSetting wpiDefault = new ColorSetting();
 	ColorSetting flowerPower = new ColorSetting();
@@ -64,6 +67,17 @@ public class ColorSchemes {
 		defaultCampus.setEndNodeColor(defaultRed);
 		defaultCampus.setOutlineColor(defaultBlack);		
 		colorSchemes.put("Default Campus", defaultCampus);
+		
+		//set alternative default campus
+		altDefaultCampus.setRouteButtonColor(defaultBlue);
+		altDefaultCampus.setOtherButtonsColor(defaultRed);
+		altDefaultCampus.setLineColor(defaultBlue);
+		altDefaultCampus.setMainBackColor(defaultLightGreen);
+		altDefaultCampus.setSideBarColor(neturalGrey);
+		altDefaultCampus.setStartNodeColor(defaultDarkGreen);
+		altDefaultCampus.setEndNodeColor(defaultRed);
+		altDefaultCampus.setOutlineColor(defaultBlack);		
+		colorSchemes.put("Alt Default Campus", altDefaultCampus);
 
 		//set greyscale
 		greyscale.setRouteButtonColor(lightestGrey);
