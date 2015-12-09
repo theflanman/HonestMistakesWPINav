@@ -1225,13 +1225,6 @@ public class GUIFront extends JFrame {
 
 				// Goes through each of the maps in the path and captures and saves an image
 				for (LocalMap local: pathLocalMaps) {
-					if (index < paths.size() - 1){
-						index ++;
-					}
-					if (index >= paths.size() - 1){
-						index = 0;
-					}
-
 
 					LocalMap localMap = paths.get(index).get(0).getLocalMap();
 					panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
