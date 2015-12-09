@@ -39,13 +39,21 @@ public class WrappableCellRenderer extends DefaultListCellRenderer {
 		
 		// Iterate through the list of words and simulate word wrapping by ensuring you don't break within a word
 		for(String s : words){
-			if(currentLineLength + s.length() > width){ // check if we're about to exceed the character limit
-				fmt += "<br>" + s;
-				currentLineLength = 0;
-			} 
-			else {
-				fmt += " " + s;
+			
+			// Fix to the Bug to add an extra line at the end of the last direction
+			if (s.equals("ENDHERE")) {
+				fmt += "<br>".concat("__________________");
 			}
+			else {
+				if(currentLineLength + s.length() > width){ // check if we're about to exceed the character limit
+					fmt += "<br>" + s;
+					currentLineLength = 0;
+				} 
+				else {
+					fmt += " " + s;
+				}
+			}
+			
 				
 			// update current number of characters on the given line
 			currentLineLength += s.length();
