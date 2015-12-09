@@ -716,7 +716,6 @@ public class GUIFront extends JFrame {
 						}
 					}
 					allText = allText.replace("ENDHERE", " ");
-					System.out.println(allText);
 
 					for (ArrayList<MapNode> wayPoints : paths){
 						distance += backend.getDistance(wayPoints, true); //the boolean value should not matter here 
