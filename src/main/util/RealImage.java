@@ -23,7 +23,7 @@ public class RealImage implements IProxyImage {
 	private void loadIn(String path, String fileName){
 		try{
 			System.out.println("RealImage.loadIn: " + path + "/" + fileName);
-			image = ImageIO.read(new File(Constants.IMAGES_PATH + "/" + fileName));
+			image = ImageIO.read(new File(path + "/" + fileName));
 		} catch(IOException ioe){
 			ioe.printStackTrace();
 		}

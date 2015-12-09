@@ -14,7 +14,7 @@ import main.MapNode;
 
 public class AStarTest {
 	
-	LocalMap localMap1 = new LocalMap("sample.jpg", null);
+	LocalMap localMap1 = new LocalMap("sample.png", null);
 
 	@Test
 	public void test() {

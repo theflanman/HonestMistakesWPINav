@@ -1,14 +1,21 @@
 package main;
 
+import java.io.File;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class EmailSender {
 
@@ -19,6 +26,7 @@ public class EmailSender {
         Properties props = System.getProperties();
     	String fromEmail = "EraOfNavigation";
     	String pass = "HonestMistakes";
+    	String myDirectoryPath = "src/data/pathimages";
     	
         String host = "smtp.gmail.com";
         props.put("mail.smtp.starttls.enable", "true");
@@ -29,6 +37,7 @@ public class EmailSender {
         props.put("mail.smtp.auth", "true");
 
         Session session = Session.getDefaultInstance(props);
+        
         MimeMessage message = new MimeMessage(session);
 
         try {
@@ -44,13 +53,42 @@ public class EmailSender {
                 message.addRecipient(Message.RecipientType.TO, toAddress[i]);
             }
 
+            Multipart multipart = new MimeMultipart();
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText(body);
+            multipart.addBodyPart(messageBodyPart);
+            
+            File dir = new File(myDirectoryPath);
+            File[] directoryListing = dir.listFiles();
+            if (directoryListing != null) {
+            	for (File child : directoryListing) {
+            		child.deleteOnExit();
+            		MimeBodyPart attachPart = new MimeBodyPart();
+            		String attachFile = myDirectoryPath.concat("/".concat(child.getName()));
+
+            		DataSource source = new FileDataSource(attachFile);
+
+            		try {
+            			attachPart.setDataHandler(new DataHandler(source));
+            			attachPart.setFileName(new File(attachFile).getName());
+            			multipart.addBodyPart(attachPart);
+            		} catch (MessagingException e) {
+            			e.printStackTrace();
+            		}
+            	}
+            }
+            
             message.setSubject(subject);
-            message.setText(body);
+            message.setContent(multipart);
             Transport transport = session.getTransport("smtp");
             transport.connect(host, fromEmail, pass);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
             System.out.println("Email Sent Successfuly");
+            for (File file : directoryListing) {
+            	file.delete();
+            }
+ 
         }
         catch (AddressException ae) {
             ae.printStackTrace();

@@ -9,7 +9,7 @@ import main.StepByStep;
 
 public class DistanceTests extends TestCase{
 	
-	LocalMap localMap1 = new LocalMap("sample.jpg", null);
+	LocalMap localMap1 = new LocalMap("sample.png", null);
 	
 	public void testNodeDistanceInts() {
 		MapNode node1 = new MapNode(5, 3, localMap1);
@@ -44,7 +44,7 @@ public class DistanceTests extends TestCase{
 		instructionList1.add(node2);
 		instructionList1.add(node1);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		
 		assertEquals(stepByStep1.calculateTotalDistance(), 16);
 	}
@@ -57,7 +57,7 @@ public class DistanceTests extends TestCase{
 		instructionList1.add(node2);
 		instructionList1.add(node1);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		
 		assertEquals(stepByStep1.calculateTotalDistance(), 3);
 	}

@@ -1,5 +1,6 @@
 package main.gui;
 import java.awt.Image;
+import java.awt.SplashScreen;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -8,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -37,19 +39,19 @@ import main.util.GeneralUtil;
 
 @SuppressWarnings("serial")
 public class GUIBack implements Serializable {
-
 	private LocalMap localMap;
 	private ArrayList<MapNode> path;
+	public boolean splashFlag = false;//becomes true when done loading maps
 
 	/**
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
 	 * TODO: Change to Campus Map when it is complete
 	 */
 	public GUIBack(){
-		String defaultMapImage = "CCM.jpg";
+		String defaultMapImage = "CCM.png";
 		this.localMap = new LocalMap(defaultMapImage, null);
 		this.path = new ArrayList<MapNode>();
-	}
+		}
 
 	/**
 	 * Takes an array of filenames of local maps to be loaded
@@ -60,11 +62,11 @@ public class GUIBack implements Serializable {
 	 * @param fileName
 	 */
 	public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
+
 		//iterate through each file name
 		System.out.println("Starting load");
 		ArrayList<ArrayList<ArrayList<String>>> allNeighborList = new ArrayList<ArrayList<ArrayList<String>>>();
 		ArrayList<LocalMap> localMapList = new ArrayList<LocalMap>();
-
 
 		for(String fileName: fileNames){
 			//find exclusively the file name
@@ -72,6 +74,7 @@ public class GUIBack implements Serializable {
 			String mapAppend = fileParts[fileParts.length-1];
 			mapAppend = GeneralUtil.removeExtension(mapAppend) + "_";
 			//setup an array list of nodes for the local map and an array list of strings for linking
+			
 			ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
 			ArrayList<ArrayList<String>> neighborNodes = new ArrayList<ArrayList<String>>();
 			Document dom;
@@ -188,6 +191,7 @@ public class GUIBack implements Serializable {
 		//time to loop through each local map and link its nodes to itself and other local maps
 		//this will probably feel like black magic (BECAUSE IT IS)
 		for(int i = 0; i< localMapList.size(); i++){
+
 			//this is the local map that we're currently linking
 			LocalMap currentLocalMap = localMapList.get(i);
 			//this is the number of nodes we have to look a for neighbors
@@ -215,15 +219,15 @@ public class GUIBack implements Serializable {
 
 						}
 					}
-
 				}
-				
 			}
-			
 		}
 
+	    splashFlag = true;
 		return localMapList; 
 	}
+	
+	
 	/**@author Andrew Petit
 	 * 
 	 * @description basically used by drawLine function in mainGui to draw a line between two nodes one at a time
@@ -245,8 +249,8 @@ public class GUIBack implements Serializable {
 	 * @return String - this is necessary to allow MainGui to push the distance to a label
 	 */
 
-	public int getDistance(ArrayList<MapNode> mapNodes) {
-		StepByStep getDistance = new StepByStep(mapNodes);
+	public int getDistance(ArrayList<MapNode> mapNodes, boolean isLastWaypoint) {
+		StepByStep getDistance = new StepByStep(mapNodes, isLastWaypoint);
 		int distance = getDistance.calculateTotalDistance();
 		return distance;
 	}
@@ -254,8 +258,8 @@ public class GUIBack implements Serializable {
 	 * @return ArrayList<String> - this is necessary to allow GUIFront to convert the strings in the array into rows of the column
 	 */
 	//honestly think we should role with the commented-out code, and get rid of generateStepByStep from Global -- Need someone's opinion though
-	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes) {
-		StepByStep directions = new StepByStep(mapNodes);
+	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes, boolean isLastWaypoint) {
+		StepByStep directions = new StepByStep(mapNodes, isLastWaypoint);
 		ArrayList<String> print = directions.printDirection();
 		return print;
 	}
@@ -293,13 +297,12 @@ public class GUIBack implements Serializable {
 	 * @return
 	 */
 
-	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
+	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end){
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
+		//call step ny step
 		System.out.println(globalNodes.size());
-		globalmap.addToMapNodes(start);
-		globalmap.addToMapNodes(end);
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added
 			//immediately add this to a new route

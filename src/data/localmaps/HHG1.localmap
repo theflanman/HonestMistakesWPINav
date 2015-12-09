@@ -145,6 +145,7 @@
         <Neighbors>
             <Neighbor>HHG1_8</Neighbor>
             <Neighbor>HHG1_11</Neighbor>
+            <Neighbor>HHG1_10</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -213,6 +214,7 @@
             <Neighbor>HHG1_6</Neighbor>
             <Neighbor>HHG1_9</Neighbor>
             <Neighbor>HHG1_14</Neighbor>
+            <Neighbor>HHG1_7</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -271,9 +273,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>

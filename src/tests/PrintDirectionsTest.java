@@ -10,7 +10,7 @@ import main.StepByStep;
 
 public class PrintDirectionsTest extends TestCase {
 	
-	LocalMap localMap1 = new LocalMap("sample.jpg", null);
+	LocalMap localMap1 = new LocalMap("sample.png", null);
 	
 	public void testCleanUp1() {
 		MapNode node1 = new MapNode(3, 1, localMap1);
@@ -31,7 +31,7 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		
 		ArrayList<MapNode> resultPath = new ArrayList<MapNode>();
 		resultPath.add(node1);
@@ -73,7 +73,7 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		
 		ArrayList<MapNode> resultPath = new ArrayList<MapNode>();
 		resultPath.add(node1);
@@ -104,7 +104,7 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
@@ -128,7 +128,7 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node2);
 		instructionList1.add(node3);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
@@ -156,7 +156,7 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
@@ -196,7 +196,7 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node5);
 		instructionList1.add(node6);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
@@ -244,7 +244,7 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
