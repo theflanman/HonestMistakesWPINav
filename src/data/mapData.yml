@@ -106,37 +106,37 @@ zHeight-CCM.png : 0.0
 ##FL1.png
 scale-FL1.png : .309 # 219.51ft, 709.40px
 angle-FL1.png : 1.093
-xOffset-FL1.png : 0.0
-yOffset-FL1.png : 0.0
-zHeight-FL1.png : 0.0
+xOffset-FL1.png : 1900.5
+yOffset-FL1.png : 414.0
+zHeight-FL1.png : 13.0
 
 ##FL2.png
 scale-FL2.png : .309 # 219.51ft, 709.40px
 angle-FL2.png : 1.093
-xOffset-FL2.png : 0.0
-yOffset-FL2.png : 0.0
-zHeight-FL2.png : 0.0
+xOffset-FL2.png : 1900.5
+yOffset-FL2.png : 414.0
+zHeight-FL2.png : 26.0
 
 ##FL3.png
 scale-FL3.png : .309 # 219.51ft, 709.40px
 angle-FL3.png : 1.093
-xOffset-FL3.png : 0.0
-yOffset-FL3.png : 0.0
-zHeight-FL3.png : 0.0
+xOffset-FL3.png : 1900.5
+yOffset-FL3.png : 414.0
+zHeight-FL3.png : 39.0
 
 ##FLB.png
 scale-FLB.png : .309 # 219.51ft, 709.40px
 angle-FLB.png : 1.093
-xOffset-FLB.png : 0.0
-yOffset-FLB.png : 0.0
-zHeight-FLB.png : 0.0
+xOffset-FLB.png : 1900.5
+yOffset-FLB.png : 414.0
+zHeight-FLB.png : -13.0
 
 ##FLSB.png
 scale-FLSB.png : .309 # 219.51ft, 709.40px
 angle-FLSB.png : 1.093
-xOffset-FLSB.png : 0.0
-yOffset-FLSB.png : 0.0
-zHeight-FLSB.png : 0.0
+xOffset-FLSB.png : 1900.5
+yOffset-FLSB.png : 414.0
+zHeight-FLSB.png : -26.0
 
 ##GL1.png
 scale-GL1.png: .2217 # 182.43ft, 823px
