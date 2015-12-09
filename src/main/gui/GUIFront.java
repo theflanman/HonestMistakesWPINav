@@ -433,7 +433,6 @@ public class GUIFront extends JFrame {
 		mainPanel.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				System.out.println("in CHANGE LISTENER!");
 				
 				if(mainPanel.getSelectedIndex() == 0){					
 					btnRoute.setEnabled(mapViewButtons[0]);
@@ -441,7 +440,7 @@ public class GUIFront extends JFrame {
 				}
 				else if(mainPanel.getSelectedIndex() == 1){
 					storeButtonStates();
-					
+										
 					btnClear.setEnabled(false);
 					btnRoute.setEnabled(false);	
 				}
@@ -1800,9 +1799,17 @@ public class GUIFront extends JFrame {
 
 					this.mapImage = mapPath;
 					
-					zoomRatio = zoomHandle.zoomAmount; // get the initialized zoom amount
-					panX = -500; // default pan X
-					panY = -250; // default pan 
+					if(this.isMapView){
+						zoomRatio = zoomHandle.zoomAmount; // get the initialized zoom amount
+						panX = -500; // default pan X
+						panY = -250; // default pan
+					}
+					else{
+						zoomRatio = 1;
+						panX = 0;
+						panY = 0;
+					}
+					
 					initializePolygons();
 
 					addMouseListener(panHandle);
