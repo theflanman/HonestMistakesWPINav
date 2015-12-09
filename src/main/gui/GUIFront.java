@@ -748,7 +748,6 @@ public class GUIFront extends JFrame {
 					}
 					else {
 						index3 = listDirections.getSelectedIndex();
-						System.out.println(index3 + "this is it");
 						int indexHelp = 0;
 						if (index3 >= paths.get(index).size()){
 							index2 = 0;
@@ -804,13 +803,10 @@ public class GUIFront extends JFrame {
 							thisRoute = paths.get(index);
 							drawLine = true;
 						}
-						System.out.println(indexHelp + " " + "indexHelp");
-						System.out.println(index3 + " " + "index3");
 						index3 -= indexHelp;
 						if (index3 >= paths.get(index).size() - 1){
 							index++;
 						}
-						System.out.println(index3 + " " + "new value");
 						
 						index2 = index3;
 						drawLine2 = true;
@@ -862,6 +858,8 @@ public class GUIFront extends JFrame {
 		btnNextMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae){
+				System.out.println("index:" + index);
+				System.out.println("size" + paths.size());
 				index2 = 0;
 				index++;
 				//index3 = paths.get(index -1).size();
@@ -870,21 +868,17 @@ public class GUIFront extends JFrame {
 					btnPreviousMap.setEnabled(false);
 					btnPreviousStep.setEnabled(false);
 				}
-				if (index < paths.size() - 1){
-					btnNextMap.setEnabled(true);
-				}
-
-				if (index >= paths.size() - 1){
+				if (index >= paths.size() - 2){
 					btnNextMap.setEnabled(false);
 					btnNextStep.setEnabled(false);
 				}
-	
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 					btnPreviousStep.setEnabled(true);
 				}
-				if (index < paths.size() - 1){
+				if (index < paths.size() - 2){
 					btnNextStep.setEnabled(true);
+					btnNextMap.setEnabled(true);
 				}
 				drawLine2 = false;
 				drawLine3 = false;
