@@ -45,16 +45,12 @@ public class LocalMap implements Serializable{
 		
 		HashMap<String, Double> argList = yamlParser.getArgList();
 		if(argList.size() > 0){
-			System.out.println("Loading information from yaml file...");
-			System.out.println("Working with image: " + this.mapImageName);
 			
 			String mapImagepng = GeneralUtil.removeExtension(this.mapImageName);
 			String[] s = mapImagepng.split("/");
 			mapImagepng = s[s.length-1];
 			mapImagepng = mapImagepng + ".png";
-			System.out.println("Getting image name");
 
-			System.out.println(mapImagepng);
 			this.mapScale = argList.get("scale-"+ mapImagepng); // gets the zoomRatio based on the associated mapImageName
 			this.transformAngle = argList.get("angle-"+ mapImagepng);//gets the transformation angle based on the associated mapImageName
 			this.xOffset = argList.get("xOffset-"+ mapImagepng);//gets the x coordinate offset based on the associated mapImageName

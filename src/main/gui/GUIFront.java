@@ -278,7 +278,6 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				lblInvalidEntry.setVisible(false);
-				System.out.println("Enter was pressed");
 				//if the user presses enter without having entered anything in this box
 				if (textFieldEnd.getText().equals("")){
 					System.out.println("Need to enter a valid start location"); // TODO: will need some way to alert the user that they need to enter an end location
@@ -307,11 +306,9 @@ public class GUIFront extends JFrame {
 						if(endString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(endString)){
 							//if endstring is the official name or one of a few different accepted aliases we will allow the end node to be placed
 							endNode = mapnode;
-							System.out.println("This is the ending node");
 							globalMap.setEndNode(endNode);
 							if (!setEnd) {
-								globalMap.getChosenNodes().add(1, endNode);
-								System.out.println(globalMap.getChosenNodes().size());					
+								globalMap.getChosenNodes().add(1, endNode);					
 							} else {
 								globalMap.getChosenNodes().set(1, endNode);
 							}
@@ -328,11 +325,9 @@ public class GUIFront extends JFrame {
 							MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
 							if (node != null){ //if no node was found, you should not place a node on the map otherwise do it 
 								endNode = node;
-								System.out.println("This is the ending node!");
 								globalMap.setEndNode(endNode);
 								if (!setEnd) {
-									globalMap.getChosenNodes().add(1, endNode);
-									System.out.println(globalMap.getChosenNodes().size());					
+									globalMap.getChosenNodes().add(1, endNode);					
 								} else {
 									globalMap.getChosenNodes().set(1, endNode);
 								}
@@ -344,12 +339,9 @@ public class GUIFront extends JFrame {
 							String startString = textFieldStart.getText();
 							for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 								if(startString.equals(mapnode.getAttributes().getOfficialName())){
-									startNode = mapnode; //set the startNode and then draw it on the map
-									System.out.println("This is the starting node");
-									globalMap.setStartNode(startNode);
+									startNode = mapnode; //set the startNode and then draw it on the ma									globalMap.setStartNode(startNode);
 									if (!setStart) {
-										globalMap.getChosenNodes().add(0, startNode);
-										System.out.println(globalMap.getChosenNodes().size());					
+										globalMap.getChosenNodes().add(0, startNode);					
 									} else {
 										globalMap.getChosenNodes().set(0, startNode);
 									}
@@ -361,11 +353,9 @@ public class GUIFront extends JFrame {
 								MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
 								if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
 									endNode = node; //set the end node and place that node on the map
-									System.out.println("This is the ending node!");
 									globalMap.setEndNode(endNode);
 									if (!setEnd) {
-										globalMap.getChosenNodes().add(1, endNode);
-										System.out.println(globalMap.getChosenNodes().size());					
+										globalMap.getChosenNodes().add(1, endNode);					
 									} else {
 										globalMap.getChosenNodes().set(1, endNode);
 									}
@@ -391,10 +381,8 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				lblInvalidEntry.setVisible(false);
-				System.out.println("Enter was pressed");
 				if (textFieldStart.getText().equals("")){
 					//will need some way to alert the user that they need to enter a start location
-					System.out.println("Need to enter a valid start location");
 				} else if (!(textFieldStart.getText().equals(""))) {//if there is something entered check if the name is valid and then basically add the start node
 					String startString = textFieldStart.getText();
 					boolean valid = false;
@@ -402,11 +390,9 @@ public class GUIFront extends JFrame {
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(startString)){
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 							startNode = mapnode; //set the startNode and place it on the map
-							System.out.println("This is the starting node");
 							globalMap.setStartNode(startNode);
 							if (!setStart) {
 								globalMap.getChosenNodes().add(0, startNode);
-								System.out.println(globalMap.getChosenNodes().size());					
 							} else {
 								globalMap.getChosenNodes().set(0, startNode);
 							}
@@ -598,7 +584,6 @@ public class GUIFront extends JFrame {
 						}
 					}
 
-					System.out.println("IMAGE NAME: " + paths.get(0).get(0).getLocalMap().getMapImageName());
 					GUIFront.changeStreetView(gl_contentPane, paths.get(0).get(0).getLocalMap().getMapImageName());					
 
 					//get the first route to allow calculate route to go back to the initial map when starting to show the route
@@ -1051,8 +1036,6 @@ public class GUIFront extends JFrame {
 		mntmEmail.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-
-				System.out.println("Starts Saving Path Images");
 
 				int holdIndex = index;
 				PanelSave savePanel = new PanelSave();
@@ -1599,7 +1582,6 @@ public class GUIFront extends JFrame {
 	 * @description Resets all of the relevant information on the form and the background information
 	 */
 	public void reset() {
-		System.out.println("RESET HAS BEEN CALLED!");
 		allowSetting = true; //allow user to re place nodes only once reset is pressed
 		globalMap.getStartNode().getLocalMap().setStart(null);
 		if (globalMap.getEndNode() != null){
@@ -1795,7 +1777,6 @@ public class GUIFront extends JFrame {
 			labelMainPanel.setFont(new Font("Sans", Font.BOLD, 90));
 			labelMainPanel.setVerticalAlignment(SwingConstants.CENTER);
 			labelMainPanel.setHorizontalAlignment(SwingConstants.CENTER);
-			System.out.println("PANEL ID: " + panelID);
 			labelMainPanel.setText(panelID);
 
 			this.mapImage = mapPath;
@@ -1833,7 +1814,6 @@ public class GUIFront extends JFrame {
 
 							// figure out where the closest map node is, set that node as a startnode the StartingNode
 							MapNode node = backend.findNearestNode(mainReferencePoint.getX() + panX, mainReferencePoint.getY() + panY, backend.getLocalMap());
-							System.out.println("The Node found is " + node.getNodeID());
 
 							// {{
 
@@ -2116,7 +2096,6 @@ public class GUIFront extends JFrame {
 							//Stratton
 							if(sHPolygon.contains(mainReferencePoint)){
 								JPopupMenu popupMenu = new JPopupMenu();
-								System.out.println("X: " + mainReferencePoint.getX() + "\tY: " + mainReferencePoint.getY());
 
 								popupMenu.add(new JMenuItem("Stratton Hall"))
 								.setFont(new Font("Helvetica", Font.BOLD, 12));
@@ -2157,9 +2136,7 @@ public class GUIFront extends JFrame {
 							}
 							// }}
 
-							if(globalMap.getStartNode() != null)
-								System.out.println("START NODE: " + globalMap.getStartNode().getNodeID());
-							
+						
 							//refer to Andrew Petit if this doesn't make sense
 							if(globalMap.getChosenNodes().size() == 0){//set the start node of the globalnodes list of chosenNodes if that list is empty
 								globalMap.setStartNode(node);

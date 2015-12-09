@@ -90,9 +90,7 @@ public class DevGUIBack implements Serializable  {
 	public void saveMap() {
 		//get the filename of the map image, remove the image extension,
 		//and slap on a .localmap
-		System.out.println("Preparing to save...");
 		String fileName = this.localMap.getMapImageName();
-		System.out.println(this.localMap.getMapScale());
 		String mapImageName = fileName;
 		fileName = GeneralUtil.removeExtension(fileName);
 		String mapNameNoExtension = fileName;
@@ -130,42 +128,31 @@ public class DevGUIBack implements Serializable  {
 	        
 	        for(MapNode node : this.localMap.getMapNodes()){
 	        	node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
-	        	System.out.println(node.getLocalMap().getMapScale());
-	        	System.out.println("xFeet: " + node.getXFeet());
 	        	node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
-	        	System.out.println("yFeet: " + node.getYFeet());
 	        	e = dom.createElement("Node");
 	        	//node id
-	        	System.out.println("Saving ID");
 	        	Element id = dom.createElement("NodeID");
         		id.appendChild(dom.createTextNode(node.getNodeID()));
 	        	
 	        	//x y and z coords
-	        	System.out.println("Saving xPos");
 	        	Element xPos = dom.createElement("XPos");
 	        	xPos.appendChild(dom.createTextNode(Double.toString(node.getXPos())));
-	        	
-	        	System.out.println("Saving yPos");
+
 	        	Element yPos = dom.createElement("YPos");	
 	        	yPos.appendChild(dom.createTextNode(Double.toString(node.getYPos())));
-	        	
-	        	System.out.println("Saving xFeet");
+
 	        	Element xFeet = dom.createElement("XFeet");
 	        	xFeet.appendChild(dom.createTextNode(Double.toString(node.getXFeet())));
-	        	
-	        	System.out.println("Saving Feet");
+
 	        	Element yFeet = dom.createElement("YFeet");	
 	        	yFeet.appendChild(dom.createTextNode(Double.toString(node.getYFeet())));
-	        	
-	        	System.out.println("Saving zPos");
+
 	        	Element zFeet = dom.createElement("ZFeet");
 	        	zFeet.appendChild(dom.createTextNode(Double.toString(node.getZFeet())));
-	        	
-	        	System.out.println("Saving Type");
+
 	        	Element type = dom.createElement("Type");
 	        	type.appendChild(dom.createTextNode(node.getAttributes().getType().toString()));
-	        	
-	        	System.out.println("Saving Neighbors");
+
 	        	Element neighbors = dom.createElement("Neighbors");
 	        	//if there are no neighbors, populate the xml field with none
 	        	if(node.getNeighbors().size() == 0){
@@ -190,24 +177,17 @@ public class DevGUIBack implements Serializable  {
 	        	
 	        	Element attributes = dom.createElement("Attributes");
 	        	
-	        	
-	        	System.out.println("Saving Official Name");
 	        	Element officialName = dom.createElement("OfficialName");
 	        	officialName.appendChild(dom.createTextNode(node.getAttributes().getOfficialName()));
 	        	if(node.getAttributes().isBikeable());
-	        	System.out.println("Saving bikeable");
 	        	Element isBikeable = dom.createElement("Bikeable");
 	        	isBikeable.appendChild(dom.createTextNode(Boolean.toString(node.getAttributes().isBikeable())));
-	        	System.out.println("Saving handicapped");
 	        	Element isHandicapped = dom.createElement("Handicapped");
 	        	isHandicapped.appendChild(dom.createTextNode(Boolean.toString(node.getAttributes().isHandicapped())));
-	        	System.out.println("Saving stairs");
 	        	Element isStairs = dom.createElement("Stairs");
 	        	isStairs.appendChild(dom.createTextNode(Boolean.toString(node.getAttributes().isStairs())));
-	        	System.out.println("Saving outside");
 	        	Element isOutside = dom.createElement("Outside");
 	        	isOutside.appendChild(dom.createTextNode(Boolean.toString(node.getAttributes().isOutside())));
-	        	System.out.println("Saving POI");
 	        	Element isPOI = dom.createElement("POI");
 	        	isPOI.appendChild(dom.createTextNode(Boolean.toString(node.getAttributes().isPOI())));
 
@@ -219,7 +199,6 @@ public class DevGUIBack implements Serializable  {
 	        	attributes.appendChild(isPOI);
 	        	attributes.appendChild(type);
 	        	
-	        	System.out.println("Saving Aliases");
 	        	Element aliases = dom.createElement("Aliases");
 	        	//if there are no neighbors, populate the xml field with none
 	        	if(node.getAttributes().getAliases().size() == 0){
@@ -234,19 +213,7 @@ public class DevGUIBack implements Serializable  {
 	        	}
 	        	
 	        	attributes.appendChild(aliases);
-	        	
-	        	/*
-	        	Element fScore = dom.createElement("FScore");
-	        	fScore.appendChild(dom.createElement(Double.toString(node.getFScore())));
-	        	
-	        	Element gScore = dom.createElement("GScore");
-	        	gScore.appendChild(dom.createElement(Double.toString(node.getGScore())));
-	        	
-	        	Element hScore = dom.createElement("HScore");
-	        	hScore.appendChild(dom.createElement(Double.toString(node.getHScore())));
-	        	*/
-
-	        	
+	        		        	
 	        	e.appendChild(id);
 	        	e.appendChild(xPos);
 	        	e.appendChild(yPos);
@@ -255,20 +222,10 @@ public class DevGUIBack implements Serializable  {
 	        	e.appendChild(zFeet);
 	        	e.appendChild(neighbors);
 	        	e.appendChild(attributes);
-	        	
-	        	/*
-	        	e.appendChild(officialName);
-	        	e.appendChild(isBikeable);
-	        	e.appendChild(isHandicapped);
-	        	e.appendChild(isStairs);
-	        	e.appendChild(isOutside);
-	        	e.appendChild(isPOI);
-	        	*/
-	        	
+        	
 	        	
 	        	rootEle.appendChild(e);
 	        	
-	        	System.out.println(rootEle.getChildNodes().getLength());
 	        }
 	        
 	        dom.appendChild(rootEle);
@@ -280,7 +237,6 @@ public class DevGUIBack implements Serializable  {
 	            tr.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 	            //tr.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, fileName);
 	            tr.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-	            System.out.println("Done transformation setup");
 	            // send DOM to file
 	            tr.transform(new DOMSource(dom), 
 	                                 new StreamResult(new FileOutputStream(fileName)));
@@ -306,44 +262,15 @@ public class DevGUIBack implements Serializable  {
 	 * 
 	 * @param fileName is name of file that stores the object data (requires an extension)
 	 */
-	/*
-	public void loadMap(String fileName) {
-		
-		if(! fileName.contains(".localmap")){
-			System.out.println("DevGUIBack.loadMap(fileName) requires a .localmap file as input...exiting");
-			System.exit(1);
-		}
-		
-		FileInputStream fileIn;
-		try {
-			fileIn = new FileInputStream(fileName);
-			ObjectInputStream objIn = new ObjectInputStream(fileIn);
-			this.localMap = (LocalMap) objIn.readObject();
-			objIn.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-	}
-	*/
 	
 	public void loadMap(String fileName){
-		System.out.println("----------------------------------------------");
-		System.out.println(fileName);
 		String fileParts[] = fileName.split("/");
-		for (String part:fileParts){
-			System.out.println(part);
-		}
+
 		String mapAppend = fileParts[fileParts.length-1];
 		String mapNameNoExtension = GeneralUtil.removeExtension(mapAppend);
 		mapAppend = GeneralUtil.removeExtension(mapAppend) + "_";
 		ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
 		ArrayList<ArrayList<String>> neighborNodes = new ArrayList<ArrayList<String>>();
-		System.out.println(mapAppend);
 		Document dom;
 		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -370,7 +297,6 @@ public class DevGUIBack implements Serializable  {
 				
 				//extract these node variables (ID, x, y, z);
 				String nodeID = currentNode.getElementsByTagName("NodeID").item(0).getTextContent();
-				System.out.println(nodeID);
 				String xPos = currentNode.getElementsByTagName("XPos").item(0).getTextContent();
 				String yPos = currentNode.getElementsByTagName("YPos").item(0).getTextContent();
 				String xFeet = currentNode.getElementsByTagName("XFeet").item(0).getTextContent();
@@ -383,15 +309,7 @@ public class DevGUIBack implements Serializable  {
 				loadedNodes.get(i).setXFeet(Double.parseDouble(xFeet));
 				loadedNodes.get(i).setYFeet(Double.parseDouble(yFeet));
 				loadedNodes.get(i).setZFeet(Double.parseDouble(zFeet));
-				//debug print
-				
-				/*
-				System.out.println(loadedNodes.get(i).getNodeID());
-				System.out.println(loadedNodes.get(i).getXPos());
-				System.out.println(loadedNodes.get(i).getYPos());
-				System.out.println(loadedNodes.get(i).getZPos());
-				*/
-				
+
 				//get the neighbor values and store those node ID's in the neighbor nodes arraylist
 				//also need to do an operation here, if a neighbor is on another map, store it on the
 				//maps cross-map list.
@@ -410,16 +328,10 @@ public class DevGUIBack implements Serializable  {
 							crossMapNeighbors.add(neighborID);
 						}
 						neighborNodes.get(i).add(neighborID);
-						System.out.println("    " + neighbor.getTextContent().trim());
 					}
 					loadedNodes.get(i).setCrossMapNeighbors(crossMapNeighbors);
-					//System.out.println("Node " + loadedNodes.get(i).getNodeID() + " has " + crossMapNeighbors.size() + " cross map neighbors");
 				}
-				else{
-					//no neighbors, nothing to add
-					System.out.println("No Neighbors");
-				}
-				
+	
 				//extract the attribute values and store these
 				Element attributes = ((Element)currentNode.getElementsByTagName("Attributes").item(0));
 				String officialName = attributes.getElementsByTagName("OfficialName").item(0).getTextContent();
@@ -429,7 +341,6 @@ public class DevGUIBack implements Serializable  {
 				String outside = attributes.getElementsByTagName("Outside").item(0).getTextContent();
 				String poi = attributes.getElementsByTagName("POI").item(0).getTextContent();
 				String type = attributes.getElementsByTagName("Type").item(0).getTextContent();
-				
 				
 				//set the attributes in the array list
 				
@@ -447,7 +358,6 @@ public class DevGUIBack implements Serializable  {
 			}
 			
 			//third pass; link nodes
-			System.out.println("About to do the third pass");
 			for (int i = 0; i < xmlNodeList.getLength(); i++){
 				//loop through the list of neighbor associations to do assignment for each one
 				for (int j = 0; j < neighborNodes.get(i).size(); j++){
@@ -456,11 +366,9 @@ public class DevGUIBack implements Serializable  {
 					//String neighborID = Integer.toString(neighborIDInt);
 					//need to get the node associated with this ID
 					for(MapNode potentialNode : loadedNodes){
-						//System.out.println(potentialNode.getNodeID() + " vs " + neighborID);
 						if(potentialNode.getNodeID().equals(neighborID)){
 							MapNode currentNode = loadedNodes.get(i);
 							currentNode.addNeighbor(potentialNode);
-							//System.out.println("Adding " + currentNode.getNodeID() + " to " + potentialNode.getNodeID());
 							//currentNode.getNeighbors().add(potentialNode);
 						}
 					}//end inner for		

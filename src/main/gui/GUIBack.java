@@ -64,7 +64,6 @@ public class GUIBack implements Serializable {
 	public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
 
 		//iterate through each file name
-		System.out.println("Starting load");
 		ArrayList<ArrayList<ArrayList<String>>> allNeighborList = new ArrayList<ArrayList<ArrayList<String>>>();
 		ArrayList<LocalMap> localMapList = new ArrayList<LocalMap>();
 
@@ -302,7 +301,6 @@ public class GUIBack implements Serializable {
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
 		//call step ny step
-		System.out.println(globalNodes.size());
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added
 			//immediately add this to a new route
@@ -347,8 +345,7 @@ public class GUIBack implements Serializable {
 		start.setXFeet(start.getLocalMap().getMapScale()*start.getXPos());
 		start.setYFeet(start.getLocalMap().getMapScale()*start.getYPos());
 		start.runTransform();
-		System.out.println(start.getXFeet());
-		System.out.println(start.getYFeet());
+
 		start.setNodeID("temp" + Double.toString(xPos));
 		MapNode temp = null;
 		//need to initialize with an extremely large unobtainable number - or find a better solution

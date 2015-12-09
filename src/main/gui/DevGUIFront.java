@@ -118,19 +118,10 @@ public class DevGUIFront extends JFrame {
 	}
 
 
-	public void keyPressed(KeyEvent e){
-		System.out.println("Key pressed");
-	}
-
-
 	/**
 	 * Create the frame.
 	 */
 	public DevGUIFront() {
-
-		//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
-		System.out.println("Initializing...");
-		//	setExtendedState(Frame.MAXIMIZED_BOTH); //This has the application automatically open maximized.
 
 		// This sets the size and behavior of the application window itself.
 		setPreferredSize(new Dimension(1380, 760));
@@ -673,12 +664,7 @@ public class DevGUIFront extends JFrame {
 								selectedNodes.add(n);
 							}
 
-							System.out.println(selectedNodes.size());
-
-
-
-
-
+			
 						} //end the threshold selection if
 
 
@@ -904,10 +890,6 @@ public class DevGUIFront extends JFrame {
 								selectedNodes.add(n);
 							}
 
-							System.out.println(selectedNodes.size());
-
-
-
 						}
 					}
 
@@ -1085,7 +1067,6 @@ public class DevGUIFront extends JFrame {
 				point2X = point2.getXPos();
 				point1Y = point1.getYPos();
 				point2Y = point2.getYPos();
-				System.out.println("Extremes " + point1X + " " + point1Y + " " + point2X + " " + point2Y );
 				xSlope = point2X - point1X; //Determine the slope of the line L.
 				ySlope = point2Y - point1Y;
 				squaredHypotenuse = xSlope*xSlope + ySlope*ySlope; //Take modulus of L, or the dot product with itself.
