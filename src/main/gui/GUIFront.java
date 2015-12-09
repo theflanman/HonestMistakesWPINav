@@ -561,8 +561,8 @@ public class GUIFront extends JFrame {
 								for (MapNode mapnode : getNodesOnDifferentMap.get(0)){ 
 									getNodesOnSameMap.add(mapnode);
 								}
-								StepByStep temp = new StepByStep(getNodesOnSameMap, false);
-								getNodesOnSameMap = temp.cleanUpPath();
+								//StepByStep temp = new StepByStep(getNodesOnSameMap, false);
+								//getNodesOnSameMap = temp.cleanUpPath();
 								//need to make temporary getNodesOnSameMap add all those nodes to all the nodes that are in getNodesOnDifferentMap
 								paths.add(getNodesOnSameMap);
 								for (int k = 1; k < getNodesOnDifferentMap.size(); k++){ //now for the other lists that have been added into OnDifferentMap -- we need to add those ArrayLists into a new spot in paths as they should NOT be on the same local map
@@ -597,8 +597,8 @@ public class GUIFront extends JFrame {
 					}
 					if (paths.isEmpty()){
 						if (!(getNodesOnSameMap.isEmpty())){
-							StepByStep temp = new StepByStep(getNodesOnSameMap, false);
-							getNodesOnSameMap = temp.cleanUpPath();
+							//StepByStep temp = new StepByStep(getNodesOnSameMap, false);
+							//getNodesOnSameMap = temp.cleanUpPath();
 							paths.add(getNodesOnSameMap);
 						}
 					} else {
@@ -606,11 +606,11 @@ public class GUIFront extends JFrame {
 							for(MapNode mapnode : getNodesOnSameMap){
 								paths.get(paths.size() - 1).add(mapnode);
 							}
-							ArrayList<MapNode> temp = paths.get(paths.size() - 1);
-							StepByStep temp2 = new StepByStep(temp, false);
-							temp = temp2.cleanUpPath();
-							paths.remove(paths.get(paths.size() - 1));
-							paths.add(temp);
+							//ArrayList<MapNode> temp = paths.get(paths.size() - 1);
+							//StepByStep temp2 = new StepByStep(temp, false);
+							//temp = temp2.cleanUpPath();
+							//paths.remove(paths.get(paths.size() - 1));
+							//paths.add(temp);
 						} else { //if not, but getNodesOnSameMap is not empty we should just go ahead and add those nodes to another index in paths
 							//StepByStep temp = new StepByStep(getNodesOnSameMap, false);
 							//getNodesOnSameMap = temp.cleanUpPath();
