@@ -929,6 +929,7 @@ public class GUIFront extends JFrame {
 			setVisible(true);
 		}
 		pack();
+		setLocationRelativeTo(null);
 	}
 		public void  setColoring(String scheme){
 		colors = allSchemes.setColorScheme(scheme);
@@ -2294,7 +2295,7 @@ public class GUIFront extends JFrame {
 							if(backend.getLocalMap().getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE)){
 							
 								// Draw the panels over the building
-								graphics.setColor(Color.RED);
+								graphics.setColor(lineColor);
 								graphics.setStroke(new BasicStroke (7));
 								graphics.draw(aKPolygon);
 								graphics.draw(bPolygon);
