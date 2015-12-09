@@ -3989,14 +3989,16 @@
             <Neighbor>Boy1_151</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>Boyton 104</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>

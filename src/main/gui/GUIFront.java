@@ -282,6 +282,7 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				lblInvalidEntry.setVisible(false);
+				System.out.println("Enter was pressed");
 				//if the user presses enter without having entered anything in this box
 				if (textFieldEnd.getText().equals("")){
 					System.out.println("Need to enter a valid start location"); // TODO: will need some way to alert the user that they need to enter an end location
@@ -292,26 +293,24 @@ public class GUIFront extends JFrame {
 					Attributes attribute = new Attributes(); //will most likely need some other way of obtaining this information
 
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
-					MapNode n = globalMap.getAllNodes().get(0);
-					if (startNode == null){
-						startNode = n;
-
-						globalMap.setStartNode(startNode);				
-						
-						if (!setStart){
-							globalMap.getChosenNodes().add(0, startNode);
-						} else {
-							globalMap.getChosenNodes().set(0, startNode);
-						}
-
+					MapNode n = backend.getLocalMap().getMapNodes().get(0);
+					if (globalMap.getStartNode() == null){
+						globalMap.setStartNode(n);	
+						globalMap.getChosenNodes().add(0, globalMap.getStartNode());
+						LocalMap localmap = globalMap.getStartNode().getLocalMap();
+						localmap.setStart(globalMap.getStartNode());
 					}
 
-					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){
+					for (MapNode mapnode : globalMap.getMapNodes()){
 						// this follows a similar pattern to how the original nodes are set with the radio buttons
-						if(endString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(endString)){
+						if(endString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(endString)*/){
 							//if endstring is the official name or one of a few different accepted aliases we will allow the end node to be placed
 							endNode = mapnode;
+							System.out.println("This is the ending node");
 							globalMap.setEndNode(endNode);
+							globalMap.getChosenNodes().add(1, endNode);
+							LocalMap localmap = globalMap.getEndNode().getLocalMap();
+							localmap.setEnd(endNode);
 							panelMap.setMapImage(new ProxyImage(globalMap.getEndNode().getLocalMap().getMapImageName()));
 							panelMap.setMapNodes(globalMap.getEndNode().getLocalMap().getMapNodes());
 							String previousMap = backend.getLocalMap().getMapImageName();
@@ -328,60 +327,83 @@ public class GUIFront extends JFrame {
 								node.setXPos(node.getXPos() + offsetX);
 								node.setYPos(node.getYPos() + offsetY);
 							}	
-							if (!setEnd) {
-								globalMap.getChosenNodes().add(1, endNode);					
-							} else {
-								globalMap.getChosenNodes().set(1, endNode);
-							}
-
-							setEnd = true;
+							btnRoute.setEnabled(true);
 							valid = true;
 						} 
 					}
 
 					if (attribute.getPossibleEntries().containsKey(endString)){ //check if the entry in the text field is an attribute not an official name
 						String findNearestThing = attribute.getPossibleEntries().get(endString);
-						if(startNode != null){ //if there is no valid start node, this cannot be done - why? because you need a valid start node to find the closest node with the given attribute
+						if(globalMap.getStartNode() != null){ //if there is no valid start node, this cannot be done - why? because you need a valid start node to find the closest node with the given attribute
 							valid = true;
-							MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
+							MapNode node = backend.findNearestAttributedNode(findNearestThing, globalMap.getStartNode()); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
 							if (node != null){ //if no node was found, you should not place a node on the map otherwise do it 
 								endNode = node;
+								System.out.println("This is the ending node!");
 								globalMap.setEndNode(endNode);
-								if (!setEnd) {
-									globalMap.getChosenNodes().add(1, endNode);					
-								} else {
-									globalMap.getChosenNodes().set(1, endNode);
-								}
-								setEnd = true;
+								globalMap.getChosenNodes().add(1, globalMap.getEndNode());
+								LocalMap localmap = globalMap.getEndNode().getLocalMap();
+								localmap.setEnd(endNode);
+								panelMap.setMapImage(new ProxyImage(globalMap.getEndNode().getLocalMap().getMapImageName()));
+								panelMap.setMapNodes(globalMap.getEndNode().getLocalMap().getMapNodes());
+								String previousMap = backend.getLocalMap().getMapImageName();
+								panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+								backend.setLocalMap(globalMap.getEndNode().getLocalMap());
+								double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+								double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+								panelMap.panX = defPan[0];
+								panelMap.panY = defPan[1];
+								panelMap.setScale(defPan[2]);
+								offsetX = defPan[0] - tempPan[0];
+								offsetY = defPan[1] - tempPan[1];
+								for(MapNode node2 : backend.getLocalMap().getMapNodes()){
+									node2.setXPos(node2.getXPos() + offsetX);
+									node2.setYPos(node2.getYPos() + offsetY);
+								}	
+								System.out.println(globalMap.getChosenNodes().size());					
 								btnRoute.setEnabled(true);
 							}
 						} 
 						else if(!(textFieldStart.getText().equals(""))){ //if there is something entered in the start field as well as the end field we can go ahead and place both at the same time...
 							String startString = textFieldStart.getText();
-							for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+							for (MapNode mapnode : globalMap.getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 								if(startString.equals(mapnode.getAttributes().getOfficialName())){
-									startNode = mapnode; //set the startNode and then draw it on the ma									globalMap.setStartNode(startNode);
-									if (!setStart) {
-										globalMap.getChosenNodes().add(0, startNode);					
-									} else {
-										globalMap.getChosenNodes().set(0, startNode);
-									}
-									setStart = true;
+									startNode = mapnode; //set the startNode and then draw it on the map
+									System.out.println("This is the starting node");
+									globalMap.setStartNode(startNode);
+									globalMap.getChosenNodes().add(0, globalMap.getStartNode());
+									LocalMap localmap = globalMap.getStartNode().getLocalMap();
+									localmap.setStart(startNode);
 								}
 							}
 
-							if (startNode != null){ //make sure that the startNode value is still not null, otherwise this won't work if it is
-								MapNode node = backend.findNearestAttributedNode(findNearestThing, startNode); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
+							if (globalMap.getStartNode() != null){ //make sure that the startNode value is still not null, otherwise this won't work if it is
+								MapNode node = backend.findNearestAttributedNode(findNearestThing, globalMap.getStartNode()); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
 								if (node != null){ //if no node was found, you should not do this and return an error, else do the following 
 									endNode = node; //set the end node and place that node on the map
+									System.out.println("This is the ending node!");
 									globalMap.setEndNode(endNode);
-									if (!setEnd) {
-										globalMap.getChosenNodes().add(1, endNode);					
-									} else {
-										globalMap.getChosenNodes().set(1, endNode);
-									}
+									globalMap.getChosenNodes().add(1, globalMap.getEndNode());
+									LocalMap localmap = globalMap.getEndNode().getLocalMap();
+									localmap.setEnd(endNode);
+									globalMap.getChosenNodes().add(1, endNode);
+									panelMap.setMapImage(new ProxyImage(globalMap.getEndNode().getLocalMap().getMapImageName()));
+									panelMap.setMapNodes(globalMap.getEndNode().getLocalMap().getMapNodes());
+									String previousMap = backend.getLocalMap().getMapImageName();
+									panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
+									backend.setLocalMap(globalMap.getEndNode().getLocalMap());
+									double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+									double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+									panelMap.panX = defPan[0];
+									panelMap.panY = defPan[1];
+									panelMap.setScale(defPan[2]);
+									offsetX = defPan[0] - tempPan[0];
+									offsetY = defPan[1] - tempPan[1];
+									for(MapNode node2 : backend.getLocalMap().getMapNodes()){
+										node2.setXPos(node2.getXPos() + offsetX);
+										node2.setYPos(node2.getYPos() + offsetY);
+									}	
 									setEnd = true;
-									btnRoute.setEnabled(true);
 									valid = true;
 								}
 							}
@@ -402,21 +424,38 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				lblInvalidEntry.setVisible(false);
+				System.out.println("Enter was pressed");
 				if (textFieldStart.getText().equals("")){
 					//will need some way to alert the user that they need to enter a start location
+					System.out.println("Need to enter a valid start location");
 				} else if (!(textFieldStart.getText().equals(""))) {//if there is something entered check if the name is valid and then basically add the start node
 					String startString = textFieldStart.getText();
 					boolean valid = false;
-					for (MapNode mapnode : backend.getLocalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
-						if(startString.equals(mapnode.getAttributes().getOfficialName()) || mapnode.getAttributes().getAliases().contains(startString)){
+					for (MapNode mapnode : globalMap.getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
-							startNode = mapnode; //set the startNode and place it on the map
-							globalMap.setStartNode(startNode);
+							//startNode = mapnode; //set the startNode and place it on the map
+							/*globalMap.setStartNode(node);
+							globalMap.getChosenNodes().add(node);
+							globalMap.getAllNodes().add(node);
+							backend.getLocalMap().setStart(node);//remember to set the start node of that localMap the user is currently on
+							btnClear.setEnabled(true); //enable clear button if some node has been added*/
+							System.out.println("This is the starting node");
+							mapnode.setXFeet(mapnode.getLocalMap().getMapScale()*mapnode.getXPos());
+							mapnode.setYFeet(mapnode.getLocalMap().getMapScale()*mapnode.getYPos());
+							mapnode.runTransform();
+							if (globalMap.getChosenNodes().isEmpty() && globalMap.getChosenNodes() != null){
+								globalMap.setStartNode(mapnode);
+								globalMap.getChosenNodes().add(globalMap.getStartNode());
+							}
+							//LocalMap localmap = globalMap.getStartNode().getLocalMap();
+							//localmap.setStart(globalMap.getStartNode());
 							panelMap.setMapImage(new ProxyImage(globalMap.getStartNode().getLocalMap().getMapImageName()));
 							panelMap.setMapNodes(globalMap.getStartNode().getLocalMap().getMapNodes());
 							String previousMap = backend.getLocalMap().getMapImageName();
 							panValues.put(previousMap, new double[]{panelMap.panX, panelMap.panY});
 							backend.setLocalMap(globalMap.getStartNode().getLocalMap());
+							backend.getLocalMap().setStart(globalMap.getStartNode());
 							double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
 							double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
 							panelMap.panX = defPan[0];
@@ -428,12 +467,7 @@ public class GUIFront extends JFrame {
 								node.setXPos(node.getXPos() + offsetX);
 								node.setYPos(node.getYPos() + offsetY);
 							}	
-							if (!setStart) {
-								globalMap.getChosenNodes().add(0, startNode);
-							} else {
-								globalMap.getChosenNodes().set(0, startNode);
-							}
-							setStart = true;
+							btnClear.setEnabled(true);
 							valid = true;
 						}
 					}
@@ -869,7 +903,7 @@ public class GUIFront extends JFrame {
 					btnPreviousMap.setEnabled(false);
 					btnPreviousStep.setEnabled(false);
 				}
-				if (index >= paths.size() - 2){
+				if (index >= paths.size() - 1){
 					btnNextMap.setEnabled(false);
 					btnNextStep.setEnabled(false);
 				}
@@ -877,7 +911,7 @@ public class GUIFront extends JFrame {
 					btnPreviousMap.setEnabled(true);
 					btnPreviousStep.setEnabled(true);
 				}
-				if (index < paths.size() - 2){
+				if (index < paths.size() - 1){
 					btnNextStep.setEnabled(true);
 					btnNextMap.setEnabled(true);
 				}
