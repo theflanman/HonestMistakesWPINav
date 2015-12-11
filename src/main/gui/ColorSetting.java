@@ -89,5 +89,5 @@ public class ColorSetting {
 	public void setOutlineColor(Color outlineColor) {
 		this.outlineColor = outlineColor;
 	}
-	
 }
+

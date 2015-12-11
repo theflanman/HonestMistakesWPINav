@@ -30,11 +30,11 @@ public class ColorSchemes {
 	Color wpiRed = new Color(172, 43, 55);
 	
 	//Flower Power
-	Color flowerPink1 = new Color(255, 44, 161);
-	Color flowerPink2 = new Color(232, 40, 226);
-	Color flowerPink3 = new Color(214, 56, 255);
-	Color flowerPurple = new Color(149, 40, 232);
-	Color flowerBlue = new Color(115, 41, 255);
+	static Color flowerPink1 = new Color(255, 44, 161);
+	static Color flowerPink2 = new Color(232, 40, 226);
+	static Color flowerPink3 = new Color(214, 56, 255);
+	static Color flowerPurple = new Color(149, 40, 232);
+	static Color flowerBlue = new Color(115, 41, 255);
 	
 	//All Blue
 	Color darkestBlue = new Color(2,30,129);

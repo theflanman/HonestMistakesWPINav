@@ -1,16 +1,24 @@
 package main;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import com.jtattoo.plaf.smart.SmartLookAndFeel;
+
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
+import main.gui.ColorSchemes;
+import main.gui.ColorSetting;
 import main.gui.GUIBack;
 import main.gui.GUIFront;
 import main.gui.SplashLoad;
@@ -27,6 +35,7 @@ public class MainDriver {
 	 * @throws ClassNotFoundException 
 	 * @throws IOException 
 	 */
+
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, IOException{		
 
 		File[] localMapList = new File(Constants.IMAGES_PATH).listFiles(); // gets a list of localmap filenames
@@ -48,6 +57,7 @@ public class MainDriver {
 	            break;
 	        }
 	    }
+
 	    
 	    //initiate the splash screen and create a delay before the program launches
 	    SplashLoad s=new SplashLoad();
@@ -60,12 +70,13 @@ public class MainDriver {
 			e1.printStackTrace();
 		}
 		*/
+     
 		// Launches the main application
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new GUIFront(localMapList.length, localMapList);
-					
+		      
+					new GUIFront(localMapList.length, localMapList);	
 					//close the splash screen when the loading is done
 					if(GUIFront.backend.splashFlag){
 			        s.dispose();
