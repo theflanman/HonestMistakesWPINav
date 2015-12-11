@@ -1,12 +1,24 @@
 package main.gui;
 
+import java.awt.Image;
+import java.awt.SplashScreen;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -21,22 +33,22 @@ import main.MapNode;
 import main.GlobalMap;
 import main.StepByStep;
 import main.util.Constants;
-import main.util.SaveUtil;
+import main.util.GeneralUtil;
 
 @SuppressWarnings("serial")
 public class GUIBack implements Serializable {
-
 	private LocalMap localMap;
 	private ArrayList<MapNode> path;
+	public boolean splashFlag = false;//becomes true when done loading maps
 
 	/**
 	 * Constructor: Initializes Backend fields to the default map to be loaded.
 	 */
 	public GUIBack(){
-		String defaultMapImage = "CCM.jpg";
+		String defaultMapImage = "CCM.png";
 		this.localMap = new LocalMap(defaultMapImage, null);
 		this.path = new ArrayList<MapNode>();
-	}
+		}
 
 	/**
 	 * Takes an array of filenames of local maps to be loaded
@@ -47,6 +59,7 @@ public class GUIBack implements Serializable {
 	 * @param fileName
 	 */
 	public ArrayList<LocalMap> loadLocalMaps(String fileNames[]){
+
 		//iterate through each file name
 		ArrayList<ArrayList<ArrayList<String>>> allNeighborList = new ArrayList<ArrayList<ArrayList<String>>>();
 		ArrayList<LocalMap> localMapList = new ArrayList<LocalMap>();
@@ -55,8 +68,9 @@ public class GUIBack implements Serializable {
 			//find exclusively the file name
 			String fileParts[] = fileName.split("/");
 			String mapAppend = fileParts[fileParts.length-1];
-			mapAppend = SaveUtil.removeExtension(mapAppend) + "_";
+			mapAppend = GeneralUtil.removeExtension(mapAppend) + "_";
 			//setup an array list of nodes for the local map and an array list of strings for linking
+			
 			ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
 			ArrayList<ArrayList<String>> neighborNodes = new ArrayList<ArrayList<String>>();
 			Document dom;
@@ -64,7 +78,7 @@ public class GUIBack implements Serializable {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			try {
 				DocumentBuilder db = dbf.newDocumentBuilder();
-				String xmlFileName = SaveUtil.removeExtension(fileName) + ".localmap";
+				String xmlFileName = GeneralUtil.removeExtension(fileName) + ".localmap";
 				dom = db.parse(Constants.LOCAL_MAP_PATH + "/" + xmlFileName);
 				Element doc = dom.getDocumentElement();
 
@@ -97,10 +111,6 @@ public class GUIBack implements Serializable {
 					loadedNodes.get(i).setXFeet(Double.parseDouble(xFeet));
 					loadedNodes.get(i).setYFeet(Double.parseDouble(yFeet));
 					loadedNodes.get(i).setZFeet(Double.parseDouble(zFeet));
-<<<<<<< HEAD
-=======
-					//debug print
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 
 					//get the neighbor values and store those node ID's in the neighbor nodes arraylist
 					Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
@@ -165,6 +175,7 @@ public class GUIBack implements Serializable {
 
 		//time to loop through each local map and link its nodes to itself and other local maps
 		for(int i = 0; i< localMapList.size(); i++){
+
 			//this is the local map that we're currently linking
 			LocalMap currentLocalMap = localMapList.get(i);
 			//this is the number of nodes we have to look a for neighbors
@@ -195,16 +206,11 @@ public class GUIBack implements Serializable {
 						}
 					}
 				}
-<<<<<<< HEAD
 			}
 
-=======
-				
-			}
-			
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 		}
 
+	    splashFlag = true;
 		return localMapList; 
 	}
 	
@@ -229,8 +235,8 @@ public class GUIBack implements Serializable {
 	 * @description just gets the distance so mainGui can display it on a label  -- will need to be updated when I understand what score to use for this value
 	 * @return String - this is necessary to allow MainGui to push the distance to a label
 	 */
-	public int getDistance(ArrayList<MapNode> mapNodes) {
-		StepByStep getDistance = new StepByStep(mapNodes);
+	public int getDistance(ArrayList<MapNode> mapNodes, boolean isLastWaypoint) {
+		StepByStep getDistance = new StepByStep(mapNodes, isLastWaypoint);
 		int distance = getDistance.calculateTotalDistance();
 		return distance;
 	}
@@ -238,10 +244,9 @@ public class GUIBack implements Serializable {
 	/**
 	 * @return ArrayList<String> - this is necessary to allow GUIFront to convert the strings in the array into rows of the column
 	 */
-	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes) {
-		StepByStep directions = new StepByStep(mapNodes);
+	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes, boolean isLastWaypoint) {
+		StepByStep directions = new StepByStep(mapNodes, isLastWaypoint);
 		ArrayList<String> print = directions.printDirection();
-
 		return print;
 	}
 
@@ -250,6 +255,7 @@ public class GUIBack implements Serializable {
 	 * @description runs the astar algorithm on the start and end nodes selected by the user
 	 */
 	public ArrayList<MapNode> runAStar(MapNode start, MapNode end) {
+		//include method from step by step to clear nodes 
 		//initiate a new astar class with the starting node and ending node of local map 
 		MapNode[] aStarMap = {start, end};
 		AStar astar = new AStar(aStarMap);
@@ -272,36 +278,22 @@ public class GUIBack implements Serializable {
 	 * @param globalmap
 	 * @return
 	 */
-<<<<<<< HEAD
 	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
 
-=======
-
-	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
-		System.out.println("hello");
-		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
-		ArrayList<MapNode> route = new ArrayList<MapNode>();
-		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
-		System.out.println(globalNodes.size());
-		MapNode start1 = null;
-		MapNode end1 = null;
-		int j = 0;
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 		globalmap.addToMapNodes(start);
 		globalmap.setStartNode(start);
 		globalmap.addToMapNodes(end);
 		globalmap.setEndNode(end);
-<<<<<<< HEAD
-		
-=======
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
+
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added immediately add this to a new route
 			if (i == 0) {
 				route.add(globalNodes.get(i));
+				StepByStep temp = new StepByStep(route, false);
+				route = temp.cleanUpPath();
 				globalNodes.get(i).getLocalMap().setStartNode(globalNodes.get(i));
 			}
 			
@@ -310,6 +302,8 @@ public class GUIBack implements Serializable {
 				//if this is on the same local map as the last one...
 				if(globalNodes.get(i).getLocalMap().equals(globalNodes.get(i-1).getLocalMap())){
 					route.add(globalNodes.get(i));
+					StepByStep temp = new StepByStep(route, false);
+					route = temp.cleanUpPath();
 				}
 				
 				//time to move onto a new route, add this one to routes and clear it
@@ -318,11 +312,15 @@ public class GUIBack implements Serializable {
 					routes.add(route);
 					route = new ArrayList<MapNode>();
 					route.add(globalNodes.get(i));
+					StepByStep temp = new StepByStep(route, false);
+					route = temp.cleanUpPath();
 				}
 			}//end else if
 			else {
 				globalNodes.get(i-1).getLocalMap().setEndNode(globalNodes.get(i-1));
 				route.add(globalNodes.get(i));
+				StepByStep temp = new StepByStep(route, false);
+				route = temp.cleanUpPath();
 				routes.add(route);
 			}
 
@@ -343,6 +341,7 @@ public class GUIBack implements Serializable {
 		start.setXFeet(start.getLocalMap().getMapScale()*start.getXPos());
 		start.setYFeet(start.getLocalMap().getMapScale()*start.getYPos());
 		start.runTransform();
+
 		start.setNodeID("temp" + Double.toString(xPos));
 		MapNode temp = null;
 		//need to initialize with an extremely large unobtainable number - or find a better solution
@@ -359,14 +358,8 @@ public class GUIBack implements Serializable {
 			return temp;
 		else {
 			//this will change to check to make sure the neighbor is valid
-<<<<<<< HEAD
-=======
-			//MapNode start = temp;
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 			start.getNeighbors().clear();
 			this.localMap.getMapNodes().add(start);
-			this.localMap.getMapNodes().add(temp);
-			this.localMap.linkNodes(start.getNodeID(), temp.getNodeID());
 			start.addNeighbor(temp); //add the new nodes link with the closest node
 			temp.addNeighbor(start); //add the new node as a neighbor to the closest node
 			return start;
@@ -401,5 +394,4 @@ public class GUIBack implements Serializable {
 		this.path = path;
 	}
 }
-
 

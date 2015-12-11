@@ -9,209 +9,244 @@
 # (the default for floors: ground floor same level as the top of the hill is 0.0, each floor higher we add 13 ft, each floor lower we subtract 13.)
 ###########################################
 
-##sample.jpg: Sample to use in all tests and such as part of the local map
+##sample.png: Sample to use in all tests and such as part of the local map
 
-scale-sample.jpg : 1.0
-angle-sample.jpg : 0.0
-xOffset-sample.jpg : 0.0
-yOffset-sample.jpg : 0.0
-zHeight-sample.jpg : 0.0
+scale-sample.png : 1.0
+angle-sample.png : 0.0
+xOffset-sample.png : 0.0
+yOffset-sample.png : 0.0
+zHeight-sample.png : 0.0
 
-##AK1.jpg
-scale-AK1.jpg : .365 # 155.47ft, 426px
-angle-AK1.jpg : 3.656
-xOffset-AK1.jpg : 1635.12
-yOffset-AK1.jpg: 313.5
-zHeight-AK1.jpg: 0.0
-
-
-##AK2.jpg
-scale-AK2.jpg : .365 # 155.47ft, 426px
-angle-AK2.jpg : 3.656
-xOffset-AK2.jpg : 1635.12
-yOffset-AK2.jpg: 313.5
-zHeight-AK2.jpg: 13.0
-
-##AK3.jpg
-scale-AK3.jpg : .365 # 155.47ft, 426px
-angle-AK3.jpg : 3.656
-xOffset-AK3.jpg : 1635.12
-yOffset-AK3.jpg: 313.5
-zHeight-AK3.jpg: 26.0
-
-##AKB.jpg
-scale-AKB.jpg : .365 # got .3515 from different measurement
-angle-AKB.jpg : 3.656
-xOffset-AKB.jpg : 1635.12
-yOffset-AKB.jpg: 313.5
-zHeight-AKB.jpg: -13.0
+##AK1.png
+scale-AK1.png : .365 # 155.47ft, 426px
+angle-AK1.png : 3.656
+xOffset-AK1.png : 1635.12
+yOffset-AK1.png: 313.5
+zHeight-AK1.png: 0.0
 
 
-##Boy1.jpg
-scale-Boy1.jpg : .2312 # 162.32ft, 702px
-angle-Boy1.jpg : 0.167
-xOffset-Boy1.jpg : 1558.5
-yOffset-Boy1.jpg : 1086.0
-zHeight-Boy1.jpg : 0.0
+##AK2.png
+scale-AK2.png : .365 # 155.47ft, 426px
+angle-AK2.png : 3.656
+xOffset-AK2.png : 1635.12
+yOffset-AK2.png: 313.5
+zHeight-AK2.png: 13.0
 
-##Boy2.jpg
-scale-Boy2.jpg : .2312 # 162.32ft, 702px
-angle-Boy2.jpg : 0.167
-xOffset-Boy2.jpg : 1558.5
-yOffset-Boy2.jpg : 1086.0
-zHeight-Boy2.jpg : 13.0
+##AK3.png
+scale-AK3.png : .365 # 155.47ft, 426px
+angle-AK3.png : 3.656
+xOffset-AK3.png : 1635.12
+yOffset-AK3.png: 313.5
+zHeight-AK3.png: 26.0
 
-##Boy3.jpg
-scale-Boy3.jpg : .2312 # 162.32ft, 702px
-angle-Boy3.jpg : 0.167
-xOffset-Boy3.jpg : 1558.5
-yOffset-Boy3.jpg : 1086.0
-zHeight-Boy3.jpg : 26.0
+##AKB.png
+scale-AKB.png : .365 # got .3515 from different measurement
+angle-AKB.png : 3.656
+xOffset-AKB.png : 1635.12
+yOffset-AKB.png: 313.5
+zHeight-AKB.png: -13.0
 
-##BoyB.jpg
-scale-BoyB.jpg : .2312 # 162.32ft, 702px
-angle-BoyB.jpg : -1.0
-xOffset-BoyB.jpg : 1558.5
-yOffset-BoyB.jpg : 1086.0
-zHeight-BoyB.jpg : -13.0
 
-##CC1.jpg: downstairs
-scale-CC1.jpg : .107979
-angle-CC1.jpg : 4.851
-xOffset-CC1.jpg : 1209.0
-yOffset-CC1.jpg : 706.5
-zHeight-CC1.jpg : -13.0
+##Boy1.png
+scale-Boy1.png : .2312 # 162.32ft, 702px
+angle-Boy1.png : 0.167
+xOffset-Boy1.png : 1558.5
+yOffset-Boy1.png : 1086.0
+zHeight-Boy1.png : 0.0
 
-##CC2.jpg: ground
-scale-CC2.jpg : .09712
-angle-CC2.jpg : 4.851
-xOffset-CC2.jpg : 1209.0
-yOffset-CC2.jpg : 706.5
-zHeight-CC2.jpg : 0.0
+##Boy2.png
+scale-Boy2.png : .2312 # 162.32ft, 702px
+angle-Boy2.png : 0.167
+xOffset-Boy2.png : 1558.5
+yOffset-Boy2.png : 1086.0
+zHeight-Boy2.png : 13.0
 
-##CC3.jpg: upstairs
-scale-CC3.jpg : .096216
-angle-CC3.jpg : 4.851
-xOffset-CC3.jpg : 1209.0
-yOffset-CC3.jpg : 706.5
-zHeight-CC3.jpg : 13.0
+##Boy3.png
+scale-Boy3.png : .2312 # 162.32ft, 702px
+angle-Boy3.png : 0.167
+xOffset-Boy3.png : 1558.5
+yOffset-Boy3.png : 1086.0
+zHeight-Boy3.png : 26.0
 
-##CCM.jpg
-scale-CCM.jpg : 1.499 # 1201.92ft, 801.96px
-angle-CCM.jpg : 0.0
-xOffset-CCM.jpg : 0.0
-yOffset-CCM.jpg : 0.0
-zHeight-CCM.jpg : 0.0
+##BoyB.png
+scale-BoyB.png : .2312 # 162.32ft, 702px
+angle-BoyB.png : -1.0
+xOffset-BoyB.png : 1558.5
+yOffset-BoyB.png : 1086.0
+zHeight-BoyB.png : -13.0
 
-##GL1.jpg
-scale-GL1.jpg: .2217 # 182.43ft, 823px
-angle-GL1.jpg : 1.785
-xOffset-GL1.jpg : 1968.0
-yOffset-GL1.jpg : 772.5
-zHeight-GL1.jpg : 0.0
+##CC1.png: downstairs
+scale-CC1.png : .107979
+angle-CC1.png : 4.851
+xOffset-CC1.png : 1209.0
+yOffset-CC1.png : 706.5
+zHeight-CC1.png : -13.0
 
-##GL2.jpg
-scale-GL2.jpg : .2252 # 182.43ft, 810px
-angle-GL2.jpg : 1.785
-xOffset-GL2.jpg : 1968.0
-yOffset-GL2.jpg : 772.5
-zHeight-GL2.jpg : 13.0
+##CC2.png: ground
+scale-CC2.png : .09712
+angle-CC2.png : 4.851
+xOffset-CC2.png : 1209.0
+yOffset-CC2.png : 706.5
+zHeight-CC2.png : 0.0
 
-##GL3.jpg
-scale-GL3.jpg : .296 # 182.43ft, 617px
-angle-GL3.jpg : 1.785
-xOffset-GL3.jpg : 1968.0
-yOffset-GL3.jpg : 772.5
-zHeight-GL3.jpg : 26.0
+##CC3.png: upstairs
+scale-CC3.png : .096216
+angle-CC3.png : 4.851
+xOffset-CC3.png : 1209.0
+yOffset-CC3.png : 706.5
+zHeight-CC3.png : 13.0
 
-##GLB.jpg
-scale-GLB.jpg : .2752 # 182.43ft, 663px
-angle-GLB.jpg : 1.785
-xOffset-GLB.jpg : 1968.0
-yOffset-GLB.jpg : 772.5
-zHeight-GLB.jpg : -13.0 
+##CCM.png
+scale-CCM.png : 1.499 # 1201.92ft, 801.96px
+angle-CCM.png : 0.0
+xOffset-CCM.png : 0.0
+yOffset-CCM.png : 0.0
+zHeight-CCM.png : 0.0
 
-##GLSB.jpg
-scale-GLSB.jpg : .2752 # 182.43ft, 663px
-angle-GLSB.jpg : 1.785
-xOffset-GLSB.jpg : 1968.0
-yOffset-GLSB.jpg : 772.5
-zHeight-GLSB.jpg : -26.0 
+##FL1.png
+scale-FL1.png : .309 # 219.51ft, 709.40px
+angle-FL1.png : 1.093
+xOffset-FL1.png : 1900.5
+yOffset-FL1.png : 414.0
+zHeight-FL1.png : 13.0
 
-##HH1.jpg
-scale-HH1.jpg : .2295 # 88.81ft, 387px
-angle-HH1.jpg: 2.178
-xOffset-HH1.jpg : 1275.0
-yOffset-HH1.jpg : 364.5
-zHeight-HH1.jpg : 0.0 
+##FL2.png
+scale-FL2.png : .309 # 219.51ft, 709.40px
+angle-FL2.png : 1.093
+xOffset-FL2.png : 1900.5
+yOffset-FL2.png : 414.0
+zHeight-FL2.png : 26.0
 
-##HH2.jpg
-scale-HH2.jpg : .2018 # 88.81ft, 440px
-angle-HH2.jpg: 2.178
-xOffset-HH2.jpg : 1275.0
-yOffset-HH2.jpg : 364.5
-zHeight-HH2.jpg : 13.0 
+##FL3.png
+scale-FL3.png : .309 # 219.51ft, 709.40px
+angle-FL3.png : 1.093
+xOffset-FL3.png : 1900.5
+yOffset-FL3.png : 414.0
+zHeight-FL3.png : 39.0
 
-##HH3.jpg
-scale-HH3.jpg : .1987 # 88.81ft, 447px
-angle-HH3.jpg: 2.178
-xOffset-HH3.jpg : 1275.0
-yOffset-HH3.jpg : 364.5
-zHeight-HH3.jpg : 26.0 
+##FLB.png
+scale-FLB.png : .309 # 219.51ft, 709.40px
+angle-FLB.png : 1.093
+xOffset-FLB.png : 1900.5
+yOffset-FLB.png : 414.0
+zHeight-FLB.png : -13.0
 
-##HHG1.jpg
-scale-HHG1.jpg : .1282 # 88.81ft, 693px
-angle-HHG1.jpg: 5.318
-xOffset-HHG1.jpg : 1275.0
-yOffset-HHG1.jpg : 364.5
-zHeight-HHG1.jpg : 26.0 
+##FLSB.png
+scale-FLSB.png : .309 # 219.51ft, 709.40px
+angle-FLSB.png : 1.093
+xOffset-FLSB.png : 1900.5
+yOffset-FLSB.png : 414.0
+zHeight-FLSB.png : -26.0
 
-##HHG2.jpg
-scale-HHG2.jpg : .1282 # 88.81ft, 693px
-angle-HHG2.jpg: 5.318
-xOffset-HHG2.jpg : 1275.0
-yOffset-HHG2.jpg : 364.5
-zHeight-HHG2.jpg : 26.0 
+##GL1.png
+scale-GL1.png: .2217 # 182.43ft, 823px
+angle-GL1.png : 1.785
+xOffset-GL1.png : 1968.0
+yOffset-GL1.png : 772.5
+zHeight-GL1.png : 0.0
 
-##PC1.jpg
-scale-PC1.jpg : .1391 # 92.76ft, 667px
-angle-PC1.jpg :  1.748
-xOffset-PC1.jpg : 1617.0
-yOffset-PC1.jpg : 802.5
-zHeight-PC1.jpg : 0.0
+##GL2.png
+scale-GL2.png : .2252 # 182.43ft, 810px
+angle-GL2.png : 1.785
+xOffset-GL2.png : 1968.0
+yOffset-GL2.png : 772.5
+zHeight-GL2.png : 13.0
 
-##PC2.jpg
-scale-PC2.jpg : .1447 # 92.76ft, 641px
-angle-PC2.jpg : 1.748
-xOffset-PC2.jpg : 1617.0
-yOffset-PC2.jpg : 802.5
-zHeight-PC2.jpg : 13.0
+##GL3.png
+scale-GL3.png : .296 # 182.43ft, 617px
+angle-GL3.png : 1.785
+xOffset-GL3.png : 1968.0
+yOffset-GL3.png : 772.5
+zHeight-GL3.png : 26.0
 
-##SH1.jpg
-scale-SH1.jpg : .183
-angle-SH1.jpg : 1.720
-xOffset-SH1.jpg : 1482.0
-yOffset-SH1.jpg : 1065.0
-zHeight-SH1.jpg : 13.0
+##GLB.png
+scale-GLB.png : .2752 # 182.43ft, 663px
+angle-GLB.png : 1.785
+xOffset-GLB.png : 1968.0
+yOffset-GLB.png : 772.5
+zHeight-GLB.png : -13.0 
 
-##SH2.jpg
-scale-SH2.jpg : .183
-angle-SH2.jpg : 1.720
-xOffset-SH2.jpg : 1482.0
-yOffset-SH2.jpg : 1065.0
-zHeight-SH2.jpg : 26.0
+##GLSB.png
+scale-GLSB.png : .2752 # 182.43ft, 663px
+angle-GLSB.png : 1.785
+xOffset-GLSB.png : 1968.0
+yOffset-GLSB.png : 772.5
+zHeight-GLSB.png : -26.0 
 
-##SH3.jpg
-scale-SH3.jpg : .183
-angle-SH3.jpg : 1.720
-xOffset-SH3.jpg : 1482.0
-yOffset-SH3.jpg : 1065.0
-zHeight-SH3.jpg : 26.0
+##HH1.png
+scale-HH1.png : .2295 # 88.81ft, 387px
+angle-HH1.png: 2.178
+xOffset-HH1.png : 1275.0
+yOffset-HH1.png : 364.5
+zHeight-HH1.png : 0.0 
 
-##SHB.jpg
-scale-SHB.jpg : .1823 # 126.71ft, 695px
-angle-SHB.jpg : 1.720
-xOffset-SHB.jpg : 1482.0
-yOffset-SHB.jpg : 1065.0
-zHeight-SHB.jpg : 0.0
+##HH2.png
+scale-HH2.png : .2018 # 88.81ft, 440px
+angle-HH2.png: 2.178
+xOffset-HH2.png : 1275.0
+yOffset-HH2.png : 364.5
+zHeight-HH2.png : 13.0 
+
+##HH3.png
+scale-HH3.png : .1987 # 88.81ft, 447px
+angle-HH3.png: 2.178
+xOffset-HH3.png : 1275.0
+yOffset-HH3.png : 364.5
+zHeight-HH3.png : 26.0 
+
+##HHG1.png
+scale-HHG1.png : .1282 # 88.81ft, 693px
+angle-HHG1.png: 5.318
+xOffset-HHG1.png : 1275.0
+yOffset-HHG1.png : 364.5
+zHeight-HHG1.png : 26.0 
+
+##HHG2.png
+scale-HHG2.png : .1282 # 88.81ft, 693px
+angle-HHG2.png: 5.318
+xOffset-HHG2.png : 1275.0
+yOffset-HHG2.png : 364.5
+zHeight-HHG2.png : 26.0 
+
+##PC1.png
+scale-PC1.png : .1391 # 92.76ft, 667px
+angle-PC1.png :  1.748
+xOffset-PC1.png : 1617.0
+yOffset-PC1.png : 802.5
+zHeight-PC1.png : 0.0
+
+##PC2.png
+scale-PC2.png : .1447 # 92.76ft, 641px
+angle-PC2.png : 1.748
+xOffset-PC2.png : 1617.0
+yOffset-PC2.png : 802.5
+zHeight-PC2.png : 13.0
+
+##SH1.png
+scale-SH1.png : .183
+angle-SH1.png : 1.720
+xOffset-SH1.png : 1482.0
+yOffset-SH1.png : 1065.0
+zHeight-SH1.png : 13.0
+
+##SH2.png
+scale-SH2.png : .183
+angle-SH2.png : 1.720
+xOffset-SH2.png : 1482.0
+yOffset-SH2.png : 1065.0
+zHeight-SH2.png : 26.0
+
+##SH3.png
+scale-SH3.png : .183
+angle-SH3.png : 1.720
+xOffset-SH3.png : 1482.0
+yOffset-SH3.png : 1065.0
+zHeight-SH3.png : 26.0
+
+##SHB.png
+scale-SHB.png : .1823 # 126.71ft, 695px
+angle-SHB.png : 1.720
+xOffset-SHB.png : 1482.0
+yOffset-SHB.png : 1065.0
+zHeight-SHB.png : 0.0
 

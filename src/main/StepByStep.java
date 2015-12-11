@@ -8,9 +8,11 @@ import java.util.ArrayList;
  */
 public class StepByStep {
 	private ArrayList<MapNode> pathNodes;
+	private boolean isLastWaypoint; //boolean representing if pathNodes is not the last waypoint in the path
 
-	public StepByStep(ArrayList<MapNode> pathNodes) {
+	public StepByStep(ArrayList<MapNode> pathNodes, boolean isLastWaypoint) {
 		this.pathNodes = pathNodes;
+		this.isLastWaypoint = isLastWaypoint;
 	}
 
 	/*
@@ -71,20 +73,13 @@ public class StepByStep {
 
 					// If direction is not going straight
 					if (190 > angle && angle > 170) {
-<<<<<<< HEAD
-						if (pathNodes.get(i).getAttributes().isStairs() || pathNodes.get(i).getAttributes().getType().equals("door")) {
-=======
-						if (pathNodes.get(i).getAttributes().isStairs || pathNodes.get(i).getAttributes().type.equals("door")) {
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
+						if (pathNodes.get(i).getAttributes().isStairs() || pathNodes.get(i).getAttributes().getType().equals("door"))
 							break;
-						}
-						else {
-							i ++;
-						}
+						else 
+							i++;
 					}
-					else {
-						break ;
-					}
+					else 
+						break;
 				}
 				mapNodes.add(pathNodes.get(i));
 			}
@@ -120,24 +115,17 @@ public class StepByStep {
 		// Will be taken out after being implemented elsewhere
 		this.cleanUpPath();
 
-		// Case where there is only 1 node in the route
+		// If the path is only 1 node in size
 		if (pathNodes.size() == 1) {
-			turn = "Welcome to the era of navigation, you have arrived at your destination.";
+			turn = "You have arrived at your destination";
 			stepList.add(turn);
-		} 
+		}
 		else {
-<<<<<<< HEAD
-=======
-
->>>>>>> 118a7c92e0d1948167578055c6fdf7946aa591fa
 			// Iterates through each node in the path
 			for (i = 0; i <= (pathNodes.size() - 1); i++) {
 
 				// First node in the path
 				if (i == 0) {
-					// TODO Add in a starting reference direction.
-					turn = String.format("Welcome to the era of Navigation.", stepNumber);
-					stepList.add(turn);
 					
 					// If the first node has an official name adds the name to the directions
 					if (! pathNodes.get(i).getAttributes().getOfficialName().isEmpty()) {
@@ -150,8 +138,18 @@ public class StepByStep {
 
 					// Last node in the route
 					if (i == (pathNodes.size() - 1)) {
-						turn = String.format("%d. Walk %d feet, then you will arrive at your destination.", stepNumber, distance);
-						stepList.add(turn);
+						
+						// If the list of pathNodes is not the last waypoint set in the directions
+						if (isLastWaypoint) {
+							turn = String.format("%d. Walk %d feet", stepNumber, distance);
+							stepList.add(turn);
+							String waypoint = "You have arrived at your waypoint.";
+							stepList.add(waypoint);
+						}
+						else {
+							turn = String.format("%d. Walk %d feet, then you will arrive at your final destination. ENDHERE", stepNumber, distance);
+							stepList.add(turn);
+						}
 						
 						// If the last node has an official name adds the name to the directions
 						if (! pathNodes.get(i).getAttributes().getOfficialName().isEmpty()) {
@@ -160,7 +158,6 @@ public class StepByStep {
 						}
 					} 
 					else {
-
 						// if the current node and next node is stairs
 						if (pathNodes.get(i).getAttributes().isStairs()) {
 
@@ -220,27 +217,20 @@ public class StepByStep {
 
 							// Turn angle possibilities and words associated
 							else {
-								if (170 >= angle && angle >= 110) {
+								if (170 >= angle && angle >= 110) 
 									direction = "slight right";
-								}
-								if (110 > angle && angle > 70) {
+								if (110 > angle && angle > 70) 
 									direction = "right";
-								}
-								if (70 >= angle && angle >= 20) {
+								if (70 >= angle && angle >= 20) 
 									direction = "sharp right";
-								}
-								if (20 > angle || angle > 340) {
+								if (20 > angle || angle > 340) 
 									direction = "back";
-								}
-								if (340 >= angle && angle >= 290) {
+								if (340 >= angle && angle >= 290) 
 									direction = "sharp left";
-								}
-								if (290 > angle && angle > 250) {
+								if (290 > angle && angle > 250) 
 									direction = "left";
-								}
-								if (250 >= angle && angle >= 190) {
+								if (250 >= angle && angle >= 190) 
 									direction = "slight left";
-								}
 
 								// Adds this turn step to list
 								turn = String.format("%d. Walk %d feet, then turn %s.", stepNumber, distance, direction);

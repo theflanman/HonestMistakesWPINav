@@ -10,7 +10,7 @@ import main.LocalMap;
 import main.Types;
 import main.MapNode;
 import main.util.Constants;
-import main.util.SaveUtil;
+import main.util.GeneralUtil;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -41,7 +41,8 @@ public class DevGUIBack implements Serializable  {
 		//get the filename of the map image, remove the image extension, and slap on a .localmap
 		String fileName = this.localMap.getMapImageName();
 		String mapImageName = fileName;
-		fileName = SaveUtil.removeExtension(fileName);
+		fileName = GeneralUtil.removeExtension(fileName);
+		String mapNameNoExtension = fileName;
 		String mapAppend = fileName + "_";
 		fileName = fileName.concat(".localmap");
 		fileName = Constants.LOCAL_MAP_PATH + "/" + fileName;
@@ -163,7 +164,7 @@ public class DevGUIBack implements Serializable  {
 	        	}
 	        	
 	        	attributes.appendChild(aliases);
-	        	
+
 	        	e.appendChild(id);
 	        	e.appendChild(xPos);
 	        	e.appendChild(yPos);
@@ -184,6 +185,7 @@ public class DevGUIBack implements Serializable  {
 	            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 	            
 	            transformer.transform(new DOMSource(dom), new StreamResult(new FileOutputStream(fileName))); // send DOM to file
+
 	        } catch (TransformerException te) {
 	        	System.out.println("Transformer Exception");
 	            System.out.println(te.getMessage());
@@ -203,8 +205,8 @@ public class DevGUIBack implements Serializable  {
 		String fileParts[] = fileName.split("/");
 
 		String mapAppend = fileParts[fileParts.length-1];
-		String mapNameNoExtension = SaveUtil.removeExtension(mapAppend);
-		mapAppend = SaveUtil.removeExtension(mapAppend) + "_";
+		String mapNameNoExtension = GeneralUtil.removeExtension(mapAppend);
+		mapAppend = GeneralUtil.removeExtension(mapAppend) + "_";
 		ArrayList<MapNode> loadedNodes = new ArrayList<MapNode>();
 		ArrayList<ArrayList<String>> neighborNodes = new ArrayList<ArrayList<String>>();
 		Document dom;
@@ -246,7 +248,7 @@ public class DevGUIBack implements Serializable  {
 				loadedNodes.get(i).setXFeet(Double.parseDouble(xFeet));
 				loadedNodes.get(i).setYFeet(Double.parseDouble(yFeet));
 				loadedNodes.get(i).setZFeet(Double.parseDouble(zFeet));
-								
+
 				Element neighborCheck = ((Element)currentNode.getElementsByTagName("Neighbors").item(0));
 				ArrayList<String> crossMapNeighbors = new ArrayList<String>();
 				if(!neighborCheck.getTextContent().equals("none")){
@@ -261,11 +263,10 @@ public class DevGUIBack implements Serializable  {
 							crossMapNeighbors.add(neighborID);
 						}
 						neighborNodes.get(i).add(neighborID);
-						System.out.println("    " + neighbor.getTextContent().trim());
 					}
 					loadedNodes.get(i).setCrossMapNeighbors(crossMapNeighbors);
 				}
-				
+	
 				//extract the attribute values and store these
 				Element attributes = ((Element)currentNode.getElementsByTagName("Attributes").item(0));
 				String officialName = attributes.getElementsByTagName("OfficialName").item(0).getTextContent();

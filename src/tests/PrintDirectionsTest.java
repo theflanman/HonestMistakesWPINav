@@ -10,7 +10,7 @@ import main.StepByStep;
 
 public class PrintDirectionsTest extends TestCase {
 	
-	LocalMap localMap1 = new LocalMap("sample.jpg", null);
+	LocalMap localMap1 = new LocalMap("sample.png", null);
 	
 	public void testCleanUp1() {
 		MapNode node1 = new MapNode(3, 1, localMap1);
@@ -31,7 +31,7 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		
 		ArrayList<MapNode> resultPath = new ArrayList<MapNode>();
 		resultPath.add(node1);
@@ -73,7 +73,7 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		
 		ArrayList<MapNode> resultPath = new ArrayList<MapNode>();
 		resultPath.add(node1);
@@ -104,12 +104,11 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
-		resultSteps.add("1. Walk 6 feet, then you will arrive at your destination.");
+		resultSteps.add("1. Walk 6 feet, then you will arrive at your final destination. ENDHERE");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
@@ -129,12 +128,11 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node2);
 		instructionList1.add(node3);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
-		resultSteps.add("1. Walk 4 feet, then you will arrive at your destination.");
+		resultSteps.add("1. Walk 4 feet, then you will arrive at your final destination. ENDHERE");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
@@ -158,14 +156,13 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
 		resultSteps.add("1. Walk 8 feet, then turn back.");
 		resultSteps.add("2. Walk 4 feet, then turn right.");
-		resultSteps.add("3. Walk 4 feet, then you will arrive at your destination.");
+		resultSteps.add("3. Walk 4 feet, then you will arrive at your final destination. ENDHERE");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
@@ -199,16 +196,15 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node5);
 		instructionList1.add(node6);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
 		resultSteps.add("Atwater Kent");
 		resultSteps.add("1. Walk 5 feet, then turn sharp left.");
 		resultSteps.add("2. Walk 5 feet, then turn slight left.");
 		resultSteps.add("3. Walk 7 feet, then turn back.");
-		resultSteps.add("4. Walk 4 feet, then you will arrive at your destination.");
+		resultSteps.add("4. Walk 4 feet, then you will arrive at your final destination. ENDHERE");
 		resultSteps.add("Gordon Library");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
@@ -248,14 +244,13 @@ public class PrintDirectionsTest extends TestCase {
 		instructionList1.add(node3);
 		instructionList1.add(node4);
 		
-		StepByStep stepByStep1 = new StepByStep(instructionList1);
+		StepByStep stepByStep1 = new StepByStep(instructionList1, false);
 		stepByStep1.cleanUpPath();
 		
 		ArrayList<String> resultSteps = new ArrayList<String>();
-		resultSteps.add("Welcome to the era of Navigation.");
 		resultSteps.add("1. Continue walking 1 feet to the stairs.");
 		resultSteps.add("2. Walk down the stairs to floor 1.");
-		resultSteps.add("3. Walk 1 feet, then you will arrive at your destination.");
+		resultSteps.add("3. Walk 1 feet, then you will arrive at your final destination. ENDHERE");
 
 		assertEquals(stepByStep1.printDirection(), resultSteps);
 	}
