@@ -78,7 +78,7 @@ public class GUIFront extends JFrame {
 	public static boolean drawLine = false;
 	public static boolean drawLine2 = false;
 	public static boolean drawLine3 = false;
-	public static boolean removeLine = false;
+	public static boolean drawNodes = true;
 	public static boolean reset = false;
 	public static MapNode startNode = null, endNode = null;
 	public static String allText = "";
@@ -546,6 +546,7 @@ public class GUIFront extends JFrame {
 
 					//draw the line on the map
 					drawLine = true;
+					drawNodes = true;
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
@@ -681,6 +682,7 @@ public class GUIFront extends JFrame {
 
 							thisRoute = paths.get(index);
 							drawLine = true;
+							drawNodes = true;
 						}
 						index3 -= indexHelp;
 						if (index3 >= paths.get(index).size() - 1){
@@ -784,6 +786,7 @@ public class GUIFront extends JFrame {
 
 				thisRoute = paths.get(index);
 				drawLine = true;
+				drawNodes = true;
 			}
 		});
 		getContentPane().add(btnNextMap, BorderLayout.SOUTH);
@@ -844,10 +847,12 @@ public class GUIFront extends JFrame {
 				
 					thisRoute = paths.get(index);
 					drawLine = true;
+					drawNodes = true;
 				}
 
 				thisRoute = paths.get(index);
 				drawLine = true;
+				drawNodes = true;
 			}
 		});
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
@@ -1030,6 +1035,7 @@ public class GUIFront extends JFrame {
 
 					thisRoute = paths.get(index);
 					drawLine = true;
+					drawNodes = true;
 
 					savePanel.saveImage(panelMap, "Map #" + countFiles + "_" + local.getMapImageName());
 					countFiles ++;
@@ -1068,6 +1074,7 @@ public class GUIFront extends JFrame {
 
 				thisRoute = paths.get(index);
 				drawLine = true;
+				drawNodes = true;
 			}
 		});
 		
@@ -1203,6 +1210,8 @@ public class GUIFront extends JFrame {
 			n.setXPos(n.getXPos() + offsetX);
 			n.setYPos(n.getYPos() + offsetY);
 		}
+		
+		//if goes here
 	}
 
 	// Enable Actions
@@ -1296,7 +1305,7 @@ public class GUIFront extends JFrame {
 		btnRoute.setEnabled(false);
 		drawLine2 = false;
 		drawLine3 = false;
-		removeLine = true;
+		drawNodes = true;
 	}
 
 	// Initialization before initializing the GUI

@@ -688,60 +688,62 @@ public class TweenPanel extends JPanel {
 				graphics.setStroke(new BasicStroke(1));
 				graphics.setColor(startNodeColor);
 				
-				if(!(GUIFront.paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
-					if (GUIFront.paths.get(GUIFront.index).get(0) != null){ // make sure that the start node (which it should never be) is not null
-						graphics.setColor(startNodeColor);
-						graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-								(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
-						graphics.setColor(outlineColor);
-						graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-								(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
-					}
-					if (GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
-						graphics.setColor(endNodeColor);
-						graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getXPos() - (int)getPanX() - 5, 
-								(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getYPos() - (int)getPanY() - 5, 10, 10);
-						
-						graphics.setColor(outlineColor);
-						graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-								(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
-					}
-				}
-				//drawing for originally placed nodes
-				if (GUIFront.getGlobalMap().getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed
-					if (GUIFront.getGlobalMap().getStartNode().getLocalMap() == GUIFront.backend.getLocalMap()){
-						graphics.setColor(startNodeColor);
-						graphics.fillOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
-								(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
-						graphics.setColor(outlineColor);
-						graphics.drawOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
-								(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
-					}
-				}
-
-				if(GUIFront.getGlobalMap().getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
-					if (GUIFront.getGlobalMap().getEndNode().getLocalMap() == GUIFront.backend.getLocalMap()){
-						graphics.setColor(endNodeColor);
-						graphics.fillOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
-								(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
-						graphics.setColor(outlineColor);
-						graphics.drawOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
-								(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
-					}
-				}
-				if (GUIFront.getGlobalMap().getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
-					for (int i = 1; i < GUIFront.getGlobalMap().getChosenNodes().size() - 1; i++){
-						if (GUIFront.getGlobalMap().getChosenNodes().get(i).getLocalMap() == GUIFront.backend.getLocalMap()){
-							graphics.setColor(Color.ORANGE);
-							graphics.fillOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
+				if(GUIFront.drawNodes){
+					if(!(GUIFront.paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
+						if (GUIFront.paths.get(GUIFront.index).get(0) != null){ // make sure that the start node (which it should never be) is not null
+							graphics.setColor(startNodeColor);
+							graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
+									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
 							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
+							graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
+									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
+						}
+						if (GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
+							graphics.setColor(endNodeColor);
+							graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getXPos() - (int)getPanX() - 5, 
+									(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getYPos() - (int)getPanY() - 5, 10, 10);
+
+							graphics.setColor(outlineColor);
+							graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
+									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
+						}
+					}
+					//drawing for originally placed nodes
+					if (GUIFront.getGlobalMap().getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed
+						if (GUIFront.getGlobalMap().getStartNode().getLocalMap() == GUIFront.backend.getLocalMap()){
+							graphics.setColor(startNodeColor);
+							graphics.fillOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
+									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
+							graphics.setColor(outlineColor);
+							graphics.drawOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
+									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
+						}
+					}
+
+					if(GUIFront.getGlobalMap().getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
+						if (GUIFront.getGlobalMap().getEndNode().getLocalMap() == GUIFront.backend.getLocalMap()){
+							graphics.setColor(endNodeColor);
+							graphics.fillOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
+									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
+							graphics.setColor(outlineColor);
+							graphics.drawOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
+									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
+						}
+					}
+					if (GUIFront.getGlobalMap().getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
+						for (int i = 1; i < GUIFront.getGlobalMap().getChosenNodes().size() - 1; i++){
+							if (GUIFront.getGlobalMap().getChosenNodes().get(i).getLocalMap() == GUIFront.backend.getLocalMap()){
+								graphics.setColor(Color.ORANGE);
+								graphics.fillOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
+										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
+								graphics.setColor(outlineColor);
+								graphics.drawOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
+										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
+							}
 						}
 					}
 				}
-
+				
 				//this is where you draw the lines
 				if (GUIFront.drawLine == true) {
 					for (int i = 0; i < GUIFront.thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
@@ -754,23 +756,6 @@ public class TweenPanel extends JPanel {
 						g2.setColor(lineColor);
 						g2.drawLine((int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
 					}
-					GUIFront.drawLine = false;
-					GUIFront.removeLine = true;
-					//this is where you remove the lines
-					//this is what causes the redraw bug
-				} else if (GUIFront.removeLine == true) { 
-					for (int i = 0; i < GUIFront.thisRoute.size() - 1; i++) {//basically go through the current map and remove all lines for all links between nodes in a route on that map
-						double x1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[0];
-						double y1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[1];
-						double x2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[0];
-						double y2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[1];
-						Graphics2D g2 = (Graphics2D) g;
-						g2.setStroke(new BasicStroke(5));
-						g2.setColor(lineColor); // you are going to want to make this transparent ... before next step button is added otherwise this will cause some issues
-						g2.drawLine((int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
-					}
-					GUIFront.drawLine = true;
-					GUIFront.removeLine = false;
 				}
 
 				if (GUIFront.drawLine2 == true){
