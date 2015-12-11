@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
@@ -11,10 +10,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
-import main.gui.GUIBack;
 import main.gui.GUIFront;
+import main.gui.frontutil.SplashLoad;
 import main.gui.frontutil.TweenPanel;
-import main.gui.SplashLoad;
 import main.util.Constants;
 
 public class MainDriver {
@@ -31,8 +29,6 @@ public class MainDriver {
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException, IOException{		
 
 		File[] localMapList = new File(Constants.IMAGES_PATH).listFiles(); // gets a list of localmap filenames
-		
-		String[] localMapNames = new File(Constants.IMAGES_PATH).list();
 		
 		// Setup tween stuff
 		Tween.registerAccessor(TweenPanel.class, new TweenPanel.Accessor());

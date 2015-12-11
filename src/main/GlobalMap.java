@@ -8,14 +8,12 @@ public class GlobalMap implements Serializable {
 
 	private ArrayList<MapNode> mapNodes, chosenNodes, allNodes;
 	private ArrayList<LocalMap> localMaps;
-	private ArrayList<MapNode> path;
 	private MapNode startNode, endNode;
 	private ArrayList<MapNode> middleNodes;
 	
 	public GlobalMap(){
 		this.mapNodes = new ArrayList<MapNode>();
 		this.localMaps = new ArrayList<LocalMap>();
-		this.path = new ArrayList<MapNode>();
 		this.chosenNodes = new ArrayList<MapNode>();
 		this.startNode = null;
 		this.endNode = null;

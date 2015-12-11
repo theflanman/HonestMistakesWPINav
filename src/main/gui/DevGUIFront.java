@@ -10,7 +10,6 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -33,16 +32,15 @@ import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.io.*;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import main.LocalMap;
 import main.MapNode;
+import main.gui.frontutil.MapPanel;
 import main.util.Constants;
-import main.util.MapPanel;
-import main.util.ProxyImage;
-import main.util.IProxyImage;
 import main.util.GeneralUtil;
+import main.util.proxy.IProxyImage;
+import main.util.proxy.ProxyImage;
 import main.Types;
 
 @SuppressWarnings("serial")
@@ -67,11 +65,11 @@ public class DevGUIFront extends JFrame {
 	private MapNode nodeToRemove;
 	private boolean multiSelect;
 	private ArrayList<MapNode> selectedNodes = new ArrayList<MapNode>();
-	private ArrayList<MapNode> selectedNodes2 = new ArrayList<MapNode>();
 	private boolean edgeStarted = false;
 	private boolean edgeRemovalStarted = false;
 	private boolean twoMapView = false;
 	private JTextField textFieldOfficialName;
+	@SuppressWarnings("rawtypes")
 	private JComboBox typeBox;
 	private JTextArea txtrAliases;
 	private JCheckBox chckbxStairs;
@@ -81,10 +79,10 @@ public class DevGUIFront extends JFrame {
 	private JCheckBox chckbxOutside;
 	private boolean clickMiss;
 
-	private Attributes defaultAttributes;
 	private static DevGUIFront frame;
 
 	public String[] typeList = new String[] {"Food", "Office", "Classroom", "Waterfountain", "Bathroom", "Parking", "Walking", "Door", "Elevator", "Lab", "Other"};
+	@SuppressWarnings("unused")
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 
 	public static void main(String[] args) {
@@ -100,6 +98,7 @@ public class DevGUIFront extends JFrame {
 		});
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public DevGUIFront() {
 
 		// This sets the size and behavior of the application window itself.

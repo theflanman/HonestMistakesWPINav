@@ -19,7 +19,8 @@ public class GeneralUtil {
 	 * @return a string from the package data.streetimages
 	 */
 	public static String convertToStreetPath(String path){
-		return path.replace("images", "streetimages");
-		
+		return path.replace("images", "streetimages");	
 	}
+	
+	
 }

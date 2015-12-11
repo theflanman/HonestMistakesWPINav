@@ -1,4 +1,4 @@
-package main.util;
+package main.util.proxy;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,11 +7,9 @@ import javax.imageio.*;
 
 public class RealImage implements IProxyImage {
 
-	private String filename;
 	private java.awt.Image image;
 	
 	protected RealImage(String path, String filename){
-		this.filename = filename;
 		loadIn(path, filename);
 	}
 	

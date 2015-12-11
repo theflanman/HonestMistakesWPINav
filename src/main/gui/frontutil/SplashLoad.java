@@ -1,14 +1,9 @@
-package main.gui;
+package main.gui.frontutil;
 
 import javax.swing.*;
 
-import main.util.Constants;
+import java.awt.*;
 
-import java.awt.*;
-import javax.swing.*;
-import java.awt.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 @SuppressWarnings("serial")
 /**
  * 
@@ -20,6 +15,7 @@ public class SplashLoad extends JFrame{
 
 	private JLabel imglabel;
 	private ImageIcon img;
+	@SuppressWarnings("unused")
 	private static JProgressBar pbar;
 	public Thread t = null;
 

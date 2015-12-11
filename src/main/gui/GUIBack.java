@@ -1,24 +1,12 @@
 package main.gui;
 
-import java.awt.Image;
-import java.awt.SplashScreen;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -30,7 +18,6 @@ import main.Attributes;
 import main.LocalMap;
 import main.Types;
 import main.MapNode;
-import main.GlobalMap;
 import main.StepByStep;
 import main.util.Constants;
 import main.util.GeneralUtil;
@@ -278,15 +265,10 @@ public class GUIBack implements Serializable {
 	 * @param globalmap
 	 * @return
 	 */
-	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end, GlobalMap globalmap){
+	public ArrayList<ArrayList<MapNode>> getMeRoutes(MapNode start, MapNode end){
 		ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 		ArrayList<MapNode> route = new ArrayList<MapNode>();
 		ArrayList<MapNode> globalNodes = this.runAStar(start, end);
-
-		globalmap.addToMapNodes(start);
-		globalmap.setStartNode(start);
-		globalmap.addToMapNodes(end);
-		globalmap.setEndNode(end);
 
 		for (int i = 0; i < globalNodes.size(); i++) {
 			//if this is the first time through, no nodes have been added immediately add this to a new route

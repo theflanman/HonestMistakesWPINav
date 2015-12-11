@@ -9,7 +9,7 @@ import java.awt.geom.NoninvertibleTransformException;
 import main.MapNode;
 import main.gui.GUIFront;
 
-/** @description Handles all panning functionality
+/**
  * Handles events related to panning the map image efficiently. 
  * Created with reference to code at: http://web.eecs.utk.edu/
  * @author Trevor
@@ -35,46 +35,20 @@ public class PanHandler implements MouseListener, MouseMotionListener {
 		startX = GUIFront.getMainReferencePoint().getX();
 		startY = GUIFront.getMainReferencePoint().getY();
 
-		GUIFront.getPanelMap().setPanX(GUIFront.getPanelMap().getPanX() + distanceMovedX);
-		GUIFront.getPanelMap().setPanY(GUIFront.getPanelMap().getPanY() + distanceMovedY);
+		GUIFront.panelMap.setPanX(GUIFront.panelMap.getPanX() + distanceMovedX);
+		GUIFront.panelMap.setPanY(GUIFront.panelMap.getPanY() + distanceMovedY);
 
 		// Update the map node locations relative to the map image
-		for(MapNode n : GUIFront.getBackend().getLocalMap().getMapNodes()){
+		for(MapNode n : GUIFront.backend.getLocalMap().getMapNodes()){
 			n.setXPos(n.getXPos() + distanceMovedX);
 			n.setYPos(n.getYPos() + distanceMovedY);
-		}
 
-		/**
-		 * Handles events related to panning the map image efficiently. 
-		 * Created with reference to code at: http://web.eecs.utk.edu/
-		 * @author Trevor
-		 */
-		MapNode tmpStart, tmpEnd; // temporary variables for clarity
-		if(GUIFront.getGlobalMap().getStartNode() != null){
-			tmpStart = GUIFront.getGlobalMap().getStartNode();
-			tmpStart.setXPos(tmpStart.getXPos() + distanceMovedX);
-			tmpStart.setYPos(tmpStart.getYPos() + distanceMovedY);
-			GUIFront.getGlobalMap().setStartNode(tmpStart);
-		} 
-		if (GUIFront.getGlobalMap().getEndNode() != null){
-			tmpEnd = GUIFront.getGlobalMap().getEndNode();
-			tmpEnd.setXPos(tmpEnd.getXPos() + distanceMovedX);
-			tmpEnd.setYPos(tmpEnd.getYPos() + distanceMovedY);
-			GUIFront.getGlobalMap().setEndNode(tmpEnd);
-		}
-
-		for (MapNode mapnode : GUIFront.getGlobalMap().getMiddleNodes()){
-			MapNode tmpMiddle;
-			if (mapnode != null){
-				tmpMiddle = mapnode;
-				tmpMiddle.setXPos(tmpMiddle.getXPos() + distanceMovedX);
-				tmpMiddle.setYPos(tmpMiddle.getYPos() + distanceMovedY);
-			}
 		}
 	}
 
-	/** Will save the point clicked at and the state of the initial transformation as
-	 *  panning is likely to occur.
+	/**
+	 * Will save the point clicked at and the state of the initial transformation as
+	 * panning is likely to occur.
 	 */
 	@Override
 	public void mousePressed(MouseEvent me) {
@@ -97,13 +71,24 @@ public class PanHandler implements MouseListener, MouseMotionListener {
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent me) {}
+	public void mouseReleased(MouseEvent me) {
+	}
+
 	@Override
-	public void mouseMoved(MouseEvent arg0) {}
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 	@Override
-	public void mouseClicked(MouseEvent arg0) {}
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 	@Override
-	public void mouseEntered(MouseEvent arg0) {}
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
 	@Override
-	public void mouseExited(MouseEvent arg0) {}
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+
 }

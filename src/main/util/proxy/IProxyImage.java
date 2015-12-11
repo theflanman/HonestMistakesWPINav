@@ -1,4 +1,4 @@
-package main.util;
+package main.util.proxy;
 
 public interface IProxyImage {
 

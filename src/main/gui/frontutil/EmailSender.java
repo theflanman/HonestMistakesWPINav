@@ -1,4 +1,4 @@
-package main;
+package main.gui.frontutil;
 
 import java.io.File;
 import java.util.Properties;

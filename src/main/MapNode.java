@@ -21,7 +21,6 @@ public class MapNode implements Serializable{
 	private double gScore;
 	private double hScore;
 	private MapNode cameFrom;
-	private GlobalMap globalMap;
 	private LocalMap localMap;
 	private Attributes attributes;
 

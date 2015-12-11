@@ -1,4 +1,4 @@
-package main.util;
+package main.gui.frontutil;
 
 import java.awt.Component;
 
@@ -28,6 +28,7 @@ public class WrappableCellRenderer extends DefaultListCellRenderer {
 	 * @param cellHasFocus True if the specified call has current application focus
 	 * @return A component customly formatted with line breaks in each cell, in this case a JLabel
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
 		String element = value.toString(); // gets the current element at index and converts it from Object to String

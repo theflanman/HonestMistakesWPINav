@@ -42,7 +42,6 @@ public class DevGUIBack implements Serializable  {
 		String fileName = this.localMap.getMapImageName();
 		String mapImageName = fileName;
 		fileName = GeneralUtil.removeExtension(fileName);
-		String mapNameNoExtension = fileName;
 		String mapAppend = fileName + "_";
 		fileName = fileName.concat(".localmap");
 		fileName = Constants.LOCAL_MAP_PATH + "/" + fileName;
