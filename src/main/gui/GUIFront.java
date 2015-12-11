@@ -975,7 +975,7 @@ public class GUIFront extends JFrame {
 	 * 
 	 * @return a list of LocalMaps that are in the path of nodes give
 	 */
-	public ArrayList<LocalMap> createListOfMaps(ArrayList<ArrayList<MapNode>> path) {
+	public static ArrayList<LocalMap> createListOfMaps(ArrayList<ArrayList<MapNode>> path) {
 		// Initializes list
 		ArrayList<LocalMap> pathLocalMaps = new ArrayList<LocalMap>();
 
@@ -1211,8 +1211,17 @@ public class GUIFront extends JFrame {
 			n.setYPos(n.getYPos() + offsetY);
 		}
 		
-		//if goes here
-	}
+		ArrayList<LocalMap> localMaps = createListOfMaps(paths);
+		if(localMaps.contains(backend.getLocalMap())){ // if drawing, and if this map is in the path list, DRAW
+			drawLine = true;
+			drawNodes = true;
+		}
+		else{
+			drawLine = false;
+			
+			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
+				drawNodes = false;
+		}	}
 
 	// Enable Actions
 	public void enableActions(){
