@@ -131,7 +131,9 @@ public class GUIFront extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
 	private JMenu mnColorScheme;
-	private JMenuItem mntmDefaultCampus, mntmGrayscale, mntmWPI, mntmFlowerPower, mntmAllBlue;
+	private ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
+	private int colorSchemeIndex;
+	//mntmDefaultCampus, mntmGrayscale, mntmWPI, mntmFlowerPower, mntmAllBlue
 	private JMenu mnAtwaterKent, mnBoyntonHall, mnCampusCenter, mnFullerLabs, mnGordonLibrary, mnHigginsHouse, mnHigginsHouseGarage, mnProjectCenter, mnStrattonHall;
 	private JMenuItem mntmAK1, mntmAK2, mntmAK3, mntmAKB, mntmBoy1, mntmBoy2, mntmBoy3, mntmBoyB, mntmCC1, mntmCC2, mntmCC3, mntmCCM;
 	private JMenuItem mntmFL1, mntmFL2, mntmFL3, mntmFLB, mntmFLSB;
@@ -1295,57 +1297,86 @@ public class GUIFront extends JFrame {
 		mnOptions = new JMenu("Options");
 		menuBar.add(mnOptions);
 
-		// ---- Options -----
+		// ---- Locations -----
 		mnLocations = new JMenu("Locations");
 		menuBar.add(mnLocations);
 
-		//Color Scheme
+		// ---- Color Schemes ----
 		mnColorScheme = new JMenu("Color Scheme");
 		mnOptions.add(mnColorScheme);
 
-		mntmDefaultCampus = new JMenuItem("Default Campus");
-		mntmDefaultCampus.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				setColoring("Default Campus");
+		//schemes are mapped to an index in mntmColorSchemes
+		//0 - Default Campus
+		//1 - Grayscale
+		//2 - WPI Default
+		//3 - Flower Power
+		//4 - All Blue
+		// more to come
+		
+		for (int i = 0; i < 5; i++){
+			mntmColorSchemes.add(new JMenuItem());
+		}
+		
+		mntmColorSchemes.get(0).setText("Default Campus");
+		mntmColorSchemes.get(1).setText("Greyscale");
+		mntmColorSchemes.get(2).setText("WPI Theme");
+		mntmColorSchemes.get(3).setText("Flower Power");
+		mntmColorSchemes.get(4).setText("All Blue");
+		
+		ArrayList<String> colorText = new ArrayList<String>();
+		colorText.add(0, "Default Campus");
+		colorText.add(1, "Greyscale");
+		colorText.add(2, "WPI Default");
+		colorText.add(3, "Flower Power");
+		colorText.add(4, "All Blue");
+		
+		for (int i = 0; i < mntmColorSchemes.size(); i++){
+			switch(i){
+			case 0:
+				mntmColorSchemes.get(0).addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						setColoring("Default Campus");
+					}
+				});
+				break;
+			case 1:
+				mntmColorSchemes.get(1).addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						setColoring("Greyscale");
+					}
+				});
+				break;
+			case 2:
+				mntmColorSchemes.get(2).addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						setColoring("WPI Default");
+					}
+				});
+				break;
+			case 3:
+				mntmColorSchemes.get(3).addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						setColoring("Flower Power");
+					}
+				});
+				break;
+			case 4:
+				mntmColorSchemes.get(4).addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent e){
+						setColoring("All Blue");
+					}
+				});
+				break;
 			}
-		});
+		}
+		
+		mnColorScheme.add(mntmColorSchemes.get(0));
+		mnColorScheme.add(mntmColorSchemes.get(1));
+		mnColorScheme.add(mntmColorSchemes.get(2));
+		mnColorScheme.add(mntmColorSchemes.get(3));
+		mnColorScheme.add(mntmColorSchemes.get(4));
 
-		mntmGrayscale = new JMenuItem("Grayscale");
-		mntmGrayscale.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				setColoring("Greyscale"); // set the color scheme to grayscale
-			}
-		});
-
-
-		mntmWPI = new JMenuItem("WPI Theme");
-		mntmWPI.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				setColoring("WPI Default"); // set the color scheme to grayscale
-			}
-		});
-
-		mntmFlowerPower = new JMenuItem("Flower Power");
-		mntmFlowerPower.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				setColoring("Flower Power");
-			}
-		});
-
-
-		mntmAllBlue = new JMenuItem("All Blue");
-		mntmAllBlue.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				setColoring("All Blue");
-			}
-		});
-
-		mnColorScheme.add(mntmDefaultCampus);
-		mnColorScheme.add(mntmGrayscale);
-		mnColorScheme.add(mntmWPI);
-		mnColorScheme.add(mntmFlowerPower);
-		mnColorScheme.add(mntmAllBlue);
-
+		
 		// Atwater Kent
 		mnAtwaterKent = new JMenu("Atwater Kent");
 		mntmAK1 = new JMenuItem("Floor 1");
