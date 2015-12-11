@@ -53,6 +53,7 @@ import javax.swing.event.ChangeListener;
 
 import main.*;
 import main.util.Constants;
+import main.util.GUIFrontUtil;
 import main.util.ProxyImage;
 import main.util.IProxyImage;
 import main.util.PanelSave;
@@ -1347,297 +1348,16 @@ public class GUIFront extends JFrame {
 		mnColorScheme.add(mntmColorSchemes.get(4));
 
 		//here lies the clickable building dropdown menus
-		// Atwater Kent
-		mnBuildings.add(new JMenu("Atwater Kent"));
-		JMenuItem mntmAK1 = new JMenuItem("Floor 1");
-		mntmAK1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(0, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmAK2 = new JMenuItem("Floor 2");
-		mntmAK2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){		
-				changeMapTo(1, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmAK3 = new JMenuItem("Floor 3");
-		mntmAK3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(2, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmAKB = new JMenuItem("Basement");
-		mntmAKB.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				changeMapTo(3, 0, 0, 1);
-			}
-		});
-		mnBuildings.get(0).add(mntmAK1);
-		mnBuildings.get(0).add(mntmAK2);
-		mnBuildings.get(0).add(mntmAK3);
-		mnBuildings.get(0).add(mntmAKB);
-
-		// Boynton Hall
-		mnBuildings.add(new JMenu("Boynton Hall"));
-		JMenuItem mntmBoy1 = new JMenuItem("Floor 1");
-		mntmBoy1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){				
-				changeMapTo(4, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmBoy2 = new JMenuItem("Floor 2");
-		mntmBoy2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				changeMapTo(5, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmBoy3 = new JMenuItem("Floor 3");
-		mntmBoy3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){		
-				changeMapTo(6, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmBoyB = new JMenuItem("Basement");
-		mntmBoyB.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(7, 0, 0, 1);
-			}
-		});
-		mnBuildings.get(1).add(mntmBoy1);
-		mnBuildings.get(1).add(mntmBoy2);
-		mnBuildings.get(1).add(mntmBoy3);
-		mnBuildings.get(1).add(mntmBoyB);
-
-		// Campus Center
-		mnBuildings.add(new JMenu("Campus Center"));
-		JMenuItem mntmCC1 = new JMenuItem("Floor 1");
-		mntmCC1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){		
-				changeMapTo(8, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmCC2 = new JMenuItem("Floor 2");
-		mntmCC2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				changeMapTo(9, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmCC3 = new JMenuItem("Floor 3");
-		mntmCC3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){		
-				changeMapTo(10, 0, 0, 1);
-			}
-		});
-		mnBuildings.get(2).add(mntmCC1);
-		mnBuildings.get(2).add(mntmCC2);
-		mnBuildings.get(2).add(mntmCC3);
-
+		mnBuildings = GUIFrontUtil.initBuildingMenuBar();
+		
 		// Campus Map
 		JMenuItem mntmCCM = new JMenuItem("Campus Map");
 		mntmCCM.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				changeMapTo(11, 0, 0, 1);
+				GUIFront.changeMapTo(11, 0, 0, 1);
 			}
 		});
-
-		// Fuller Labs
-		mnBuildings.add(new JMenu("Fuller Labs"));
-		JMenuItem mntmFL1 = new JMenuItem("Floor 1");
-		mntmFL1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(12, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmFL2 = new JMenuItem("Floor 2");
-		mntmFL2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(13, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmFL3 = new JMenuItem("Floor 3");
-		mntmFL3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(14, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmFLB = new JMenuItem("Basement");
-		mntmFLB.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(15, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmFLSB = new JMenuItem("Sub Basement");
-		mntmFLSB.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(16, 0, 0, 1);
-			}
-		});
-		mnBuildings.get(3).add(mntmFL1);
-		mnBuildings.get(3).add(mntmFL2);
-		mnBuildings.get(3).add(mntmFL3);
-		mnBuildings.get(3).add(mntmFLB);
-		mnBuildings.get(3).add(mntmFLSB);
-
-		// Gordon Library
-		mnBuildings.add(new JMenu("Gordon Library"));
-		JMenuItem mntmGL1 = new JMenuItem("Floor 1");
-		mntmGL1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(17, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmGL2 = new JMenuItem("Floor 2");
-		mntmGL2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){		
-				changeMapTo(18, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmGL3 = new JMenuItem("Floor 3");
-		mntmGL3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){				
-				changeMapTo(19, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmGLB = new JMenuItem("Basement");
-		mntmGLB.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(20, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmGLSB = new JMenuItem("Sub Basement");
-		mntmGLSB.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(21, 0, 0, 1);
-			}
-		});
-		mnBuildings.get(4).add(mntmGL1);
-		mnBuildings.get(4).add(mntmGL2);
-		mnBuildings.get(4).add(mntmGL3);
-		mnBuildings.get(4).add(mntmGLB);
-		mnBuildings.get(4).add(mntmGLSB);
-
-		// Higgins House
-		mnBuildings.add(new JMenu("Higgins House"));
-		JMenuItem mntmHH1 = new JMenuItem("Floor 1");
-		mntmHH1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){				
-				changeMapTo(22, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmHH2 = new JMenuItem("Floor 2");
-		mntmHH2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				changeMapTo(23, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmHH3 = new JMenuItem("Floor 3");
-		mntmHH3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){				
-				changeMapTo(24, 0, 0, 1);
-			}
-		});
-		mnBuildings.get(5).add(mntmHH1);
-		mnBuildings.get(5).add(mntmHH2);
-		mnBuildings.get(5).add(mntmHH3);
-
-		// Higgins House Garage
-		mnBuildings.add(new JMenu("Higgins House Garage"));
-		JMenuItem mntmHHG1 = new JMenuItem("Floor 1");
-		mntmHHG1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(25, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmHHG2 = new JMenuItem("Floor 2");
-		mntmHHG2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(26, 0, 0, 1);
-			}
-		});
-		mnBuildings.get(6).add(mntmHHG1);
-		mnBuildings.get(6).add(mntmHHG2);
-
-		// Project Center
-		mnBuildings.add(new JMenu("Project Center"));
-		JMenuItem mntmPC1 = new JMenuItem("Floor 1");
-		mntmPC1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){			
-				changeMapTo(27, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmPC2 = new JMenuItem("Floor 2");
-		mntmPC2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){		
-				changeMapTo(28, 0, 0, 1);
-			}
-		});
-		mnBuildings.get(7).add(mntmPC1);
-		mnBuildings.get(7).add(mntmPC2);
-
-		// Stratton Hall
-		mnBuildings.add(new JMenu("Stratton Hall"));
-		JMenuItem mntmSH1 = new JMenuItem("Floor 1");
-		mntmSH1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(29, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmSH2 = new JMenuItem("Floor 2");
-		mntmSH2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){		
-				changeMapTo(30, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmSH3 = new JMenuItem("Floor 3");
-		mntmSH3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){	
-				changeMapTo(31, 0, 0, 1);
-			}
-		});
-		JMenuItem mntmSHB = new JMenuItem("Basement");
-		mntmSHB.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){			
-				changeMapTo(32, 0, 0, 1);
-			}
-		});
-		mnBuildings.get(8).add(mntmSH1);
-		mnBuildings.get(8).add(mntmSH2);
-		mnBuildings.get(8).add(mntmSH3);
-		mnBuildings.get(8).add(mntmSHB);
 
 		mnLocations.add(mnBuildings.get(0)); // indices: 0, 1, 2, 3
 		mnLocations.add(mnBuildings.get(1)); // indices: 4, 5, 6, 7
@@ -1917,7 +1637,8 @@ public class GUIFront extends JFrame {
 		String packageName;
 		boolean isMapView;
 
-		Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, fLPolygon, gLPolygon, hHPolygon, hHGPolygon, sHPolygon, fPolygon;
+		ArrayList<Polygon> buildingPolygons = new ArrayList<Polygon>();
+		Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, fLPolygon, gLPolygon, hHPolygon, hHGPolygon, sHPolygon;
 
 		/**
 		 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
@@ -1956,7 +1677,16 @@ public class GUIFront extends JFrame {
 				panY = 0;
 			}
 
-			initializePolygons();
+			buildingPolygons = GUIFrontUtil.initializePolygons();
+			aKPolygon = buildingPolygons.get(0);
+			bPolygon = buildingPolygons.get(1);
+			cCPolygon = buildingPolygons.get(2);
+			fLPolygon = buildingPolygons.get(3);
+			gLPolygon = buildingPolygons.get(4);
+			hHPolygon = buildingPolygons.get(5);
+			hHGPolygon = buildingPolygons.get(6);
+			pCPolygon = buildingPolygons.get(7);
+			sHPolygon = buildingPolygons.get(8);
 
 			addMouseListener(panHandle);
 			addMouseMotionListener(panHandle);
@@ -2411,134 +2141,7 @@ public class GUIFront extends JFrame {
 		 * Block of code to initialize all of the polygons representing clickable regions on buildings. Separated
 		 * for readability.
 		 */
-		private void initializePolygons(){				
-			//Atwater Kent
-			aKPolygon = new Polygon();
-			aKPolygon.addPoint(1109, 241);
-			aKPolygon.addPoint(1067, 311);
-			aKPolygon.addPoint(1089, 325);
-			aKPolygon.addPoint(1082, 339);
-			aKPolygon.addPoint(1159, 381);
-			aKPolygon.addPoint(1168, 369);
-			aKPolygon.addPoint(1189, 381);
-			aKPolygon.addPoint(1229, 310);
-			aKPolygon.addPoint(1195, 289);
-			aKPolygon.addPoint(1176, 318);
-			aKPolygon.addPoint(1128, 290);
-			aKPolygon.addPoint(1144, 260);
-
-			//Boynton
-			bPolygon = new Polygon();
-			bPolygon.addPoint(1044, 734);
-			bPolygon.addPoint(1037, 775);
-			bPolygon.addPoint(1065, 780);
-			bPolygon.addPoint(1066, 773);
-			bPolygon.addPoint(1117, 782);
-			bPolygon.addPoint(1116, 787);
-			bPolygon.addPoint(1127, 789);
-			bPolygon.addPoint(1127, 783);
-			bPolygon.addPoint(1134, 783);
-			bPolygon.addPoint(1138, 754);
-			bPolygon.addPoint(1072, 743);
-			bPolygon.addPoint(1073, 739);
-
-			//Campus Center
-			cCPolygon = new Polygon();
-			cCPolygon.addPoint(938, 346);
-			cCPolygon.addPoint(920, 450);
-			cCPolygon.addPoint(899, 448);
-			cCPolygon.addPoint(910, 457);
-			cCPolygon.addPoint(911, 467);
-			cCPolygon.addPoint(904, 477);
-			cCPolygon.addPoint(893, 479);
-			cCPolygon.addPoint(882, 473);
-			cCPolygon.addPoint(881, 458);
-			cCPolygon.addPoint(875, 476);
-			cCPolygon.addPoint(813, 466);
-			cCPolygon.addPoint(821, 418);
-			cCPolygon.addPoint(834, 420);
-			cCPolygon.addPoint(850, 431);
-			cCPolygon.addPoint(857, 422);
-			cCPolygon.addPoint(850, 417);
-			cCPolygon.addPoint(860, 405);
-			cCPolygon.addPoint(854, 391);
-			cCPolygon.addPoint(860, 383);
-			cCPolygon.addPoint(875, 383);
-			cCPolygon.addPoint(884, 372);
-			cCPolygon.addPoint(873, 364);
-			cCPolygon.addPoint(890, 340);
-
-			// Fuller Labs
-			fLPolygon = new Polygon();
-			fLPolygon.addPoint(1225, 445);
-			fLPolygon.addPoint(1301, 408);
-			fLPolygon.addPoint(1284, 371);
-			fLPolygon.addPoint(1305, 359);
-			fLPolygon.addPoint(1274, 300);
-			fLPolygon.addPoint(1242, 314);
-			fLPolygon.addPoint(1255, 341);
-			fLPolygon.addPoint(1211, 363);
-			fLPolygon.addPoint(1220, 382);
-			fLPolygon.addPoint(1199, 393);
-
-			//Library
-			gLPolygon = new Polygon();
-			gLPolygon.addPoint(1245, 512);
-			gLPolygon.addPoint(1304, 525);
-			gLPolygon.addPoint(1279, 640);
-			gLPolygon.addPoint(1220, 628);
-			gLPolygon.addPoint(1226, 568);
-
-			//Higgins House
-			hHPolygon = new Polygon();
-			hHPolygon.addPoint(800, 305);
-			hHPolygon.addPoint(775, 288);
-			hHPolygon.addPoint(787, 271);
-			hHPolygon.addPoint(757, 250);
-			hHPolygon.addPoint(766, 235);
-			hHPolygon.addPoint(791, 250);
-			hHPolygon.addPoint(808, 231);
-			hHPolygon.addPoint(834, 246);
-			hHPolygon.addPoint(847, 231);
-			hHPolygon.addPoint(862, 241);
-			hHPolygon.addPoint(849, 258);
-			hHPolygon.addPoint(839, 253);
-
-			// Higgins House Garage
-			hHGPolygon = new Polygon();
-			hHGPolygon.addPoint(875, 167);
-			hHGPolygon.addPoint(890, 178);
-			hHGPolygon.addPoint(870, 206);
-			hHGPolygon.addPoint(855, 196);
-
-			//Project Center
-			pCPolygon = new Polygon();
-			pCPolygon.addPoint(1019, 598);
-			pCPolygon.addPoint(1030, 535);
-			pCPolygon.addPoint(1068, 543);
-			pCPolygon.addPoint(1056, 604);
-
-			//Stratton
-			sHPolygon = new Polygon();
-			sHPolygon.addPoint(1014, 613);
-			sHPolygon.addPoint(1052, 618);
-			sHPolygon.addPoint(1038, 701);
-			sHPolygon.addPoint(1000, 695);
-
-			//Fuller
-			fPolygon = new Polygon();
-			fPolygon.addPoint(1225, 445);
-			fPolygon.addPoint(1301, 408);
-			fPolygon.addPoint(1284, 371);
-			fPolygon.addPoint(1305, 359);
-			fPolygon.addPoint(1274, 300);
-			fPolygon.addPoint(1242, 314);
-			fPolygon.addPoint(1255, 341);
-			fPolygon.addPoint(1211, 363);
-			fPolygon.addPoint(1220, 382);
-			fPolygon.addPoint(1199, 393);
-
-		}
+		
 
 		public ArrayList<MapNode> getMapNodes() {
 			return localNodes;
@@ -2644,10 +2247,7 @@ public class GUIFront extends JFrame {
 
 				transform.translate(panX, panY); // move to designated location
 				graphics.setTransform(transform);
-
-				// Scale the map relative to the panels current size and your current viewing window
-				//graphics.drawImage(this.mapImage.getImage(packageName), 0, 0, this);	
-
+				
 				// Colors start and end differently
 				// Draws the map and places pre-existing node data onto the map as
 				// well start and end nodes if they have been set
