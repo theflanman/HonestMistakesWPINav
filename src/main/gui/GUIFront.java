@@ -224,7 +224,12 @@ public class GUIFront extends JFrame {
 			{
 				if (globalMap.getStartNode() != null){
 					LocalMap localmap = globalMap.getStartNode().getLocalMap();
-					globalMap.getChosenNodes().remove(globalMap.getStartNode());
+					if (globalMap.getEndNode() != null){
+						LocalMap localmapEnd = globalMap.getEndNode().getLocalMap();
+						localmapEnd.setEndNode(null);
+					}
+					globalMap.getChosenNodes().clear();
+					globalMap.setEndNode(null);
 					localmap.setStartNode(null);
 					globalMap.setStartNode(null);
 				}
