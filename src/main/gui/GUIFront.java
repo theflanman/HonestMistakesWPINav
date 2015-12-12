@@ -222,17 +222,23 @@ public class GUIFront extends JFrame {
 			@Override 
 			public void actionPerformed(ActionEvent e)
 			{
+				if (globalMap.getStartNode() != null){
+					LocalMap localmap = globalMap.getStartNode().getLocalMap();
+					globalMap.getChosenNodes().remove(globalMap.getStartNode());
+					localmap.setStartNode(null);
+					globalMap.setStartNode(null);
+				}
+				String startString = (String) start.getSelectedItem();
 				lblInvalidEntry.setVisible(false);
 				System.out.println("Enter was pressed");
-				/*if (textFieldStart.getText().equals("")){
+				if (startString == null){
 					//will need some way to alert the user that they need to enter a start location
 					System.out.println("Need to enter a valid start location");
 				} 
-				else if (!(textFieldStart.getText().equals(""))) {//if there is something entered check if the name is valid and then basically add the start node
-					String startString = textFieldStart.getText();
+				else if (startString != null) {//if there is something entered check if the name is valid and then basically add the start node
 					boolean valid = false;
-					for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated*/
-						/*if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)){
+					for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 							btnClear.setEnabled(true); //enable clear button if some node has been added
 							//System.out.println("This is the starting node");
@@ -271,7 +277,7 @@ public class GUIFront extends JFrame {
 						System.out.println("Invalid entry");
 						lblInvalidEntry.setVisible(true);
 					}
-				}*/
+				}
 			}
 		};
 		
@@ -280,13 +286,19 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				if (globalMap.getEndNode() != null){
+					LocalMap localmap = globalMap.getEndNode().getLocalMap();
+					globalMap.getChosenNodes().remove(globalMap.getEndNode());
+					localmap.setEndNode(null);
+					globalMap.setEndNode(null);
+				}
 				JComboBox source = (JComboBox)e.getSource();
 				String endString = (String) source.getSelectedItem();
 				lblInvalidEntry.setVisible(false);
 				//if the user presses enter without having entered anything in this box
-				if (endString.equals(null))
-					System.out.println("Need to enter a valid start location"); // TODO: will need some way to alert the user that they need to enter an end location
-				else if (!(endString.equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
+				if (endString == null){
+					System.out.println("Need to enter a valid start location"); 
+				}else if (!(endString.equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
 					//String endString = (String) end.getSelectedItem(); //entered text = endString constant
 					boolean valid = false;
 					Attributes attribute = new Attributes();
@@ -342,7 +354,7 @@ public class GUIFront extends JFrame {
 						} 
 					}
 					
-					if(endNode == null){
+					if(globalMap.getEndNode() == null){
 						if (attribute.getPossibleEntries().containsKey(endString)){
 							String nearestAttribute = attribute.getPossibleEntries().get(endString);
 							valid = true;
