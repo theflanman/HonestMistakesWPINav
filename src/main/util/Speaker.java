@@ -37,15 +37,11 @@ public class Speaker extends JFrame {
 		   // Open audio clip and load samples from the audio input stream.
 		   clip.open(audioIn);
 		   clip.start();
-
-		   Thread.sleep(1000);
 	   } catch (UnsupportedAudioFileException e) {
 		   e.printStackTrace();
 	   } catch (IOException e) {
 		   e.printStackTrace();
 	   } catch (LineUnavailableException e) {
-		   e.printStackTrace();
-	   } catch (InterruptedException e) {
 		   e.printStackTrace();
 	   }
    }
