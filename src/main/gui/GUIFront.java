@@ -241,7 +241,7 @@ public class GUIFront extends JFrame {
 					//will need some way to alert the user that they need to enter a start location
 					System.out.println("Need to enter a valid start location");
 				} 
-				else if (startString != null) {//if there is something entered check if the name is valid and then basically add the start node
+				else if (startString != null && !(startString.isEmpty())) {//if there is something entered check if the name is valid and then basically add the start node
 					boolean valid = false;
 					for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
@@ -304,14 +304,14 @@ public class GUIFront extends JFrame {
 				//if the user presses enter without having entered anything in this box
 				if (endString == null){
 					System.out.println("Need to enter a valid start location"); 
-				}else if (!(endString.equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
+				}else if (!(endString.isEmpty())) { //if there is something entered check if the name is valid and then basically add the end node
 					//String endString = (String) end.getSelectedItem(); //entered text = endString constant
 					boolean valid = false;
 					Attributes attribute = new Attributes();
 
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
 					String startString = (String) start.getSelectedItem();
-					if (startString != null){
+					if (startString != null && !(startString.isEmpty())){
 						for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 							if(startString.equals(mapnode.getAttributes().getOfficialName())){
 								startNode = mapnode; //set the startNode and then draw it on the map
