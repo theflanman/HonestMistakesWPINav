@@ -717,14 +717,14 @@ public class GUIFront extends JFrame {
 		 */
 		mainConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
-		.row(1f).col(700).col(50) // 700xH | 50xH
+		.row(1f).col(14f).col(1f) // Ratio of 14 : 1 when closed
 		.place(0, 0, panelMap)
 		.place(0, 1, panelDirections);
 
 		// Panel Directions Config
 		panelDirectionsConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
-		.row(1f).col(550).col(200) // 550xH | 200xH
+		.row(1f).col(5f).col(1f) // Ratio of 5 : 1 when open 
 		.place(0, 0, panelMap)
 		.place(0, 1, panelDirections);
 
@@ -911,6 +911,7 @@ public class GUIFront extends JFrame {
 
 		pack();
 		setLocationRelativeTo(null);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
 	}
 
