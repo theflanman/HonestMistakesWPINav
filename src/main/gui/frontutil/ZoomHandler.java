@@ -1,5 +1,7 @@
 package main.gui.frontutil;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
@@ -31,7 +33,9 @@ public class ZoomHandler implements MouseWheelListener {
 				setZoomAmount(getZoomAmount() + 0.1);
 		} 
 		else { // moving down, zoom out (no less than 50%)
-			if(getZoomAmount() >= 0.5)
+			GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+			int width = gd.getDisplayMode().getWidth();
+			if(getZoomAmount() >= 960.0/width)
 				setZoomAmount(getZoomAmount() - 0.1);
 		}
 
