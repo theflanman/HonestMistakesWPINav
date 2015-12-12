@@ -16,7 +16,31 @@ public class GUIFrontUtil {
 	//set up building polygons
 	public static ArrayList<Polygon> initializePolygons(){
 		ArrayList<Polygon> polyList = new ArrayList<Polygon>();
-		
+
+		//Alden Hall
+		Polygon aHPolygon = new Polygon();
+		aHPolygon.addPoint(889, 766);
+		aHPolygon.addPoint(919, 771);
+		aHPolygon.addPoint(919, 777);
+		aHPolygon.addPoint(927, 779);
+		aHPolygon.addPoint(913, 858);
+		aHPolygon.addPoint(921, 859);
+		aHPolygon.addPoint(923, 848);
+		aHPolygon.addPoint(934, 850);
+		aHPolygon.addPoint(932, 861);
+		aHPolygon.addPoint(929, 860);
+		aHPolygon.addPoint(924, 884);
+		aHPolygon.addPoint(903, 880);
+		aHPolygon.addPoint(901, 889);
+		aHPolygon.addPoint(870, 883);
+		aHPolygon.addPoint(871, 875);
+		aHPolygon.addPoint(854, 872);
+		aHPolygon.addPoint(858, 850);
+		aHPolygon.addPoint(866, 851);
+		aHPolygon.addPoint(881, 772);
+		aHPolygon.addPoint(888, 772);
+		polyList.add(aHPolygon);
+
 		//Atwater Kent
 		Polygon aKPolygon = new Polygon();
 		aKPolygon.addPoint(1109, 241);
@@ -90,7 +114,7 @@ public class GUIFrontUtil {
 		fLPolygon.addPoint(1199, 393);
 		polyList.add(fLPolygon);
 
-		//Library
+		//Gordon Library
 		Polygon gLPolygon = new Polygon();
 		gLPolygon.addPoint(1245, 512);
 		gLPolygon.addPoint(1304, 525);
@@ -98,6 +122,28 @@ public class GUIFrontUtil {
 		gLPolygon.addPoint(1220, 628);
 		gLPolygon.addPoint(1226, 568);
 		polyList.add(gLPolygon);
+
+		//Harrington Auditorium
+		Polygon hAPolygon = new Polygon();
+		hAPolygon.addPoint(730, 467);
+		hAPolygon.addPoint(729, 516);
+		hAPolygon.addPoint(717, 556);
+		hAPolygon.addPoint(688, 558);
+		hAPolygon.addPoint(686, 569);
+		hAPolygon.addPoint(675, 567);
+		hAPolygon.addPoint(676, 558);
+		hAPolygon.addPoint(669, 559);
+		hAPolygon.addPoint(668, 566);
+		hAPolygon.addPoint(626, 559);
+		hAPolygon.addPoint(627, 554);
+		hAPolygon.addPoint(608, 546);
+		hAPolygon.addPoint(605, 556);
+		hAPolygon.addPoint(595, 555);
+		hAPolygon.addPoint(596, 541);
+		hAPolygon.addPoint(583, 535);
+		hAPolygon.addPoint(582, 492);
+		hAPolygon.addPoint(595, 447);
+		polyList.add(hAPolygon);
 
 		//Higgins House
 		Polygon hHPolygon = new Polygon();
@@ -123,6 +169,38 @@ public class GUIFrontUtil {
 		hHGPolygon.addPoint(855, 196);
 		polyList.add(hHGPolygon);
 
+		//Higgins Labs
+		Polygon hLPolygon = new Polygon();
+		hLPolygon.addPoint(978, 526);
+		hLPolygon.addPoint(973, 553);
+		hLPolygon.addPoint(958, 551);
+		hLPolygon.addPoint(952, 579);
+		hLPolygon.addPoint(959, 580);
+		hLPolygon.addPoint(957, 592);
+		hLPolygon.addPoint(950, 591);
+		hLPolygon.addPoint(945, 619);
+		hLPolygon.addPoint(961, 624);
+		hLPolygon.addPoint(955, 654);
+		hLPolygon.addPoint(941, 652);
+		hLPolygon.addPoint(939, 657);
+		hLPolygon.addPoint(928, 655);
+		hLPolygon.addPoint(927, 659);
+		hLPolygon.addPoint(913, 658);
+		hLPolygon.addPoint(913, 652);
+		hLPolygon.addPoint(898, 650);
+		hLPolygon.addPoint(899, 645);
+		hLPolygon.addPoint(882, 642);
+		hLPolygon.addPoint(886, 612);
+		hLPolygon.addPoint(880, 615);
+		hLPolygon.addPoint(873, 602);
+		hLPolygon.addPoint(880, 599);
+		hLPolygon.addPoint(893, 529);
+		hLPolygon.addPoint(916, 531);
+		hLPolygon.addPoint(922, 511);
+		hLPolygon.addPoint(962, 516);
+		hLPolygon.addPoint(962, 522);
+		polyList.add(hLPolygon);
+
 		//Project Center
 		Polygon pCPolygon = new Polygon();
 		pCPolygon.addPoint(1019, 598);
@@ -131,6 +209,18 @@ public class GUIFrontUtil {
 		pCPolygon.addPoint(1056, 604);
 		polyList.add(pCPolygon);
 
+		//Salisbury
+		Polygon sLPolygon = new Polygon();
+		sLPolygon.addPoint(1167, 538);
+		sLPolygon.addPoint(1186, 425);
+		sLPolygon.addPoint(1120, 414);
+		sLPolygon.addPoint(1116, 441);
+		sLPolygon.addPoint(1088, 436);
+		sLPolygon.addPoint(1077, 501);
+		sLPolygon.addPoint(1128, 509);
+		sLPolygon.addPoint(1125, 531);
+		polyList.add(sLPolygon);
+
 		//Stratton
 		Polygon sHPolygon = new Polygon();
 		sHPolygon.addPoint(1014, 613);
@@ -138,15 +228,37 @@ public class GUIFrontUtil {
 		sHPolygon.addPoint(1038, 701);
 		sHPolygon.addPoint(1000, 695);
 		polyList.add(sHPolygon);
-		
+
+		//Washburn Shops
+		Polygon wSPolygon = new Polygon();
+		wSPolygon.addPoint(1081, 573);
+		wSPolygon.addPoint(1168, 587);
+		wSPolygon.addPoint(1156, 665);
+		wSPolygon.addPoint(1167, 667);
+		wSPolygon.addPoint(1163, 693);
+		wSPolygon.addPoint(1151, 692);
+		wSPolygon.addPoint(1143, 732);
+		wSPolygon.addPoint(1114, 728);
+		wSPolygon.addPoint(1126, 656);
+		wSPolygon.addPoint(1117, 654);
+		wSPolygon.addPoint(1106, 708);
+		wSPolygon.addPoint(1066, 702);
+		wSPolygon.addPoint(1075, 649);
+		wSPolygon.addPoint(1087, 651);
+		wSPolygon.addPoint(1089, 640);
+		wSPolygon.addPoint(1081, 639);
+		wSPolygon.addPoint(1086, 611);
+		wSPolygon.addPoint(1076, 608);
+		polyList.add(wSPolygon);
+
 		return polyList;
 	}
-	
+
 	//sets up menu bars
 	public static ArrayList<JMenu> initBuildingMenuBar(){
-		
+
 		ArrayList<JMenu> mnBuildings = new ArrayList<JMenu>();
-		
+
 		mnBuildings.add(new JMenu("Atwater Kent"));
 		JMenuItem mntmAK1 = new JMenuItem("Floor 1");
 		mntmAK1.addActionListener(new ActionListener(){
@@ -428,13 +540,13 @@ public class GUIFrontUtil {
 		mnBuildings.get(8).add(mntmSH2);
 		mnBuildings.get(8).add(mntmSH3);
 		mnBuildings.get(8).add(mntmSHB);
-		
+
 		return mnBuildings;
 	}
-	
+
 	public static HashMap<String, double[]> initPanZoom(){
 		HashMap<String, double[]> defaultVals = new HashMap<String, double[]>();
-		
+
 		defaultVals.put("AK1.png", new double[]{-80.0, -125.0, 0.78}); // 0
 		defaultVals.put("AK2.png", new double[]{-80.0, -130.0, 0.80});
 		defaultVals.put("AK3.png", new double[]{-80.0, -120.0, 0.78});
@@ -477,7 +589,7 @@ public class GUIFrontUtil {
 		defaultVals.put("SH2.png", new double[]{-80.0, -140.0, 0.90});
 		defaultVals.put("SH3.png", new double[]{-80.0, -110.0, 0.90});
 		defaultVals.put("SHB.png", new double[]{-80.0, -110.0, 0.90}); // 32
-		
+
 		return defaultVals;
 	}
 }
