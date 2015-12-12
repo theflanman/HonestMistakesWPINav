@@ -57,6 +57,7 @@ import main.util.proxy.ProxyImage;
 
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
+import javax.swing.SwingConstants;
 
 /**
  * This class contains code for the main applications GUI interface as well as
@@ -163,7 +164,6 @@ public class GUIFront extends JFrame {
 		setTitle("Era of Navigation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
-		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
@@ -358,12 +358,12 @@ public class GUIFront extends JFrame {
 		});
 
 		// Search Text Fields
-		textFieldStart = new JTextField();
+		textFieldStart = new JTextField(35);
 		textFieldStart.setText("");
 		textFieldStart.addActionListener(actionStart);
 
-		textFieldEnd = new JTextField("");
-		textFieldEnd.setColumns(10);		
+		textFieldEnd = new JTextField(35);	
+		textFieldEnd.setText("");
 		textFieldEnd.addActionListener(actionEnd);
 
 		// Start/End Labels
@@ -1363,75 +1363,50 @@ public class GUIFront extends JFrame {
 	// Initialize Group Layout
 	public static void initGroupLayout(JLabel lblStart, JLabel lblEnd, 
 			JButton btnPreviousMap, JButton btnPreviousStep, JButton btnNextStep, JButton btnNextMap){
-		
 		gl_contentPane = new GroupLayout(contentPane);
-		
-		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(10)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblStart)
-												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-												.addGap(18)
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-														.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-														.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-														.addGap(18)
-														.addComponent(lblInvalidEntry)
-														.addGap(227)
-														.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-														.addGap(18)
-														.addComponent(btnClear))
-														.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addGap(79)
-																.addComponent(btnPreviousMap)
-																.addGap(37)
-																.addComponent(btnPreviousStep)
-																.addGap(75)
-																.addComponent(btnNextStep)
-																.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-																.addComponent(btnNextMap)
-																.addGap(170))
-				);
-		
-		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblStart)
-										.addGap(6)
-										.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addComponent(lblEnd)
-												.addGap(6)
-												.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-												.addGroup(gl_contentPane.createSequentialGroup()
-														.addGap(24)
-														.addComponent(lblInvalidEntry))
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addGap(11)
-																.addComponent(btnRoute))
-																.addGroup(gl_contentPane.createSequentialGroup()
-																		.addGap(11)
-																		.addComponent(btnClear)))
-																		.addGap(18)
-																		.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-																		.addGap(18)
-																		.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-																				.addComponent(btnPreviousMap)
-																				.addComponent(btnNextMap)
-																				.addComponent(btnNextStep)
-																				.addComponent(btnPreviousStep))
-																				.addGap(35))
-				);
 
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()  // top line
+					.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING) // lbl start | txt Start
+							.addComponent(lblStart)
+							.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addGap(20)
+					.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING) // lbl end | txt end
+							.addComponent(lblEnd)
+							.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+					.addComponent(lblInvalidEntry)
+					.addComponent(btnRoute)
+					.addComponent(btnClear)
+				)
+				.addComponent(mainPanel)
+				.addGroup(gl_contentPane.createSequentialGroup() // bottom line
+					.addComponent(btnPreviousMap)
+					.addComponent(btnPreviousStep)
+					.addGap(50)
+					.addComponent(btnNextStep)
+					.addComponent(btnNextMap))
+			);
+			gl_contentPane.linkSize(SwingConstants.HORIZONTAL, btnRoute, btnClear); // ensure the buttons don't resize
+
+			gl_contentPane.setVerticalGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(lblStart)
+						.addComponent(lblEnd))
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(textFieldStart)
+						.addComponent(textFieldEnd)
+						.addComponent(lblInvalidEntry)
+						.addComponent(btnRoute)
+						.addComponent(btnClear))
+				.addGroup(gl_contentPane.createSequentialGroup())
+						.addComponent(mainPanel)
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(btnPreviousMap)
+						.addComponent(btnPreviousStep)
+						.addComponent(btnNextStep)
+						.addComponent(btnNextMap)) // Next Map/Step buttons	
+			);
 	}
 	
 	// {{ Getters and Setters
