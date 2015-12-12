@@ -351,10 +351,10 @@ public class GUIBack implements Serializable {
 	public MapNode findNearestAttributedNode(String nodeAttribute, MapNode startNode){
 		MapNode temp = null; //initialize a new node
 		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0; //need to set distance to a value that is unattainable
-		for (MapNode mapnode : this.localMap.getMapNodes()){ //for all nodes in localmaps nodes -- this will be changed to global map nodes when that is finished
+		for (MapNode mapnode : GUIFront.getGlobalMap().getMapNodes()){ //for all nodes in localmaps nodes -- this will be changed to global map nodes when that is finished
 			if (mapnode.getAttributes().getType().toString().equals(nodeAttribute)){ //if this is true do distance formula to find the closest node that has that attribute
-				if (distance > (double) Math.sqrt((Math.pow(startNode.getXPos() - mapnode.getXPos(), 2)) + (Math.pow(startNode.getYPos() - mapnode.getYPos(), 2)))){
-					distance = (double) Math.sqrt((Math.pow(startNode.getXPos() - mapnode.getXPos(), 2)) + (Math.pow(startNode.getYPos() - mapnode.getYPos(), 2)));
+				if (distance > (double) Math.sqrt((Math.pow(startNode.getXFeet() - mapnode.getXFeet(), 2)) + (Math.pow(startNode.getYFeet() - mapnode.getYFeet(), 2)))){
+					distance = (double) Math.sqrt((Math.pow(startNode.getXFeet() - mapnode.getXFeet(), 2)) + (Math.pow(startNode.getYFeet() - mapnode.getYFeet(), 2)));
 					temp = mapnode;//set temp to this node value
 				}
 			}
