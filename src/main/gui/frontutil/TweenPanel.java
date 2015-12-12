@@ -763,7 +763,7 @@ public class TweenPanel extends JPanel {
 				}
 				
 				//this is where you draw the lines
-				if (GUIFront.getGlobalMap().getChosenNodes().size() >= 2) {
+				if (GUIFront.getGlobalMap().getChosenNodes().size() >= 1) {
 					for (int i = 0; i < GUIFront.thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
 						double x1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[0];
 						double y1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[1];

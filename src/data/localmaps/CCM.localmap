@@ -7425,7 +7425,6 @@
         <YFeet>329.78000000000003</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
-            <Neighbor>CCM_330</Neighbor>
             <Neighbor>CCM_328</Neighbor>
         </Neighbors>
         <Attributes>
@@ -7457,8 +7456,10 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>bathRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -7470,7 +7471,6 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_332</Neighbor>
-            <Neighbor>CCM_330</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -7941,7 +7941,6 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_353</Neighbor>
-            <Neighbor>HHG1_2</Neighbor>
             <Neighbor>HHG1_2</Neighbor>
         </Neighbors>
         <Attributes>

@@ -21,5 +21,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/apand_000/Downloads/glazedlists_java15-1.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/apand_000/Downloads/glazedlists_java15-1.9.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/apand_000/Downloads/glazedlists_java15-1.9.1-javadoc.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
