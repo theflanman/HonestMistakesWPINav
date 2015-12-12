@@ -229,6 +229,7 @@ public class GUIFront extends JFrame {
 					globalMap.setStartNode(null);
 				}
 				String startString = (String) start.getSelectedItem();
+				System.out.println(startString);
 				lblInvalidEntry.setVisible(false);
 				System.out.println("Enter was pressed");
 				if (startString == null){
@@ -241,7 +242,7 @@ public class GUIFront extends JFrame {
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 							btnClear.setEnabled(true); //enable clear button if some node has been added
-							//System.out.println("This is the starting node");
+							System.out.println("This is the starting node");
 							mapnode.setXFeet(mapnode.getLocalMap().getMapScale()*mapnode.getXPos());
 							mapnode.setYFeet(mapnode.getLocalMap().getMapScale()*mapnode.getYPos());
 							mapnode.runTransform();
@@ -426,6 +427,7 @@ public class GUIFront extends JFrame {
 		});
 		
 		end.addActionListener(actionEnd);
+		start.addActionListener(actionStart);
 
 		// Start/End Labels
 		lblStart = new JLabel("Starting Location");
