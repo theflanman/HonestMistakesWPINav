@@ -11,7 +11,6 @@ import javax.swing.JList;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import aurelienribon.slidinglayout.SLAnimator;
@@ -59,15 +58,8 @@ import main.util.proxy.ProxyImage;
 import javax.swing.ListCellRenderer;
 import javax.swing.JComboBox;
 
-import ca.odell.glazedlists.EventList;
-//import ca.odell.glazedlists.BasicEventList;
-//import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.GlazedLists;
-//import ca.odell.glazedlists.TextFilterator;
-//import ca.odell.glazedlists.matchers.TextMatcherEditor;
 import ca.odell.glazedlists.swing.AutoCompleteSupport;
-//import ca.odell.glazedlists.swing.GlazedListsSwing;
-import ca.odell.glazedlists.swing.EventComboBoxModel;
 
 /**
  * This class contains code for the main applications GUI interface as well as
@@ -459,7 +451,7 @@ public class GUIFront extends JFrame {
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
-
+					drawLine = true; //only needed now to let the system know that the line has been drawn
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH); //sets the speaker to play the designated sound for calculate route
@@ -1373,13 +1365,12 @@ public class GUIFront extends JFrame {
 		btnNextStep.setEnabled(false);
 		btnPreviousStep.setEnabled(false);
 		lblInvalidEntry.setVisible(false);
-		//textFieldEnd.setText("");
-		//textFieldStart.setText("");
 
 		getGlobalMap().getChosenNodes().clear();
 		getLblDistance().setText("");
 		btnClear.setEnabled(false);
 		btnRoute.setEnabled(false);
+		drawLine = false;
 		drawLine2 = false;
 		drawLine3 = false;
 		drawNodes = true;

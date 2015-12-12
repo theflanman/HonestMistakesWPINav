@@ -48,7 +48,7 @@ public class TweenPanel extends JPanel {
 	private boolean hover = false;
 	private int borderThickness = 2;
 	private String panelID;
-
+	
 	private double panX;
 	private double panY;
 	double zoomRatio;
@@ -115,8 +115,7 @@ public class TweenPanel extends JPanel {
 			addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent me) {
-					if (GUIFront.allowSetting == true){
-
+					if (GUIFront.allowSetting == true && GUIFront.drawLine == false){
 						// Reset the main reference point incase we are clicking away from a popup menu
 						try {
 							GUIFront.setMainReferencePoint(GUIFront.getTransform().inverseTransform(me.getPoint(), null));
@@ -514,7 +513,9 @@ public class TweenPanel extends JPanel {
 
 						repaint();
 
-					}	
+					} else if (GUIFront.drawLine == true){
+						GUIFront.btnClear.doClick();
+					}
 				}
 			});
 		}
