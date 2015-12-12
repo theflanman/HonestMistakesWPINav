@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Polygon;
+import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -618,6 +619,23 @@ public class TweenPanel extends JPanel {
 		.target(2)
 		.start(tweenManager);
 	}
+	
+	/**
+	 * Draw Dashed Line
+	 */
+	public void drawDashedLine(Graphics g, int x1, int y1, int x2, int y2){
+
+        //creates a copy of the Graphics instance
+        Graphics2D g2d = (Graphics2D) g.create();
+
+        Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+        g2d.setStroke(dashed);
+        g2d.drawLine(x1, y1, x2, y2);
+
+        //gets rid of the copy
+        g2d.dispose();
+        
+	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -731,7 +749,7 @@ public class TweenPanel extends JPanel {
 						}
 					}
 					if (GUIFront.getGlobalMap().getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
-						for (int i = 1; i < GUIFront.getGlobalMap().getChosenNodes().size() - 1; i++){
+						for (int i = 1; i < GUIFront.getGlobalMap().getChosenNodes().size() - 2; i++){
 							if (GUIFront.getGlobalMap().getChosenNodes().get(i).getLocalMap() == GUIFront.backend.getLocalMap()){
 								graphics.setColor(Color.ORANGE);
 								graphics.fillOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
@@ -745,18 +763,19 @@ public class TweenPanel extends JPanel {
 				}
 				
 				//this is where you draw the lines
-				if (GUIFront.drawLine == true) {
+				if (GUIFront.getGlobalMap().getChosenNodes().size() >= 2) {
 					for (int i = 0; i < GUIFront.thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
 						double x1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[0];
 						double y1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[1];
 						double x2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[0];
 						double y2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[1];
 						Graphics2D g2 = (Graphics2D) g;
-						g2.setStroke(new BasicStroke(5));
 						g2.setColor(lineColor);
-						g2.drawLine((int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
+						Stroke dashed = new BasicStroke(5, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+						g2.setStroke(dashed);
+						this.drawDashedLine(g2, (int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
 					}
-				}
+				} 
 
 				if (GUIFront.drawLine2 == true){
 					Graphics2D g2 = (Graphics2D) g;
@@ -766,6 +785,11 @@ public class TweenPanel extends JPanel {
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2 - 1).getYPos() - (int)getPanY(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY());
+					/*g2.setColor(Color.BLACK);
+					g2.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
+							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY(), 10, 10);
+					g2.drawOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos(), 
+							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos(), 10, 10);*/
 				}
 
 				if (GUIFront.drawLine3 == true){
