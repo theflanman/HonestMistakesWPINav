@@ -752,7 +752,12 @@ public class TweenPanel extends JPanel {
 						double x2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[0];
 						double y2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[1];
 						Graphics2D g2 = (Graphics2D) g;
-						g2.setStroke(new BasicStroke(5));
+						g2.setStroke(new BasicStroke(5f,      // Width
+		                           BasicStroke.CAP_SQUARE,    // End cap
+		                           BasicStroke.JOIN_BEVEL,    // Join style
+		                           10.0f,                     // Miter limit
+		                           new float[] {10f,10f}, // Dash pattern
+		                           0.0f));
 						g2.setColor(lineColor);
 						g2.drawLine((int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
 					}
