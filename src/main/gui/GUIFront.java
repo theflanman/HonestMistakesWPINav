@@ -56,6 +56,8 @@ import main.util.Speaker;
 import main.util.proxy.IProxyImage;
 import main.util.proxy.ProxyImage;
 
+import javax.swing.SwingConstants;
+
 import javax.swing.ListCellRenderer;
 import javax.swing.JComboBox;
 
@@ -174,7 +176,6 @@ public class GUIFront extends JFrame {
 		setTitle("Era of Navigation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
-		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
@@ -785,14 +786,14 @@ public class GUIFront extends JFrame {
 		 */
 		mainConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
-		.row(1f).col(700).col(50) // 700xH | 50xH
+		.row(1f).col(14f).col(1f) // Ratio of 14 : 1 when closed
 		.place(0, 0, panelMap)
 		.place(0, 1, panelDirections);
 
 		// Panel Directions Config
 		panelDirectionsConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
-		.row(1f).col(550).col(200) // 550xH | 200xH
+		.row(1f).col(5f).col(1f) // Ratio of 5 : 1 when open 
 		.place(0, 0, panelMap)
 		.place(0, 1, panelDirections);
 
@@ -979,6 +980,7 @@ public class GUIFront extends JFrame {
 
 		pack();
 		setLocationRelativeTo(null);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
 	}
 
@@ -1289,7 +1291,8 @@ public class GUIFront extends JFrame {
 			
 			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
 				drawNodes = false;
-		}	}
+			}
+	}
 
 	// Enable Actions
 	public void enableActions(){
@@ -1431,7 +1434,6 @@ public class GUIFront extends JFrame {
 	// Initialize Group Layout
 	public static void initGroupLayout(JLabel lblStart, JLabel lblEnd, 
 			JButton btnPreviousMap, JButton btnPreviousStep, JButton btnNextStep, JButton btnNextMap){
-		
 		gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -1497,6 +1499,48 @@ public class GUIFront extends JFrame {
 					.addGap(35))
 		);
 
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()  // top line
+					.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING) // lbl start | txt Start
+							.addComponent(lblStart)
+							.addComponent(start, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addGap(20)
+					.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING) // lbl end | txt end
+							.addComponent(lblEnd)
+							.addComponent(end, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+					.addComponent(lblInvalidEntry)
+					.addComponent(btnRoute)
+					.addComponent(btnClear)
+				)
+				.addComponent(mainPanel)
+				.addGroup(gl_contentPane.createSequentialGroup() // bottom line
+					.addComponent(btnPreviousMap)
+					.addComponent(btnPreviousStep)
+					.addGap(50)
+					.addComponent(btnNextStep)
+					.addComponent(btnNextMap))
+			);
+			gl_contentPane.linkSize(SwingConstants.HORIZONTAL, btnRoute, btnClear); // ensure the buttons don't resize
+
+			gl_contentPane.setVerticalGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(lblStart)
+						.addComponent(lblEnd))
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(start)
+						.addComponent(end)
+						.addComponent(lblInvalidEntry)
+						.addComponent(btnRoute)
+						.addComponent(btnClear))
+				.addGroup(gl_contentPane.createSequentialGroup())
+						.addComponent(mainPanel)
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(btnPreviousMap)
+						.addComponent(btnPreviousStep)
+						.addComponent(btnNextStep)
+						.addComponent(btnNextMap)) // Next Map/Step buttons	
+			);
 	}
 	
 	// {{ Getters and Setters
