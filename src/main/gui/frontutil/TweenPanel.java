@@ -56,7 +56,7 @@ public class TweenPanel extends JPanel {
 	boolean isMapView;
 
 	ArrayList<Polygon> buildingPolygons = new ArrayList<Polygon>();
-	Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, fLPolygon, gLPolygon, hHPolygon, hHGPolygon, sHPolygon;
+	Polygon aHPolygon, aKPolygon, bPolygon, cCPolygon, fLPolygon, gLPolygon, hAPolygon, hHPolygon, hHGPolygon, hLPolygon, pCPolygon, sLPolygon, sHPolygon, wSPolygon;
 
 	/**
 	 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
@@ -96,15 +96,20 @@ public class TweenPanel extends JPanel {
 		}
 
 		buildingPolygons = GUIFrontUtil.initializePolygons();
-		aKPolygon = buildingPolygons.get(0);
-		bPolygon = buildingPolygons.get(1);
-		cCPolygon = buildingPolygons.get(2);
-		fLPolygon = buildingPolygons.get(3);
-		gLPolygon = buildingPolygons.get(4);
-		hHPolygon = buildingPolygons.get(5);
-		hHGPolygon = buildingPolygons.get(6);
-		pCPolygon = buildingPolygons.get(7);
-		sHPolygon = buildingPolygons.get(8);
+		aHPolygon = buildingPolygons.get(0);
+		aKPolygon = buildingPolygons.get(1);
+		bPolygon = buildingPolygons.get(2);
+		cCPolygon = buildingPolygons.get(3);
+		fLPolygon = buildingPolygons.get(4);
+		gLPolygon = buildingPolygons.get(5);
+		hAPolygon = buildingPolygons.get(6);
+		hHPolygon = buildingPolygons.get(7);
+		hHGPolygon = buildingPolygons.get(8);
+		hLPolygon = buildingPolygons.get(9);
+		pCPolygon = buildingPolygons.get(10);
+		sLPolygon = buildingPolygons.get(11);
+		sHPolygon = buildingPolygons.get(12);
+		wSPolygon = buildingPolygons.get(13);
 
 		addMouseListener(GUIFront.getPanHandle());
 		addMouseMotionListener(GUIFront.getPanHandle());
@@ -673,15 +678,20 @@ public class TweenPanel extends JPanel {
 					// Draw the panels over the building
 					graphics.setColor(lineColor);
 					graphics.setStroke(new BasicStroke (7));
+					graphics.draw(aHPolygon);
 					graphics.draw(aKPolygon);
 					graphics.draw(bPolygon);
 					graphics.draw(cCPolygon);
 					graphics.draw(fLPolygon);
 					graphics.draw(gLPolygon);
+					graphics.draw(hAPolygon);
 					graphics.draw(pCPolygon);
 					graphics.draw(hHPolygon);
 					graphics.draw(hHGPolygon);
 					graphics.draw(sHPolygon);
+					graphics.draw(sLPolygon);
+					graphics.draw(hLPolygon);
+					graphics.draw(wSPolygon);
 				}
 
 				// Sets the color of the start and end nodes to be different
