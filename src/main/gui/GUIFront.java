@@ -966,7 +966,7 @@ public class GUIFront extends JFrame {
 		contentPane.setBackground(backgroundColor);
 		btnClear.setBackground(otherButtonsColor);
 		
-        props.put("logoString", " "); 
+        props.put("logoString", "EoN"); 
         
         props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
         props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));
@@ -1000,6 +1000,10 @@ public class GUIFront extends JFrame {
         
 		//props.put("tabAreaBackgroundColor", colorToString(Color.white));
 	    AluminiumLookAndFeel.setCurrentTheme(props);
+		SwingUtilities.updateComponentTreeUI(this);
+
+	   
+	   
 
 	}
 
@@ -1392,7 +1396,7 @@ public class GUIFront extends JFrame {
 		setColors(getAllSchemes().setColorScheme("Default Campus"));
 		
 		 props = new Properties();
-         props.put("logoString", "NNNN"); 
+         props.put("logoString", "EoN"); 
          
          props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
          props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));

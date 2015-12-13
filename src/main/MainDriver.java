@@ -59,18 +59,14 @@ public class MainDriver {
 	    SplashLoad s=new SplashLoad();
         s.setVisible(true);
 
+	    UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+
 		// Launches the main application
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
-				    UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-
 					new GUIFront(localMapList.length, localMapList);
 
-
-					
-			        
 			    //    new GUIFront(localMapList.length, localMapList);
 
 					//close the splash screen when the loading is done
