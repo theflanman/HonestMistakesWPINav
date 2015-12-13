@@ -661,13 +661,18 @@ public class TweenPanel extends JPanel {
 		        GUIFront.getListDirections().setVisibleRowCount((int) (GUIFront.panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
 		        GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 7)); // 7 pixels per 1 character
 		        
-		        
-				GUIFront.getLblClickHere().setVisible(false);
-				GUIFront.getLblDistance().setVisible(true);
-				GUIFront.getScrollPane().setVisible(true);
-				GUIFront.getListDirections().setVisible(true);
-				GUIFront.getLblStepByStep().setVisible(true);
+		        // If there is a route, show this
+		        if(!GUIFront.allowSetting){
+					GUIFront.getLblClickHere().setVisible(false);
+					GUIFront.getLblDistance().setVisible(true);
+					GUIFront.getScrollPane().setVisible(true);
+					GUIFront.getListDirections().setVisible(true);
+					GUIFront.getLblStepByStep().setVisible(true);
+		        } else {
+		        	GUIFront.getLblClickHere().setText(">>>");
+		        }
 			} else {
+				GUIFront.getLblClickHere().setText("<<<");
 				GUIFront.getLblClickHere().setVisible(true);
 				GUIFront.getLblDistance().setVisible(false);
 				GUIFront.getScrollPane().setVisible(false);
