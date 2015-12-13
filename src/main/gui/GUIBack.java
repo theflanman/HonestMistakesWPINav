@@ -13,6 +13,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.memetix.mst.language.Language;
+
 import main.AStar;
 import main.Attributes;
 import main.LocalMap;
@@ -231,9 +233,9 @@ public class GUIBack implements Serializable {
 	/**
 	 * @return ArrayList<String> - this is necessary to allow GUIFront to convert the strings in the array into rows of the column
 	 */
-	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes, boolean isLastWaypoint) {
+	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes, boolean isLastWaypoint, Language language) {
 		StepByStep directions = new StepByStep(mapNodes, isLastWaypoint);
-		ArrayList<String> print = directions.printDirection();
+		ArrayList<String> print = directions.printDirection(language);
 		return print;
 	}
 
@@ -351,10 +353,10 @@ public class GUIBack implements Serializable {
 	public MapNode findNearestAttributedNode(String nodeAttribute, MapNode startNode){
 		MapNode temp = null; //initialize a new node
 		double distance = 10000000000000000000000000000000000000000000000000000000000000000000000000.0; //need to set distance to a value that is unattainable
-		for (MapNode mapnode : this.localMap.getMapNodes()){ //for all nodes in localmaps nodes -- this will be changed to global map nodes when that is finished
+		for (MapNode mapnode : GUIFront.getGlobalMap().getMapNodes()){ //for all nodes in localmaps nodes -- this will be changed to global map nodes when that is finished
 			if (mapnode.getAttributes().getType().toString().equals(nodeAttribute)){ //if this is true do distance formula to find the closest node that has that attribute
-				if (distance > (double) Math.sqrt((Math.pow(startNode.getXPos() - mapnode.getXPos(), 2)) + (Math.pow(startNode.getYPos() - mapnode.getYPos(), 2)))){
-					distance = (double) Math.sqrt((Math.pow(startNode.getXPos() - mapnode.getXPos(), 2)) + (Math.pow(startNode.getYPos() - mapnode.getYPos(), 2)));
+				if (distance > (double) Math.sqrt((Math.pow(startNode.getXFeet() - mapnode.getXFeet(), 2)) + (Math.pow(startNode.getYFeet() - mapnode.getYFeet(), 2)))){
+					distance = (double) Math.sqrt((Math.pow(startNode.getXFeet() - mapnode.getXFeet(), 2)) + (Math.pow(startNode.getYFeet() - mapnode.getYFeet(), 2)));
 					temp = mapnode;//set temp to this node value
 				}
 			}

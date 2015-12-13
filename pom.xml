@@ -147,6 +147,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.memetix</groupId>
+			<artifactId>microsoft-translator-java-api</artifactId>
+			<version>0.6.2</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
 			<groupId>org.yaml</groupId>
 			<artifactId>snakeyaml</artifactId>
 			<version>1.16</version>
@@ -165,6 +171,11 @@
 			<groupId>com.jtattoo</groupId>
 			<artifactId>JTattoo</artifactId>
 			<version>1.6.11</version>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.glazedlists</groupId>
+			<artifactId>glazedlists_java15</artifactId>
+			<version>1.9.1</version>
 		</dependency>
 	</dependencies>
 

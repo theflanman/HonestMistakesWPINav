@@ -5191,14 +5191,16 @@
             <Neighbor>AK1_225</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK 111</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6586,14 +6588,16 @@
             <Neighbor>AK1_284</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK113</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6801,14 +6805,16 @@
             <Neighbor>AK1_288</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK115</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>

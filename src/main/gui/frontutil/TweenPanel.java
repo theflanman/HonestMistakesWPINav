@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Polygon;
+import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -29,6 +30,7 @@ import main.gui.GUIFront;
 import main.util.Constants;
 import main.util.GUIFrontUtil;
 import main.util.proxy.IProxyImage;
+import main.util.proxy.ProxyImage;
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
@@ -56,7 +58,7 @@ public class TweenPanel extends JPanel {
 	boolean isMapView;
 
 	ArrayList<Polygon> buildingPolygons = new ArrayList<Polygon>();
-	Polygon pCPolygon, aKPolygon, bPolygon, cCPolygon, fLPolygon, gLPolygon, hHPolygon, hHGPolygon, sHPolygon;
+	Polygon aHPolygon, aKPolygon, bPolygon, cCPolygon, fLPolygon, gLPolygon, hAPolygon, hHPolygon, hHGPolygon, hLPolygon, pCPolygon, sLPolygon, sHPolygon, wSPolygon;
 
 	/**
 	 * Class for a custom panel to do drawing and tweening. This can be seperated into a seperate class file
@@ -96,15 +98,20 @@ public class TweenPanel extends JPanel {
 		}
 
 		buildingPolygons = GUIFrontUtil.initializePolygons();
-		aKPolygon = buildingPolygons.get(0);
-		bPolygon = buildingPolygons.get(1);
-		cCPolygon = buildingPolygons.get(2);
-		fLPolygon = buildingPolygons.get(3);
-		gLPolygon = buildingPolygons.get(4);
-		hHPolygon = buildingPolygons.get(5);
-		hHGPolygon = buildingPolygons.get(6);
-		pCPolygon = buildingPolygons.get(7);
-		sHPolygon = buildingPolygons.get(8);
+		aHPolygon = buildingPolygons.get(0);
+		aKPolygon = buildingPolygons.get(1);
+		bPolygon = buildingPolygons.get(2);
+		cCPolygon = buildingPolygons.get(3);
+		fLPolygon = buildingPolygons.get(4);
+		gLPolygon = buildingPolygons.get(5);
+		hAPolygon = buildingPolygons.get(6);
+		hHPolygon = buildingPolygons.get(7);
+		hHGPolygon = buildingPolygons.get(8);
+		hLPolygon = buildingPolygons.get(9);
+		pCPolygon = buildingPolygons.get(10);
+		sLPolygon = buildingPolygons.get(11);
+		sHPolygon = buildingPolygons.get(12);
+		wSPolygon = buildingPolygons.get(13);
 
 		addMouseListener(GUIFront.getPanHandle());
 		addMouseMotionListener(GUIFront.getPanHandle());
@@ -618,6 +625,23 @@ public class TweenPanel extends JPanel {
 		.target(2)
 		.start(tweenManager);
 	}
+	
+	/**
+	 * Draw Dashed Line
+	 */
+	public void drawDashedLine(Graphics g, int x1, int y1, int x2, int y2){
+
+        //creates a copy of the Graphics instance
+        Graphics2D g2d = (Graphics2D) g.create();
+
+        Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+        g2d.setStroke(dashed);
+        g2d.drawLine(x1, y1, x2, y2);
+
+        //gets rid of the copy
+        g2d.dispose();
+        
+	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -672,16 +696,21 @@ public class TweenPanel extends JPanel {
 
 					// Draw the panels over the building
 					graphics.setColor(lineColor);
-					graphics.setStroke(new BasicStroke (7));
+					graphics.setStroke(new BasicStroke (5));
+					graphics.draw(aHPolygon);
 					graphics.draw(aKPolygon);
 					graphics.draw(bPolygon);
 					graphics.draw(cCPolygon);
 					graphics.draw(fLPolygon);
 					graphics.draw(gLPolygon);
-					graphics.draw(pCPolygon);
+					graphics.draw(hAPolygon);
 					graphics.draw(hHPolygon);
 					graphics.draw(hHGPolygon);
+					graphics.draw(hLPolygon);
+					graphics.draw(pCPolygon);
+					graphics.draw(sLPolygon);
 					graphics.draw(sHPolygon);
+					graphics.draw(wSPolygon);
 				}
 
 				// Sets the color of the start and end nodes to be different
@@ -689,63 +718,56 @@ public class TweenPanel extends JPanel {
 				graphics.setColor(startNodeColor);
 				
 				if(GUIFront.drawNodes){
+					IProxyImage startNodeImage = new ProxyImage("startnode.png");
+					IProxyImage endNodeImage = new ProxyImage("endnode.png");
+					IProxyImage waypointNodeImage = new ProxyImage("waypoint.png");
 					if(!(GUIFront.paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
 						if (GUIFront.paths.get(GUIFront.index).get(0) != null){ // make sure that the start node (which it should never be) is not null
-							graphics.setColor(startNodeColor);
-							graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
+							
+							graphics.drawImage(startNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 10, this);
+							
 						}
 						if (GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
-							graphics.setColor(endNodeColor);
-							graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getYPos() - (int)getPanY() - 5, 10, 10);
-
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
+							
+							graphics.drawImage(endNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getYPos() - (int)getPanY() - 10, this);
+						
 						}
 					}
 					//drawing for originally placed nodes
 					if (GUIFront.getGlobalMap().getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed
 						if (GUIFront.getGlobalMap().getStartNode().getLocalMap() == GUIFront.backend.getLocalMap()){
-							graphics.setColor(startNodeColor);
-							graphics.fillOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
+							
+							graphics.drawImage(startNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 10, this);
+							
 						}
 					}
 
 					if(GUIFront.getGlobalMap().getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
 						if (GUIFront.getGlobalMap().getEndNode().getLocalMap() == GUIFront.backend.getLocalMap()){
-							graphics.setColor(endNodeColor);
-							graphics.fillOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
+							
+							graphics.drawImage(endNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 10, this);
+							
 						}
 					}
 					if (GUIFront.getGlobalMap().getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
-						for (int i = 1; i < GUIFront.getGlobalMap().getChosenNodes().size() - 1; i++){
+						for (int i = 1; i < GUIFront.getGlobalMap().getChosenNodes().size() - 2; i++){
 							if (GUIFront.getGlobalMap().getChosenNodes().get(i).getLocalMap() == GUIFront.backend.getLocalMap()){
-								graphics.setColor(Color.ORANGE);
-								graphics.fillOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
-										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
-								graphics.setColor(outlineColor);
-								graphics.drawOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
-										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
+								
+								graphics.drawImage(waypointNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 10, 
+										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 10, this);
+
 							}
 						}
 					}
 				}
 				
 				//this is where you draw the lines
-				if (GUIFront.drawLine == true) {
+				if (GUIFront.drawLine) {
+				if (GUIFront.getGlobalMap().getChosenNodes().size() >= 1) {
 					for (int i = 0; i < GUIFront.thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
 						double x1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[0];
 						double y1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[1];
@@ -759,10 +781,13 @@ public class TweenPanel extends JPanel {
 		                           new float[] {10f,10f}, // Dash pattern
 		                           0.0f));
 						g2.setColor(lineColor);
-						g2.drawLine((int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
+						Stroke dashed = new BasicStroke(5, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+						g2.setStroke(dashed);
+						this.drawDashedLine(g2, (int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
 					}
+				} 
 				}
-
+				
 				if (GUIFront.drawLine2 == true){
 					Graphics2D g2 = (Graphics2D) g;
 					g2.setStroke(new BasicStroke(2));
@@ -771,6 +796,11 @@ public class TweenPanel extends JPanel {
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2 - 1).getYPos() - (int)getPanY(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY());
+					/*g2.setColor(Color.BLACK);
+					g2.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
+							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY(), 10, 10);
+					g2.drawOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos(), 
+							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos(), 10, 10);*/
 				}
 
 				if (GUIFront.drawLine3 == true){

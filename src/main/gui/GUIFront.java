@@ -11,6 +11,7 @@ import javax.swing.JList;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Properties;
 
@@ -60,11 +61,25 @@ import main.util.Speaker;
 import main.util.proxy.IProxyImage;
 import main.util.proxy.ProxyImage;
 
-import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.ListCellRenderer;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.JComboBox;
+
+import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
+
+import ca.odell.glazedlists.EventList;
+//import ca.odell.glazedlists.BasicEventList;
+//import ca.odell.glazedlists.EventList;
+import ca.odell.glazedlists.GlazedLists;
+//import ca.odell.glazedlists.TextFilterator;
+//import ca.odell.glazedlists.matchers.TextMatcherEditor;
+import ca.odell.glazedlists.swing.AutoCompleteSupport;
+//import ca.odell.glazedlists.swing.GlazedListsSwing;
+import ca.odell.glazedlists.swing.EventComboBoxModel;
 
 /**
  * This class contains code for the main applications GUI interface as well as
@@ -73,7 +88,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  * Tween code adapted from Aurelien Ribon's Sliding Layout Demo 
  * 
  * Note:
- * 	The "// {{" is CoffeeByte syntax for specifying code collapsing
+ * 	The "// {{" and "// }}" is CoffeeByte syntax for specifying code collapsing
  * 
  * @author Trevor
  */
@@ -95,6 +110,7 @@ public class GUIFront extends JFrame {
 	public static ArrayList<ArrayList<MapNode>> paths = new ArrayList<ArrayList<MapNode>>();
 	public static ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
+	public static JComboBox start, end;
 	private JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
 	public static boolean allowSetting = true;
 	public static JTabbedPane mainPanel; 
@@ -117,7 +133,6 @@ public class GUIFront extends JFrame {
 
 	// MapPanel components
 	private static JPanel contentPane;
-	private static JTextField textFieldEnd, textFieldStart;
 	private JLabel lblStart, lblEnd;
 	private static GroupLayout gl_contentPane;
 	private static boolean[] mapViewButtons;
@@ -135,10 +150,12 @@ public class GUIFront extends JFrame {
 	// Menu Bar
 	private JMenuBar menuBar;
 	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
-	private JMenu mnColorScheme;
+	private ArrayList<JMenu> mnOptionList = new ArrayList<JMenu>();
 	private ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
+	private static ArrayList<JMenuItem> mntmLanguages = new ArrayList<JMenuItem>();
 	private ArrayList<JMenu> mnBuildings = new ArrayList<JMenu>();
 	private JMenuItem mntmEmail, mntmExit;
+	private static Language language;
 
 	private SLPanel slidePanel;
 	private JPanel stepByStepUI;
@@ -187,13 +204,26 @@ public class GUIFront extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
-		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
 		setPanHandle(new PanHandler());
 		setZoomHandle(new ZoomHandler());
 
+		//Initialize Start and End Combo Boxes 
+		ArrayList<String>officialName = new ArrayList<String>();
+		for(MapNode mapnode : globalMap.getMapNodes()){
+			officialName.add(mapnode.getAttributes().getOfficialName());
+		}
+		start = new JComboBox(officialName.toArray());
+		start.setEditable(true);
+		AutoCompleteSupport.install(start, GlazedLists.eventListOf(officialName.toArray()));
+		
+		end = new JComboBox();
+		end.setEditable(true);
+		AutoCompleteSupport.install(end, GlazedLists.eventListOf(officialName.toArray()));
+		
+		
 		// Initialize Top Menu Bar
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -220,14 +250,26 @@ public class GUIFront extends JFrame {
 			@Override 
 			public void actionPerformed(ActionEvent e)
 			{
+				if (globalMap.getStartNode() != null){
+					LocalMap localmap = globalMap.getStartNode().getLocalMap();
+					if (globalMap.getEndNode() != null){
+						LocalMap localmapEnd = globalMap.getEndNode().getLocalMap();
+						localmapEnd.setEndNode(null);
+					}
+					globalMap.getChosenNodes().clear();
+					globalMap.setEndNode(null);
+					localmap.setStartNode(null);
+					globalMap.setStartNode(null);
+				}
+				String startString = (String) start.getSelectedItem();
+				System.out.println(startString);
 				lblInvalidEntry.setVisible(false);
 				System.out.println("Enter was pressed");
-				if (textFieldStart.getText().equals("")){
+				if (startString == null){
 					//will need some way to alert the user that they need to enter a start location
 					System.out.println("Need to enter a valid start location");
 				} 
-				else if (!(textFieldStart.getText().equals(""))) {//if there is something entered check if the name is valid and then basically add the start node
-					String startString = textFieldStart.getText();
+				else if (startString != null) {//if there is something entered check if the name is valid and then basically add the start node
 					boolean valid = false;
 					for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
@@ -269,7 +311,7 @@ public class GUIFront extends JFrame {
 						System.out.println("Invalid entry");
 						lblInvalidEntry.setVisible(true);
 					}
-				}	
+				}
 			}
 		};
 		
@@ -278,21 +320,29 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				if (globalMap.getEndNode() != null){
+					LocalMap localmap = globalMap.getEndNode().getLocalMap();
+					globalMap.getChosenNodes().remove(globalMap.getEndNode());
+					localmap.setEndNode(null);
+					globalMap.setEndNode(null);
+				}
+				JComboBox source = (JComboBox)e.getSource();
+				String endString = (String) source.getSelectedItem();
 				lblInvalidEntry.setVisible(false);
 				//if the user presses enter without having entered anything in this box
-				if (textFieldEnd.getText().equals(""))
-					System.out.println("Need to enter a valid start location"); // TODO: will need some way to alert the user that they need to enter an end location
-				else if (!(textFieldEnd.getText().equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
-					String endString = textFieldEnd.getText(); //entered text = endString constant
+				if (endString == null){
+					System.out.println("Need to enter a valid start location"); 
+				}else if (!(endString.equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
+					//String endString = (String) end.getSelectedItem(); //entered text = endString constant
 					boolean valid = false;
+					Attributes attribute = new Attributes();
 
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
-					String startString = textFieldStart.getText();
-					if (!(startString.equals(""))){
+					String startString = (String) start.getSelectedItem();
+					if (startString != null){
 						for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 							if(startString.equals(mapnode.getAttributes().getOfficialName())){
 								startNode = mapnode; //set the startNode and then draw it on the map
-								System.out.println("This is the starting node");
 								getGlobalMap().setStartNode(startNode);
 								getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
 								LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
@@ -300,8 +350,7 @@ public class GUIFront extends JFrame {
 								btnClear.setEnabled(true);
 							}
 						}
-					} 
-					else {
+					} else if (globalMap.getStartNode() == null){
 							MapNode n = backend.getLocalMap().getMapNodes().get(0);
 							getGlobalMap().setStartNode(n);	
 							getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
@@ -315,12 +364,10 @@ public class GUIFront extends JFrame {
 						if(endString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(endString)*/){
 							//if endstring is the official name or one of a few different accepted aliases we will allow the end node to be placed
 							valid = true;
-							endNode = mapnode;
-							System.out.println("This is the ending node");
-							getGlobalMap().setEndNode(endNode);
-							getGlobalMap().getChosenNodes().add(endNode);
+							getGlobalMap().setEndNode(mapnode);
+							getGlobalMap().getChosenNodes().add(mapnode);
 							LocalMap localmap = getGlobalMap().getEndNode().getLocalMap();
-							localmap.setEndNode(endNode);
+							localmap.setEndNode(mapnode);
 							panelMap.setMapImage(new ProxyImage(getGlobalMap().getEndNode().getLocalMap().getMapImageName()));
 							panelMap.setMapNodes(getGlobalMap().getEndNode().getLocalMap().getMapNodes());
 							String previousMap = backend.getLocalMap().getMapImageName();
@@ -338,6 +385,37 @@ public class GUIFront extends JFrame {
 								node.setYPos(node.getYPos() + offsetY);
 							}	
 							btnRoute.setEnabled(true);
+						} 
+					}
+					
+					if(globalMap.getEndNode() == null){
+						if (attribute.getPossibleEntries().containsKey(endString)){
+							String nearestAttribute = attribute.getPossibleEntries().get(endString);
+							valid = true;
+							MapNode node = backend.findNearestAttributedNode(nearestAttribute, globalMap.getStartNode()); //same idea as findNearestNode - just finds the nearest node to the startnode that gives the entered attribute
+							if (node != null){ //if no node was found, you should not place a node on the map otherwise do it 
+								globalMap.setEndNode(node);
+								globalMap.getChosenNodes().add(globalMap.getEndNode());
+								LocalMap localmap = globalMap.getEndNode().getLocalMap();
+								localmap.setEndNode(node);
+								panelMap.setMapImage(new ProxyImage(globalMap.getEndNode().getLocalMap().getMapImageName()));
+								panelMap.setMapNodes(globalMap.getEndNode().getLocalMap().getMapNodes());
+								String previousMap = backend.getLocalMap().getMapImageName();
+								panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
+								backend.setLocalMap(localmap);
+								double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+								double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+								panelMap.setPanX(defPan[0]);
+								panelMap.setPanY(defPan[1]);
+								panelMap.setScale(defPan[2]);
+								offsetX = defPan[0] - tempPan[0];
+								offsetY = defPan[1] - tempPan[1];
+								for(MapNode node2 : backend.getLocalMap().getMapNodes()){
+									node2.setXPos(node2.getXPos() + offsetX);
+									node2.setYPos(node2.getYPos() + offsetY);
+								}					
+								btnRoute.setEnabled(true);
+							}
 						} 
 					}
 
@@ -385,15 +463,9 @@ public class GUIFront extends JFrame {
 				else mapViewButtons[1] = false;
 			}
 		});
-
-		// Search Text Fields
-		textFieldStart = new JTextField();
-		textFieldStart.setText("");
-		textFieldStart.addActionListener(actionStart);
-
-		textFieldEnd = new JTextField("");
-		textFieldEnd.setColumns(10);		
-		textFieldEnd.addActionListener(actionEnd);
+		
+		end.addActionListener(actionEnd);
+		start.addActionListener(actionStart);
 
 		// Start/End Labels
 		lblStart = new JLabel("Starting Location");
@@ -439,9 +511,9 @@ public class GUIFront extends JFrame {
 						if (getGlobalMap().getChosenNodes().get(i).getLocalMap() == getGlobalMap().getChosenNodes().get(i + 1).getLocalMap()){
 							ArrayList<MapNode> nodesOnSameMap = backend.runAStar(getGlobalMap().getChosenNodes().get(i), getGlobalMap().getChosenNodes().get(i + 1));
 							if (getGlobalMap().getChosenNodes().size() == i + 2){
-								directions = backend.displayStepByStep(nodesOnSameMap, false); //no more waypoints 
+								directions = backend.displayStepByStep(nodesOnSameMap, false, getLanguage()); //no more waypoints 
 							} else {
-								directions = backend.displayStepByStep(nodesOnSameMap, true); //more waypoints
+								directions = backend.displayStepByStep(nodesOnSameMap, true, getLanguage()); //more waypoints
 							}
 							stepByStep.add(directions); //essentially makes a list of all step by step directions to be added to the jlist
 							directions = new ArrayList<String>(); //reset directions
@@ -467,7 +539,7 @@ public class GUIFront extends JFrame {
 										}
 									}
 								}
-								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint, getLanguage());
 								stepByStep.add(directions);
 
 								for (MapNode mapnode : getNodesOnDifferentMap.get(0)){ 
@@ -496,7 +568,7 @@ public class GUIFront extends JFrame {
 										}
 									}
 								}
-								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint, getLanguage());
 								stepByStep.add(directions);
 								for (ArrayList<MapNode> mapnodes : getNodesOnDifferentMap){
 									paths.add(mapnodes);
@@ -579,7 +651,18 @@ public class GUIFront extends JFrame {
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
-					listModel.addElement("Welcome to the Era of Navigation!");
+					
+					try {
+						String welcomeMessage = "Welcome to the Era of Navigation.";
+
+						if(! getLanguage().equals(Language.ENGLISH))
+							welcomeMessage = Translate.execute(welcomeMessage, Language.ENGLISH, getLanguage());
+						
+						listModel.addElement(welcomeMessage);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}			
+					
 					for (ArrayList<String> strings: stepByStep){
 						for (String string : strings) {
 							listModel.addElement(string); // add it to the list model
@@ -746,14 +829,14 @@ public class GUIFront extends JFrame {
 		 */
 		mainConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
-		.row(1f).col(700).col(50) // 700xH | 50xH
+		.row(1f).col(14f).col(1f) // Ratio of 14 : 1 when closed
 		.place(0, 0, panelMap)
 		.place(0, 1, panelDirections);
 
 		// Panel Directions Config
 		panelDirectionsConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
-		.row(1f).col(550).col(200) // 550xH | 200xH
+		.row(1f).col(5f).col(1f) // Ratio of 5 : 1 when open 
 		.place(0, 0, panelMap)
 		.place(0, 1, panelDirections);
 
@@ -942,6 +1025,7 @@ public class GUIFront extends JFrame {
 
 		pack();
 		setLocationRelativeTo(null);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
 	}
 
@@ -1165,21 +1249,24 @@ public class GUIFront extends JFrame {
 		mnOptions = new JMenu("Options");
 		menuBar.add(mnOptions);
 
+		mnOptionList.add(new JMenu("Color Scheme"));
+		mnOptions.add(mnOptionList.get(0));
+		
+		mnOptionList.add(new JMenu("Languages"));
+		mnOptions.add(mnOptionList.get(1));
+		
 		// ---- Locations -----
 		mnLocations = new JMenu("Locations");
 		menuBar.add(mnLocations);
 
-		// ---- Color Schemes ----
-		mnColorScheme = new JMenu("Color Scheme");
-		mnOptions.add(mnColorScheme);
-
-		//schemes are mapped to an index in mntmColorSchemes
-		//0 - Default Campus
-		//1 - Grayscale
-		//2 - WPI Default
-		//3 - Flower Power
-		//4 - All Blue
-		
+		// {{ Adding Color Schemes
+		/* Color Schemes
+		 *	0 - Default Campus
+		 *	1 - Grayscale
+		 *	2 - WPI Default
+		 *	3 - Flower Power
+		 *	4 - All Blue
+		 */
 		for (int i = 0; i < 5; i++)
 			mntmColorSchemes.add(new JMenuItem());
 		
@@ -1222,12 +1309,28 @@ public class GUIFront extends JFrame {
 			}
 		});
 		
-		mnColorScheme.add(mntmColorSchemes.get(0));
-		mnColorScheme.add(mntmColorSchemes.get(1));
-		mnColorScheme.add(mntmColorSchemes.get(2));
-		mnColorScheme.add(mntmColorSchemes.get(3));
-		mnColorScheme.add(mntmColorSchemes.get(4));
+		mnOptionList.get(0).add(mntmColorSchemes.get(0));
+		mnOptionList.get(0).add(mntmColorSchemes.get(1));
+		mnOptionList.get(0).add(mntmColorSchemes.get(2));
+		mnOptionList.get(0).add(mntmColorSchemes.get(3));
+		mnOptionList.get(0).add(mntmColorSchemes.get(4));
+		// }} Adding Color Schemes
+		
+		// {{ Adding Languages
+		String[] languageText = GUIFrontUtil.createLanguageText();
 
+		for (int i = 0; i < 41; i++){
+			getMntmLanguages().add(new JMenuItem());
+			getMntmLanguages().get(i).setText(languageText[i]);
+		}
+				
+		GUIFrontUtil.addLanguageListeners();
+		
+		for(int i = 0; i < 41; i++){
+			mnOptionList.get(1).add(getMntmLanguages().get(i));
+		}
+		// }} Adding Languages
+		
 		// here lies the clickable building dropdown menus
 		mnBuildings = GUIFrontUtil.initBuildingMenuBar();
 		
@@ -1242,7 +1345,7 @@ public class GUIFront extends JFrame {
 
 		mnLocations.add(mnBuildings.get(0)); // indices: 0, 1, 2, 3
 		mnLocations.add(mnBuildings.get(1)); // indices: 4, 5, 6, 7
-		mnLocations.add(mnBuildings.get(2));// indices: 8, 9, 10
+		mnLocations.add(mnBuildings.get(2)); // indices: 8, 9, 10
 		mnLocations.add(mntmCCM); // index: 11
 		mnLocations.add(mnBuildings.get(3)); // indices 12, 13, 14, 15, 16
 		mnLocations.add(mnBuildings.get(4)); // indices: 17, 18, 19, 20, 21
@@ -1293,7 +1396,8 @@ public class GUIFront extends JFrame {
 			
 			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
 				drawNodes = false;
-		}	}
+			}
+	}
 
 	// Enable Actions
 	public void enableActions(){
@@ -1377,8 +1481,8 @@ public class GUIFront extends JFrame {
 		btnNextStep.setEnabled(false);
 		btnPreviousStep.setEnabled(false);
 		lblInvalidEntry.setVisible(false);
-		textFieldEnd.setText("");
-		textFieldStart.setText("");
+		//textFieldEnd.setText("");
+		//textFieldStart.setText("");
 
 		getGlobalMap().getChosenNodes().clear();
 		getLblDistance().setText("");
@@ -1463,75 +1567,113 @@ public class GUIFront extends JFrame {
 	// Initialize Group Layout
 	public static void initGroupLayout(JLabel lblStart, JLabel lblEnd, 
 			JButton btnPreviousMap, JButton btnPreviousStep, JButton btnNextStep, JButton btnNextMap){
-		
 		gl_contentPane = new GroupLayout(contentPane);
-		
 		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(10)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblStart)
-												.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-												.addGap(18)
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-														.addComponent(lblEnd, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
-														.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-														.addGap(18)
-														.addComponent(lblInvalidEntry)
-														.addGap(227)
-														.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-														.addGap(18)
-														.addComponent(btnClear))
-														.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addGap(79)
-																.addComponent(btnPreviousMap)
-																.addGap(37)
-																.addComponent(btnPreviousStep)
-																.addGap(75)
-																.addComponent(btnNextStep)
-																.addPreferredGap(ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-																.addComponent(btnNextMap)
-																.addGap(170))
-				);
-		
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(10)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(start, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblStart, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGap(75)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(end, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblEnd, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+							.addGap(76)
+							.addComponent(lblInvalidEntry)
+							.addGap(226)
+							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(btnClear))
+						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(79)
+					.addComponent(btnPreviousMap)
+					.addGap(37)
+					.addComponent(btnPreviousStep)
+					.addGap(75)
+					.addComponent(btnNextStep)
+					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+					.addComponent(btnNextMap)
+					.addGap(170))
+		);
 		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addComponent(lblStart)
-										.addGap(6)
-										.addComponent(textFieldStart, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(gl_contentPane.createSequentialGroup()
-												.addComponent(lblEnd)
-												.addGap(6)
-												.addComponent(textFieldEnd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-												.addGroup(gl_contentPane.createSequentialGroup()
-														.addGap(24)
-														.addComponent(lblInvalidEntry))
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addGap(11)
-																.addComponent(btnRoute))
-																.addGroup(gl_contentPane.createSequentialGroup()
-																		.addGap(11)
-																		.addComponent(btnClear)))
-																		.addGap(18)
-																		.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-																		.addGap(18)
-																		.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-																				.addComponent(btnPreviousMap)
-																				.addComponent(btnNextMap)
-																				.addComponent(btnNextStep)
-																				.addComponent(btnPreviousStep))
-																				.addGap(35))
-				);
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblStart)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(start, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblEnd)
+								.addComponent(lblInvalidEntry))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(end, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(btnRoute))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(11)
+							.addComponent(btnClear)))
+					.addGap(14)
+					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnPreviousMap)
+						.addComponent(btnNextMap)
+						.addComponent(btnNextStep)
+						.addComponent(btnPreviousStep))
+					.addGap(35))
+		);
 
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()  // top line
+					.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING) // lbl start | txt Start
+							.addComponent(lblStart)
+							.addComponent(start, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addGap(20)
+					.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING) // lbl end | txt end
+							.addComponent(lblEnd)
+							.addComponent(end, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+					.addComponent(lblInvalidEntry)
+					.addComponent(btnRoute)
+					.addComponent(btnClear)
+				)
+				.addComponent(mainPanel)
+				.addGroup(gl_contentPane.createSequentialGroup() // bottom line
+					.addComponent(btnPreviousMap)
+					.addComponent(btnPreviousStep)
+					.addGap(50)
+					.addComponent(btnNextStep)
+					.addComponent(btnNextMap))
+			);
+			gl_contentPane.linkSize(SwingConstants.HORIZONTAL, btnRoute, btnClear); // ensure the buttons don't resize
+
+			gl_contentPane.setVerticalGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(lblStart)
+						.addComponent(lblEnd))
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(start)
+						.addComponent(end)
+						.addComponent(lblInvalidEntry)
+						.addComponent(btnRoute)
+						.addComponent(btnClear))
+				.addGroup(gl_contentPane.createSequentialGroup())
+						.addComponent(mainPanel)
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(btnPreviousMap)
+						.addComponent(btnPreviousStep)
+						.addComponent(btnNextStep)
+						.addComponent(btnNextMap)) // Next Map/Step buttons	
+			);
 	}
 	
 	// {{ Getters and Setters
@@ -1613,6 +1755,20 @@ public class GUIFront extends JFrame {
 	public static void setListDirections(JList<String> listDirections) {
 		GUIFront.listDirections = listDirections;
 	}
-	// }}
-	
+
+	public static ArrayList<JMenuItem> getMntmLanguages() {
+		return mntmLanguages;
+	}
+
+	public static void setMntmLanguages(ArrayList<JMenuItem> aMntmLanguages) {
+		mntmLanguages = aMntmLanguages;
+	}
+
+	public static Language getLanguage() {
+		return language;
+	}
+
+	public static void setLanguage(Language language) {
+		GUIFront.language = language;
+	}
 }

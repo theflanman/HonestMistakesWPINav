@@ -2,6 +2,8 @@ package tests;
 
 import java.util.ArrayList;
 
+import com.memetix.mst.language.Language;
+
 import junit.framework.TestCase;
 import main.Attributes;
 import main.LocalMap;
@@ -110,7 +112,7 @@ public class PrintDirectionsTest extends TestCase {
 		ArrayList<String> resultSteps = new ArrayList<String>();
 		resultSteps.add("1. Walk 6 feet, then you will arrive at your final destination. ENDHERE");
 
-		assertEquals(stepByStep1.printDirection(), resultSteps);
+		assertEquals(stepByStep1.printDirection(Language.ENGLISH), resultSteps);
 	}
 
 	public void testDirections2() {
@@ -134,7 +136,7 @@ public class PrintDirectionsTest extends TestCase {
 		ArrayList<String> resultSteps = new ArrayList<String>();
 		resultSteps.add("1. Walk 4 feet, then you will arrive at your final destination. ENDHERE");
 
-		assertEquals(stepByStep1.printDirection(), resultSteps);
+		assertEquals(stepByStep1.printDirection(Language.ENGLISH), resultSteps);
 	}
 	
 	public void testDirections3() {
@@ -164,7 +166,7 @@ public class PrintDirectionsTest extends TestCase {
 		resultSteps.add("2. Walk 4 feet, then turn right.");
 		resultSteps.add("3. Walk 4 feet, then you will arrive at your final destination. ENDHERE");
 
-		assertEquals(stepByStep1.printDirection(), resultSteps);
+		assertEquals(stepByStep1.printDirection(Language.ENGLISH), resultSteps);
 	}
 	
 	public void testDirections4() {
@@ -203,7 +205,7 @@ public class PrintDirectionsTest extends TestCase {
 		resultSteps.add("3. Walk 7 feet, then turn back.");
 		resultSteps.add("4. Walk 4 feet, then you will arrive at your final destination. ENDHERE");
 
-		assertEquals(stepByStep1.printDirection(), resultSteps);
+		assertEquals(stepByStep1.printDirection(Language.ENGLISH), resultSteps);
 	}
 	
 	public void testDirection5(){
@@ -248,6 +250,6 @@ public class PrintDirectionsTest extends TestCase {
 		resultSteps.add("2. Walk down the stairs to floor 1.");
 		resultSteps.add("3. Walk 1 feet, then you will arrive at your final destination. ENDHERE");
 
-		assertEquals(stepByStep1.printDirection(), resultSteps);
+		assertEquals(stepByStep1.printDirection(Language.ENGLISH), resultSteps);
 	}
 }
