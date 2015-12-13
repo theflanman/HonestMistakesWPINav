@@ -182,6 +182,7 @@ public class GUIFront extends JFrame {
 		setZoomHandle(new ZoomHandler());
 
 		//Initialize Start and End Combo Boxes 
+		setLanguage(Language.ENGLISH);
 		officialName = new ArrayList<String>();
 		for(MapNode mapnode : globalMap.getMapNodes()){
 			officialName.add(mapnode.getAttributes().getOfficialName());
@@ -724,7 +725,7 @@ public class GUIFront extends JFrame {
 					try {
 						String welcomeMessage = "Welcome to the Era of Navigation.";
 
-						if(! getLanguage().equals(Language.ENGLISH))
+						if(!(getLanguage().equals(Language.ENGLISH)))
 							welcomeMessage = Translate.execute(welcomeMessage, Language.ENGLISH, getLanguage());
 						
 						listModel.addElement(welcomeMessage);
@@ -865,11 +866,10 @@ public class GUIFront extends JFrame {
 							drawLine = true;
 							drawNodes = true;
 						}
-						index3 -= indexHelp;
 						if (index3 >= paths.get(index).size() - 1){
 							index++;
 						}
-						
+						index3 -= indexHelp;
 						index2 = index3;
 						drawLine2 = true;
 					}

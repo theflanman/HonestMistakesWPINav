@@ -123,8 +123,8 @@ public class StepByStep {
 
 		// If the path is only 1 node in size
 		if (pathNodes.size() == 1) {
-			turn = "You have arrived at your destination";
-			stepList.add(turn);
+			//turn = "You have arrived at your destination";
+			//stepList.add(turn);
 		}
 		else {
 
