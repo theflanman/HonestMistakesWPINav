@@ -966,7 +966,7 @@ public class GUIFront extends JFrame {
 		contentPane.setBackground(backgroundColor);
 		btnClear.setBackground(otherButtonsColor);
 		
-        props.put("logoString", ""); 
+        props.put("logoString", " "); 
         
         props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
         props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));
@@ -982,15 +982,23 @@ public class GUIFront extends JFrame {
         props.put("rolloverColor", colorToString(colors.getOutlineColor())); 
         props.put("rolloverColorLight", colorToString(colors.getOutlineColor())); 
         props.put("rolloverColorDark", colorToString(colors.getOutlineColor())); 
-        
+        */
+        /*
         props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
-        props.put("windowTitleBackgroundColor", colorToString(colors.getOutlineColor())); 
         props.put("windowTitleColorLight", colorToString(colors.getOutlineColor())); 
         props.put("windowTitleColorDark", colorToString(colors.getOutlineColor())); 
         props.put("windowBorderColor", colorToString(colors.getOutlineColor()));
         */
+        //props.put("windowTitleBackgroundColor", colorToString(colors.getOutlineColor())); 
+
+        props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
+        props.put("windowTitleBackgroundColor", colorToString(colors.getMainBackColor())); 
+        props.put("windowTitleColorLight", colorToString(colors.getMainBackColor())); 
+        props.put("windowTitleColorDark", colorToString(colors.getStartNodeColor())); 
+        props.put("frameColor", colorToString(colors.getOutlineColor()));
+        props.put("windowTitleFont", "Gulim Bold 20");
+        
 		//props.put("tabAreaBackgroundColor", colorToString(Color.white));
-        props.put("windowTitleFont", "Arial BOLD 20" );
 	    AluminiumLookAndFeel.setCurrentTheme(props);
 
 	}
@@ -1384,28 +1392,29 @@ public class GUIFront extends JFrame {
 		setColors(getAllSchemes().setColorScheme("Default Campus"));
 		
 		 props = new Properties();
-         props.put("logoString", ""); 
+         props.put("logoString", "NNNN"); 
          
-         props.put("selectionBackgroundColor", Color.BLACK); 
-         props.put("menuSelectionBackgroundColor", Color.BLACK); 
+         props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
+         props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));
          
-         props.put("controlColor", "218 254 230");
-         props.put("controlColorLight", "218 254 230");
-         props.put("controlColorDark", "180 240 197"); 
-
-         props.put("buttonColor", "218 230 254");
-         props.put("buttonColorLight", "255 255 255");
-         props.put("buttonColorDark", "244 242 232");
-
+         /*props.put("controlColor", colorToString(colors.getOutlineColor()));
+         props.put("controlColorLight", colorToString(colors.getOutlineColor()));
+         props.put("controlColorDark", colorToString(colors.getOutlineColor())); 
+*/
+//         props.put("buttonColor", "218 230 254");
+      //   props.put("buttonColorLight", colorToString(Color.white));
+        // props.put("buttonColorDark", colorToString(colors.getOutlineColor()));
+/*
          props.put("rolloverColor", "218 254 230"); 
          props.put("rolloverColorLight", "218 254 230"); 
          props.put("rolloverColorDark", "180 240 197"); 
-
+*/
          props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
          props.put("windowTitleBackgroundColor", colorToString(colors.getMainBackColor())); 
          props.put("windowTitleColorLight", colorToString(colors.getMainBackColor())); 
          props.put("windowTitleColorDark", colorToString(colors.getStartNodeColor())); 
-         props.put("windowBorderColor", colorToString(colors.getOutlineColor()));
+         props.put("frameColor", colorToString(colors.getOutlineColor()));
+         props.put("windowTitleFont", "Gulim Bold 20");
 
 
 		routeButtonColor = getColors().getRouteButtonColor();
@@ -1443,7 +1452,7 @@ public class GUIFront extends JFrame {
 			allNodes.addAll(local.getMapNodes());
 		}
 		getGlobalMap().setMapNodes(allNodes);
- 	    SmartLookAndFeel.setCurrentTheme(props);
+ 	    AluminiumLookAndFeel.setCurrentTheme(props);
 
 	}
 	
