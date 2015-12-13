@@ -12,6 +12,7 @@ import javax.swing.JList;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Properties;
 
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.slidinglayout.SLConfig;
@@ -38,6 +39,10 @@ import javax.swing.border.MatteBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+
+import com.jtattoo.plaf.aluminium.AluminiumLookAndFeel;
+import com.jtattoo.plaf.smart.SmartLookAndFeel;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -57,6 +62,9 @@ import main.util.proxy.IProxyImage;
 import main.util.proxy.ProxyImage;
 
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.ListCellRenderer;
 import javax.swing.JComboBox;
 
@@ -158,21 +166,37 @@ public class GUIFront extends JFrame {
 	private static ColorSetting colors;
 	// }}
 	
+    static String colorToString (Color col){
+        int red = col.getRed();
+        int green = col.getGreen();
+        int blue = col.getBlue();
+        String theColor =  Integer.toString(red) + " " + Integer.toString(green) + " " + Integer.toString(blue);
+
+    	return theColor;
+    }
+    public static Properties props;
 	/** GUIFront Constructor
 	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
+	 * @throws UnsupportedLookAndFeelException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
 	@SuppressWarnings("unchecked")
-	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
+	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+		
+		
+		
 		// main application is invisible during loading screen
 		setVisible(false); 
 
 		// initializes color schemes, GUIBack, local maps, and global map
 		GUIFront.init(localMapFilenames);
-		
+
 		// This will setup the main JFrame to be maximized on start
 		setTitle("Era of Navigation");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
 		setPreferredSize(new Dimension(820, 650));
@@ -506,6 +530,11 @@ public class GUIFront extends JFrame {
 		
 		// Main Panel
 		mainPanel = new JTabbedPane();
+		//mainPanel.setOpaque(false);
+		UIManager.put("TabbedPane.tabsOpaque", false);
+		UIManager.put("TabbedPane.contentOpaque", false);
+		UIManager.put("TabbedPane.opaque", false);
+
 		mainPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		mainPanel.setBackground(backgroundColor);
 		mapViewButtons = new boolean[2];
@@ -912,10 +941,11 @@ public class GUIFront extends JFrame {
 		// Initialize tweening
 		slidePanel.setTweenManager(SLAnimator.createTweenManager());
 		slidePanel.initialize(mainConfig);
-
+		slidePanel.setOpaque(false);
 		// add to the tabbed pane
 		mainPanel.add(slidePanel, BorderLayout.CENTER);
 		mainPanel.setTitleAt(0, "Map View");
+		mainPanel.setBackgroundAt(0, backgroundColor);
 		getContentPane().add(mainPanel);
 		btnNextMap = new JButton("Next Map-->");
 		btnNextMap.setEnabled(false);
@@ -1116,6 +1146,46 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setBackground(otherButtonsColor);
 		contentPane.setBackground(backgroundColor);
 		btnClear.setBackground(otherButtonsColor);
+		
+        props.put("logoString", "EoN"); 
+        
+        props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
+        props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));
+        /*
+        props.put("controlColor", colorToString(colors.getMainBackColor()));
+        props.put("controlColorLight", colorToString(colors.getLineColor()));
+        props.put("controlColorDark", "180 240 197"); 
+
+        props.put("buttonColor", "218 230 254");
+        props.put("buttonColorLight", "255 255 255");
+        props.put("buttonColorDark", "244 242 232");
+
+        props.put("rolloverColor", colorToString(colors.getOutlineColor())); 
+        props.put("rolloverColorLight", colorToString(colors.getOutlineColor())); 
+        props.put("rolloverColorDark", colorToString(colors.getOutlineColor())); 
+        */
+        /*
+        props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
+        props.put("windowTitleColorLight", colorToString(colors.getOutlineColor())); 
+        props.put("windowTitleColorDark", colorToString(colors.getOutlineColor())); 
+        props.put("windowBorderColor", colorToString(colors.getOutlineColor()));
+        */
+        //props.put("windowTitleBackgroundColor", colorToString(colors.getOutlineColor())); 
+
+        props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
+        props.put("windowTitleBackgroundColor", colorToString(colors.getMainBackColor())); 
+        props.put("windowTitleColorLight", colorToString(colors.getMainBackColor())); 
+        props.put("windowTitleColorDark", colorToString(colors.getStartNodeColor())); 
+        props.put("frameColor", colorToString(colors.getOutlineColor()));
+        props.put("windowTitleFont", "Gulim Bold 20");
+        
+		//props.put("tabAreaBackgroundColor", colorToString(Color.white));
+	    AluminiumLookAndFeel.setCurrentTheme(props);
+		SwingUtilities.updateComponentTreeUI(this);
+
+	   
+	   
+
 	}
 
 	/** Changes the picture on the street view tab
@@ -1136,6 +1206,7 @@ public class GUIFront extends JFrame {
 
 		// connect Street View Panel to mainPanel
 		SLPanel streetViewSLPanel = new SLPanel();
+		streetViewSLPanel.setOpaque(false);
 		mainPanel.addTab("Street View", null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
 
@@ -1524,12 +1595,38 @@ public class GUIFront extends JFrame {
 		// Initialize Color Schemes
 		setAllSchemes(new ColorSchemes());  
 		setColors(getAllSchemes().setColorScheme("Default Campus"));
+		
+		 props = new Properties();
+         props.put("logoString", "EoN"); 
+         
+         props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
+         props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));
+         
+         /*props.put("controlColor", colorToString(colors.getOutlineColor()));
+         props.put("controlColorLight", colorToString(colors.getOutlineColor()));
+         props.put("controlColorDark", colorToString(colors.getOutlineColor())); 
+*/
+//         props.put("buttonColor", "218 230 254");
+      //   props.put("buttonColorLight", colorToString(Color.white));
+        // props.put("buttonColorDark", colorToString(colors.getOutlineColor()));
+/*
+         props.put("rolloverColor", "218 254 230"); 
+         props.put("rolloverColorLight", "218 254 230"); 
+         props.put("rolloverColorDark", "180 240 197"); 
+*/
+         props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
+         props.put("windowTitleBackgroundColor", colorToString(colors.getMainBackColor())); 
+         props.put("windowTitleColorLight", colorToString(colors.getMainBackColor())); 
+         props.put("windowTitleColorDark", colorToString(colors.getStartNodeColor())); 
+         props.put("frameColor", colorToString(colors.getOutlineColor()));
+         props.put("windowTitleFont", "Gulim Bold 20");
+
 
 		routeButtonColor = getColors().getRouteButtonColor();
 		otherButtonsColor = getColors().getOtherButtonsColor();
 		backgroundColor = getColors().getMainBackColor();
 		sideBarColor = getColors().getSideBarColor();
-
+	
 		// Instantiate GUIBack to its default
 		GUIBack initial = new GUIBack();
 		backends.add(0, initial);
@@ -1560,6 +1657,8 @@ public class GUIFront extends JFrame {
 			allNodes.addAll(local.getMapNodes());
 		}
 		getGlobalMap().setMapNodes(allNodes);
+ 	    AluminiumLookAndFeel.setCurrentTheme(props);
+
 	}
 	
 	// Initialize Group Layout

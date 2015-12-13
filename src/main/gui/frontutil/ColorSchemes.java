@@ -83,8 +83,8 @@ public class ColorSchemes {
 		greyscale.setRouteButtonColor(lightestGrey);
 		greyscale.setOtherButtonsColor(darkerGrey);
 		greyscale.setLineColor(defaultBlack);
-		greyscale.setMainBackColor(darkerGrey);
-		greyscale.setSideBarColor(lighterGrey);
+		greyscale.setMainBackColor(lighterGrey);
+		greyscale.setSideBarColor(darkerGrey);
 		greyscale.setStartNodeColor(darkestGrey);
 		greyscale.setEndNodeColor(lightestGrey);
 		greyscale.setOutlineColor(defaultBlack);
