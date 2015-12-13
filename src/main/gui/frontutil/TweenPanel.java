@@ -654,23 +654,28 @@ public class TweenPanel extends JPanel {
 
 		Graphics2D graphics = (Graphics2D) g;
 
-		if(this.mapImage == null) // StepByStep
-			if(!GUIFront.isCurrentlyOpen()){
-				GUIFront.getLblStepByStep().setVisible(false);
+		if(this.mapImage == null){ // StepByStep	
+			// Update showing directions or not
+			if(GUIFront.isCurrentlyOpen()){
+		        GUIFront.getListDirections().setFixedCellWidth(GUIFront.panelDirections.getWidth() - 10); // scale the cell width when resizing
+		        GUIFront.getListDirections().setVisibleRowCount((int) (GUIFront.panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
+		        GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 7)); // 7 pixels per 1 character
+		        
+		        
+				GUIFront.getLblClickHere().setVisible(false);
+				GUIFront.getLblDistance().setVisible(true);
+				GUIFront.getScrollPane().setVisible(true);
+				GUIFront.getListDirections().setVisible(true);
+				GUIFront.getLblStepByStep().setVisible(true);
+			} else {
 				GUIFront.getLblClickHere().setVisible(true);
 				GUIFront.getLblDistance().setVisible(false);
 				GUIFront.getScrollPane().setVisible(false);
 				GUIFront.getListDirections().setVisible(false);
-			} 
-			else {
-				GUIFront.getLblStepByStep().setVisible(true);
-				GUIFront.getLblDistance().setVisible(true);
-				GUIFront.getLblClickHere().setVisible(false);
-				GUIFront.getScrollPane().setVisible(true);
-				GUIFront.getListDirections().setVisible(true);
+				GUIFront.getLblStepByStep().setVisible(false);
 			}
-
-		else {
+		} 
+		else {			
 			// Save the current transformed state incase something goes wrong
 			AffineTransform saveTransform = graphics.getTransform();
 			GUIFront.setTransform(new AffineTransform(saveTransform));
@@ -777,7 +782,8 @@ public class TweenPanel extends JPanel {
 						g2.setColor(lineColor);
 						Stroke dashed = new BasicStroke(5, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
 						g2.setStroke(dashed);
-						this.drawDashedLine(g2, (int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
+						this.drawDashedLine(g2, (int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());						
+						
 					}
 				} 
 				}
@@ -805,7 +811,7 @@ public class TweenPanel extends JPanel {
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2 + 1).getYPos() - (int)getPanY(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY());
-				}
+				}				
 				repaint();
 				graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
 			}

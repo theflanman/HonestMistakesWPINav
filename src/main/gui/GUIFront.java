@@ -61,6 +61,7 @@ import main.util.proxy.IProxyImage;
 import main.util.proxy.ProxyImage;
 
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.ListCellRenderer;
 import javax.swing.JComboBox;
 
@@ -139,7 +140,7 @@ public class GUIFront extends JFrame {
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 	private DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
 	@SuppressWarnings("rawtypes")
-	private ListCellRenderer renderer;
+	private static ListCellRenderer renderer;
 	private int MAX_LIST_WIDTH = 180; // maximum width of the list in pixels, the size of panelDirections is 200px
 	private static JList<String> listDirections;
 
@@ -184,6 +185,7 @@ public class GUIFront extends JFrame {
 		setTitle("Era of Navigation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
+		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
@@ -698,7 +700,7 @@ public class GUIFront extends JFrame {
 		// Create a new list and be able to get the current width of the viewport it is contained in (the scrollpane)
 		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 7); // 7 pixels per 1 character
 
-		// List Directions
+		// List Directions	
 		setListDirections(new JList<String>(listModel));
 		getListDirections().setCellRenderer(renderer);
 		getListDirections().setFixedCellWidth(MAX_LIST_WIDTH); // give it a set width in pixels
@@ -996,72 +998,6 @@ public class GUIFront extends JFrame {
 		if(backend.splashFlag) 
 			setVisible(true);
 		
-		// Handles events that occur when resizing the window
-		addComponentListener(new ComponentListener() {
-		    public void componentResized(ComponentEvent e) {
-		        listDirections.setFixedCellWidth(panelDirections.getWidth() - 10); // scale the cell width when resizing
-		        listDirections.setVisibleRowCount((int) (panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
-		        renderer = new WrappableCellRenderer(panelDirections.getWidth() / 7); // 7 pixels per 1 character
-		        
-		        
-		        listDirections.revalidate();
-		        listDirections.repaint();
-		    }
-
-			@Override
-			public void componentHidden(ComponentEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void componentMoved(ComponentEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void componentShown(ComponentEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		// Checking for use of maximize button clicks
-		addWindowStateListener(new WindowStateListener() {
-			@Override
-			public void windowStateChanged(WindowEvent we) {
-				int oldState = we.getOldState();
-				int newState = we.getNewState();
-				
-		        if ((oldState & Frame.MAXIMIZED_BOTH) == 0 && (newState & Frame.MAXIMIZED_BOTH) != 0) {
-			        listDirections.setFixedCellWidth(panelDirections.getWidth() - 10); // scale the cell width when resizing
-			        listDirections.setVisibleRowCount((int) (panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
-			        renderer = new WrappableCellRenderer(panelDirections.getWidth() / 7); // 7 pixels per 1 character
-			        
-			        
-			        listDirections.revalidate();
-			        listDirections.repaint();
-			        
-			        System.out.println("Maximized");
-		        } 
-		        
-		        if(newState == 7) {
-			        listDirections.setFixedCellWidth(panelDirections.getWidth() - 10); // scale the cell width when resizing
-			        listDirections.setVisibleRowCount((int) (panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
-			        renderer = new WrappableCellRenderer(panelDirections.getWidth() / 7); // 7 pixels per 1 character
-			        
-			        
-			        listDirections.revalidate();
-			        listDirections.repaint();
-			        
-		        	System.out.println("I'm back");
-		        }
-		        
-		        revalidate();
-		        repaint();
-			}
-		});
 
 		pack();
 		setLocationRelativeTo(null);
@@ -1480,8 +1416,20 @@ public class GUIFront extends JFrame {
 		btnNextStep.setEnabled(false);
 		btnPreviousStep.setEnabled(false);
 		lblInvalidEntry.setVisible(false);
-		//textFieldEnd.setText("");
-		//textFieldStart.setText("");
+
+		// hide panel directions components
+		getLblStepByStep().setVisible(false);
+		getLblClickHere().setVisible(true);
+		getLblDistance().setVisible(false);
+		getScrollPane().setVisible(false);
+		getListDirections().setVisible(false);
+		
+		// Hide the directions information
+		getLblClickHere().setVisible(true);
+		getLblDistance().setVisible(false);
+		getScrollPane().setVisible(false);
+		getListDirections().setVisible(false);
+		getLblStepByStep().setVisible(false);
 
 		getGlobalMap().getChosenNodes().clear();
 		getLblDistance().setText("");
@@ -1539,69 +1487,6 @@ public class GUIFront extends JFrame {
 	public static void initGroupLayout(JLabel lblStart, JLabel lblEnd, 
 			JButton btnPreviousMap, JButton btnPreviousStep, JButton btnNextStep, JButton btnNextMap){
 		gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(10)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(start, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblStart, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGap(75)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(end, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblEnd, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-							.addGap(76)
-							.addComponent(lblInvalidEntry)
-							.addGap(226)
-							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnClear))
-						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(79)
-					.addComponent(btnPreviousMap)
-					.addGap(37)
-					.addComponent(btnPreviousStep)
-					.addGap(75)
-					.addComponent(btnNextStep)
-					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-					.addComponent(btnNextMap)
-					.addGap(170))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblStart)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(start, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblEnd)
-								.addComponent(lblInvalidEntry))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(end, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnRoute))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnClear)))
-					.addGap(14)
-					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnPreviousMap)
-						.addComponent(btnNextMap)
-						.addComponent(btnNextStep)
-						.addComponent(btnPreviousStep))
-					.addGap(35))
-		);
 
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()  // top line
@@ -1659,6 +1544,12 @@ public class GUIFront extends JFrame {
 	}
 	public static void setTransform(AffineTransform transform) {
 		GUIFront.transform = transform;
+	}
+	public static ListCellRenderer getRenderer(){
+		return renderer;
+	}
+	public static void setRenderer(ListCellRenderer aRenderer){
+		renderer = aRenderer;
 	}
 	public static GlobalMap getGlobalMap() {
 		return globalMap;
