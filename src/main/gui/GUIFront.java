@@ -339,15 +339,15 @@ public class GUIFront extends JFrame {
 					localmap.setEndNode(null);
 					globalMap.setEndNode(null);
 				}
+				boolean valid = false;
+				int stringDistance = 1000000000;
 				JComboBox source = (JComboBox)e.getSource();
 				String endString = (String) source.getSelectedItem();
+				String notInList = (String) source.getEditor().getItem();
+				System.out.println(notInList);
 				lblInvalidEntry.setVisible(false);
-				//if the user presses enter without having entered anything in this box
-				if (endString == null){
-					System.out.println("Need to enter a valid start location"); 
-				}else if (!(endString.isEmpty())) { //if there is something entered check if the name is valid and then basically add the end node
+				if (endString != null && notInList != "") { //if there is something entered check if the name is valid and then basically add the end node
 					//String endString = (String) end.getSelectedItem(); //entered text = endString constant
-					boolean valid = false;
 					Attributes attribute = new Attributes();
 
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
@@ -431,11 +431,77 @@ public class GUIFront extends JFrame {
 							}
 						} 
 					}
-
-					if (valid == false){
-						System.out.println("Invalid entry");
-						lblInvalidEntry.setVisible(true);
+				} else if (notInList != "" && endString == null){
+					String startString = (String) start.getSelectedItem();
+					if (startString != null && !(startString.isEmpty())){
+						for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+							if(startString.equals(mapnode.getAttributes().getOfficialName())){
+								startNode = mapnode; //set the startNode and then draw it on the map
+								getGlobalMap().setStartNode(startNode);
+								getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
+								LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
+								localmap.setStartNode(startNode);
+								btnClear.setEnabled(true);
+							}
+						}
+					} else if (globalMap.getStartNode() == null){
+							MapNode n = backend.getLocalMap().getMapNodes().get(0);
+							getGlobalMap().setStartNode(n);	
+							getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
+							LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
+							localmap.setStartNode(getGlobalMap().getStartNode());
+							btnClear.setEnabled(true);
 					}
+					//will need some way to alert the user that they need to enter a start location
+					System.out.println(notInList);
+					MapNode node = new MapNode();
+					for (MapNode mapnode : globalMap.getMapNodes()){
+						if (mapnode.getAttributes().getOfficialName() != "none" && mapnode.getAttributes().getOfficialName() != null && mapnode.getAttributes().getOfficialName() != ""){
+							if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
+								stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
+								System.out.println(stringDistance);
+								node = mapnode;
+								System.out.println(mapnode.getAttributes().getOfficialName());
+							}
+						}
+					}
+					System.out.println(node.getAttributes().getOfficialName());
+					end.setSelectedItem(node.getAttributes().getOfficialName());
+					//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
+					btnClear.setEnabled(true); //enable clear button if some node has been added
+					//System.out.println("This is the starting node");
+					node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
+					node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
+					node.runTransform();
+					getGlobalMap().setEndNode(node);
+					getGlobalMap().getChosenNodes().add(getGlobalMap().getEndNode());
+					LocalMap localmap = getGlobalMap().getEndNode().getLocalMap();
+					localmap.setEndNode(getGlobalMap().getEndNode());
+					panelMap.setMapImage(new ProxyImage(getGlobalMap().getEndNode().getLocalMap().getMapImageName()));
+					panelMap.setMapNodes(getGlobalMap().getEndNode().getLocalMap().getMapNodes());
+					String previousMap = backend.getLocalMap().getMapImageName();
+					panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
+					backend.setLocalMap(localmap);
+					backend.getLocalMap().setEndNode(getGlobalMap().getEndNode());
+					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+					double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+					panelMap.setPanX(defPan[0]);
+					panelMap.setPanY(defPan[1]);
+					panelMap.setScale(defPan[2]);
+					offsetX = defPan[0] - tempPan[0];
+					offsetY = defPan[1] - tempPan[1];
+					for(MapNode n : backend.getLocalMap().getMapNodes()){
+						node.setXPos(node.getXPos() + offsetX);
+						node.setYPos(node.getYPos() + offsetY);
+					}	
+					btnClear.setEnabled(true);
+					valid = true;
+				} else if (endString == null && notInList == ""){
+					System.out.println("Need to enter a valid start location");
+				}
+				if (valid == false){
+					System.out.println("Invalid entry");
+					lblInvalidEntry.setVisible(true);
 				}
 			}
 		};		
