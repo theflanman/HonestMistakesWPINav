@@ -108,6 +108,7 @@ public class GUIFront extends JFrame {
 	public static int index = 0;
 	public static int index2 = 0;
 	public static int index3 = 0;
+	public static boolean btnNextStepWasPressedLast;
 	public static int[] index3Help = {};
 	public static ArrayList<MapNode> thisRoute = new ArrayList<MapNode>();
 	public static HashMap<String, double[]> panValues = new HashMap<String, double[]>();
@@ -754,9 +755,8 @@ public class GUIFront extends JFrame {
 							drawNodes = true;
 						}
 						index3 -= indexHelp;
-						if (index3 >= paths.get(index).size() - 1){
+						if (index3 >= paths.get(index).size() - 1)
 							index++;
-						}
 						
 						index2 = index3;
 						drawLine2 = true;
@@ -812,24 +812,22 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae){
 				index2 = 0;
+				index3 = 0;
 				index++;
+				
+				System.out.println("INDEX:" + index);
+				System.out.println("PATH SIZE: " + paths.size());
 
-				if (index <= 0){
+				int pathSize = paths.size() - 2;
+				if (index <= 0)
 					btnPreviousMap.setEnabled(false);
-					btnPreviousStep.setEnabled(false);
-				}
-				if (index >= paths.size() - 1){
+				if (index >= pathSize)
 					btnNextMap.setEnabled(false);
-					btnNextStep.setEnabled(false);
-				}
-				if (index > 0){
+				if (index > 0)
 					btnPreviousMap.setEnabled(true);
-					btnPreviousStep.setEnabled(true);
-				}
-				if (index < paths.size() - 1){
-					btnNextStep.setEnabled(true);
+				if (index < pathSize)
 					btnNextMap.setEnabled(true);
-				}
+
 				drawLine2 = false;
 				drawLine3 = false;
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
@@ -867,9 +865,11 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae) {
+				index2 = paths.get(index).size() - 1;
+				index3 = paths.get(index).size() - 1;
+				
 				index--;
-				//index3 = paths.get(index + 1).size();
-				//listDirections.setSelectedIndex(index3);
+				
 				if (index <= 0){
 					btnPreviousMap.setEnabled(false);
 				}
@@ -929,23 +929,46 @@ public class GUIFront extends JFrame {
 		btnNextStep = new JButton("Next Step->");
 		btnNextStep.setEnabled(false);
 		btnNextStep.setBackground(otherButtonsColor);
+		btnNextStepWasPressedLast = true;
 		btnNextStep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				drawLine3 = false;
-				index2++;
-				index3++;
-				if (!(index2 < paths.get(index).size())){
-					btnNextStep.setEnabled(false);
+				
+				System.out.println("PATH SIZE: " + paths.get(index).size());
+				
+				if(index2 < (paths.get(index).size() - 1))
+					index2++;
+				if(index3 < (paths.get(index).size() - 1))
+					index3++;
+				
+				// fixes bug that doesn't go to the next step if prev step was pressed
+				if(! btnNextStepWasPressedLast){
+					index2++;
+					index3++;
 				}
-				if (index2 >= paths.get(index).size()){
-					if (index < paths.size() - 1) {
-						btnNextMap.doClick();
-					}
-				} else {
-					//listDirections.setSelectedIndex(index3);
+					
+				System.out.println("INDEX: " + index);
+				System.out.println("INDEX2: " + index2);
+				System.out.println("INDEX3: " + index3);
+				System.out.println("----------");
+				
+				// switch to next map if possible
+				if(index2 == paths.get(index).size() - 1 &&
+						index3 == paths.get(index).size() - 1 &&
+						btnNextMap.isEnabled())
+					
+					btnNextMap.doClick();
+				else if(index2 == (paths.get(index).size() - 1) && 
+						index3 == (paths.get(index).size() - 1) &&
+						(! btnNextMap.isEnabled()))
+					
+					btnNextStep.setEnabled(false);
+				else {
 					drawLine2 = true;
 					btnPreviousStep.setEnabled(true);
 				}
+								
+				btnNextStepWasPressedLast = true;
 			}
 		});
 
@@ -955,15 +978,39 @@ public class GUIFront extends JFrame {
 		btnPreviousStep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				drawLine2 = false;
-				index2--;
-				index3--;
+				
+				if(index2 > 0)
+					index2--;
+				if(index3 > 0)
+					index3--;
+				
+				// fixes bug that doesn't go to the prev step if next step was pressed last
+				if(btnNextStepWasPressedLast){
+					index2--;
+					index3--;
+				}
+				
+				System.out.println("INDEX: " + index);
+				System.out.println("INDEX2: " + index2);
+				System.out.println("INDEX3: " + index3);
+				System.out.println("----------");
+				
 				if (index2 < 0){
 					btnPreviousMap.doClick();
 					drawLine3 = false;
-				} else {
-					//listDirections.setSelectedIndex(index3);
+				} 
+				else 
 					drawLine3 = true;
-				}
+				
+				// switch to prev map if possible
+				if(index2 == 0 && index3 == 0 && btnPreviousMap.isEnabled())
+					btnPreviousMap.doClick();
+				
+				if(index2 == 0 && index3 == 0
+						&& (! btnPreviousMap.isEnabled()))
+					btnPreviousStep.setEnabled(false);
+				
+				btnNextStepWasPressedLast = false;
 			}
 		});
 		// }} GroupLayout code for tabs and text fields

@@ -381,7 +381,7 @@ public class TweenPanel extends JPanel {
 							popupMenu.show(GUIFront.panelMap, me.getX(), me.getY());
 							return; 
 						}
-						
+
 						//Higgins Garage
 						if(hHGPolygon.contains(GUIFront.getMainReferencePoint())){
 							JPopupMenu popupMenu = new JPopupMenu();
@@ -478,7 +478,7 @@ public class TweenPanel extends JPanel {
 							popupMenu.show(GUIFront.panelMap, me.getX(), me.getY());
 							return; 
 						}
-						
+
 
 						//refer to Andrew Petit if this doesn't make sense
 						if(GUIFront.getGlobalMap().getChosenNodes().size() == 0){//set the start node of the globalnodes list of chosenNodes if that list is empty
@@ -495,7 +495,7 @@ public class TweenPanel extends JPanel {
 								GUIFront.getGlobalMap().getAllNodes().add(node);
 								GUIFront.backend.getLocalMap().setEndNode(node);//remember to set the start node of that localMap the user is currently on
 								GUIFront.btnRoute.setEnabled(true);
-			
+
 							}
 							else{
 								//this means we need to account for waypoints
@@ -624,22 +624,22 @@ public class TweenPanel extends JPanel {
 		.target(2)
 		.start(tweenManager);
 	}
-	
+
 	/**
 	 * Draw Dashed Line
 	 */
 	public void drawDashedLine(Graphics g, int x1, int y1, int x2, int y2){
 
-        //creates a copy of the Graphics instance
-        Graphics2D g2d = (Graphics2D) g.create();
+		//creates a copy of the Graphics instance
+		Graphics2D g2d = (Graphics2D) g.create();
 
-        Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
-        g2d.setStroke(dashed);
-        g2d.drawLine(x1, y1, x2, y2);
+		Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+		g2d.setStroke(dashed);
+		g2d.drawLine(x1, y1, x2, y2);
 
-        //gets rid of the copy
-        g2d.dispose();
-        
+		//gets rid of the copy
+		g2d.dispose();
+
 	}
 
 	@Override
@@ -681,7 +681,7 @@ public class TweenPanel extends JPanel {
 
 			GUIFront.getTransform().translate(getPanX(), getPanY()); // move to designated location
 			graphics.setTransform(GUIFront.getTransform());
-			
+
 			// Colors start and end differently
 			// Draws the map and places pre-existing node data onto the map as
 			// well start and end nodes if they have been set
@@ -715,7 +715,7 @@ public class TweenPanel extends JPanel {
 				// Sets the color of the start and end nodes to be different
 				graphics.setStroke(new BasicStroke(1));
 				graphics.setColor(startNodeColor);
-				
+
 				if(GUIFront.drawNodes){
 					if(!(GUIFront.paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
 						if (GUIFront.paths.get(GUIFront.index).get(0) != null){ // make sure that the start node (which it should never be) is not null
@@ -771,24 +771,24 @@ public class TweenPanel extends JPanel {
 						}
 					}
 				}
-				
+
 				//this is where you draw the lines
 				if (GUIFront.drawLine) {
-				if (GUIFront.getGlobalMap().getChosenNodes().size() >= 1) {
-					for (int i = 0; i < GUIFront.thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
-						double x1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[0];
-						double y1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[1];
-						double x2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[0];
-						double y2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[1];
-						Graphics2D g2 = (Graphics2D) g;
-						g2.setColor(lineColor);
-						Stroke dashed = new BasicStroke(5, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
-						g2.setStroke(dashed);
-						this.drawDashedLine(g2, (int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
-					}
-				} 
+					if (GUIFront.getGlobalMap().getChosenNodes().size() >= 1) {
+						for (int i = 0; i < GUIFront.thisRoute.size() - 1; i++){//basically go through the current map and draw the lines for all links between nodes in a route on that map
+							double x1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[0];
+							double y1 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i)[1];
+							double x2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[0];
+							double y2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[1];
+							Graphics2D g2 = (Graphics2D) g;
+							g2.setColor(lineColor);
+							Stroke dashed = new BasicStroke(5, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+							g2.setStroke(dashed);
+							this.drawDashedLine(g2, (int) x1 - (int)getPanX(), (int) y1 - (int)getPanY(), (int) x2 - (int)getPanX(), (int) y2 - (int)getPanY());
+						}
+					} 
 				}
-				
+
 				if (GUIFront.drawLine2 == true){
 					Graphics2D g2 = (Graphics2D) g;
 					g2.setStroke(new BasicStroke(2));
@@ -797,11 +797,6 @@ public class TweenPanel extends JPanel {
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2 - 1).getYPos() - (int)getPanY(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY());
-					/*g2.setColor(Color.BLACK);
-					g2.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
-							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY(), 10, 10);
-					g2.drawOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos(), 
-							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos(), 10, 10);*/
 				}
 
 				if (GUIFront.drawLine3 == true){
@@ -813,6 +808,7 @@ public class TweenPanel extends JPanel {
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY());
 				}
+				
 				repaint();
 				graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
 			}
