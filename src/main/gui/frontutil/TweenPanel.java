@@ -49,7 +49,7 @@ public class TweenPanel extends JPanel {
 	private boolean hover = false;
 	private int borderThickness = 2;
 	private String panelID;
-
+	
 	private double panX;
 	private double panY;
 	double zoomRatio;
@@ -121,8 +121,7 @@ public class TweenPanel extends JPanel {
 			addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent me) {
-					if (GUIFront.allowSetting == true){
-
+					if (GUIFront.allowSetting == true && GUIFront.drawLine == false){
 						// Reset the main reference point incase we are clicking away from a popup menu
 						try {
 							GUIFront.setMainReferencePoint(GUIFront.getTransform().inverseTransform(me.getPoint(), null));
@@ -520,7 +519,9 @@ public class TweenPanel extends JPanel {
 
 						repaint();
 
-					}	
+					} else if (GUIFront.drawLine == true){
+						GUIFront.btnClear.doClick();
+					}
 				}
 			});
 		}
@@ -793,8 +794,8 @@ public class TweenPanel extends JPanel {
 					/*g2.setColor(Color.BLACK);
 					g2.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY(), 10, 10);
-					g2.drawOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos(), 
-							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos(), 10, 10);*/
+					g2.drawOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() -5, 
+							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() + 4, 10, 10);*/
 				}
 
 				if (GUIFront.drawLine3 == true){
@@ -806,6 +807,8 @@ public class TweenPanel extends JPanel {
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY());
 				}
+				
+				
 				repaint();
 				graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
 			}

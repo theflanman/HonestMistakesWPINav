@@ -11,7 +11,6 @@ import javax.swing.JList;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import aurelienribon.slidinglayout.SLAnimator;
@@ -38,6 +37,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -63,15 +63,9 @@ import javax.swing.JComboBox;
 import com.memetix.mst.language.Language;
 import com.memetix.mst.translate.Translate;
 
-import ca.odell.glazedlists.EventList;
-//import ca.odell.glazedlists.BasicEventList;
-//import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.GlazedLists;
-//import ca.odell.glazedlists.TextFilterator;
-//import ca.odell.glazedlists.matchers.TextMatcherEditor;
 import ca.odell.glazedlists.swing.AutoCompleteSupport;
-//import ca.odell.glazedlists.swing.GlazedListsSwing;
-import ca.odell.glazedlists.swing.EventComboBoxModel;
+
 
 /**
  * This class contains code for the main applications GUI interface as well as
@@ -112,6 +106,7 @@ public class GUIFront extends JFrame {
 	public static int index3 = 0;
 	public static int[] index3Help = {};
 	public static ArrayList<MapNode> thisRoute = new ArrayList<MapNode>();
+	public static ArrayList<String> officialName = null;
 	public static HashMap<String, double[]> panValues = new HashMap<String, double[]>();
 	public static HashMap<String, double[]> defaults = new HashMap<String, double[]>();
 	public static double offsetX = 0;
@@ -130,7 +125,7 @@ public class GUIFront extends JFrame {
 	private static boolean[] mapViewButtons;
 
 	// Directions Components
-	private static JLabel lblStepByStep, lblClickHere, lblDistance, lblInvalidEntry;
+	private static JLabel lblStepByStep, lblClickHere, lblDistance;
 	private static JScrollPane scrollPane;
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 	private DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
@@ -187,13 +182,14 @@ public class GUIFront extends JFrame {
 		setZoomHandle(new ZoomHandler());
 
 		//Initialize Start and End Combo Boxes 
-		ArrayList<String>officialName = new ArrayList<String>();
+		officialName = new ArrayList<String>();
 		for(MapNode mapnode : globalMap.getMapNodes()){
 			officialName.add(mapnode.getAttributes().getOfficialName());
 		}
 		start = new JComboBox(officialName.toArray());
 		start.setEditable(true);
 		AutoCompleteSupport.install(start, GlazedLists.eventListOf(officialName.toArray()));
+		
 		
 		end = new JComboBox();
 		end.setEditable(true);
@@ -217,8 +213,6 @@ public class GUIFront extends JFrame {
 		// Image of the default map loaded into backend
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
 		IProxyImage mapPath = new ProxyImage(defaultMapImage);
-		lblInvalidEntry = new JLabel("Invalid Entry");
-		lblInvalidEntry.setVisible(false);
 		
 		//when you press enter after entering stuff in textfieldStart
 		Action actionStart = new AbstractAction()
@@ -237,21 +231,17 @@ public class GUIFront extends JFrame {
 					localmap.setStartNode(null);
 					globalMap.setStartNode(null);
 				}
+				int stringDistance = 1000000000;
 				String startString = (String) start.getSelectedItem();
-				System.out.println(startString);
-				lblInvalidEntry.setVisible(false);
-				System.out.println("Enter was pressed");
-				if (startString == null){
-					//will need some way to alert the user that they need to enter a start location
-					System.out.println("Need to enter a valid start location");
-				} 
-				else if (startString != null) {//if there is something entered check if the name is valid and then basically add the start node
-					boolean valid = false;
+				String notInList = (String) start.getEditor().getItem();
+				boolean valid = false;
+				//System.out.println(startString);
+				if (startString != null) {//if there is something entered check if the name is valid and then basically add the start node
 					for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 							btnClear.setEnabled(true); //enable clear button if some node has been added
-							System.out.println("This is the starting node");
+							//System.out.println("This is the starting node");
 							mapnode.setXFeet(mapnode.getLocalMap().getMapScale()*mapnode.getXPos());
 							mapnode.setYFeet(mapnode.getLocalMap().getMapScale()*mapnode.getYPos());
 							mapnode.runTransform();
@@ -282,11 +272,56 @@ public class GUIFront extends JFrame {
 							valid = true;
 						}
 					}
-					if (valid == false){
-						//tell user this entry is invalid
-						System.out.println("Invalid entry");
-						lblInvalidEntry.setVisible(true);
+				} else if (notInList != "" && startString == null){
+					//will need some way to alert the user that they need to enter a start location
+					System.out.println(notInList);
+					MapNode node = new MapNode();
+					for (MapNode mapnode : globalMap.getMapNodes()){
+						if (mapnode.getAttributes().getOfficialName() != "none" && mapnode.getAttributes().getOfficialName() != null && mapnode.getAttributes().getOfficialName() != ""){
+							if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
+								stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
+								System.out.println(stringDistance);
+								node = mapnode;
+								System.out.println(mapnode.getAttributes().getOfficialName());
+							}
+						}
 					}
+					System.out.println(node.getAttributes().getOfficialName());
+					start.setSelectedItem(node.getAttributes().getOfficialName());
+					//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
+					btnClear.setEnabled(true); //enable clear button if some node has been added
+					//System.out.println("This is the starting node");
+					node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
+					node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
+					node.runTransform();
+					getGlobalMap().setStartNode(node);
+					getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
+					LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
+					localmap.setStartNode(getGlobalMap().getStartNode());
+					panelMap.setMapImage(new ProxyImage(getGlobalMap().getStartNode().getLocalMap().getMapImageName()));
+					panelMap.setMapNodes(getGlobalMap().getStartNode().getLocalMap().getMapNodes());
+					String previousMap = backend.getLocalMap().getMapImageName();
+					panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
+					backend.setLocalMap(localmap);
+					backend.getLocalMap().setStartNode(getGlobalMap().getStartNode());
+					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+					double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+					panelMap.setPanX(defPan[0]);
+					panelMap.setPanY(defPan[1]);
+					panelMap.setScale(defPan[2]);
+					offsetX = defPan[0] - tempPan[0];
+					offsetY = defPan[1] - tempPan[1];
+					for(MapNode n : backend.getLocalMap().getMapNodes()){
+						n.setXPos(n.getXPos() + offsetX);
+						n.setYPos(n.getYPos() + offsetY);
+					}	
+					btnClear.setEnabled(true);
+					valid = true;
+					
+				} else if (notInList == "" && startString == null){
+					System.out.println("User has not entered anything in");
+				}
+				if (valid == false){//do nothing - this is the case when the user has deleted everything in the box
 				}
 			}
 		};
@@ -302,20 +337,19 @@ public class GUIFront extends JFrame {
 					localmap.setEndNode(null);
 					globalMap.setEndNode(null);
 				}
+				boolean valid = false;
+				int stringDistance = 1000000000;
 				JComboBox source = (JComboBox)e.getSource();
 				String endString = (String) source.getSelectedItem();
-				lblInvalidEntry.setVisible(false);
-				//if the user presses enter without having entered anything in this box
-				if (endString == null){
-					System.out.println("Need to enter a valid start location"); 
-				}else if (!(endString.equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
+				String notInList = (String) source.getEditor().getItem();
+				System.out.println(notInList);
+				if (endString != null && notInList != "") { //if there is something entered check if the name is valid and then basically add the end node
 					//String endString = (String) end.getSelectedItem(); //entered text = endString constant
-					boolean valid = false;
 					Attributes attribute = new Attributes();
 
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
 					String startString = (String) start.getSelectedItem();
-					if (startString != null){
+					if (startString != null && !(startString.isEmpty())){
 						for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 							if(startString.equals(mapnode.getAttributes().getOfficialName())){
 								startNode = mapnode; //set the startNode and then draw it on the map
@@ -394,11 +428,75 @@ public class GUIFront extends JFrame {
 							}
 						} 
 					}
-
-					if (valid == false){
-						System.out.println("Invalid entry");
-						lblInvalidEntry.setVisible(true);
+				} else if (notInList != "" && endString == null){
+					String startString = (String) start.getSelectedItem();
+					if (startString != null && !(startString.isEmpty())){
+						for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+							if(startString.equals(mapnode.getAttributes().getOfficialName())){
+								startNode = mapnode; //set the startNode and then draw it on the map
+								getGlobalMap().setStartNode(startNode);
+								getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
+								LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
+								localmap.setStartNode(startNode);
+								btnClear.setEnabled(true);
+							}
+						}
+					} else if (globalMap.getStartNode() == null){
+							MapNode n = backend.getLocalMap().getMapNodes().get(0);
+							getGlobalMap().setStartNode(n);	
+							getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
+							LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
+							localmap.setStartNode(getGlobalMap().getStartNode());
+							btnClear.setEnabled(true);
 					}
+					//will need some way to alert the user that they need to enter a start location
+					System.out.println(notInList);
+					MapNode node = new MapNode();
+					for (MapNode mapnode : globalMap.getMapNodes()){
+						if (mapnode.getAttributes().getOfficialName() != "none" && mapnode.getAttributes().getOfficialName() != null && mapnode.getAttributes().getOfficialName() != ""){
+							if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
+								stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
+								System.out.println(stringDistance);
+								node = mapnode;
+								System.out.println(mapnode.getAttributes().getOfficialName());
+							}
+						}
+					}
+					System.out.println(node.getAttributes().getOfficialName());
+					end.setSelectedItem(node.getAttributes().getOfficialName());
+					//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
+					btnClear.setEnabled(true); //enable clear button if some node has been added
+					//System.out.println("This is the starting node");
+					node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
+					node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
+					node.runTransform();
+					getGlobalMap().setEndNode(node);
+					getGlobalMap().getChosenNodes().add(getGlobalMap().getEndNode());
+					LocalMap localmap = getGlobalMap().getEndNode().getLocalMap();
+					localmap.setEndNode(getGlobalMap().getEndNode());
+					panelMap.setMapImage(new ProxyImage(getGlobalMap().getEndNode().getLocalMap().getMapImageName()));
+					panelMap.setMapNodes(getGlobalMap().getEndNode().getLocalMap().getMapNodes());
+					String previousMap = backend.getLocalMap().getMapImageName();
+					panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
+					backend.setLocalMap(localmap);
+					backend.getLocalMap().setEndNode(getGlobalMap().getEndNode());
+					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+					double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+					panelMap.setPanX(defPan[0]);
+					panelMap.setPanY(defPan[1]);
+					panelMap.setScale(defPan[2]);
+					offsetX = defPan[0] - tempPan[0];
+					offsetY = defPan[1] - tempPan[1];
+					for(MapNode n : backend.getLocalMap().getMapNodes()){
+						n.setXPos(n.getXPos() + offsetX);
+						n.setYPos(n.getYPos() + offsetY);
+					}	
+					btnClear.setEnabled(true);
+					valid = true;
+				} else if (endString == null && notInList == ""){
+					System.out.println("User has not entered anything in");
+				}
+				if (valid == false){//do nothing - this is the case when the user has deleted everything in the box 
 				}
 			}
 		};		
@@ -463,7 +561,7 @@ public class GUIFront extends JFrame {
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
-
+					drawLine = true; //only needed now to let the system know that the line has been drawn
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH); //sets the speaker to play the designated sound for calculate route
@@ -1390,12 +1488,14 @@ public class GUIFront extends JFrame {
 	 */
 	public void reset() {
 		allowSetting = true; //allow user to re place nodes only once reset is pressed
-		getGlobalMap().getStartNode().getLocalMap().setStartNode(null);
+		if(getGlobalMap().getStartNode() != null){
+			getGlobalMap().getStartNode().getLocalMap().setStartNode(null);
+			getGlobalMap().setStartNode(null);
+		}
 		if (getGlobalMap().getEndNode() != null){
 			getGlobalMap().getEndNode().getLocalMap().setEndNode(null);
 			getGlobalMap().setEndNode(null);
 		}
-		getGlobalMap().setStartNode(null);
 		reset = true;
 		listModel.removeAllElements(); // clear directions
 
@@ -1408,14 +1508,12 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setEnabled(false);
 		btnNextStep.setEnabled(false);
 		btnPreviousStep.setEnabled(false);
-		lblInvalidEntry.setVisible(false);
-		//textFieldEnd.setText("");
-		//textFieldStart.setText("");
 
 		getGlobalMap().getChosenNodes().clear();
 		getLblDistance().setText("");
 		btnClear.setEnabled(false);
 		btnRoute.setEnabled(false);
+		drawLine = false;
 		drawLine2 = false;
 		drawLine3 = false;
 		drawNodes = true;
@@ -1472,23 +1570,22 @@ public class GUIFront extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(10)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(start, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(lblStart, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGap(75)
+							.addGap(51)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(end, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(lblEnd, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-							.addGap(76)
-							.addComponent(lblInvalidEntry)
-							.addGap(226)
+							.addGap(351)
 							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnClear))
-						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnClear)
+							.addGap(22))))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(79)
 					.addComponent(btnPreviousMap)
@@ -1506,21 +1603,21 @@ public class GUIFront extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblStart)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(start, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblEnd)
-								.addComponent(lblInvalidEntry))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(end, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblStart)
+								.addComponent(lblEnd))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(start, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(5)
+									.addComponent(end, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(11)
-							.addComponent(btnRoute))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnClear)))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnRoute)
+								.addComponent(btnClear))))
 					.addGap(14)
 					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
@@ -1542,7 +1639,6 @@ public class GUIFront extends JFrame {
 							.addComponent(lblEnd)
 							.addComponent(end, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-					.addComponent(lblInvalidEntry)
 					.addComponent(btnRoute)
 					.addComponent(btnClear)
 				)
@@ -1563,7 +1659,6 @@ public class GUIFront extends JFrame {
 				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(start)
 						.addComponent(end)
-						.addComponent(lblInvalidEntry)
 						.addComponent(btnRoute)
 						.addComponent(btnClear))
 				.addGroup(gl_contentPane.createSequentialGroup())
