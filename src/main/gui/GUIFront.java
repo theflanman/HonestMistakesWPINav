@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.awt.geom.AffineTransform;
 import java.io.File;
 
@@ -991,6 +995,73 @@ public class GUIFront extends JFrame {
 		// check if it is done loading then make the gui visible
 		if(backend.splashFlag) 
 			setVisible(true);
+		
+		// Handles events that occur when resizing the window
+		addComponentListener(new ComponentListener() {
+		    public void componentResized(ComponentEvent e) {
+		        listDirections.setFixedCellWidth(panelDirections.getWidth() - 10); // scale the cell width when resizing
+		        listDirections.setVisibleRowCount((int) (panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
+		        renderer = new WrappableCellRenderer(panelDirections.getWidth() / 7); // 7 pixels per 1 character
+		        
+		        
+		        listDirections.revalidate();
+		        listDirections.repaint();
+		    }
+
+			@Override
+			public void componentHidden(ComponentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void componentMoved(ComponentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void componentShown(ComponentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		// Checking for use of maximize button clicks
+		addWindowStateListener(new WindowStateListener() {
+			@Override
+			public void windowStateChanged(WindowEvent we) {
+				int oldState = we.getOldState();
+				int newState = we.getNewState();
+				
+		        if ((oldState & Frame.MAXIMIZED_BOTH) == 0 && (newState & Frame.MAXIMIZED_BOTH) != 0) {
+			        listDirections.setFixedCellWidth(panelDirections.getWidth() - 10); // scale the cell width when resizing
+			        listDirections.setVisibleRowCount((int) (panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
+			        renderer = new WrappableCellRenderer(panelDirections.getWidth() / 7); // 7 pixels per 1 character
+			        
+			        
+			        listDirections.revalidate();
+			        listDirections.repaint();
+			        
+			        System.out.println("Maximized");
+		        } 
+		        
+		        if(newState == 7) {
+			        listDirections.setFixedCellWidth(panelDirections.getWidth() - 10); // scale the cell width when resizing
+			        listDirections.setVisibleRowCount((int) (panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
+			        renderer = new WrappableCellRenderer(panelDirections.getWidth() / 7); // 7 pixels per 1 character
+			        
+			        
+			        listDirections.revalidate();
+			        listDirections.repaint();
+			        
+		        	System.out.println("I'm back");
+		        }
+		        
+		        revalidate();
+		        repaint();
+			}
+		});
 
 		pack();
 		setLocationRelativeTo(null);
