@@ -2,6 +2,9 @@ package main;
 
 import java.util.ArrayList;
 
+import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
+
 /*
  * This class contains methods regarding the StepByStep directions
  * 
@@ -94,7 +97,11 @@ public class StepByStep {
 	 * @return list of instruction for the step by step navigation in as one
 	 *         string for each instruction
 	 */
-	public ArrayList<String> printDirection() {
+	public ArrayList<String> printDirection(Language language) {	
+	    // Set your Windows Azure Marketplace client info - See http://msdn.microsoft.com/en-us/library/hh454950.aspx
+	    Translate.setClientId("honest-mistakes");
+	    Translate.setClientSecret("34JgO9+sszgIg4TEW0k9hHBee67V8/ul9m1iwQkExtg=");
+	    
 		// Initialize list of strings to return
 		ArrayList<String> stepList = new ArrayList<String>();
 
@@ -225,6 +232,26 @@ public class StepByStep {
 				}
 			}
 		}
+		
+		// change language if necessary
+		try{
+			if(! language.equals(Language.ENGLISH)){
+				ArrayList<String> stepListTranslated = new ArrayList<String>();
+				
+				for(String step : stepList){
+					step = step.replace(".", ":"); // "." is a wildcard for the replace's regex
+					String[] steps = step.split(": ");
+					steps[1] = Translate.execute(steps[1], Language.ENGLISH, language);
+					step = steps[0] + ". " + steps[1].substring(0, steps[1].length()-1) + ".";
+					stepListTranslated.add(step);
+				}
+				
+				stepList = stepListTranslated;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return stepList;
 	}
 }

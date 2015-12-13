@@ -56,8 +56,12 @@ import main.util.Speaker;
 import main.util.proxy.IProxyImage;
 import main.util.proxy.ProxyImage;
 
+import javax.swing.SwingConstants;
 import javax.swing.ListCellRenderer;
 import javax.swing.JComboBox;
+
+import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
 
 import ca.odell.glazedlists.GlazedLists;
 import ca.odell.glazedlists.swing.AutoCompleteSupport;
@@ -70,7 +74,7 @@ import ca.odell.glazedlists.swing.AutoCompleteSupport;
  * Tween code adapted from Aurelien Ribon's Sliding Layout Demo 
  * 
  * Note:
- * 	The "// {{" is CoffeeByte syntax for specifying code collapsing
+ * 	The "// {{" and "// }}" is CoffeeByte syntax for specifying code collapsing
  * 
  * @author Trevor
  */
@@ -133,10 +137,12 @@ public class GUIFront extends JFrame {
 	// Menu Bar
 	private JMenuBar menuBar;
 	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
-	private JMenu mnColorScheme;
+	private ArrayList<JMenu> mnOptionList = new ArrayList<JMenu>();
 	private ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
+	private static ArrayList<JMenuItem> mntmLanguages = new ArrayList<JMenuItem>();
 	private ArrayList<JMenu> mnBuildings = new ArrayList<JMenu>();
 	private JMenuItem mntmEmail, mntmExit;
+	private static Language language;
 
 	private SLPanel slidePanel;
 	private JPanel stepByStepUI;
@@ -169,14 +175,12 @@ public class GUIFront extends JFrame {
 		setTitle("Era of Navigation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
-		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
 		setPanHandle(new PanHandler());
 		setZoomHandle(new ZoomHandler());
 
-		
 		//Initialize Start and End Combo Boxes 
 		officialName = new ArrayList<String>();
 		for(MapNode mapnode : globalMap.getMapNodes()){
@@ -576,9 +580,9 @@ public class GUIFront extends JFrame {
 						if (getGlobalMap().getChosenNodes().get(i).getLocalMap() == getGlobalMap().getChosenNodes().get(i + 1).getLocalMap()){
 							ArrayList<MapNode> nodesOnSameMap = backend.runAStar(getGlobalMap().getChosenNodes().get(i), getGlobalMap().getChosenNodes().get(i + 1));
 							if (getGlobalMap().getChosenNodes().size() == i + 2){
-								directions = backend.displayStepByStep(nodesOnSameMap, false); //no more waypoints 
+								directions = backend.displayStepByStep(nodesOnSameMap, false, getLanguage()); //no more waypoints 
 							} else {
-								directions = backend.displayStepByStep(nodesOnSameMap, true); //more waypoints
+								directions = backend.displayStepByStep(nodesOnSameMap, true, getLanguage()); //more waypoints
 							}
 							stepByStep.add(directions); //essentially makes a list of all step by step directions to be added to the jlist
 							directions = new ArrayList<String>(); //reset directions
@@ -604,7 +608,7 @@ public class GUIFront extends JFrame {
 										}
 									}
 								}
-								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint, getLanguage());
 								stepByStep.add(directions);
 
 								for (MapNode mapnode : getNodesOnDifferentMap.get(0)){ 
@@ -633,7 +637,7 @@ public class GUIFront extends JFrame {
 										}
 									}
 								}
-								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint, getLanguage());
 								stepByStep.add(directions);
 								for (ArrayList<MapNode> mapnodes : getNodesOnDifferentMap){
 									paths.add(mapnodes);
@@ -716,7 +720,18 @@ public class GUIFront extends JFrame {
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
-					listModel.addElement("Welcome to the Era of Navigation!");
+					
+					try {
+						String welcomeMessage = "Welcome to the Era of Navigation.";
+
+						if(! getLanguage().equals(Language.ENGLISH))
+							welcomeMessage = Translate.execute(welcomeMessage, Language.ENGLISH, getLanguage());
+						
+						listModel.addElement(welcomeMessage);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}			
+					
 					for (ArrayList<String> strings: stepByStep){
 						for (String string : strings) {
 							listModel.addElement(string); // add it to the list model
@@ -883,14 +898,14 @@ public class GUIFront extends JFrame {
 		 */
 		mainConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
-		.row(1f).col(700).col(50) // 700xH | 50xH
+		.row(1f).col(14f).col(1f) // Ratio of 14 : 1 when closed
 		.place(0, 0, panelMap)
 		.place(0, 1, panelDirections);
 
 		// Panel Directions Config
 		panelDirectionsConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
-		.row(1f).col(550).col(200) // 550xH | 200xH
+		.row(1f).col(5f).col(1f) // Ratio of 5 : 1 when open 
 		.place(0, 0, panelMap)
 		.place(0, 1, panelDirections);
 
@@ -1077,6 +1092,7 @@ public class GUIFront extends JFrame {
 
 		pack();
 		setLocationRelativeTo(null);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
 	}
 
@@ -1259,21 +1275,24 @@ public class GUIFront extends JFrame {
 		mnOptions = new JMenu("Options");
 		menuBar.add(mnOptions);
 
+		mnOptionList.add(new JMenu("Color Scheme"));
+		mnOptions.add(mnOptionList.get(0));
+		
+		mnOptionList.add(new JMenu("Languages"));
+		mnOptions.add(mnOptionList.get(1));
+		
 		// ---- Locations -----
 		mnLocations = new JMenu("Locations");
 		menuBar.add(mnLocations);
 
-		// ---- Color Schemes ----
-		mnColorScheme = new JMenu("Color Scheme");
-		mnOptions.add(mnColorScheme);
-
-		//schemes are mapped to an index in mntmColorSchemes
-		//0 - Default Campus
-		//1 - Grayscale
-		//2 - WPI Default
-		//3 - Flower Power
-		//4 - All Blue
-		
+		// {{ Adding Color Schemes
+		/* Color Schemes
+		 *	0 - Default Campus
+		 *	1 - Grayscale
+		 *	2 - WPI Default
+		 *	3 - Flower Power
+		 *	4 - All Blue
+		 */
 		for (int i = 0; i < 5; i++)
 			mntmColorSchemes.add(new JMenuItem());
 		
@@ -1316,12 +1335,28 @@ public class GUIFront extends JFrame {
 			}
 		});
 		
-		mnColorScheme.add(mntmColorSchemes.get(0));
-		mnColorScheme.add(mntmColorSchemes.get(1));
-		mnColorScheme.add(mntmColorSchemes.get(2));
-		mnColorScheme.add(mntmColorSchemes.get(3));
-		mnColorScheme.add(mntmColorSchemes.get(4));
+		mnOptionList.get(0).add(mntmColorSchemes.get(0));
+		mnOptionList.get(0).add(mntmColorSchemes.get(1));
+		mnOptionList.get(0).add(mntmColorSchemes.get(2));
+		mnOptionList.get(0).add(mntmColorSchemes.get(3));
+		mnOptionList.get(0).add(mntmColorSchemes.get(4));
+		// }} Adding Color Schemes
+		
+		// {{ Adding Languages
+		String[] languageText = GUIFrontUtil.createLanguageText();
 
+		for (int i = 0; i < 41; i++){
+			getMntmLanguages().add(new JMenuItem());
+			getMntmLanguages().get(i).setText(languageText[i]);
+		}
+				
+		GUIFrontUtil.addLanguageListeners();
+		
+		for(int i = 0; i < 41; i++){
+			mnOptionList.get(1).add(getMntmLanguages().get(i));
+		}
+		// }} Adding Languages
+		
 		// here lies the clickable building dropdown menus
 		mnBuildings = GUIFrontUtil.initBuildingMenuBar();
 		
@@ -1336,7 +1371,7 @@ public class GUIFront extends JFrame {
 
 		mnLocations.add(mnBuildings.get(0)); // indices: 0, 1, 2, 3
 		mnLocations.add(mnBuildings.get(1)); // indices: 4, 5, 6, 7
-		mnLocations.add(mnBuildings.get(2));// indices: 8, 9, 10
+		mnLocations.add(mnBuildings.get(2)); // indices: 8, 9, 10
 		mnLocations.add(mntmCCM); // index: 11
 		mnLocations.add(mnBuildings.get(3)); // indices 12, 13, 14, 15, 16
 		mnLocations.add(mnBuildings.get(4)); // indices: 17, 18, 19, 20, 21
@@ -1387,7 +1422,8 @@ public class GUIFront extends JFrame {
 			
 			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
 				drawNodes = false;
-		}	}
+			}
+	}
 
 	// Enable Actions
 	public void enableActions(){
@@ -1529,7 +1565,6 @@ public class GUIFront extends JFrame {
 	// Initialize Group Layout
 	public static void initGroupLayout(JLabel lblStart, JLabel lblEnd, 
 			JButton btnPreviousMap, JButton btnPreviousStep, JButton btnNextStep, JButton btnNextMap){
-		
 		gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -1594,6 +1629,48 @@ public class GUIFront extends JFrame {
 					.addGap(35))
 		);
 
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()  // top line
+					.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING) // lbl start | txt Start
+							.addComponent(lblStart)
+							.addComponent(start, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addGap(20)
+					.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING) // lbl end | txt end
+							.addComponent(lblEnd)
+							.addComponent(end, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+					.addComponent(lblInvalidEntry)
+					.addComponent(btnRoute)
+					.addComponent(btnClear)
+				)
+				.addComponent(mainPanel)
+				.addGroup(gl_contentPane.createSequentialGroup() // bottom line
+					.addComponent(btnPreviousMap)
+					.addComponent(btnPreviousStep)
+					.addGap(50)
+					.addComponent(btnNextStep)
+					.addComponent(btnNextMap))
+			);
+			gl_contentPane.linkSize(SwingConstants.HORIZONTAL, btnRoute, btnClear); // ensure the buttons don't resize
+
+			gl_contentPane.setVerticalGroup(gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(lblStart)
+						.addComponent(lblEnd))
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(start)
+						.addComponent(end)
+						.addComponent(lblInvalidEntry)
+						.addComponent(btnRoute)
+						.addComponent(btnClear))
+				.addGroup(gl_contentPane.createSequentialGroup())
+						.addComponent(mainPanel)
+				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(btnPreviousMap)
+						.addComponent(btnPreviousStep)
+						.addComponent(btnNextStep)
+						.addComponent(btnNextMap)) // Next Map/Step buttons	
+			);
 	}
 	
 	// {{ Getters and Setters
@@ -1674,5 +1751,21 @@ public class GUIFront extends JFrame {
 	}
 	public static void setListDirections(JList<String> listDirections) {
 		GUIFront.listDirections = listDirections;
+	}
+
+	public static ArrayList<JMenuItem> getMntmLanguages() {
+		return mntmLanguages;
+	}
+
+	public static void setMntmLanguages(ArrayList<JMenuItem> aMntmLanguages) {
+		mntmLanguages = aMntmLanguages;
+	}
+
+	public static Language getLanguage() {
+		return language;
+	}
+
+	public static void setLanguage(Language language) {
+		GUIFront.language = language;
 	}
 }

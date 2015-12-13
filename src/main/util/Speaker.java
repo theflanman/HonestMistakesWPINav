@@ -38,14 +38,11 @@ public class Speaker extends JFrame {
 		   clip.open(audioIn);
 		   clip.start();
 
-		   Thread.sleep(1000);
 	   } catch (UnsupportedAudioFileException e) {
 		   e.printStackTrace();
 	   } catch (IOException e) {
 		   e.printStackTrace();
 	   } catch (LineUnavailableException e) {
-		   e.printStackTrace();
-	   } catch (InterruptedException e) {
 		   e.printStackTrace();
 	   }
    }
