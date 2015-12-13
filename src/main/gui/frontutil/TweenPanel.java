@@ -789,8 +789,8 @@ public class TweenPanel extends JPanel {
 					/*g2.setColor(Color.BLACK);
 					g2.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY(), 10, 10);
-					g2.drawOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos(), 
-							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos(), 10, 10);*/
+					g2.drawOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() -5, 
+							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() + 4, 10, 10);*/
 				}
 
 				if (GUIFront.drawLine3 == true){
@@ -802,6 +802,8 @@ public class TweenPanel extends JPanel {
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY());
 				}
+				
+				
 				repaint();
 				graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
 			}
