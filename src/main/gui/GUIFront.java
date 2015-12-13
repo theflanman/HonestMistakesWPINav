@@ -184,6 +184,7 @@ public class GUIFront extends JFrame {
 
 		// This will setup the main JFrame to be maximized on start
 		setTitle("Era of Navigation");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
 		setResizable(false);
@@ -968,8 +969,8 @@ public class GUIFront extends JFrame {
         props.put("logoString", ""); 
         
         props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
-        props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor())); 
-        props.put("tabAreaBackgroundColor", colorToString(colors.getMainBackColor())); 
+        props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));
+        /*
         props.put("controlColor", colorToString(colors.getMainBackColor()));
         props.put("controlColorLight", colorToString(colors.getLineColor()));
         props.put("controlColorDark", "180 240 197"); 
@@ -987,9 +988,9 @@ public class GUIFront extends JFrame {
         props.put("windowTitleColorLight", colorToString(colors.getOutlineColor())); 
         props.put("windowTitleColorDark", colorToString(colors.getOutlineColor())); 
         props.put("windowBorderColor", colorToString(colors.getOutlineColor()));
-        
+        */
 		//props.put("tabAreaBackgroundColor", colorToString(Color.white));
-
+        props.put("windowTitleFont", "Arial BOLD 20" );
 	    AluminiumLookAndFeel.setCurrentTheme(props);
 
 	}
