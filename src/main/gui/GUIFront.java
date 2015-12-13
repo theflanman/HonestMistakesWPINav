@@ -311,19 +311,16 @@ public class GUIFront extends JFrame {
 					offsetX = defPan[0] - tempPan[0];
 					offsetY = defPan[1] - tempPan[1];
 					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						node.setXPos(node.getXPos() + offsetX);
-						node.setYPos(node.getYPos() + offsetY);
+						n.setXPos(n.getXPos() + offsetX);
+						n.setYPos(n.getYPos() + offsetY);
 					}	
 					btnClear.setEnabled(true);
 					valid = true;
 					
 				} else if (notInList == "" && startString == null){
-					System.out.println("Problems");
+					System.out.println("User has not entered anything in");
 				}
-				if (valid == false){
-					//tell user this entry is invalid
-					//System.out.println("Invalid entry");
-					//lblInvalidEntry.setVisible(true);
+				if (valid == false){//do nothing - this is the case when the user has deleted everything in the box
 				}
 			}
 		};
@@ -491,17 +488,15 @@ public class GUIFront extends JFrame {
 					offsetX = defPan[0] - tempPan[0];
 					offsetY = defPan[1] - tempPan[1];
 					for(MapNode n : backend.getLocalMap().getMapNodes()){
-						node.setXPos(node.getXPos() + offsetX);
-						node.setYPos(node.getYPos() + offsetY);
+						n.setXPos(n.getXPos() + offsetX);
+						n.setYPos(n.getYPos() + offsetY);
 					}	
 					btnClear.setEnabled(true);
 					valid = true;
 				} else if (endString == null && notInList == ""){
-					System.out.println("Need to enter a valid start location");
+					System.out.println("User has not entered anything in");
 				}
-				if (valid == false){
-					System.out.println("Invalid entry");
-					lblInvalidEntry.setVisible(true);
+				if (valid == false){//do nothing - this is the case when the user has deleted everything in the box 
 				}
 			}
 		};		
