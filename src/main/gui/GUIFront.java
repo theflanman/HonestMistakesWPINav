@@ -231,20 +231,58 @@ public class GUIFront extends JFrame {
 				}
 				int stringDistance = 1000000000;
 				String startString = (String) start.getSelectedItem();
+				String notInList = (String) start.getEditor().getItem();
 				boolean valid = false;
 				//System.out.println(startString);
 				lblInvalidEntry.setVisible(false);
-				if (startString == null){
+				if (startString != null) {//if there is something entered check if the name is valid and then basically add the start node
+					for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
+							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
+							btnClear.setEnabled(true); //enable clear button if some node has been added
+							//System.out.println("This is the starting node");
+							mapnode.setXFeet(mapnode.getLocalMap().getMapScale()*mapnode.getXPos());
+							mapnode.setYFeet(mapnode.getLocalMap().getMapScale()*mapnode.getYPos());
+							mapnode.runTransform();
+							if (getGlobalMap().getChosenNodes().isEmpty() && getGlobalMap().getChosenNodes() != null){
+								getGlobalMap().setStartNode(mapnode);
+								getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
+							}
+							LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
+							localmap.setStartNode(getGlobalMap().getStartNode());
+							panelMap.setMapImage(new ProxyImage(getGlobalMap().getStartNode().getLocalMap().getMapImageName()));
+							panelMap.setMapNodes(getGlobalMap().getStartNode().getLocalMap().getMapNodes());
+							String previousMap = backend.getLocalMap().getMapImageName();
+							panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
+							backend.setLocalMap(localmap);
+							backend.getLocalMap().setStartNode(getGlobalMap().getStartNode());
+							double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+							double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+							panelMap.setPanX(defPan[0]);
+							panelMap.setPanY(defPan[1]);
+							panelMap.setScale(defPan[2]);
+							offsetX = defPan[0] - tempPan[0];
+							offsetY = defPan[1] - tempPan[1];
+							for(MapNode node : backend.getLocalMap().getMapNodes()){
+								node.setXPos(node.getXPos() + offsetX);
+								node.setYPos(node.getYPos() + offsetY);
+							}	
+							btnClear.setEnabled(true);
+							valid = true;
+						}
+					}
+				} else if (notInList != "" && startString == null){
 					//will need some way to alert the user that they need to enter a start location
-					String notInList = (String) start.getEditor().getItem();
 					System.out.println(notInList);
 					MapNode node = new MapNode();
 					for (MapNode mapnode : globalMap.getMapNodes()){
-						if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
-							stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
-							System.out.println(stringDistance);
-							node = mapnode;
-							System.out.println(mapnode.getAttributes().getOfficialName());
+						if (mapnode.getAttributes().getOfficialName() != "none" && mapnode.getAttributes().getOfficialName() != null && mapnode.getAttributes().getOfficialName() != ""){
+							if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
+								stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
+								System.out.println(stringDistance);
+								node = mapnode;
+								System.out.println(mapnode.getAttributes().getOfficialName());
+							}
 						}
 					}
 					System.out.println(node.getAttributes().getOfficialName());
@@ -255,10 +293,8 @@ public class GUIFront extends JFrame {
 					node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
 					node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
 					node.runTransform();
-					if (getGlobalMap().getChosenNodes().isEmpty() && getGlobalMap().getChosenNodes() != null){
-						getGlobalMap().setStartNode(node);
-						getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
-					}
+					getGlobalMap().setStartNode(node);
+					getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
 					LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
 					localmap.setStartNode(getGlobalMap().getStartNode());
 					panelMap.setMapImage(new ProxyImage(getGlobalMap().getStartNode().getLocalMap().getMapImageName()));
@@ -280,42 +316,9 @@ public class GUIFront extends JFrame {
 					}	
 					btnClear.setEnabled(true);
 					valid = true;
-				} else if (startString != null && !(startString.isEmpty())) {//if there is something entered check if the name is valid and then basically add the start node
-						for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
-							if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
-								//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
-								btnClear.setEnabled(true); //enable clear button if some node has been added
-								//System.out.println("This is the starting node");
-								mapnode.setXFeet(mapnode.getLocalMap().getMapScale()*mapnode.getXPos());
-								mapnode.setYFeet(mapnode.getLocalMap().getMapScale()*mapnode.getYPos());
-								mapnode.runTransform();
-								if (getGlobalMap().getChosenNodes().isEmpty() && getGlobalMap().getChosenNodes() != null){
-									getGlobalMap().setStartNode(mapnode);
-									getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
-								}
-								LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
-								localmap.setStartNode(getGlobalMap().getStartNode());
-								panelMap.setMapImage(new ProxyImage(getGlobalMap().getStartNode().getLocalMap().getMapImageName()));
-								panelMap.setMapNodes(getGlobalMap().getStartNode().getLocalMap().getMapNodes());
-								String previousMap = backend.getLocalMap().getMapImageName();
-								panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
-								backend.setLocalMap(localmap);
-								backend.getLocalMap().setStartNode(getGlobalMap().getStartNode());
-								double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
-								double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
-								panelMap.setPanX(defPan[0]);
-								panelMap.setPanY(defPan[1]);
-								panelMap.setScale(defPan[2]);
-								offsetX = defPan[0] - tempPan[0];
-								offsetY = defPan[1] - tempPan[1];
-								for(MapNode node : backend.getLocalMap().getMapNodes()){
-									node.setXPos(node.getXPos() + offsetX);
-									node.setYPos(node.getYPos() + offsetY);
-								}	
-								btnClear.setEnabled(true);
-								valid = true;
-							}
-						}
+					
+				} else if (notInList == "" && startString == null){
+					System.out.println("Problems");
 				}
 				if (valid == false){
 					//tell user this entry is invalid
