@@ -30,6 +30,7 @@ import main.gui.GUIFront;
 import main.util.Constants;
 import main.util.GUIFrontUtil;
 import main.util.proxy.IProxyImage;
+import main.util.proxy.ProxyImage;
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
@@ -717,56 +718,48 @@ public class TweenPanel extends JPanel {
 				graphics.setColor(startNodeColor);
 				
 				if(GUIFront.drawNodes){
+					IProxyImage startNodeImage = new ProxyImage("startnode.png");
+					IProxyImage endNodeImage = new ProxyImage("endnode.png");
+					IProxyImage waypointNodeImage = new ProxyImage("waypoint.png");
 					if(!(GUIFront.paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
 						if (GUIFront.paths.get(GUIFront.index).get(0) != null){ // make sure that the start node (which it should never be) is not null
-							graphics.setColor(startNodeColor);
-							graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
+							
+							graphics.drawImage(startNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 10, this);
+							
 						}
 						if (GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
-							graphics.setColor(endNodeColor);
-							graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getYPos() - (int)getPanY() - 5, 10, 10);
-
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
+							
+							graphics.drawImage(endNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getYPos() - (int)getPanY() - 10, this);
+						
 						}
 					}
 					//drawing for originally placed nodes
 					if (GUIFront.getGlobalMap().getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed
 						if (GUIFront.getGlobalMap().getStartNode().getLocalMap() == GUIFront.backend.getLocalMap()){
-							graphics.setColor(startNodeColor);
-							graphics.fillOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
+							
+							graphics.drawImage(startNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 10, this);
+							
 						}
 					}
 
 					if(GUIFront.getGlobalMap().getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
 						if (GUIFront.getGlobalMap().getEndNode().getLocalMap() == GUIFront.backend.getLocalMap()){
-							graphics.setColor(endNodeColor);
-							graphics.fillOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
+							
+							graphics.drawImage(endNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 10, this);
+							
 						}
 					}
 					if (GUIFront.getGlobalMap().getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
 						for (int i = 1; i < GUIFront.getGlobalMap().getChosenNodes().size() - 2; i++){
 							if (GUIFront.getGlobalMap().getChosenNodes().get(i).getLocalMap() == GUIFront.backend.getLocalMap()){
-								graphics.setColor(Color.ORANGE);
-								graphics.fillOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
-										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
-								graphics.setColor(outlineColor);
-								graphics.drawOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
-										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
+								
+								graphics.drawImage(waypointNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 10, 
+										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 10, this);
+
 							}
 						}
 					}
