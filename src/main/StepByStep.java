@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.memetix.mst.language.Language;
 import com.memetix.mst.translate.Translate;
 
+import main.gui.GUIFront;
+
 /*
  * This class contains methods regarding the StepByStep directions
  * 
@@ -135,7 +137,7 @@ public class StepByStep {
 				if (i == (pathNodes.size() - 1)) {
 
 					// If the list of pathNodes is not the last waypoint set in the directions
-					if (isLastWaypoint) {
+					if (this.isLastWaypoint == true && pathNodes.get(pathNodes.size() - 1) != GUIFront.getGlobalMap().getEndNode()) {
 						turn = String.format("%d. Walk %d feet", stepNumber, distance);
 						stepList.add(turn);
 						String waypoint = "You have arrived at your waypoint.";
