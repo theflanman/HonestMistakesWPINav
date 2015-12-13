@@ -121,7 +121,7 @@ public class GUIFront extends JFrame {
 	private static boolean[] mapViewButtons;
 
 	// Directions Components
-	private static JLabel lblStepByStep, lblClickHere, lblDistance, lblInvalidEntry;
+	private static JLabel lblStepByStep, lblClickHere, lblDistance;
 	private static JScrollPane scrollPane;
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 	private DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
@@ -209,8 +209,6 @@ public class GUIFront extends JFrame {
 		// Image of the default map loaded into backend
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
 		IProxyImage mapPath = new ProxyImage(defaultMapImage);
-		lblInvalidEntry = new JLabel("Invalid Entry");
-		lblInvalidEntry.setVisible(false);
 		
 		//when you press enter after entering stuff in textfieldStart
 		Action actionStart = new AbstractAction()
@@ -234,7 +232,6 @@ public class GUIFront extends JFrame {
 				String notInList = (String) start.getEditor().getItem();
 				boolean valid = false;
 				//System.out.println(startString);
-				lblInvalidEntry.setVisible(false);
 				if (startString != null) {//if there is something entered check if the name is valid and then basically add the start node
 					for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
@@ -342,7 +339,6 @@ public class GUIFront extends JFrame {
 				String endString = (String) source.getSelectedItem();
 				String notInList = (String) source.getEditor().getItem();
 				System.out.println(notInList);
-				lblInvalidEntry.setVisible(false);
 				if (endString != null && notInList != "") { //if there is something entered check if the name is valid and then basically add the end node
 					//String endString = (String) end.getSelectedItem(); //entered text = endString constant
 					Attributes attribute = new Attributes();
@@ -1476,7 +1472,6 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setEnabled(false);
 		btnNextStep.setEnabled(false);
 		btnPreviousStep.setEnabled(false);
-		lblInvalidEntry.setVisible(false);
 
 		getGlobalMap().getChosenNodes().clear();
 		getLblDistance().setText("");
@@ -1551,9 +1546,7 @@ public class GUIFront extends JFrame {
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(end, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(lblEnd, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-							.addGap(100)
-							.addComponent(lblInvalidEntry)
-							.addGap(190)
+							.addGap(351)
 							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(btnClear)
@@ -1585,7 +1578,6 @@ public class GUIFront extends JFrame {
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(5)
 									.addComponent(end, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-						.addComponent(lblInvalidEntry)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(11)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
