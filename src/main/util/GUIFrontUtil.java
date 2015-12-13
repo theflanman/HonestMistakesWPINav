@@ -9,6 +9,8 @@ import java.util.HashMap;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import com.memetix.mst.language.Language;
+
 import main.gui.GUIFront;
 
 public class GUIFrontUtil {
@@ -544,6 +546,7 @@ public class GUIFrontUtil {
 		return mnBuildings;
 	}
 
+	// intializes pan and zoom
 	public static HashMap<String, double[]> initPanZoom(){
 		HashMap<String, double[]> defaultVals = new HashMap<String, double[]>();
 
@@ -591,5 +594,262 @@ public class GUIFrontUtil {
 		defaultVals.put("SHB.png", new double[]{-80.0, -110.0, 0.90}); // 32
 
 		return defaultVals;
+	}
+
+	public static String[] createLanguageText(){
+		String[] languageText = new String[41];
+
+		languageText[0] = "English";
+		languageText[1] = "Arabic";
+		languageText[2] = "Bulgarian";
+		languageText[3] = "Catalan";
+		languageText[4] = "Chinese Simplified";
+		languageText[5] = "Chinese Traditional";
+		languageText[6] = "Czech";
+		languageText[7] = "Danish";
+		languageText[8] = "Dutch";
+		languageText[9] = "Estonian";
+		languageText[10] = "Finnish";
+		languageText[11] = "French";
+		languageText[12] = "German";
+		languageText[13] = "Greek";
+		languageText[14] = "Haitian Creole";
+		languageText[15] = "Hebrew";
+		languageText[16] = "Hindi";
+		languageText[17] = "Hmong Daw";
+		languageText[18] = "Hungarian";
+		languageText[19] = "Indonesian";
+		languageText[20] = "Italian";
+		languageText[21] = "Japanese";
+		languageText[22] = "Korean";
+		languageText[23] = "Latvian";
+		languageText[24] = "Lithuanian";
+		languageText[25] = "Malay";
+		languageText[26] = "Norwegian";
+		languageText[27] = "Persian";
+		languageText[28] = "Polish";
+		languageText[29] = "Portuguese";
+		languageText[30] = "Romanian";
+		languageText[31] = "Russian";
+		languageText[32] = "Slovak";
+		languageText[33] = "Slovenian";
+		languageText[34] = "Spanish";
+		languageText[35] = "Swedish";
+		languageText[36] = "Thai";
+		languageText[37] = "Turkish";
+		languageText[38] = "Ukrainian";
+		languageText[39] = "Urdu";
+		languageText[40] = "Vietnamese";
+		
+		return languageText;
+	}
+	
+	// adds languages
+	public static void addLanguageListeners(){
+		GUIFront.getMntmLanguages().get(0).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.ARABIC);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(1).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.BULGARIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(2).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.CATALAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(3).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.CHINESE_SIMPLIFIED);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(4).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.CHINESE_TRADITIONAL);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(5).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.CZECH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(6).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.DANISH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(7).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.DUTCH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(8).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.ENGLISH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(9).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.ESTONIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(10).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.FINNISH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(11).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.FRENCH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(12).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.GERMAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(13).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.GREEK);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(14).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.HAITIAN_CREOLE);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(15).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.HEBREW);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(16).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.HINDI);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(17).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.HMONG_DAW);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(18).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.HUNGARIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(19).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.INDONESIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(20).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.ITALIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(21).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.JAPANESE);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(22).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.KOREAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(23).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.LATVIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(24).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.LITHUANIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(25).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.MALAY);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(26).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.NORWEGIAN);
+			}
+		});
+		GUIFront.getMntmLanguages().get(27).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.PERSIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(28).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.POLISH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(29).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.PORTUGUESE);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(30).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.ROMANIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(31).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.RUSSIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(32).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.SLOVAK);
+			}
+		});
+		GUIFront.getMntmLanguages().get(33).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.SLOVENIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(34).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.SPANISH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(35).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.SWEDISH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(36).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.THAI);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(37).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.TURKISH);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(38).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.UKRAINIAN);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(39).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.URDU);
+			}
+		});	
+		GUIFront.getMntmLanguages().get(40).addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				GUIFront.setLanguage(Language.VIETNAMESE);
+			}
+		});
 	}
 }
