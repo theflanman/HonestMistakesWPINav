@@ -106,6 +106,7 @@ public class GUIFront extends JFrame {
 	public static JButton btnClear, btnRoute;
 	public static JComboBox start, end;
 	private JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
+	private static JButton btnBackToCampus;
 	public static boolean allowSetting = true;
 	public static JTabbedPane mainPanel; 
 	public static ArrayList<MapNode> allNodes;
@@ -144,7 +145,9 @@ public class GUIFront extends JFrame {
 
 	// Menu Bar
 	private JMenuBar menuBar;
+	private static JMenuBar floorChooserBar;
 	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
+	public static JMenu floorChooser;
 	private ArrayList<JMenu> mnOptionList = new ArrayList<JMenu>();
 	private ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
 	private static ArrayList<JMenuItem> mntmLanguages = new ArrayList<JMenuItem>();
@@ -1108,6 +1111,26 @@ public class GUIFront extends JFrame {
 				}
 			}
 		});
+		
+		//button that goes back to the campus map
+		btnBackToCampus = new JButton("Back To Campus Map");
+		btnBackToCampus.setBackground(otherButtonsColor);
+		btnBackToCampus.setEnabled(false);
+		btnBackToCampus.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				changeMapTo(11, 0, 0, 1);
+			}
+		});
+		
+		//dropdown for floor selection
+		floorChooser = new JMenu("Change Floors");
+		floorChooser.setSize(new Dimension(95, 25));
+		floorChooser.setEnabled(false);
+		floorChooserBar = new JMenuBar();
+		floorChooserBar.setMaximumSize(new Dimension(floorChooser.getSize().width, floorChooser.getSize().height + 5));
+		floorChooserBar.add(floorChooser);
+		
 		// }} GroupLayout code for tabs and text fields
 
 		// Group Layout code for all components
@@ -1124,6 +1147,8 @@ public class GUIFront extends JFrame {
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
+		
+		
 	}
 
 	// Sets Coloring Schemes
@@ -1483,6 +1508,7 @@ public class GUIFront extends JFrame {
 			n.setYPos(n.getYPos() + offsetY);
 		}
 		
+		//set booleans to show or hide drawn nodes + lines
 		ArrayList<LocalMap> localMaps = createListOfMaps(paths);
 		if(localMaps.contains(backend.getLocalMap())){ // if drawing, and if this map is in the path list, DRAW
 			drawLine = true;
@@ -1491,9 +1517,26 @@ public class GUIFront extends JFrame {
 		else{
 			drawLine = false;
 			
-			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
-				drawNodes = false;
+			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null){
+				if(globalMap.getChosenNodes().size() < 2)
+					drawNodes = false;
 			}
+		}
+		
+		//activate/deactivate back to campus map and floor chooser buttons
+		if(index != 11){
+			btnBackToCampus.setEnabled(true);
+			floorChooser.setEnabled(true);
+			
+			floorChooser.removeAll();
+			
+			//set contents of floor chooser
+			GUIFrontUtil.setFloorMenu(index);
+		}
+		else{
+			btnBackToCampus.setEnabled(false);
+			floorChooser.setEnabled(false);
+		}
 	}
 
 	// Enable Actions
@@ -1665,69 +1708,7 @@ public class GUIFront extends JFrame {
 	public static void initGroupLayout(JLabel lblStart, JLabel lblEnd, 
 			JButton btnPreviousMap, JButton btnPreviousStep, JButton btnNextStep, JButton btnNextMap){
 		gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(10)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(start, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblStart, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGap(51)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(end, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(lblEnd, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-							.addGap(351)
-							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnClear)
-							.addGap(22))))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(79)
-					.addComponent(btnPreviousMap)
-					.addGap(37)
-					.addComponent(btnPreviousStep)
-					.addGap(75)
-					.addComponent(btnNextStep)
-					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-					.addComponent(btnNextMap)
-					.addGap(170))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblStart)
-								.addComponent(lblEnd))
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(start, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(5)
-									.addComponent(end, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnRoute)
-								.addComponent(btnClear))))
-					.addGap(14)
-					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnPreviousMap)
-						.addComponent(btnNextMap)
-						.addComponent(btnNextStep)
-						.addComponent(btnPreviousStep))
-					.addGap(35))
-		);
-
+		
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()  // top line
 					.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING) // lbl start | txt Start
@@ -1745,6 +1726,10 @@ public class GUIFront extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup() // bottom line
 					.addComponent(btnPreviousMap)
 					.addComponent(btnPreviousStep)
+					.addGap(50)
+					.addComponent(btnBackToCampus)
+					.addGap(25)
+					.addComponent(floorChooserBar)
 					.addGap(50)
 					.addComponent(btnNextStep)
 					.addComponent(btnNextMap))
@@ -1765,6 +1750,8 @@ public class GUIFront extends JFrame {
 				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(btnPreviousMap)
 						.addComponent(btnPreviousStep)
+						.addComponent(btnBackToCampus)
+						.addComponent(floorChooserBar)
 						.addComponent(btnNextStep)
 						.addComponent(btnNextMap)) // Next Map/Step buttons	
 			);
