@@ -28,7 +28,6 @@ import main.LocalMap;
 import main.MapNode;
 import main.gui.GUIFront;
 import main.util.Constants;
-import main.util.GUIFrontUtil;
 import main.util.proxy.IProxyImage;
 import main.util.proxy.ProxyImage;
 import aurelienribon.slidinglayout.SLAnimator;
