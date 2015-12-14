@@ -101,10 +101,10 @@ public class StepByStep {
 	 *         string for each instruction
 	 */
 	public ArrayList<String> printDirection(Language language) {	
-	    // Set your Windows Azure Marketplace client info - See http://msdn.microsoft.com/en-us/library/hh454950.aspx
-	    Translate.setClientId("honest-mistakes");
-	    Translate.setClientSecret("34JgO9+sszgIg4TEW0k9hHBee67V8/ul9m1iwQkExtg=");
-	    
+		// Set your Windows Azure Marketplace client info - See http://msdn.microsoft.com/en-us/library/hh454950.aspx
+		Translate.setClientId("honest-mistakes");
+		Translate.setClientSecret("34JgO9+sszgIg4TEW0k9hHBee67V8/ul9m1iwQkExtg=");
+
 		// Initialize list of strings to return
 		ArrayList<String> stepList = new ArrayList<String>();
 
@@ -118,7 +118,7 @@ public class StepByStep {
 		char floorNum2;
 		String temp = "";
 
-		
+
 		// Iterates through each node in the path except the first one
 		for (int i = 1; i <= (pathNodes.size() - 1); i++) {
 
@@ -128,7 +128,7 @@ public class StepByStep {
 			if (i == (pathNodes.size() - 1)) {
 
 				// If the list of pathNodes is not the last waypoint set in the directions
-				if (this.isLastWaypoint == true && pathNodes.get(pathNodes.size() - 1) != GUIFront.getGlobalMap().getEndNode()) {
+				if (isLastWaypoint && pathNodes.get(pathNodes.size() - 1) != GUIFront.getGlobalMap().getEndNode()) {
 					turn = String.format("%d. Walk %d feet", stepNumber, distance);
 					stepList.add(turn);
 					String waypoint = "You have arrived at your waypoint.";
@@ -139,7 +139,7 @@ public class StepByStep {
 					stepList.add(turn);
 				}
 			}
-				
+
 			// Every node other than the last
 			else {
 
@@ -201,66 +201,21 @@ public class StepByStep {
 
 					// Turn angle possibilities and words associated
 					else {
-						if (170 >= angle && angle >= 110) 
+						if (170 >= angle && angle >= 115) 
 							direction = "slight right";
-						if (110 > angle && angle > 70) 
+						if (115 > angle && angle > 65) 
 							direction = "right";
-						if (70 >= angle && angle >= 20) 
+						if (65 >= angle && angle >= 20) 
 							direction = "sharp right";
 						if (20 > angle || angle > 340) 
 							direction = "back";
-						if (340 >= angle && angle >= 290) 
+						if (340 >= angle && angle >= 295) 
 							direction = "sharp left";
-						if (290 > angle && angle > 250) 
+						if (295 > angle && angle > 245) 
 							direction = "left";
-						if (250 >= angle && angle >= 190) 
+						if (245 >= angle && angle >= 190) 
 							direction = "slight left";
 
-						// calculates angle for the current turn
-						angle = pathNodes.get(i).calculateAngle(pathNodes.get(i + 1));
-
-						// case of going straight
-						if (190 > angle && angle > 170) {
-
-							// If you are going into a building
-							if (pathNodes.get(i - 1).getAttributes().getType().equals("door")
-									&& pathNodes.get(i).getAttributes().getType().equals("door")) {
-								turn = String.format("%d. Walk %d feet, then continue into building.", stepNumber);
-								stepList.add(turn);
-								stepNumber++;
-							}
-
-							// Not going into building, this should never happen
-							else {
-								turn = String.format("%d. Walk %d feet, then continue straight.", stepNumber,
-										distance);
-								stepList.add(turn);
-								stepNumber++;
-							}
-						} 
-
-						// Turn angle possibilities and words associated
-						else {
-							if (170 >= angle && angle >= 115) 
-								direction = "slight right";
-							if (115 > angle && angle > 65) 
-								direction = "right";
-							if (65 >= angle && angle >= 20) 
-								direction = "sharp right";
-							if (20 > angle || angle > 340) 
-								direction = "back";
-							if (340 >= angle && angle >= 295) 
-								direction = "sharp left";
-							if (295 > angle && angle > 245) 
-								direction = "left";
-							if (245 >= angle && angle >= 190) 
-								direction = "slight left";
-
-							// Adds this turn step to list
-							turn = String.format("%d. Walk %d feet, then turn %s.", stepNumber, distance, direction);
-							stepList.add(turn);
-							stepNumber++;
-						}
 						// Adds this turn step to list
 						turn = String.format("%d. Walk %d feet, then turn %s.", stepNumber, distance, direction);
 						stepList.add(turn);
@@ -269,13 +224,12 @@ public class StepByStep {
 				}
 			}
 		}
-		
-		
+
 		// change language if necessary
 		try{
 			if(! language.equals(Language.ENGLISH)){
 				ArrayList<String> stepListTemp = new ArrayList<String>();
-				
+
 				String[] stepBeginnings = new String[stepList.size()];
 				int i = 0;
 				for(String step : stepList){
@@ -283,13 +237,13 @@ public class StepByStep {
 					String[] steps = step.split(": ");
 					stepBeginnings[i] = steps[0];
 					stepListTemp.add(steps[1]); // text part
-					
+
 					i++;
 				}
-				
+
 				String[] stepListStringArr = Arrays.copyOf(stepListTemp.toArray(), stepListTemp.size(), String[].class);
 				String[] stepListTranslated = Translate.execute(stepListStringArr, language);
-				
+
 				i = 0;
 				stepList.clear();
 				for(String step : stepListTranslated){
@@ -301,7 +255,7 @@ public class StepByStep {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return stepList;
 	}
 }
