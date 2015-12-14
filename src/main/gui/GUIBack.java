@@ -13,6 +13,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.memetix.mst.language.Language;
+
 import main.AStar;
 import main.Attributes;
 import main.LocalMap;
@@ -231,9 +233,9 @@ public class GUIBack implements Serializable {
 	/**
 	 * @return ArrayList<String> - this is necessary to allow GUIFront to convert the strings in the array into rows of the column
 	 */
-	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes, boolean isLastWaypoint) {
+	public ArrayList<String> displayStepByStep(ArrayList<MapNode> mapNodes, boolean isLastWaypoint, Language language) {
 		StepByStep directions = new StepByStep(mapNodes, isLastWaypoint);
-		ArrayList<String> print = directions.printDirection();
+		ArrayList<String> print = directions.printDirection(language);
 		return print;
 	}
 

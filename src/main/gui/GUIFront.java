@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.awt.geom.AffineTransform;
 import java.io.File;
 
@@ -11,8 +15,8 @@ import javax.swing.JList;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Properties;
 
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.slidinglayout.SLConfig;
@@ -38,6 +42,15 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+
+
+
+
+
+import com.jtattoo.plaf.aluminium.AluminiumLookAndFeel;
+import com.jtattoo.plaf.smart.SmartLookAndFeel;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -45,31 +58,30 @@ import main.*;
 import main.gui.frontutil.ColorSchemes;
 import main.gui.frontutil.ColorSetting;
 import main.gui.frontutil.EmailGUI;
+import main.gui.frontutil.GUIFrontUtil;
 import main.gui.frontutil.PanHandler;
 import main.gui.frontutil.TweenPanel;
 import main.gui.frontutil.WrappableCellRenderer;
 import main.gui.frontutil.ZoomHandler;
 import main.util.Constants;
-import main.util.GUIFrontUtil;
 import main.util.PanelSave;
 import main.util.Speaker;
 import main.util.proxy.IProxyImage;
 import main.util.proxy.ProxyImage;
 
 import javax.swing.SwingConstants;
-
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.ListCellRenderer;
 import javax.swing.JComboBox;
 
-import ca.odell.glazedlists.EventList;
-//import ca.odell.glazedlists.BasicEventList;
-//import ca.odell.glazedlists.EventList;
+import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
+
 import ca.odell.glazedlists.GlazedLists;
-//import ca.odell.glazedlists.TextFilterator;
-//import ca.odell.glazedlists.matchers.TextMatcherEditor;
 import ca.odell.glazedlists.swing.AutoCompleteSupport;
-//import ca.odell.glazedlists.swing.GlazedListsSwing;
-import ca.odell.glazedlists.swing.EventComboBoxModel;
+
 
 /**
  * This class contains code for the main applications GUI interface as well as
@@ -78,7 +90,7 @@ import ca.odell.glazedlists.swing.EventComboBoxModel;
  * Tween code adapted from Aurelien Ribon's Sliding Layout Demo 
  * 
  * Note:
- * 	The "// {{" is CoffeeByte syntax for specifying code collapsing
+ * 	The "// {{" and "// }}" is CoffeeByte syntax for specifying code collapsing
  * 
  * @author Trevor
  */
@@ -86,6 +98,8 @@ import ca.odell.glazedlists.swing.EventComboBoxModel;
 public class GUIFront extends JFrame {
 
 	// {{ Class Members
+	private static GUIFront thisGUIFront;
+	
 	public static GUIBack backend;
 	private static GlobalMap globalMap;
 	public static boolean drawLine = false;
@@ -101,7 +115,7 @@ public class GUIFront extends JFrame {
 	public static ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
 	public static JComboBox start, end;
-	private JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
+	private static JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
 	public static boolean allowSetting = true;
 	public static JTabbedPane mainPanel; 
 	public static ArrayList<MapNode> allNodes;
@@ -111,10 +125,12 @@ public class GUIFront extends JFrame {
 	public static boolean btnNextStepWasPressedLast;
 	public static int[] index3Help = {};
 	public static ArrayList<MapNode> thisRoute = new ArrayList<MapNode>();
+	public static ArrayList<String> officialName = null;
 	public static HashMap<String, double[]> panValues = new HashMap<String, double[]>();
 	public static HashMap<String, double[]> defaults = new HashMap<String, double[]>();
 	public static double offsetX = 0;
 	public static double offsetY = 0;
+	public static String[] screenText = new String[Constants.SCREEN_TEXT_SIZE];
 
 	public static double[] panNums = {0.0, 0.0};
 	private static AffineTransform transform; // the current state of image transformation
@@ -124,30 +140,32 @@ public class GUIFront extends JFrame {
 
 	// MapPanel components
 	private static JPanel contentPane;
-	private JLabel lblStart, lblEnd;
+	private static JLabel lblStart, lblEnd;
 	private static GroupLayout gl_contentPane;
 	private static boolean[] mapViewButtons;
 
 	// Directions Components
-	private static JLabel lblStepByStep, lblClickHere, lblDistance, lblInvalidEntry;
+	private static JLabel lblStepByStep, lblClickHere, lblDistance;
 	private static JScrollPane scrollPane;
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 	private DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
 	@SuppressWarnings("rawtypes")
-	private ListCellRenderer renderer;
+	private static ListCellRenderer renderer;
 	private int MAX_LIST_WIDTH = 180; // maximum width of the list in pixels, the size of panelDirections is 200px
 	private static JList<String> listDirections;
 
 	// Menu Bar
 	private JMenuBar menuBar;
-	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
-	private JMenu mnColorScheme;
-	private ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
+	private static JMenu mnFile, mnOptions, mnHelp, mnLocations;
+	private static ArrayList<JMenu> mnOptionList = new ArrayList<JMenu>();
+	private static ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
+	private static ArrayList<JMenuItem> mntmLanguages = new ArrayList<JMenuItem>();
 	private ArrayList<JMenu> mnBuildings = new ArrayList<JMenu>();
-	private JMenuItem mntmEmail, mntmExit;
+	private static JMenuItem mntmEmail, mntmExit;
+	private static Language language;
 
-	private SLPanel slidePanel;
-	private JPanel stepByStepUI;
+	private static SLPanel slidePanel;
+	private static JPanel stepByStepUI;
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
@@ -160,13 +178,54 @@ public class GUIFront extends JFrame {
 	private static ColorSetting colors;
 	// }}
 	
+    static String colorToString (Color col){
+        int red = col.getRed();
+        int green = col.getGreen();
+        int blue = col.getBlue();
+        String theColor =  Integer.toString(red) + " " + Integer.toString(green) + " " + Integer.toString(blue);
+
+    	return theColor;
+    }
+    public static Properties props;
 	/** GUIFront Constructor
 	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
+	 * @throws UnsupportedLookAndFeelException 
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 */
 	@SuppressWarnings("unchecked")
-	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException {
+	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+		
+		// initialize all text on screen
+		screenText[0] = "Era of Navigation";
+		screenText[1] = "File";
+		screenText[2] = "Options";
+		screenText[3] = "Locations";
+		screenText[4] = "Help";
+		screenText[5] = "Starting Location";
+		screenText[6] = "Ending Location";
+		screenText[7] = "Route";
+		screenText[8] = "Clear All";
+		screenText[9] = "Map View";
+		screenText[10] = "Street View";
+		screenText[11] = "Previous Step";
+		screenText[12] = "Previous Map";
+		screenText[13] = "Next Step";
+		screenText[14] = "Next Map";
+		screenText[15] = "Step by Step Directions";
+		screenText[16] = "Email";
+		screenText[17] = "Exit";
+		screenText[18] = "Color Schemes";
+		screenText[19] = "Default Campus";
+		screenText[20] = "Greyscale";
+		screenText[21] = "WPI Theme";
+		screenText[22] = "Flower Power";
+		screenText[23] = "All Blue";
+		screenText[24] = "Languages";
+		screenText[25] = "Distance in Feet";
+		
 		// main application is invisible during loading screen
 		setVisible(false); 
 
@@ -174,24 +233,26 @@ public class GUIFront extends JFrame {
 		GUIFront.init(localMapFilenames);
 		
 		// This will setup the main JFrame to be maximized on start
-		setTitle("Era of Navigation");
+		setTitle(screenText[0]);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
+		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
 		setPanHandle(new PanHandler());
 		setZoomHandle(new ZoomHandler());
 
-		
 		//Initialize Start and End Combo Boxes 
-		ArrayList<String>officialName = new ArrayList<String>();
+		officialName = new ArrayList<String>();
 		for(MapNode mapnode : globalMap.getMapNodes()){
 			officialName.add(mapnode.getAttributes().getOfficialName());
 		}
 		start = new JComboBox(officialName.toArray());
 		start.setEditable(true);
 		AutoCompleteSupport.install(start, GlazedLists.eventListOf(officialName.toArray()));
+		
 		
 		end = new JComboBox();
 		end.setEditable(true);
@@ -215,8 +276,6 @@ public class GUIFront extends JFrame {
 		// Image of the default map loaded into backend
 		String defaultMapImage = Constants.DEFAULT_MAP_IMAGE;
 		IProxyImage mapPath = new ProxyImage(defaultMapImage);
-		lblInvalidEntry = new JLabel("Invalid Entry");
-		lblInvalidEntry.setVisible(false);
 		
 		//when you press enter after entering stuff in textfieldStart
 		Action actionStart = new AbstractAction()
@@ -235,21 +294,16 @@ public class GUIFront extends JFrame {
 					localmap.setStartNode(null);
 					globalMap.setStartNode(null);
 				}
+				int stringDistance = 1000000000;
 				String startString = (String) start.getSelectedItem();
-				System.out.println(startString);
-				lblInvalidEntry.setVisible(false);
-				System.out.println("Enter was pressed");
-				if (startString == null){
-					//will need some way to alert the user that they need to enter a start location
-					System.out.println("Need to enter a valid start location");
-				} 
-				else if (startString != null) {//if there is something entered check if the name is valid and then basically add the start node
-					boolean valid = false;
+				String notInList = (String) start.getEditor().getItem();
+				boolean valid = false;
+				//System.out.println(startString);
+				if (startString != null) {//if there is something entered check if the name is valid and then basically add the start node
 					for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 						if(startString.equals(mapnode.getAttributes().getOfficialName()) /*|| mapnode.getAttributes().getAliases().contains(startString)*/){
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 							btnClear.setEnabled(true); //enable clear button if some node has been added
-							System.out.println("This is the starting node");
 							mapnode.setXFeet(mapnode.getLocalMap().getMapScale()*mapnode.getXPos());
 							mapnode.setYFeet(mapnode.getLocalMap().getMapScale()*mapnode.getYPos());
 							mapnode.runTransform();
@@ -280,11 +334,56 @@ public class GUIFront extends JFrame {
 							valid = true;
 						}
 					}
-					if (valid == false){
-						//tell user this entry is invalid
-						System.out.println("Invalid entry");
-						lblInvalidEntry.setVisible(true);
+				} else if (notInList != "" && startString == null){
+					//will need some way to alert the user that they need to enter a start location
+					System.out.println(notInList);
+					MapNode node = new MapNode();
+					for (MapNode mapnode : globalMap.getMapNodes()){
+						if (mapnode.getAttributes().getOfficialName() != "none" && mapnode.getAttributes().getOfficialName() != null && mapnode.getAttributes().getOfficialName() != ""){
+							if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
+								stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
+								System.out.println(stringDistance);
+								node = mapnode;
+								System.out.println(mapnode.getAttributes().getOfficialName());
+							}
+						}
 					}
+					System.out.println(node.getAttributes().getOfficialName());
+					start.setSelectedItem(node.getAttributes().getOfficialName());
+					//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
+					btnClear.setEnabled(true); //enable clear button if some node has been added
+					//System.out.println("This is the starting node");
+					node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
+					node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
+					node.runTransform();
+					getGlobalMap().setStartNode(node);
+					getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
+					LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
+					localmap.setStartNode(getGlobalMap().getStartNode());
+					panelMap.setMapImage(new ProxyImage(getGlobalMap().getStartNode().getLocalMap().getMapImageName()));
+					panelMap.setMapNodes(getGlobalMap().getStartNode().getLocalMap().getMapNodes());
+					String previousMap = backend.getLocalMap().getMapImageName();
+					panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
+					backend.setLocalMap(localmap);
+					backend.getLocalMap().setStartNode(getGlobalMap().getStartNode());
+					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+					double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+					panelMap.setPanX(defPan[0]);
+					panelMap.setPanY(defPan[1]);
+					panelMap.setScale(defPan[2]);
+					offsetX = defPan[0] - tempPan[0];
+					offsetY = defPan[1] - tempPan[1];
+					for(MapNode n : backend.getLocalMap().getMapNodes()){
+						n.setXPos(n.getXPos() + offsetX);
+						n.setYPos(n.getYPos() + offsetY);
+					}	
+					btnClear.setEnabled(true);
+					valid = true;
+					
+				} else if (notInList == "" && startString == null){
+					System.out.println("User has not entered anything in");
+				}
+				if (valid == false){//do nothing - this is the case when the user has deleted everything in the box
 				}
 			}
 		};
@@ -300,20 +399,19 @@ public class GUIFront extends JFrame {
 					localmap.setEndNode(null);
 					globalMap.setEndNode(null);
 				}
+				boolean valid = false;
+				int stringDistance = 1000000000;
 				JComboBox source = (JComboBox)e.getSource();
 				String endString = (String) source.getSelectedItem();
-				lblInvalidEntry.setVisible(false);
-				//if the user presses enter without having entered anything in this box
-				if (endString == null){
-					System.out.println("Need to enter a valid start location"); 
-				}else if (!(endString.equals(""))) { //if there is something entered check if the name is valid and then basically add the end node
+				String notInList = (String) source.getEditor().getItem();
+				System.out.println(notInList);
+				if (endString != null && notInList != "") { //if there is something entered check if the name is valid and then basically add the end node
 					//String endString = (String) end.getSelectedItem(); //entered text = endString constant
-					boolean valid = false;
 					Attributes attribute = new Attributes();
 
 					//Test if the entered information is a valid node in local map - this will be updated to global map when that is finished
 					String startString = (String) start.getSelectedItem();
-					if (startString != null){
+					if (startString != null && !(startString.isEmpty())){
 						for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
 							if(startString.equals(mapnode.getAttributes().getOfficialName())){
 								startNode = mapnode; //set the startNode and then draw it on the map
@@ -392,11 +490,75 @@ public class GUIFront extends JFrame {
 							}
 						} 
 					}
-
-					if (valid == false){
-						System.out.println("Invalid entry");
-						lblInvalidEntry.setVisible(true);
+				} else if (notInList != "" && endString == null){
+					String startString = (String) start.getSelectedItem();
+					if (startString != null && !(startString.isEmpty())){
+						for (MapNode mapnode : getGlobalMap().getMapNodes()){ //for the time being this will remain local map nodes, once global nodes are done this will be updated
+							if(startString.equals(mapnode.getAttributes().getOfficialName())){
+								startNode = mapnode; //set the startNode and then draw it on the map
+								getGlobalMap().setStartNode(startNode);
+								getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
+								LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
+								localmap.setStartNode(startNode);
+								btnClear.setEnabled(true);
+							}
+						}
+					} else if (globalMap.getStartNode() == null){
+							MapNode n = backend.getLocalMap().getMapNodes().get(0);
+							getGlobalMap().setStartNode(n);	
+							getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
+							LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
+							localmap.setStartNode(getGlobalMap().getStartNode());
+							btnClear.setEnabled(true);
 					}
+					//will need some way to alert the user that they need to enter a start location
+					System.out.println(notInList);
+					MapNode node = new MapNode();
+					for (MapNode mapnode : globalMap.getMapNodes()){
+						if (mapnode.getAttributes().getOfficialName() != "none" && mapnode.getAttributes().getOfficialName() != null && mapnode.getAttributes().getOfficialName() != ""){
+							if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
+								stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
+								System.out.println(stringDistance);
+								node = mapnode;
+								System.out.println(mapnode.getAttributes().getOfficialName());
+							}
+						}
+					}
+					System.out.println(node.getAttributes().getOfficialName());
+					end.setSelectedItem(node.getAttributes().getOfficialName());
+					//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
+					btnClear.setEnabled(true); //enable clear button if some node has been added
+					//System.out.println("This is the starting node");
+					node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
+					node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
+					node.runTransform();
+					getGlobalMap().setEndNode(node);
+					getGlobalMap().getChosenNodes().add(getGlobalMap().getEndNode());
+					LocalMap localmap = getGlobalMap().getEndNode().getLocalMap();
+					localmap.setEndNode(getGlobalMap().getEndNode());
+					panelMap.setMapImage(new ProxyImage(getGlobalMap().getEndNode().getLocalMap().getMapImageName()));
+					panelMap.setMapNodes(getGlobalMap().getEndNode().getLocalMap().getMapNodes());
+					String previousMap = backend.getLocalMap().getMapImageName();
+					panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
+					backend.setLocalMap(localmap);
+					backend.getLocalMap().setEndNode(getGlobalMap().getEndNode());
+					double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
+					double[] defPan = defaults.get(backend.getLocalMap().getMapImageName());
+					panelMap.setPanX(defPan[0]);
+					panelMap.setPanY(defPan[1]);
+					panelMap.setScale(defPan[2]);
+					offsetX = defPan[0] - tempPan[0];
+					offsetY = defPan[1] - tempPan[1];
+					for(MapNode n : backend.getLocalMap().getMapNodes()){
+						n.setXPos(n.getXPos() + offsetX);
+						n.setYPos(n.getYPos() + offsetY);
+					}	
+					btnClear.setEnabled(true);
+					valid = true;
+				} else if (endString == null && notInList == ""){
+					System.out.println("User has not entered anything in");
+				}
+				if (valid == false){//do nothing - this is the case when the user has deleted everything in the box 
 				}
 			}
 		};		
@@ -405,6 +567,11 @@ public class GUIFront extends JFrame {
 		
 		// Main Panel
 		mainPanel = new JTabbedPane();
+		//mainPanel.setOpaque(false);
+		UIManager.put("TabbedPane.tabsOpaque", false);
+		UIManager.put("TabbedPane.contentOpaque", false);
+		UIManager.put("TabbedPane.opaque", false);
+
 		mainPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		mainPanel.setBackground(backgroundColor);
 		mapViewButtons = new boolean[2];
@@ -437,14 +604,14 @@ public class GUIFront extends JFrame {
 		start.addActionListener(actionStart);
 
 		// Start/End Labels
-		lblStart = new JLabel("Starting Location");
+		lblStart = new JLabel(screenText[5]);
 		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		lblEnd = new JLabel("Ending Location");
+		lblEnd = new JLabel(screenText[6]);
 		lblEnd.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		// Clear All Button
-		btnClear = new JButton("Clear All");
+		btnClear = new JButton(screenText[8]);
 		btnClear.setBackground(otherButtonsColor);
 		btnClear.setEnabled(false);
 		btnClear.addActionListener(new ActionListener(){
@@ -455,13 +622,13 @@ public class GUIFront extends JFrame {
 		});
 
 		// Route Button
-		btnRoute = new JButton("Route");
+		btnRoute = new JButton(screenText[7]);
 		btnRoute.setEnabled(false);
 		btnRoute.setBackground(routeButtonColor);
 		btnRoute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (btnRoute.isEnabled()) {
-
+					drawLine = true; //only needed now to let the system know that the line has been drawn
 					allowSetting = false; //once calculate button is pressed user should not be allowed to replace nodes until the original line is removed
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH); //sets the speaker to play the designated sound for calculate route
@@ -480,9 +647,9 @@ public class GUIFront extends JFrame {
 						if (getGlobalMap().getChosenNodes().get(i).getLocalMap() == getGlobalMap().getChosenNodes().get(i + 1).getLocalMap()){
 							ArrayList<MapNode> nodesOnSameMap = backend.runAStar(getGlobalMap().getChosenNodes().get(i), getGlobalMap().getChosenNodes().get(i + 1));
 							if (getGlobalMap().getChosenNodes().size() == i + 2){
-								directions = backend.displayStepByStep(nodesOnSameMap, false); //no more waypoints 
+								directions = backend.displayStepByStep(nodesOnSameMap, false, getLanguage()); //no more waypoints 
 							} else {
-								directions = backend.displayStepByStep(nodesOnSameMap, true); //more waypoints
+								directions = backend.displayStepByStep(nodesOnSameMap, true, getLanguage()); //more waypoints
 							}
 							stepByStep.add(directions); //essentially makes a list of all step by step directions to be added to the jlist
 							directions = new ArrayList<String>(); //reset directions
@@ -508,7 +675,7 @@ public class GUIFront extends JFrame {
 										}
 									}
 								}
-								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint, getLanguage());
 								stepByStep.add(directions);
 
 								for (MapNode mapnode : getNodesOnDifferentMap.get(0)){ 
@@ -537,7 +704,7 @@ public class GUIFront extends JFrame {
 										}
 									}
 								}
-								directions = backend.displayStepByStep(wayPoints, hasWayPoint);
+								directions = backend.displayStepByStep(wayPoints, hasWayPoint, getLanguage());
 								stepByStep.add(directions);
 								for (ArrayList<MapNode> mapnodes : getNodesOnDifferentMap){
 									paths.add(mapnodes);
@@ -620,7 +787,18 @@ public class GUIFront extends JFrame {
 					//set the initial distance as 0 
 					int distance = 0;
 					//update the step by step directions and distance for each waypoint added
-					listModel.addElement("Welcome to the Era of Navigation!");
+					
+					try {
+						String welcomeMessage = "Welcome to the Era of Navigation.";
+
+						if(! getLanguage().equals(Language.ENGLISH))
+							welcomeMessage = Translate.execute(welcomeMessage, Language.ENGLISH, getLanguage());
+						
+						listModel.addElement(welcomeMessage);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}			
+					
 					for (ArrayList<String> strings: stepByStep){
 						for (String string : strings) {
 							listModel.addElement(string); // add it to the list model
@@ -633,7 +811,7 @@ public class GUIFront extends JFrame {
 						distance += backend.getDistance(wayPoints, true); //the boolean value should not matter here 
 					}
 
-					getLblDistance().setText("Distance in feet:" + distance);
+					getLblDistance().setText(screenText[25] + ": " + distance);
 
 					btnClear.setEnabled(true);
 					btnRoute.setEnabled(false);
@@ -665,7 +843,7 @@ public class GUIFront extends JFrame {
 		stepByStepUI.add(getLblClickHere());
 
 		// Step-by-step Label
-		setLblStepByStep(new JLabel("Step by Step Directions!"));
+		setLblStepByStep(new JLabel(screenText[15]));
 		getLblStepByStep().setBackground(sideBarColor);
 		getLblStepByStep().setFont(new Font("Tahoma", Font.BOLD, 13));
 		getLblStepByStep().setBounds(23, 11, 167, 14);
@@ -801,12 +979,13 @@ public class GUIFront extends JFrame {
 		// Initialize tweening
 		slidePanel.setTweenManager(SLAnimator.createTweenManager());
 		slidePanel.initialize(mainConfig);
-
+		slidePanel.setOpaque(false);
 		// add to the tabbed pane
 		mainPanel.add(slidePanel, BorderLayout.CENTER);
-		mainPanel.setTitleAt(0, "Map View");
+		mainPanel.setTitleAt(0, screenText[9]);
+		mainPanel.setBackgroundAt(0, backgroundColor);
 		getContentPane().add(mainPanel);
-		btnNextMap = new JButton("Next Map-->");
+		btnNextMap = new JButton(screenText[14] + "-->");
 		btnNextMap.setEnabled(false);
 		btnNextMap.setBackground(otherButtonsColor);
 		btnNextMap.addActionListener(new ActionListener(){
@@ -862,7 +1041,7 @@ public class GUIFront extends JFrame {
 		getContentPane().add(btnNextMap, BorderLayout.SOUTH);
 
 		// Add buttons to move between two maps
-		btnPreviousMap = new JButton("<-- Previous Map");
+		btnPreviousMap = new JButton("<--" + screenText[12]);
 		btnPreviousMap.setEnabled(false);
 		btnPreviousMap.setBackground(otherButtonsColor);
 		btnPreviousMap.addActionListener(new ActionListener(){
@@ -930,7 +1109,7 @@ public class GUIFront extends JFrame {
 		});
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
 
-		btnNextStep = new JButton("Next Step->");
+		btnNextStep = new JButton(screenText[13] + "->");
 		btnNextStep.setEnabled(false);
 		btnNextStep.setBackground(otherButtonsColor);
 		btnNextStepWasPressedLast = true;
@@ -989,7 +1168,7 @@ public class GUIFront extends JFrame {
 			}
 		});
 
-		btnPreviousStep = new JButton("<-Previous Step");
+		btnPreviousStep = new JButton("<-" + screenText[11]);
 		btnPreviousStep.setEnabled(false);
 		btnPreviousStep.setBackground(otherButtonsColor);
 		btnPreviousStep.addActionListener(new ActionListener() {
@@ -1046,6 +1225,8 @@ public class GUIFront extends JFrame {
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
+		
+		thisGUIFront = this;
 	}
 
 	// Sets Coloring Schemes
@@ -1068,6 +1249,22 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setBackground(otherButtonsColor);
 		contentPane.setBackground(backgroundColor);
 		btnClear.setBackground(otherButtonsColor);
+		
+        props.put("logoString", "EoN"); 
+        
+        props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
+        props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));
+
+        props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
+        props.put("windowTitleBackgroundColor", colorToString(colors.getMainBackColor())); 
+        props.put("windowTitleColorLight", colorToString(colors.getMainBackColor())); 
+        props.put("windowTitleColorDark", colorToString(colors.getStartNodeColor())); 
+        props.put("frameColor", colorToString(colors.getOutlineColor()));
+        props.put("windowTitleFont", "Gulim Bold 20");
+        
+		//props.put("tabAreaBackgroundColor", colorToString(Color.white));
+	    AluminiumLookAndFeel.setCurrentTheme(props);
+		SwingUtilities.updateComponentTreeUI(this);
 	}
 
 	/** Changes the picture on the street view tab
@@ -1088,7 +1285,8 @@ public class GUIFront extends JFrame {
 
 		// connect Street View Panel to mainPanel
 		SLPanel streetViewSLPanel = new SLPanel();
-		mainPanel.addTab("Street View", null, streetViewSLPanel, null);
+		streetViewSLPanel.setOpaque(false);
+		mainPanel.addTab(screenText[10], null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
 
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
@@ -1128,10 +1326,10 @@ public class GUIFront extends JFrame {
 	// Initializes all menu bars
 	public void initializeMenuBar(){
 		// ---- File Menu ----
-		mnFile = new JMenu("File");
+		mnFile = new JMenu(screenText[1]);
 		menuBar.add(mnFile);
 
-		mntmEmail = new JMenuItem("Email"); // Code to open up the email sender
+		mntmEmail = new JMenuItem(screenText[15]); // Code to open up the email sender
 		mntmEmail.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -1212,7 +1410,7 @@ public class GUIFront extends JFrame {
 			}
 		});
 		
-		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
+		mntmExit = new JMenuItem(screenText[16]); // terminates the session, anything need to be saved first?
 		mntmExit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -1224,72 +1422,91 @@ public class GUIFront extends JFrame {
 		mnFile.add(mntmExit);
 
 		// ---- Options -----
-		mnOptions = new JMenu("Options");
+		mnOptions = new JMenu(screenText[2]); // Options
 		menuBar.add(mnOptions);
 
+		mnOptionList.add(new JMenu(screenText[18])); // Color Schemes
+		mnOptions.add(mnOptionList.get(0));
+		
+		mnOptionList.add(new JMenu(screenText[24])); // Languages
+		mnOptions.add(mnOptionList.get(1));
+		
 		// ---- Locations -----
-		mnLocations = new JMenu("Locations");
+		mnLocations = new JMenu(screenText[3]);
 		menuBar.add(mnLocations);
 
-		// ---- Color Schemes ----
-		mnColorScheme = new JMenu("Color Scheme");
-		mnOptions.add(mnColorScheme);
-
-		//schemes are mapped to an index in mntmColorSchemes
-		//0 - Default Campus
-		//1 - Grayscale
-		//2 - WPI Default
-		//3 - Flower Power
-		//4 - All Blue
-		
+		// {{ Adding Color Schemes
+		/* Color Schemes
+		 *	Default Campus
+		 *	Grayscale
+		 *	WPI Default
+		 *	Flower Power
+		 *	All Blue
+		 */
 		for (int i = 0; i < 5; i++)
 			mntmColorSchemes.add(new JMenuItem());
 		
-		mntmColorSchemes.get(0).setText("Default Campus");
-		mntmColorSchemes.get(1).setText("Greyscale");
-		mntmColorSchemes.get(2).setText("WPI Theme");
-		mntmColorSchemes.get(3).setText("Flower Power");
-		mntmColorSchemes.get(4).setText("All Blue");
+		mntmColorSchemes.get(0).setText(screenText[19]);
+		mntmColorSchemes.get(1).setText(screenText[20]);
+		mntmColorSchemes.get(2).setText(screenText[21]);
+		mntmColorSchemes.get(3).setText(screenText[22]);
+		mntmColorSchemes.get(4).setText(screenText[23]);
 		
 		ArrayList<String> colorText = new ArrayList<String>();
-		colorText.add(0, "Default Campus");
-		colorText.add(1, "Greyscale");
-		colorText.add(2, "WPI Default");
-		colorText.add(3, "Flower Power");
-		colorText.add(4, "All Blue");
+		colorText.add(0, screenText[19]);
+		colorText.add(1, screenText[20]);
+		colorText.add(2, screenText[21]);
+		colorText.add(3, screenText[22]);
+		colorText.add(4, screenText[23]);
 
 		mntmColorSchemes.get(0).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("Default Campus");
+				setColoring(screenText[19]);
 			}
 		});
 		mntmColorSchemes.get(1).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("Greyscale");
+				setColoring(screenText[20]);
 			}
 		});
 		mntmColorSchemes.get(2).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("WPI Default");
+				setColoring(screenText[21]);
 			}
 		});
 		mntmColorSchemes.get(3).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("Flower Power");
+				setColoring(screenText[22]);
 			}
 		});
 		mntmColorSchemes.get(4).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("All Blue");
+				setColoring(screenText[23]);
 			}
 		});
 		
-		mnColorScheme.add(mntmColorSchemes.get(0));
-		mnColorScheme.add(mntmColorSchemes.get(1));
-		mnColorScheme.add(mntmColorSchemes.get(2));
-		mnColorScheme.add(mntmColorSchemes.get(3));
-		mnColorScheme.add(mntmColorSchemes.get(4));
+		mnOptionList.get(0).add(mntmColorSchemes.get(0));
+		mnOptionList.get(0).add(mntmColorSchemes.get(1));
+		mnOptionList.get(0).add(mntmColorSchemes.get(2));
+		mnOptionList.get(0).add(mntmColorSchemes.get(3));
+		mnOptionList.get(0).add(mntmColorSchemes.get(4));
+		// }} Adding Color Schemes
+		
+		// {{ Adding Languages
+		String[] languageText = GUIFrontUtil.createLanguageText();
 
+		for (int i = 0; i < 41; i++){
+			getMntmLanguages().add(new JMenuItem());
+			getMntmLanguages().get(i).setText(languageText[i]);
+		}
+				
+		GUIFrontUtil.addLanguageListeners();
+		
+		for(int i = 0; i < 41; i++){
+			mnOptionList.get(1).add(getMntmLanguages().get(i));
+		}
+		// }} Adding Languages
+		
 		// here lies the clickable building dropdown menus
 		mnBuildings = GUIFrontUtil.initBuildingMenuBar();
 		
@@ -1304,7 +1521,7 @@ public class GUIFront extends JFrame {
 
 		mnLocations.add(mnBuildings.get(0)); // indices: 0, 1, 2, 3
 		mnLocations.add(mnBuildings.get(1)); // indices: 4, 5, 6, 7
-		mnLocations.add(mnBuildings.get(2));// indices: 8, 9, 10
+		mnLocations.add(mnBuildings.get(2)); // indices: 8, 9, 10
 		mnLocations.add(mntmCCM); // index: 11
 		mnLocations.add(mnBuildings.get(3)); // indices 12, 13, 14, 15, 16
 		mnLocations.add(mnBuildings.get(4)); // indices: 17, 18, 19, 20, 21
@@ -1313,7 +1530,7 @@ public class GUIFront extends JFrame {
 		mnLocations.add(mnBuildings.get(7)); // indices: 27, 28
 		mnLocations.add(mnBuildings.get(8)); // indices 29, 30, 31, 32
 
-		mnHelp = new JMenu("Help");
+		mnHelp = new JMenu(screenText[4]);
 		menuBar.add(mnHelp);
 	}
 
@@ -1421,12 +1638,14 @@ public class GUIFront extends JFrame {
 	 */
 	public void reset() {
 		allowSetting = true; //allow user to re place nodes only once reset is pressed
-		getGlobalMap().getStartNode().getLocalMap().setStartNode(null);
+		if(getGlobalMap().getStartNode() != null){
+			getGlobalMap().getStartNode().getLocalMap().setStartNode(null);
+			getGlobalMap().setStartNode(null);
+		}
 		if (getGlobalMap().getEndNode() != null){
 			getGlobalMap().getEndNode().getLocalMap().setEndNode(null);
 			getGlobalMap().setEndNode(null);
 		}
-		getGlobalMap().setStartNode(null);
 		reset = true;
 		listModel.removeAllElements(); // clear directions
 
@@ -1439,14 +1658,28 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setEnabled(false);
 		btnNextStep.setEnabled(false);
 		btnPreviousStep.setEnabled(false);
-		lblInvalidEntry.setVisible(false);
-		//textFieldEnd.setText("");
-		//textFieldStart.setText("");
+
+		// lblInvalidEntry.setVisible(false);
+
+		// hide panel directions components
+		getLblStepByStep().setVisible(false);
+		getLblClickHere().setVisible(true);
+		getLblDistance().setVisible(false);
+		getScrollPane().setVisible(false);
+		getListDirections().setVisible(false);
+		
+		// Hide the directions information
+		getLblClickHere().setVisible(true);
+		getLblDistance().setVisible(false);
+		getScrollPane().setVisible(false);
+		getListDirections().setVisible(false);
+		getLblStepByStep().setVisible(false);
 
 		getGlobalMap().getChosenNodes().clear();
 		getLblDistance().setText("");
 		btnClear.setEnabled(false);
 		btnRoute.setEnabled(false);
+		drawLine = false;
 		drawLine2 = false;
 		drawLine3 = false;
 		drawNodes = true;
@@ -1457,12 +1690,38 @@ public class GUIFront extends JFrame {
 		// Initialize Color Schemes
 		setAllSchemes(new ColorSchemes());  
 		setColors(getAllSchemes().setColorScheme("Default Campus"));
+		
+		 props = new Properties();
+         props.put("logoString", "EoN"); 
+         
+         props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
+         props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));
+         
+         /*props.put("controlColor", colorToString(colors.getOutlineColor()));
+         props.put("controlColorLight", colorToString(colors.getOutlineColor()));
+         props.put("controlColorDark", colorToString(colors.getOutlineColor())); 
+*/
+//         props.put("buttonColor", "218 230 254");
+      //   props.put("buttonColorLight", colorToString(Color.white));
+        // props.put("buttonColorDark", colorToString(colors.getOutlineColor()));
+/*
+         props.put("rolloverColor", "218 254 230"); 
+         props.put("rolloverColorLight", "218 254 230"); 
+         props.put("rolloverColorDark", "180 240 197"); 
+*/
+         props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
+         props.put("windowTitleBackgroundColor", colorToString(colors.getMainBackColor())); 
+         props.put("windowTitleColorLight", colorToString(colors.getMainBackColor())); 
+         props.put("windowTitleColorDark", colorToString(colors.getStartNodeColor())); 
+         props.put("frameColor", colorToString(colors.getOutlineColor()));
+         props.put("windowTitleFont", "Gulim Bold 20");
+
 
 		routeButtonColor = getColors().getRouteButtonColor();
 		otherButtonsColor = getColors().getOtherButtonsColor();
 		backgroundColor = getColors().getMainBackColor();
 		sideBarColor = getColors().getSideBarColor();
-
+	
 		// Instantiate GUIBack to its default
 		GUIBack initial = new GUIBack();
 		backends.add(0, initial);
@@ -1493,6 +1752,8 @@ public class GUIFront extends JFrame {
 			allNodes.addAll(local.getMapNodes());
 		}
 		getGlobalMap().setMapNodes(allNodes);
+ 	    AluminiumLookAndFeel.setCurrentTheme(props);
+
 	}
 	
 	// Initialize Group Layout
@@ -1503,23 +1764,22 @@ public class GUIFront extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(10)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(start, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(lblStart, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGap(75)
+							.addGap(51)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(end, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(lblEnd, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-							.addGap(76)
-							.addComponent(lblInvalidEntry)
-							.addGap(226)
+							.addGap(351)
 							.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnClear))
-						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnClear)
+							.addGap(22))))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(79)
 					.addComponent(btnPreviousMap)
@@ -1537,21 +1797,21 @@ public class GUIFront extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblStart)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(start, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblEnd)
-								.addComponent(lblInvalidEntry))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(end, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblStart)
+								.addComponent(lblEnd))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(start, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(5)
+									.addComponent(end, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(11)
-							.addComponent(btnRoute))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(11)
-							.addComponent(btnClear)))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnRoute)
+								.addComponent(btnClear))))
 					.addGap(14)
 					.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
@@ -1573,7 +1833,6 @@ public class GUIFront extends JFrame {
 							.addComponent(lblEnd)
 							.addComponent(end, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-					.addComponent(lblInvalidEntry)
 					.addComponent(btnRoute)
 					.addComponent(btnClear)
 				)
@@ -1594,7 +1853,6 @@ public class GUIFront extends JFrame {
 				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(start)
 						.addComponent(end)
-						.addComponent(lblInvalidEntry)
 						.addComponent(btnRoute)
 						.addComponent(btnClear))
 				.addGroup(gl_contentPane.createSequentialGroup())
@@ -1605,6 +1863,56 @@ public class GUIFront extends JFrame {
 						.addComponent(btnNextStep)
 						.addComponent(btnNextMap)) // Next Map/Step buttons	
 			);
+	}
+		
+	// changes language of all text on screen
+	public static void changeScreenText(Language toLanguage){
+		
+		// Set your Windows Azure Marketplace client info - See http://msdn.microsoft.com/en-us/library/hh454950.aspx
+	    Translate.setClientId("honest-mistakes");
+	    Translate.setClientSecret("34JgO9+sszgIg4TEW0k9hHBee67V8/ul9m1iwQkExtg=");
+	    
+	    String[] translatedText = new String[Constants.SCREEN_TEXT_SIZE];
+		try {
+			translatedText = Translate.execute(screenText, toLanguage);		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		thisGUIFront.setTitle(translatedText[0]);
+		mnFile.setText(translatedText[1]);
+		mnOptions.setText(translatedText[2]);
+		mnLocations.setText(translatedText[3]);
+		mnHelp.setText(translatedText[4]);
+		lblStart.setText(translatedText[5]);
+		lblEnd.setText(translatedText[6]);
+		btnRoute.setText(translatedText[7]);
+		btnClear.setText(translatedText[8]);
+		mainPanel.setTitleAt(0, translatedText[9]);
+		mainPanel.setTitleAt(1, translatedText[10]);
+		btnPreviousStep.setText("<-" + translatedText[11]);
+		btnPreviousMap.setText("<--" + translatedText[12]);
+		btnNextStep.setText(translatedText[13] + "->");
+		btnNextMap.setText(translatedText[14] + "-->");
+		GUIFront.getLblStepByStep().setText(translatedText[15]);
+		mntmEmail.setText(translatedText[16]);
+		mntmExit.setText(translatedText[17]);
+		
+		JMenu colorSchemes = mnOptionList.get(0);
+		colorSchemes.setText(translatedText[18]);
+		mnOptionList.set(0, colorSchemes);
+		
+		mntmColorSchemes.get(0).setText(translatedText[19]);
+		mntmColorSchemes.get(1).setText(translatedText[20]);
+		mntmColorSchemes.get(2).setText(translatedText[21]);
+		mntmColorSchemes.get(3).setText(translatedText[22]);
+		mntmColorSchemes.get(4).setText(translatedText[23]);
+		
+		JMenu languages = mnOptionList.get(1);
+		languages.setText(translatedText[24]);
+		mnOptionList.set(1, languages);
+		
+		getLblDistance().setText(translatedText[25]);
 	}
 	
 	// {{ Getters and Setters
@@ -1619,6 +1927,12 @@ public class GUIFront extends JFrame {
 	}
 	public static void setTransform(AffineTransform transform) {
 		GUIFront.transform = transform;
+	}
+	public static ListCellRenderer getRenderer(){
+		return renderer;
+	}
+	public static void setRenderer(ListCellRenderer aRenderer){
+		renderer = aRenderer;
 	}
 	public static GlobalMap getGlobalMap() {
 		return globalMap;
@@ -1685,5 +1999,21 @@ public class GUIFront extends JFrame {
 	}
 	public static void setListDirections(JList<String> listDirections) {
 		GUIFront.listDirections = listDirections;
+	}
+
+	public static ArrayList<JMenuItem> getMntmLanguages() {
+		return mntmLanguages;
+	}
+
+	public static void setMntmLanguages(ArrayList<JMenuItem> aMntmLanguages) {
+		mntmLanguages = aMntmLanguages;
+	}
+
+	public static Language getLanguage() {
+		return language;
+	}
+
+	public static void setLanguage(Language language) {
+		GUIFront.language = language;
 	}
 }

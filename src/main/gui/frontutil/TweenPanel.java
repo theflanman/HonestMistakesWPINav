@@ -28,8 +28,8 @@ import main.LocalMap;
 import main.MapNode;
 import main.gui.GUIFront;
 import main.util.Constants;
-import main.util.GUIFrontUtil;
 import main.util.proxy.IProxyImage;
+import main.util.proxy.ProxyImage;
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
@@ -120,8 +120,7 @@ public class TweenPanel extends JPanel {
 			addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent me) {
-					if (GUIFront.allowSetting == true){
-
+					if (GUIFront.allowSetting == true && GUIFront.drawLine == false){
 						// Reset the main reference point incase we are clicking away from a popup menu
 						try {
 							GUIFront.setMainReferencePoint(GUIFront.getTransform().inverseTransform(me.getPoint(), null));
@@ -519,7 +518,9 @@ public class TweenPanel extends JPanel {
 
 						repaint();
 
-					}	
+					} else if (GUIFront.drawLine == true){
+						GUIFront.btnClear.doClick();
+					}
 				}
 			});
 		}
@@ -653,23 +654,33 @@ public class TweenPanel extends JPanel {
 
 		Graphics2D graphics = (Graphics2D) g;
 
-		if(this.mapImage == null) // StepByStep
-			if(!GUIFront.isCurrentlyOpen()){
-				GUIFront.getLblStepByStep().setVisible(false);
+		if(this.mapImage == null){ // StepByStep	
+			// Update showing directions or not
+			if(GUIFront.isCurrentlyOpen()){
+				GUIFront.getListDirections().setFixedCellWidth(GUIFront.panelDirections.getWidth() - 10); // scale the cell width when resizing
+				GUIFront.getListDirections().setVisibleRowCount((int) (GUIFront.panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
+				GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 7)); // 7 pixels per 1 character
+
+				// If there is a route, show this
+				if(!GUIFront.allowSetting){
+					GUIFront.getLblClickHere().setVisible(false);
+					GUIFront.getLblDistance().setVisible(true);
+					GUIFront.getScrollPane().setVisible(true);
+					GUIFront.getListDirections().setVisible(true);
+					GUIFront.getLblStepByStep().setVisible(true);
+				} else {
+					GUIFront.getLblClickHere().setText(">>>");
+				}
+			} else {
+				GUIFront.getLblClickHere().setText("<<<");
 				GUIFront.getLblClickHere().setVisible(true);
 				GUIFront.getLblDistance().setVisible(false);
 				GUIFront.getScrollPane().setVisible(false);
 				GUIFront.getListDirections().setVisible(false);
-			} 
-			else {
-				GUIFront.getLblStepByStep().setVisible(true);
-				GUIFront.getLblDistance().setVisible(true);
-				GUIFront.getLblClickHere().setVisible(false);
-				GUIFront.getScrollPane().setVisible(true);
-				GUIFront.getListDirections().setVisible(true);
+				GUIFront.getLblStepByStep().setVisible(false);
 			}
-
-		else {
+		} 
+		else {			
 			// Save the current transformed state incase something goes wrong
 			AffineTransform saveTransform = graphics.getTransform();
 			GUIFront.setTransform(new AffineTransform(saveTransform));
@@ -717,56 +728,48 @@ public class TweenPanel extends JPanel {
 				graphics.setColor(startNodeColor);
 
 				if(GUIFront.drawNodes){
+					IProxyImage startNodeImage = new ProxyImage("startnode.png");
+					IProxyImage endNodeImage = new ProxyImage("endnode.png");
+					IProxyImage waypointNodeImage = new ProxyImage("waypoint.png");
 					if(!(GUIFront.paths.isEmpty())){ //only try this if paths is not empty - otherwise this will result in errors
 						if (GUIFront.paths.get(GUIFront.index).get(0) != null){ // make sure that the start node (which it should never be) is not null
-							graphics.setColor(startNodeColor);
-							graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
+
+							graphics.drawImage(startNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 10, this);
+
 						}
 						if (GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1) != null){ //make sure the end node (which it should never be) is not null
-							graphics.setColor(endNodeColor);
-							graphics.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getYPos() - (int)getPanY() - 5, 10, 10);
 
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.paths.get(GUIFront.index).get(0).getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.paths.get(GUIFront.index).get(0).getYPos() - (int)getPanY() - 5, 10, 10);
+							graphics.drawImage(endNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.paths.get(GUIFront.index).size() - 1).getYPos() - (int)getPanY() - 10, this);
+
 						}
 					}
 					//drawing for originally placed nodes
 					if (GUIFront.getGlobalMap().getStartNode() != null){ //when globalMap start is updated place its position on the map if the localmap the user is on is where that node should be placed
 						if (GUIFront.getGlobalMap().getStartNode().getLocalMap() == GUIFront.backend.getLocalMap()){
-							graphics.setColor(startNodeColor);
-							graphics.fillOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 5, 10, 10);
+
+							graphics.drawImage(startNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.backend.getLocalMap().getStartNode().getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.backend.getLocalMap().getStartNode().getYPos() - (int)getPanY() - 10, this);
+
 						}
 					}
 
 					if(GUIFront.getGlobalMap().getEndNode() != null){ //when globalMap end is updated place its position on the map if the localMap the user is on is where that node should be placed
 						if (GUIFront.getGlobalMap().getEndNode().getLocalMap() == GUIFront.backend.getLocalMap()){
-							graphics.setColor(endNodeColor);
-							graphics.fillOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
-							graphics.setColor(outlineColor);
-							graphics.drawOval((int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 5, 
-									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 5, 10, 10);
+
+							graphics.drawImage(endNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.getGlobalMap().getEndNode().getXPos() - (int)getPanX() - 10,
+									(int) GUIFront.getGlobalMap().getEndNode().getYPos() - (int)getPanY() - 10, this);
+
 						}
 					}
 					if (GUIFront.getGlobalMap().getChosenNodes().size() > 2){ //check if there are waypoints -- if the user is on a map where one or more of these nodes should be placed than place them
 						for (int i = 1; i < GUIFront.getGlobalMap().getChosenNodes().size() - 2; i++){
 							if (GUIFront.getGlobalMap().getChosenNodes().get(i).getLocalMap() == GUIFront.backend.getLocalMap()){
-								graphics.setColor(Color.ORANGE);
-								graphics.fillOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
-										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
-								graphics.setColor(outlineColor);
-								graphics.drawOval((int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 5, 
-										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 5, 10, 10);
+
+								graphics.drawImage(waypointNodeImage.getImage("src/data").getScaledInstance(20, 20, Image.SCALE_SMOOTH), (int) GUIFront.getGlobalMap().getChosenNodes().get(i).getXPos() - (int)getPanX() - 10, 
+										(int) GUIFront.getGlobalMap().getChosenNodes().get(i).getYPos() - (int)getPanY() - 10, this);
+
 							}
 						}
 					}
@@ -781,6 +784,13 @@ public class TweenPanel extends JPanel {
 							double x2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[0];
 							double y2 = GUIFront.backend.getCoordinates(GUIFront.thisRoute).get(i + 1)[1];
 							Graphics2D g2 = (Graphics2D) g;
+
+							g2.setStroke(new BasicStroke(5f,      // Width
+									BasicStroke.CAP_SQUARE,    // End cap
+									BasicStroke.JOIN_BEVEL,    // Join style
+									10.0f,                     // Miter limit
+									new float[] {10f,10f}, // Dash pattern
+									0.0f));
 							g2.setColor(lineColor);
 							Stroke dashed = new BasicStroke(5, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
 							g2.setStroke(dashed);
@@ -808,7 +818,7 @@ public class TweenPanel extends JPanel {
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY());
 				}
-				
+
 				repaint();
 				graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
 			}

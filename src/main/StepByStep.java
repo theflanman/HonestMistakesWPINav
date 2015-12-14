@@ -1,6 +1,10 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
 
 /*
  * This class contains methods regarding the StepByStep directions
@@ -94,7 +98,11 @@ public class StepByStep {
 	 * @return list of instruction for the step by step navigation in as one
 	 *         string for each instruction
 	 */
-	public ArrayList<String> printDirection() {
+	public ArrayList<String> printDirection(Language language) {	
+	    // Set your Windows Azure Marketplace client info - See http://msdn.microsoft.com/en-us/library/hh454950.aspx
+	    Translate.setClientId("honest-mistakes");
+	    Translate.setClientSecret("34JgO9+sszgIg4TEW0k9hHBee67V8/ul9m1iwQkExtg=");
+	    
 		// Initialize list of strings to return
 		ArrayList<String> stepList = new ArrayList<String>();
 
@@ -114,7 +122,7 @@ public class StepByStep {
 
 		// If the path is only 1 node in size
 		if (pathNodes.size() == 1) {
-			turn = "You have arrived at your destination";
+			turn = "You have arrived at your destination.";
 			stepList.add(turn);
 		}
 		else {
@@ -225,6 +233,38 @@ public class StepByStep {
 				}
 			}
 		}
+		
+		// change language if necessary
+		try{
+			if(! language.equals(Language.ENGLISH)){
+				ArrayList<String> stepListTemp = new ArrayList<String>();
+				
+				String[] stepBeginnings = new String[stepList.size()];
+				int i = 0;
+				for(String step : stepList){
+					step = step.replace(".", ":"); // "." is a wildcard for the replace's regex
+					String[] steps = step.split(": ");
+					stepBeginnings[i] = steps[0];
+					stepListTemp.add(steps[1]); // text part
+					
+					i++;
+				}
+				
+				String[] stepListStringArr = Arrays.copyOf(stepListTemp.toArray(), stepListTemp.size(), String[].class);
+				String[] stepListTranslated = Translate.execute(stepListStringArr, language);
+				
+				i = 0;
+				stepList.clear();
+				for(String step : stepListTranslated){
+					step = stepBeginnings[i] + ". " + step.substring(0, step.length()-1) + ".";
+					stepList.add(step);
+					i++;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return stepList;
 	}
 }

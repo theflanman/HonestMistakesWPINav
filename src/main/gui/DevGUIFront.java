@@ -56,13 +56,9 @@ public class DevGUIFront extends JFrame {
 	static LocalMap local2;
 	String path; // current path
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField xPosField;
-	private JTextField yPosField;
-	private JTextField zPosField;
+	private JTextField xPosField, yPosField, zPosField;
 	private MapNode lastClicked;
-	private MapNode edgeStart;
-	private MapNode edgeRemove;
-	private MapNode nodeToRemove;
+	private MapNode edgeStart, edgeRemove, nodeToRemove;
 	private boolean multiSelect;
 	private ArrayList<MapNode> selectedNodes = new ArrayList<MapNode>();
 	private boolean edgeStarted = false;
@@ -72,11 +68,8 @@ public class DevGUIFront extends JFrame {
 	@SuppressWarnings("rawtypes")
 	private JComboBox typeBox;
 	private JTextArea txtrAliases;
-	private JCheckBox chckbxStairs;
-	private JCheckBox chckbxPOI;
-	private JCheckBox chckbxHandicapped;
-	private JCheckBox chckbxBikeable;
-	private JCheckBox chckbxOutside;
+	private JCheckBox chckbxStairs, chckbxPOI, chckbxHandicapped, chckbxBikeable, chckbxOutside;
+	private JPanel panel, panel2;
 	private boolean clickMiss;
 
 	private static DevGUIFront frame;
@@ -141,7 +134,7 @@ public class DevGUIFront extends JFrame {
 				JFileChooser chooser = new JFileChooser();
 				chooser.setCurrentDirectory(new File(Constants.LOCAL_MAP_PATH));
 				int option = chooser.showOpenDialog(DevGUIFront.this);
-				
+
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
 					String inputFileName = inputFile.getName();
@@ -152,9 +145,9 @@ public class DevGUIFront extends JFrame {
 					local1 = devGUIBack.getLocalMap();
 					String imagePath = GeneralUtil.removeExtension(inputFileName);
 					imagePath = imagePath + ".png";
-					
+
 					pic = new ProxyImage(imagePath);
-					
+
 					//  picLabel.setIcon(new ImageIcon(pic));
 					mapPanel.setBgImage(pic.getImage(Constants.IMAGES_PATH));
 
@@ -173,7 +166,7 @@ public class DevGUIFront extends JFrame {
 				JFileChooser chooser = new JFileChooser();
 				chooser.setCurrentDirectory(new File(Constants.LOCAL_MAP_PATH));
 				int option = chooser.showOpenDialog(DevGUIFront.this);
-				
+
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile2 = chooser.getSelectedFile();
 					String inputFileName = inputFile2.getName();
@@ -236,14 +229,14 @@ public class DevGUIFront extends JFrame {
 				int option = chooser.showOpenDialog(DevGUIFront.this);
 				if (option == JFileChooser.APPROVE_OPTION) {
 					inputFile = chooser.getSelectedFile();
-					
+
 					String imagePath = GeneralUtil.removeExtension(inputFile.getName());
 					imagePath = imagePath + ".png";
 
 					pic = new ProxyImage(imagePath);
-					
+
 					mapPanel.setBgImage(pic.getImage(Constants.IMAGES_PATH));
-					
+
 					selectedNodes.clear();
 					points = new ArrayList<MapNode>();
 					Graphics g = mapPanel.getGraphics();
@@ -265,6 +258,31 @@ public class DevGUIFront extends JFrame {
 		JMenuItem mntmShowOneMap = new JMenuItem("Show One Map");
 		mnView.add(mntmShowOneMap);
 
+		mntmShowTwoMaps.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panel.setSize(new Dimension(445, 600));
+				getContentPane().add(panel2);
+				panel.setBackground(Color.WHITE);
+				mnFile.add(mntmLoadExtraMap);
+				twoMapView = true;
+				mntmSaveMap.setText("Save Maps");
+				Graphics g2 = mapPanel2.getGraphics();
+				mapPanel2.renderMapPublic(g2, points2, lastClicked);
+			}
+		});
+
+		mntmShowOneMap.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				getContentPane().remove(panel2);
+				panel.setSize(new Dimension(900, 600));
+				mnFile.remove(mntmLoadExtraMap);
+				twoMapView = false;
+				mntmSaveMap.setText("Save Map");
+				selectedNodes.clear(); //selected points could be in two maps at once, causing issues later if all of them are edited
+			}
+		});
+
+
 		// This is code for the panel showing information on the current selected node.
 		JPanel nodeInfoPanel = new JPanel();
 		nodeInfoPanel.setBounds(920, 203, 294, 136);
@@ -273,6 +291,7 @@ public class DevGUIFront extends JFrame {
 
 		// Labels
 		JLabel lblNodeInformation = new JLabel(" Node Information");
+		lblNodeInformation.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNodeInformation.setBounds(2, 2, 133, 16);
 		nodeInfoPanel.add(lblNodeInformation);
 
@@ -308,6 +327,7 @@ public class DevGUIFront extends JFrame {
 		btnMakeChanges.setBounds(4, 106, 115, 25);
 		nodeInfoPanel.add(btnMakeChanges);
 
+		// Sets x and y position in pixels and z position in feet for the last clicked node from the z position text field.
 		btnMakeChanges.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(lastClicked != null) {
@@ -324,6 +344,19 @@ public class DevGUIFront extends JFrame {
 			}
 		});
 
+		// Sets the z position in feet for all currently selected nodes from the z position text field.
+		JButton btnNewButton = new JButton("Set Selected Z-Feet");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(MapNode n: selectedNodes) {
+					n.setZFeet(Double.parseDouble(zPosField.getText()));
+				}
+
+			}
+		});
+		btnNewButton.setBounds(132, 106, 155, 25);
+		nodeInfoPanel.add(btnNewButton);
+
 		// This is code for the panel with the radio buttons for the cursor options
 		JPanel cursorPanel = new JPanel();
 		cursorPanel.setBounds(920, 10, 130, 183);
@@ -333,7 +366,7 @@ public class DevGUIFront extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel(" Cursor Options");
 		cursorPanel.add(lblNewLabel_1);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		cursorPanel.add(rdbtnPlaceNode);
 		buttonGroup.add(rdbtnPlaceNode);
@@ -351,8 +384,8 @@ public class DevGUIFront extends JFrame {
 		buttonGroup.add(rdbtnRemoveEdge);
 		getContentPane().setLayout(null);
 
-		// This is code pertaining to the panel holding the map panel.
-		JPanel panel = new JPanel();
+		// This pertains to the panel holding the map panel.
+		panel = new JPanel();
 		panel.setLocation(10, 13);
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setBackground(Color.WHITE);
@@ -364,10 +397,18 @@ public class DevGUIFront extends JFrame {
 		getContentPane().add(cursorPanel);
 		getContentPane().add(nodeInfoPanel);
 
-		JButton btnLinear = new JButton("Linearize");
-		btnLinear.setBounds(132, 106, 155, 25);
-		nodeInfoPanel.add(btnLinear);
+		// This is the panel holding the extra map panel for two map view
+		panel2 = new JPanel();
+		panel2.setLocation(465, 10);
+		panel2.setSize(445, 600);
+		panel2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel2.setBackground(Color.WHITE);
+		panel2.setLayout(new BorderLayout(0, 0));
+		panel2.setBounds(465, 10, 445, 600);
+		mapPanel2.setBounds(2, 2, 443, 598);
+		panel2.add(mapPanel2);
 
+		//This is a panel that holds all the options relating to node attributes
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_1.setBounds(920, 349, 294, 312);
@@ -375,7 +416,8 @@ public class DevGUIFront extends JFrame {
 		panel_1.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel(" Attributes");
-		lblNewLabel.setBounds(2, 2, 66, 16);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(2, 2, 107, 16);
 		panel_1.add(lblNewLabel);
 
 		chckbxBikeable = new JCheckBox("Bikeable");
@@ -431,41 +473,9 @@ public class DevGUIFront extends JFrame {
 		scrollpane.setBounds(14, 73, 277, 68);
 		panel_1.add(scrollpane);
 		txtrAliases.setLineWrap(true);
-		JPanel panel2 = new JPanel();
-		panel2.setLocation(465, 10);
 
-		panel2.setSize(445, 600);
-		panel2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel2.setBackground(Color.WHITE);
-		panel2.setLayout(new BorderLayout(0, 0));
-		panel2.setBounds(465, 10, 445, 600);
-		mapPanel2.setBounds(2, 2, 443, 598);
-		panel2.add(mapPanel2);
 
-		mntmShowTwoMaps.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				panel.setSize(new Dimension(445, 600));
-				getContentPane().add(panel2);
-				panel.setBackground(Color.WHITE);
-				mnFile.add(mntmLoadExtraMap);
-				twoMapView = true;
-				mntmSaveMap.setText("Save Maps");
-				Graphics g2 = mapPanel2.getGraphics();
-				mapPanel2.renderMapPublic(g2, points2, lastClicked);
-			}
-		});
-
-		mntmShowOneMap.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				getContentPane().remove(panel2);
-				panel.setSize(new Dimension(900, 600));
-				mnFile.remove(mntmLoadExtraMap);
-				twoMapView = false;
-				mntmSaveMap.setText("Save Map");
-				selectedNodes.clear(); //selected points could be in two maps at once, causing issues later if all of them are edited
-			}
-		});
-
+		// This sets the attributes of a special node such that new nodes will be initialized with this node's attributes.
 		btnSetDfltAttr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				defaultAttributes.setBikeable(chckbxBikeable.isSelected());
@@ -477,6 +487,7 @@ public class DevGUIFront extends JFrame {
 			}
 		});
 
+		//Edits the name of the last clicked node
 		btnEditName.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(lastClicked != null) {
@@ -488,6 +499,7 @@ public class DevGUIFront extends JFrame {
 			}
 		});
 
+		// These define the check boxes to change the status of all currently selected nodes when checked or unchecked to reflect this current status.
 		chckbxStairs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				for(MapNode n : selectedNodes) {
@@ -528,6 +540,7 @@ public class DevGUIFront extends JFrame {
 			}
 		});
 
+		// This sets the type of all currently selected nodes, using the enumerated type Types.
 		typeBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(selectedNodes.size() > 1) { //If size is 1, need to set the type using the code below.
@@ -541,11 +554,62 @@ public class DevGUIFront extends JFrame {
 			}
 		});
 
+
+
+		// This is code for a panel with options that select nodes by tope, or act on all selected nodes.
+		JPanel highlightPanel = new JPanel();
+		highlightPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		highlightPanel.setBounds(1062, 10, 151, 183);
+		getContentPane().add(highlightPanel);
+		highlightPanel.setLayout(null);
+
+		JLabel lblHighlight = new JLabel(" Select nodes with:");
+		lblHighlight.setBounds(2, 31, 137, 16);
+		highlightPanel.add(lblHighlight);
+
+
+		String[] attributeSelectedOptions = new String[] {"foodLocation", "office", "classRoom", 
+				"waterFountain", "bathRoom", "parking", "walking", "door",
+				"elevator", "laboratory", "other", "is Stairs", "is Bikeable", "is Accessible", 
+				"is Outside", "is POI"};
+		JComboBox attributeSelected = new JComboBox(attributeSelectedOptions);
+		attributeSelected.setSelectedIndex(-1);
+		attributeSelected.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.selectAllNodes(attributeSelected.getSelectedIndex());
+			}
+		});
+		attributeSelected.setBounds(5, 54, 137, 22);
+		highlightPanel.add(attributeSelected);
+
+		JButton btnMakeEdges = new JButton("Connect Edges");
+		btnMakeEdges.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(MapNode n: selectedNodes) {
+					for(MapNode m : selectedNodes) {
+						n.addNeighbor(m);
+					}
+				}
+			}
+		});
+		btnMakeEdges.setBounds(5, 89, 134, 32);
+		highlightPanel.add(btnMakeEdges);
+
+		JButton btnLinear = new JButton("Align Nodes");
+		btnLinear.setBounds(5, 134, 134, 32);
+		highlightPanel.add(btnLinear);
+
+		JLabel lblSelectionOptions = new JLabel(" Selection Options");
+		lblSelectionOptions.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblSelectionOptions.setBounds(2, 2, 121, 16);
+		highlightPanel.add(lblSelectionOptions);
+
 		btnLinear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.linearizeNodes();
 			}
 		});
+
 		// This is code that determines what needs to happen on each mouse click in the map panel.
 		mapPanel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -573,7 +637,7 @@ public class DevGUIFront extends JFrame {
 				else if (rdbtnSelectNode.isSelected()){
 					edgeStarted = false;
 					edgeRemovalStarted = false;
-					
+
 					if(!me.isControlDown())
 						selectedNodes.clear();
 					if(me.isShiftDown())
@@ -587,7 +651,7 @@ public class DevGUIFront extends JFrame {
 
 						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX() - mapPanel.getXOffset()) <= threshold) && 
 								(Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY() - mapPanel.getYOffset()) <= threshold )){
-							
+
 							setInfoFields(n);
 							clickMiss = false;
 							if(multiSelect){
@@ -626,13 +690,13 @@ public class DevGUIFront extends JFrame {
 				}
 				else if(rdbtnMakeEdge.isSelected()) {
 					edgeRemovalStarted = false;
-					
+
 					if(edgeStarted == false) {
 						for(MapNode n : points){
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 							if((Math.abs(me.getLocationOnScreen().getX() -offset.x - tmp.getX() - mapPanel.getXOffset()) <= threshold) 
 									&& (Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY() - mapPanel.getYOffset()) <= threshold )){
-								
+
 								edgeStart = n;
 								edgeStarted = true;
 								setInfoFields(n);							
@@ -652,7 +716,7 @@ public class DevGUIFront extends JFrame {
 					else {
 						for(MapNode n : points) {
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
-							
+
 							if((Math.abs(me.getLocationOnScreen().getX() - mapPanel.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
 								Graphics g = mapPanel.getGraphics();
 								edgeStarted = false;
@@ -673,7 +737,7 @@ public class DevGUIFront extends JFrame {
 				}
 				else if(rdbtnRemoveEdge.isSelected()) {
 					edgeStarted = false;
-					
+
 					if(edgeRemovalStarted == false) {
 						for(MapNode n : points){
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
@@ -723,15 +787,15 @@ public class DevGUIFront extends JFrame {
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
 						if((Math.abs(me.getLocationOnScreen().getX()- mapPanel.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY()- mapPanel.getYOffset() - offset.y - tmp.getY()) <= threshold )){
-							for(MapNode m : n.getNeighbors()) {
-								m.removeNeighbor(n);
-							}
-							
+
+
 							nodeToRemove = n;
 						}
 					}
 					
-					//Intent is to remove all neighbors. Foreach loop doesn't like this.
+					for(MapNode m : nodeToRemove.getNeighbors()) {
+						m.removeNeighbor(nodeToRemove);
+					}
 					nodeToRemove.removeNeighbors();
 					points.remove(nodeToRemove);
 					lastClicked = null;
@@ -746,40 +810,15 @@ public class DevGUIFront extends JFrame {
 				}
 			}
 		}); 
-		
+
 		mapPanel.setBackground(Color.WHITE);
-
-		JPanel highlightPanel = new JPanel();
-		highlightPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		highlightPanel.setBounds(1062, 10, 151, 183);
-		getContentPane().add(highlightPanel);
-		highlightPanel.setLayout(null);
-
-		JLabel lblHighlight = new JLabel(" Select nodes with:");
-		lblHighlight.setBounds(2, 2, 137, 16);
-		highlightPanel.add(lblHighlight);
-
-
-		String[] attributeSelectedOptions = new String[] {"foodLocation", "office", "classRoom", 
-				"waterFountain", "bathRoom", "parking", "walking", "door",
-				"elevator", "laboratory", "other", "is Stairs", "is Bikeable", "is Accessible", 
-				"is Outside", "is POI"};
-		JComboBox attributeSelected = new JComboBox(attributeSelectedOptions);
-		attributeSelected.setSelectedIndex(-1);
-		attributeSelected.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				frame.selectAllNodes(attributeSelected.getSelectedIndex());
-			}
-		});
-		attributeSelected.setBounds(2, 31, 137, 22);
-		highlightPanel.add(attributeSelected);
 
 		// This is code for the second map panel.
 		mapPanel2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent me) {
 				Point offset = mapPanel2.getLocationOnScreen();
-				
+
 				if(rdbtnPlaceNode.isSelected()){
 					edgeStarted = false; //These two calls are a basic attempt to stop edge addition and removal from becoming confusing.
 					edgeRemovalStarted = false; //It is not evident whether the user has clicked a first node yet in the edge, so changing to a different operation will reset it.
@@ -799,7 +838,7 @@ public class DevGUIFront extends JFrame {
 				else if (rdbtnSelectNode.isSelected()){
 					edgeStarted = false;
 					edgeRemovalStarted = false;
-					
+
 					if(!me.isControlDown())
 						selectedNodes.clear();
 					if(me.isShiftDown())
@@ -808,16 +847,16 @@ public class DevGUIFront extends JFrame {
 						multiSelect = false;
 
 					clickMiss = true;
-					
+
 					for(MapNode n : points2){
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
 						if((Math.abs(me.getLocationOnScreen().getX() - offset.x - tmp.getX() - mapPanel2.getXOffset()) <= threshold) && 
 								(Math.abs(me.getLocationOnScreen().getY() - offset.y - tmp.getY() - mapPanel2.getYOffset()) <= threshold )){
-							
+
 							setInfoFields(n);
 							clickMiss = false;
-							
+
 							if(multiSelect){
 								MapNode lastPoint = lastClicked;
 								MapNode currentPoint  = n;
@@ -853,7 +892,7 @@ public class DevGUIFront extends JFrame {
 				}
 				else if(rdbtnMakeEdge.isSelected()) {
 					edgeRemovalStarted = false;
-					
+
 					if(edgeStarted == false) {
 						for(MapNode n : points2){
 							Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
@@ -939,13 +978,12 @@ public class DevGUIFront extends JFrame {
 						Point tmp = new Point((int)n.getXPos(), (int)n.getYPos());
 
 						if((Math.abs(me.getLocationOnScreen().getX() - mapPanel2.getXOffset() - offset.x - tmp.getX()) <= threshold) && (Math.abs(me.getLocationOnScreen().getY() - mapPanel2.getYOffset() - offset.y - tmp.getY()) <= threshold )){
-							for(MapNode m : n.getNeighbors()) {
-								//	n.removeNeighbor(m);
-								m.removeNeighbor(n);
-							}
-							
 							nodeToRemove = n;
 						}
+					}
+					
+					for(MapNode m : nodeToRemove.getNeighbors()) {
+						m.removeNeighbor(nodeToRemove);
 					}
 					nodeToRemove.removeNeighbors();
 
@@ -962,7 +1000,7 @@ public class DevGUIFront extends JFrame {
 				}
 			}
 		}); 
-		
+
 		mapPanel2.setBackground(Color.WHITE);
 	}
 
