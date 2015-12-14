@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.awt.geom.AffineTransform;
 import java.io.File;
 
@@ -138,7 +142,7 @@ public class GUIFront extends JFrame {
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 	private DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
 	@SuppressWarnings("rawtypes")
-	private ListCellRenderer renderer;
+	private static ListCellRenderer renderer;
 	private int MAX_LIST_WIDTH = 180; // maximum width of the list in pixels, the size of panelDirections is 200px
 	private static JList<String> listDirections;
 
@@ -199,6 +203,7 @@ public class GUIFront extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
+		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
@@ -1580,6 +1585,22 @@ public class GUIFront extends JFrame {
 		btnNextStep.setEnabled(false);
 		btnPreviousStep.setEnabled(false);
 
+		// lblInvalidEntry.setVisible(false);
+
+		// hide panel directions components
+		getLblStepByStep().setVisible(false);
+		getLblClickHere().setVisible(true);
+		getLblDistance().setVisible(false);
+		getScrollPane().setVisible(false);
+		getListDirections().setVisible(false);
+		
+		// Hide the directions information
+		getLblClickHere().setVisible(true);
+		getLblDistance().setVisible(false);
+		getScrollPane().setVisible(false);
+		getListDirections().setVisible(false);
+		getLblStepByStep().setVisible(false);
+
 		getGlobalMap().getChosenNodes().clear();
 		getLblDistance().setText("");
 		btnClear.setEnabled(false);
@@ -1782,6 +1803,12 @@ public class GUIFront extends JFrame {
 	}
 	public static void setTransform(AffineTransform transform) {
 		GUIFront.transform = transform;
+	}
+	public static ListCellRenderer getRenderer(){
+		return renderer;
+	}
+	public static void setRenderer(ListCellRenderer aRenderer){
+		renderer = aRenderer;
 	}
 	public static GlobalMap getGlobalMap() {
 		return globalMap;
