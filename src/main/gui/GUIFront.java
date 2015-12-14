@@ -116,6 +116,7 @@ public class GUIFront extends JFrame {
 	public static JButton btnClear, btnRoute;
 	public static JComboBox start, end;
 	private static JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
+	private static JButton btnBackToCampus;
 	public static boolean allowSetting = true;
 	public static JTabbedPane mainPanel; 
 	public static ArrayList<MapNode> allNodes;
@@ -155,7 +156,15 @@ public class GUIFront extends JFrame {
 
 	// Menu Bar
 	private JMenuBar menuBar;
-	private static JMenu mnFile, mnOptions, mnHelp, mnLocations;
+	private static JMenuBar floorChooserBar;
+	private static JMenu mnFile;
+
+	private static JMenu mnOptions;
+
+	private static JMenu mnHelp;
+
+	private static JMenu mnLocations;
+	public static JMenu floorChooser;
 	private static ArrayList<JMenu> mnOptionList = new ArrayList<JMenu>();
 	private static ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
 	private static ArrayList<JMenuItem> mntmLanguages = new ArrayList<JMenuItem>();
@@ -1142,6 +1151,26 @@ public class GUIFront extends JFrame {
 				}
 			}
 		});
+		
+		//button that goes back to the campus map
+		btnBackToCampus = new JButton("Back To Campus Map");
+		btnBackToCampus.setBackground(otherButtonsColor);
+		btnBackToCampus.setEnabled(false);
+		btnBackToCampus.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				changeMapTo(11, 0, 0, 1);
+			}
+		});
+		
+		//dropdown for floor selection
+		floorChooser = new JMenu("Change Floors");
+		floorChooser.setSize(new Dimension(95, 25));
+		floorChooser.setEnabled(false);
+		floorChooserBar = new JMenuBar();
+		floorChooserBar.setMaximumSize(new Dimension(floorChooser.getSize().width, floorChooser.getSize().height + 5));
+		floorChooserBar.add(floorChooser);
+		
 		// }} GroupLayout code for tabs and text fields
 
 		// Group Layout code for all components
@@ -1158,8 +1187,6 @@ public class GUIFront extends JFrame {
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
-		
-		thisGUIFront = this;
 	}
 
 	// Sets Coloring Schemes
@@ -1517,6 +1544,7 @@ public class GUIFront extends JFrame {
 			n.setYPos(n.getYPos() + offsetY);
 		}
 		
+		//set booleans to show or hide drawn nodes + lines
 		ArrayList<LocalMap> localMaps = createListOfMaps(paths);
 		if(localMaps.contains(backend.getLocalMap())){ // if drawing, and if this map is in the path list, DRAW
 			drawLine = true;
@@ -1530,6 +1558,21 @@ public class GUIFront extends JFrame {
 					drawNodes = false;
 				//}
 			}
+		}
+		
+		//activate/deactivate back to campus map and floor chooser buttons
+		if(index != 11){
+			btnBackToCampus.setEnabled(true);
+			floorChooser.setEnabled(true);
+			
+			floorChooser.removeAll();
+			
+			//set contents of floor chooser
+			GUIFrontUtil.setFloorMenu(index);
+		}
+		else{
+			btnBackToCampus.setEnabled(false);
+			floorChooser.setEnabled(false);
 		}
 	}
 
@@ -1802,6 +1845,10 @@ public class GUIFront extends JFrame {
 					.addComponent(btnPreviousMap)
 					.addComponent(btnPreviousStep)
 					.addGap(50)
+					.addComponent(btnBackToCampus)
+					.addGap(25)
+					.addComponent(floorChooserBar)
+					.addGap(50)
 					.addComponent(btnNextStep)
 					.addComponent(btnNextMap))
 			);
@@ -1821,6 +1868,8 @@ public class GUIFront extends JFrame {
 				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(btnPreviousMap)
 						.addComponent(btnPreviousStep)
+						.addComponent(btnBackToCampus)
+						.addComponent(floorChooserBar)
 						.addComponent(btnNextStep)
 						.addComponent(btnNextMap)) // Next Map/Step buttons	
 			);
