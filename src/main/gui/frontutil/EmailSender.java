@@ -55,7 +55,21 @@ public class EmailSender {
 
             Multipart multipart = new MimeMultipart();
             MimeBodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText(body);
+            // HTML formating of body
+            
+            
+            
+            messageBodyPart.setText("<html><head>"
+            		+ "<meta http-equiv=Content-Type content=text/html; charset=utf-8 />"
+                    + "<title>Untitled Document</title>"
+                    + "</head>"
+
+                    + "<body>"
+                    + "<p>Custom Message</p>"
+                    + "<p>Step By Step Directions 1:</p>"
+                    + "<p><img file='/src/data/images/AK1.png' width='665' height='443' alt='Image' /></p>"
+            		+ "</body></html>", "ascii", "html");
+            
             multipart.addBodyPart(messageBodyPart);
             
             File dir = new File(myDirectoryPath);
