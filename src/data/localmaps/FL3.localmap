@@ -48,7 +48,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -73,7 +73,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -94,7 +94,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -122,7 +122,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -158,7 +158,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -182,7 +182,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -210,7 +210,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -238,7 +238,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -268,14 +268,16 @@
             <Neighbor>FL3_11</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 330</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -306,7 +308,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -330,7 +332,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -358,7 +360,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -390,7 +392,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -421,7 +423,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -446,7 +448,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -468,7 +470,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -493,7 +495,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -517,7 +519,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -622,14 +624,16 @@
             <Neighbor>FL3_23</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 308</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -657,7 +661,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -681,7 +685,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -705,7 +709,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -727,14 +731,16 @@
             <Neighbor>FL3_28</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 311</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -761,7 +767,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -789,7 +795,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -815,7 +821,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -840,7 +846,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -864,7 +870,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -888,7 +894,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -916,7 +922,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -940,7 +946,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -964,7 +970,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -995,7 +1001,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1025,7 +1031,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1052,7 +1058,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1116,14 +1122,16 @@
             <Neighbor>FL3_42</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 307</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1233,7 +1241,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1392,7 +1400,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1415,7 +1423,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1434,14 +1442,16 @@
             <Neighbor>FL3_56</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 314</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1464,7 +1474,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1488,7 +1498,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1513,7 +1523,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1638,7 +1648,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1662,7 +1672,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1686,7 +1696,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1710,7 +1720,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1735,7 +1745,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1753,14 +1763,16 @@
             <Neighbor>FL3_70</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 318</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1783,7 +1795,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1807,7 +1819,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1835,7 +1847,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1857,14 +1869,16 @@
             <Neighbor>FL3_73</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 317</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1887,7 +1901,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1912,7 +1926,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1940,7 +1954,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1958,14 +1972,16 @@
             <Neighbor>FL3_80</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 319</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1988,7 +2004,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2016,7 +2032,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2040,7 +2056,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2064,7 +2080,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2092,7 +2108,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2117,7 +2133,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2146,7 +2162,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2182,7 +2198,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2210,7 +2226,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2238,7 +2254,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2268,14 +2284,16 @@
             <Neighbor>FL3_89</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 320</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2302,7 +2320,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2326,7 +2344,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2354,7 +2372,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2378,8 +2396,10 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2585,7 +2605,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2609,7 +2629,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2637,7 +2657,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2663,14 +2683,16 @@
             <Neighbor>FL3_104</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 316</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2693,7 +2715,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2717,7 +2739,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2745,7 +2767,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2769,7 +2791,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2792,14 +2814,16 @@
             <Neighbor>FL3_39</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>FL 312</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
