@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.memetix.mst.language.Language;
 import com.memetix.mst.translate.Translate;
@@ -120,135 +121,139 @@ public class StepByStep {
 		// Removes the nodes that are unnecessary
 		// Will be taken out after being implemented elsewhere
 		this.cleanUpPath();
+		// Iterates through each node in the path except the first one
+		for (int i = 1; i <= (pathNodes.size() - 1); i++) {
 
-		// If the path is only 1 node in size
-		if (pathNodes.size() == 1) {
-			//turn = "You have arrived at your destination";
-			//stepList.add(turn);
-		}
-		else {
+			distance = pathNodes.get(i-1).calcDistance(pathNodes.get(i));
 
-			// Iterates through each node in the path except the first one
-			for (int i = 1; i <= (pathNodes.size() - 1); i++) {
+			// Last node in the route
+			if (i == (pathNodes.size() - 1)) {
 
-				distance = pathNodes.get(i-1).calcDistance(pathNodes.get(i));
-
-				// Last node in the route
-				if (i == (pathNodes.size() - 1)) {
-
-					// If the list of pathNodes is not the last waypoint set in the directions
-					if (this.isLastWaypoint == true && pathNodes.get(pathNodes.size() - 1) != GUIFront.getGlobalMap().getEndNode()) {
-						turn = String.format("%d. Walk %d feet", stepNumber, distance);
-						stepList.add(turn);
-						String waypoint = "You have arrived at your waypoint.";
-						stepList.add(waypoint);
-					}
-					else {
-						turn = String.format("%d. Walk %d feet, then you will arrive at your final destination. ENDHERE", stepNumber, distance);
-						stepList.add(turn);
-					}
+				// If the list of pathNodes is not the last waypoint set in the directions
+				if (this.isLastWaypoint == true && pathNodes.get(pathNodes.size() - 1) != GUIFront.getGlobalMap().getEndNode()) {
+					turn = String.format("%d. Walk %d feet", stepNumber, distance);
+					stepList.add(turn);
+					String waypoint = "You have arrived at your waypoint.";
+					stepList.add(waypoint);
 				}
-				
-				// Every node other than the last
 				else {
+					turn = String.format("%d. Walk %d feet, then you will arrive at your final destination.", stepNumber, distance);
+					stepList.add(turn);
+				}
+			}
+				
+			// Every node other than the last
+			else {
 
-					// if the current node and next node is stairs
-					if (pathNodes.get(i).getAttributes().isStairs()) {
-						if (pathNodes.get(i - 1).getAttributes().isStairs()) {
+				// if the current node and next node is stairs
+				if (pathNodes.get(i).getAttributes().isStairs()) {
+					if (pathNodes.get(i - 1).getAttributes().isStairs()) {
 
-							// Finds the floor for each direction
-							temp = pathNodes.get(i - 1).getNodeID().split("_")[0];
-							floorNum1 = temp.charAt(temp.length() - 1);
-							temp = pathNodes.get(i).getNodeID().split("_")[0];
-							floorNum2 = temp.charAt(temp.length() - 1);
+						// Finds the floor for each direction
+						temp = pathNodes.get(i - 1).getNodeID().split("_")[0];
+						floorNum1 = temp.charAt(temp.length() - 1);
+						temp = pathNodes.get(i).getNodeID().split("_")[0];
+						floorNum2 = temp.charAt(temp.length() - 1);
 
-							// Going upstairs
-							if (floorNum1 < floorNum2) { 
-								direction = "up";
-							} 
-
-							// Going downstairs
-							else { 
-								direction ="down";
-							}
-
-							// Adds this stairs step to list
-							turn = String.format("%d. Walk %s the stairs to floor %c.", stepNumber, direction, floorNum2);
-							stepList.add(turn);
-							stepNumber++;
-						}
-						else {
-							turn = String.format("%d. Continue walking %s feet to the stairs.", stepNumber, distance);
-							stepList.add(turn);
-							stepNumber++;
-						}
-					}
-					else {
-
-						// calculates angle for the current turn
-						angle = pathNodes.get(i).calculateAngle(pathNodes.get(i + 1));
-
-						// case of going straight
-						if (190 > angle && angle > 170) {
-
-							// If you are going into a building
-							if (pathNodes.get(i - 1).getAttributes().getType().equals("door")
-									&& pathNodes.get(i).getAttributes().getType().equals("door")) {
-								turn = String.format("%d. Walk %d feet, then continue into building.", stepNumber);
-								stepList.add(turn);
-								stepNumber++;
-							}
-
-							// Not going into building, this should never happen
-							else {
-								turn = String.format("%d. Walk %d feet, then continue straight.", stepNumber,
-										distance);
-								stepList.add(turn);
-								stepNumber++;
-							}
+						// Going upstairs
+						if (floorNum1 < floorNum2) { 
+							direction = "up";
 						} 
 
-						// Turn angle possibilities and words associated
-						else {
-							if (170 >= angle && angle >= 110) 
-								direction = "slight right";
-							if (110 > angle && angle > 70) 
-								direction = "right";
-							if (70 >= angle && angle >= 20) 
-								direction = "sharp right";
-							if (20 > angle || angle > 340) 
-								direction = "back";
-							if (340 >= angle && angle >= 290) 
-								direction = "sharp left";
-							if (290 > angle && angle > 250) 
-								direction = "left";
-							if (250 >= angle && angle >= 190) 
-								direction = "slight left";
+						// Going downstairs
+						else { 
+							direction ="down";
+						}
 
-							// Adds this turn step to list
-							turn = String.format("%d. Walk %d feet, then turn %s.", stepNumber, distance, direction);
+						// Adds this stairs step to list
+						turn = String.format("%d. Walk %s the stairs to floor %c.", stepNumber, direction, floorNum2);
+						stepList.add(turn);
+						stepNumber++;
+					}
+					else {
+						turn = String.format("%d. Continue walking %s feet to the stairs.", stepNumber, distance);
+						stepList.add(turn);
+						stepNumber++;
+					}
+				}
+				else {
+
+					// calculates angle for the current turn
+					angle = pathNodes.get(i).calculateAngle(pathNodes.get(i + 1));
+
+					// case of going straight
+					if (190 > angle && angle > 170) {
+
+						// If you are going into a building
+						if (pathNodes.get(i - 1).getAttributes().getType().equals("door")
+								&& pathNodes.get(i).getAttributes().getType().equals("door")) {
+							turn = String.format("%d. Walk %d feet, then continue into building.", stepNumber);
 							stepList.add(turn);
 							stepNumber++;
 						}
+
+						// Not going into building, this should never happen
+						else {
+							turn = String.format("%d. Walk %d feet, then continue straight.", stepNumber,
+									distance);
+							stepList.add(turn);
+							stepNumber++;
+						}
+					} 
+
+					// Turn angle possibilities and words associated
+					else {
+						if (170 >= angle && angle >= 110) 
+							direction = "slight right";
+						if (110 > angle && angle > 70) 
+							direction = "right";
+						if (70 >= angle && angle >= 20) 
+							direction = "sharp right";
+						if (20 > angle || angle > 340) 
+							direction = "back";
+						if (340 >= angle && angle >= 290) 
+							direction = "sharp left";
+						if (290 > angle && angle > 250) 
+							direction = "left";
+						if (250 >= angle && angle >= 190) 
+							direction = "slight left";
+
+						// Adds this turn step to list
+						turn = String.format("%d. Walk %d feet, then turn %s.", stepNumber, distance, direction);
+						stepList.add(turn);
+						stepNumber++;
 					}
 				}
 			}
 		}
 		
+		
 		// change language if necessary
 		try{
 			if(! language.equals(Language.ENGLISH)){
-				ArrayList<String> stepListTranslated = new ArrayList<String>();
+				ArrayList<String> stepListTemp = new ArrayList<String>();
 				
+				String[] stepBeginnings = new String[stepList.size()];
+				int i = 0;
 				for(String step : stepList){
 					step = step.replace(".", ":"); // "." is a wildcard for the replace's regex
 					String[] steps = step.split(": ");
-					steps[1] = Translate.execute(steps[1], Language.ENGLISH, language);
-					step = steps[0] + ". " + steps[1].substring(0, steps[1].length()-1) + ".";
-					stepListTranslated.add(step);
+					stepBeginnings[i] = steps[0];
+					stepListTemp.add(steps[1]); // text part
+					
+					i++;
 				}
 				
-				stepList = stepListTranslated;
+				String[] stepListStringArr = Arrays.copyOf(stepListTemp.toArray(), stepListTemp.size(), String[].class);
+				String[] stepListTranslated = Translate.execute(stepListStringArr, language);
+				
+				i = 0;
+				stepList.clear();
+				for(String step : stepListTranslated){
+					step = stepBeginnings[i] + ". " + step.substring(0, step.length()-1) + ".";
+					stepList.add(step);
+					i++;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

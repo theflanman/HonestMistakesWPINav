@@ -34,28 +34,22 @@ public class WrappableCellRenderer extends DefaultListCellRenderer {
 		String element = value.toString(); // gets the current element at index and converts it from Object to String
 		String fmt = "<html>"; // formatted string in HTML style
 
-		
+
 		String[] words = element.split("\\s+"); // break the string into words without spaces
 		int currentLineLength = 0;
-		
+
 		// Iterate through the list of words and simulate word wrapping by ensuring you don't break within a word
 		for(String s : words){
-			
-			// Fix to the Bug to add an extra line at the end of the last direction
-			if (s.equals("ENDHERE")) {
-				fmt += "<br>".concat("__________________");
-			}
+
+			if(currentLineLength + s.length() > width){ // check if we're about to exceed the character limit
+				fmt += "<br>" + s;
+				currentLineLength = 0;
+			} 
 			else {
-				if(currentLineLength + s.length() > width){ // check if we're about to exceed the character limit
-					fmt += "<br>" + s;
-					currentLineLength = 0;
-				} 
-				else {
-					fmt += " " + s;
-				}
+				fmt += " " + s;
 			}
-			
-				
+
+
 			// update current number of characters on the given line
 			currentLineLength += s.length();
 		}

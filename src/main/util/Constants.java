@@ -22,4 +22,6 @@ public class Constants {
 	// math
 	public static final int MAX_LIST_WIDTH = 180; // maximum width of the list in pixels, the size of panelDirections is 200px
 
+	// array sizes
+	public static final int SCREEN_TEXT_SIZE = 26; // NOTE: this value has to be exactly equal to the number of Strings on screen
 }
