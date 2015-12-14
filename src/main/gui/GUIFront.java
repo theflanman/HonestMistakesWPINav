@@ -715,6 +715,7 @@ public class GUIFront extends JFrame {
 							}
 
 							if (index >= paths.size() - 1){
+								System.out.println("getListDirections action listener: setting next map to false");
 								btnNextMap.setEnabled(false);
 								btnNextStep.setEnabled(false);
 							}
@@ -821,8 +822,10 @@ public class GUIFront extends JFrame {
 				int pathSize = paths.size() - 2;
 				if (index <= 0)
 					btnPreviousMap.setEnabled(false);
-				if (index >= pathSize)
+				if (index >= pathSize){
+					System.out.println("Next Map: next map to false");
 					btnNextMap.setEnabled(false);
+				}
 				if (index > 0)
 					btnPreviousMap.setEnabled(true);
 				if (index < pathSize)
@@ -879,6 +882,7 @@ public class GUIFront extends JFrame {
 				}
 
 				if (index > paths.size() - 1){
+					System.out.println("Prev Map: " + "setting next map to false");
 					btnNextMap.setEnabled(false);
 					btnNextStep.setEnabled(false);
 				}
@@ -955,9 +959,21 @@ public class GUIFront extends JFrame {
 				// switch to next map if possible
 				if(index2 == paths.get(index).size() - 1 &&
 						index3 == paths.get(index).size() - 1 &&
-						btnNextMap.isEnabled())
+						btnNextMap.isEnabled() &&
+						(! paths.get(index).get(0).getLocalMap().getMapImageName().equals(
+								paths.get(index+1).get(0).getLocalMap().getMapImageName())))
 					
 					btnNextMap.doClick();
+				else if(index2 == paths.get(index).size() - 1 &&
+						index3 == paths.get(index).size() - 1 &&
+						btnNextMap.isEnabled() &&
+						(paths.get(index).get(0).getLocalMap().getMapImageName().equals(
+								paths.get(index+1).get(0).getLocalMap().getMapImageName()))){
+					
+					index++;
+					index2 = 1;
+					index3 = 1;
+				}
 				else if(index2 == (paths.get(index).size() - 1) && 
 						index3 == (paths.get(index).size() - 1) &&
 						(! btnNextMap.isEnabled()))
@@ -965,6 +981,7 @@ public class GUIFront extends JFrame {
 					btnNextStep.setEnabled(false);
 				else {
 					drawLine2 = true;
+					
 					btnPreviousStep.setEnabled(true);
 				}
 								
