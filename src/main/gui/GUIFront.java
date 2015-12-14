@@ -995,18 +995,14 @@ public class GUIFront extends JFrame {
 
 				if (index <= 0){
 					btnPreviousMap.setEnabled(false);
-					btnPreviousStep.setEnabled(false);
 				}
 				if (index >= paths.size() - 1){
 					btnNextMap.setEnabled(false);
-					btnNextStep.setEnabled(false);
 				}
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
-					btnPreviousStep.setEnabled(true);
 				}
 				if (index < paths.size() - 1){
-					btnNextStep.setEnabled(true);
 					btnNextMap.setEnabled(true);
 				}
 				drawLine2 = false;
@@ -1054,16 +1050,13 @@ public class GUIFront extends JFrame {
 				}
 				if (index <= paths.size() - 1){
 					btnNextMap.setEnabled(true);
-					btnNextStep.setEnabled(true);
 				}
 
 				if (index > paths.size() - 1){
 					btnNextMap.setEnabled(false);
-					btnNextStep.setEnabled(false);
 				}
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
-					btnPreviousStep.setEnabled(true);
 				}
 				if (index < paths.size() - 1){
 					index2 = paths.get(index).size() - 1;
@@ -1112,19 +1105,20 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				drawLine3 = false;
 				index2++;
-				index3++;
-				if (!(index2 < paths.get(index).size())){
+				//index3++;
+				if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 					btnNextStep.setEnabled(false);
 				}
-				if (index2 >= paths.get(index).size()){
-					if (index < paths.size() - 1) {
-						btnNextMap.doClick();
-					}
-				} else {
-					//listDirections.setSelectedIndex(index3);
+				if (index2 <= paths.get(index).size() - 1){
 					drawLine2 = true;
 					btnPreviousStep.setEnabled(true);
 				}
+				if (index2 > paths.get(index).size() - 1){
+					if (index < paths.size() - 1) {
+						index2 = 0;
+						btnNextMap.doClick();
+					}
+				} 
 			}
 		});
 
@@ -1135,13 +1129,19 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				drawLine2 = false;
 				index2--;
-				index3--;
-				if (index2 < 0){
-					btnPreviousMap.doClick();
-					drawLine3 = false;
-				} else {
+				if (index == 0){
+					if (index2 == 0){
+						btnPreviousStep.setEnabled(false);
+						btnNextStep.setEnabled(true);
+					} else {
+						drawLine3 = true;
+					}
+				} else if (index2 == 0) {
+						btnPreviousMap.doClick();
+				} else if (index2 > 0 && index2 < paths.get(index).size() - 1) {
 					//listDirections.setSelectedIndex(index3);
 					drawLine3 = true;
+					btnNextStep.setEnabled(true);
 				}
 			}
 		});
