@@ -1,3 +1,4 @@
+
 package main.gui;
 
 import java.awt.*;
@@ -14,6 +15,9 @@ import java.io.File;
 import javax.swing.JList;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
@@ -112,6 +116,7 @@ public class GUIFront extends JFrame {
 	public static JButton btnClear, btnRoute;
 	public static JComboBox start, end;
 	private static JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
+	private static JButton btnBackToCampus;
 	public static boolean allowSetting = true;
 	public static JTabbedPane mainPanel; 
 	public static ArrayList<MapNode> allNodes;
@@ -151,7 +156,15 @@ public class GUIFront extends JFrame {
 
 	// Menu Bar
 	private JMenuBar menuBar;
-	private static JMenu mnFile, mnOptions, mnHelp, mnLocations;
+	private static JMenuBar floorChooserBar;
+	private static JMenu mnFile;
+
+	private static JMenu mnOptions;
+
+	private static JMenu mnHelp;
+
+	private static JMenu mnLocations;
+	public static JMenu floorChooser;
 	private static ArrayList<JMenu> mnOptionList = new ArrayList<JMenu>();
 	private static ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
 	private static ArrayList<JMenuItem> mntmLanguages = new ArrayList<JMenuItem>();
@@ -627,13 +640,6 @@ public class GUIFront extends JFrame {
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH); //sets the speaker to play the designated sound for calculate route
 					speaker.play();
-					
-					
-					// Transforms the coordinates on each of the placed nodes
-					for (MapNode node: getGlobalMap().getChosenNodes()) {
-						// node.runTransform();
-					}
-
 
 					/** @author Andrew Petit
 					 * 
@@ -1145,6 +1151,26 @@ public class GUIFront extends JFrame {
 				}
 			}
 		});
+		
+		//button that goes back to the campus map
+		btnBackToCampus = new JButton("Back To Campus Map");
+		btnBackToCampus.setBackground(otherButtonsColor);
+		btnBackToCampus.setEnabled(false);
+		btnBackToCampus.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				changeMapTo(11, 0, 0, 1);
+			}
+		});
+		
+		//dropdown for floor selection
+		floorChooser = new JMenu("Change Floors");
+		floorChooser.setSize(new Dimension(95, 25));
+		floorChooser.setEnabled(false);
+		floorChooserBar = new JMenuBar();
+		floorChooserBar.setMaximumSize(new Dimension(floorChooser.getSize().width, floorChooser.getSize().height + 5));
+		floorChooserBar.add(floorChooser);
+		
 		// }} GroupLayout code for tabs and text fields
 
 		// Group Layout code for all components
@@ -1161,8 +1187,6 @@ public class GUIFront extends JFrame {
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
-		
-		thisGUIFront = this;
 	}
 
 	// Sets Coloring Schemes
@@ -1265,7 +1289,7 @@ public class GUIFront extends JFrame {
 		mnFile = new JMenu(screenText[1]);
 		menuBar.add(mnFile);
 
-		mntmEmail = new JMenuItem(screenText[15]); // Code to open up the email sender
+		mntmEmail = new JMenuItem(screenText[16]); // Code to open up the email sender
 		mntmEmail.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -1273,11 +1297,29 @@ public class GUIFront extends JFrame {
 				int holdIndex = index;
 				PanelSave savePanel = new PanelSave();
 
-				//TODO Find a variable that includes the list of nodes in a path
 				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(paths);
 				index = 0;
-
 				int countFiles = 1;
+				String pathImagesPath = "src/data/pathImages";
+				
+				// Checks to see if the pathImages directory exists,
+				// If not, adds the directory
+				File pathImagesFile = new File(pathImagesPath);
+
+				// if the directory does not exist, create it
+				if (! pathImagesFile.exists())
+				{
+					System.out.println("creating directory: " + pathImagesPath);
+					pathImagesFile.mkdir();
+				}
+				
+				// If it does the directory does exist, clear the files in it
+				else {
+					File[] directoryListing = pathImagesFile.listFiles();
+					for (File file : directoryListing) {
+		            	file.delete();
+		            }
+				}
 
 				// Goes through each of the maps in the path and captures and saves an image
 				for (LocalMap local: pathLocalMaps) {
@@ -1314,13 +1356,17 @@ public class GUIFront extends JFrame {
 						index = 0;
 					}
 				}
+				
+				//denotes that all of the paths have been saved
 				System.out.println("Finished Saving Path Images");
 
+				// Returns the screen to the original screen, so there is no visible change to the user
 				index = holdIndex;
-				// Email Pop-Up
+				
+				// Opens Email Pop-Up
 				EmailGUI newEmail = new EmailGUI(backgroundColor, sideBarColor, routeButtonColor, otherButtonsColor);
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
-
+				
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
 				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
@@ -1346,7 +1392,7 @@ public class GUIFront extends JFrame {
 			}
 		});
 		
-		mntmExit = new JMenuItem(screenText[16]); // terminates the session, anything need to be saved first?
+		mntmExit = new JMenuItem(screenText[17]); // terminates the session, anything need to be saved first?
 		mntmExit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -1498,6 +1544,7 @@ public class GUIFront extends JFrame {
 			n.setYPos(n.getYPos() + offsetY);
 		}
 		
+		//set booleans to show or hide drawn nodes + lines
 		ArrayList<LocalMap> localMaps = createListOfMaps(paths);
 		if(localMaps.contains(backend.getLocalMap())){ // if drawing, and if this map is in the path list, DRAW
 			drawLine = true;
@@ -1507,10 +1554,25 @@ public class GUIFront extends JFrame {
 			drawLine = false;
 			
 			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null){
-				if (globalMap.getChosenNodes().size() < 2){
+				//if (globalMap.getChosenNodes().size() < 2){
 					drawNodes = false;
-				}
+				//}
 			}
+		}
+		
+		//activate/deactivate back to campus map and floor chooser buttons
+		if(index != 11){
+			btnBackToCampus.setEnabled(true);
+			floorChooser.setEnabled(true);
+			
+			floorChooser.removeAll();
+			
+			//set contents of floor chooser
+			GUIFrontUtil.setFloorMenu(index);
+		}
+		else{
+			btnBackToCampus.setEnabled(false);
+			floorChooser.setEnabled(false);
 		}
 	}
 
@@ -1783,6 +1845,10 @@ public class GUIFront extends JFrame {
 					.addComponent(btnPreviousMap)
 					.addComponent(btnPreviousStep)
 					.addGap(50)
+					.addComponent(btnBackToCampus)
+					.addGap(25)
+					.addComponent(floorChooserBar)
+					.addGap(50)
 					.addComponent(btnNextStep)
 					.addComponent(btnNextMap))
 			);
@@ -1802,6 +1868,8 @@ public class GUIFront extends JFrame {
 				.addGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(btnPreviousMap)
 						.addComponent(btnPreviousStep)
+						.addComponent(btnBackToCampus)
+						.addComponent(floorChooserBar)
 						.addComponent(btnNextStep)
 						.addComponent(btnNextMap)) // Next Map/Step buttons	
 			);
