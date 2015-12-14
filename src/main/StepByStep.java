@@ -115,10 +115,6 @@ public class StepByStep {
 		char floorNum2;
 		String temp = "";
 
-		// Removes the nodes that are unnecessary
-		// Will be taken out after being implemented elsewhere
-		this.cleanUpPath();
-
 		// If the path is only 1 node in size
 		if (pathNodes.size() == 1) {
 			turn = "You have arrived at your destination";
@@ -142,7 +138,7 @@ public class StepByStep {
 						stepList.add(waypoint);
 					}
 					else {
-						turn = String.format("%d. Walk %d feet, then you will arrive at your final destination. ENDHERE", stepNumber, distance);
+						turn = String.format("%d. Walk %d feet, then you will arrive at your final destination.", stepNumber, distance);
 						stepList.add(turn);
 					}
 				}

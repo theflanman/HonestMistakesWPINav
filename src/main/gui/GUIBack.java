@@ -322,9 +322,7 @@ public class GUIBack implements Serializable {
 	 */
 	public MapNode findNearestNode(double xPos, double yPos, LocalMap localmap){
 		MapNode start = new MapNode(xPos, yPos, localmap);
-		start.setXFeet(start.getLocalMap().getMapScale()*start.getXPos());
-		start.setYFeet(start.getLocalMap().getMapScale()*start.getYPos());
-		start.runTransform();
+		
 
 		start.setNodeID("temp" + Double.toString(xPos));
 		MapNode temp = null;
@@ -345,6 +343,9 @@ public class GUIBack implements Serializable {
 			start.getNeighbors().clear();
 			this.localMap.getMapNodes().add(start);
 			start.addNeighbor(temp); //add the new nodes link with the closest node
+			start.setXFeet(temp.getXFeet() + ((temp.getXPos() - start.getXPos()) * localMap.getMapScale()));
+			start.setYFeet(temp.getYFeet() + ((temp.getYPos() - start.getYPos()) * localMap.getMapScale()));
+			// start.runTransform();
 			temp.addNeighbor(start); //add the new node as a neighbor to the closest node
 			return start;
 		}

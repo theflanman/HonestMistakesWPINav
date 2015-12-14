@@ -150,7 +150,7 @@ public class GUIFront extends JFrame {
 	private static ArrayList<JMenuItem> mntmLanguages = new ArrayList<JMenuItem>();
 	private ArrayList<JMenu> mnBuildings = new ArrayList<JMenu>();
 	private JMenuItem mntmEmail, mntmExit;
-	private static Language language;
+	private static Language language = Language.ENGLISH;
 
 	private SLPanel slidePanel;
 	private JPanel stepByStepUI;
@@ -266,9 +266,8 @@ public class GUIFront extends JFrame {
 							//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 							btnClear.setEnabled(true); //enable clear button if some node has been added
 							//System.out.println("This is the starting node");
-							mapnode.setXFeet(mapnode.getLocalMap().getMapScale()*mapnode.getXPos());
-							mapnode.setYFeet(mapnode.getLocalMap().getMapScale()*mapnode.getYPos());
-							mapnode.runTransform();
+							
+							// mapnode.runTransform();
 							if (getGlobalMap().getChosenNodes().isEmpty() && getGlobalMap().getChosenNodes() != null){
 								getGlobalMap().setStartNode(mapnode);
 								getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
@@ -315,9 +314,8 @@ public class GUIFront extends JFrame {
 					//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 					btnClear.setEnabled(true); //enable clear button if some node has been added
 					//System.out.println("This is the starting node");
-					node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
-					node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
-					node.runTransform();
+					
+					// node.runTransform();
 					getGlobalMap().setStartNode(node);
 					getGlobalMap().getChosenNodes().add(getGlobalMap().getStartNode());
 					LocalMap localmap = getGlobalMap().getStartNode().getLocalMap();
@@ -491,9 +489,8 @@ public class GUIFront extends JFrame {
 					//if the startString is equal to the official name of the startString is one of a few accepted alias' we will allow the start node to be placed
 					btnClear.setEnabled(true); //enable clear button if some node has been added
 					//System.out.println("This is the starting node");
-					node.setXFeet(node.getLocalMap().getMapScale()*node.getXPos());
-					node.setYFeet(node.getLocalMap().getMapScale()*node.getYPos());
-					node.runTransform();
+					
+					// node.runTransform();
 					getGlobalMap().setEndNode(node);
 					getGlobalMap().getChosenNodes().add(getGlobalMap().getEndNode());
 					LocalMap localmap = getGlobalMap().getEndNode().getLocalMap();
@@ -595,6 +592,13 @@ public class GUIFront extends JFrame {
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH); //sets the speaker to play the designated sound for calculate route
 					speaker.play();
+					
+					
+					// Transforms the coordinates on each of the placed nodes
+					for (MapNode node: getGlobalMap().getChosenNodes()) {
+						// node.runTransform();
+					}
+
 
 					/** @author Andrew Petit
 					 * 
@@ -609,7 +613,7 @@ public class GUIFront extends JFrame {
 						if (getGlobalMap().getChosenNodes().get(i).getLocalMap() == getGlobalMap().getChosenNodes().get(i + 1).getLocalMap()){
 							ArrayList<MapNode> nodesOnSameMap = backend.runAStar(getGlobalMap().getChosenNodes().get(i), getGlobalMap().getChosenNodes().get(i + 1));
 							if (getGlobalMap().getChosenNodes().size() == i + 2){
-								directions = backend.displayStepByStep(nodesOnSameMap, false, getLanguage()); //no more waypoints 
+								directions = backend.displayStepByStep(nodesOnSameMap, false, getLanguage()); //no more waypoints
 							} else {
 								directions = backend.displayStepByStep(nodesOnSameMap, true, getLanguage()); //more waypoints
 							}
@@ -767,7 +771,6 @@ public class GUIFront extends JFrame {
 							allText += string + "\n";
 						}
 					}
-					allText = allText.replace("ENDHERE", " ");
 
 					for (ArrayList<MapNode> wayPoints : paths){
 						distance += backend.getDistance(wayPoints, true); //the boolean value should not matter here 
@@ -1643,6 +1646,9 @@ public class GUIFront extends JFrame {
 		backend = initial;
 
 		ArrayList<LocalMap> localMapList = backend.loadLocalMaps(localMapFilenameStrings);
+		for (LocalMap localMap: localMapList) {
+			localMap.transformCoordinates();
+		}
 		getGlobalMap().setLocalMaps(localMapList);
 
 		for(LocalMap localMap : localMapList){
