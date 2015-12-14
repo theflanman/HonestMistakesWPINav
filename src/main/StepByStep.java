@@ -205,19 +205,19 @@ public class StepByStep {
 
 						// Turn angle possibilities and words associated
 						else {
-							if (170 >= angle && angle >= 110) 
+							if (170 >= angle && angle >= 115) 
 								direction = "slight right";
-							if (110 > angle && angle > 70) 
+							if (115 > angle && angle > 65) 
 								direction = "right";
-							if (70 >= angle && angle >= 20) 
+							if (65 >= angle && angle >= 20) 
 								direction = "sharp right";
 							if (20 > angle || angle > 340) 
 								direction = "back";
-							if (340 >= angle && angle >= 290) 
+							if (340 >= angle && angle >= 295) 
 								direction = "sharp left";
-							if (290 > angle && angle > 250) 
+							if (295 > angle && angle > 245) 
 								direction = "left";
-							if (250 >= angle && angle >= 190) 
+							if (245 >= angle && angle >= 190) 
 								direction = "slight left";
 
 							// Adds this turn step to list

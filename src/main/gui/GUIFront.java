@@ -1,3 +1,4 @@
+
 package main.gui;
 
 import java.awt.*;
@@ -14,6 +15,9 @@ import java.io.File;
 import javax.swing.JList;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
@@ -626,13 +630,6 @@ public class GUIFront extends JFrame {
 					allText = ""; //must set the initial text as empty every time calculate button is pressed
 					Speaker speaker = new Speaker(Constants.BUTTON_PATH); //sets the speaker to play the designated sound for calculate route
 					speaker.play();
-					
-					
-					// Transforms the coordinates on each of the placed nodes
-					for (MapNode node: getGlobalMap().getChosenNodes()) {
-						// node.runTransform();
-					}
-
 
 					/** @author Andrew Petit
 					 * 
@@ -1265,7 +1262,7 @@ public class GUIFront extends JFrame {
 		mnFile = new JMenu(screenText[1]);
 		menuBar.add(mnFile);
 
-		mntmEmail = new JMenuItem(screenText[15]); // Code to open up the email sender
+		mntmEmail = new JMenuItem(screenText[16]); // Code to open up the email sender
 		mntmEmail.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -1273,11 +1270,29 @@ public class GUIFront extends JFrame {
 				int holdIndex = index;
 				PanelSave savePanel = new PanelSave();
 
-				//TODO Find a variable that includes the list of nodes in a path
 				ArrayList<LocalMap> pathLocalMaps = createListOfMaps(paths);
 				index = 0;
-
 				int countFiles = 1;
+				String pathImagesPath = "src/data/pathImages";
+				
+				// Checks to see if the pathImages directory exists,
+				// If not, adds the directory
+				File pathImagesFile = new File(pathImagesPath);
+
+				// if the directory does not exist, create it
+				if (! pathImagesFile.exists())
+				{
+					System.out.println("creating directory: " + pathImagesPath);
+					pathImagesFile.mkdir();
+				}
+				
+				// If it does the directory does exist, clear the files in it
+				else {
+					File[] directoryListing = pathImagesFile.listFiles();
+					for (File file : directoryListing) {
+		            	file.delete();
+		            }
+				}
 
 				// Goes through each of the maps in the path and captures and saves an image
 				for (LocalMap local: pathLocalMaps) {
@@ -1314,13 +1329,17 @@ public class GUIFront extends JFrame {
 						index = 0;
 					}
 				}
+				
+				//denotes that all of the paths have been saved
 				System.out.println("Finished Saving Path Images");
 
+				// Returns the screen to the original screen, so there is no visible change to the user
 				index = holdIndex;
-				// Email Pop-Up
+				
+				// Opens Email Pop-Up
 				EmailGUI newEmail = new EmailGUI(backgroundColor, sideBarColor, routeButtonColor, otherButtonsColor);
 				newEmail.setVisible(true); //Opens EmailGUI Pop-Up
-
+				
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
 				panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
 				panelMap.setMapNodes(paths.get(index).get(0).getLocalMap().getMapNodes());
@@ -1346,7 +1365,7 @@ public class GUIFront extends JFrame {
 			}
 		});
 		
-		mntmExit = new JMenuItem(screenText[16]); // terminates the session, anything need to be saved first?
+		mntmExit = new JMenuItem(screenText[17]); // terminates the session, anything need to be saved first?
 		mntmExit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){

@@ -1,13 +1,9 @@
 package main;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
-import java.util.Properties;
-
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 
 
@@ -77,6 +73,5 @@ public class MainDriver {
 				}
 			}
 		});	
-		
 	}
 }

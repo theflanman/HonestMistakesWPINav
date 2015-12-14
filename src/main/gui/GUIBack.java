@@ -249,8 +249,10 @@ public class GUIBack implements Serializable {
 		MapNode[] aStarMap = {start, end};
 		AStar astar = new AStar(aStarMap);
 		astar.runAlgorithm();
-
-		return astar.reconstructPath();
+		
+		StepByStep steps = new StepByStep(astar.reconstructPath(), false);
+		
+		return steps.cleanUpPath();
 	}
 
 	/**
