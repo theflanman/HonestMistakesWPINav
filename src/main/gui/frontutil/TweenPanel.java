@@ -28,7 +28,6 @@ import main.LocalMap;
 import main.MapNode;
 import main.gui.GUIFront;
 import main.util.Constants;
-import main.util.GUIFrontUtil;
 import main.util.proxy.IProxyImage;
 import main.util.proxy.ProxyImage;
 import aurelienribon.slidinglayout.SLAnimator;
@@ -655,23 +654,33 @@ public class TweenPanel extends JPanel {
 
 		Graphics2D graphics = (Graphics2D) g;
 
-		if(this.mapImage == null) // StepByStep
-			if(!GUIFront.isCurrentlyOpen()){
-				GUIFront.getLblStepByStep().setVisible(false);
+		if(this.mapImage == null){ // StepByStep	
+			// Update showing directions or not
+			if(GUIFront.isCurrentlyOpen()){
+		        GUIFront.getListDirections().setFixedCellWidth(GUIFront.panelDirections.getWidth() - 10); // scale the cell width when resizing
+		        GUIFront.getListDirections().setVisibleRowCount((int) (GUIFront.panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
+		        GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 7)); // 7 pixels per 1 character
+		        
+		        // If there is a route, show this
+		        if(!GUIFront.allowSetting){
+					GUIFront.getLblClickHere().setVisible(false);
+					GUIFront.getLblDistance().setVisible(true);
+					GUIFront.getScrollPane().setVisible(true);
+					GUIFront.getListDirections().setVisible(true);
+					GUIFront.getLblStepByStep().setVisible(true);
+		        } else {
+		        	GUIFront.getLblClickHere().setText(">>>");
+		        }
+			} else {
+				GUIFront.getLblClickHere().setText("<<<");
 				GUIFront.getLblClickHere().setVisible(true);
 				GUIFront.getLblDistance().setVisible(false);
 				GUIFront.getScrollPane().setVisible(false);
 				GUIFront.getListDirections().setVisible(false);
-			} 
-			else {
-				GUIFront.getLblStepByStep().setVisible(true);
-				GUIFront.getLblDistance().setVisible(true);
-				GUIFront.getLblClickHere().setVisible(false);
-				GUIFront.getScrollPane().setVisible(true);
-				GUIFront.getListDirections().setVisible(true);
+				GUIFront.getLblStepByStep().setVisible(false);
 			}
-
-		else {
+		} 
+		else {			
 			// Save the current transformed state incase something goes wrong
 			AffineTransform saveTransform = graphics.getTransform();
 			GUIFront.setTransform(new AffineTransform(saveTransform));

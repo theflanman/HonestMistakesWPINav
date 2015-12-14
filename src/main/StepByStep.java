@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.memetix.mst.language.Language;
 import com.memetix.mst.translate.Translate;
@@ -117,7 +118,7 @@ public class StepByStep {
 
 		// If the path is only 1 node in size
 		if (pathNodes.size() == 1) {
-			turn = "You have arrived at your destination";
+			turn = "You have arrived at your destination.";
 			stepList.add(turn);
 		}
 		else {
@@ -232,17 +233,29 @@ public class StepByStep {
 		// change language if necessary
 		try{
 			if(! language.equals(Language.ENGLISH)){
-				ArrayList<String> stepListTranslated = new ArrayList<String>();
+				ArrayList<String> stepListTemp = new ArrayList<String>();
 				
+				String[] stepBeginnings = new String[stepList.size()];
+				int i = 0;
 				for(String step : stepList){
 					step = step.replace(".", ":"); // "." is a wildcard for the replace's regex
 					String[] steps = step.split(": ");
-					steps[1] = Translate.execute(steps[1], Language.ENGLISH, language);
-					step = steps[0] + ". " + steps[1].substring(0, steps[1].length()-1) + ".";
-					stepListTranslated.add(step);
+					stepBeginnings[i] = steps[0];
+					stepListTemp.add(steps[1]); // text part
+					
+					i++;
 				}
 				
-				stepList = stepListTranslated;
+				String[] stepListStringArr = Arrays.copyOf(stepListTemp.toArray(), stepListTemp.size(), String[].class);
+				String[] stepListTranslated = Translate.execute(stepListStringArr, language);
+				
+				i = 0;
+				stepList.clear();
+				for(String step : stepListTranslated){
+					step = stepBeginnings[i] + ". " + step.substring(0, step.length()-1) + ".";
+					stepList.add(step);
+					i++;
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

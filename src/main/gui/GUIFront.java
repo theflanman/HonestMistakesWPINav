@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.awt.geom.AffineTransform;
 import java.io.File;
 
@@ -50,12 +54,12 @@ import main.*;
 import main.gui.frontutil.ColorSchemes;
 import main.gui.frontutil.ColorSetting;
 import main.gui.frontutil.EmailGUI;
+import main.gui.frontutil.GUIFrontUtil;
 import main.gui.frontutil.PanHandler;
 import main.gui.frontutil.TweenPanel;
 import main.gui.frontutil.WrappableCellRenderer;
 import main.gui.frontutil.ZoomHandler;
 import main.util.Constants;
-import main.util.GUIFrontUtil;
 import main.util.PanelSave;
 import main.util.Speaker;
 import main.util.proxy.IProxyImage;
@@ -90,6 +94,8 @@ import ca.odell.glazedlists.swing.AutoCompleteSupport;
 public class GUIFront extends JFrame {
 
 	// {{ Class Members
+	private static GUIFront thisGUIFront;
+	
 	public static GUIBack backend;
 	private static GlobalMap globalMap;
 	public static boolean drawLine = false;
@@ -105,7 +111,7 @@ public class GUIFront extends JFrame {
 	public static ArrayList<ArrayList<MapNode>> routes = new ArrayList<ArrayList<MapNode>>();
 	public static JButton btnClear, btnRoute;
 	public static JComboBox start, end;
-	private JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
+	private static JButton btnPreviousMap, btnNextMap, btnNextStep, btnPreviousStep;
 	public static boolean allowSetting = true;
 	public static JTabbedPane mainPanel; 
 	public static ArrayList<MapNode> allNodes;
@@ -119,6 +125,7 @@ public class GUIFront extends JFrame {
 	public static HashMap<String, double[]> defaults = new HashMap<String, double[]>();
 	public static double offsetX = 0;
 	public static double offsetY = 0;
+	public static String[] screenText = new String[Constants.SCREEN_TEXT_SIZE];
 
 	public static double[] panNums = {0.0, 0.0};
 	private static AffineTransform transform; // the current state of image transformation
@@ -128,7 +135,7 @@ public class GUIFront extends JFrame {
 
 	// MapPanel components
 	private static JPanel contentPane;
-	private JLabel lblStart, lblEnd;
+	private static JLabel lblStart, lblEnd;
 	private static GroupLayout gl_contentPane;
 	private static boolean[] mapViewButtons;
 
@@ -138,22 +145,22 @@ public class GUIFront extends JFrame {
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
 	private DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
 	@SuppressWarnings("rawtypes")
-	private ListCellRenderer renderer;
+	private static ListCellRenderer renderer;
 	private int MAX_LIST_WIDTH = 180; // maximum width of the list in pixels, the size of panelDirections is 200px
 	private static JList<String> listDirections;
 
 	// Menu Bar
 	private JMenuBar menuBar;
-	private JMenu mnFile, mnOptions, mnHelp, mnLocations;
-	private ArrayList<JMenu> mnOptionList = new ArrayList<JMenu>();
-	private ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
+	private static JMenu mnFile, mnOptions, mnHelp, mnLocations;
+	private static ArrayList<JMenu> mnOptionList = new ArrayList<JMenu>();
+	private static ArrayList<JMenuItem> mntmColorSchemes = new ArrayList<JMenuItem>();
 	private static ArrayList<JMenuItem> mntmLanguages = new ArrayList<JMenuItem>();
 	private ArrayList<JMenu> mnBuildings = new ArrayList<JMenu>();
-	private JMenuItem mntmEmail, mntmExit;
+	private static JMenuItem mntmEmail, mntmExit;
 	private static Language language = Language.ENGLISH;
 
-	private SLPanel slidePanel;
-	private JPanel stepByStepUI;
+	private static SLPanel slidePanel;
+	private static JPanel stepByStepUI;
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
@@ -186,19 +193,46 @@ public class GUIFront extends JFrame {
 	@SuppressWarnings("unchecked")
 	public GUIFront(int numLocalMaps, File[] localMapFilenames) throws IOException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		
-		
+		// initialize all text on screen
+		screenText[0] = "Era of Navigation";
+		screenText[1] = "File";
+		screenText[2] = "Options";
+		screenText[3] = "Locations";
+		screenText[4] = "Help";
+		screenText[5] = "Starting Location";
+		screenText[6] = "Ending Location";
+		screenText[7] = "Route";
+		screenText[8] = "Clear All";
+		screenText[9] = "Map View";
+		screenText[10] = "Street View";
+		screenText[11] = "Previous Step";
+		screenText[12] = "Previous Map";
+		screenText[13] = "Next Step";
+		screenText[14] = "Next Map";
+		screenText[15] = "Step by Step Directions";
+		screenText[16] = "Email";
+		screenText[17] = "Exit";
+		screenText[18] = "Color Schemes";
+		screenText[19] = "Default Campus";
+		screenText[20] = "Greyscale";
+		screenText[21] = "WPI Theme";
+		screenText[22] = "Flower Power";
+		screenText[23] = "All Blue";
+		screenText[24] = "Languages";
+		screenText[25] = "Distance in Feet";
 		
 		// main application is invisible during loading screen
 		setVisible(false); 
 
 		// initializes color schemes, GUIBack, local maps, and global map
 		GUIFront.init(localMapFilenames);
-
+		
 		// This will setup the main JFrame to be maximized on start
-		setTitle("Era of Navigation");
+		setTitle(screenText[0]);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
+		setResizable(false);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
@@ -563,14 +597,14 @@ public class GUIFront extends JFrame {
 		start.addActionListener(actionStart);
 
 		// Start/End Labels
-		lblStart = new JLabel("Starting Location");
+		lblStart = new JLabel(screenText[5]);
 		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
-		lblEnd = new JLabel("Ending Location");
+		lblEnd = new JLabel(screenText[6]);
 		lblEnd.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
 		// Clear All Button
-		btnClear = new JButton("Clear All");
+		btnClear = new JButton(screenText[8]);
 		btnClear.setBackground(otherButtonsColor);
 		btnClear.setEnabled(false);
 		btnClear.addActionListener(new ActionListener(){
@@ -581,7 +615,7 @@ public class GUIFront extends JFrame {
 		});
 
 		// Route Button
-		btnRoute = new JButton("Route");
+		btnRoute = new JButton(screenText[7]);
 		btnRoute.setEnabled(false);
 		btnRoute.setBackground(routeButtonColor);
 		btnRoute.addActionListener(new ActionListener() {
@@ -776,7 +810,7 @@ public class GUIFront extends JFrame {
 						distance += backend.getDistance(wayPoints, true); //the boolean value should not matter here 
 					}
 
-					getLblDistance().setText("Distance in feet:" + distance);
+					getLblDistance().setText(screenText[25] + ": " + distance);
 
 					btnClear.setEnabled(true);
 					btnRoute.setEnabled(false);
@@ -808,7 +842,7 @@ public class GUIFront extends JFrame {
 		stepByStepUI.add(getLblClickHere());
 
 		// Step-by-step Label
-		setLblStepByStep(new JLabel("Step by Step Directions!"));
+		setLblStepByStep(new JLabel(screenText[15]));
 		getLblStepByStep().setBackground(sideBarColor);
 		getLblStepByStep().setFont(new Font("Tahoma", Font.BOLD, 13));
 		getLblStepByStep().setBounds(23, 11, 167, 14);
@@ -947,10 +981,10 @@ public class GUIFront extends JFrame {
 		slidePanel.setOpaque(false);
 		// add to the tabbed pane
 		mainPanel.add(slidePanel, BorderLayout.CENTER);
-		mainPanel.setTitleAt(0, "Map View");
+		mainPanel.setTitleAt(0, screenText[9]);
 		mainPanel.setBackgroundAt(0, backgroundColor);
 		getContentPane().add(mainPanel);
-		btnNextMap = new JButton("Next Map-->");
+		btnNextMap = new JButton(screenText[14] + "-->");
 		btnNextMap.setEnabled(false);
 		btnNextMap.setBackground(otherButtonsColor);
 		btnNextMap.addActionListener(new ActionListener(){
@@ -1006,7 +1040,7 @@ public class GUIFront extends JFrame {
 		getContentPane().add(btnNextMap, BorderLayout.SOUTH);
 
 		// Add buttons to move between two maps
-		btnPreviousMap = new JButton("<-- Previous Map");
+		btnPreviousMap = new JButton("<--" + screenText[12]);
 		btnPreviousMap.setEnabled(false);
 		btnPreviousMap.setBackground(otherButtonsColor);
 		btnPreviousMap.addActionListener(new ActionListener(){
@@ -1071,7 +1105,7 @@ public class GUIFront extends JFrame {
 		});
 		getContentPane().add(btnPreviousMap, BorderLayout.SOUTH);
 
-		btnNextStep = new JButton("Next Step->");
+		btnNextStep = new JButton(screenText[13] + "->");
 		btnNextStep.setEnabled(false);
 		btnNextStep.setBackground(otherButtonsColor);
 		btnNextStep.addActionListener(new ActionListener() {
@@ -1094,7 +1128,7 @@ public class GUIFront extends JFrame {
 			}
 		});
 
-		btnPreviousStep = new JButton("<-Previous Step");
+		btnPreviousStep = new JButton("<-" + screenText[11]);
 		btnPreviousStep.setEnabled(false);
 		btnPreviousStep.setBackground(otherButtonsColor);
 		btnPreviousStep.addActionListener(new ActionListener() {
@@ -1127,6 +1161,8 @@ public class GUIFront extends JFrame {
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
+		
+		thisGUIFront = this;
 	}
 
 	// Sets Coloring Schemes
@@ -1154,26 +1190,6 @@ public class GUIFront extends JFrame {
         
         props.put("selectionBackgroundColor", colorToString(colors.getLineColor())); 
         props.put("menuSelectionBackgroundColor", colorToString(colors.getMainBackColor()));
-        /*
-        props.put("controlColor", colorToString(colors.getMainBackColor()));
-        props.put("controlColorLight", colorToString(colors.getLineColor()));
-        props.put("controlColorDark", "180 240 197"); 
-
-        props.put("buttonColor", "218 230 254");
-        props.put("buttonColorLight", "255 255 255");
-        props.put("buttonColorDark", "244 242 232");
-
-        props.put("rolloverColor", colorToString(colors.getOutlineColor())); 
-        props.put("rolloverColorLight", colorToString(colors.getOutlineColor())); 
-        props.put("rolloverColorDark", colorToString(colors.getOutlineColor())); 
-        */
-        /*
-        props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
-        props.put("windowTitleColorLight", colorToString(colors.getOutlineColor())); 
-        props.put("windowTitleColorDark", colorToString(colors.getOutlineColor())); 
-        props.put("windowBorderColor", colorToString(colors.getOutlineColor()));
-        */
-        //props.put("windowTitleBackgroundColor", colorToString(colors.getOutlineColor())); 
 
         props.put("windowTitleForegroundColor", colorToString(colors.getOutlineColor()));
         props.put("windowTitleBackgroundColor", colorToString(colors.getMainBackColor())); 
@@ -1185,10 +1201,6 @@ public class GUIFront extends JFrame {
 		//props.put("tabAreaBackgroundColor", colorToString(Color.white));
 	    AluminiumLookAndFeel.setCurrentTheme(props);
 		SwingUtilities.updateComponentTreeUI(this);
-
-	   
-	   
-
 	}
 
 	/** Changes the picture on the street view tab
@@ -1210,7 +1222,7 @@ public class GUIFront extends JFrame {
 		// connect Street View Panel to mainPanel
 		SLPanel streetViewSLPanel = new SLPanel();
 		streetViewSLPanel.setOpaque(false);
-		mainPanel.addTab("Street View", null, streetViewSLPanel, null);
+		mainPanel.addTab(screenText[10], null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
 
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
@@ -1250,10 +1262,10 @@ public class GUIFront extends JFrame {
 	// Initializes all menu bars
 	public void initializeMenuBar(){
 		// ---- File Menu ----
-		mnFile = new JMenu("File");
+		mnFile = new JMenu(screenText[1]);
 		menuBar.add(mnFile);
 
-		mntmEmail = new JMenuItem("Email"); // Code to open up the email sender
+		mntmEmail = new JMenuItem(screenText[15]); // Code to open up the email sender
 		mntmEmail.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -1334,7 +1346,7 @@ public class GUIFront extends JFrame {
 			}
 		});
 		
-		mntmExit = new JMenuItem("Exit"); // terminates the session, anything need to be saved first?
+		mntmExit = new JMenuItem(screenText[16]); // terminates the session, anything need to be saved first?
 		mntmExit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -1346,66 +1358,66 @@ public class GUIFront extends JFrame {
 		mnFile.add(mntmExit);
 
 		// ---- Options -----
-		mnOptions = new JMenu("Options");
+		mnOptions = new JMenu(screenText[2]); // Options
 		menuBar.add(mnOptions);
 
-		mnOptionList.add(new JMenu("Color Scheme"));
+		mnOptionList.add(new JMenu(screenText[18])); // Color Schemes
 		mnOptions.add(mnOptionList.get(0));
 		
-		mnOptionList.add(new JMenu("Languages"));
+		mnOptionList.add(new JMenu(screenText[24])); // Languages
 		mnOptions.add(mnOptionList.get(1));
 		
 		// ---- Locations -----
-		mnLocations = new JMenu("Locations");
+		mnLocations = new JMenu(screenText[3]);
 		menuBar.add(mnLocations);
 
 		// {{ Adding Color Schemes
 		/* Color Schemes
-		 *	0 - Default Campus
-		 *	1 - Grayscale
-		 *	2 - WPI Default
-		 *	3 - Flower Power
-		 *	4 - All Blue
+		 *	Default Campus
+		 *	Grayscale
+		 *	WPI Default
+		 *	Flower Power
+		 *	All Blue
 		 */
 		for (int i = 0; i < 5; i++)
 			mntmColorSchemes.add(new JMenuItem());
 		
-		mntmColorSchemes.get(0).setText("Default Campus");
-		mntmColorSchemes.get(1).setText("Greyscale");
-		mntmColorSchemes.get(2).setText("WPI Theme");
-		mntmColorSchemes.get(3).setText("Flower Power");
-		mntmColorSchemes.get(4).setText("All Blue");
+		mntmColorSchemes.get(0).setText(screenText[19]);
+		mntmColorSchemes.get(1).setText(screenText[20]);
+		mntmColorSchemes.get(2).setText(screenText[21]);
+		mntmColorSchemes.get(3).setText(screenText[22]);
+		mntmColorSchemes.get(4).setText(screenText[23]);
 		
 		ArrayList<String> colorText = new ArrayList<String>();
-		colorText.add(0, "Default Campus");
-		colorText.add(1, "Greyscale");
-		colorText.add(2, "WPI Default");
-		colorText.add(3, "Flower Power");
-		colorText.add(4, "All Blue");
+		colorText.add(0, screenText[19]);
+		colorText.add(1, screenText[20]);
+		colorText.add(2, screenText[21]);
+		colorText.add(3, screenText[22]);
+		colorText.add(4, screenText[23]);
 
 		mntmColorSchemes.get(0).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("Default Campus");
+				setColoring(screenText[19]);
 			}
 		});
 		mntmColorSchemes.get(1).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("Greyscale");
+				setColoring(screenText[20]);
 			}
 		});
 		mntmColorSchemes.get(2).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("WPI Default");
+				setColoring(screenText[21]);
 			}
 		});
 		mntmColorSchemes.get(3).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("Flower Power");
+				setColoring(screenText[22]);
 			}
 		});
 		mntmColorSchemes.get(4).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				setColoring("All Blue");
+				setColoring(screenText[23]);
 			}
 		});
 		
@@ -1454,7 +1466,7 @@ public class GUIFront extends JFrame {
 		mnLocations.add(mnBuildings.get(7)); // indices: 27, 28
 		mnLocations.add(mnBuildings.get(8)); // indices 29, 30, 31, 32
 
-		mnHelp = new JMenu("Help");
+		mnHelp = new JMenu(screenText[4]);
 		menuBar.add(mnHelp);
 	}
 
@@ -1582,6 +1594,22 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setEnabled(false);
 		btnNextStep.setEnabled(false);
 		btnPreviousStep.setEnabled(false);
+
+		// lblInvalidEntry.setVisible(false);
+
+		// hide panel directions components
+		getLblStepByStep().setVisible(false);
+		getLblClickHere().setVisible(true);
+		getLblDistance().setVisible(false);
+		getScrollPane().setVisible(false);
+		getListDirections().setVisible(false);
+		
+		// Hide the directions information
+		getLblClickHere().setVisible(true);
+		getLblDistance().setVisible(false);
+		getScrollPane().setVisible(false);
+		getListDirections().setVisible(false);
+		getLblStepByStep().setVisible(false);
 
 		getGlobalMap().getChosenNodes().clear();
 		getLblDistance().setText("");
@@ -1775,6 +1803,56 @@ public class GUIFront extends JFrame {
 						.addComponent(btnNextMap)) // Next Map/Step buttons	
 			);
 	}
+		
+	// changes language of all text on screen
+	public static void changeScreenText(Language toLanguage){
+		
+		// Set your Windows Azure Marketplace client info - See http://msdn.microsoft.com/en-us/library/hh454950.aspx
+	    Translate.setClientId("honest-mistakes");
+	    Translate.setClientSecret("34JgO9+sszgIg4TEW0k9hHBee67V8/ul9m1iwQkExtg=");
+	    
+	    String[] translatedText = new String[Constants.SCREEN_TEXT_SIZE];
+		try {
+			translatedText = Translate.execute(screenText, toLanguage);		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		thisGUIFront.setTitle(translatedText[0]);
+		mnFile.setText(translatedText[1]);
+		mnOptions.setText(translatedText[2]);
+		mnLocations.setText(translatedText[3]);
+		mnHelp.setText(translatedText[4]);
+		lblStart.setText(translatedText[5]);
+		lblEnd.setText(translatedText[6]);
+		btnRoute.setText(translatedText[7]);
+		btnClear.setText(translatedText[8]);
+		mainPanel.setTitleAt(0, translatedText[9]);
+		mainPanel.setTitleAt(1, translatedText[10]);
+		btnPreviousStep.setText("<-" + translatedText[11]);
+		btnPreviousMap.setText("<--" + translatedText[12]);
+		btnNextStep.setText(translatedText[13] + "->");
+		btnNextMap.setText(translatedText[14] + "-->");
+		GUIFront.getLblStepByStep().setText(translatedText[15]);
+		mntmEmail.setText(translatedText[16]);
+		mntmExit.setText(translatedText[17]);
+		
+		JMenu colorSchemes = mnOptionList.get(0);
+		colorSchemes.setText(translatedText[18]);
+		mnOptionList.set(0, colorSchemes);
+		
+		mntmColorSchemes.get(0).setText(translatedText[19]);
+		mntmColorSchemes.get(1).setText(translatedText[20]);
+		mntmColorSchemes.get(2).setText(translatedText[21]);
+		mntmColorSchemes.get(3).setText(translatedText[22]);
+		mntmColorSchemes.get(4).setText(translatedText[23]);
+		
+		JMenu languages = mnOptionList.get(1);
+		languages.setText(translatedText[24]);
+		mnOptionList.set(1, languages);
+		
+		getLblDistance().setText(translatedText[25]);
+	}
 	
 	// {{ Getters and Setters
 	public static Point2D getMainReferencePoint() {
@@ -1788,6 +1866,12 @@ public class GUIFront extends JFrame {
 	}
 	public static void setTransform(AffineTransform transform) {
 		GUIFront.transform = transform;
+	}
+	public static ListCellRenderer getRenderer(){
+		return renderer;
+	}
+	public static void setRenderer(ListCellRenderer aRenderer){
+		renderer = aRenderer;
 	}
 	public static GlobalMap getGlobalMap() {
 		return globalMap;

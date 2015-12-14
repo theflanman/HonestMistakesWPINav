@@ -1,4 +1,4 @@
-package main.util;
+package main.gui.frontutil;
 
 import java.awt.Polygon;
 import java.awt.event.ActionEvent;
@@ -10,8 +10,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import com.memetix.mst.language.Language;
+import com.memetix.mst.translate.Translate;
 
 import main.gui.GUIFront;
+import main.util.Constants;
 
 public class GUIFrontUtil {
 
@@ -643,52 +645,61 @@ public class GUIFrontUtil {
 		
 		return languageText;
 	}
-	
+		
 	// adds languages
 	public static void addLanguageListeners(){
 		GUIFront.getMntmLanguages().get(0).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				GUIFront.setLanguage(Language.ARABIC);
+				GUIFront.setLanguage(Language.ENGLISH);
+				GUIFront.changeScreenText(Language.ENGLISH);
 			}
-		});	
+		});
 		GUIFront.getMntmLanguages().get(1).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				GUIFront.setLanguage(Language.BULGARIAN);
+				GUIFront.setLanguage(Language.ARABIC);
+				GUIFront.changeScreenText(Language.ARABIC);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(2).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				GUIFront.setLanguage(Language.CATALAN);
+				GUIFront.setLanguage(Language.BULGARIAN);
+				GUIFront.changeScreenText(Language.BULGARIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(3).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				GUIFront.setLanguage(Language.CHINESE_SIMPLIFIED);
+				GUIFront.setLanguage(Language.CATALAN);
+				GUIFront.changeScreenText(Language.CATALAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(4).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				GUIFront.setLanguage(Language.CHINESE_TRADITIONAL);
+				GUIFront.setLanguage(Language.CHINESE_SIMPLIFIED);
+				GUIFront.changeScreenText(Language.CHINESE_SIMPLIFIED);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(5).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				GUIFront.setLanguage(Language.CZECH);
+				GUIFront.setLanguage(Language.CHINESE_TRADITIONAL);
+				GUIFront.changeScreenText(Language.CHINESE_TRADITIONAL);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(6).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				GUIFront.setLanguage(Language.DANISH);
+				GUIFront.setLanguage(Language.CZECH);
+				GUIFront.changeScreenText(Language.CZECH);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(7).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				GUIFront.setLanguage(Language.DUTCH);
+				GUIFront.setLanguage(Language.DANISH);
+				GUIFront.changeScreenText(Language.DANISH);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(8).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				GUIFront.setLanguage(Language.ENGLISH);
+				GUIFront.setLanguage(Language.DUTCH);
+				GUIFront.changeScreenText(Language.DUTCH);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(9).addActionListener(new ActionListener(){
@@ -699,156 +710,187 @@ public class GUIFrontUtil {
 		GUIFront.getMntmLanguages().get(10).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.FINNISH);
+				GUIFront.changeScreenText(Language.FINNISH);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(11).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.FRENCH);
+				GUIFront.changeScreenText(Language.FRENCH);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(12).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.GERMAN);
+				GUIFront.changeScreenText(Language.GERMAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(13).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.GREEK);
+				GUIFront.changeScreenText(Language.GREEK);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(14).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.HAITIAN_CREOLE);
+				GUIFront.changeScreenText(Language.HAITIAN_CREOLE);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(15).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.HEBREW);
+				GUIFront.changeScreenText(Language.HEBREW);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(16).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.HINDI);
+				GUIFront.changeScreenText(Language.HINDI);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(17).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.HMONG_DAW);
+				GUIFront.changeScreenText(Language.HMONG_DAW);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(18).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.HUNGARIAN);
+				GUIFront.changeScreenText(Language.HUNGARIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(19).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.INDONESIAN);
+				GUIFront.changeScreenText(Language.INDONESIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(20).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.ITALIAN);
+				GUIFront.changeScreenText(Language.ITALIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(21).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.JAPANESE);
+				GUIFront.changeScreenText(Language.JAPANESE);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(22).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.KOREAN);
+				GUIFront.changeScreenText(Language.KOREAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(23).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.LATVIAN);
+				GUIFront.changeScreenText(Language.LATVIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(24).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.LITHUANIAN);
+				GUIFront.changeScreenText(Language.LITHUANIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(25).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.MALAY);
+				GUIFront.changeScreenText(Language.MALAY);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(26).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.NORWEGIAN);
+				GUIFront.changeScreenText(Language.NORWEGIAN);
 			}
 		});
 		GUIFront.getMntmLanguages().get(27).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.PERSIAN);
+				GUIFront.changeScreenText(Language.PERSIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(28).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.POLISH);
+				GUIFront.changeScreenText(Language.POLISH);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(29).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.PORTUGUESE);
+				GUIFront.changeScreenText(Language.PORTUGUESE);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(30).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.ROMANIAN);
+				GUIFront.changeScreenText(Language.ROMANIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(31).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.RUSSIAN);
+				GUIFront.changeScreenText(Language.RUSSIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(32).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.SLOVAK);
+				GUIFront.changeScreenText(Language.SLOVAK);
 			}
 		});
 		GUIFront.getMntmLanguages().get(33).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.SLOVENIAN);
+				GUIFront.changeScreenText(Language.SLOVENIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(34).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.SPANISH);
+				GUIFront.changeScreenText(Language.SPANISH);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(35).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.SWEDISH);
+				GUIFront.changeScreenText(Language.SWEDISH);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(36).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.THAI);
+				GUIFront.changeScreenText(Language.THAI);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(37).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.TURKISH);
+				GUIFront.changeScreenText(Language.TURKISH);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(38).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.UKRAINIAN);
+				GUIFront.changeScreenText(Language.UKRAINIAN);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(39).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.URDU);
+				GUIFront.changeScreenText(Language.URDU);
 			}
 		});	
 		GUIFront.getMntmLanguages().get(40).addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				GUIFront.setLanguage(Language.VIETNAMESE);
+				GUIFront.changeScreenText(Language.VIETNAMESE);
 			}
 		});
 	}
