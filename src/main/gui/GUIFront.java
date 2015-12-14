@@ -1491,9 +1491,12 @@ public class GUIFront extends JFrame {
 		else{
 			drawLine = false;
 			
-			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null)
-				drawNodes = false;
+			if(globalMap.getStartNode() != null && globalMap.getEndNode() != null){
+				if (globalMap.getChosenNodes().size() < 2){
+					drawNodes = false;
+				}
 			}
+		}
 	}
 
 	// Enable Actions
