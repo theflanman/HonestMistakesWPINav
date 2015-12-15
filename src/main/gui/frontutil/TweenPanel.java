@@ -947,7 +947,7 @@ public class TweenPanel extends JPanel {
 				graphics.setStroke(new BasicStroke(1));
 				graphics.setColor(startNodeColor);
 				
-				if(GUIFront.drawNodes){
+				
 					IProxyImage startNodeImage = new ProxyImage("startnode.png");
 					IProxyImage endNodeImage = new ProxyImage("endnode.png");
 					IProxyImage waypointNodeImage = new ProxyImage("waypoint.png");
@@ -993,7 +993,7 @@ public class TweenPanel extends JPanel {
 							}
 						}
 					}
-				}
+				
 				
 				//this is where you draw the lines
 				if (GUIFront.drawLine) {

@@ -948,7 +948,7 @@ public class GUIFront extends JFrame {
 				if (index < paths.size() - 1){
 					btnNextMap.setEnabled(true);
 				}
-				if (paths.size() <= index + 2){
+				if (paths.size() <= index + 1){
 					btnNextMap.setEnabled(false);
 				}
 				
@@ -990,6 +990,7 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				index--;
+				index2--;
 				index3--;
 				listDirections.setSelectedIndex(index3);
 				if (index <= 0){
@@ -1039,7 +1040,7 @@ public class GUIFront extends JFrame {
 				}
 
 				thisRoute = paths.get(index);
-				drawLine = true;
+				//drawLine2 = true;
 				drawNodes = true;
 			}
 		});
@@ -1057,8 +1058,8 @@ public class GUIFront extends JFrame {
 				if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 					btnNextStep.setEnabled(false);
 				}
-				if (paths.size() <= index + 2){
-					if (index2 == paths.get(index).size() - 1 && index == paths.size() - 2){
+				if (paths.size() <= index + 1){
+					if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 						btnNextStep.setEnabled(false);
 					}
 				}
@@ -1535,6 +1536,9 @@ public class GUIFront extends JFrame {
 	 * @param scale The default zoom scale for the map to be loaded
 	 */
 	public static void changeMapTo(int index, int panX, int panY, double scale){
+		if (allowSetting == false){
+			btnClear.doClick();
+		}
 		GUIFront.changeStreetView(gl_contentPane, getGlobalMap().getLocalMaps().get(index).getMapImageName());
 
 		panelMap.setMapImage(new ProxyImage(getGlobalMap().getLocalMaps().get(index).getMapImageName()));
@@ -1559,7 +1563,7 @@ public class GUIFront extends JFrame {
 		}
 
 		//set booleans to show or hide drawn nodes + lines
-		ArrayList<LocalMap> localMaps = createListOfMaps(paths);
+		/*ArrayList<LocalMap> localMaps = createListOfMaps(paths);
 		if(localMaps.contains(backend.getLocalMap())){ // if drawing, and if this map is in the path list, DRAW
 			drawLine = true;
 			drawNodes = true;
@@ -1572,10 +1576,10 @@ public class GUIFront extends JFrame {
 				drawNodes = false;
 				//}
 			}
-		}
+		}*/
 
 		//activate/deactivate back to campus map and floor chooser buttons
-		if(index != 15){
+		/*if(index != 15){
 			btnBackToCampus.setEnabled(true);
 			floorChooser.setEnabled(true);
 
@@ -1587,7 +1591,7 @@ public class GUIFront extends JFrame {
 		else{
 			btnBackToCampus.setEnabled(false);
 			floorChooser.setEnabled(false);
-		}
+		}*/
 	}
 
 	// Enable Actions
