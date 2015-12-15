@@ -659,7 +659,7 @@ public class TweenPanel extends JPanel {
 			if(GUIFront.isCurrentlyOpen()){
 		        GUIFront.getListDirections().setFixedCellWidth(GUIFront.panelDirections.getWidth() - 40); // scale the cell width when resizing
 		        GUIFront.getListDirections().setVisibleRowCount((int) (GUIFront.panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
-		        GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 7)); // 7 pixels per 1 character
+		        GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 10)); // 10 pixels per 1 character
 		        
 		        // If there is a route, show this
 		        if(!GUIFront.allowSetting){
