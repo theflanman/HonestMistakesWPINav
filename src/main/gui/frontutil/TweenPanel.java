@@ -1021,22 +1021,17 @@ public class TweenPanel extends JPanel {
 				
 				if (GUIFront.drawLine2 == true){
 					Graphics2D g2 = (Graphics2D) g;
-					g2.setStroke(new BasicStroke(2));
+					g2.setStroke(new BasicStroke(5));
 					g2.setColor(Color.YELLOW);
 					g2.drawLine((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2 - 1).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2 - 1).getYPos() - (int)getPanY(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY());
-					/*g2.setColor(Color.BLACK);
-					g2.fillOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() - (int)getPanX(), 
-							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() - (int)getPanY(), 10, 10);
-					g2.drawOval((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getXPos() -5, 
-							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2).getYPos() + 4, 10, 10);*/
 				}
 
 				if (GUIFront.drawLine3 == true){
 					Graphics2D g2 = (Graphics2D) g;
-					g2.setStroke(new BasicStroke(2));
+					g2.setStroke(new BasicStroke(5));
 					g2.setColor(Color.YELLOW);
 					g2.drawLine((int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2 + 1).getXPos() - (int)getPanX(), 
 							(int) GUIFront.paths.get(GUIFront.index).get(GUIFront.index2 + 1).getYPos() - (int)getPanY(), 
