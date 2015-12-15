@@ -810,11 +810,11 @@ public class DevGUIFront extends JFrame {
 							nodeToRemove = n;
 						}
 					}
-					
-					for(MapNode m : nodeToRemove.getNeighbors()) {
-						m.removeNeighbor(nodeToRemove);
+					for(int i=0; i<nodeToRemove.getNeighbors().size(); i++) { //Remove edges from the neighbors to the node to remove
+						nodeToRemove.getNeighbors().get(i).removeNeighbor(nodeToRemove);
 					}
-					nodeToRemove.removeNeighbors();
+					//Remove edges from the node to remove to its neighbors.
+					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); 
 					points.remove(nodeToRemove);
 					lastClicked = null;
 					selectedNodes.clear();
@@ -1000,11 +1000,11 @@ public class DevGUIFront extends JFrame {
 						}
 					}
 					
-					for(MapNode m : nodeToRemove.getNeighbors()) {
-						m.removeNeighbor(nodeToRemove);
+					for(int i=0; i<nodeToRemove.getNeighbors().size(); i++) { //Remove edges from the neighbors to the node to remove
+						nodeToRemove.getNeighbors().get(i).removeNeighbor(nodeToRemove);
 					}
-					nodeToRemove.removeNeighbors();
-
+					
+					nodeToRemove.getNeighbors().removeIf((MapNode q)->q.getXPos() > -1000000000); //Remove edges from the node to its neighbors.
 					points2.remove(nodeToRemove);
 					lastClicked = null;
 					selectedNodes.clear();

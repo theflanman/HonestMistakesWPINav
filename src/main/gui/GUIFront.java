@@ -235,7 +235,9 @@ public class GUIFront extends JFrame {
 		screenText[23] = "All Blue";
 		screenText[24] = "Languages";
 		screenText[25] = "Distance in Feet";
-		screenText[26] = "About";
+		screenText[26] = "Back To Campus Map";
+		screenText[27] = "Change Floors";
+		screenText[28] = "About";
 
 		// main application is invisible during loading screen
 		setVisible(false); 
@@ -248,7 +250,7 @@ public class GUIFront extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
-		setResizable(false);
+		setResizable(true);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
@@ -295,6 +297,7 @@ public class GUIFront extends JFrame {
 			@Override 
 			public void actionPerformed(ActionEvent e)
 			{
+				btnClear.doClick();
 				if (globalMap.getStartNode() != null){
 					LocalMap localmap = globalMap.getStartNode().getLocalMap();
 					if (globalMap.getEndNode() != null){
@@ -866,10 +869,11 @@ public class GUIFront extends JFrame {
 		stepByStepUI.add(getScrollPane());
 
 		// Create a new list and be able to get the current width of the viewport it is contained in (the scrollpane)
-		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 7); // 7 pixels per 1 character
+		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 10); // 7 pixels per 1 character
 
 		// List Directions
 		setListDirections(new JList<String>(listModel));
+		getListDirections().setFont(new Font("Gulim", Font.PLAIN, 14));
 		getListDirections().setCellRenderer(renderer);
 		getListDirections().setFixedCellWidth(MAX_LIST_WIDTH); // give it a set width in pixels
 		getScrollPane().setViewportView(getListDirections());
@@ -884,9 +888,16 @@ public class GUIFront extends JFrame {
 						//don't do anything because you should not do anything for the welcome to step in the jlist
 					}
 					else {
+						index3 = index2;
+						ArrayList<MapNode> nodes = new ArrayList<MapNode>();
+						/*for (int i = 0; i < index; i++){
+							for (int j = 0; j < paths.get(i).size() - 1; j++){
+								nodes.add()
+							}
+						}*/
 						index3 = getListDirections().getSelectedIndex();
 						int indexHelp = 0;
-						if (index3 >= paths.get(index).size()){
+						if (index2 >= paths.get(index).size()){
 							index2 = 0;
 							if (index != 0){
 								for (int i = 0; i < index; i++){
@@ -1004,20 +1015,20 @@ public class GUIFront extends JFrame {
 
 				if (index <= 0){
 					btnPreviousMap.setEnabled(false);
-					btnPreviousStep.setEnabled(false);
 				}
 				if (index >= paths.size() - 1){
 					btnNextMap.setEnabled(false);
-					btnNextStep.setEnabled(false);
 				}
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
-					btnPreviousStep.setEnabled(true);
 				}
 				if (index < paths.size() - 1){
-					btnNextStep.setEnabled(true);
 					btnNextMap.setEnabled(true);
 				}
+				if (paths.size() <= index + 2){
+					btnNextMap.setEnabled(false);
+				}
+				
 				drawLine2 = false;
 				drawLine3 = false;
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
@@ -1063,16 +1074,13 @@ public class GUIFront extends JFrame {
 				}
 				if (index <= paths.size() - 1){
 					btnNextMap.setEnabled(true);
-					btnNextStep.setEnabled(true);
 				}
 
 				if (index > paths.size() - 1){
 					btnNextMap.setEnabled(false);
-					btnNextStep.setEnabled(false);
 				}
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
-					btnPreviousStep.setEnabled(true);
 				}
 				if (index < paths.size() - 1){
 					index2 = paths.get(index).size() - 1;
@@ -1121,19 +1129,25 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				drawLine3 = false;
 				index2++;
-				index3++;
-				if (!(index2 < paths.get(index).size())){
+				//index3++;
+				if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 					btnNextStep.setEnabled(false);
 				}
-				if (index2 >= paths.get(index).size()){
-					if (index < paths.size() - 1) {
-						btnNextMap.doClick();
+				if (paths.size() <= index + 2){
+					if (index2 == paths.get(index).size() - 1 && index == paths.size() - 2){
+						btnNextStep.setEnabled(false);
 					}
-				} else {
-					//listDirections.setSelectedIndex(index3);
+				}
+				if (index2 <= paths.get(index).size() - 1){
 					drawLine2 = true;
 					btnPreviousStep.setEnabled(true);
 				}
+				if (index2 > paths.get(index).size() - 1){
+					if (index < paths.size() - 1) {
+						index2 = 0;
+						btnNextMap.doClick();
+					}
+				} 
 			}
 		});
 
@@ -1144,31 +1158,37 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				drawLine2 = false;
 				index2--;
-				index3--;
-				if (index2 < 0){
-					btnPreviousMap.doClick();
-					drawLine3 = false;
-				} else {
+				if (index == 0){
+					if (index2 == 0){
+						btnPreviousStep.setEnabled(false);
+						btnNextStep.setEnabled(true);
+					} else {
+						drawLine3 = true;
+					}
+				} else if (index2 == 0) {
+						btnPreviousMap.doClick();
+				} else if (index2 > 0 && index2 < paths.get(index).size() - 1) {
 					//listDirections.setSelectedIndex(index3);
 					drawLine3 = true;
+					btnNextStep.setEnabled(true);
 				}
 			}
 		});
 
 		//button that goes back to the campus map
-		btnBackToCampus = new JButton("Back To Campus Map");
+		btnBackToCampus = new JButton(screenText[26]);
 		btnBackToCampus.setBackground(otherButtonsColor);
 		btnBackToCampus.setEnabled(false);
 		btnBackToCampus.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				changeMapTo(11, 0, 0, 1);
+				changeMapTo(15, 0, 0, 1);
 			}
 		});
 
 		//dropdown for floor selection
-		floorChooser = new JMenu("Change Floors");
-		floorChooser.setSize(new Dimension(95, 25));
+		floorChooser = new JMenu(screenText[27]);
+		floorChooser.setSize(new Dimension(150, 25));
 		floorChooser.setEnabled(false);
 		floorChooserBar = new JMenuBar();
 		floorChooserBar.setMaximumSize(new Dimension(floorChooser.getSize().width, floorChooser.getSize().height + 5));
@@ -1189,7 +1209,7 @@ public class GUIFront extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
-		changeMapTo(11, 0, 0, 1);
+		changeMapTo(15, 0, 0, 1); // change to campus map to force proper reloading of data
 
 		thisGUIFront = this;
 	}
@@ -1505,26 +1525,30 @@ public class GUIFront extends JFrame {
 		mntmCCM.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(11, 0, 0, 1);
+				GUIFront.changeMapTo(15, 0, 0, 1);
 			}
 		});
 
-		mnLocations.add(mnBuildings.get(0)); // indices: 0, 1, 2, 3
-		mnLocations.add(mnBuildings.get(1)); // indices: 4, 5, 6, 7
-		mnLocations.add(mnBuildings.get(2)); // indices: 8, 9, 10
-		mnLocations.add(mntmCCM); // index: 11
-		mnLocations.add(mnBuildings.get(3)); // indices 12, 13, 14, 15, 16
-		mnLocations.add(mnBuildings.get(4)); // indices: 17, 18, 19, 20, 21
-		mnLocations.add(mnBuildings.get(5)); // indices: 22, 23, 24
-		mnLocations.add(mnBuildings.get(6)); // indices: 25, 26
-		mnLocations.add(mnBuildings.get(7)); // indices: 27, 28
-		mnLocations.add(mnBuildings.get(8)); // indices 29, 30, 31, 32
-
-		// {{ Help Menu Item
-		mnHelp = new JMenu(screenText[4]); // Help
+		mnLocations.add(mnBuildings.get(0)); // Alden
+		mnLocations.add(mnBuildings.get(1)); // Atwater
+		mnLocations.add(mnBuildings.get(2)); // Boynton
+		mnLocations.add(mnBuildings.get(3)); // Campus Center
+		mnLocations.add(mntmCCM); // Campus Map
+		mnLocations.add(mnBuildings.get(4)); // Fuller Labs
+		mnLocations.add(mnBuildings.get(5)); // Gordon Library
+		mnLocations.add(mnBuildings.get(6)); // Harrington Auditorium
+		mnLocations.add(mnBuildings.get(7)); // Higgins House
+		mnLocations.add(mnBuildings.get(8)); // Higgins House Garage
+		mnLocations.add(mnBuildings.get(9)); // Higgins Labs
+		mnLocations.add(mnBuildings.get(10)); // Project Center
+		mnLocations.add(mnBuildings.get(11)); // Stratton Hall
+		mnLocations.add(mnBuildings.get(12)); // Salisbury Labs
+		mnLocations.add(mnBuildings.get(13)); // Washburn Shops
+		
+		mnHelp = new JMenu(screenText[4]);
 		menuBar.add(mnHelp);
 
-		mnHelpList.add(new JMenuItem(screenText[26])); // About
+		mnHelpList.add(new JMenuItem(screenText[28])); // About
 		mnHelp.add(mnHelpList.get(0));
 
 		mnHelpList.get(0).addActionListener(new ActionListener(){
@@ -1560,6 +1584,8 @@ public class GUIFront extends JFrame {
 		panelMap.setPanX(defPan[0]);
 		panelMap.setPanY(defPan[1]);
 		panelMap.setScale(defPan[2]);
+		GUIFront.getZoomHandle().setZoomAmount(defPan[2]);
+		
 		offsetX = defPan[0] - tempPan[0];
 		offsetY = defPan[1] - tempPan[1];
 		for(MapNode n : backend.getLocalMap().getMapNodes()){
@@ -1584,7 +1610,7 @@ public class GUIFront extends JFrame {
 		}
 
 		//activate/deactivate back to campus map and floor chooser buttons
-		if(index != 11){
+		if(index != 15){
 			btnBackToCampus.setEnabled(true);
 			floorChooser.setEnabled(true);
 
@@ -1933,8 +1959,11 @@ public class GUIFront extends JFrame {
 		mnOptionList.set(1, languages);
 
 		getLblDistance().setText(translatedText[25]);
-
-		mnHelpList.get(0).setText(translatedText[26]);
+		
+		btnBackToCampus.setText(translatedText[26]);
+		floorChooser.setText(translatedText[27]);
+		
+		mnHelpList.get(0).setText(translatedText[28]);
 	}
 
 	// {{ Getters and Setters

@@ -134,6 +134,48 @@ public class TweenPanel extends JPanel {
 								GUIFront.getMainReferencePoint().getY() + getPanY(), GUIFront.backend.getLocalMap());
 
 						//check the click to see if it is inside of any of the building polygons
+						
+						//AH
+						if(aHPolygon.contains(GUIFront.getMainReferencePoint())){
+							JPopupMenu popupMenu = new JPopupMenu();
+
+							popupMenu.add(new JMenuItem("Alden Hall"))
+							.setFont(new Font("Helvetica", Font.BOLD, 12));
+							popupMenu.addSeparator();
+
+							popupMenu.add(new JMenuItem("Floor 1"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(0, 0, 0, 1); // alden hall 1
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 2"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(1, 0, 0, 1); // alden hall 2
+								}
+							});
+							popupMenu.add(new JMenuItem("Basement"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(2, 0, 0, 1); // alden hall basement
+								}
+							});
+							popupMenu.add(new JMenuItem("Sub Basement"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(3, 0, 0, 1); // alden hall sb
+								}
+							});
+
+							popupMenu.show(GUIFront.panelMap, me.getX(), me.getY());							
+							return; 
+						}
+						
 						//AK
 						if(aKPolygon.contains(GUIFront.getMainReferencePoint())){
 							JPopupMenu popupMenu = new JPopupMenu();
@@ -146,28 +188,28 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(0, 0, 0, 1); // atwater kent 1
+									GUIFront.changeMapTo(4, 0, 0, 1); // atwater kent 1
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 2"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(1, 0, 0, 1); // atwater kent 2
+									GUIFront.changeMapTo(5, 0, 0, 1); // atwater kent 2
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 3"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(2, 0, 0, 1); // atwater kent 3
+									GUIFront.changeMapTo(6, 0, 0, 1); // atwater kent 3
 								}
 							});
 							popupMenu.add(new JMenuItem("Basement"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(3, 0, 0, 1); // atwater kent basement
+									GUIFront.changeMapTo(7, 0, 0, 1); // atwater kent basement
 								}
 							});
 
@@ -187,28 +229,28 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(4, 0, 0, 1); // boynton hall 1
+									GUIFront.changeMapTo(8, 0, 0, 1); // boynton hall 1
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 2"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(5, 0, 0, 1); // boynton hall 2
+									GUIFront.changeMapTo(9, 0, 0, 1); // boynton hall 2
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 3"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(6, 0, 0, 1); // boynton hall 3
+									GUIFront.changeMapTo(10, 0, 0, 1); // boynton hall 3
 								}
 							});
 							popupMenu.add(new JMenuItem("Basement"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(7, 0, 0, 1); // boynton hall basement
+									GUIFront.changeMapTo(11, 0, 0, 1); // boynton hall basement
 								}
 							});
 
@@ -228,21 +270,21 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(8, 0, 0, 1); // campus center 1
+									GUIFront.changeMapTo(12, 0, 0, 1); // campus center 1
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 2"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(9, 0, 0, 1); // campus center 2
+									GUIFront.changeMapTo(13, 0, 0, 1); // campus center 2
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 3"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(10, 0, 0, 1); // campus center 3
+									GUIFront.changeMapTo(14, 0, 0, 1); // campus center 3
 								}
 							});
 
@@ -262,35 +304,35 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(12, 0, 0, 1); // fuller labs 1
+									GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs 1
 								}
 							});	
 							popupMenu.add(new JMenuItem("Floor 2"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(13, 0, 0, 1); // fuller labs 2
+									GUIFront.changeMapTo(17, 0, 0, 1); // fuller labs 2
 								}
 							});	
 							popupMenu.add(new JMenuItem("Floor 3"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(14, 0, 0, 1); // fuller labs 3
+									GUIFront.changeMapTo(18, 0, 0, 1); // fuller labs 3
 								}
 							});	
 							popupMenu.add(new JMenuItem("Basement"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(15, 0, 0, 1); // fuller labs basement
+									GUIFront.changeMapTo(19, 0, 0, 1); // fuller labs basement
 								}
 							});	
 							popupMenu.add(new JMenuItem("Sub Basement"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs sub basement
+									GUIFront.changeMapTo(20, 0, 0, 1); // fuller labs sub basement
 								}
 							});	
 
@@ -310,28 +352,28 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(17, 0, 0, 1); // library 1
+									GUIFront.changeMapTo(21, 0, 0, 1); // library 1
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 2"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(18, 0, 0, 1); // library 2
+									GUIFront.changeMapTo(22, 0, 0, 1); // library 2
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 3"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(19, 0, 0, 1); // library 3
+									GUIFront.changeMapTo(23, 0, 0, 1); // library 3
 								}
 							});
 							popupMenu.add(new JMenuItem("Basement"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(20, 0, 0, 1); // library basement
+									GUIFront.changeMapTo(24, 0, 0, 1); // library basement
 								}
 							});
 
@@ -339,7 +381,48 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(21, 0, 0, 1); // library sub basement
+									GUIFront.changeMapTo(25, 0, 0, 1); // library sub basement
+								}
+							});
+
+							popupMenu.show(GUIFront.panelMap, me.getX(), me.getY());
+							return; 
+						}
+						
+						//Harrington Auditorium
+						if(hAPolygon.contains(GUIFront.getMainReferencePoint())){
+							JPopupMenu popupMenu = new JPopupMenu();
+
+							popupMenu.add(new JMenuItem("Harrington Auditorium"))
+							.setFont(new Font("Helvetica", Font.BOLD, 12));
+							popupMenu.addSeparator();
+
+							popupMenu.add(new JMenuItem("Floor 1"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(26, 0, 0, 1); // harrington 1
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 2"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(27, 0, 0, 1); // harrington 2
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 3"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(28, 0, 0, 1); // harrington 3
+								}
+							});
+							popupMenu.add(new JMenuItem("Basement"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(29, 0, 0, 1); // harrington b
 								}
 							});
 
@@ -347,7 +430,7 @@ public class TweenPanel extends JPanel {
 							return; 
 						}
 
-						//Higgins
+						//Higgins house
 						if(hHPolygon.contains(GUIFront.getMainReferencePoint())){
 							JPopupMenu popupMenu = new JPopupMenu();
 
@@ -359,21 +442,21 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(22, 0, 0, 1); // higgins house 1
+									GUIFront.changeMapTo(30, 0, 0, 1); // higgins house 1
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 2"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(23, 0, 0, 1); // higgins house 2
+									GUIFront.changeMapTo(31, 0, 0, 1); // higgins house 2
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 3"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(24, 0, 0, 1); // higgins house 3
+									GUIFront.changeMapTo(32, 0, 0, 1); // higgins house 3
 								}
 							});
 
@@ -393,14 +476,55 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(25, 0, 0, 1); // higgins garage 1
+									GUIFront.changeMapTo(33, 0, 0, 1); // higgins garage 1
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 2"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(26, 0, 0, 1); // higgins garage 2
+									GUIFront.changeMapTo(34, 0, 0, 1); // higgins garage 2
+								}
+							});
+
+							popupMenu.show(GUIFront.panelMap, me.getX(), me.getY());
+							return; 
+						}
+						
+						//Higgins Labs
+						if(hLPolygon.contains(GUIFront.getMainReferencePoint())){
+							JPopupMenu popupMenu = new JPopupMenu();
+
+							popupMenu.add(new JMenuItem("Higgins Labs"))
+							.setFont(new Font("Helvetica", Font.BOLD, 12));
+							popupMenu.addSeparator();
+
+							popupMenu.add(new JMenuItem("Floor 0"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(35, 0, 0, 1); // project center 1
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 1"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(36, 0, 0, 1); // project center 2
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 2"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(37, 0, 0, 1); // project center 2
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 3"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(38, 0, 0, 1); // project center 2
 								}
 							});
 
@@ -420,21 +544,20 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(27, 0, 0, 1); // project center 1
+									GUIFront.changeMapTo(39, 0, 0, 1); // project center 1
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 2"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(28, 0, 0, 1); // project center 2
+									GUIFront.changeMapTo(40, 0, 0, 1); // project center 2
 								}
 							});
 
 							popupMenu.show(GUIFront.panelMap, me.getX(), me.getY());
 							return; 
 						}
-
 
 						//Stratton
 						if(sHPolygon.contains(GUIFront.getMainReferencePoint())){
@@ -443,26 +566,26 @@ public class TweenPanel extends JPanel {
 							popupMenu.add(new JMenuItem("Stratton Hall"))
 							.setFont(new Font("Helvetica", Font.BOLD, 12));
 							popupMenu.addSeparator();
-
+							
 							popupMenu.add(new JMenuItem("Floor 1"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(29, 0, 0, 1); // stratton hall 1
+									GUIFront.changeMapTo(41, 0, 0, 1); // stratton hall 1
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 2"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(30, 0, 0, 1); // stratton hall 2
+									GUIFront.changeMapTo(42, 0, 0, 1); // stratton hall 2
 								}
 							});
 							popupMenu.add(new JMenuItem("Floor 3"))
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(31, 0, 0, 1); // stratton hall 3
+									GUIFront.changeMapTo(43, 0, 0, 1); // stratton hall 3
 								}
 							});
 
@@ -470,7 +593,103 @@ public class TweenPanel extends JPanel {
 							.addActionListener(new ActionListener(){
 								@Override
 								public void actionPerformed(ActionEvent arg0) {
-									GUIFront.changeMapTo(32, 0, 0, 1); // stratton hall basement 3
+									GUIFront.changeMapTo(44, 0, 0, 1); // stratton hall basement 3
+								}
+							});
+
+							popupMenu.show(GUIFront.panelMap, me.getX(), me.getY());
+							return; 
+						}
+						
+						//Salisbury
+						if(sLPolygon.contains(GUIFront.getMainReferencePoint())){
+							JPopupMenu popupMenu = new JPopupMenu();
+
+							popupMenu.add(new JMenuItem("Salisbury Labs"))
+							.setFont(new Font("Helvetica", Font.BOLD, 12));
+							popupMenu.addSeparator();
+
+							popupMenu.add(new JMenuItem("Floor 0"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(45, 0, 0, 1); // salisbury 0
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 1"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(46, 0, 0, 1); // salisbury 1
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 2"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(47, 0, 0, 1); // salisbury 2
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 3"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(48, 0, 0, 1); // salisbury 3
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 4"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(49, 0, 0, 1); // salisbury 4
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 5"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(50, 0, 0, 1); // salisbury 5
+								}
+							});
+
+							popupMenu.show(GUIFront.panelMap, me.getX(), me.getY());
+							return; 
+						}
+						
+						//Washburn
+						if(wSPolygon.contains(GUIFront.getMainReferencePoint())){
+							JPopupMenu popupMenu = new JPopupMenu();
+
+							popupMenu.add(new JMenuItem("Washburn Shops"))
+							.setFont(new Font("Helvetica", Font.BOLD, 12));
+							popupMenu.addSeparator();
+
+							popupMenu.add(new JMenuItem("Floor 0"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(51, 0, 0, 1); // washburn 0
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 1"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(52, 0, 0, 1); // washburn 1
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 2"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(53, 0, 0, 1); // washburn 2
+								}
+							});
+							popupMenu.add(new JMenuItem("Floor 3"))
+							.addActionListener(new ActionListener(){
+								@Override
+								public void actionPerformed(ActionEvent arg0) {
+									GUIFront.changeMapTo(54, 0, 0, 1); // washburn 3
 								}
 							});
 
@@ -657,9 +876,9 @@ public class TweenPanel extends JPanel {
 		if(this.mapImage == null){ // StepByStep	
 			// Update showing directions or not
 			if(GUIFront.isCurrentlyOpen()){
-		        GUIFront.getListDirections().setFixedCellWidth(GUIFront.panelDirections.getWidth() - 10); // scale the cell width when resizing
+		        GUIFront.getListDirections().setFixedCellWidth(GUIFront.panelDirections.getWidth() - 40); // scale the cell width when resizing
 		        GUIFront.getListDirections().setVisibleRowCount((int) (GUIFront.panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
-		        GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 7)); // 7 pixels per 1 character
+		        GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 10)); // 10 pixels per 1 character
 		        
 		        // If there is a route, show this
 		        if(!GUIFront.allowSetting){
@@ -705,7 +924,7 @@ public class TweenPanel extends JPanel {
 				if(GUIFront.backend.getLocalMap().getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE)){
 
 					// Draw the panels over the building
-					graphics.setColor(lineColor);
+					graphics.setColor(new Color(0, 0, 0, 0));
 					graphics.setStroke(new BasicStroke (5));
 					graphics.draw(aHPolygon);
 					graphics.draw(aKPolygon);
