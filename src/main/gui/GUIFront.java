@@ -273,7 +273,9 @@ public class GUIFront extends JFrame {
 		setLanguage(Language.ENGLISH);
 		officialName = new ArrayList<String>();
 		for(MapNode mapnode : globalMap.getMapNodes()){
-			officialName.add(mapnode.getAttributes().getOfficialName());
+			if ((! mapnode.getAttributes().getOfficialName().trim().equals("none")) && (! mapnode.getAttributes().getOfficialName().trim().equals(""))) {
+				officialName.add(mapnode.getAttributes().getOfficialName());
+			}
 		}
 		
 		/*for(MapNode mapnode : globalMap.getMapNodes()){
@@ -871,7 +873,7 @@ public class GUIFront extends JFrame {
 		panelMap.setBackground(backgroundColor);
 		panels.add(panelMap);
 		//panelDirections = new TweenPanel("2");
-        final WebCollapsiblePane leftPane = new WebCollapsiblePane ("Step by Step Directions", createCustomVerContent());
+        final WebCollapsiblePane leftPane = new WebCollapsiblePane (screenText[15], createCustomVerContent());
         if(!leftPane.isExpanded()){
         	JLabel label = new JLabel();
         	label.setIcon(new ImageIcon(Constants.IMAGES_PATH + Constants.DEFAULT_MAP_IMAGE));
@@ -1795,68 +1797,6 @@ public class GUIFront extends JFrame {
 	public static void initGroupLayout(JLabel lblStart, JLabel lblEnd, 
 			JButton btnPreviousMap, JButton btnPreviousStep, JButton btnNextStep, JButton btnNextMap){
 		gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGap(10)
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-												.addComponent(start, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-												.addComponent(lblStart, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-												.addGap(51)
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-														.addComponent(end, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addComponent(lblEnd, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-														.addGap(351)
-														.addComponent(btnRoute, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-														.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addComponent(btnClear)
-														.addGap(22))))
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addGap(79)
-																.addComponent(btnPreviousMap)
-																.addGap(37)
-																.addComponent(btnPreviousStep)
-																.addGap(75)
-																.addComponent(btnNextStep)
-																.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-																.addComponent(btnNextMap)
-																.addGap(170))
-				);
-		gl_contentPane.setVerticalGroup(
-				gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-										.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-												.addComponent(lblStart)
-												.addComponent(lblEnd))
-												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-														.addGroup(gl_contentPane.createSequentialGroup()
-																.addPreferredGap(ComponentPlacement.RELATED)
-																.addComponent(start, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-																.addGroup(gl_contentPane.createSequentialGroup()
-																		.addGap(5)
-																		.addComponent(end, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-																		.addGroup(gl_contentPane.createSequentialGroup()
-																				.addGap(11)
-																				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-																						.addComponent(btnRoute)
-																						.addComponent(btnClear))))
-																						.addGap(14)
-																						.addComponent(mainPanel, GroupLayout.PREFERRED_SIZE, 445, GroupLayout.PREFERRED_SIZE)
-																						.addGap(18)
-																						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-																								.addComponent(btnPreviousMap)
-																								.addComponent(btnNextMap)
-																								.addComponent(btnNextStep)
-																								.addComponent(btnPreviousStep))
-																								.addGap(35))
-				);
 
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()  // top line
@@ -1873,13 +1813,14 @@ public class GUIFront extends JFrame {
 						)
 						.addComponent(mainPanel)
 						.addGroup(gl_contentPane.createSequentialGroup() // bottom line
+								.addGap(10)
 								.addComponent(btnPreviousMap)
 								.addComponent(btnPreviousStep)
-								.addGap(50)
+								.addGap(150)
 								.addComponent(btnBackToCampus)
-								.addGap(25)
-								.addComponent(floorChooserBar)
 								.addGap(50)
+								.addComponent(floorChooserBar)
+								.addGap(150)
 								.addComponent(btnNextStep)
 								.addComponent(btnNextMap))
 				);

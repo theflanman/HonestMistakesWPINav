@@ -67,9 +67,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -160,9 +158,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -226,9 +222,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -271,9 +265,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -362,9 +354,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -477,9 +467,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -547,9 +535,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -596,9 +582,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -737,9 +721,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -877,9 +859,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -945,9 +925,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1014,9 +992,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1059,9 +1035,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1104,9 +1078,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1149,9 +1121,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1194,9 +1164,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1239,9 +1207,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1307,9 +1273,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1397,9 +1361,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1465,9 +1427,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1534,9 +1494,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1677,9 +1635,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1768,9 +1724,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1872,9 +1826,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1971,9 +1923,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2018,9 +1968,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2087,9 +2035,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2473,9 +2419,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2531,8 +2475,6 @@
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>WB3_113</Neighbor>
-            <Neighbor>WB2_208</Neighbor>
-            <Neighbor>WB1_30</Neighbor>
             <Neighbor>WB0_57</Neighbor>
         </Neighbors>
         <Attributes>
@@ -2662,9 +2604,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2729,9 +2669,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2777,9 +2715,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2894,9 +2830,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2943,9 +2877,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3179,9 +3111,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3252,9 +3182,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3370,9 +3298,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3485,9 +3411,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3579,9 +3503,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3695,9 +3617,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3769,9 +3689,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>classRoom</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3904,7 +3822,7 @@
             <Neighbor>WB3_170</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName>WB326</OfficialName>
+            <OfficialName>WB336</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>

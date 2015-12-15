@@ -496,6 +496,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>WB1_21</Neighbor>
+            <Neighbor>CCM_226</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
@@ -671,8 +672,6 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>WB1_29</Neighbor>
-            <Neighbor>WB0_57</Neighbor>
-            <Neighbor>WB2_208</Neighbor>
             <Neighbor>WB3_110</Neighbor>
         </Neighbors>
         <Attributes>
@@ -2229,6 +2228,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>WB1_92</Neighbor>
+            <Neighbor>CCM_343</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>
@@ -3048,6 +3048,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>WB1_52</Neighbor>
+            <Neighbor>CCM_418</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>

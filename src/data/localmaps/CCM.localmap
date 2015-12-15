@@ -5119,6 +5119,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>CCM_214</Neighbor>
+            <Neighbor>WB1_22</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -5603,6 +5604,7 @@
             <Neighbor>CCM_249</Neighbor>
             <Neighbor>CCM_246</Neighbor>
             <Neighbor>CCM_248</Neighbor>
+            <Neighbor>CCM_418</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -7764,6 +7766,7 @@
         <Neighbors>
             <Neighbor>CCM_222</Neighbor>
             <Neighbor>CCM_344</Neighbor>
+            <Neighbor>WB1_95</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -8662,9 +8665,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -8685,9 +8686,7 @@
             <Outside>true</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -9412,6 +9411,28 @@
         <Neighbors>
             <Neighbor>CCM_416</Neighbor>
             <Neighbor>CCM_383</Neighbor>
+        </Neighbors>
+        <Attributes>
+            <OfficialName>none</OfficialName>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>CCM_418</NodeID>
+        <XPos>1079.0</XPos>
+        <YPos>618.0</YPos>
+        <XFeet>1617.421</XFeet>
+        <YFeet>926.3820000000001</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>
+            <Neighbor>CCM_247</Neighbor>
+            <Neighbor>WB1_130</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName>none</OfficialName>

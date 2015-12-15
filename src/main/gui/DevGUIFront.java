@@ -15,9 +15,12 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Properties;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
+
+import com.jtattoo.plaf.aluminium.AluminiumLookAndFeel;
 
 import java.awt.*;
 import java.io.*;
@@ -69,9 +72,17 @@ public class DevGUIFront extends JFrame {
 	@SuppressWarnings("unused")
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 
+	 Properties prop = new Properties();
+
+	
+
 	public static void main(String[] args) {
+
+
 		try {
+			
 			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException e1) {
 			// TODO Auto-generated catch block
@@ -80,6 +91,7 @@ public class DevGUIFront extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					frame = new DevGUIFront();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -91,6 +103,10 @@ public class DevGUIFront extends JFrame {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public DevGUIFront() {
+		prop.put("logoString", "EoN"); 
+		AluminiumLookAndFeel.setCurrentTheme(prop);
+
+		SwingUtilities.updateComponentTreeUI(this);
 
 		// This sets the size and behavior of the application window itself.
 		setPreferredSize(new Dimension(1380, 760));
