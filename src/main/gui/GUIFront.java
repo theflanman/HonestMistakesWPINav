@@ -863,10 +863,11 @@ public class GUIFront extends JFrame {
 		stepByStepUI.add(getScrollPane());
 
 		// Create a new list and be able to get the current width of the viewport it is contained in (the scrollpane)
-		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 7); // 7 pixels per 1 character
+		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 10); // 7 pixels per 1 character
 
 		// List Directions
 		setListDirections(new JList<String>(listModel));
+		getListDirections().setFont(new Font("Gulim", Font.PLAIN, 14));
 		getListDirections().setCellRenderer(renderer);
 		getListDirections().setFixedCellWidth(MAX_LIST_WIDTH); // give it a set width in pixels
 		getScrollPane().setViewportView(getListDirections());
