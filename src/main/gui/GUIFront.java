@@ -1353,10 +1353,10 @@ public class GUIFront extends JFrame {
 		btnRoute.setBackground(routeButtonColor);
 		slidePanel.setBackground(sideBarColor);
 		panelMap.setBackground(backgroundColor);
-		stepByStepUI.setBackground(sideBarColor);
+		//stepByStepUI.setBackground(sideBarColor);
 		getLblStepByStep().setBackground(sideBarColor);
 		getLblDistance().setBackground(sideBarColor);
-		panelDirections.setBackground(sideBarColor);
+		//panelDirections.setBackground(sideBarColor);
 		btnNextMap.setBackground(otherButtonsColor);
 		btnPreviousMap.setBackground(otherButtonsColor);
 		contentPane.setBackground(backgroundColor);
