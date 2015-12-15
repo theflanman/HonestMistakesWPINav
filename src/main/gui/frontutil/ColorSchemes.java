@@ -99,7 +99,7 @@ public class ColorSchemes {
 		wpiDefault.setStartNodeColor(wpiGrey);
 		wpiDefault.setEndNodeColor(wpiRed);
 		wpiDefault.setOutlineColor(defaultBlack);
-		colorSchemes.put("WPI Default", wpiDefault);
+		colorSchemes.put("WPI Theme", wpiDefault);
 		
 		//set flower power
 		flowerPower.setRouteButtonColor(flowerPink1);

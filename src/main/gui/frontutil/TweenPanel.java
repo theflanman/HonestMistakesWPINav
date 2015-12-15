@@ -657,9 +657,9 @@ public class TweenPanel extends JPanel {
 		if(this.mapImage == null){ // StepByStep	
 			// Update showing directions or not
 			if(GUIFront.isCurrentlyOpen()){
-		        GUIFront.getListDirections().setFixedCellWidth(GUIFront.panelDirections.getWidth() - 10); // scale the cell width when resizing
+		        GUIFront.getListDirections().setFixedCellWidth(GUIFront.panelDirections.getWidth() - 40); // scale the cell width when resizing
 		        GUIFront.getListDirections().setVisibleRowCount((int) (GUIFront.panelDirections.getHeight() * 0.025)); // scale the visible row count to 2.5% height
-		        GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 7)); // 7 pixels per 1 character
+		        GUIFront.setRenderer(new WrappableCellRenderer(GUIFront.panelDirections.getWidth() / 10)); // 10 pixels per 1 character
 		        
 		        // If there is a route, show this
 		        if(!GUIFront.allowSetting){
@@ -705,7 +705,7 @@ public class TweenPanel extends JPanel {
 				if(GUIFront.backend.getLocalMap().getMapImageName().equals(Constants.DEFAULT_MAP_IMAGE)){
 
 					// Draw the panels over the building
-					graphics.setColor(lineColor);
+					graphics.setColor(new Color(0, 0, 0, 0));
 					graphics.setStroke(new BasicStroke (5));
 					graphics.draw(aHPolygon);
 					graphics.draw(aKPolygon);

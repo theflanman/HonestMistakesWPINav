@@ -48,6 +48,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 
+
 import com.jtattoo.plaf.aluminium.AluminiumLookAndFeel;
 import com.jtattoo.plaf.smart.SmartLookAndFeel;
 
@@ -173,6 +174,8 @@ public class GUIFront extends JFrame {
 	private static Language language = Language.ENGLISH;
 
 	private static SLPanel slidePanel;
+	private static SLPanel streetViewSLPanel;
+	private static TweenPanel streetViewTweenPanel;
 	private static JPanel stepByStepUI;
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
@@ -233,6 +236,8 @@ public class GUIFront extends JFrame {
 		screenText[23] = "All Blue";
 		screenText[24] = "Languages";
 		screenText[25] = "Distance in Feet";
+		screenText[26] = "Back To Campus Map";
+		screenText[27] = "Change Floors";
 		
 		// main application is invisible during loading screen
 		setVisible(false); 
@@ -245,7 +250,7 @@ public class GUIFront extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1412, 743);
-		setResizable(false);
+		setResizable(true);
 		setPreferredSize(new Dimension(820, 650));
 
 		// Setup Pan and Zoom
@@ -278,7 +283,7 @@ public class GUIFront extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(backgroundColor);
 		setContentPane(contentPane);
-		
+				
 		// Adding default values for pan and zoom to the hashmap
 		defaults = GUIFrontUtil.initPanZoom();
 
@@ -864,10 +869,11 @@ public class GUIFront extends JFrame {
 		stepByStepUI.add(getScrollPane());
 
 		// Create a new list and be able to get the current width of the viewport it is contained in (the scrollpane)
-		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 7); // 7 pixels per 1 character
+		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 10); // 7 pixels per 1 character
 
 		// List Directions
 		setListDirections(new JList<String>(listModel));
+		getListDirections().setFont(new Font("Gulim", Font.PLAIN, 14));
 		getListDirections().setCellRenderer(renderer);
 		getListDirections().setFixedCellWidth(MAX_LIST_WIDTH); // give it a set width in pixels
 		getScrollPane().setViewportView(getListDirections());
@@ -1164,7 +1170,7 @@ public class GUIFront extends JFrame {
 		});
 		
 		//button that goes back to the campus map
-		btnBackToCampus = new JButton("Back To Campus Map");
+		btnBackToCampus = new JButton(screenText[26]);
 		btnBackToCampus.setBackground(otherButtonsColor);
 		btnBackToCampus.setEnabled(false);
 		btnBackToCampus.addActionListener(new ActionListener(){
@@ -1173,10 +1179,10 @@ public class GUIFront extends JFrame {
 				changeMapTo(11, 0, 0, 1);
 			}
 		});
-		
+
 		//dropdown for floor selection
-		floorChooser = new JMenu("Change Floors");
-		floorChooser.setSize(new Dimension(95, 25));
+		floorChooser = new JMenu(screenText[27]);
+		floorChooser.setSize(new Dimension(150, 25));
 		floorChooser.setEnabled(false);
 		floorChooserBar = new JMenuBar();
 		floorChooserBar.setMaximumSize(new Dimension(floorChooser.getSize().width, floorChooser.getSize().height + 5));
@@ -1197,7 +1203,7 @@ public class GUIFront extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
-		changeMapTo(11, 0, 0, 1);
+		changeMapTo(15, 0, 0, 1); // change to campus map to force proper reloading of data
 		
 		thisGUIFront = this;
 	}
@@ -1210,6 +1216,7 @@ public class GUIFront extends JFrame {
 		otherButtonsColor = getColors().getOtherButtonsColor();
 		backgroundColor = getColors().getMainBackColor();
 		sideBarColor = getColors().getSideBarColor();
+		
 
 		btnRoute.setBackground(routeButtonColor);
 		slidePanel.setBackground(sideBarColor);
@@ -1222,6 +1229,8 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setBackground(otherButtonsColor);
 		contentPane.setBackground(backgroundColor);
 		btnClear.setBackground(otherButtonsColor);
+		streetViewSLPanel.setBackground(backgroundColor);
+		streetViewTweenPanel.setBackground(backgroundColor);
 		
         props.put("logoString", "EoN"); 
         
@@ -1233,9 +1242,8 @@ public class GUIFront extends JFrame {
         props.put("windowTitleColorLight", colorToString(colors.getMainBackColor())); 
         props.put("windowTitleColorDark", colorToString(colors.getStartNodeColor())); 
         props.put("frameColor", colorToString(colors.getOutlineColor()));
-        props.put("windowTitleFont", "Gulim Bold 20");
-        
-		//props.put("tabAreaBackgroundColor", colorToString(Color.white));
+        props.put("windowTitleFont", "Gulim Bold 12");
+
 	    AluminiumLookAndFeel.setCurrentTheme(props);
 		SwingUtilities.updateComponentTreeUI(this);
 	}
@@ -1257,17 +1265,19 @@ public class GUIFront extends JFrame {
 		}
 
 		// connect Street View Panel to mainPanel
-		SLPanel streetViewSLPanel = new SLPanel();
+		streetViewSLPanel = new SLPanel();
 		streetViewSLPanel.setOpaque(false);
+		streetViewSLPanel.setBackground(backgroundColor);
 		mainPanel.addTab(screenText[10], null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
 
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
-		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
-
+		streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
+		streetViewTweenPanel.setBackground(backgroundColor);
+		
 		SLConfig streetViewConfig = new SLConfig(streetViewSLPanel)
 		.gap(10, 10)
-		.row(1f).col(700).col(50) // 700xH | 50xH
+		.row(1f).col(1500).col(50) // 700xH | 50xH
 		.place(0, 0, streetViewTweenPanel);
 
 		streetViewSLPanel.initialize(streetViewConfig);
@@ -1510,21 +1520,25 @@ public class GUIFront extends JFrame {
 		mntmCCM.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(11, 0, 0, 1);
+				GUIFront.changeMapTo(15, 0, 0, 1);
 			}
 		});
 
-		mnLocations.add(mnBuildings.get(0)); // indices: 0, 1, 2, 3
-		mnLocations.add(mnBuildings.get(1)); // indices: 4, 5, 6, 7
-		mnLocations.add(mnBuildings.get(2)); // indices: 8, 9, 10
-		mnLocations.add(mntmCCM); // index: 11
-		mnLocations.add(mnBuildings.get(3)); // indices 12, 13, 14, 15, 16
-		mnLocations.add(mnBuildings.get(4)); // indices: 17, 18, 19, 20, 21
-		mnLocations.add(mnBuildings.get(5)); // indices: 22, 23, 24
-		mnLocations.add(mnBuildings.get(6)); //indices: 25, 26
-		mnLocations.add(mnBuildings.get(7)); // indices: 27, 28
-		mnLocations.add(mnBuildings.get(8)); // indices 29, 30, 31, 32
-
+		mnLocations.add(mnBuildings.get(0)); // Alden
+		mnLocations.add(mnBuildings.get(1)); // Atwater
+		mnLocations.add(mnBuildings.get(2)); // Boynton
+		mnLocations.add(mnBuildings.get(3)); // Campus Center
+		mnLocations.add(mntmCCM); // Campus Map
+		mnLocations.add(mnBuildings.get(4)); // Fuller Labs
+		mnLocations.add(mnBuildings.get(5)); // Gordon Library
+		mnLocations.add(mnBuildings.get(6)); // Harrington Auditorium
+		mnLocations.add(mnBuildings.get(7)); // Higgins House
+		mnLocations.add(mnBuildings.get(8)); // Higgins House Garage
+		mnLocations.add(mnBuildings.get(9)); // Higgins Labs
+		mnLocations.add(mnBuildings.get(10)); // Project Center
+		mnLocations.add(mnBuildings.get(11)); // Stratton Hall
+		mnLocations.add(mnBuildings.get(12)); // Salisbury Labs
+		mnLocations.add(mnBuildings.get(13)); // Washburn Shops
 		mnHelp = new JMenu(screenText[4]);
 		menuBar.add(mnHelp);
 	}
@@ -1550,6 +1564,8 @@ public class GUIFront extends JFrame {
 		panelMap.setPanX(defPan[0]);
 		panelMap.setPanY(defPan[1]);
 		panelMap.setScale(defPan[2]);
+		GUIFront.getZoomHandle().setZoomAmount(defPan[2]);
+		
 		offsetX = defPan[0] - tempPan[0];
 		offsetY = defPan[1] - tempPan[1];
 		for(MapNode n : backend.getLocalMap().getMapNodes()){
@@ -1574,7 +1590,7 @@ public class GUIFront extends JFrame {
 		}
 		
 		//activate/deactivate back to campus map and floor chooser buttons
-		if(index != 11){
+		if(index != 15){
 			btnBackToCampus.setEnabled(true);
 			floorChooser.setEnabled(true);
 			
@@ -1936,6 +1952,8 @@ public class GUIFront extends JFrame {
 		mnOptionList.set(1, languages);
 		
 		getLblDistance().setText(translatedText[25]);
+		btnBackToCampus.setText(translatedText[26]);
+		floorChooser.setText(translatedText[27]);
 	}
 	
 	// {{ Getters and Setters
