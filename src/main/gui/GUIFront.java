@@ -48,6 +48,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 
+
 import com.jtattoo.plaf.aluminium.AluminiumLookAndFeel;
 import com.jtattoo.plaf.smart.SmartLookAndFeel;
 
@@ -173,6 +174,8 @@ public class GUIFront extends JFrame {
 	private static Language language = Language.ENGLISH;
 
 	private static SLPanel slidePanel;
+	private static SLPanel streetViewSLPanel;
+	private static TweenPanel streetViewTweenPanel;
 	private static JPanel stepByStepUI;
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
@@ -278,7 +281,7 @@ public class GUIFront extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(backgroundColor);
 		setContentPane(contentPane);
-		
+				
 		// Adding default values for pan and zoom to the hashmap
 		defaults = GUIFrontUtil.initPanZoom();
 
@@ -1199,6 +1202,7 @@ public class GUIFront extends JFrame {
 		otherButtonsColor = getColors().getOtherButtonsColor();
 		backgroundColor = getColors().getMainBackColor();
 		sideBarColor = getColors().getSideBarColor();
+		
 
 		btnRoute.setBackground(routeButtonColor);
 		slidePanel.setBackground(sideBarColor);
@@ -1211,6 +1215,8 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setBackground(otherButtonsColor);
 		contentPane.setBackground(backgroundColor);
 		btnClear.setBackground(otherButtonsColor);
+		streetViewSLPanel.setBackground(backgroundColor);
+		streetViewTweenPanel.setBackground(backgroundColor);
 		
         props.put("logoString", "EoN"); 
         
@@ -1222,9 +1228,8 @@ public class GUIFront extends JFrame {
         props.put("windowTitleColorLight", colorToString(colors.getMainBackColor())); 
         props.put("windowTitleColorDark", colorToString(colors.getStartNodeColor())); 
         props.put("frameColor", colorToString(colors.getOutlineColor()));
-        props.put("windowTitleFont", "Gulim Bold 20");
-        
-		//props.put("tabAreaBackgroundColor", colorToString(Color.white));
+        props.put("windowTitleFont", "Gulim Bold 12");
+
 	    AluminiumLookAndFeel.setCurrentTheme(props);
 		SwingUtilities.updateComponentTreeUI(this);
 	}
@@ -1246,17 +1251,19 @@ public class GUIFront extends JFrame {
 		}
 
 		// connect Street View Panel to mainPanel
-		SLPanel streetViewSLPanel = new SLPanel();
+		streetViewSLPanel = new SLPanel();
 		streetViewSLPanel.setOpaque(false);
+		streetViewSLPanel.setBackground(backgroundColor);
 		mainPanel.addTab(screenText[10], null, streetViewSLPanel, null);
 		contentPane.setLayout(gl_contentPane);
 
 		IProxyImage streetViewPath = new ProxyImage(imagePath);
-		TweenPanel streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
-
+		streetViewTweenPanel = new TweenPanel(new ArrayList<MapNode>(), streetViewPath , "3", Constants.STREET_PATH);
+		streetViewTweenPanel.setBackground(backgroundColor);
+		
 		SLConfig streetViewConfig = new SLConfig(streetViewSLPanel)
 		.gap(10, 10)
-		.row(1f).col(700).col(50) // 700xH | 50xH
+		.row(1f).col(1500).col(50) // 700xH | 50xH
 		.place(0, 0, streetViewTweenPanel);
 
 		streetViewSLPanel.initialize(streetViewConfig);
