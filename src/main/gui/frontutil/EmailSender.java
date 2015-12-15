@@ -1,11 +1,13 @@
 package main.gui.frontutil;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -22,93 +24,109 @@ public class EmailSender {
 	/*
 	 * @author Nick Gigliotti
 	 */
-    public void sendFromGMail(String[] toEmail, String subject, String body) {
-        Properties props = System.getProperties();
-    	String fromEmail = "EraOfNavigation";
-    	String pass = "HonestMistakes";
-    	String myDirectoryPath = "src/data/pathimages";
-    	
-        String host = "smtp.gmail.com";
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.user", fromEmail);
-        props.put("mail.smtp.password", pass);
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
+	public void sendFromGMail(String[] toEmail, String subject, String body) {
+		Properties props = System.getProperties();
+		String fromEmail = "EraOfNavigation";
+		String pass = "HonestMistakes";
+		String myDirectoryPath = "src/data/pathimages";
 
-        Session session = Session.getDefaultInstance(props);
-        
-        MimeMessage message = new MimeMessage(session);
+		String host = "smtp.gmail.com";
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.user", fromEmail);
+		props.put("mail.smtp.password", pass);
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.auth", "true");
 
-        try {
-            message.setFrom(new InternetAddress(fromEmail));
-            InternetAddress[] toAddress = new InternetAddress[toEmail.length];
+		Session session = Session.getDefaultInstance(props);
 
-            // To get the array of addresses
-            for( int i = 0; i < toEmail.length; i++ ) {
-                toAddress[i] = new InternetAddress(toEmail[i]);
-            }
+		MimeMessage message = new MimeMessage(session);
 
-            for( int i = 0; i < toAddress.length; i++) {
-                message.addRecipient(Message.RecipientType.TO, toAddress[i]);
-            }
+		try {
+			message.setFrom(new InternetAddress(fromEmail));
+			InternetAddress[] toAddress = new InternetAddress[toEmail.length];
 
-            Multipart multipart = new MimeMultipart();
-            MimeBodyPart messageBodyPart = new MimeBodyPart();
-            // HTML formating of body
-            
-            
-            
-            messageBodyPart.setText("<html><head>"
-            		+ "<meta http-equiv=Content-Type content=text/html; charset=utf-8 />"
-                    + "<title>Untitled Document</title>"
-                    + "</head>"
+			// To get the array of addresses
+			for( int i = 0; i < toEmail.length; i++ ) {
+				toAddress[i] = new InternetAddress(toEmail[i]);
+			}
 
-                    + "<body>"
-                    + "<p>Custom Message</p>"
-                    + "<p>Step By Step Directions 1:</p>"
-                    + "<p><img file='/src/data/images/AK1.png' width='665' height='443' alt='Image' /></p>"
-            		+ "</body></html>", "ascii", "html");
-            
-            multipart.addBodyPart(messageBodyPart);
-            
-            File dir = new File(myDirectoryPath);
-            File[] directoryListing = dir.listFiles();
-            if (directoryListing != null) {
-            	for (File child : directoryListing) {
-            		child.deleteOnExit();
-            		MimeBodyPart attachPart = new MimeBodyPart();
-            		String attachFile = myDirectoryPath.concat("/".concat(child.getName()));
+			for( int i = 0; i < toAddress.length; i++) {
+				message.addRecipient(Message.RecipientType.TO, toAddress[i]);
+			}
 
-            		DataSource source = new FileDataSource(attachFile);
+			Multipart multipart = new MimeMultipart();
+			MimeBodyPart messageBodyPart = new MimeBodyPart();
+			// HTML formating of body
 
-            		try {
-            			attachPart.setDataHandler(new DataHandler(source));
-            			attachPart.setFileName(new File(attachFile).getName());
-            			multipart.addBodyPart(attachPart);
-            		} catch (MessagingException e) {
-            			e.printStackTrace();
-            		}
-            	}
-            }
-            
-            message.setSubject(subject);
-            message.setContent(multipart);
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, fromEmail, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-            System.out.println("Email Sent Successfuly");
-            for (File file : directoryListing) {
-            	file.delete();
-            }
- 
-        }
-        catch (AddressException ae) {
-            ae.printStackTrace();
-        }
-        catch (MessagingException me) {
-            me.printStackTrace();
-        }
-    }
+			ArrayList<MimeBodyPart> pathImages = new ArrayList<MimeBodyPart>();
+			ArrayList<String> images = new ArrayList<String>();
+
+			File dir = new File(myDirectoryPath);
+			File[] directoryListing = dir.listFiles();
+			if (directoryListing != null) {
+				int i = 0;
+				for (File child : directoryListing) {
+					child.deleteOnExit();
+					MimeBodyPart attachPart = new MimeBodyPart();
+					String attachFile = myDirectoryPath.concat("/".concat(child.getName()));
+					
+					MimeBodyPart img = new MimeBodyPart();
+					DataSource fds = new FileDataSource(attachFile);
+					img.setDataHandler(new DataHandler(fds));
+					img.setHeader("Content-ID", "<image" + Integer.toString(i) + ">");
+					multipart.addBodyPart(img);
+					
+					images.add("<img src = \"cid:image" + Integer.toString(i) +"\">");
+					
+					DataSource source = new FileDataSource(attachFile);
+
+					try {
+						attachPart.setDataHandler(new DataHandler(source));
+						attachPart.setFileName(new File(attachFile).getName());
+						multipart.addBodyPart(attachPart);
+					} catch (MessagingException e) {
+						e.printStackTrace();
+					}
+					
+					i++;
+				}
+			}
+			
+			String bodyStr = "<body>";
+			bodyStr += "<p>custom message</p>";
+			
+			for (String str : images) {
+				bodyStr += "<p>Step Directions:</p>";
+				bodyStr += str;
+			}
+
+			messageBodyPart.setText("<html><head>"
+					+ "<meta http-equiv=Content-Type content=text/html; charset=utf-8 />"
+					+ "<title>Untitled Document</title>"
+					+ "</head>"
+					+bodyStr
+					+ "</body></html>", "ascii", "html");
+
+			multipart.addBodyPart(messageBodyPart);
+
+			message.setSubject(subject);
+			message.setContent(multipart);
+			Transport transport = session.getTransport("smtp");
+			transport.connect(host, fromEmail, pass);
+			transport.sendMessage(message, message.getAllRecipients());
+			transport.close();
+			System.out.println("Email Sent Successfuly");
+			for (File file : directoryListing) {
+				file.delete();
+			}
+
+		}
+		catch (AddressException ae) {
+			ae.printStackTrace();
+		}
+		catch (MessagingException me) {
+			me.printStackTrace();
+		}
+	}
 }
