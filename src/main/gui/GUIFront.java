@@ -32,6 +32,7 @@ import javax.swing.Action;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -47,11 +48,18 @@ import javax.swing.border.MatteBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-
-
+//import com.alee.examples.WebLookAndFeelDemo;
+//import com.alee.examples.content.DefaultExample;
+//import com.alee.examples.content.ExamplesManager;
+//import com.alee.examples.content.FeatureState;
+import com.alee.extended.panel.GroupPanel;
+import com.alee.extended.panel.WebCollapsiblePane;
+import com.alee.laf.list.WebList;
+import com.alee.laf.panel.WebPanel;
+import com.alee.laf.scroll.WebScrollPane;
+import com.alee.laf.text.WebTextArea;
 
 import com.jtattoo.plaf.aluminium.AluminiumLookAndFeel;
-import com.jtattoo.plaf.smart.SmartLookAndFeel;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -146,12 +154,14 @@ public class GUIFront extends JFrame {
 	private static JLabel lblStart, lblEnd;
 	private static GroupLayout gl_contentPane;
 	private static boolean[] mapViewButtons;
+	
+	
 
 	// Directions Components
 	private static JLabel lblStepByStep, lblClickHere, lblDistance;
 	private static JScrollPane scrollPane;
 	private static boolean currentlyOpen = false; // keeps track of whether the panel is slid out or not
-	private DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
+	private static DefaultListModel<String> listModel = new DefaultListModel<String>(); // Setup a default list of elements
 	@SuppressWarnings("rawtypes")
 	private static ListCellRenderer renderer;
 	private int MAX_LIST_WIDTH = 180; // maximum width of the list in pixels, the size of panelDirections is 200px
@@ -842,17 +852,20 @@ public class GUIFront extends JFrame {
 		panelMap = new TweenPanel(backend.getLocalMap().getMapNodes(), mapPath, "1", Constants.IMAGES_PATH);
 		panelMap.setBackground(backgroundColor);
 		panels.add(panelMap);
-		panelDirections = new TweenPanel("2");
-
-		// Step-by-step UI
-		stepByStepUI = new JPanel();
-		stepByStepUI.setBackground(sideBarColor);
+		//panelDirections = new TweenPanel("2");
+        final WebCollapsiblePane leftPane = new WebCollapsiblePane ("Step by Step Directions", createCustomVerContent());
+        if(!leftPane.isExpanded()){
+        	JLabel label = new JLabel();
+        	label.setIcon(new ImageIcon(Constants.IMAGES_PATH + Constants.DEFAULT_MAP_IMAGE));
+        	
+        	leftPane.add(label);
+        }
+        leftPane.setTitlePanePostion (SwingConstants.RIGHT);
 
 		// "<<<" Button on Slide Panel
 		setLblClickHere(new JLabel("<<<"));
 		getLblClickHere().setFont(new Font("Tahoma", Font.BOLD, 13));
 		getLblClickHere().setVisible(true);
-		stepByStepUI.add(getLblClickHere());
 
 		// Step-by-step Label
 		setLblStepByStep(new JLabel(screenText[15]));
@@ -860,13 +873,11 @@ public class GUIFront extends JFrame {
 		getLblStepByStep().setFont(new Font("Tahoma", Font.BOLD, 13));
 		getLblStepByStep().setBounds(23, 11, 167, 14);
 		getLblStepByStep().setVisible(false);
-		stepByStepUI.add(getLblStepByStep());
 
 		// Scroll Pane
 		setScrollPane(new JScrollPane());
 		getScrollPane().setBounds(10, 30, 180, 322);
 		getScrollPane().setVisible(false);
-		stepByStepUI.add(getScrollPane());
 
 		// Create a new list and be able to get the current width of the viewport it is contained in (the scrollpane)
 		renderer = new WrappableCellRenderer(MAX_LIST_WIDTH / 10); // 7 pixels per 1 character
@@ -877,7 +888,6 @@ public class GUIFront extends JFrame {
 		getListDirections().setCellRenderer(renderer);
 		getListDirections().setFixedCellWidth(MAX_LIST_WIDTH); // give it a set width in pixels
 		getScrollPane().setViewportView(getListDirections());
-		getListDirections().setVisible(false);
 		getListDirections().setVisibleRowCount(10); // only shows 10 directions before scrolling
 
 
@@ -887,13 +897,6 @@ public class GUIFront extends JFrame {
 		getLblDistance().setFont(new Font("Tahoma", Font.BOLD, 13));
 		getLblDistance().setVisible(false);
 
-		// Panel Directions
-		panelDirections.add(getLblDistance(), BorderLayout.SOUTH);
-		panelDirections.add(stepByStepUI, BorderLayout.NORTH);
-		panelDirections.setBackground(sideBarColor);
-
-		// Set action to allow for sliding
-		panelDirections.setAction(panelDirectionsAction);
 
 		/* Main Config
 		 * The configuration files describe what will take place for each animation. So by default we want the map larger 
@@ -902,16 +905,16 @@ public class GUIFront extends JFrame {
 		 */
 		mainConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
-		.row(1f).col(14f).col(1f) // Ratio of 14 : 1 when closed
+		.row(1f).col(5f).col(1f) // Ratio of 10 : 1 always
 		.place(0, 0, panelMap)
-		.place(0, 1, panelDirections);
+		.place(0, 1, leftPane);
 
 		// Panel Directions Config
 		panelDirectionsConfig = new SLConfig(slidePanel)
 		.gap(10, 10)
 		.row(1f).col(5f).col(1f) // Ratio of 5 : 1 when open 
 		.place(0, 0, panelMap)
-		.place(0, 1, panelDirections);
+		.place(0, 1, leftPane);
 
 		// Initialize tweening
 		slidePanel.setTweenManager(SLAnimator.createTweenManager());
@@ -1135,6 +1138,33 @@ public class GUIFront extends JFrame {
 
 		thisGUIFront = this;
 	}
+	
+    public static WebScrollPane createCustomHorContent ()
+    {
+        return createCustomContent (100, 100);
+    }
+
+    public static WebScrollPane createCustomVerContent ()
+    {
+        return createCustomContent (100, 100);
+    }
+
+    @SuppressWarnings("unchecked")
+	public static WebScrollPane createCustomContent (final int w, final int h)
+    {
+        // Content text area
+        final WebList webList = new WebList(listModel);
+        webList.setCellRenderer(new WrappableCellRenderer(20));
+		webList.setFont(new Font("Gulim", Font.PLAIN, 14));
+		webList.setFixedCellWidth(200);
+
+		
+        // Text area scroll
+        final WebScrollPane scrollPane = new WebScrollPane (webList, false );
+        scrollPane.setPreferredSize(new Dimension (w, h));
+        
+        return scrollPane;
+    }
 
 	// Sets Coloring Schemes
 	public void  setColoring(String scheme){
@@ -1149,10 +1179,8 @@ public class GUIFront extends JFrame {
 		btnRoute.setBackground(routeButtonColor);
 		slidePanel.setBackground(sideBarColor);
 		panelMap.setBackground(backgroundColor);
-		stepByStepUI.setBackground(sideBarColor);
 		getLblStepByStep().setBackground(sideBarColor);
 		getLblDistance().setBackground(sideBarColor);
-		panelDirections.setBackground(sideBarColor);
 		btnNextMap.setBackground(otherButtonsColor);
 		btnPreviousMap.setBackground(otherButtonsColor);
 		contentPane.setBackground(backgroundColor);
