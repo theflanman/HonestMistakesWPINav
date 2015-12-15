@@ -20,7 +20,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>door</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -43,7 +43,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>door</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -66,8 +66,10 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>door</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -84,13 +86,13 @@
             <Neighbor>PC1_5</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC104</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -117,7 +119,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -141,7 +143,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -165,7 +167,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -189,7 +191,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -224,9 +226,9 @@
     </Node>
     <Node>
         <NodeID>PC1_10</NodeID>
-        <XPos>299.3735601180465</XPos>
+        <XPos>303.0</XPos>
         <YPos>198.9527179259353</YPos>
-        <XFeet>41.64286221242027</XFeet>
+        <XFeet>42.1473</XFeet>
         <YFeet>27.6743230634976</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -280,9 +282,9 @@
     </Node>
     <Node>
         <NodeID>PC1_12</NodeID>
-        <XPos>298.67741884301716</XPos>
+        <XPos>303.0</XPos>
         <YPos>164.0064259194618</YPos>
-        <XFeet>41.54602896106369</XFeet>
+        <XFeet>42.1473</XFeet>
         <YFeet>22.813293845397137</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -332,9 +334,9 @@
     </Node>
     <Node>
         <NodeID>PC1_14</NodeID>
-        <XPos>298.0</XPos>
+        <XPos>303.0</XPos>
         <YPos>130.0</YPos>
-        <XFeet>41.4518</XFeet>
+        <XFeet>42.1473</XFeet>
         <YFeet>18.083</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -501,8 +503,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -658,10 +660,10 @@
     </Node>
     <Node>
         <NodeID>PC1_27</NodeID>
-        <XPos>344.99180345274243</XPos>
-        <YPos>230.11067462255536</YPos>
-        <XFeet>47.988359860276475</XFeet>
-        <YFeet>32.00839483999745</YFeet>
+        <XPos>344.9918034527424</XPos>
+        <YPos>230.0</YPos>
+        <XFeet>47.98835986027647</XFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_25</Neighbor>
@@ -741,9 +743,9 @@
     <Node>
         <NodeID>PC1_30</NodeID>
         <XPos>246.96809902056722</XPos>
-        <YPos>380.93870034986173</YPos>
+        <YPos>381.0</YPos>
         <XFeet>34.3532625737609</XFeet>
-        <YFeet>52.98857321866577</YFeet>
+        <YFeet>52.9971</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_42</Neighbor>
@@ -770,9 +772,9 @@
     <Node>
         <NodeID>PC1_31</NodeID>
         <XPos>169.97208860865717</XPos>
-        <YPos>380.9791067308448</YPos>
+        <YPos>381.0</YPos>
         <XFeet>23.643117525464213</XFeet>
-        <YFeet>52.994193746260514</YFeet>
+        <YFeet>52.9971</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_32</Neighbor>
@@ -815,13 +817,13 @@
             <Neighbor>PC1_36</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC101</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -849,7 +851,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -873,7 +875,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -897,7 +899,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -925,7 +927,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -961,7 +963,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -985,7 +987,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1013,7 +1015,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1037,7 +1039,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1061,7 +1063,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1084,13 +1086,13 @@
             <Neighbor>PC1_45</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC102</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1118,7 +1120,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1142,7 +1144,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1170,7 +1172,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1206,7 +1208,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1230,7 +1232,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1258,7 +1260,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1282,7 +1284,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1306,7 +1308,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1329,13 +1331,13 @@
             <Neighbor>PC1_53</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC103</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1359,7 +1361,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1387,7 +1389,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1415,7 +1417,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1451,7 +1453,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1479,7 +1481,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1503,7 +1505,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1527,7 +1529,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1553,13 +1555,13 @@
             <Neighbor>PC1_64</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC106G</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1586,7 +1588,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1614,7 +1616,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1650,7 +1652,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1678,7 +1680,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1705,7 +1707,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1729,7 +1731,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1753,7 +1755,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1781,7 +1783,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1811,7 +1813,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1835,7 +1837,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1859,7 +1861,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1888,7 +1890,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1912,7 +1914,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1940,7 +1942,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1972,7 +1974,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2000,7 +2002,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2028,7 +2030,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2056,7 +2058,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2086,13 +2088,13 @@
             <Neighbor>PC1_78</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC106</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2128,7 +2130,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2157,7 +2159,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2186,7 +2188,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2215,7 +2217,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2244,7 +2246,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2273,7 +2275,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2303,7 +2305,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2330,7 +2332,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2355,7 +2357,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2382,7 +2384,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2403,13 +2405,13 @@
             <Neighbor>PC1_91</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC106C</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2433,7 +2435,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2457,7 +2459,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2483,7 +2485,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2507,7 +2509,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2534,7 +2536,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2561,7 +2563,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2585,7 +2587,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2609,7 +2611,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2636,7 +2638,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2663,7 +2665,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2687,7 +2689,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2705,13 +2707,13 @@
             <Neighbor>PC1_98</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC106A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2729,13 +2731,13 @@
             <Neighbor>PC1_104</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC106F</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2762,7 +2764,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2789,7 +2791,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2813,7 +2815,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2837,7 +2839,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2865,7 +2867,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2893,7 +2895,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2920,7 +2922,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2947,7 +2949,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2971,7 +2973,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2995,7 +2997,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3023,7 +3025,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3051,7 +3053,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3078,7 +3080,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3105,7 +3107,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3124,13 +3126,13 @@
             <Neighbor>PC1_116</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC106D</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3158,7 +3160,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3186,7 +3188,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3210,7 +3212,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3234,16 +3236,16 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC1_122</NodeID>
-        <XPos>606.5943517951034</XPos>
-        <YPos>378.99359698074255</YPos>
-        <XFeet>84.37727433469888</XFeet>
-        <YFeet>52.71800934002129</YFeet>
+        <XPos>606.5959743619619</XPos>
+        <YPos>378.9935904904751</YPos>
+        <XFeet>84.3775000337489</XFeet>
+        <YFeet>52.71800843722509</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_165</Neighbor>
@@ -3296,10 +3298,10 @@
     </Node>
     <Node>
         <NodeID>PC1_124</NodeID>
-        <XPos>606.7349440340635</XPos>
-        <YPos>414.00106448179093</YPos>
-        <XFeet>84.39683071513822</XFeet>
-        <YFeet>57.58754806941712</YFeet>
+        <XPos>606.7360042409639</XPos>
+        <YPos>414.00106024096334</YPos>
+        <XFeet>84.39697818991807</XFeet>
+        <YFeet>57.587547479518</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_286</Neighbor>
@@ -3474,13 +3476,13 @@
             <Neighbor>PC1_131</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC112</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3507,7 +3509,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3534,7 +3536,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3558,7 +3560,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3582,7 +3584,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3602,13 +3604,13 @@
             <Neighbor>PC1_290</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC113</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3632,7 +3634,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3656,7 +3658,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3680,7 +3682,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3789,7 +3791,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3819,7 +3821,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3844,7 +3846,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3871,7 +3873,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3895,7 +3897,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3919,7 +3921,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3946,7 +3948,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3970,7 +3972,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3997,7 +3999,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4021,7 +4023,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4054,7 +4056,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4085,7 +4087,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4118,7 +4120,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4154,7 +4156,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4179,13 +4181,13 @@
             <Neighbor>PC1_154</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC111</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4216,7 +4218,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4237,7 +4239,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4256,13 +4258,13 @@
             <Neighbor>PC1_158</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC110</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4283,16 +4285,16 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC1_161</NodeID>
-        <XPos>633.0</XPos>
-        <YPos>304.0</YPos>
-        <XFeet>88.05030000000001</XFeet>
-        <YFeet>42.2864</YFeet>
+        <XPos>629.8884480634789</XPos>
+        <YPos>304.03733862323827</YPos>
+        <XFeet>87.61748312562992</XFeet>
+        <YFeet>42.29159380249244</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_166</Neighbor>
@@ -4318,10 +4320,10 @@
     </Node>
     <Node>
         <NodeID>PC1_162</NodeID>
-        <XPos>606.2972000903196</XPos>
-        <YPos>305.0028224895971</YPos>
-        <XFeet>84.33594053256346</XFeet>
-        <YFeet>42.42589260830296</YFeet>
+        <XPos>606.3000112449799</XPos>
+        <YPos>305.0028112449785</YPos>
+        <XFeet>84.33633156417672</XFeet>
+        <YFeet>42.42589104417651</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_166</Neighbor>
@@ -4346,10 +4348,10 @@
     </Node>
     <Node>
         <NodeID>PC1_163</NodeID>
-        <XPos>632.0</XPos>
-        <YPos>373.0</YPos>
-        <XFeet>87.91120000000001</XFeet>
-        <YFeet>51.8843</YFeet>
+        <XPos>630.7161848693788</XPos>
+        <YPos>373.01540578156744</YPos>
+        <XFeet>87.73262131533059</XFeet>
+        <YFeet>51.88644294421603</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_165</Neighbor>
@@ -4378,10 +4380,10 @@
     </Node>
     <Node>
         <NodeID>PC1_164</NodeID>
-        <XPos>631.223677778864</XPos>
-        <YPos>335.9953074591847</YPos>
-        <XFeet>87.80321357903999</XFeet>
-        <YFeet>46.73694726757259</YFeet>
+        <XPos>630.2720807194868</XPos>
+        <YPos>336.0067266238972</YPos>
+        <XFeet>87.67084642808061</XFeet>
+        <YFeet>46.7385356733841</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_161</Neighbor>
@@ -4406,10 +4408,10 @@
     </Node>
     <Node>
         <NodeID>PC1_165</NodeID>
-        <XPos>606.4257120738041</XPos>
-        <YPos>337.00230637721364</YPos>
-        <XFeet>84.35381654946615</XFeet>
-        <YFeet>46.87702081707042</YFeet>
+        <XPos>606.428009188755</XPos>
+        <YPos>337.0022971887538</YPos>
+        <XFeet>84.35413607815582</XFeet>
+        <YFeet>46.87701953895566</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_161</Neighbor>
@@ -4434,10 +4436,10 @@
     </Node>
     <Node>
         <NodeID>PC1_166</NodeID>
-        <XPos>606.1525918518757</XPos>
-        <YPos>268.99537111706076</YPos>
-        <XFeet>84.31582552659592</XFeet>
-        <YFeet>37.41725612238315</YFeet>
+        <XPos>606.155981430235</XPos>
+        <YPos>268.99535755874734</YPos>
+        <XFeet>84.31629701694568</XFeet>
+        <YFeet>37.417254236421755</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_213</Neighbor>
@@ -4462,10 +4464,10 @@
     </Node>
     <Node>
         <NodeID>PC1_167</NodeID>
-        <XPos>629.8187017303744</XPos>
-        <YPos>269.024782481181</YPos>
-        <XFeet>87.60778141069508</XFeet>
-        <YFeet>37.421347243132274</YFeet>
+        <XPos>629.4683478407343</XPos>
+        <YPos>269.02898672785665</YPos>
+        <XFeet>87.55904718464613</XFeet>
+        <YFeet>37.42193205384486</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_213</Neighbor>
@@ -4557,13 +4559,13 @@
             <Neighbor>PC1_170</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC109</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4590,7 +4592,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4618,7 +4620,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4646,7 +4648,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4670,7 +4672,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4694,7 +4696,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4719,13 +4721,13 @@
             <Neighbor>PC1_176</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC104A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4749,7 +4751,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4773,7 +4775,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4797,7 +4799,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4821,7 +4823,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4849,7 +4851,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4877,7 +4879,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4905,7 +4907,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4929,13 +4931,13 @@
             <Neighbor>PC1_194</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC108</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4959,7 +4961,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4983,7 +4985,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5011,7 +5013,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5035,7 +5037,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5059,7 +5061,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5087,7 +5089,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5115,7 +5117,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5143,7 +5145,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5179,7 +5181,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5215,7 +5217,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5243,7 +5245,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5271,7 +5273,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5307,7 +5309,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5343,7 +5345,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5371,7 +5373,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5398,13 +5400,13 @@
             <Neighbor>PC1_205</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC107</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5431,7 +5433,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5458,7 +5460,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5482,7 +5484,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5510,7 +5512,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5546,7 +5548,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5574,7 +5576,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5602,7 +5604,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5626,16 +5628,16 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC1_209</NodeID>
         <XPos>507.0</XPos>
-        <YPos>231.0</YPos>
+        <YPos>230.0</YPos>
         <XFeet>70.5237</XFeet>
-        <YFeet>32.1321</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_200</Neighbor>
@@ -5663,9 +5665,9 @@
     <Node>
         <NodeID>PC1_210</NodeID>
         <XPos>507.0026718732763</XPos>
-        <YPos>258.1676333442805</YPos>
+        <YPos>256.0</YPos>
         <XFeet>70.52407165757273</XFeet>
-        <YFeet>35.911117798189416</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_218</Neighbor>
@@ -5718,9 +5720,9 @@
     <Node>
         <NodeID>PC1_212</NodeID>
         <XPos>606.0</XPos>
-        <YPos>231.0</YPos>
+        <YPos>230.0</YPos>
         <XFeet>84.2946</XFeet>
-        <YFeet>32.1321</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_212</Neighbor>
@@ -5745,10 +5747,10 @@
     </Node>
     <Node>
         <NodeID>PC1_213</NodeID>
-        <XPos>606.1024728146108</XPos>
-        <YPos>256.5881020704614</YPos>
-        <XFeet>84.30885396851237</XFeet>
-        <YFeet>35.69140499800118</YFeet>
+        <XPos>606.1039999755654</XPos>
+        <YPos>255.99999389135618</YPos>
+        <XFeet>84.30906639660115</XFeet>
+        <YFeet>35.60959915028764</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_212</Neighbor>
@@ -5778,10 +5780,10 @@
     </Node>
     <Node>
         <NodeID>PC1_214</NodeID>
-        <XPos>629.5499646987819</XPos>
-        <YPos>256.2143773366893</YPos>
-        <XFeet>87.57040008960055</XFeet>
-        <YFeet>35.639419887533485</YFeet>
+        <XPos>629.312034261983</XPos>
+        <YPos>256.0028551652416</YPos>
+        <XFeet>87.53730396584183</XFeet>
+        <YFeet>35.60999715348511</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_215</Neighbor>
@@ -5839,9 +5841,9 @@
     <Node>
         <NodeID>PC1_216</NodeID>
         <XPos>574.0</XPos>
-        <YPos>229.0</YPos>
+        <YPos>230.0</YPos>
         <XFeet>79.8434</XFeet>
-        <YFeet>31.8539</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_213</Neighbor>
@@ -5868,9 +5870,9 @@
     <Node>
         <NodeID>PC1_217</NodeID>
         <XPos>574.0015899172573</XPos>
-        <YPos>257.0997514176038</YPos>
+        <YPos>256.0</YPos>
         <XFeet>79.84362115749049</XFeet>
-        <YFeet>35.76257542218869</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_213</Neighbor>
@@ -5896,9 +5898,9 @@
     <Node>
         <NodeID>PC1_218</NodeID>
         <XPos>541.0</XPos>
-        <YPos>229.0</YPos>
+        <YPos>230.0</YPos>
         <XFeet>75.2531</XFeet>
-        <YFeet>31.8539</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_218</Neighbor>
@@ -5924,9 +5926,9 @@
     <Node>
         <NodeID>PC1_219</NodeID>
         <XPos>538.0426027104736</XPos>
-        <YPos>257.6728942930531</YPos>
+        <YPos>256.0</YPos>
         <XFeet>74.84172603702687</XFeet>
-        <YFeet>35.842299596163684</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_218</Neighbor>
@@ -5952,9 +5954,9 @@
     <Node>
         <NodeID>PC1_220</NodeID>
         <XPos>394.21096160967784</XPos>
-        <YPos>227.9865448710036</YPos>
+        <YPos>230.0</YPos>
         <XFeet>54.83474475990619</XFeet>
-        <YFeet>31.7129283915566</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_228</Neighbor>
@@ -6009,9 +6011,9 @@
     <Node>
         <NodeID>PC1_222</NodeID>
         <XPos>466.0449545695883</XPos>
-        <YPos>258.82044994704756</YPos>
+        <YPos>256.0</YPos>
         <XFeet>64.82685318062973</XFeet>
-        <YFeet>36.00192458763431</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_221</Neighbor>
@@ -6037,9 +6039,9 @@
     <Node>
         <NodeID>PC1_223</NodeID>
         <XPos>416.0</XPos>
-        <YPos>229.0</YPos>
+        <YPos>230.0</YPos>
         <XFeet>57.8656</XFeet>
-        <YFeet>31.8539</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_223</Neighbor>
@@ -6113,9 +6115,9 @@
     <Node>
         <NodeID>PC1_226</NodeID>
         <XPos>373.0</XPos>
-        <YPos>228.0</YPos>
+        <YPos>230.0</YPos>
         <XFeet>51.8843</XFeet>
-        <YFeet>31.7148</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_226</Neighbor>
@@ -6137,9 +6139,9 @@
     <Node>
         <NodeID>PC1_227</NodeID>
         <XPos>415.87679666608415</XPos>
-        <YPos>259.6200698615758</YPos>
+        <YPos>256.0</YPos>
         <XFeet>57.8484624162523</XFeet>
-        <YFeet>36.1131517177452</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_223</Neighbor>
@@ -6180,13 +6182,13 @@
             <Neighbor>PC1_237</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC105</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6213,7 +6215,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6237,7 +6239,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6261,7 +6263,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6285,7 +6287,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6313,7 +6315,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6349,7 +6351,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6377,7 +6379,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6405,7 +6407,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6436,7 +6438,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6467,9 +6469,9 @@
     <Node>
         <NodeID>PC1_239</NodeID>
         <XPos>173.006412842673</XPos>
-        <YPos>231.69579343002144</YPos>
+        <YPos>230.0</YPos>
         <XFeet>24.065192026415815</XFeet>
-        <YFeet>32.22888486611598</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_253</Neighbor>
@@ -6495,9 +6497,9 @@
     <Node>
         <NodeID>PC1_240</NodeID>
         <XPos>249.9998725925297</XPos>
-        <YPos>230.98617628946977</YPos>
+        <YPos>230.0</YPos>
         <XFeet>34.77498227762088</XFeet>
-        <YFeet>32.130177121865245</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_240</Neighbor>
@@ -6522,10 +6524,10 @@
     </Node>
     <Node>
         <NodeID>PC1_241</NodeID>
-        <XPos>171.58773306451667</XPos>
-        <YPos>301.4922955380918</YPos>
-        <XFeet>23.867853669274268</XFeet>
-        <YFeet>41.937578309348574</YFeet>
+        <XPos>171.58776008902043</XPos>
+        <YPos>302.009735806403</YPos>
+        <XFeet>23.86785742838274</XFeet>
+        <YFeet>42.00955425067066</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_242</Neighbor>
@@ -6586,10 +6588,10 @@
     </Node>
     <Node>
         <NodeID>PC1_243</NodeID>
-        <XPos>248.59556799690571</XPos>
-        <YPos>300.4435462628859</YPos>
-        <XFeet>34.579643508369585</XFeet>
-        <YFeet>41.79169728516743</YFeet>
+        <XPos>248.59564958469</XPos>
+        <YPos>302.0057138929064</YPos>
+        <XFeet>34.57965485723038</XFeet>
+        <YFeet>42.00899480250328</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_243</Neighbor>
@@ -6622,10 +6624,10 @@
     </Node>
     <Node>
         <NodeID>PC1_244</NodeID>
-        <XPos>267.2123217268454</XPos>
-        <YPos>230.83502505501212</YPos>
-        <XFeet>37.169233952204195</XFeet>
-        <YFeet>32.10915198515219</YFeet>
+        <XPos>267.20238236102125</XPos>
+        <YPos>230.0001183257836</YPos>
+        <XFeet>37.16785138641806</XFeet>
+        <YFeet>31.9930164591165</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_10</Neighbor>
@@ -6654,10 +6656,10 @@
     </Node>
     <Node>
         <NodeID>PC1_245</NodeID>
-        <XPos>300.0024950019784</XPos>
-        <YPos>230.52524909931626</YPos>
-        <XFeet>41.730347054775194</XFeet>
-        <YFeet>32.06606214971489</YFeet>
+        <XPos>303.0</XPos>
+        <YPos>230.0</YPos>
+        <XFeet>42.1473</XFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_245</Neighbor>
@@ -6686,10 +6688,10 @@
     </Node>
     <Node>
         <NodeID>PC1_246</NodeID>
-        <XPos>301.38191196965414</XPos>
-        <YPos>299.77198087663743</YPos>
-        <XFeet>41.92222395497889</XFeet>
-        <YFeet>41.698282539940266</YFeet>
+        <XPos>303.0</XPos>
+        <YPos>302.00295700330537</YPos>
+        <XFeet>42.1473</XFeet>
+        <YFeet>42.008611319159776</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_246</Neighbor>
@@ -6722,10 +6724,10 @@
     </Node>
     <Node>
         <NodeID>PC1_247</NodeID>
-        <XPos>268.03852794973096</XPos>
-        <YPos>300.23634777740006</YPos>
-        <XFeet>37.28415923780758</XFeet>
-        <YFeet>41.76287597583635</YFeet>
+        <XPos>268.059576773303</XPos>
+        <YPos>302.004448957451</YPos>
+        <XFeet>37.287087129166444</XFeet>
+        <YFeet>42.00881884998144</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_276</Neighbor>
@@ -6814,10 +6816,10 @@
     </Node>
     <Node>
         <NodeID>PC1_250</NodeID>
-        <XPos>340.0034715525554</XPos>
-        <YPos>299.2499517839923</YPos>
-        <XFeet>47.29448289296046</XFeet>
-        <YFeet>41.625668293153325</YFeet>
+        <XPos>340.00361522921395</XPos>
+        <YPos>302.0009399024343</YPos>
+        <XFeet>47.29450287838366</XFeet>
+        <YFeet>42.00833074042861</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_246</Neighbor>
@@ -6851,9 +6853,9 @@
     <Node>
         <NodeID>PC1_251</NodeID>
         <XPos>358.0</XPos>
-        <YPos>299.0</YPos>
+        <YPos>302.0</YPos>
         <XFeet>49.7978</XFeet>
-        <YFeet>41.5909</YFeet>
+        <YFeet>42.0082</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_251</Neighbor>
@@ -6903,9 +6905,9 @@
     <Node>
         <NodeID>PC1_253</NodeID>
         <XPos>214.0121461788376</XPos>
-        <YPos>231.31786040388167</YPos>
+        <YPos>230.0</YPos>
         <XFeet>29.76908953347631</XFeet>
-        <YFeet>32.17631438217994</YFeet>
+        <YFeet>31.993000000000002</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_253</Neighbor>
@@ -6930,10 +6932,10 @@
     </Node>
     <Node>
         <NodeID>PC1_254</NodeID>
-        <XPos>215.40265966833587</XPos>
-        <YPos>300.97824096573646</YPos>
-        <XFeet>29.96250995986552</XFeet>
-        <YFeet>41.86607331833394</YFeet>
+        <XPos>215.40271342100405</XPos>
+        <YPos>302.0074474700609</YPos>
+        <XFeet>29.962517436861663</XFeet>
+        <YFeet>42.00923594308548</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_273</Neighbor>
@@ -7016,7 +7018,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7044,7 +7046,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7072,7 +7074,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7100,7 +7102,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7136,7 +7138,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7172,7 +7174,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7203,7 +7205,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7231,7 +7233,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7267,10 +7269,10 @@
     </Node>
     <Node>
         <NodeID>PC1_265</NodeID>
-        <XPos>170.77038080455677</XPos>
-        <YPos>341.70456162781124</YPos>
-        <XFeet>23.754159969913847</XFeet>
-        <YFeet>47.53110452242854</YFeet>
+        <XPos>170.7706924855656</XPos>
+        <YPos>342.6603998226311</YPos>
+        <XFeet>23.754203324742175</XFeet>
+        <YFeet>47.66406161532799</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_265</Neighbor>
@@ -7303,10 +7305,10 @@
     </Node>
     <Node>
         <NodeID>PC1_266</NodeID>
-        <XPos>216.19542316110505</XPos>
-        <YPos>340.69321462037766</YPos>
-        <XFeet>30.072783361709714</XFeet>
-        <YFeet>47.390426153694534</YFeet>
+        <XPos>216.19605979347529</XPos>
+        <YPos>342.6455874575407</YPos>
+        <XFeet>30.072871917272412</XFeet>
+        <YFeet>47.66200121534391</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_266</Neighbor>
@@ -7339,10 +7341,10 @@
     </Node>
     <Node>
         <NodeID>PC1_267</NodeID>
-        <XPos>247.80048909046323</XPos>
-        <YPos>339.7684120611764</YPos>
-        <XFeet>34.469048032483435</XFeet>
-        <YFeet>47.26178611770963</YFeet>
+        <XPos>247.80142392313206</XPos>
+        <YPos>342.63528153774195</YPos>
+        <XFeet>34.469178067707674</XFeet>
+        <YFeet>47.660567661899904</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_267</Neighbor>
@@ -7375,10 +7377,10 @@
     </Node>
     <Node>
         <NodeID>PC1_268</NodeID>
-        <XPos>268.50302599643226</XPos>
-        <YPos>339.2541837003115</YPos>
-        <XFeet>37.348770916103724</XFeet>
-        <YFeet>47.190256952713334</YFeet>
+        <XPos>268.54319125849605</XPos>
+        <YPos>342.62806571366866</YPos>
+        <XFeet>37.3543579040568</XFeet>
+        <YFeet>47.659563940771314</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_246</Neighbor>
@@ -7411,10 +7413,10 @@
     </Node>
     <Node>
         <NodeID>PC1_269</NodeID>
-        <XPos>302.1520024726558</XPos>
-        <YPos>338.4305241273198</YPos>
-        <XFeet>42.029343543946425</XFeet>
-        <YFeet>47.07568590611019</YFeet>
+        <XPos>303.0</XPos>
+        <YPos>342.61755838251855</YPos>
+        <XFeet>42.1473</XFeet>
+        <YFeet>47.65810237100833</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_269</Neighbor>
@@ -7447,10 +7449,10 @@
     </Node>
     <Node>
         <NodeID>PC1_270</NodeID>
-        <XPos>336.01408671153547</XPos>
-        <YPos>337.5305994678353</YPos>
-        <XFeet>46.739559461574586</XFeet>
-        <YFeet>46.95050638597589</YFeet>
+        <XPos>336.01574187341123</XPos>
+        <YPos>342.60651649386625</YPos>
+        <XFeet>46.7397896945915</XFeet>
+        <YFeet>47.65656644429679</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_270</Neighbor>
@@ -7484,9 +7486,9 @@
     <Node>
         <NodeID>PC1_271</NodeID>
         <XPos>356.0</XPos>
-        <YPos>337.0</YPos>
+        <YPos>342.6</YPos>
         <XFeet>49.5196</XFeet>
-        <YFeet>46.8767</YFeet>
+        <YFeet>47.655660000000005</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_270</Neighbor>
@@ -7512,9 +7514,9 @@
     <Node>
         <NodeID>PC1_272</NodeID>
         <XPos>140.67562472599738</XPos>
-        <YPos>264.0064445418676</YPos>
+        <YPos>256.0</YPos>
         <XFeet>19.567979399386235</XFeet>
-        <YFeet>36.72329643577378</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_272</Neighbor>
@@ -7540,9 +7542,9 @@
     <Node>
         <NodeID>PC1_273</NodeID>
         <XPos>172.3602364156924</XPos>
-        <YPos>263.50143005558914</YPos>
+        <YPos>256.0</YPos>
         <XFeet>23.975308885422816</XFeet>
-        <YFeet>36.65304892073245</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_272</Neighbor>
@@ -7576,9 +7578,9 @@
     <Node>
         <NodeID>PC1_274</NodeID>
         <XPos>214.64112075671198</XPos>
-        <YPos>262.82752376650484</YPos>
+        <YPos>256.0</YPos>
         <XFeet>29.856579897258637</XFeet>
-        <YFeet>36.55930855592082</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_273</Neighbor>
@@ -7612,9 +7614,9 @@
     <Node>
         <NodeID>PC1_275</NodeID>
         <XPos>249.36813831663514</XPos>
-        <YPos>262.2740170009884</YPos>
+        <YPos>256.0</YPos>
         <XFeet>34.68710803984395</XFeet>
-        <YFeet>36.48231576483749</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_240</Neighbor>
@@ -7647,10 +7649,10 @@
     </Node>
     <Node>
         <NodeID>PC1_276</NodeID>
-        <XPos>267.58317561105594</XPos>
-        <YPos>261.9836912809867</YPos>
-        <XFeet>37.22081972749788</XFeet>
-        <YFeet>36.44193145718525</YFeet>
+        <XPos>267.5119148612174</XPos>
+        <YPos>256.00084834226</YPos>
+        <XFeet>37.21090735719534</XFeet>
+        <YFeet>35.609718004408364</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_240</Neighbor>
@@ -7683,10 +7685,10 @@
     </Node>
     <Node>
         <NodeID>PC1_277</NodeID>
-        <XPos>300.6186420273847</XPos>
-        <YPos>261.4571458000257</YPos>
-        <XFeet>41.81605310600921</XFeet>
-        <YFeet>36.36868898078358</YFeet>
+        <XPos>303.0</XPos>
+        <YPos>256.0</YPos>
+        <XFeet>42.1473</XFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_277</Neighbor>
@@ -7720,9 +7722,9 @@
     <Node>
         <NodeID>PC1_278</NodeID>
         <XPos>373.51059809006836</XPos>
-        <YPos>260.29533595664356</YPos>
+        <YPos>256.0</YPos>
         <XFeet>51.95532419432851</XFeet>
-        <YFeet>36.20708123156912</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_226</Neighbor>
@@ -7791,7 +7793,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7818,7 +7820,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7842,7 +7844,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7869,7 +7871,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7897,7 +7899,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -7927,16 +7929,16 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC1_286</NodeID>
-        <XPos>632.0</XPos>
-        <YPos>410.0</YPos>
-        <XFeet>87.91120000000001</XFeet>
-        <YFeet>57.031</YFeet>
+        <XPos>631.1601209425843</XPos>
+        <YPos>410.01007854868897</YPos>
+        <XFeet>87.79437282311348</XFeet>
+        <YFeet>57.03240192612264</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_286</Neighbor>
@@ -7969,10 +7971,10 @@
     </Node>
     <Node>
         <NodeID>PC1_287</NodeID>
-        <XPos>633.0</XPos>
-        <YPos>452.0</YPos>
-        <XFeet>88.05030000000001</XFeet>
-        <YFeet>62.8732</YFeet>
+        <XPos>631.6641923563006</XPos>
+        <YPos>452.0160296917244</YPos>
+        <XFeet>87.86448915676142</XFeet>
+        <YFeet>62.87542973011886</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_288</Neighbor>
@@ -8200,9 +8202,9 @@
     <Node>
         <NodeID>PC1_295</NodeID>
         <XPos>394.5710420442695</XPos>
-        <YPos>259.9596578871602</YPos>
+        <YPos>256.0</YPos>
         <XFeet>54.88483194835789</XFeet>
-        <YFeet>36.160388412103984</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_220</Neighbor>
@@ -8257,7 +8259,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -8285,7 +8287,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -8303,13 +8305,13 @@
             <Neighbor>PC1_110</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC106E</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -8327,22 +8329,22 @@
             <Neighbor>PC1_94</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>PC106B</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>PC1_300</NodeID>
         <XPos>357.0088994752207</XPos>
-        <YPos>260.5583531250506</YPos>
+        <YPos>256.0</YPos>
         <XFeet>49.6599379170032</XFeet>
-        <YFeet>36.24366691969454</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_300</Neighbor>
@@ -8370,9 +8372,9 @@
     <Node>
         <NodeID>PC1_301</NodeID>
         <XPos>343.996266477806</XPos>
-        <YPos>260.7657587966958</YPos>
+        <YPos>256.0</YPos>
         <XFeet>47.84988066706281</XFeet>
-        <YFeet>36.27251704862039</YFeet>
+        <YFeet>35.6096</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>PC1_300</Neighbor>
@@ -8455,7 +8457,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -8479,7 +8481,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>

@@ -365,7 +365,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -389,7 +389,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -413,7 +413,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -436,7 +436,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -459,7 +459,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -483,7 +483,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -506,7 +506,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -527,14 +527,16 @@
             <Neighbor>AK1_19</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK108</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -552,14 +554,16 @@
             <Neighbor>AK1_27</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK106</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -573,14 +577,16 @@
             <Neighbor>AK1_24</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK107</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -601,7 +607,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -623,7 +629,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -647,7 +653,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -668,7 +674,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -684,14 +690,16 @@
             <Neighbor>AK1_31</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK105</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -711,7 +719,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -727,14 +735,16 @@
             <Neighbor>AK1_33</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK104</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -754,7 +764,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -770,14 +780,16 @@
             <Neighbor>AK1_35</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK103</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -797,7 +809,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -813,14 +825,16 @@
             <Neighbor>AK1_37</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK102</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -840,7 +854,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -856,14 +870,16 @@
             <Neighbor>AK1_39</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK101</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -883,7 +899,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -975,7 +991,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -998,7 +1014,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1015,14 +1031,16 @@
             <Neighbor>AK1_43</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK109</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1045,7 +1063,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1068,7 +1086,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1091,7 +1109,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1115,7 +1133,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1140,7 +1158,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1159,14 +1177,16 @@
             <Neighbor>AK1_48</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK109A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1189,7 +1209,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1212,7 +1232,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1235,7 +1255,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1253,14 +1273,16 @@
             <Neighbor>AK1_56</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK120E</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1285,7 +1307,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1309,7 +1331,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1333,7 +1355,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1356,7 +1378,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1382,7 +1404,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1404,14 +1426,16 @@
             <Neighbor>AK1_60</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK120D</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1435,7 +1459,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1460,7 +1484,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1483,7 +1507,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1507,7 +1531,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1532,7 +1556,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1555,14 +1579,16 @@
             <Neighbor>AK1_70</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK120C</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1586,7 +1612,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1609,7 +1635,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1633,7 +1659,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1658,7 +1684,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1685,7 +1711,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1709,7 +1735,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1725,14 +1751,16 @@
             <Neighbor>AK1_75</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK120B</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1753,7 +1781,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1775,7 +1803,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1799,7 +1827,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1824,7 +1852,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1844,14 +1872,16 @@
             <Neighbor>AK1_77</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK120A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1873,7 +1903,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1896,7 +1926,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1919,7 +1949,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1983,14 +2013,16 @@
             <Neighbor>AK1_88</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK121</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2012,7 +2044,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2035,7 +2067,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2058,7 +2090,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2076,14 +2108,16 @@
             <Neighbor>AK1_248</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK122</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2105,7 +2139,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2128,7 +2162,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2152,7 +2186,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2175,7 +2209,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2199,7 +2233,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2218,14 +2252,16 @@
             <Neighbor>AK1_250</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK124</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2249,7 +2285,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2272,7 +2308,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2290,14 +2326,16 @@
             <Neighbor>AK1_97</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK125</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2319,7 +2357,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2342,7 +2380,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2363,7 +2401,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2379,14 +2417,16 @@
             <Neighbor>AK1_101</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK126A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2408,7 +2448,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2431,7 +2471,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2453,14 +2493,16 @@
             <Neighbor>AK1_103</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK126</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2481,7 +2523,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2508,7 +2550,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2535,7 +2577,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2563,7 +2605,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2583,14 +2625,16 @@
             <Neighbor>AK1_253</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK127</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2612,7 +2656,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2635,7 +2679,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2659,7 +2703,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2683,7 +2727,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2711,7 +2755,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2728,14 +2772,16 @@
             <Neighbor>AK1_115</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK128</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2758,7 +2804,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2781,7 +2827,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2804,7 +2850,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2827,7 +2873,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2852,7 +2898,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2870,14 +2916,16 @@
             <Neighbor>AK1_121</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK129</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2899,7 +2947,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2922,7 +2970,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2940,14 +2988,16 @@
             <Neighbor>AK1_127</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK130</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2969,7 +3019,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2992,7 +3042,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3015,7 +3065,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3039,7 +3089,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3063,7 +3113,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3081,14 +3131,16 @@
             <Neighbor>AK1_129</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK123</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3112,7 +3164,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3131,7 +3183,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3142,16 +3194,21 @@
         <XFeet>83.95</XFeet>
         <YFeet>153.29999999999998</YFeet>
         <ZFeet>0.0</ZFeet>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>AK1_253</Neighbor>
+            <Neighbor>AK1_135</Neighbor>
+        </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK131</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3161,7 +3218,11 @@
         <XFeet>88.33</XFeet>
         <YFeet>153.665</YFeet>
         <ZFeet>0.0</ZFeet>
-        <Neighbors>none</Neighbors>
+        <Neighbors>
+            <Neighbor>AK1_134</Neighbor>
+            <Neighbor>AK1_135</Neighbor>
+            <Neighbor>AK1_135</Neighbor>
+        </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
@@ -3191,7 +3252,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3212,7 +3273,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3980,8 +4041,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4002,8 +4063,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4024,8 +4085,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4046,8 +4107,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4068,8 +4129,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4096,7 +4157,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4119,7 +4180,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4142,7 +4203,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4165,7 +4226,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4187,7 +4248,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4209,7 +4270,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4233,7 +4294,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4256,7 +4317,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4273,14 +4334,16 @@
             <Neighbor>AK1_191</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK112E</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4304,14 +4367,16 @@
             <Neighbor>AK1_187</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK112F</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4333,7 +4398,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4356,7 +4421,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4384,7 +4449,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4407,7 +4472,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4430,7 +4495,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4454,7 +4519,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4477,7 +4542,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4500,7 +4565,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4519,14 +4584,16 @@
             <Neighbor>AK1_198</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK112D</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4550,7 +4617,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4574,7 +4641,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4598,7 +4665,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4624,7 +4691,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4648,7 +4715,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4671,7 +4738,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4694,7 +4761,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4711,14 +4778,16 @@
             <Neighbor>AK1_203</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK112</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4740,7 +4809,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4757,14 +4826,16 @@
             <Neighbor>AK1_206</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK112A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4784,7 +4855,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4805,7 +4876,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4828,7 +4899,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4851,7 +4922,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4868,14 +4939,16 @@
             <Neighbor>AK1_208</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK112B</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4895,7 +4968,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4916,7 +4989,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4937,7 +5010,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4961,7 +5034,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4984,7 +5057,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5007,7 +5080,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5030,7 +5103,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5054,7 +5127,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5077,7 +5150,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5095,14 +5168,16 @@
             <Neighbor>AK1_217</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK111A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -5125,7 +5200,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5150,7 +5225,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5173,7 +5248,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5197,10 +5272,8 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Type>classRoom</Type>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -5222,7 +5295,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5246,7 +5319,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5270,7 +5343,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5292,7 +5365,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5524,7 +5597,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5547,7 +5620,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5570,7 +5643,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5616,7 +5689,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5635,13 +5708,13 @@
             <Neighbor>AK1_246</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK116</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5669,7 +5742,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5694,7 +5767,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5719,7 +5792,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5744,7 +5817,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -5901,6 +5974,7 @@
         <Neighbors>
             <Neighbor>AK1_110</Neighbor>
             <Neighbor>AK1_252</Neighbor>
+            <Neighbor>AK1_134</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -5909,7 +5983,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6040,14 +6114,16 @@
             <Neighbor>AK1_260</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK118</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6068,7 +6144,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6090,7 +6166,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6111,7 +6187,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6132,7 +6208,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6154,7 +6230,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6176,7 +6252,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6192,14 +6268,16 @@
             <Neighbor>AK1_265</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK117</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6221,7 +6299,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6243,7 +6321,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6265,7 +6343,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6287,7 +6365,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6303,14 +6381,16 @@
             <Neighbor>AK1_270</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK113B</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6330,7 +6410,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6352,7 +6432,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6376,7 +6456,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6400,7 +6480,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6422,7 +6502,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6446,7 +6526,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6463,14 +6543,16 @@
             <Neighbor>AK1_275</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>AK113A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6493,7 +6575,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6516,7 +6598,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6541,7 +6623,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6566,7 +6648,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6594,10 +6676,8 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Type>classRoom</Type>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6619,7 +6699,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6643,7 +6723,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6668,7 +6748,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6691,7 +6771,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6715,7 +6795,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6738,7 +6818,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6763,7 +6843,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6786,7 +6866,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6811,10 +6891,8 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Type>classRoom</Type>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6836,7 +6914,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -6858,8 +6936,29 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>door</Type>
             <Aliases>none</Aliases>
+        </Attributes>
+    </Node>
+    <Node>
+        <NodeID>AK1_295</NodeID>
+        <XPos>559.0</XPos>
+        <YPos>286.0</YPos>
+        <XFeet>204.035</XFeet>
+        <YFeet>104.39</YFeet>
+        <ZFeet>0.0</ZFeet>
+        <Neighbors>none</Neighbors>
+        <Attributes>
+            <OfficialName>AK114</OfficialName>
+            <Bikeable>false</Bikeable>
+            <Handicapped>true</Handicapped>
+            <Stairs>false</Stairs>
+            <Outside>false</Outside>
+            <POI>false</POI>
+            <Type>walking</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
 </MapNodes>

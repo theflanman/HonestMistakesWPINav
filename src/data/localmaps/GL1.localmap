@@ -51,10 +51,10 @@
     </Node>
     <Node>
         <NodeID>GL1_3</NodeID>
-        <XPos>747.0</XPos>
-        <YPos>199.0</YPos>
-        <XFeet>165.6099</XFeet>
-        <YFeet>44.118300000000005</YFeet>
+        <XPos>747.5361818309103</XPos>
+        <YPos>199.00518050078173</YPos>
+        <XFeet>165.7287715119128</XFeet>
+        <YFeet>44.119448517023315</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_10</Neighbor>
@@ -63,22 +63,24 @@
             <Neighbor>GL1_4</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL116</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>GL1_4</NodeID>
-        <XPos>747.0</XPos>
-        <YPos>173.0</YPos>
-        <XFeet>165.6099</XFeet>
-        <YFeet>38.3541</YFeet>
+        <XPos>747.7873661120575</XPos>
+        <YPos>173.00760740204888</YPos>
+        <XFeet>165.78445906704314</XFeet>
+        <YFeet>38.355786561034236</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_9</Neighbor>
@@ -224,10 +226,10 @@
     </Node>
     <Node>
         <NodeID>GL1_10</NodeID>
-        <XPos>750.0</XPos>
-        <YPos>226.0</YPos>
-        <XFeet>166.275</XFeet>
-        <YFeet>50.1042</YFeet>
+        <XPos>747.2756166429422</XPos>
+        <YPos>225.97367745548735</YPos>
+        <XFeet>165.6710042097403</XFeet>
+        <YFeet>50.098364291881545</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_15</Neighbor>
@@ -273,9 +275,9 @@
     </Node>
     <Node>
         <NodeID>GL1_12</NodeID>
-        <XPos>685.0</XPos>
+        <XPos>688.0</XPos>
         <YPos>223.0</YPos>
-        <XFeet>151.8645</XFeet>
+        <XFeet>152.52960000000002</XFeet>
         <YFeet>49.4391</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -296,9 +298,9 @@
     </Node>
     <Node>
         <NodeID>GL1_13</NodeID>
-        <XPos>686.0</XPos>
+        <XPos>688.0</XPos>
         <YPos>268.0</YPos>
-        <XFeet>152.08620000000002</XFeet>
+        <XFeet>152.52960000000002</XFeet>
         <YFeet>59.415600000000005</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -321,10 +323,10 @@
     </Node>
     <Node>
         <NodeID>GL1_14</NodeID>
-        <XPos>721.0</XPos>
-        <YPos>266.0</YPos>
-        <XFeet>159.8457</XFeet>
-        <YFeet>58.9722</YFeet>
+        <XPos>718.5886807493025</XPos>
+        <YPos>266.14467915504184</YPos>
+        <XFeet>159.31111052212037</XFeet>
+        <YFeet>59.00427536867278</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_17</Neighbor>
@@ -349,10 +351,10 @@
     </Node>
     <Node>
         <NodeID>GL1_15</NodeID>
-        <XPos>748.0</XPos>
-        <YPos>268.0</YPos>
-        <XFeet>165.8316</XFeet>
-        <YFeet>59.415600000000005</YFeet>
+        <XPos>746.8696707348377</XPos>
+        <YPos>267.98907894429794</YPos>
+        <XFeet>165.58100600191352</XFeet>
+        <YFeet>59.413178801950856</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_16</Neighbor>
@@ -374,10 +376,10 @@
     </Node>
     <Node>
         <NodeID>GL1_16</NodeID>
-        <XPos>748.0</XPos>
-        <YPos>303.0</YPos>
-        <XFeet>165.8316</XFeet>
-        <YFeet>67.1751</YFeet>
+        <XPos>746.531538048678</XPos>
+        <YPos>302.98581196182295</YPos>
+        <XFeet>165.50604198539193</XFeet>
+        <YFeet>67.17195451193615</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_21</Neighbor>
@@ -399,10 +401,10 @@
     </Node>
     <Node>
         <NodeID>GL1_17</NodeID>
-        <XPos>719.0</XPos>
-        <YPos>303.0</YPos>
-        <XFeet>159.4023</XFeet>
-        <YFeet>67.1751</YFeet>
+        <XPos>720.7935432443204</XPos>
+        <YPos>302.8923874053408</YPos>
+        <XFeet>159.79992853726583</XFeet>
+        <YFeet>67.15124228776406</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_20</Neighbor>
@@ -415,14 +417,16 @@
             <Neighbor>GL1_21</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL117A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -452,9 +456,9 @@
     </Node>
     <Node>
         <NodeID>GL1_19</NodeID>
-        <XPos>687.0</XPos>
+        <XPos>688.0</XPos>
         <YPos>337.0</YPos>
-        <XFeet>152.30790000000002</XFeet>
+        <XFeet>152.52960000000002</XFeet>
         <YFeet>74.7129</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -479,10 +483,10 @@
     </Node>
     <Node>
         <NodeID>GL1_20</NodeID>
-        <XPos>721.0</XPos>
-        <YPos>335.0</YPos>
-        <XFeet>159.8457</XFeet>
-        <YFeet>74.26950000000001</YFeet>
+        <XPos>722.7138302112395</XPos>
+        <YPos>334.8971701873256</YPos>
+        <XFeet>160.2256561578318</XFeet>
+        <YFeet>74.2467026305301</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_17</Neighbor>
@@ -507,10 +511,10 @@
     </Node>
     <Node>
         <NodeID>GL1_21</NodeID>
-        <XPos>747.0</XPos>
-        <YPos>336.0</YPos>
-        <XFeet>165.6099</XFeet>
-        <YFeet>74.4912</YFeet>
+        <XPos>746.2126338879425</XPos>
+        <YPos>335.99239259795115</YPos>
+        <XFeet>165.43534093295685</XFeet>
+        <YFeet>74.48951343896577</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_22</Neighbor>
@@ -555,10 +559,10 @@
     </Node>
     <Node>
         <NodeID>GL1_23</NodeID>
-        <XPos>720.0</XPos>
-        <YPos>357.0</YPos>
-        <XFeet>159.624</XFeet>
-        <YFeet>79.1469</YFeet>
+        <XPos>724.0255081705859</XPos>
+        <YPos>356.75846950976484</YPos>
+        <XFeet>160.5164551614189</XFeet>
+        <YFeet>79.09335269031487</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_25</Neighbor>
@@ -585,9 +589,9 @@
     </Node>
     <Node>
         <NodeID>GL1_24</NodeID>
-        <XPos>687.0</XPos>
+        <XPos>688.0</XPos>
         <YPos>357.0</YPos>
-        <XFeet>152.30790000000002</XFeet>
+        <XFeet>152.52960000000002</XFeet>
         <YFeet>79.1469</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -719,14 +723,16 @@
             <Neighbor>GL1_26</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL118</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -935,14 +941,16 @@
             <Neighbor>GL1_55</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL119</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -960,14 +968,16 @@
             <Neighbor>GL1_56</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL120</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1130,14 +1140,16 @@
             <Neighbor>GL1_48</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL121</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1318,9 +1330,9 @@
     </Node>
     <Node>
         <NodeID>GL1_54</NodeID>
-        <XPos>685.0</XPos>
+        <XPos>688.0</XPos>
         <YPos>371.0</YPos>
-        <XFeet>151.8645</XFeet>
+        <XFeet>152.52960000000002</XFeet>
         <YFeet>82.25070000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -1449,10 +1461,10 @@
     </Node>
     <Node>
         <NodeID>GL1_59</NodeID>
-        <XPos>593.0</XPos>
-        <YPos>217.0</YPos>
-        <XFeet>131.4681</XFeet>
-        <YFeet>48.1089</YFeet>
+        <XPos>588.7145279819107</XPos>
+        <YPos>217.03222159412098</YPos>
+        <XFeet>130.5180108535896</XFeet>
+        <YFeet>48.11604352741662</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_76</Neighbor>
@@ -1498,9 +1510,9 @@
     </Node>
     <Node>
         <NodeID>GL1_61</NodeID>
-        <XPos>657.0</XPos>
+        <XPos>658.0</XPos>
         <YPos>218.0</YPos>
-        <XFeet>145.6569</XFeet>
+        <XFeet>145.8786</XFeet>
         <YFeet>48.330600000000004</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -1521,9 +1533,9 @@
     </Node>
     <Node>
         <NodeID>GL1_62</NodeID>
-        <XPos>656.0</XPos>
+        <XPos>658.0</XPos>
         <YPos>261.0</YPos>
-        <XFeet>145.4352</XFeet>
+        <XFeet>145.8786</XFeet>
         <YFeet>57.8637</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -1546,10 +1558,10 @@
     </Node>
     <Node>
         <NodeID>GL1_63</NodeID>
-        <XPos>655.0</XPos>
-        <YPos>296.0</YPos>
-        <XFeet>145.2135</XFeet>
-        <YFeet>65.6232</YFeet>
+        <XPos>658.0</XPos>
+        <YPos>300.0</YPos>
+        <XFeet>145.8786</XFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_62</Neighbor>
@@ -1571,9 +1583,9 @@
     </Node>
     <Node>
         <NodeID>GL1_64</NodeID>
-        <XPos>655.0</XPos>
+        <XPos>658.0</XPos>
         <YPos>329.0</YPos>
-        <XFeet>145.2135</XFeet>
+        <XFeet>145.8786</XFeet>
         <YFeet>72.9393</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -1703,10 +1715,10 @@
     </Node>
     <Node>
         <NodeID>GL1_69</NodeID>
-        <XPos>590.0</XPos>
-        <YPos>368.0</YPos>
-        <XFeet>130.803</XFeet>
-        <YFeet>81.5856</YFeet>
+        <XPos>589.8496986563465</XPos>
+        <YPos>368.00992129408183</YPos>
+        <XFeet>130.76967819211202</XFeet>
+        <YFeet>81.58779955089794</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_69</Neighbor>
@@ -1730,10 +1742,10 @@
     </Node>
     <Node>
         <NodeID>GL1_70</NodeID>
-        <XPos>590.0</XPos>
-        <YPos>329.0</YPos>
-        <XFeet>130.803</XFeet>
-        <YFeet>72.9393</YFeet>
+        <XPos>589.5566110362221</XPos>
+        <YPos>329.0292678175414</YPos>
+        <XFeet>130.70470066673045</XFeet>
+        <YFeet>72.94578867514893</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_69</Neighbor>
@@ -1812,9 +1824,9 @@
     <Node>
         <NodeID>GL1_73</NodeID>
         <XPos>633.0</XPos>
-        <YPos>297.0</YPos>
+        <YPos>300.0</YPos>
         <XFeet>140.33610000000002</XFeet>
-        <YFeet>65.8449</YFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_78</Neighbor>
@@ -1840,9 +1852,9 @@
     <Node>
         <NodeID>GL1_74</NodeID>
         <XPos>612.0</XPos>
-        <YPos>296.0</YPos>
+        <YPos>300.0</YPos>
         <XFeet>135.6804</XFeet>
-        <YFeet>65.6232</YFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_75</Neighbor>
@@ -1855,22 +1867,24 @@
             <Neighbor>GL1_72</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL117</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>GL1_75</NodeID>
-        <XPos>591.0</XPos>
-        <YPos>295.0</YPos>
-        <XFeet>131.0247</XFeet>
-        <YFeet>65.4015</YFeet>
+        <XPos>589.3385422446406</XPos>
+        <YPos>300.0261185372005</YPos>
+        <XFeet>130.65635481563683</XFeet>
+        <YFeet>66.51579047969734</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_135</Neighbor>
@@ -1895,10 +1909,10 @@
     </Node>
     <Node>
         <NodeID>GL1_76</NodeID>
-        <XPos>592.0</XPos>
-        <YPos>260.0</YPos>
-        <XFeet>131.2464</XFeet>
-        <YFeet>57.642</YFeet>
+        <XPos>589.0378077140497</XPos>
+        <YPos>260.0284259686046</YPos>
+        <XFeet>130.58968197020482</XFeet>
+        <YFeet>57.648302037239645</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_76</Neighbor>
@@ -1976,10 +1990,10 @@
     </Node>
     <Node>
         <NodeID>GL1_79</NodeID>
-        <XPos>591.0</XPos>
-        <YPos>195.0</YPos>
-        <XFeet>131.0247</XFeet>
-        <YFeet>43.231500000000004</YFeet>
+        <XPos>588.5490107405313</XPos>
+        <YPos>195.0184284906727</YPos>
+        <XFeet>130.4813156811758</XFeet>
+        <YFeet>43.23558559638214</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_83</Neighbor>
@@ -2023,9 +2037,9 @@
     </Node>
     <Node>
         <NodeID>GL1_81</NodeID>
-        <XPos>657.0</XPos>
+        <XPos>658.0</XPos>
         <YPos>195.0</YPos>
-        <XFeet>145.6569</XFeet>
+        <XFeet>145.8786</XFeet>
         <YFeet>43.231500000000004</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -2045,9 +2059,9 @@
     </Node>
     <Node>
         <NodeID>GL1_82</NodeID>
-        <XPos>657.0</XPos>
+        <XPos>658.0</XPos>
         <YPos>169.0</YPos>
-        <XFeet>145.6569</XFeet>
+        <XFeet>145.8786</XFeet>
         <YFeet>37.4673</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -2100,10 +2114,10 @@
     </Node>
     <Node>
         <NodeID>GL1_84</NodeID>
-        <XPos>589.0</XPos>
-        <YPos>164.0</YPos>
-        <XFeet>130.5813</XFeet>
-        <YFeet>36.3588</YFeet>
+        <XPos>588.3158281514981</XPos>
+        <YPos>164.00514414923686</YPos>
+        <XFeet>130.42961910118711</XFeet>
+        <YFeet>36.35994045788581</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_85</Neighbor>
@@ -2124,10 +2138,10 @@
     </Node>
     <Node>
         <NodeID>GL1_85</NodeID>
-        <XPos>591.0</XPos>
-        <YPos>135.0</YPos>
-        <XFeet>131.0247</XFeet>
-        <YFeet>29.9295</YFeet>
+        <XPos>588.0979084228378</XPos>
+        <YPos>135.02182023742228</YPos>
+        <XFeet>130.38130629734314</XFeet>
+        <YFeet>29.93433754663652</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_94</Neighbor>
@@ -2177,9 +2191,9 @@
     </Node>
     <Node>
         <NodeID>GL1_87</NodeID>
-        <XPos>659.0</XPos>
+        <XPos>658.0</XPos>
         <YPos>136.0</YPos>
-        <XFeet>146.1003</XFeet>
+        <XFeet>145.8786</XFeet>
         <YFeet>30.151200000000003</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -2203,9 +2217,9 @@
     </Node>
     <Node>
         <NodeID>GL1_88</NodeID>
-        <XPos>659.0</XPos>
+        <XPos>658.0</XPos>
         <YPos>122.0</YPos>
-        <XFeet>146.1003</XFeet>
+        <XFeet>145.8786</XFeet>
         <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -2283,8 +2297,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -2305,8 +2319,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -2329,22 +2343,24 @@
             <Neighbor>GL1_83</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL115</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>GL1_94</NodeID>
         <XPos>588.0</XPos>
-        <YPos>120.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>130.3596</XFeet>
-        <YFeet>26.604</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_237</Neighbor>
@@ -2366,9 +2382,9 @@
     <Node>
         <NodeID>GL1_95</NodeID>
         <XPos>546.0</XPos>
-        <YPos>119.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>121.04820000000001</XFeet>
-        <YFeet>26.3823</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_237</Neighbor>
@@ -2391,9 +2407,9 @@
     <Node>
         <NodeID>GL1_96</NodeID>
         <XPos>508.0</XPos>
-        <YPos>117.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>112.62360000000001</XFeet>
-        <YFeet>25.9389</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_95</Neighbor>
@@ -2416,9 +2432,9 @@
     <Node>
         <NodeID>GL1_97</NodeID>
         <XPos>468.0</XPos>
-        <YPos>116.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>103.7556</XFeet>
-        <YFeet>25.717200000000002</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_96</Neighbor>
@@ -2440,10 +2456,10 @@
     </Node>
     <Node>
         <NodeID>GL1_98</NodeID>
-        <XPos>428.0</XPos>
-        <YPos>117.0</YPos>
-        <XFeet>94.8876</XFeet>
-        <YFeet>25.9389</YFeet>
+        <XPos>424.0</XPos>
+        <YPos>122.0</YPos>
+        <XFeet>94.0008</XFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_99</Neighbor>
@@ -2465,9 +2481,9 @@
     <Node>
         <NodeID>GL1_99</NodeID>
         <XPos>390.0</XPos>
-        <YPos>118.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>86.46300000000001</XFeet>
-        <YFeet>26.160600000000002</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_100</Neighbor>
@@ -2487,9 +2503,9 @@
     <Node>
         <NodeID>GL1_100</NodeID>
         <XPos>353.0</XPos>
-        <YPos>115.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>78.26010000000001</XFeet>
-        <YFeet>25.4955</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_101</Neighbor>
@@ -2510,9 +2526,9 @@
     <Node>
         <NodeID>GL1_101</NodeID>
         <XPos>314.0</XPos>
-        <YPos>116.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>69.6138</XFeet>
-        <YFeet>25.717200000000002</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_102</Neighbor>
@@ -2532,9 +2548,9 @@
     <Node>
         <NodeID>GL1_102</NodeID>
         <XPos>269.0</XPos>
-        <YPos>117.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>59.6373</XFeet>
-        <YFeet>25.9389</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_120</Neighbor>
@@ -2555,9 +2571,9 @@
     <Node>
         <NodeID>GL1_103</NodeID>
         <XPos>229.0</XPos>
-        <YPos>120.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>50.7693</XFeet>
-        <YFeet>26.604</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_200</Neighbor>
@@ -2579,9 +2595,9 @@
     <Node>
         <NodeID>GL1_104</NodeID>
         <XPos>196.0</XPos>
-        <YPos>126.0</YPos>
+        <YPos>122.0</YPos>
         <XFeet>43.4532</XFeet>
-        <YFeet>27.9342</YFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_103</Neighbor>
@@ -2636,8 +2652,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -2680,8 +2696,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -2702,14 +2718,16 @@
             <Neighbor>GL1_100</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL106</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2983,9 +3001,9 @@
     </Node>
     <Node>
         <NodeID>GL1_121</NodeID>
-        <XPos>270.0</XPos>
+        <XPos>269.0</XPos>
         <YPos>150.0</YPos>
-        <XFeet>59.859</XFeet>
+        <XFeet>59.6373</XFeet>
         <YFeet>33.255</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -3019,14 +3037,16 @@
             <Neighbor>GL1_126</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL104</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3179,9 +3199,9 @@
     </Node>
     <Node>
         <NodeID>GL1_129</NodeID>
-        <XPos>270.0</XPos>
+        <XPos>269.0</XPos>
         <YPos>191.0</YPos>
-        <XFeet>59.859</XFeet>
+        <XFeet>59.6373</XFeet>
         <YFeet>42.3447</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -3219,14 +3239,16 @@
             <Neighbor>GL1_133</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL103</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3329,10 +3351,10 @@
     </Node>
     <Node>
         <NodeID>GL1_135</NodeID>
-        <XPos>565.0</XPos>
-        <YPos>298.0</YPos>
-        <XFeet>125.26050000000001</XFeet>
-        <YFeet>66.06660000000001</YFeet>
+        <XPos>569.0</XPos>
+        <YPos>300.0</YPos>
+        <XFeet>126.1473</XFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_233</Neighbor>
@@ -3355,9 +3377,9 @@
     </Node>
     <Node>
         <NodeID>GL1_136</NodeID>
-        <XPos>563.0</XPos>
+        <XPos>569.0</XPos>
         <YPos>326.0</YPos>
-        <XFeet>124.81710000000001</XFeet>
+        <XFeet>126.1473</XFeet>
         <YFeet>72.27420000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -3379,9 +3401,9 @@
     </Node>
     <Node>
         <NodeID>GL1_137</NodeID>
-        <XPos>566.0</XPos>
+        <XPos>569.0</XPos>
         <YPos>364.0</YPos>
-        <XFeet>125.4822</XFeet>
+        <XFeet>126.1473</XFeet>
         <YFeet>80.6988</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -3462,14 +3484,16 @@
             <Neighbor>GL1_139</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL112A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3594,9 +3618,9 @@
     <Node>
         <NodeID>GL1_146</NodeID>
         <XPos>519.0</XPos>
-        <YPos>386.0</YPos>
+        <YPos>387.0</YPos>
         <XFeet>115.06230000000001</XFeet>
-        <YFeet>85.5762</YFeet>
+        <YFeet>85.7979</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_151</Neighbor>
@@ -3631,14 +3655,16 @@
             <Neighbor>GL1_146</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL112</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3741,9 +3767,9 @@
     <Node>
         <NodeID>GL1_152</NodeID>
         <XPos>470.0</XPos>
-        <YPos>386.0</YPos>
+        <YPos>387.0</YPos>
         <XFeet>104.199</XFeet>
-        <YFeet>85.5762</YFeet>
+        <YFeet>85.7979</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_153</Neighbor>
@@ -3767,9 +3793,9 @@
     <Node>
         <NodeID>GL1_153</NodeID>
         <XPos>446.0</XPos>
-        <YPos>386.0</YPos>
+        <YPos>387.0</YPos>
         <XFeet>98.8782</XFeet>
-        <YFeet>85.5762</YFeet>
+        <YFeet>85.7979</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_158</Neighbor>
@@ -3803,7 +3829,7 @@
             <Neighbor>GL1_153</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL111A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -3887,9 +3913,9 @@
     <Node>
         <NodeID>GL1_158</NodeID>
         <XPos>424.0</XPos>
-        <YPos>385.0</YPos>
+        <YPos>387.0</YPos>
         <XFeet>94.0008</XFeet>
-        <YFeet>85.3545</YFeet>
+        <YFeet>85.7979</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_219</Neighbor>
@@ -3924,14 +3950,16 @@
             <Neighbor>GL1_161</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL111</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3984,9 +4012,9 @@
     </Node>
     <Node>
         <NodeID>GL1_162</NodeID>
-        <XPos>421.0</XPos>
+        <XPos>424.0</XPos>
         <YPos>427.0</YPos>
-        <XFeet>93.3357</XFeet>
+        <XFeet>94.0008</XFeet>
         <YFeet>94.66590000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4007,9 +4035,9 @@
     </Node>
     <Node>
         <NodeID>GL1_163</NodeID>
-        <XPos>429.0</XPos>
+        <XPos>424.0</XPos>
         <YPos>142.0</YPos>
-        <XFeet>95.1093</XFeet>
+        <XFeet>94.0008</XFeet>
         <YFeet>31.4814</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4032,9 +4060,9 @@
     </Node>
     <Node>
         <NodeID>GL1_164</NodeID>
-        <XPos>428.0</XPos>
+        <XPos>424.0</XPos>
         <YPos>167.0</YPos>
-        <XFeet>94.8876</XFeet>
+        <XFeet>94.0008</XFeet>
         <YFeet>37.023900000000005</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4056,9 +4084,9 @@
     </Node>
     <Node>
         <NodeID>GL1_165</NodeID>
-        <XPos>426.0</XPos>
+        <XPos>424.0</XPos>
         <YPos>191.0</YPos>
-        <XFeet>94.44420000000001</XFeet>
+        <XFeet>94.0008</XFeet>
         <YFeet>42.3447</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4080,10 +4108,10 @@
     </Node>
     <Node>
         <NodeID>GL1_166</NodeID>
-        <XPos>425.0</XPos>
-        <YPos>222.0</YPos>
-        <XFeet>94.2225</XFeet>
-        <YFeet>49.217400000000005</YFeet>
+        <XPos>424.0</XPos>
+        <YPos>224.0</YPos>
+        <XFeet>94.0008</XFeet>
+        <YFeet>49.6608</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_165</Neighbor>
@@ -4106,23 +4134,25 @@
     <Node>
         <NodeID>GL1_167</NodeID>
         <XPos>410.0</XPos>
-        <YPos>225.0</YPos>
+        <YPos>224.0</YPos>
         <XFeet>90.897</XFeet>
-        <YFeet>49.8825</YFeet>
+        <YFeet>49.6608</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_166</Neighbor>
             <Neighbor>GL1_168</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL108</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4171,9 +4201,9 @@
     </Node>
     <Node>
         <NodeID>GL1_170</NodeID>
-        <XPos>422.0</XPos>
+        <XPos>424.0</XPos>
         <YPos>255.0</YPos>
-        <XFeet>93.5574</XFeet>
+        <XFeet>94.0008</XFeet>
         <YFeet>56.533500000000004</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4208,14 +4238,16 @@
             <Neighbor>GL1_172</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL109</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4292,9 +4324,9 @@
     </Node>
     <Node>
         <NodeID>GL1_175</NodeID>
-        <XPos>423.0</XPos>
+        <XPos>424.0</XPos>
         <YPos>271.0</YPos>
-        <XFeet>93.7791</XFeet>
+        <XFeet>94.0008</XFeet>
         <YFeet>60.0807</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4332,14 +4364,16 @@
             <Neighbor>GL1_175</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL110</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4412,9 +4446,9 @@
     </Node>
     <Node>
         <NodeID>GL1_180</NodeID>
-        <XPos>268.0</XPos>
+        <XPos>269.0</XPos>
         <YPos>215.0</YPos>
-        <XFeet>59.415600000000005</XFeet>
+        <XFeet>59.6373</XFeet>
         <YFeet>47.6655</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4436,9 +4470,9 @@
     </Node>
     <Node>
         <NodeID>GL1_181</NodeID>
-        <XPos>267.0</XPos>
+        <XPos>269.0</XPos>
         <YPos>243.0</YPos>
-        <XFeet>59.1939</XFeet>
+        <XFeet>59.6373</XFeet>
         <YFeet>53.8731</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4460,9 +4494,9 @@
     </Node>
     <Node>
         <NodeID>GL1_182</NodeID>
-        <XPos>265.0</XPos>
+        <XPos>269.0</XPos>
         <YPos>268.0</YPos>
-        <XFeet>58.7505</XFeet>
+        <XFeet>59.6373</XFeet>
         <YFeet>59.415600000000005</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4484,9 +4518,9 @@
     </Node>
     <Node>
         <NodeID>GL1_183</NodeID>
-        <XPos>263.0</XPos>
+        <XPos>269.0</XPos>
         <YPos>287.0</YPos>
-        <XFeet>58.307100000000005</XFeet>
+        <XFeet>59.6373</XFeet>
         <YFeet>63.627900000000004</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4507,9 +4541,9 @@
     </Node>
     <Node>
         <NodeID>GL1_184</NodeID>
-        <XPos>263.0</XPos>
+        <XPos>269.0</XPos>
         <YPos>310.0</YPos>
-        <XFeet>58.307100000000005</XFeet>
+        <XFeet>59.6373</XFeet>
         <YFeet>68.727</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4593,8 +4627,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4615,8 +4649,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4626,9 +4660,9 @@
     <Node>
         <NodeID>GL1_189</NodeID>
         <XPos>317.0</XPos>
-        <YPos>305.0</YPos>
+        <YPos>300.0</YPos>
         <XFeet>70.27890000000001</XFeet>
-        <YFeet>67.6185</YFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_190</Neighbor>
@@ -4648,9 +4682,9 @@
     <Node>
         <NodeID>GL1_190</NodeID>
         <XPos>332.0</XPos>
-        <YPos>306.0</YPos>
+        <YPos>300.0</YPos>
         <XFeet>73.6044</XFeet>
-        <YFeet>67.8402</YFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_192</Neighbor>
@@ -4685,16 +4719,16 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>elevator</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>GL1_192</NodeID>
         <XPos>348.0</XPos>
-        <YPos>304.0</YPos>
+        <YPos>300.0</YPos>
         <XFeet>77.1516</XFeet>
-        <YFeet>67.3968</YFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_193</Neighbor>
@@ -4715,9 +4749,9 @@
     <Node>
         <NodeID>GL1_193</NodeID>
         <XPos>361.0</XPos>
-        <YPos>304.0</YPos>
+        <YPos>300.0</YPos>
         <XFeet>80.0337</XFeet>
-        <YFeet>67.3968</YFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_234</Neighbor>
@@ -4750,8 +4784,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4772,8 +4806,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4789,14 +4823,13 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_195</Neighbor>
-            <Neighbor>GL2_283</Neighbor>
             <Neighbor>GL3_206</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -4805,10 +4838,10 @@
     </Node>
     <Node>
         <NodeID>GL1_197</NodeID>
-        <XPos>468.0</XPos>
-        <YPos>146.0</YPos>
-        <XFeet>103.7556</XFeet>
-        <YFeet>32.3682</YFeet>
+        <XPos>468.0293945503024</XPos>
+        <YPos>142.35507576250245</YPos>
+        <XFeet>103.76211677180206</XFeet>
+        <YFeet>31.560120296546796</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_226</Neighbor>
@@ -4833,10 +4866,10 @@
     </Node>
     <Node>
         <NodeID>GL1_198</NodeID>
-        <XPos>513.0</XPos>
-        <YPos>142.0</YPos>
-        <XFeet>113.7321</XFeet>
-        <YFeet>31.4814</YFeet>
+        <XPos>507.9945372959615</XPos>
+        <YPos>142.6773753007739</YPos>
+        <XFeet>112.62238891851467</XFeet>
+        <YFeet>31.631574104181574</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_197</Neighbor>
@@ -4890,9 +4923,9 @@
     </Node>
     <Node>
         <NodeID>GL1_200</NodeID>
-        <XPos>232.0</XPos>
+        <XPos>229.0</XPos>
         <YPos>151.0</YPos>
-        <XFeet>51.434400000000004</XFeet>
+        <XFeet>50.7693</XFeet>
         <YFeet>33.4767</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4945,9 +4978,9 @@
     </Node>
     <Node>
         <NodeID>GL1_202</NodeID>
-        <XPos>135.0</XPos>
+        <XPos>130.0</XPos>
         <YPos>156.0</YPos>
-        <XFeet>29.9295</XFeet>
+        <XFeet>28.821</XFeet>
         <YFeet>34.5852</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4968,9 +5001,9 @@
     </Node>
     <Node>
         <NodeID>GL1_203</NodeID>
-        <XPos>135.0</XPos>
+        <XPos>130.0</XPos>
         <YPos>229.0</YPos>
-        <XFeet>29.9295</XFeet>
+        <XFeet>28.821</XFeet>
         <YFeet>50.7693</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -4993,9 +5026,9 @@
     </Node>
     <Node>
         <NodeID>GL1_204</NodeID>
-        <XPos>131.0</XPos>
+        <XPos>130.0</XPos>
         <YPos>292.0</YPos>
-        <XFeet>29.0427</XFeet>
+        <XFeet>28.821</XFeet>
         <YFeet>64.7364</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5066,9 +5099,9 @@
     </Node>
     <Node>
         <NodeID>GL1_207</NodeID>
-        <XPos>192.0</XPos>
+        <XPos>176.0</XPos>
         <YPos>421.0</YPos>
-        <XFeet>42.5664</XFeet>
+        <XFeet>39.0192</XFeet>
         <YFeet>93.3357</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5093,9 +5126,9 @@
     </Node>
     <Node>
         <NodeID>GL1_208</NodeID>
-        <XPos>191.0</XPos>
+        <XPos>176.0</XPos>
         <YPos>357.0</YPos>
-        <XFeet>42.3447</XFeet>
+        <XFeet>39.0192</XFeet>
         <YFeet>79.1469</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5109,21 +5142,23 @@
             <Neighbor>GL1_206</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL102</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>GL1_209</NodeID>
-        <XPos>194.0</XPos>
+        <XPos>176.0</XPos>
         <YPos>290.0</YPos>
-        <XFeet>43.0098</XFeet>
+        <XFeet>39.0192</XFeet>
         <YFeet>64.293</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5149,9 +5184,9 @@
     </Node>
     <Node>
         <NodeID>GL1_210</NodeID>
-        <XPos>193.0</XPos>
+        <XPos>176.0</XPos>
         <YPos>227.0</YPos>
-        <XFeet>42.7881</XFeet>
+        <XFeet>39.0192</XFeet>
         <YFeet>50.325900000000004</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5165,21 +5200,23 @@
             <Neighbor>GL1_204</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL105</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>GL1_211</NodeID>
-        <XPos>234.0</XPos>
+        <XPos>229.0</XPos>
         <YPos>226.0</YPos>
-        <XFeet>51.8778</XFeet>
+        <XFeet>50.7693</XFeet>
         <YFeet>50.1042</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5207,9 +5244,9 @@
     </Node>
     <Node>
         <NodeID>GL1_212</NodeID>
-        <XPos>236.0</XPos>
+        <XPos>229.0</XPos>
         <YPos>293.0</YPos>
-        <XFeet>52.321200000000005</XFeet>
+        <XFeet>50.7693</XFeet>
         <YFeet>64.9581</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5236,10 +5273,10 @@
     </Node>
     <Node>
         <NodeID>GL1_213</NodeID>
-        <XPos>237.0</XPos>
-        <YPos>355.0</YPos>
-        <XFeet>52.5429</XFeet>
-        <YFeet>78.7035</YFeet>
+        <XPos>229.0</XPos>
+        <YPos>357.0</YPos>
+        <XFeet>50.7693</XFeet>
+        <YFeet>79.1469</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_212</Neighbor>
@@ -5266,9 +5303,9 @@
     </Node>
     <Node>
         <NodeID>GL1_214</NodeID>
-        <XPos>238.0</XPos>
+        <XPos>229.0</XPos>
         <YPos>424.0</YPos>
-        <XFeet>52.7646</XFeet>
+        <XFeet>50.7693</XFeet>
         <YFeet>94.0008</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5323,9 +5360,9 @@
     <Node>
         <NodeID>GL1_216</NodeID>
         <XPos>303.0</XPos>
-        <YPos>352.0</YPos>
+        <YPos>357.0</YPos>
         <XFeet>67.1751</XFeet>
-        <YFeet>78.0384</YFeet>
+        <YFeet>79.1469</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_215</Neighbor>
@@ -5352,9 +5389,9 @@
     <Node>
         <NodeID>GL1_217</NodeID>
         <XPos>360.0</XPos>
-        <YPos>354.0</YPos>
+        <YPos>357.0</YPos>
         <XFeet>79.812</XFeet>
-        <YFeet>78.4818</YFeet>
+        <YFeet>79.1469</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_186</Neighbor>
@@ -5371,14 +5408,16 @@
             <Neighbor>GL1_238</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL101</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -5407,10 +5446,10 @@
     </Node>
     <Node>
         <NodeID>GL1_219</NodeID>
-        <XPos>425.0</XPos>
-        <YPos>350.0</YPos>
-        <XFeet>94.2225</XFeet>
-        <YFeet>77.595</YFeet>
+        <XPos>424.0</XPos>
+        <YPos>357.0</YPos>
+        <XFeet>94.0008</XFeet>
+        <YFeet>79.1469</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_217</Neighbor>
@@ -5436,9 +5475,9 @@
     <Node>
         <NodeID>GL1_220</NodeID>
         <XPos>482.0</XPos>
-        <YPos>350.0</YPos>
+        <YPos>357.0</YPos>
         <XFeet>106.85940000000001</XFeet>
-        <YFeet>77.595</YFeet>
+        <YFeet>79.1469</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_221</Neighbor>
@@ -5452,22 +5491,24 @@
             <Neighbor>GL1_158</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL113</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>GL1_221</NodeID>
         <XPos>526.0</XPos>
-        <YPos>350.0</YPos>
+        <YPos>357.0</YPos>
         <XFeet>116.61420000000001</XFeet>
-        <YFeet>77.595</YFeet>
+        <YFeet>79.1469</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_136</Neighbor>
@@ -5493,9 +5534,9 @@
     </Node>
     <Node>
         <NodeID>GL1_222</NodeID>
-        <XPos>565.0</XPos>
+        <XPos>569.0</XPos>
         <YPos>257.0</YPos>
-        <XFeet>125.26050000000001</XFeet>
+        <XFeet>126.1473</XFeet>
         <YFeet>56.9769</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5518,9 +5559,9 @@
     </Node>
     <Node>
         <NodeID>GL1_223</NodeID>
-        <XPos>565.0</XPos>
+        <XPos>569.0</XPos>
         <YPos>224.0</YPos>
-        <XFeet>125.26050000000001</XFeet>
+        <XFeet>126.1473</XFeet>
         <YFeet>49.6608</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5545,9 +5586,9 @@
     </Node>
     <Node>
         <NodeID>GL1_224</NodeID>
-        <XPos>565.0</XPos>
+        <XPos>569.0</XPos>
         <YPos>185.0</YPos>
-        <XFeet>125.26050000000001</XFeet>
+        <XFeet>126.1473</XFeet>
         <YFeet>41.0145</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5570,9 +5611,9 @@
     </Node>
     <Node>
         <NodeID>GL1_225</NodeID>
-        <XPos>565.0</XPos>
+        <XPos>569.0</XPos>
         <YPos>155.0</YPos>
-        <XFeet>125.26050000000001</XFeet>
+        <XFeet>126.1473</XFeet>
         <YFeet>34.3635</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5613,21 +5654,23 @@
             <Neighbor>GL1_163</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>GL114</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
         <NodeID>GL1_227</NodeID>
-        <XPos>526.0</XPos>
+        <XPos>508.0</XPos>
         <YPos>182.0</YPos>
-        <XFeet>116.61420000000001</XFeet>
+        <XFeet>112.62360000000001</XFeet>
         <YFeet>40.3494</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5654,9 +5697,9 @@
     </Node>
     <Node>
         <NodeID>GL1_228</NodeID>
-        <XPos>463.0</XPos>
+        <XPos>468.0</XPos>
         <YPos>224.0</YPos>
-        <XFeet>102.64710000000001</XFeet>
+        <XFeet>103.7556</XFeet>
         <YFeet>49.6608</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5682,10 +5725,10 @@
     </Node>
     <Node>
         <NodeID>GL1_229</NodeID>
-        <XPos>529.0</XPos>
-        <YPos>226.0</YPos>
-        <XFeet>117.2793</XFeet>
-        <YFeet>50.1042</YFeet>
+        <XPos>508.0</XPos>
+        <YPos>224.0</YPos>
+        <XFeet>112.62360000000001</XFeet>
+        <YFeet>49.6608</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_228</Neighbor>
@@ -5710,9 +5753,9 @@
     </Node>
     <Node>
         <NodeID>GL1_230</NodeID>
-        <XPos>466.0</XPos>
+        <XPos>468.0</XPos>
         <YPos>265.0</YPos>
-        <XFeet>103.3122</XFeet>
+        <XFeet>103.7556</XFeet>
         <YFeet>58.7505</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5740,9 +5783,9 @@
     </Node>
     <Node>
         <NodeID>GL1_231</NodeID>
-        <XPos>530.0</XPos>
+        <XPos>508.0</XPos>
         <YPos>263.0</YPos>
-        <XFeet>117.501</XFeet>
+        <XFeet>112.62360000000001</XFeet>
         <YFeet>58.307100000000005</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5768,10 +5811,10 @@
     </Node>
     <Node>
         <NodeID>GL1_232</NodeID>
-        <XPos>459.0</XPos>
-        <YPos>298.0</YPos>
-        <XFeet>101.7603</XFeet>
-        <YFeet>66.06660000000001</YFeet>
+        <XPos>468.0</XPos>
+        <YPos>300.0</YPos>
+        <XFeet>103.7556</XFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_220</Neighbor>
@@ -5797,10 +5840,10 @@
     </Node>
     <Node>
         <NodeID>GL1_233</NodeID>
-        <XPos>520.0</XPos>
-        <YPos>299.0</YPos>
-        <XFeet>115.284</XFeet>
-        <YFeet>66.2883</YFeet>
+        <XPos>508.0</XPos>
+        <YPos>300.0</YPos>
+        <XFeet>112.62360000000001</XFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_232</Neighbor>
@@ -5826,9 +5869,9 @@
     <Node>
         <NodeID>GL1_234</NodeID>
         <XPos>383.0</XPos>
-        <YPos>301.0</YPos>
+        <YPos>300.0</YPos>
         <XFeet>84.9111</XFeet>
-        <YFeet>66.7317</YFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_235</Neighbor>
@@ -5850,9 +5893,9 @@
     <Node>
         <NodeID>GL1_235</NodeID>
         <XPos>413.0</XPos>
-        <YPos>301.0</YPos>
+        <YPos>300.0</YPos>
         <XFeet>91.5621</XFeet>
-        <YFeet>66.7317</YFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_236</Neighbor>
@@ -5873,10 +5916,10 @@
     </Node>
     <Node>
         <NodeID>GL1_236</NodeID>
-        <XPos>426.0</XPos>
-        <YPos>302.0</YPos>
-        <XFeet>94.44420000000001</XFeet>
-        <YFeet>66.9534</YFeet>
+        <XPos>424.0</XPos>
+        <YPos>300.0</YPos>
+        <XFeet>94.0008</XFeet>
+        <YFeet>66.51</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_175</Neighbor>
@@ -5900,10 +5943,10 @@
     </Node>
     <Node>
         <NodeID>GL1_237</NodeID>
-        <XPos>567.0</XPos>
-        <YPos>120.0</YPos>
-        <XFeet>125.7039</XFeet>
-        <YFeet>26.604</YFeet>
+        <XPos>569.0</XPos>
+        <YPos>122.0</YPos>
+        <XFeet>126.1473</XFeet>
+        <YFeet>27.0474</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>GL1_225</Neighbor>
@@ -5949,9 +5992,9 @@
     </Node>
     <Node>
         <NodeID>GL1_239</NodeID>
-        <XPos>230.0</XPos>
+        <XPos>229.0</XPos>
         <YPos>185.0</YPos>
-        <XFeet>50.991</XFeet>
+        <XFeet>50.7693</XFeet>
         <YFeet>41.0145</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5974,9 +6017,9 @@
     </Node>
     <Node>
         <NodeID>GL1_240</NodeID>
-        <XPos>189.0</XPos>
+        <XPos>176.0</XPos>
         <YPos>443.0</YPos>
-        <XFeet>41.9013</XFeet>
+        <XFeet>39.0192</XFeet>
         <YFeet>98.2131</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>
@@ -5997,9 +6040,9 @@
     </Node>
     <Node>
         <NodeID>GL1_241</NodeID>
-        <XPos>242.0</XPos>
+        <XPos>229.0</XPos>
         <YPos>453.0</YPos>
-        <XFeet>53.6514</XFeet>
+        <XFeet>50.7693</XFeet>
         <YFeet>100.43010000000001</YFeet>
         <ZFeet>0.0</ZFeet>
         <Neighbors>

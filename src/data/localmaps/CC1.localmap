@@ -19,8 +19,10 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>door</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -380,10 +382,10 @@
     </Node>
     <Node>
         <NodeID>CC1_18</NodeID>
-        <XPos>141.1219431592862</XPos>
-        <YPos>63.99900859220092</YPos>
-        <XFeet>15.238206300396564</XFeet>
-        <YFeet>6.910548948777264</YFeet>
+        <XPos>141.20322367520592</XPos>
+        <YPos>63.99790723019659</YPos>
+        <XFeet>15.24698288922506</XFeet>
+        <YFeet>6.910430024809398</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_17</Neighbor>
@@ -441,7 +443,7 @@
             <Neighbor>CC1_38</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC124</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -453,10 +455,10 @@
     </Node>
     <Node>
         <NodeID>CC1_21</NodeID>
-        <XPos>141.34950429610046</XPos>
-        <YPos>91.9890284203569</YPos>
-        <XFeet>15.262778124388632</XFeet>
-        <YFeet>9.932883299801718</YFeet>
+        <XPos>141.58246438725683</XPos>
+        <YPos>91.98587177955532</YPos>
+        <XFeet>15.287932922071606</XFeet>
+        <YFeet>9.932542448884606</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_18</Neighbor>
@@ -495,7 +497,7 @@
             <Neighbor>CC1_71</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC126A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -507,10 +509,10 @@
     </Node>
     <Node>
         <NodeID>CC1_23</NodeID>
-        <XPos>141.73978849966954</XPos>
-        <YPos>139.9939854593523</YPos>
-        <XFeet>15.304920622405819</XFeet>
-        <YFeet>15.116410555915403</YFeet>
+        <XPos>142.23289029624922</XPos>
+        <YPos>139.98730386319272</YPos>
+        <XFeet>15.358165261298696</XFeet>
+        <YFeet>15.115689083843687</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_73</Neighbor>
@@ -535,10 +537,10 @@
     </Node>
     <Node>
         <NodeID>CC1_24</NodeID>
-        <XPos>142.16265697290152</XPos>
-        <YPos>192.00680766688697</YPos>
-        <XFeet>15.350581537276934</XFeet>
-        <YFeet>20.732703085062788</YFeet>
+        <XPos>142.93761933362995</XPos>
+        <YPos>191.99630682189064</YPos>
+        <XFeet>15.434261198026029</XFeet>
+        <YFeet>20.73156921432093</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_25</Neighbor>
@@ -561,10 +563,10 @@
     </Node>
     <Node>
         <NodeID>CC1_25</NodeID>
-        <XPos>142.23575677461997</XPos>
-        <YPos>200.9980832782551</YPos>
-        <XFeet>15.358474780766691</XFeet>
-        <YFeet>21.70357203430271</YFeet>
+        <XPos>143.05944339042006</XPos>
+        <YPos>200.98692221300038</YPos>
+        <XFeet>15.447415637854169</XFeet>
+        <YFeet>21.70236687363757</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_24</Neighbor>
@@ -587,10 +589,10 @@
     </Node>
     <Node>
         <NodeID>CC1_26</NodeID>
-        <XPos>142.51216126900198</XPos>
-        <YPos>234.99583608724387</YPos>
-        <XFeet>15.388320661665565</XFeet>
-        <YFeet>25.37461538486451</YFeet>
+        <XPos>143.5200837208868</XPos>
+        <YPos>234.98217860144592</YPos>
+        <XFeet>15.497155120097636</XFeet>
+        <YFeet>25.37314066320553</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_25</Neighbor>
@@ -618,10 +620,10 @@
     </Node>
     <Node>
         <NodeID>CC1_27</NodeID>
-        <XPos>142.83740912095175</XPos>
-        <YPos>275.00132187706544</YPos>
-        <XFeet>15.423440599471249</XFeet>
-        <YFeet>29.69436773496365</YFeet>
+        <XPos>144.06212366976936</XPos>
+        <YPos>274.9847268289784</YPos>
+        <XFeet>15.555684051738027</XFeet>
+        <YFeet>29.69257581826626</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_26</Neighbor>
@@ -642,10 +644,10 @@
     </Node>
     <Node>
         <NodeID>CC1_28</NodeID>
-        <XPos>143.0</XPos>
-        <YPos>295.0</YPos>
-        <XFeet>15.440997000000001</XFeet>
-        <YFeet>31.853805</YFeet>
+        <XPos>143.5259765789146</XPos>
+        <YPos>291.0</YPos>
+        <XFeet>15.49779142501462</XFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_27</Neighbor>
@@ -683,7 +685,7 @@
             <Neighbor>CC1_32</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC122</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -731,7 +733,7 @@
             <Neighbor>CC1_137</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC123</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1751,7 +1753,7 @@
             <Neighbor>CC1_138</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC126</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -1937,7 +1939,7 @@
             <Neighbor>CC1_85</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC114</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -2074,7 +2076,7 @@
             <Neighbor>CC1_92</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC127</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -2667,7 +2669,7 @@
             <Neighbor>CC1_115</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>Chairman's Room</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -2835,7 +2837,7 @@
             <Neighbor>CC1_147</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>Taylor Room</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -3608,10 +3610,10 @@
     </Node>
     <Node>
         <NodeID>CC1_149</NodeID>
-        <XPos>142.0</XPos>
-        <YPos>117.0</YPos>
-        <XFeet>15.333018000000001</XFeet>
-        <YFeet>12.633543000000001</YFeet>
+        <XPos>141.9214236411966</XPos>
+        <YPos>117.00106472030899</YPos>
+        <XFeet>15.32453340335277</XFeet>
+        <YFeet>12.633657967434244</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_21</Neighbor>
@@ -3636,10 +3638,10 @@
     </Node>
     <Node>
         <NodeID>CC1_150</NodeID>
-        <XPos>142.0</XPos>
-        <YPos>167.0</YPos>
-        <XFeet>15.333018000000001</XFeet>
-        <YFeet>18.032493000000002</YFeet>
+        <XPos>142.5988060446742</XPos>
+        <YPos>166.99188609695562</YPos>
+        <XFeet>15.397676477897877</XFeet>
+        <YFeet>18.03161686886317</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_23</Neighbor>
@@ -3735,7 +3737,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>bathRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3755,7 +3757,7 @@
             <Neighbor>CC1_194</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC112</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -3786,7 +3788,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>bathRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3806,7 +3808,7 @@
             <Neighbor>CC1_193</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC113</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -3837,7 +3839,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>elevator</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4324,7 +4326,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>elevator</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4347,7 +4349,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>elevator</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4370,7 +4372,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>elevator</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4395,7 +4397,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>elevator</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -4989,10 +4991,10 @@
     </Node>
     <Node>
         <NodeID>CC1_208</NodeID>
-        <XPos>122.0</XPos>
-        <YPos>289.0</YPos>
-        <XFeet>13.173438</XFeet>
-        <YFeet>31.205931000000003</YFeet>
+        <XPos>121.69137517112756</XPos>
+        <YPos>291.0</YPos>
+        <XFeet>13.140112999603183</XFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_28</Neighbor>
@@ -5014,10 +5016,10 @@
     </Node>
     <Node>
         <NodeID>CC1_209</NodeID>
-        <XPos>103.0</XPos>
-        <YPos>290.0</YPos>
-        <XFeet>11.121837000000001</XFeet>
-        <YFeet>31.31391</YFeet>
+        <XPos>102.70952957282593</XPos>
+        <YPos>291.0</YPos>
+        <XFeet>11.090472293744172</XFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_208</Neighbor>
@@ -5038,10 +5040,10 @@
     </Node>
     <Node>
         <NodeID>CC1_210</NodeID>
-        <XPos>81.0</XPos>
-        <YPos>290.0</YPos>
-        <XFeet>8.746299</XFeet>
-        <YFeet>31.31391</YFeet>
+        <XPos>80.80774190988274</XPos>
+        <YPos>291.0</YPos>
+        <XFeet>8.725539163687229</XFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_209</Neighbor>
@@ -5062,10 +5064,10 @@
     </Node>
     <Node>
         <NodeID>CC1_211</NodeID>
-        <XPos>63.0</XPos>
-        <YPos>290.0</YPos>
-        <XFeet>6.802677</XFeet>
-        <YFeet>31.31391</YFeet>
+        <XPos>62.88809745838376</XPos>
+        <YPos>291.0</YPos>
+        <XFeet>6.79059387545882</XFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_210</Neighbor>
@@ -5086,9 +5088,9 @@
     </Node>
     <Node>
         <NodeID>CC1_212</NodeID>
-        <XPos>45.0</XPos>
+        <XPos>44.90178766294319</XPos>
         <YPos>291.0</YPos>
-        <XFeet>4.859055000000001</XFeet>
+        <XFeet>4.848450130056944</XFeet>
         <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
@@ -5780,10 +5782,10 @@
     </Node>
     <Node>
         <NodeID>CC1_240</NodeID>
-        <XPos>165.0</XPos>
-        <YPos>288.0</YPos>
-        <XFeet>17.816535000000002</XFeet>
-        <YFeet>31.097952000000003</YFeet>
+        <XPos>164.5660800380945</XPos>
+        <YPos>291.0</YPos>
+        <XFeet>17.769680756433406</XFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_241</Neighbor>
@@ -5804,10 +5806,10 @@
     </Node>
     <Node>
         <NodeID>CC1_241</NodeID>
-        <XPos>187.0</XPos>
-        <YPos>288.0</YPos>
-        <XFeet>20.192073</XFeet>
-        <YFeet>31.097952000000003</YFeet>
+        <XPos>186.46786770103768</XPos>
+        <YPos>291.0</YPos>
+        <XFeet>20.13461388649035</XFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_242</Neighbor>
@@ -5828,10 +5830,10 @@
     </Node>
     <Node>
         <NodeID>CC1_242</NodeID>
-        <XPos>210.0</XPos>
-        <YPos>290.0</YPos>
-        <XFeet>22.67559</XFeet>
-        <YFeet>31.31391</YFeet>
+        <XPos>209.23186047895874</XPos>
+        <YPos>291.0</YPos>
+        <XFeet>22.592647062657488</XFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_243</Neighbor>
@@ -5851,10 +5853,10 @@
     </Node>
     <Node>
         <NodeID>CC1_243</NodeID>
-        <XPos>233.0</XPos>
-        <YPos>288.0</YPos>
-        <XFeet>25.159107000000002</XFeet>
-        <YFeet>31.097952000000003</YFeet>
+        <XPos>232.2625146326462</XPos>
+        <YPos>291.0</YPos>
+        <XFeet>25.079474067518504</XFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_244</Neighbor>
@@ -5876,9 +5878,9 @@
     <Node>
         <NodeID>CC1_244</NodeID>
         <XPos>247.0</XPos>
-        <YPos>276.0</YPos>
+        <YPos>291.0</YPos>
         <XFeet>26.670813000000003</XFeet>
-        <YFeet>29.802204000000003</YFeet>
+        <YFeet>31.421889</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_245</Neighbor>
@@ -6082,10 +6084,10 @@
     </Node>
     <Node>
         <NodeID>CC1_253</NodeID>
-        <XPos>143.63436385255648</XPos>
-        <YPos>321.0089179548157</YPos>
-        <XFeet>15.509494974435196</XFeet>
-        <YFeet>34.662221951843044</YFeet>
+        <XPos>144.1105060368583</XPos>
+        <YPos>321.00587647075787</YPos>
+        <XFeet>15.560908331353925</XFeet>
+        <YFeet>34.661893535435965</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_208</Neighbor>
@@ -6109,10 +6111,10 @@
     </Node>
     <Node>
         <NodeID>CC1_254</NodeID>
-        <XPos>144.46254458977407</XPos>
-        <YPos>354.9643281807372</YPos>
-        <XFeet>15.598921102259215</XFeet>
-        <YFeet>38.328693192627824</YFeet>
+        <XPos>144.77199512724692</XPos>
+        <YPos>354.962351483634</YPos>
+        <XFeet>15.632335261844997</XFeet>
+        <YFeet>38.328479750851315</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_328</Neighbor>
@@ -6138,10 +6140,10 @@
     </Node>
     <Node>
         <NodeID>CC1_255</NodeID>
-        <XPos>145.19441141498217</XPos>
-        <YPos>384.9708680142687</YPos>
-        <XFeet>15.67794735017836</XFeet>
-        <YFeet>41.568769357312725</YFeet>
+        <XPos>145.35655583813596</XPos>
+        <YPos>384.96983227390723</YPos>
+        <XFeet>15.695455542846084</XFeet>
+        <YFeet>41.56865751910423</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_223</Neighbor>
@@ -6288,7 +6290,7 @@
             <Neighbor>CC1_266</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC112</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -7076,7 +7078,7 @@
             <Neighbor>CC1_294</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC110</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -7098,9 +7100,10 @@
             <Neighbor>CC1_301</Neighbor>
             <Neighbor>CC1_299</Neighbor>
             <Neighbor>CC1_300</Neighbor>
+            <Neighbor>CC1_295</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC109</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -7123,6 +7126,7 @@
             <Neighbor>CC1_319</Neighbor>
             <Neighbor>CC1_319</Neighbor>
             <Neighbor>CC1_275</Neighbor>
+            <Neighbor>CC1_294</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -7914,10 +7918,10 @@
     </Node>
     <Node>
         <NodeID>CC1_327</NodeID>
-        <XPos>254.0</XPos>
-        <YPos>572.0</YPos>
-        <XFeet>27.426666</XFeet>
-        <YFeet>61.763988000000005</YFeet>
+        <XPos>253.99944651337591</XPos>
+        <YPos>572.0998120878745</YPos>
+        <XFeet>27.42660623506782</XFeet>
+        <YFeet>61.774765609436606</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_326</Neighbor>
@@ -7997,9 +8001,9 @@
     <Node>
         <NodeID>CC1_330</NodeID>
         <XPos>218.0</XPos>
-        <YPos>359.0</YPos>
+        <YPos>357.0</YPos>
         <XFeet>23.539422000000002</XFeet>
-        <YFeet>38.764461000000004</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_329</Neighbor>
@@ -8958,10 +8962,10 @@
     </Node>
     <Node>
         <NodeID>CC1_369</NodeID>
-        <XPos>333.0</XPos>
-        <YPos>482.0</YPos>
-        <XFeet>35.957007000000004</XFeet>
-        <YFeet>52.045878</YFeet>
+        <XPos>328.74806831965014</XPos>
+        <YPos>482.07612747665735</YPos>
+        <XFeet>35.497887669087504</XFeet>
+        <YFeet>52.054098168801985</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_372</Neighbor>
@@ -8974,12 +8978,12 @@
             <Neighbor>CC1_373</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>Campus Center Food Court</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
-            <POI>false</POI>
+            <POI>true</POI>
             <Type>walking</Type>
             <Aliases>none</Aliases>
         </Attributes>
@@ -8996,7 +9000,7 @@
             <Neighbor>CC1_446</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC158</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -9453,7 +9457,7 @@
             <Neighbor>CC1_447</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC156</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -9522,10 +9526,10 @@
     </Node>
     <Node>
         <NodeID>CC1_392</NodeID>
-        <XPos>327.0</XPos>
-        <YPos>432.0</YPos>
-        <XFeet>35.309133</XFeet>
-        <YFeet>46.646928</YFeet>
+        <XPos>327.85122196139537</XPos>
+        <YPos>431.9847595434574</YPos>
+        <XFeet>35.40104709616951</XFeet>
+        <YFeet>46.64528235074299</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_387</Neighbor>
@@ -9577,10 +9581,10 @@
     </Node>
     <Node>
         <NodeID>CC1_394</NodeID>
-        <XPos>334.0</XPos>
-        <YPos>391.0</YPos>
-        <XFeet>36.064986000000005</XFeet>
-        <YFeet>42.219789</YFeet>
+        <XPos>327.1196278069936</XPos>
+        <YPos>391.12318762691734</YPos>
+        <XFeet>35.32205029097136</XFeet>
+        <YFeet>42.23309067676691</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_392</Neighbor>
@@ -9606,9 +9610,9 @@
     <Node>
         <NodeID>CC1_395</NodeID>
         <XPos>292.0</XPos>
-        <YPos>360.0</YPos>
+        <YPos>357.0</YPos>
         <XFeet>31.529868</XFeet>
-        <YFeet>38.872440000000005</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_332</Neighbor>
@@ -9734,10 +9738,10 @@
     </Node>
     <Node>
         <NodeID>CC1_400</NodeID>
-        <XPos>328.9979996756231</XPos>
-        <YPos>359.7279558847381</YPos>
-        <XFeet>35.524875006974106</XFeet>
-        <YFeet>38.84306494847814</YFeet>
+        <XPos>326.50947682099985</XPos>
+        <YPos>357.04455503516255</YPos>
+        <XFeet>35.25616679765474</XFeet>
+        <YFeet>38.55331400814182</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_395</Neighbor>
@@ -9762,9 +9766,9 @@
     <Node>
         <NodeID>CC1_401</NodeID>
         <XPos>371.99567497432014</XPos>
-        <YPos>359.41179650754174</YPos>
+        <YPos>357.0</YPos>
         <XFeet>40.16772098805212</XFeet>
-        <YFeet>38.80892637508785</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_411</Neighbor>
@@ -9789,9 +9793,9 @@
     <Node>
         <NodeID>CC1_402</NodeID>
         <XPos>418.9931340217332</XPos>
-        <YPos>359.0662269557225</YPos>
+        <YPos>357.0</YPos>
         <XFeet>45.242459618532735</XFeet>
-        <YFeet>38.77161212045196</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_401</Neighbor>
@@ -9814,9 +9818,9 @@
     <Node>
         <NodeID>CC1_403</NodeID>
         <XPos>462.00551440774177</XPos>
-        <YPos>358.74995945288424</YPos>
+        <YPos>357.0</YPos>
         <XFeet>49.88689344023355</XFeet>
-        <YFeet>38.73746187176299</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_402</Neighbor>
@@ -9838,9 +9842,9 @@
     <Node>
         <NodeID>CC1_404</NodeID>
         <XPos>507.9956749743202</XPos>
-        <YPos>358.41179650754174</YPos>
+        <YPos>357.0</YPos>
         <XFeet>54.852864988052126</XFeet>
-        <YFeet>38.70094737508785</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_403</Neighbor>
@@ -9862,9 +9866,9 @@
     <Node>
         <NodeID>CC1_405</NodeID>
         <XPos>546.9935665243013</XPos>
-        <YPos>358.12504730496835</YPos>
+        <YPos>357.0</YPos>
         <XFeet>59.06381831972753</XFeet>
-        <YFeet>38.66998448294318</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_404</Neighbor>
@@ -9885,9 +9889,9 @@
     <Node>
         <NodeID>CC1_406</NodeID>
         <XPos>598.0055144077419</XPos>
-        <YPos>357.74995945288424</YPos>
+        <YPos>357.0</YPos>
         <XFeet>64.57203744023356</XFeet>
-        <YFeet>38.62948287176299</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_405</Neighbor>
@@ -9908,9 +9912,9 @@
     <Node>
         <NodeID>CC1_407</NodeID>
         <XPos>653.002540952587</XPos>
-        <YPos>357.3455695518192</YPos>
+        <YPos>357.0</YPos>
         <XFeet>70.5105613695194</XFeet>
-        <YFeet>38.58581725463589</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_422</Neighbor>
@@ -10005,10 +10009,10 @@
     </Node>
     <Node>
         <NodeID>CC1_411</NodeID>
-        <XPos>326.0</XPos>
-        <YPos>327.0</YPos>
-        <XFeet>35.201154</XFeet>
-        <YFeet>35.309133</YFeet>
+        <XPos>326.0186600945579</XPos>
+        <YPos>329.6310733326627</YPos>
+        <XFeet>35.20316889835027</XFeet>
+        <YFeet>35.59323366738759</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_410</Neighbor>
@@ -10032,10 +10036,10 @@
     </Node>
     <Node>
         <NodeID>CC1_412</NodeID>
-        <XPos>370.0</XPos>
-        <YPos>328.0</YPos>
-        <XFeet>39.95223</XFeet>
-        <YFeet>35.417112</YFeet>
+        <XPos>370.00935519565434</XPos>
+        <YPos>329.31908258726486</YPos>
+        <XFeet>39.95324016467156</XFeet>
+        <YFeet>35.559545218690275</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_397</Neighbor>
@@ -10156,7 +10160,7 @@
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>door</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -10287,9 +10291,9 @@
     <Node>
         <NodeID>CC1_422</NodeID>
         <XPos>619.0117316321565</XPos>
-        <YPos>357.595501973293</YPos>
+        <YPos>357.0</YPos>
         <XFeet>66.84026776990864</XFeet>
-        <YFeet>38.612804707574206</YFeet>
+        <YFeet>38.548503000000004</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_406</Neighbor>
@@ -10431,7 +10435,7 @@
             <Neighbor>CC1_433</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC136A</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -10579,10 +10583,10 @@
     </Node>
     <Node>
         <NodeID>CC1_435</NodeID>
-        <XPos>276.0107480496311</XPos>
-        <YPos>572.126256680973</YPos>
-        <XFeet>29.80336456365112</XFeet>
-        <YFeet>61.77762107015479</YFeet>
+        <XPos>276.0102178568018</XPos>
+        <YPos>572.2218681212022</YPos>
+        <XFeet>29.8033073139596</XFeet>
+        <YFeet>61.78794509785929</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_327</Neighbor>
@@ -10601,10 +10605,10 @@
     </Node>
     <Node>
         <NodeID>CC1_436</NodeID>
-        <XPos>309.0039263283346</XPos>
-        <YPos>572.3155100936616</YPos>
-        <XFeet>33.36593496100725</XFeet>
-        <YFeet>61.79805646440349</YFeet>
+        <XPos>309.0034310519161</XPos>
+        <YPos>572.4048249411381</YPos>
+        <XFeet>33.36588148155485</XFeet>
+        <YFeet>61.80770059231916</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_435</Neighbor>
@@ -10623,10 +10627,10 @@
     </Node>
     <Node>
         <NodeID>CC1_437</NodeID>
-        <XPos>346.0141808450745</XPos>
-        <YPos>572.5278060086715</YPos>
-        <XFeet>37.3622652334703</XFeet>
-        <YFeet>61.820979965010345</YFeet>
+        <XPos>346.01372473630573</XPos>
+        <YPos>572.6100576233067</YPos>
+        <XFeet>37.36221598330156</XFeet>
+        <YFeet>61.829861412107036</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_436</Neighbor>
@@ -10645,10 +10649,10 @@
     </Node>
     <Node>
         <NodeID>CC1_438</NodeID>
-        <XPos>395.0068326886941</XPos>
-        <YPos>572.8088346043329</YPos>
-        <XFeet>42.6524427868925</XFeet>
-        <YFeet>61.851325151741264</YFeet>
+        <XPos>395.0064284284482</XPos>
+        <YPos>572.8817362020062</YPos>
+        <XFeet>42.65239913527541</XFeet>
+        <YFeet>61.859196993356434</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_437</Neighbor>
@@ -10667,10 +10671,10 @@
     </Node>
     <Node>
         <NodeID>CC1_439</NodeID>
-        <XPos>435.9940118009198</XPos>
-        <YPos>573.0439427063151</YPos>
-        <XFeet>47.07819740025152</XFeet>
-        <YFeet>61.8767118894852</YFeet>
+        <XPos>435.99365091707045</XPos>
+        <YPos>573.10902209381</YPos>
+        <XFeet>47.07815843237435</XFeet>
+        <YFeet>61.88373909666752</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_438</Neighbor>
@@ -10689,10 +10693,10 @@
     </Node>
     <Node>
         <NodeID>CC1_440</NodeID>
-        <XPos>487.9923008868969</XPos>
-        <YPos>573.3422120509765</YPos>
-        <XFeet>52.69292065746624</XFeet>
-        <YFeet>61.908918715052394</YFeet>
+        <XPos>487.99199503241175</XPos>
+        <YPos>573.3973678097916</YPos>
+        <XFeet>52.69288763160479</XFeet>
+        <YFeet>61.914874378733494</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_439</Neighbor>
@@ -10711,10 +10715,10 @@
     </Node>
     <Node>
         <NodeID>CC1_441</NodeID>
-        <XPos>525.9910506035724</XPos>
-        <YPos>573.5601781105368</YPos>
-        <XFeet>56.79598765312314</XFeet>
-        <YFeet>61.93245447219765</YFeet>
+        <XPos>525.9907849628535</XPos>
+        <YPos>573.608081986855</YPos>
+        <XFeet>56.79595896950396</XFeet>
+        <YFeet>61.937627084858626</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_440</Neighbor>
@@ -10733,10 +10737,10 @@
     </Node>
     <Node>
         <NodeID>CC1_442</NodeID>
-        <XPos>591.0003838589154</XPos>
-        <YPos>573.9330805957491</YPos>
-        <XFeet>63.815630448701825</XFeet>
-        <YFeet>61.97272010964839</YFeet>
+        <XPos>591.0001870170423</XPos>
+        <YPos>573.9685777468598</YPos>
+        <XFeet>63.81560919391322</XFeet>
+        <YFeet>61.976553056528175</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_441</Neighbor>
@@ -10755,10 +10759,10 @@
     </Node>
     <Node>
         <NodeID>CC1_443</NodeID>
-        <XPos>637.9873655579846</XPos>
-        <YPos>574.202604391346</YPos>
-        <XFeet>68.88923774558562</XFeet>
-        <YFeet>62.00182301957315</YFeet>
+        <XPos>637.9872184420501</XPos>
+        <YPos>574.2291342981999</YPos>
+        <XFeet>68.88922186015414</XFeet>
+        <YFeet>62.00468769238533</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_442</Neighbor>
@@ -10777,10 +10781,10 @@
     </Node>
     <Node>
         <NodeID>CC1_444</NodeID>
-        <XPos>700.0082694177775</XPos>
-        <YPos>574.5583648341363</YPos>
-        <XFeet>75.58619292346219</XFeet>
-        <YFeet>62.040237676425214</YFeet>
+        <XPos>700.0081879380584</XPos>
+        <YPos>574.5730583434643</YPos>
+        <XFeet>75.58618412536362</XFeet>
+        <YFeet>62.04182426686893</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_443</Neighbor>
@@ -10799,10 +10803,10 @@
     </Node>
     <Node>
         <NodeID>CC1_445</NodeID>
-        <XPos>748.0066901125256</XPos>
-        <YPos>574.8336903830547</YPos>
-        <XFeet>80.7690143916604</XFeet>
-        <YFeet>62.06996705387186</YFeet>
+        <XPos>748.0066594291429</XPos>
+        <YPos>574.839223619755</YPos>
+        <XFeet>80.76901107849943</XFeet>
+        <YFeet>62.07056452723753</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_444</Neighbor>
@@ -11118,7 +11122,7 @@
             <Neighbor>CC1_464</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC154</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -11354,7 +11358,7 @@
             <Neighbor>CC1_474</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC153</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -11571,7 +11575,7 @@
             <Neighbor>CC1_478</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC152</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -11707,7 +11711,7 @@
             <Neighbor>CC1_406</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC137</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -11825,7 +11829,7 @@
             <Neighbor>CC1_487</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC145</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -11849,7 +11853,7 @@
             <Neighbor>CC1_491</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC139</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -11917,7 +11921,7 @@
             <Neighbor>CC1_493</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC138</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -12005,7 +12009,7 @@
             <Neighbor>CC1_495</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC141</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -12049,7 +12053,7 @@
             <Neighbor>CC1_497</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC142</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -12071,7 +12075,7 @@
             <Neighbor>CC1_501</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC150</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -12160,7 +12164,7 @@
             <Neighbor>CC1_502</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC143</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -12172,10 +12176,10 @@
     </Node>
     <Node>
         <NodeID>CC1_504</NodeID>
-        <XPos>683.0</XPos>
-        <YPos>574.0</YPos>
-        <XFeet>73.749657</XFeet>
-        <YFeet>61.979946000000005</YFeet>
+        <XPos>682.9973453141549</XPos>
+        <YPos>574.4787283473983</YPos>
+        <XFeet>73.74937034967714</XFeet>
+        <YFeet>62.03163860822372</YFeet>
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>CC1_502</Neighbor>
@@ -12254,7 +12258,7 @@
             <Neighbor>CC1_421</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC144</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>
@@ -12397,7 +12401,7 @@
             <Neighbor>CC1_517</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>CC155</OfficialName>
             <Bikeable>false</Bikeable>
             <Handicapped>true</Handicapped>
             <Stairs>false</Stairs>

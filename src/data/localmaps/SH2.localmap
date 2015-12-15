@@ -12,16 +12,19 @@
             <Neighbor>SH2_7</Neighbor>
             <Neighbor>SH2_2</Neighbor>
             <Neighbor>SH2_8</Neighbor>
+            <Neighbor>SH2_153</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH209</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -39,11 +42,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -62,11 +65,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -87,11 +90,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -110,11 +113,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -133,11 +136,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -160,11 +163,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -185,11 +188,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -205,14 +208,16 @@
             <Neighbor>SH2_155</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH208</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -228,11 +233,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -251,14 +256,16 @@
             <Neighbor>SH2_17</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH207</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -277,11 +284,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -300,11 +307,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -324,11 +331,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -347,11 +354,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -370,11 +377,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -394,11 +401,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -417,11 +424,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -445,11 +452,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -467,11 +474,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -492,11 +499,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -517,11 +524,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -542,14 +549,16 @@
             <Neighbor>SH2_162</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH206</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -567,11 +576,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -592,11 +601,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -614,14 +623,16 @@
             <Neighbor>SH2_36</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH205</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -641,11 +652,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -664,11 +675,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -690,11 +701,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -716,11 +727,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -739,11 +750,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -764,11 +775,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -787,11 +798,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -817,11 +828,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -842,11 +853,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -870,11 +881,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -899,11 +910,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -921,14 +932,16 @@
             <Neighbor>SH2_152</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH204</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -948,11 +961,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -970,11 +983,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -993,11 +1006,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1018,11 +1031,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1044,11 +1057,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1070,11 +1083,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1093,11 +1106,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1117,11 +1130,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1142,11 +1155,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1165,11 +1178,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1193,11 +1206,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1224,11 +1237,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1248,11 +1261,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1273,11 +1286,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1298,11 +1311,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1321,11 +1334,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1346,11 +1359,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1371,11 +1384,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1394,11 +1407,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1419,11 +1432,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1444,11 +1457,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1468,11 +1481,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1495,11 +1508,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1520,11 +1533,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1548,11 +1561,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1576,11 +1589,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1602,14 +1615,16 @@
             <Neighbor>SH2_55</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH203</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1632,11 +1647,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1654,14 +1669,16 @@
             <Neighbor>SH2_72</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH202E</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1679,11 +1696,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1704,11 +1721,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1728,11 +1745,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1751,11 +1768,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1776,11 +1793,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1798,14 +1815,16 @@
             <Neighbor>SH2_77</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH202D</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1826,11 +1845,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1849,11 +1868,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1872,11 +1891,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1898,11 +1917,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1921,11 +1940,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1943,14 +1962,16 @@
             <Neighbor>SH2_136</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH202C</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1971,11 +1992,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -1997,11 +2018,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2021,11 +2042,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2049,11 +2070,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2072,11 +2093,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2094,14 +2115,16 @@
             <Neighbor>SH2_134</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH202B</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2121,11 +2144,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2144,11 +2167,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2167,11 +2190,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2192,11 +2215,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2217,11 +2240,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2239,14 +2262,16 @@
             <Neighbor>SH2_95</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH202A</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2267,11 +2292,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2290,11 +2315,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2313,11 +2338,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2339,11 +2364,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2362,11 +2387,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2384,8 +2409,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -2406,8 +2431,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -2428,8 +2453,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -2450,8 +2475,8 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
-            <Stairs>false</Stairs>
+            <Handicapped>false</Handicapped>
+            <Stairs>true</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
@@ -2472,14 +2497,16 @@
             <Neighbor>SH2_103</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH201C</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2497,11 +2524,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2522,11 +2549,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2545,11 +2572,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2568,11 +2595,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2593,11 +2620,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2615,14 +2642,16 @@
             <Neighbor>SH2_111</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH201B</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2642,11 +2671,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2665,11 +2694,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2688,11 +2717,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2713,11 +2742,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2736,11 +2765,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2758,14 +2787,16 @@
             <Neighbor>SH2_117</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH201A</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2785,11 +2816,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2808,11 +2839,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2831,11 +2862,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2856,11 +2887,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2879,11 +2910,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2898,15 +2929,16 @@
             <Neighbor>SH2_120</Neighbor>
             <Neighbor>SH2_123</Neighbor>
             <Neighbor>SH2_130</Neighbor>
+            <Neighbor>SH2_142</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2928,11 +2960,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2953,11 +2985,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2976,11 +3008,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -2999,11 +3031,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3024,11 +3056,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3047,11 +3079,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3071,11 +3103,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3096,11 +3128,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3119,11 +3151,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3144,11 +3176,11 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
+            <Type>classRoom</Type>
             <Aliases>none</Aliases>
         </Attributes>
     </Node>
@@ -3172,14 +3204,16 @@
             <Neighbor>SH2_119</Neighbor>
         </Neighbors>
         <Attributes>
-            <OfficialName/>
+            <OfficialName>SH202</OfficialName>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
-            <Type>walking</Type>
-            <Aliases>none</Aliases>
+            <Type>classRoom</Type>
+            <Aliases>
+                <Alias/>
+            </Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3196,7 +3230,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3219,7 +3253,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3241,7 +3275,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3264,7 +3298,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3286,7 +3320,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3309,7 +3343,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3331,7 +3365,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3354,7 +3388,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3376,7 +3410,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3399,7 +3433,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3421,7 +3455,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3440,11 +3474,12 @@
             <Neighbor>SH2_143</Neighbor>
             <Neighbor>SH2_141</Neighbor>
             <Neighbor>SH2_113</Neighbor>
+            <Neighbor>SH2_119</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3454,10 +3489,10 @@
     </Node>
     <Node>
         <NodeID>SH2_143</NodeID>
-        <XPos>357.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>65.331</XFeet>
-        <YFeet>47.946</YFeet>
+        <XPos>356.99519065425665</XPos>
+        <YPos>264.0583999781642</YPos>
+        <XFeet>65.33011988972896</XFeet>
+        <YFeet>48.32268719600404</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_144</Neighbor>
@@ -3466,7 +3501,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3476,10 +3511,10 @@
     </Node>
     <Node>
         <NodeID>SH2_144</NodeID>
-        <XPos>384.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>70.27199999999999</XFeet>
-        <YFeet>47.946</YFeet>
+        <XPos>383.99504326227583</XPos>
+        <YPos>264.1214837459399</YPos>
+        <XFeet>70.27109291699648</XFeet>
+        <YFeet>48.334231525507</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_145</Neighbor>
@@ -3489,7 +3524,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3499,10 +3534,10 @@
     </Node>
     <Node>
         <NodeID>SH2_145</NodeID>
-        <XPos>414.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>75.762</XFeet>
-        <YFeet>47.946</YFeet>
+        <XPos>413.9948794934083</XPos>
+        <YPos>264.19157682124626</YPos>
+        <XFeet>75.76106294729371</XFeet>
+        <YFeet>48.34705855828806</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_146</Neighbor>
@@ -3512,7 +3547,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3522,10 +3557,10 @@
     </Node>
     <Node>
         <NodeID>SH2_146</NodeID>
-        <XPos>443.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>81.069</XFeet>
-        <YFeet>47.946</YFeet>
+        <XPos>442.99472118350303</XPos>
+        <YPos>264.2593334607091</YPos>
+        <XFeet>81.06803397658105</XFeet>
+        <YFeet>48.35945802330977</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_147</Neighbor>
@@ -3534,7 +3569,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3544,10 +3579,10 @@
     </Node>
     <Node>
         <NodeID>SH2_147</NodeID>
-        <XPos>465.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>85.095</XFeet>
-        <YFeet>47.946</YFeet>
+        <XPos>464.9946010863335</XPos>
+        <YPos>264.3107350492671</YPos>
+        <XFeet>85.09401199879903</XFeet>
+        <YFeet>48.36886451401588</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_148</Neighbor>
@@ -3557,7 +3592,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3567,10 +3602,10 @@
     </Node>
     <Node>
         <NodeID>SH2_148</NodeID>
-        <XPos>486.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>88.938</XFeet>
-        <YFeet>47.946</YFeet>
+        <XPos>485.99448644812617</XPos>
+        <YPos>264.3598002019816</YPos>
+        <XFeet>88.93699102000708</XFeet>
+        <YFeet>48.377843436962635</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_149</Neighbor>
@@ -3579,7 +3614,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3589,10 +3624,10 @@
     </Node>
     <Node>
         <NodeID>SH2_149</NodeID>
-        <XPos>507.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>92.78099999999999</XFeet>
-        <YFeet>47.946</YFeet>
+        <XPos>506.9943718099189</XPos>
+        <YPos>264.40886535469605</YPos>
+        <XFeet>92.77997004121515</XFeet>
+        <YFeet>48.386822359909374</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_150</Neighbor>
@@ -3601,7 +3636,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3611,10 +3646,10 @@
     </Node>
     <Node>
         <NodeID>SH2_150</NodeID>
-        <XPos>526.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>96.258</XFeet>
-        <YFeet>47.946</YFeet>
+        <XPos>525.9942680896362</XPos>
+        <YPos>264.45325763572345</YPos>
+        <XFeet>96.25695106040342</XFeet>
+        <YFeet>48.39494614733739</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_151</Neighbor>
@@ -3625,7 +3660,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3635,10 +3670,10 @@
     </Node>
     <Node>
         <NodeID>SH2_151</NodeID>
-        <XPos>549.0</XPos>
-        <YPos>262.0</YPos>
-        <XFeet>100.467</XFeet>
-        <YFeet>47.946</YFeet>
+        <XPos>548.9941425335044</XPos>
+        <YPos>264.506995660125</YPos>
+        <XFeet>100.4659280836313</XFeet>
+        <YFeet>48.40478020580288</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_152</Neighbor>
@@ -3647,7 +3682,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3657,10 +3692,10 @@
     </Node>
     <Node>
         <NodeID>SH2_152</NodeID>
-        <XPos>570.0</XPos>
-        <YPos>261.0</YPos>
-        <XFeet>104.31</XFeet>
-        <YFeet>47.763</YFeet>
+        <XPos>569.9916914594536</XPos>
+        <YPos>264.55605535387724</YPos>
+        <XFeet>104.30847953708</XFeet>
+        <YFeet>48.413758129759536</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_153</Neighbor>
@@ -3670,7 +3705,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3680,19 +3715,20 @@
     </Node>
     <Node>
         <NodeID>SH2_153</NodeID>
-        <XPos>590.0</XPos>
-        <YPos>261.0</YPos>
-        <XFeet>107.97</XFeet>
-        <YFeet>47.763</YFeet>
+        <XPos>589.9915822802086</XPos>
+        <YPos>264.60278407074816</YPos>
+        <XFeet>107.96845955727817</XFeet>
+        <YFeet>48.422309484946915</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_154</Neighbor>
             <Neighbor>SH2_152</Neighbor>
+            <Neighbor>SH2_1</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3702,10 +3738,10 @@
     </Node>
     <Node>
         <NodeID>SH2_154</NodeID>
-        <XPos>605.0</XPos>
-        <YPos>261.0</YPos>
-        <XFeet>110.715</XFeet>
-        <YFeet>47.763</YFeet>
+        <XPos>604.9915003957747</XPos>
+        <YPos>264.6378306084013</YPos>
+        <XFeet>110.71344457242677</XFeet>
+        <YFeet>48.42872300133744</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_155</Neighbor>
@@ -3714,7 +3750,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3724,10 +3760,10 @@
     </Node>
     <Node>
         <NodeID>SH2_155</NodeID>
-        <XPos>619.0</XPos>
-        <YPos>261.0</YPos>
-        <XFeet>113.277</XFeet>
-        <YFeet>47.763</YFeet>
+        <XPos>618.9914239703032</XPos>
+        <YPos>264.670540710211</YPos>
+        <XFeet>113.27543058656549</XFeet>
+        <YFeet>48.434708949968616</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_156</Neighbor>
@@ -3737,7 +3773,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3747,10 +3783,10 @@
     </Node>
     <Node>
         <NodeID>SH2_156</NodeID>
-        <XPos>644.0</XPos>
-        <YPos>261.0</YPos>
-        <XFeet>117.852</XFeet>
-        <YFeet>47.763</YFeet>
+        <XPos>643.991287496247</XPos>
+        <YPos>264.72895160629963</YPos>
+        <XFeet>117.85040561181319</XFeet>
+        <YFeet>48.44539814395283</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_157</Neighbor>
@@ -3759,7 +3795,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3769,10 +3805,10 @@
     </Node>
     <Node>
         <NodeID>SH2_157</NodeID>
-        <XPos>665.0</XPos>
-        <YPos>261.0</YPos>
-        <XFeet>121.695</XFeet>
-        <YFeet>47.763</YFeet>
+        <XPos>664.9911728580396</XPos>
+        <YPos>264.7780167590141</YPos>
+        <XFeet>121.69338463302124</XFeet>
+        <YFeet>48.45437706689958</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_158</Neighbor>
@@ -3781,7 +3817,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3791,10 +3827,10 @@
     </Node>
     <Node>
         <NodeID>SH2_158</NodeID>
-        <XPos>684.0</XPos>
-        <YPos>264.0</YPos>
-        <XFeet>125.172</XFeet>
-        <YFeet>48.312</YFeet>
+        <XPos>683.9980784452875</XPos>
+        <YPos>264.82242541692824</YPos>
+        <XFeet>125.17164835548762</XFeet>
+        <YFeet>48.46250385129787</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_159</Neighbor>
@@ -3803,7 +3839,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3813,10 +3849,10 @@
     </Node>
     <Node>
         <NodeID>SH2_159</NodeID>
-        <XPos>700.0</XPos>
-        <YPos>264.0</YPos>
-        <XFeet>128.1</XFeet>
-        <YFeet>48.312</YFeet>
+        <XPos>699.9979911018916</XPos>
+        <YPos>264.859808390425</YPos>
+        <XFeet>128.09963237164615</XFeet>
+        <YFeet>48.46934493544777</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_160</Neighbor>
@@ -3826,7 +3862,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3836,10 +3872,10 @@
     </Node>
     <Node>
         <NodeID>SH2_160</NodeID>
-        <XPos>722.0</XPos>
-        <YPos>266.0</YPos>
-        <XFeet>132.126</XFeet>
-        <YFeet>48.678</YFeet>
+        <XPos>722.0025438764092</XPos>
+        <YPos>264.9112208969075</YPos>
+        <XFeet>132.12646552938287</XFeet>
+        <YFeet>48.47875342413407</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_161</Neighbor>
@@ -3848,7 +3884,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3858,10 +3894,10 @@
     </Node>
     <Node>
         <NodeID>SH2_161</NodeID>
-        <XPos>743.0</XPos>
-        <YPos>266.0</YPos>
-        <XFeet>135.969</XFeet>
-        <YFeet>48.678</YFeet>
+        <XPos>743.0024292382018</XPos>
+        <YPos>264.96028604962197</YPos>
+        <XFeet>135.96944455059094</XFeet>
+        <YFeet>48.48773234708082</YFeet>
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>SH2_162</Neighbor>
@@ -3870,7 +3906,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
@@ -3893,7 +3929,7 @@
         <Attributes>
             <OfficialName/>
             <Bikeable>false</Bikeable>
-            <Handicapped>true</Handicapped>
+            <Handicapped>false</Handicapped>
             <Stairs>false</Stairs>
             <Outside>false</Outside>
             <POI>false</POI>
