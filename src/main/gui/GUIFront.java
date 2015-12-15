@@ -882,7 +882,7 @@ public class GUIFront extends JFrame {
 
 		getListDirections().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent evt) {
-				if (evt.getValueIsAdjusting() == false){
+			/*	if (evt.getValueIsAdjusting() == false){
 					
 					if (getListDirections().getSelectedIndex() ==  0){
 						//don't do anything because you should not do anything for the welcome to step in the jlist
@@ -891,16 +891,20 @@ public class GUIFront extends JFrame {
 						int indexHelp = index3;
 						index3 = getListDirections().getSelectedIndex(); 
 						boolean changeMap = false;
-						int count = 0;
+						int count = -1;
 						for (int i = 0; i < paths.size(); i++){
 							for (int j = 0; j < paths.get(i).size() - 1; j++){
 								count += 1;
 								if (index3 == count){
+									if (index2 >= j){
+										index2 = j - 1;
+									} else if (index2 < j){
+										index2 = j;
+									}
 									if (index != i){
 										changeMap = true;
 										index = i;
 									} 
-									index2 = j;
 								}
 							}
 						}
@@ -929,12 +933,6 @@ public class GUIFront extends JFrame {
 							btnNextMap.setEnabled(false);
 						}
 						
-						
-						//int ind = index3 - count;
-						
-						//if (index3 >= paths.get(index).size() - 1){
-							//index++;
-						//}
 						count = 0;
 						if (changeMap == true){
 							LocalMap localMap = paths.get(index).get(0).getLocalMap();
@@ -971,7 +969,7 @@ public class GUIFront extends JFrame {
 							drawLine3 = false;
 						}
 					}
-				}
+				}*/
 			}
 		});
 		
