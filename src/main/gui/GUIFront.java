@@ -880,88 +880,6 @@ public class GUIFront extends JFrame {
 		getListDirections().setVisible(false);
 		getListDirections().setVisibleRowCount(10); // only shows 10 directions before scrolling
 
-		getListDirections().addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent evt) {
-				if (evt.getValueIsAdjusting() == false){
-
-					if (getListDirections().getSelectedIndex() ==  0){
-						//don't do anything because you should not do anything for the welcome to step in the jlist
-					}
-					else {
-						index3 = index2;
-						ArrayList<MapNode> nodes = new ArrayList<MapNode>();
-						/*for (int i = 0; i < index; i++){
-							for (int j = 0; j < paths.get(i).size() - 1; j++){
-								nodes.add()
-							}
-						}*/
-						index3 = getListDirections().getSelectedIndex();
-						int indexHelp = 0;
-						if (index2 >= paths.get(index).size()){
-							index2 = 0;
-							if (index != 0){
-								for (int i = 0; i < index; i++){
-									indexHelp += paths.get(i).size() - 1;
-								}
-							}
-							if (index <= 0){
-								btnPreviousMap.setEnabled(false);
-								btnPreviousStep.setEnabled(false);
-							}
-							if (index < paths.size() - 1){
-								btnNextMap.setEnabled(true);
-							}
-
-							if (index >= paths.size() - 1){
-								btnNextMap.setEnabled(false);
-								btnNextStep.setEnabled(false);
-							}
-
-							if (index > 0){
-								btnPreviousMap.setEnabled(true);
-								btnPreviousStep.setEnabled(true);
-							}
-							if (index < paths.size() - 1){
-								btnNextStep.setEnabled(true);
-							}
-							drawLine2 = false;
-							drawLine3 = false;
-							LocalMap localMap = paths.get(index).get(0).getLocalMap();
-
-							GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());
-							panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
-							panelMap.setMapNodes(localMap.getMapNodes());
-							String previousMap = backend.getLocalMap().getMapImageName();
-							panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
-							backend.setLocalMap(localMap);
-
-							double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
-							panelMap.setPanX(tempPan[0]);
-							panelMap.setPanY(tempPan[1]);
-
-							for(MapNode n : backend.getLocalMap().getMapNodes()){
-								n.setXPos(n.getXPos() - panelMap.getPanX());
-								n.setYPos(n.getYPos() - panelMap.getPanY());
-							}
-
-							panelMap.setPanX(0.0);
-							panelMap.setPanY(0.0);
-							panelMap.setScale(1.0);
-
-							thisRoute = paths.get(index);
-							drawLine = true;
-							drawNodes = true;
-						}
-						if (index3 >= paths.get(index).size() - 1){
-							index++;
-						}
-						index3 -= indexHelp;
-						index2 = index3;
-						drawLine2 = true;
-					}
-				}
-			}
-		});
 
 		// Distance Label
 		setLblDistance(new JLabel());
@@ -1011,6 +929,8 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae){
 				index2 = 0;
+				index3++;
+				listDirections.setSelectedIndex(index3);
 				index++;
 
 				if (index <= 0){
@@ -1067,8 +987,8 @@ public class GUIFront extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				index--;
-				//index3 = paths.get(index + 1).size();
-				//listDirections.setSelectedIndex(index3);
+				index3--;
+				listDirections.setSelectedIndex(index3);
 				if (index <= 0){
 					btnPreviousMap.setEnabled(false);
 				}
@@ -1129,7 +1049,8 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				drawLine3 = false;
 				index2++;
-				//index3++;
+				index3++;
+				listDirections.setSelectedIndex(index3);
 				if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 					btnNextStep.setEnabled(false);
 				}
@@ -1158,6 +1079,8 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				drawLine2 = false;
 				index2--;
+				index3--;
+				listDirections.setSelectedIndex(index3);
 				if (index == 0){
 					if (index2 == 0){
 						btnPreviousStep.setEnabled(false);
@@ -1168,7 +1091,6 @@ public class GUIFront extends JFrame {
 				} else if (index2 == 0) {
 						btnPreviousMap.doClick();
 				} else if (index2 > 0 && index2 < paths.get(index).size() - 1) {
-					//listDirections.setSelectedIndex(index3);
 					drawLine3 = true;
 					btnNextStep.setEnabled(true);
 				}
