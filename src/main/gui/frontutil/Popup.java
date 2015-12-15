@@ -31,6 +31,47 @@ public class Popup extends JDialog {
 		});
 	}
 	
+	public void setToUserInstructions(){
+		getContentPane().setBackground(backgroundColor);
+		setUndecorated(true);
+		setType(Type.UTILITY);
+		setBounds(100, 100, 684, 400);
+		getContentPane().setLayout(null);
+		setLocationRelativeTo(null);
+		
+		// top panel
+		JPanel topPanel = new JPanel();
+		topPanel.setBackground(backgroundColor);
+		topPanel.setForeground(Color.WHITE);
+		topPanel.setBounds(0, 0, 684, 38);
+		getContentPane().add(topPanel);
+		topPanel.setLayout(null);
+		
+		// Top bar text
+		JLabel lblAbout = new JLabel("About");
+		lblAbout.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblAbout.setForeground(Color.BLACK);
+		lblAbout.setBounds(15, 0, 138, 36);
+		topPanel.add(lblAbout);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBackground(Color.WHITE);
+		textArea.setForeground(Color.BLACK);
+		textArea.setText(" Routing a Path:"
+				+ "     \n1. Click on 2 or more points on any map (using the 'Locations' tab or by clicking on a building)."
+				+ "     \n2. Click the 'Route' button."
+				+ "     \n3. Click 'Next/Previous Step' to step through the total path. Click 'Next/Previous Map' to go to the next map."
+				+ "     \n4. Click "
+				+ "\n\n Street View: Click on the 'Street View' tab to see a picture of the location."
+				+ "\n\n Search Bars: Type a name or attribute of a building and press 'Enter.'"
+				);
+		textArea.setBounds(50, 40, 600, 300);
+		textArea.setEditable(false);
+		getContentPane().add(textArea);
+		textArea.setColumns(10);
+	}
+
+	
 	public void setToAbout(){
 		getContentPane().setBackground(backgroundColor);
 		setUndecorated(true);

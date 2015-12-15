@@ -238,7 +238,8 @@ public class GUIFront extends JFrame {
 		screenText[26] = "Back To Campus Map";
 		screenText[27] = "Change Floors";
 		screenText[28] = "About";
-
+		screenText[29] = "User Instructions";
+		
 		// main application is invisible during loading screen
 		setVisible(false); 
 
@@ -1545,11 +1546,15 @@ public class GUIFront extends JFrame {
 		mnLocations.add(mnBuildings.get(12)); // Salisbury Labs
 		mnLocations.add(mnBuildings.get(13)); // Washburn Shops
 		
+		// {{ Help
 		mnHelp = new JMenu(screenText[4]);
 		menuBar.add(mnHelp);
 
 		mnHelpList.add(new JMenuItem(screenText[28])); // About
+		mnHelpList.add(new JMenuItem(screenText[29])); // User Instructions
+
 		mnHelp.add(mnHelpList.get(0));
+		mnHelp.add(mnHelpList.get(1));
 
 		mnHelpList.get(0).addActionListener(new ActionListener(){
 			@Override
@@ -1559,6 +1564,17 @@ public class GUIFront extends JFrame {
 				popup.setVisible(true);
 			}
 		});
+		
+		mnHelpList.get(1).addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {			
+				Popup popup = new Popup(sideBarColor);
+				popup.setToUserInstructions();
+				popup.setVisible(true);
+			}
+		});
+		
+		
 		// }} Help
 
 	}
@@ -1964,6 +1980,7 @@ public class GUIFront extends JFrame {
 		floorChooser.setText(translatedText[27]);
 		
 		mnHelpList.get(0).setText(translatedText[28]);
+		mnHelpList.get(1).setText(translatedText[29]);
 	}
 
 	// {{ Getters and Setters
