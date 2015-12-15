@@ -1910,6 +1910,7 @@
         <Neighbors>
             <Neighbor>HA3_79</Neighbor>
             <Neighbor>HA3_80</Neighbor>
+            <Neighbor>HA2_25</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2413,6 +2414,7 @@
         <ZFeet>26.0</ZFeet>
         <Neighbors>
             <Neighbor>HA3_98</Neighbor>
+            <Neighbor>HA2_25</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
