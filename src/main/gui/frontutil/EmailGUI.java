@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JTextArea;
 
@@ -32,7 +33,7 @@ public class EmailGUI extends JDialog {
 	String[] toEmail;
 	String subject = "Your trip at WPI"; 
 	String body = "Add a custom message here to be displayed above the directions";
-	String directions = GUIFront.allText; 
+	String directions = GUIFront.allText;
 	int toAreaIndex = 0;
 	int bodyAreaIndex = 0;
 
@@ -41,6 +42,7 @@ public class EmailGUI extends JDialog {
 			EmailGUI dialog = new EmailGUI(null, null, null, null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
+			dialog.setResizable(false);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -150,7 +152,6 @@ public class EmailGUI extends JDialog {
 			}
 		});
 
-		// Send Button
 		JButton btnSend = new JButton("Send");
 		btnSend.setBounds(497, 277, 79, 29);
 		btnSend.setBackground(button2);
@@ -164,7 +165,6 @@ public class EmailGUI extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				subject = txtSubject.getText();
 				body = txtBody.getText();
-				body = body.concat("\n").concat(directions);
 				String[] toEmail = txtTo.getText().split(";");
 				email.sendFromGMail(toEmail, subject, body);
 				EmailGUI.this.dispose();;

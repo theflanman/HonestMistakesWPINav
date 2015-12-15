@@ -185,7 +185,6 @@ public class GUIFront extends JFrame {
 	private static SLPanel slidePanel;
 	private static SLPanel streetViewSLPanel;
 	private static TweenPanel streetViewTweenPanel;
-	private static JPanel stepByStepUI;
 	public static ArrayList<TweenPanel> panels = new ArrayList<TweenPanel>();
 	public static TweenPanel panelMap, panelDirections;
 	private SLConfig mainConfig, panelDirectionsConfig;
