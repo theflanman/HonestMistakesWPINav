@@ -37,6 +37,7 @@ import javax.swing.*;
 import main.LocalMap;
 import main.MapNode;
 import main.gui.frontutil.MapPanel;
+import main.gui.frontutil.Popup;
 import main.util.Constants;
 import main.util.GeneralUtil;
 import main.util.proxy.IProxyImage;
@@ -282,7 +283,24 @@ public class DevGUIFront extends JFrame {
 			}
 		});
 
-
+		// {{ Help Menu Item
+		JMenu mnHelp = new JMenu("Help"); // Help
+		menuBar.add(mnHelp);
+		
+		ArrayList<JMenuItem> mnHelpList = new ArrayList<JMenuItem>();
+		mnHelpList.add(new JMenuItem("About"));
+		mnHelp.add(mnHelpList.get(0));
+		
+		mnHelpList.get(0).addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {			
+				Popup popup = new Popup(new Color(95, 172, 213));
+				popup.setToAbout();
+				popup.setVisible(true);
+			}
+		});
+		// }} Help
+		
 		// This is code for the panel showing information on the current selected node.
 		JPanel nodeInfoPanel = new JPanel();
 		nodeInfoPanel.setBounds(920, 203, 294, 136);

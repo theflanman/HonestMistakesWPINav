@@ -28,7 +28,7 @@ public class EmailGUI extends JDialog {
 	private JTextField txtSubject;
 
 	EmailSender email = new EmailSender();
-	
+
 	String[] toEmail;
 	String subject = "Your trip at WPI"; 
 	String body = "Add a custom message here to be displayed above the directions";
@@ -53,22 +53,20 @@ public class EmailGUI extends JDialog {
 		setBounds(100, 100, 684, 359);
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
-		
-		
-		
+
 		// Cancel Button
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(591, 277, 79, 29);
 		btnCancel.setBackground(button1);
 		getContentPane().add(btnCancel);
-		
+
 		// When the cancel button is pressed the window is no longer shown
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EmailGUI.this.dispose();
 			}
 		});
-		
+
 		// To address text field
 		txtTo = new JTextField();
 		txtTo.setBackground(Color.WHITE);
@@ -77,20 +75,20 @@ public class EmailGUI extends JDialog {
 		txtTo.setBounds(120, 44, 530, 29);
 		getContentPane().add(txtTo);
 		txtTo.setColumns(10);
-		
+
 		// Waiting for a mouse press to clear the default text the first time
 		// TODO Make the default text grey and then changed to black text
 		txtTo.addMouseListener(new MouseAdapter() {
-			  @Override
-			  public void mouseClicked(MouseEvent e) {
-				  if (toAreaIndex == 0) {
-					  txtTo.setText("");
-					  txtTo.setForeground(Color.BLACK);
-					  toAreaIndex ++;
-				  }
-			  }
-			});
-		
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (toAreaIndex == 0) {
+					txtTo.setText("");
+					txtTo.setForeground(Color.BLACK);
+					toAreaIndex ++;
+				}
+			}
+		});
+
 		// Subject text field
 		txtSubject = new JTextField();
 		txtSubject.setBackground(Color.WHITE);
@@ -99,7 +97,7 @@ public class EmailGUI extends JDialog {
 		txtSubject.setColumns(10);
 		txtSubject.setBounds(120, 97, 530, 29);
 		getContentPane().add(txtSubject);
-		
+
 		// To label
 		JLabel lblTo = new JLabel("To:");
 		lblTo.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -113,22 +111,22 @@ public class EmailGUI extends JDialog {
 		lblSubject.setForeground(Color.WHITE);
 		lblSubject.setBounds(41, 100, 70, 20);
 		getContentPane().add(lblSubject);
-		
+
 		// Message label
 		JLabel lblMessage = new JLabel("Message:");
 		lblMessage.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblMessage.setForeground(Color.WHITE);
 		lblMessage.setBounds(36, 153, 79, 20);
 		getContentPane().add(lblMessage);
-		
+
 		// Body panel
 		JPanel bodyPanel = new JPanel();
 		bodyPanel.setBackground(background2);
 		bodyPanel.setBounds(121, 153, 529, 98);
 		getContentPane().add(bodyPanel);
 		bodyPanel.setLayout(null);
-		
-		
+
+
 		// Body/Custom Message text area
 		JTextArea txtBody = new JTextArea();
 		txtBody.setBounds(0, 0, 533, 93);
@@ -138,39 +136,39 @@ public class EmailGUI extends JDialog {
 		txtBody.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtBody.setText(body);
 		txtBody.setLineWrap(true);
-		
+
 		// Waiting for a mouse press to clear the default text the first time
 		// TODO Make the default text grey and then changed to black text
 		txtBody.addMouseListener(new MouseAdapter() {
-			  @Override
-			  public void mouseClicked(MouseEvent e) {
-				  if (bodyAreaIndex == 0) {
-					  txtBody.setText("");
-					  txtBody.setForeground(Color.BLACK);
-					  bodyAreaIndex ++;
-				  }
-			  }
-			});
-		
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (bodyAreaIndex == 0) {
+					txtBody.setText("");
+					txtBody.setForeground(Color.BLACK);
+					bodyAreaIndex ++;
+				}
+			}
+		});
+
 		// Send Button
-				JButton btnSend = new JButton("Send");
-				btnSend.setBounds(497, 277, 79, 29);
-				btnSend.setBackground(button2);
-				getContentPane().add(btnSend);
-				
-				// When the send button is pressed:
-				// the test is the text fields is saved to the email contents
-				// the email is sent
-				// the window is no longer shown
-				btnSend.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						subject = txtSubject.getText();
-						body = txtBody.getText();
-						body = body.concat("\n").concat(directions);
-						String[] toEmail = txtTo.getText().split(";");
-						email.sendFromGMail(toEmail, subject, body);
-						EmailGUI.this.dispose();;
-					}
-				});
+		JButton btnSend = new JButton("Send");
+		btnSend.setBounds(497, 277, 79, 29);
+		btnSend.setBackground(button2);
+		getContentPane().add(btnSend);
+
+		// When the send button is pressed:
+		// the test is the text fields is saved to the email contents
+		// the email is sent
+		// the window is no longer shown
+		btnSend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				subject = txtSubject.getText();
+				body = txtBody.getText();
+				body = body.concat("\n").concat(directions);
+				String[] toEmail = txtTo.getText().split(";");
+				email.sendFromGMail(toEmail, subject, body);
+				EmailGUI.this.dispose();;
+			}
+		});
 	}
 }
