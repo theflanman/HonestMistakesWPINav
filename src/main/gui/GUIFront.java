@@ -342,6 +342,7 @@ public class GUIFront extends JFrame {
 				}
 				int stringDistance = 1000000000;
 				String startString = (String) start.getSelectedItem();
+				System.out.println(startString);
 				String notInList = (String) start.getEditor().getItem();
 				boolean valid = false;
 				//System.out.println(startString);
@@ -385,13 +386,11 @@ public class GUIFront extends JFrame {
 					System.out.println(notInList);
 					MapNode node = new MapNode();
 					for (MapNode mapnode : globalMap.getMapNodes()){
-						if (mapnode.getAttributes().getOfficialName() != "none" && mapnode.getAttributes().getOfficialName() != null && mapnode.getAttributes().getOfficialName() != ""){
-							if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
-								stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
-								System.out.println(stringDistance);
-								node = mapnode;
-								System.out.println(mapnode.getAttributes().getOfficialName());
-							}
+						if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
+							stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
+							System.out.println(stringDistance);
+							node = mapnode;
+							System.out.println(mapnode.getAttributes().getOfficialName());
 						}
 					}
 					System.out.println(node.getAttributes().getOfficialName());
@@ -560,7 +559,7 @@ public class GUIFront extends JFrame {
 					System.out.println(notInList);
 					MapNode node = new MapNode();
 					for (MapNode mapnode : globalMap.getMapNodes()){
-						if (mapnode.getAttributes().getOfficialName() != "none" && mapnode.getAttributes().getOfficialName() != null && mapnode.getAttributes().getOfficialName() != ""){
+						if (mapnode != null){
 							if (Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName()) < stringDistance){
 								stringDistance = Levenshtein.distance(notInList, mapnode.getAttributes().getOfficialName());
 								System.out.println(stringDistance);

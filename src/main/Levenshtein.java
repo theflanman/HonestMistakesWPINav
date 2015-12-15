@@ -7,8 +7,9 @@ package main;
 public class Levenshtein {
 	 
     public static int distance(String a, String b) {
-        a = a.toLowerCase();
-        b = b.toLowerCase();
+    	if (a != null){
+    		a = a.toLowerCase();
+    		b = b.toLowerCase();
         // i == 0
         int [] costs = new int [b.length() + 1];
         for (int j = 0; j < costs.length; j++)
@@ -24,5 +25,8 @@ public class Levenshtein {
             }
         }
         return costs[b.length()];
+    } else {
+    	return 0;
+    }
     }
 }
