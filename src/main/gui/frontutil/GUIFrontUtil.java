@@ -750,21 +750,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(1, 0, 0, 1); // atwater kent 2
-				}
-			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(2, 0, 0, 1); // atwater kent 3
+					GUIFront.changeMapTo(1, 0, 0, 1); // alden 2
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(3, 0, 0, 1); // atwater kent basement
+					GUIFront.changeMapTo(2, 0, 0, 1); // alden b
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(3, 0, 0, 1); // alden sub basement
 				}
 			});
 			break;
@@ -773,21 +773,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(0, 0, 0, 1); // atwater kent 1
-				}
-			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(2, 0, 0, 1); // atwater kent 3
+					GUIFront.changeMapTo(0, 0, 0, 1); // alden 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(3, 0, 0, 1); // atwater kent basement
+					GUIFront.changeMapTo(2, 0, 0, 1); // alden b
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(3, 0, 0, 1); // alden sb
 				}
 			});
 			break;
@@ -796,21 +796,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(0, 0, 0, 1); // atwater kent 1
+					GUIFront.changeMapTo(0, 0, 0, 1); // alden hall 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(1, 0, 0, 1); // atwater kent 2
+					GUIFront.changeMapTo(1, 0, 0, 1); // alden hall 2
 				}
 			});
-			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(3, 0, 0, 1); // atwater kent basement
+					GUIFront.changeMapTo(3, 0, 0, 1); // alden hall sb
 				}
 			});
 			break;
@@ -819,21 +819,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(0, 0, 0, 1); // atwater kent 1
+					GUIFront.changeMapTo(0, 0, 0, 1); // alden hall 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(1, 0, 0, 1); // atwater kent 2
+					GUIFront.changeMapTo(1, 0, 0, 1); // alden hall 2
 				}
 			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(2, 0, 0, 1); // atwater kent 3
+					GUIFront.changeMapTo(2, 0, 0, 1); // alden hall basement
 				}
 			});
 			break;
@@ -842,21 +842,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(5, 0, 0, 1); // boynton hall 2
+					GUIFront.changeMapTo(5, 0, 0, 1); // atwater kent 2
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(6, 0, 0, 1); // boynton hall 3
+					GUIFront.changeMapTo(6, 0, 0, 1); // atwater kent 3
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(7, 0, 0, 1); // boynton hall basement
+					GUIFront.changeMapTo(7, 0, 0, 1); // atwater kent basement
 				}
 			});
 			break;
@@ -865,21 +865,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(4, 0, 0, 1); // boynton hall 1
+					GUIFront.changeMapTo(4, 0, 0, 1); // atwater kent 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(6, 0, 0, 1); // boynton hall 3
+					GUIFront.changeMapTo(6, 0, 0, 1); // atwater kent 3
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(7, 0, 0, 1); // boynton hall basement
+					GUIFront.changeMapTo(7, 0, 0, 1); // atwater kent basement
 				}
 			});
 			break;
@@ -888,21 +888,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(4, 0, 0, 1); // boynton hall 1
+					GUIFront.changeMapTo(4, 0, 0, 1); // atwater kent 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(5, 0, 0, 1); // boynton hall 2
+					GUIFront.changeMapTo(5, 0, 0, 1); // atwater kent 2
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(7, 0, 0, 1); // boynton hall basement
+					GUIFront.changeMapTo(7, 0, 0, 1); // atwater kent basement
 				}
 			});
 			break;
@@ -911,21 +911,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(4, 0, 0, 1); // boynton hall 1
+					GUIFront.changeMapTo(4, 0, 0, 1); // atwater kent 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(5, 0, 0, 1); // boynton hall 2
+					GUIFront.changeMapTo(5, 0, 0, 1); // atwater kent 2
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(6, 0, 0, 1); // boynton hall 3
+					GUIFront.changeMapTo(6, 0, 0, 1); // atwater kent 3
 				}
 			});
 			break;
@@ -934,14 +934,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(9, 0, 0, 1); // campus center 2
+					GUIFront.changeMapTo(9, 0, 0, 1); // boynton hall 2
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(10, 0, 0, 1); // campus center 3
+					GUIFront.changeMapTo(10, 0, 0, 1); // boynton hall 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(11, 0, 0, 1); // boynton hall basement
 				}
 			});
 			break;
@@ -950,14 +957,21 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(8, 0, 0, 1); // campus center 1
+					GUIFront.changeMapTo(8, 0, 0, 1); // boynton hall 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(10, 0, 0, 1); // campus center 3
+					GUIFront.changeMapTo(10, 0, 0, 1); // boynton hall 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(11, 0, 0, 1); // boynton hall basement
 				}
 			});
 			break;
@@ -966,14 +980,44 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(8, 0, 0, 1); // campus center 1
+					GUIFront.changeMapTo(8, 0, 0, 1); // boynton hall 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(9, 0, 0, 1); // campus center 2
+					GUIFront.changeMapTo(9, 0, 0, 1); // boynton hall 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(11, 0, 0, 1); // boynton hall basement
+				}
+			});
+			break;
+		case 11:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(8, 0, 0, 1); // boynton hall 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(9, 0, 0, 1); // boynton hall 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(10, 0, 0, 1); // boynton hall 3
 				}
 			});
 			break;
@@ -982,28 +1026,14 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(13, 0, 0, 1); // fuller labs 2
+					GUIFront.changeMapTo(13, 0, 0, 1); // campus center 2
 				}
-			});	
+			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(14, 0, 0, 1); // fuller labs 3
-				}
-			});	
-			GUIFront.floorChooser.add(new JMenuItem("Basement"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(15, 0, 0, 1); // fuller labs basement
-				}
-			});	
-			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs sub basement
+					GUIFront.changeMapTo(14, 0, 0, 1); // campus center 3
 				}
 			});
 			break;
@@ -1012,203 +1042,203 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(12, 0, 0, 1); // fuller labs 1
+					GUIFront.changeMapTo(12, 0, 0, 1); // campus center 1
 				}
-			});	
+			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(14, 0, 0, 1); // fuller labs 3
+					GUIFront.changeMapTo(14, 0, 0, 1); // campus center 3
 				}
-			});	
-			GUIFront.floorChooser.add(new JMenuItem("Basement"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(15, 0, 0, 1); // fuller labs basement
-				}
-			});	
-			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs sub basement
-				}
-			});	
+			});
 			break;
 		case 14:
 			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(12, 0, 0, 1); // fuller labs 1
+					GUIFront.changeMapTo(12, 0, 0, 1); // campus center 1
 				}
-			});	
+			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(13, 0, 0, 1); // fuller labs 2
+					GUIFront.changeMapTo(13, 0, 0, 1); // campus center 2
 				}
-			});	
-			GUIFront.floorChooser.add(new JMenuItem("Basement"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(15, 0, 0, 1); // fuller labs basement
-				}
-			});	
-			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs sub basement
-				}
-			});	
-			break;
-		case 15:
-			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(12, 0, 0, 1); // fuller labs 1
-				}
-			});	
-			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(13, 0, 0, 1); // fuller labs 2
-				}
-			});	
-			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(14, 0, 0, 1); // fuller labs 3
-				}
-			});	
-			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs sub basement
-				}
-			});	
+			});
 			break;
 		case 16:
-			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(12, 0, 0, 1); // fuller labs 1
-				}
-			});	
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(13, 0, 0, 1); // fuller labs 2
+					GUIFront.changeMapTo(17, 0, 0, 1); // fuller labs 2
 				}
 			});	
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(14, 0, 0, 1); // fuller labs 3
+					GUIFront.changeMapTo(18, 0, 0, 1); // fuller labs 3
 				}
 			});	
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(15, 0, 0, 1); // fuller labs basement
+					GUIFront.changeMapTo(19, 0, 0, 1); // fuller labs basement
+				}
+			});	
+			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(20, 0, 0, 1); // fuller labs sub basement
 				}
 			});	
 			break;
 		case 17:
-			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(18, 0, 0, 1); // library 2
+					GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs 1
 				}
-			});
+			});	
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(19, 0, 0, 1); // library 3
+					GUIFront.changeMapTo(18, 0, 0, 1); // fuller labs 3
 				}
-			});
+			});	
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(20, 0, 0, 1); // library basement
+					GUIFront.changeMapTo(19, 0, 0, 1); // fuller labs basement
 				}
-			});
-
+			});	
 			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(21, 0, 0, 1); // library sub basement
+					GUIFront.changeMapTo(20, 0, 0, 1); // fuller labs sub basement
 				}
-			});
+			});	
 			break;
 		case 18:
 			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(17, 0, 0, 1); // library 1
+					GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs 1
 				}
-			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			});	
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(19, 0, 0, 1); // library 3
+					GUIFront.changeMapTo(17, 0, 0, 1); // fuller labs 2
 				}
-			});
+			});	
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(20, 0, 0, 1); // library basement
+					GUIFront.changeMapTo(19, 0, 0, 1); // fuller labs basement
 				}
-			});
-
+			});	
 			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(21, 0, 0, 1); // library sub basement
+					GUIFront.changeMapTo(20, 0, 0, 1); // fuller labs sub basement
 				}
-			});
+			});	
 			break;
 		case 19:
 			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(17, 0, 0, 1); // library 1
+					GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs 1
 				}
-			});
+			});	
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(18, 0, 0, 1); // library 2
+					GUIFront.changeMapTo(17, 0, 0, 1); // fuller labs 2
+				}
+			});	
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(18, 0, 0, 1); // fuller labs 3
+				}
+			});	
+			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(20, 0, 0, 1); // fuller labs sub basement
+				}
+			});	
+			break;
+		case 20:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(16, 0, 0, 1); // fuller labs 1
+				}
+			});	
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(17, 0, 0, 1); // fuller labs 2
+				}
+			});	
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(18, 0, 0, 1); // fuller labs 3
+				}
+			});	
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(19, 0, 0, 1); // fuller labs basement
+				}
+			});	
+			break;
+		case 21:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(22, 0, 0, 1); // library 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(23, 0, 0, 1); // library 3
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(20, 0, 0, 1); // library basement
+					GUIFront.changeMapTo(24, 0, 0, 1); // library basement
 				}
 			});
 
@@ -1216,83 +1246,38 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(21, 0, 0, 1); // library sub basement
+					GUIFront.changeMapTo(25, 0, 0, 1); // library sub basement
 				}
 			});
 			break;
-		case 20:
+		case 22:
 			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(17, 0, 0, 1); // library 1
-				}
-			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(18, 0, 0, 1); // library 2
+					GUIFront.changeMapTo(21, 0, 0, 1); // library 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(19, 0, 0, 1); // library 3
-				}
-			});
-			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(21, 0, 0, 1); // library sub basement
-				}
-			});
-			break;
-		case 21:
-			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(17, 0, 0, 1); // library 1
-				}
-			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(18, 0, 0, 1); // library 2
-				}
-			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(19, 0, 0, 1); // library 3
+					GUIFront.changeMapTo(23, 0, 0, 1); // library 3
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(20, 0, 0, 1); // library basement
+					GUIFront.changeMapTo(24, 0, 0, 1); // library basement
 				}
 			});
-			break;
-		case 22:
-			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+
+			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(23, 0, 0, 1); // higgins house 2
-				}
-			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(24, 0, 0, 1); // higgins house 3
+					GUIFront.changeMapTo(25, 0, 0, 1); // library sub basement
 				}
 			});
 			break;
@@ -1301,14 +1286,29 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(22, 0, 0, 1); // higgins house 1
+					GUIFront.changeMapTo(21, 0, 0, 1); // library 1
 				}
 			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(24, 0, 0, 1); // higgins house 3
+					GUIFront.changeMapTo(22, 0, 0, 1); // library 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(24, 0, 0, 1); // library basement
+				}
+			});
+
+			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(25, 0, 0, 1); // library sub basement
 				}
 			});
 			break;
@@ -1317,41 +1317,104 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(22, 0, 0, 1); // higgins house 1
+					GUIFront.changeMapTo(21, 0, 0, 1); // library 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(23, 0, 0, 1); // higgins house 2
+					GUIFront.changeMapTo(22, 0, 0, 1); // library 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(23, 0, 0, 1); // library 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Sub Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(25, 0, 0, 1); // library sub basement
 				}
 			});
 			break;
 		case 25:
-			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(26, 0, 0, 1); // higgins garage 2
-				}
-			});
-			break;
-		case 26:
 			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(25, 0, 0, 1); // higgins garage 1
+					GUIFront.changeMapTo(21, 0, 0, 1); // library 1
 				}
 			});
-			break;
-		case 27:
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(28, 0, 0, 1); // project center 2
+					GUIFront.changeMapTo(22, 0, 0, 1); // library 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(23, 0, 0, 1); // library 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(24, 0, 0, 1); // library basement
+				}
+			});
+			break;
+		case 26:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(27, 0, 0, 1); // harrington 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(28, 0, 0, 1); // harrington 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(29, 0, 0, 1); // harrington b
+				}
+			});
+			break;
+		case 27:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(26, 0, 0, 1); // harrington 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(28, 0, 0, 1); // harrington 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(29, 0, 0, 1); // harrington b
 				}
 			});
 			break;
@@ -1360,55 +1423,60 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(27, 0, 0, 1); // project center 1
+					GUIFront.changeMapTo(26, 0, 0, 1); // harrington 1
 				}
 			});
-			break;
-		case 29:
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(30, 0, 0, 1); // stratton hall 2
+					GUIFront.changeMapTo(27, 0, 0, 1); // harrington 2
 				}
 			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(31, 0, 0, 1); // stratton hall 3
-				}
-			});
-
 			GUIFront.floorChooser.add(new JMenuItem("Basement"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(32, 0, 0, 1); // stratton hall basement 3
+					GUIFront.changeMapTo(29, 0, 0, 1); // harrington b
 				}
 			});
 			break;
-		case 30:
+		case 29:
 			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(29, 0, 0, 1); // stratton hall 1
+					GUIFront.changeMapTo(26, 0, 0, 1); // harrington 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(27, 0, 0, 1); // harrington 2
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(31, 0, 0, 1); // stratton hall 3
+					GUIFront.changeMapTo(28, 0, 0, 1); // harrington 3
 				}
 			});
-
-			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			break;
+		case 30:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(32, 0, 0, 1); // stratton hall basement 3
+					GUIFront.changeMapTo(31, 0, 0, 1); // higgins house 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(32, 0, 0, 1); // higgins house 3
 				}
 			});
 			break;
@@ -1417,21 +1485,14 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(29, 0, 0, 1); // stratton hall 1
+					GUIFront.changeMapTo(30, 0, 0, 1); // higgins house 1
 				}
 			});
-			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(30, 0, 0, 1); // stratton hall 2
-				}
-			});
-			GUIFront.floorChooser.add(new JMenuItem("Basement"))
-			.addActionListener(new ActionListener(){
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(32, 0, 0, 1); // stratton hall basement 3
+					GUIFront.changeMapTo(32, 0, 0, 1); // higgins house 3
 				}
 			});
 			break;
@@ -1440,21 +1501,550 @@ public class GUIFrontUtil {
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(29, 0, 0, 1); // stratton hall 1
+					GUIFront.changeMapTo(30, 0, 0, 1); // higgins house 1
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(30, 0, 0, 1); // stratton hall 2
+					GUIFront.changeMapTo(31, 0, 0, 1); // higgins house 2
+				}
+			});
+			break;
+		case 33:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(34, 0, 0, 1); // higgins garage 2
+				}
+			});
+			break;
+		case 34:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(33, 0, 0, 1); // higgins garage 1
+				}
+			});
+			break;
+		case 35:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(36, 0, 0, 1); // project center 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(37, 0, 0, 1); // project center 2
 				}
 			});
 			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
 			.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GUIFront.changeMapTo(31, 0, 0, 1); // stratton hall 3
+					GUIFront.changeMapTo(38, 0, 0, 1); // project center 2
+				}
+			});
+			break;
+		case 36:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(35, 0, 0, 1); // project center 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(37, 0, 0, 1); // project center 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(38, 0, 0, 1); // project center 2
+				}
+			});
+			break;
+		case 37:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(35, 0, 0, 1); // project center 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(36, 0, 0, 1); // project center 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(38, 0, 0, 1); // project center 2
+				}
+			});
+			break;
+		case 38:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(35, 0, 0, 1); // project center 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(36, 0, 0, 1); // project center 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(37, 0, 0, 1); // project center 2
+				}
+			});
+			break;
+		case 39:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(40, 0, 0, 1); // project center 2
+				}
+			});
+			break;
+		case 40:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(39, 0, 0, 1); // project center 1
+				}
+			});
+			break;
+		case 41:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(42, 0, 0, 1); // stratton hall 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(43, 0, 0, 1); // stratton hall 3
+				}
+			});
+
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(44, 0, 0, 1); // stratton hall basement 3
+				}
+			});
+			break;
+		case 42:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(41, 0, 0, 1); // stratton hall 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(43, 0, 0, 1); // stratton hall 3
+				}
+			});
+
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(44, 0, 0, 1); // stratton hall basement 3
+				}
+			});
+			break;
+		case 43:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(41, 0, 0, 1); // stratton hall 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(42, 0, 0, 1); // stratton hall 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Basement"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(44, 0, 0, 1); // stratton hall basement 3
+				}
+			});
+			break;
+		case 44:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(41, 0, 0, 1); // stratton hall 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(42, 0, 0, 1); // stratton hall 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(43, 0, 0, 1); // stratton hall 3
+				}
+			});
+			break;
+		case 45:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(46, 0, 0, 1); // salisbury 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(47, 0, 0, 1); // salisbury 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(48, 0, 0, 1); // salisbury 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 4"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(49, 0, 0, 1); // salisbury 4
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 5"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(50, 0, 0, 1); // salisbury 5
+				}
+			});
+			break;
+		case 46:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(45, 0, 0, 1); // salisbury 0
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(47, 0, 0, 1); // salisbury 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(48, 0, 0, 1); // salisbury 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 4"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(49, 0, 0, 1); // salisbury 4
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 5"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(50, 0, 0, 1); // salisbury 5
+				}
+			});
+			break;
+		case 47:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(45, 0, 0, 1); // salisbury 0
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(46, 0, 0, 1); // salisbury 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(48, 0, 0, 1); // salisbury 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 4"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(49, 0, 0, 1); // salisbury 4
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 5"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(50, 0, 0, 1); // salisbury 5
+				}
+			});
+			break;
+		case 48:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(45, 0, 0, 1); // salisbury 0
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(46, 0, 0, 1); // salisbury 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(47, 0, 0, 1); // salisbury 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 4"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(49, 0, 0, 1); // salisbury 4
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 5"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(50, 0, 0, 1); // salisbury 5
+				}
+			});
+			break;
+		case 49:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(45, 0, 0, 1); // salisbury 0
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(46, 0, 0, 1); // salisbury 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(47, 0, 0, 1); // salisbury 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(48, 0, 0, 1); // salisbury 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 5"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(50, 0, 0, 1); // salisbury 5
+				}
+			});
+			break;
+		case 50:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(45, 0, 0, 1); // salisbury 0
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(46, 0, 0, 1); // salisbury 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(47, 0, 0, 1); // salisbury 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(48, 0, 0, 1); // salisbury 3
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 4"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(49, 0, 0, 1); // salisbury 4
+				}
+			});
+			break;
+		case 51:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(52, 0, 0, 1); // washburn 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(53, 0, 0, 1); // washburn 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(54, 0, 0, 1); // washburn 3
+				}
+			});
+			break;
+		case 52:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(51, 0, 0, 1); // washburn 0
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(53, 0, 0, 1); // washburn 2
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(54, 0, 0, 1); // washburn 3
+				}
+			});
+			break;
+		case 53:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(51, 0, 0, 1); // washburn 0
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(52, 0, 0, 1); // washburn 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 3"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(54, 0, 0, 1); // washburn 3
+				}
+			});
+			break;
+		case 54:
+			GUIFront.floorChooser.add(new JMenuItem("Floor 0"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(51, 0, 0, 1); // washburn 0
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 1"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(52, 0, 0, 1); // washburn 1
+				}
+			});
+			GUIFront.floorChooser.add(new JMenuItem("Floor 2"))
+			.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GUIFront.changeMapTo(53, 0, 0, 1); // washburn 2
 				}
 			});
 			break;
