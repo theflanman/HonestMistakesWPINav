@@ -3,12 +3,16 @@ package main.gui.frontutil;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Window.Type;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.BorderLayout;
 
 public class Popup extends JDialog {
 
@@ -16,6 +20,15 @@ public class Popup extends JDialog {
 	
 	public Popup(Color backgroundColor){
 		this.backgroundColor = backgroundColor;
+		getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JButton btnOk = new JButton("Ok");
+		getContentPane().add(btnOk, BorderLayout.SOUTH);
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Popup.this.dispose();
+			}
+		});
 	}
 	
 	public void setToAbout(){

@@ -926,7 +926,6 @@ public class TweenPanel extends JPanel {
 
 					// Draw the panels over the building
 					graphics.setColor(new Color(0, 0, 0, 0));
-					graphics.setColor(Color.CYAN);
 					graphics.setStroke(new BasicStroke (5));
 					graphics.draw(aHPolygon);
 					graphics.draw(aKPolygon);
