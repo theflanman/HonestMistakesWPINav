@@ -263,39 +263,76 @@ public class GUIFrontUtil {
 
 		ArrayList<JMenu> mnBuildings = new ArrayList<JMenu>();
 
+		// Alden Hall
+		mnBuildings.add(new JMenu("Alden Hall"));
+		JMenuItem mntmAH1 = new JMenuItem("Floor 1");
+		mntmAH1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(0, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmAH2 = new JMenuItem("Floor 2");
+		mntmAH2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(1, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmAHB = new JMenuItem("Basement");
+		mntmAHB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(2, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmAHSB = new JMenuItem("Sub Basement");
+		mntmAHSB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(3, 0, 0, 1);
+			}
+		});
+		mnBuildings.get(0).add(mntmAH1);
+		mnBuildings.get(0).add(mntmAH2);
+		mnBuildings.get(0).add(mntmAHB);
+		mnBuildings.get(0).add(mntmAHSB);
+		
+		
+		// Atwater Kent
 		mnBuildings.add(new JMenu("Atwater Kent"));
 		JMenuItem mntmAK1 = new JMenuItem("Floor 1");
 		mntmAK1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(0, 0, 0, 1);
+				GUIFront.changeMapTo(4, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmAK2 = new JMenuItem("Floor 2");
 		mntmAK2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(1, 0, 0, 1);
+				GUIFront.changeMapTo(5, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmAK3 = new JMenuItem("Floor 3");
 		mntmAK3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(2, 0, 0, 1);
+				GUIFront.changeMapTo(6, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmAKB = new JMenuItem("Basement");
 		mntmAKB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				GUIFront.changeMapTo(3, 0, 0, 1);
+				GUIFront.changeMapTo(7, 0, 0, 1);
 			}
 		});
-		mnBuildings.get(0).add(mntmAK1);
-		mnBuildings.get(0).add(mntmAK2);
-		mnBuildings.get(0).add(mntmAK3);
-		mnBuildings.get(0).add(mntmAKB);
+		mnBuildings.get(1).add(mntmAK1);
+		mnBuildings.get(1).add(mntmAK2);
+		mnBuildings.get(1).add(mntmAK3);
+		mnBuildings.get(1).add(mntmAKB);
 
 		// Boynton Hall
 		mnBuildings.add(new JMenu("Boynton Hall"));
@@ -303,34 +340,34 @@ public class GUIFrontUtil {
 		mntmBoy1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				GUIFront.changeMapTo(4, 0, 0, 1);
+				GUIFront.changeMapTo(8, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmBoy2 = new JMenuItem("Floor 2");
 		mntmBoy2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				GUIFront.changeMapTo(5, 0, 0, 1);
+				GUIFront.changeMapTo(9, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmBoy3 = new JMenuItem("Floor 3");
 		mntmBoy3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(6, 0, 0, 1);
+				GUIFront.changeMapTo(10, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmBoyB = new JMenuItem("Basement");
 		mntmBoyB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(7, 0, 0, 1);
+				GUIFront.changeMapTo(11, 0, 0, 1);
 			}
 		});
-		mnBuildings.get(1).add(mntmBoy1);
-		mnBuildings.get(1).add(mntmBoy2);
-		mnBuildings.get(1).add(mntmBoy3);
-		mnBuildings.get(1).add(mntmBoyB);
+		mnBuildings.get(2).add(mntmBoy1);
+		mnBuildings.get(2).add(mntmBoy2);
+		mnBuildings.get(2).add(mntmBoy3);
+		mnBuildings.get(2).add(mntmBoyB);
 
 		// Campus Center
 		mnBuildings.add(new JMenu("Campus Center"));
@@ -338,26 +375,26 @@ public class GUIFrontUtil {
 		mntmCC1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(8, 0, 0, 1);
+				GUIFront.changeMapTo(12, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmCC2 = new JMenuItem("Floor 2");
 		mntmCC2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				GUIFront.changeMapTo(9, 0, 0, 1);
+				GUIFront.changeMapTo(13, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmCC3 = new JMenuItem("Floor 3");
 		mntmCC3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(10, 0, 0, 1);
+				GUIFront.changeMapTo(14, 0, 0, 1);
 			}
 		});
-		mnBuildings.get(2).add(mntmCC1);
-		mnBuildings.get(2).add(mntmCC2);
-		mnBuildings.get(2).add(mntmCC3);
+		mnBuildings.get(3).add(mntmCC1);
+		mnBuildings.get(3).add(mntmCC2);
+		mnBuildings.get(3).add(mntmCC3);
 
 		// Fuller Labs
 		mnBuildings.add(new JMenu("Fuller Labs"));
@@ -365,42 +402,42 @@ public class GUIFrontUtil {
 		mntmFL1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(12, 0, 0, 1);
+				GUIFront.changeMapTo(16, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmFL2 = new JMenuItem("Floor 2");
 		mntmFL2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(13, 0, 0, 1);
+				GUIFront.changeMapTo(17, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmFL3 = new JMenuItem("Floor 3");
 		mntmFL3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(14, 0, 0, 1);
+				GUIFront.changeMapTo(18, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmFLB = new JMenuItem("Basement");
 		mntmFLB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(15, 0, 0, 1);
+				GUIFront.changeMapTo(19, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmFLSB = new JMenuItem("Sub Basement");
 		mntmFLSB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(16, 0, 0, 1);
+				GUIFront.changeMapTo(20, 0, 0, 1);
 			}
 		});
-		mnBuildings.get(3).add(mntmFL1);
-		mnBuildings.get(3).add(mntmFL2);
-		mnBuildings.get(3).add(mntmFL3);
-		mnBuildings.get(3).add(mntmFLB);
-		mnBuildings.get(3).add(mntmFLSB);
+		mnBuildings.get(4).add(mntmFL1);
+		mnBuildings.get(4).add(mntmFL2);
+		mnBuildings.get(4).add(mntmFL3);
+		mnBuildings.get(4).add(mntmFLB);
+		mnBuildings.get(4).add(mntmFLSB);
 
 		// Gordon Library
 		mnBuildings.add(new JMenu("Gordon Library"));
@@ -408,42 +445,78 @@ public class GUIFrontUtil {
 		mntmGL1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(17, 0, 0, 1);
+				GUIFront.changeMapTo(21, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmGL2 = new JMenuItem("Floor 2");
 		mntmGL2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(18, 0, 0, 1);
+				GUIFront.changeMapTo(22, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmGL3 = new JMenuItem("Floor 3");
 		mntmGL3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				GUIFront.changeMapTo(19, 0, 0, 1);
+				GUIFront.changeMapTo(23, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmGLB = new JMenuItem("Basement");
 		mntmGLB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(20, 0, 0, 1);
+				GUIFront.changeMapTo(24, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmGLSB = new JMenuItem("Sub Basement");
 		mntmGLSB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(21, 0, 0, 1);
+				GUIFront.changeMapTo(25, 0, 0, 1);
 			}
 		});
-		mnBuildings.get(4).add(mntmGL1);
-		mnBuildings.get(4).add(mntmGL2);
-		mnBuildings.get(4).add(mntmGL3);
-		mnBuildings.get(4).add(mntmGLB);
-		mnBuildings.get(4).add(mntmGLSB);
+		mnBuildings.get(5).add(mntmGL1);
+		mnBuildings.get(5).add(mntmGL2);
+		mnBuildings.get(5).add(mntmGL3);
+		mnBuildings.get(5).add(mntmGLB);
+		mnBuildings.get(5).add(mntmGLSB);
+		
+		// Harrington Auditorium
+		mnBuildings.add(new JMenu("Harrington Auditorium"));
+		JMenuItem mntmHA1 = new JMenuItem("Floor 1");
+		mntmHA1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				GUIFront.changeMapTo(26, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmHA2 = new JMenuItem("Floor 2");
+		mntmHA2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				GUIFront.changeMapTo(27, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmHA3 = new JMenuItem("Floor 3");
+		mntmHA3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				GUIFront.changeMapTo(28, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmHAB = new JMenuItem("Basement");
+		mntmHAB.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){				
+				GUIFront.changeMapTo(29, 0, 0, 1);
+			}
+		});
+		mnBuildings.get(6).add(mntmHA1);
+		mnBuildings.get(6).add(mntmHA2);
+		mnBuildings.get(6).add(mntmHA3);
+		mnBuildings.get(6).add(mntmHAB);
+		
 
 		// Higgins House
 		mnBuildings.add(new JMenu("Higgins House"));
@@ -451,26 +524,26 @@ public class GUIFrontUtil {
 		mntmHH1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				GUIFront.changeMapTo(22, 0, 0, 1);
+				GUIFront.changeMapTo(30, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmHH2 = new JMenuItem("Floor 2");
 		mntmHH2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				GUIFront.changeMapTo(23, 0, 0, 1);
+				GUIFront.changeMapTo(31, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmHH3 = new JMenuItem("Floor 3");
 		mntmHH3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){				
-				GUIFront.changeMapTo(24, 0, 0, 1);
+				GUIFront.changeMapTo(32, 0, 0, 1);
 			}
 		});
-		mnBuildings.get(5).add(mntmHH1);
-		mnBuildings.get(5).add(mntmHH2);
-		mnBuildings.get(5).add(mntmHH3);
+		mnBuildings.get(7).add(mntmHH1);
+		mnBuildings.get(7).add(mntmHH2);
+		mnBuildings.get(7).add(mntmHH3);
 
 		// Higgins House Garage
 		mnBuildings.add(new JMenu("Higgins House Garage"));
@@ -478,18 +551,53 @@ public class GUIFrontUtil {
 		mntmHHG1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(25, 0, 0, 1);
+				GUIFront.changeMapTo(33, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmHHG2 = new JMenuItem("Floor 2");
 		mntmHHG2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(26, 0, 0, 1);
+				GUIFront.changeMapTo(34, 0, 0, 1);
 			}
 		});
-		mnBuildings.get(6).add(mntmHHG1);
-		mnBuildings.get(6).add(mntmHHG2);
+		mnBuildings.get(8).add(mntmHHG1);
+		mnBuildings.get(8).add(mntmHHG2);
+		
+		// Higgins Labs
+		mnBuildings.add(new JMenu("Higgins Labs"));
+		JMenuItem mntmHL0 = new JMenuItem("Floor 0");
+		mntmHL0.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(35, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmHL1 = new JMenuItem("Floor 1");
+		mntmHL1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(36, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmHL2 = new JMenuItem("Floor 2");
+		mntmHL2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(37, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmHL3 = new JMenuItem("Floor 3");
+		mntmHL3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(38, 0, 0, 1);
+			}
+		});
+		mnBuildings.get(9).add(mntmHL0);
+		mnBuildings.get(9).add(mntmHL1);
+		mnBuildings.get(9).add(mntmHL2);
+		mnBuildings.get(9).add(mntmHL3);
 
 		// Project Center
 		mnBuildings.add(new JMenu("Project Center"));
@@ -497,18 +605,18 @@ public class GUIFrontUtil {
 		mntmPC1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){			
-				GUIFront.changeMapTo(27, 0, 0, 1);
+				GUIFront.changeMapTo(39, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmPC2 = new JMenuItem("Floor 2");
 		mntmPC2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(28, 0, 0, 1);
+				GUIFront.changeMapTo(40, 0, 0, 1);
 			}
 		});
-		mnBuildings.get(7).add(mntmPC1);
-		mnBuildings.get(7).add(mntmPC2);
+		mnBuildings.get(10).add(mntmPC1);
+		mnBuildings.get(10).add(mntmPC2);
 
 		// Stratton Hall
 		mnBuildings.add(new JMenu("Stratton Hall"));
@@ -516,34 +624,120 @@ public class GUIFrontUtil {
 		mntmSH1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(29, 0, 0, 1);
+				GUIFront.changeMapTo(41, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmSH2 = new JMenuItem("Floor 2");
 		mntmSH2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(30, 0, 0, 1);
+				GUIFront.changeMapTo(42, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmSH3 = new JMenuItem("Floor 3");
 		mntmSH3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){	
-				GUIFront.changeMapTo(31, 0, 0, 1);
+				GUIFront.changeMapTo(43, 0, 0, 1);
 			}
 		});
 		JMenuItem mntmSHB = new JMenuItem("Basement");
 		mntmSHB.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){			
-				GUIFront.changeMapTo(32, 0, 0, 1);
+				GUIFront.changeMapTo(44, 0, 0, 1);
 			}
 		});
-		mnBuildings.get(8).add(mntmSH1);
-		mnBuildings.get(8).add(mntmSH2);
-		mnBuildings.get(8).add(mntmSH3);
-		mnBuildings.get(8).add(mntmSHB);
+		mnBuildings.get(11).add(mntmSH1);
+		mnBuildings.get(11).add(mntmSH2);
+		mnBuildings.get(11).add(mntmSH3);
+		mnBuildings.get(11).add(mntmSHB);
+		
+		// Salisbury
+		mnBuildings.add(new JMenu("Salisbury Labs"));
+		JMenuItem mntmSL0 = new JMenuItem("Floor 0");
+		mntmSL0.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(45, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmSL1 = new JMenuItem("Floor 1");
+		mntmSL1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeMapTo(46, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmSL2 = new JMenuItem("Floor 2");
+		mntmSL2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(47, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmSL3 = new JMenuItem("Floor 3");
+		mntmSL3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){			
+				GUIFront.changeMapTo(48, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmSL4 = new JMenuItem("Floor 4");
+		mntmSL4.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){			
+				GUIFront.changeMapTo(49, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmSL5 = new JMenuItem("Floor 5");
+		mntmSL5.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){			
+				GUIFront.changeMapTo(50, 0, 0, 1);
+			}
+		});
+		mnBuildings.get(12).add(mntmSL0);
+		mnBuildings.get(12).add(mntmSL1);
+		mnBuildings.get(12).add(mntmSL2);
+		mnBuildings.get(12).add(mntmSL3);
+		mnBuildings.get(12).add(mntmSL4);
+		mnBuildings.get(12).add(mntmSL5);
+		
+		// Washburn Shops
+		mnBuildings.add(new JMenu("Washburn Shops"));
+		JMenuItem mntmWB0 = new JMenuItem("Floor 0");
+		mntmWB0.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(51, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmWB1 = new JMenuItem("Floor 1");
+		mntmWB1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){		
+				GUIFront.changeMapTo(52, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmWB2 = new JMenuItem("Floor 2");
+		mntmWB2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){	
+				GUIFront.changeMapTo(53, 0, 0, 1);
+			}
+		});
+		JMenuItem mntmWB3 = new JMenuItem("Floor 3");
+		mntmWB3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){			
+				GUIFront.changeMapTo(54, 0, 0, 1);
+			}
+		});
+		mnBuildings.get(13).add(mntmWB0);
+		mnBuildings.get(13).add(mntmWB1);
+		mnBuildings.get(13).add(mntmWB2);
+		mnBuildings.get(13).add(mntmWB3);
 
 		return mnBuildings;
 	}
@@ -1272,49 +1466,76 @@ public class GUIFrontUtil {
 	// intializes pan and zoom
 	public static HashMap<String, double[]> initPanZoom(){
 		HashMap<String, double[]> defaultVals = new HashMap<String, double[]>();
+		
+		defaultVals.put("AH1.png", new double[]{50.0, -30.0, 0.9}); // 0  -- done 
+		defaultVals.put("AH2.png", new double[]{50.0, -40.0, 0.9}); // 1
+		defaultVals.put("AHB.png", new double[]{50.0, -10.0, 0.9}); // 2 
+		defaultVals.put("AHSB.png", new double[]{50.0, -20.0, 0.9}); // 3
 
-		defaultVals.put("AK1.png", new double[]{-80.0, -125.0, 0.78}); // 0
-		defaultVals.put("AK2.png", new double[]{-80.0, -130.0, 0.80});
-		defaultVals.put("AK3.png", new double[]{-80.0, -120.0, 0.78});
-		defaultVals.put("AKB.png", new double[]{-80.0, -180.0, 0.80}); // 3
+		defaultVals.put("AK1.png", new double[]{50.0, -65.0, 1.0}); // 4  -- done
+		defaultVals.put("AK2.png", new double[]{50.0, -70.0, 1.0}); // 5
+		defaultVals.put("AK3.png", new double[]{50.0, -60.0, 1.0}); // 6
+		defaultVals.put("AKB.png", new double[]{50.0, -120.0, 1.0}); // 7
 
-		defaultVals.put("Boy1.png", new double[]{-80.0, -140.0, 0.90}); // 4
-		defaultVals.put("Boy2.png", new double[]{-80.0, -140.0, 0.90});
-		defaultVals.put("Boy3.png", new double[]{-80.0, -140.0, 0.90});
-		defaultVals.put("BoyB.png", new double[]{-80.0, -140.0, 0.90}); // 7
+		defaultVals.put("Boy1.png", new double[]{90.0, -90.0, 1.0}); // 8
+		defaultVals.put("Boy2.png", new double[]{90.0, -90.0, 1.0}); // 9
+		defaultVals.put("Boy3.png", new double[]{90.0, -90.0, 1.0}); // 10
+		defaultVals.put("BoyB.png", new double[]{90.0, -90.0, 1.0}); // 11
 
-		defaultVals.put("CC1.png", new double[]{-80.0, -110.0, 0.68}); // 8
-		defaultVals.put("CC2.png", new double[]{-80.0, -110.0, 0.66});
-		defaultVals.put("CC3.png", new double[]{-80.0, -120.0, 0.80}); // 10
+		defaultVals.put("CC1.png", new double[]{-80.0, -110.0, 0.68}); // 12
+		defaultVals.put("CC2.png", new double[]{-80.0, -110.0, 0.66}); // 13
+		defaultVals.put("CC3.png", new double[]{-80.0, -120.0, 0.80}); // 14
 
-		defaultVals.put("CCM.png", new double[]{-500.0, -250.0, 0.40}); // 11
+		defaultVals.put("CCM.png", new double[]{-225.0, -250.0, 0.7}); // 15
 
-		defaultVals.put("FL1.png", new double[]{-80.0, -110.0, 0.7}); // 12
-		defaultVals.put("FL2.png", new double[]{-80.0, -110.0, 0.7}); // 13
-		defaultVals.put("FL3.png", new double[]{-80.0, -110.0, 0.7}); // 14
-		defaultVals.put("FLB.png", new double[]{-80.0, -110.0, 0.7}); // 15
-		defaultVals.put("FLSB.png", new double[]{-80.0, -110.0, 0.7}); // 16
+		defaultVals.put("FL1.png", new double[]{-80.0, -110.0, 0.7}); // 16
+		defaultVals.put("FL2.png", new double[]{-80.0, -110.0, 0.7}); // 17
+		defaultVals.put("FL3.png", new double[]{-80.0, -110.0, 0.7}); // 18
+		defaultVals.put("FLB.png", new double[]{-80.0, -110.0, 0.7}); // 19
+		defaultVals.put("FLSB.png", new double[]{-80.0, -110.0, 0.7}); // 20
 
-		defaultVals.put("GL1.png", new double[]{-80.0, -110.0, 0.74}); // 17
-		defaultVals.put("GL2.png", new double[]{-80.0, -110.0, 0.74});
-		defaultVals.put("GL3.png", new double[]{-80.0, -110.0, 0.74});
-		defaultVals.put("GLB.png", new double[]{-80.0, -110.0, 0.74});
-		defaultVals.put("GLSB.png", new double[]{-80.0, -110.0, 0.74}); //21
+		defaultVals.put("GL1.png", new double[]{-80.0, -110.0, 0.74}); // 21
+		defaultVals.put("GL2.png", new double[]{-80.0, -110.0, 0.74}); // 22
+		defaultVals.put("GL3.png", new double[]{-80.0, -110.0, 0.74}); // 23
+		defaultVals.put("GLB.png", new double[]{-80.0, -110.0, 0.74}); // 24
+		defaultVals.put("GLSB.png", new double[]{-80.0, -110.0, 0.74}); //25
+		
+		defaultVals.put("HA1.png", new double[]{-80.0, -120.0, 0.8}); // 26
+		defaultVals.put("HA2.png", new double[]{-80.0, -120.0, 0.8}); // 27
+		defaultVals.put("HA3.png", new double[]{-80.0, -120.0, 0.8}); // 28
+		defaultVals.put("HAB.png", new double[]{-80.0, -120.0, 0.8}); // 29
 
-		defaultVals.put("HH1.png", new double[]{-80.0, -110.0, 0.65}); // 22
-		defaultVals.put("HH2.png", new double[]{-80.0, -110.0, 0.65});
-		defaultVals.put("HH3.png", new double[]{-80.0, -110.0, 0.65}); // 24
+		defaultVals.put("HH1.png", new double[]{-80.0, -110.0, 0.65}); // 30
+		defaultVals.put("HH2.png", new double[]{-80.0, -110.0, 0.65}); // 31
+		defaultVals.put("HH3.png", new double[]{-80.0, -110.0, 0.65}); // 32
 
-		defaultVals.put("HHG1.png", new double[]{-80.0, -95.0, 0.86}); // 25
-		defaultVals.put("HHG2.png", new double[]{-80.0, -95.0, 0.86}); // 26
+		defaultVals.put("HHG1.png", new double[]{-80.0, -95.0, 0.86}); // 33
+		defaultVals.put("HHG2.png", new double[]{-80.0, -95.0, 0.86}); // 34
+		
+		defaultVals.put("HL0.png", new double[]{-80.0, -120.0, 0.8}); // 35
+		defaultVals.put("HL1.png", new double[]{-80.0, -120.0, 0.8}); // 36
+		defaultVals.put("HL2.png", new double[]{-80.0, -120.0, 0.8}); // 37
+		defaultVals.put("HL3.png", new double[]{-80.0, -120.0, 0.8}); // 38
 
-		defaultVals.put("PC1.png", new double[]{-80.0, -140.0, 0.80}); // 27
-		defaultVals.put("PC2.png", new double[]{-80.0, -110.0, 0.82}); // 28
+		defaultVals.put("PC1.png", new double[]{-80.0, -140.0, 0.80}); // 39
+		defaultVals.put("PC2.png", new double[]{-80.0, -110.0, 0.82}); // 40
 
-		defaultVals.put("SH1.png", new double[]{-80.0, -110.0, 0.82}); // 29
-		defaultVals.put("SH2.png", new double[]{-80.0, -140.0, 0.90});
-		defaultVals.put("SH3.png", new double[]{-80.0, -110.0, 0.90});
-		defaultVals.put("SHB.png", new double[]{-80.0, -110.0, 0.90}); // 32
+		defaultVals.put("SH1.png", new double[]{-80.0, -110.0, 0.82}); // 41
+		defaultVals.put("SH2.png", new double[]{-80.0, -140.0, 0.90}); // 42
+		defaultVals.put("SH3.png", new double[]{-80.0, -110.0, 0.90}); // 43
+		defaultVals.put("SHB.png", new double[]{-80.0, -110.0, 0.90}); // 44
+		
+		defaultVals.put("SL0.png", new double[]{-80.0, -120.0, 0.8}); // 45
+		defaultVals.put("SL1.png", new double[]{-80.0, -120.0, 0.8}); // 46
+		defaultVals.put("SL2.png", new double[]{-80.0, -120.0, 0.8}); // 47
+		defaultVals.put("SL3.png", new double[]{-80.0, -120.0, 0.8}); // 48
+		defaultVals.put("SL4.png", new double[]{-80.0, -120.0, 0.8}); // 49
+		defaultVals.put("SL5.png", new double[]{-80.0, -120.0, 0.8}); // 50
+		
+		defaultVals.put("WB0.png", new double[]{-80.0, -120.0, 0.8}); // 51
+		defaultVals.put("WB1.png", new double[]{-80.0, -120.0, 0.8}); // 52 
+		defaultVals.put("WB2.png", new double[]{-80.0, -120.0, 0.8}); // 53
+		defaultVals.put("WB3.png", new double[]{-80.0, -120.0, 0.8}); // 54
 
 		return defaultVals;
 	}
