@@ -156,9 +156,8 @@ public class GUIFront extends JFrame {
 	private static JLabel lblStart, lblEnd;
 	private static GroupLayout gl_contentPane;
 	private static boolean[] mapViewButtons;
+	private static WebCollapsiblePane leftPane;
 	
-	
-
 	// Directions Components
 	private static JLabel lblStepByStep, lblClickHere, lblDistance;
 	private static JScrollPane scrollPane;
@@ -873,7 +872,7 @@ public class GUIFront extends JFrame {
 		panelMap.setBackground(backgroundColor);
 		panels.add(panelMap);
 		//panelDirections = new TweenPanel("2");
-        final WebCollapsiblePane leftPane = new WebCollapsiblePane (screenText[15], createCustomVerContent());
+        leftPane = new WebCollapsiblePane (screenText[15], createCustomVerContent());
         if(!leftPane.isExpanded()){
         	JLabel label = new JLabel();
         	label.setIcon(new ImageIcon(Constants.IMAGES_PATH + Constants.DEFAULT_MAP_IMAGE));
@@ -1484,14 +1483,14 @@ public class GUIFront extends JFrame {
 		// {{ Adding Languages
 		String[] languageText = GUIFrontUtil.createLanguageText();
 
-		for (int i = 0; i < 41; i++){
+		for (int i = 0; i < 36; i++){
 			getMntmLanguages().add(new JMenuItem());
 			getMntmLanguages().get(i).setText(languageText[i]);
 		}
 
 		GUIFrontUtil.addLanguageListeners();
 
-		for(int i = 0; i < 41; i++){
+		for(int i = 0; i < 36; i++){
 			mnOptionList.get(1).add(getMntmLanguages().get(i));
 		}
 		// }} Adding Languages
@@ -1876,7 +1875,7 @@ public class GUIFront extends JFrame {
 		btnPreviousMap.setText("<--" + translatedText[12]);
 		btnNextStep.setText(translatedText[13] + "->");
 		btnNextMap.setText(translatedText[14] + "-->");
-		GUIFront.getLblStepByStep().setText(translatedText[15]);
+        leftPane.setTitle(translatedText[15]);
 		mntmEmail.setText(translatedText[16]);
 		mntmExit.setText(translatedText[17]);
 
