@@ -292,6 +292,7 @@ public class GUIFront extends JFrame {
 			@Override 
 			public void actionPerformed(ActionEvent e)
 			{
+				btnClear.doClick();
 				if (globalMap.getStartNode() != null){
 					LocalMap localmap = globalMap.getStartNode().getLocalMap();
 					if (globalMap.getEndNode() != null){
@@ -996,6 +997,7 @@ public class GUIFront extends JFrame {
 		btnNextMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae){
+				System.out.println(paths.size());
 				index2 = 0;
 				index++;
 
@@ -1011,6 +1013,10 @@ public class GUIFront extends JFrame {
 				if (index < paths.size() - 1){
 					btnNextMap.setEnabled(true);
 				}
+				if (paths.size() == 3){
+					btnNextMap.setEnabled(false);
+				}
+				
 				drawLine2 = false;
 				drawLine3 = false;
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
@@ -1114,6 +1120,11 @@ public class GUIFront extends JFrame {
 				//index3++;
 				if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 					btnNextStep.setEnabled(false);
+				}
+				if (paths.size() == 3){
+					if (index2 == paths.get(index).size() - 1 && index == paths.size() - 2){
+						btnNextStep.setEnabled(false);
+					}
 				}
 				if (index2 <= paths.get(index).size() - 1){
 					drawLine2 = true;
