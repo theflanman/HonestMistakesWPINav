@@ -968,6 +968,9 @@ public class GUIFront extends JFrame {
 				if (paths.size() <= index + 1){
 					btnNextMap.setEnabled(false);
 				}
+				if (paths.size() == 3){
+					btnNextMap.setEnabled(false);
+				}
 				
 				drawLine2 = false;
 				drawLine3 = false;
@@ -1023,8 +1026,8 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
-				if (index < paths.size() - 1){
-					index2 = paths.get(index).size() - 1;
+				if (index < paths.size() - 2){
+					index2 = paths.get(index).size() - 2;
 					drawLine2 = false;
 					drawLine3 = false;
 
