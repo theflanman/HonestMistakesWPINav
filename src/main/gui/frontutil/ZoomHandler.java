@@ -26,11 +26,11 @@ public class ZoomHandler implements MouseWheelListener {
 	public void mouseWheelMoved(MouseWheelEvent mwe) {
 		int direction = mwe.getWheelRotation();
 
-		if(direction < 0){ // moving up, so zoom in	(no greater than 100%)
+		if(direction < 0){ // moving up, so zoom in	(no greater than 110%)
 			if(getZoomAmount() <= (1.1 + .001))
 				setZoomAmount(getZoomAmount() + 0.1);
 		} 
-		else { // moving down, zoom out (no less than 50%)
+		else { // moving down, zoom out (no less than 40%)
 			if(getZoomAmount() >= 0.4)
 				setZoomAmount(getZoomAmount() - 0.1);
 		}

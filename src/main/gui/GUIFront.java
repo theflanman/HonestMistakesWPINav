@@ -1543,6 +1543,8 @@ public class GUIFront extends JFrame {
 		panelMap.setPanX(defPan[0]);
 		panelMap.setPanY(defPan[1]);
 		panelMap.setScale(defPan[2]);
+		GUIFront.getZoomHandle().setZoomAmount(defPan[2]);
+		
 		offsetX = defPan[0] - tempPan[0];
 		offsetY = defPan[1] - tempPan[1];
 		for(MapNode n : backend.getLocalMap().getMapNodes()){
@@ -1567,7 +1569,7 @@ public class GUIFront extends JFrame {
 		}
 		
 		//activate/deactivate back to campus map and floor chooser buttons
-		if(index != 11){
+		if(index != 15){
 			btnBackToCampus.setEnabled(true);
 			floorChooser.setEnabled(true);
 			
