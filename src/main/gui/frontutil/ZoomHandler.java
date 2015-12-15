@@ -19,7 +19,7 @@ public class ZoomHandler implements MouseWheelListener {
 	private double zoomAmount;
 
 	public ZoomHandler(){
-		this.setZoomAmount(0.5); // default zoom amount
+		this.setZoomAmount(0.7); // default zoom amount
 	}
 
 	@Override
@@ -27,11 +27,11 @@ public class ZoomHandler implements MouseWheelListener {
 		int direction = mwe.getWheelRotation();
 
 		if(direction < 0){ // moving up, so zoom in	(no greater than 100%)
-			if(getZoomAmount() <= (.9 + .001))
+			if(getZoomAmount() <= (1.1 + .001))
 				setZoomAmount(getZoomAmount() + 0.1);
 		} 
 		else { // moving down, zoom out (no less than 50%)
-			if(getZoomAmount() >= 0.5)
+			if(getZoomAmount() >= 0.4)
 				setZoomAmount(getZoomAmount() - 0.1);
 		}
 

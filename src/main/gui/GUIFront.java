@@ -1186,7 +1186,7 @@ public class GUIFront extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
-		changeMapTo(11, 0, 0, 1);
+		changeMapTo(15, 0, 0, 1); // change to campus map to force proper reloading of data
 		
 		thisGUIFront = this;
 	}

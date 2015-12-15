@@ -1467,75 +1467,75 @@ public class GUIFrontUtil {
 	public static HashMap<String, double[]> initPanZoom(){
 		HashMap<String, double[]> defaultVals = new HashMap<String, double[]>();
 		
-		defaultVals.put("AH1.png", new double[]{50.0, -30.0, 0.9}); // 0  -- done 
+		defaultVals.put("AH1.png", new double[]{50.0, -30.0, 0.9}); // 0   
 		defaultVals.put("AH2.png", new double[]{50.0, -40.0, 0.9}); // 1
 		defaultVals.put("AHB.png", new double[]{50.0, -10.0, 0.9}); // 2 
 		defaultVals.put("AHSB.png", new double[]{50.0, -20.0, 0.9}); // 3
 
-		defaultVals.put("AK1.png", new double[]{50.0, -65.0, 1.0}); // 4  -- done
+		defaultVals.put("AK1.png", new double[]{50.0, -65.0, 1.0}); // 4  
 		defaultVals.put("AK2.png", new double[]{50.0, -70.0, 1.0}); // 5
 		defaultVals.put("AK3.png", new double[]{50.0, -60.0, 1.0}); // 6
 		defaultVals.put("AKB.png", new double[]{50.0, -120.0, 1.0}); // 7
 
-		defaultVals.put("Boy1.png", new double[]{90.0, -90.0, 1.0}); // 8
-		defaultVals.put("Boy2.png", new double[]{90.0, -90.0, 1.0}); // 9
-		defaultVals.put("Boy3.png", new double[]{90.0, -90.0, 1.0}); // 10
-		defaultVals.put("BoyB.png", new double[]{90.0, -90.0, 1.0}); // 11
+		defaultVals.put("Boy1.png", new double[]{110.0, -90.0, 1.0}); // 8
+		defaultVals.put("Boy2.png", new double[]{110.0, -90.0, 1.0}); // 9
+		defaultVals.put("Boy3.png", new double[]{110.0, -90.0, 1.0}); // 10
+		defaultVals.put("BoyB.png", new double[]{110.0, -90.0, 1.0}); // 11
 
-		defaultVals.put("CC1.png", new double[]{-80.0, -110.0, 0.68}); // 12
-		defaultVals.put("CC2.png", new double[]{-80.0, -110.0, 0.66}); // 13
-		defaultVals.put("CC3.png", new double[]{-80.0, -120.0, 0.80}); // 14
+		defaultVals.put("CC1.png", new double[]{70.0, -50.0, 0.8}); // 12 
+		defaultVals.put("CC2.png", new double[]{70.0, -50.0, 0.8}); // 13
+		defaultVals.put("CC3.png", new double[]{70.0, -50.0, 0.9}); // 14
 
 		defaultVals.put("CCM.png", new double[]{-225.0, -250.0, 0.7}); // 15
 
-		defaultVals.put("FL1.png", new double[]{-80.0, -110.0, 0.7}); // 16
-		defaultVals.put("FL2.png", new double[]{-80.0, -110.0, 0.7}); // 17
-		defaultVals.put("FL3.png", new double[]{-80.0, -110.0, 0.7}); // 18
-		defaultVals.put("FLB.png", new double[]{-80.0, -110.0, 0.7}); // 19
-		defaultVals.put("FLSB.png", new double[]{-80.0, -110.0, 0.7}); // 20
+		defaultVals.put("FL1.png", new double[]{50.0, -20.0, 0.95}); // 16
+		defaultVals.put("FL2.png", new double[]{50.0, -20.0, 0.95}); // 17
+		defaultVals.put("FL3.png", new double[]{50.0, -20.0, 0.95}); // 18
+		defaultVals.put("FLB.png", new double[]{50.0, -20.0, 0.95}); // 19
+		defaultVals.put("FLSB.png", new double[]{40.0, -20.0, 0.95}); // 20
 
-		defaultVals.put("GL1.png", new double[]{-80.0, -110.0, 0.74}); // 21
-		defaultVals.put("GL2.png", new double[]{-80.0, -110.0, 0.74}); // 22
-		defaultVals.put("GL3.png", new double[]{-80.0, -110.0, 0.74}); // 23
-		defaultVals.put("GLB.png", new double[]{-80.0, -110.0, 0.74}); // 24
-		defaultVals.put("GLSB.png", new double[]{-80.0, -110.0, 0.74}); //25
+		defaultVals.put("GL1.png", new double[]{70.0, -20.0, 0.95}); // 21
+		defaultVals.put("GL2.png", new double[]{70.0, -20.0, 0.95}); // 22
+		defaultVals.put("GL3.png", new double[]{70.0, -20.0, 0.95}); // 23
+		defaultVals.put("GLB.png", new double[]{70.0, -20.0, 0.95}); // 24
+		defaultVals.put("GLSB.png", new double[]{70.0, -20.0, 0.95}); //25
 		
-		defaultVals.put("HA1.png", new double[]{-80.0, -120.0, 0.8}); // 26
-		defaultVals.put("HA2.png", new double[]{-80.0, -120.0, 0.8}); // 27
-		defaultVals.put("HA3.png", new double[]{-80.0, -120.0, 0.8}); // 28
-		defaultVals.put("HAB.png", new double[]{-80.0, -120.0, 0.8}); // 29
+		defaultVals.put("HA1.png", new double[]{40.0, -10.0, 0.9}); // 26
+		defaultVals.put("HA2.png", new double[]{50.0, -10.0, 0.9}); // 27
+		defaultVals.put("HA3.png", new double[]{40.0, -10.0, 0.9}); // 28
+		defaultVals.put("HAB.png", new double[]{40.0, -10.0, 0.9}); // 29
 
-		defaultVals.put("HH1.png", new double[]{-80.0, -110.0, 0.65}); // 30
-		defaultVals.put("HH2.png", new double[]{-80.0, -110.0, 0.65}); // 31
-		defaultVals.put("HH3.png", new double[]{-80.0, -110.0, 0.65}); // 32
+		defaultVals.put("HH1.png", new double[]{40.0, -10.0, 0.9}); // 30
+		defaultVals.put("HH2.png", new double[]{40.0, -10.0, 0.9}); // 31
+		defaultVals.put("HH3.png", new double[]{40.0, -10.0, 0.9}); // 32
 
-		defaultVals.put("HHG1.png", new double[]{-80.0, -95.0, 0.86}); // 33
-		defaultVals.put("HHG2.png", new double[]{-80.0, -95.0, 0.86}); // 34
+		defaultVals.put("HHG1.png", new double[]{30.0, -10.0, 0.95}); // 33
+		defaultVals.put("HHG2.png", new double[]{30.0, -10.0, 0.95}); // 34
 		
-		defaultVals.put("HL0.png", new double[]{-80.0, -120.0, 0.8}); // 35
-		defaultVals.put("HL1.png", new double[]{-80.0, -120.0, 0.8}); // 36
-		defaultVals.put("HL2.png", new double[]{-80.0, -120.0, 0.8}); // 37
-		defaultVals.put("HL3.png", new double[]{-80.0, -120.0, 0.8}); // 38
+		defaultVals.put("HL0.png", new double[]{60.0, -10.0, 0.9}); // 35 
+		defaultVals.put("HL1.png", new double[]{60.0, -10.0, 0.9}); // 36
+		defaultVals.put("HL2.png", new double[]{60.0, -10.0, 0.9}); // 37
+		defaultVals.put("HL3.png", new double[]{60.0, -10.0, 0.9}); // 38
 
-		defaultVals.put("PC1.png", new double[]{-80.0, -140.0, 0.80}); // 39
-		defaultVals.put("PC2.png", new double[]{-80.0, -110.0, 0.82}); // 40
+		defaultVals.put("PC1.png", new double[]{40.0, -70.0, 0.90}); // 39
+		defaultVals.put("PC2.png", new double[]{40.0, -60.0, 0.9});  // 40
 
-		defaultVals.put("SH1.png", new double[]{-80.0, -110.0, 0.82}); // 41
-		defaultVals.put("SH2.png", new double[]{-80.0, -140.0, 0.90}); // 42
-		defaultVals.put("SH3.png", new double[]{-80.0, -110.0, 0.90}); // 43
-		defaultVals.put("SHB.png", new double[]{-80.0, -110.0, 0.90}); // 44
+		defaultVals.put("SH1.png", new double[]{60.0, -10.0, 1.0}); // 41 
+		defaultVals.put("SH2.png", new double[]{60.0, -40.0, 1.0}); // 42
+		defaultVals.put("SH3.png", new double[]{60.0, -10.0, 1.0}); // 43
+		defaultVals.put("SHB.png", new double[]{60.0, -10.0, 1.0}); // 44
 		
-		defaultVals.put("SL0.png", new double[]{-80.0, -120.0, 0.8}); // 45
-		defaultVals.put("SL1.png", new double[]{-80.0, -120.0, 0.8}); // 46
-		defaultVals.put("SL2.png", new double[]{-80.0, -120.0, 0.8}); // 47
-		defaultVals.put("SL3.png", new double[]{-80.0, -120.0, 0.8}); // 48
-		defaultVals.put("SL4.png", new double[]{-80.0, -120.0, 0.8}); // 49
-		defaultVals.put("SL5.png", new double[]{-80.0, -120.0, 0.8}); // 50
+		defaultVals.put("SL0.png", new double[]{40.0, -10.0, 0.9}); // 45
+		defaultVals.put("SL1.png", new double[]{40.0, -10.0, 0.9}); // 46
+		defaultVals.put("SL2.png", new double[]{40.0, -10.0, 0.9}); // 47
+		defaultVals.put("SL3.png", new double[]{40.0, -10.0, 0.9}); // 48
+		defaultVals.put("SL4.png", new double[]{40.0, -10.0, 0.9}); // 49
+		defaultVals.put("SL5.png", new double[]{40.0, -10.0, 1.0}); // 50
 		
-		defaultVals.put("WB0.png", new double[]{-80.0, -120.0, 0.8}); // 51
-		defaultVals.put("WB1.png", new double[]{-80.0, -120.0, 0.8}); // 52 
-		defaultVals.put("WB2.png", new double[]{-80.0, -120.0, 0.8}); // 53
-		defaultVals.put("WB3.png", new double[]{-80.0, -120.0, 0.8}); // 54
+		defaultVals.put("WB0.png", new double[]{50.0, -10.0, 0.9}); // 51
+		defaultVals.put("WB1.png", new double[]{50.0, -10.0, 0.9}); // 52 
+		defaultVals.put("WB2.png", new double[]{50.0, -10.0, 0.9}); // 53
+		defaultVals.put("WB3.png", new double[]{50.0, -10.0, 0.9}); // 54
 
 		return defaultVals;
 	}
