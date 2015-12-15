@@ -1026,8 +1026,13 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
+				index2 = paths.get(index).size() - 1;
+				if (paths.size() == 3){
+					index = 0;
+					index2 = paths.get(index).size() - 2;
+				}
 				if (index < paths.size() - 1){
-					index2 = paths.get(index).size() - 1;
+					//index2 = paths.get(index).size() - 1;
 					drawLine2 = false;
 					drawLine3 = false;
 
@@ -1078,8 +1083,8 @@ public class GUIFront extends JFrame {
 				if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 					btnNextStep.setEnabled(false);
 				}
-				if (paths.size() <= index + 2){
-					if (index2 == paths.get(index).size() && index == paths.size() - 2){
+				if (paths.size() == 3){
+					if (index2 == paths.get(index).size() - 1 && index == paths.size() - 2){
 						btnNextStep.setEnabled(false);
 					}
 				}
