@@ -3,6 +3,7 @@ package main.gui;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -120,6 +121,9 @@ public class GUIBack implements Serializable {
 					String outside = attributes.getElementsByTagName("Outside").item(0).getTextContent();
 					String poi = attributes.getElementsByTagName("POI").item(0).getTextContent();
 					String type = attributes.getElementsByTagName("Type").item(0).getTextContent();
+					//ArrayList<String> aliases = ((ArrayList<String>)currentNode.getElementsByTagName("Aliases").item(0)); 
+					//String alias = aliases.getElementsByTagName("Alias").item(0).getTextContent();
+					//System.out.println(aliases);
 
 					//set the attributes in the array list
 					Attributes attr = new Attributes();
@@ -130,6 +134,11 @@ public class GUIBack implements Serializable {
 					attr.setOutside(Boolean.parseBoolean(outside));
 					attr.setPOI(Boolean.parseBoolean(poi));
 					attr.setType(Types.parseType(type));
+					//String [] str = alias.split(",");
+					
+					//ArrayList<String> strs = new ArrayList<String>(Arrays.asList(str));
+					//attr.setAliases(strs);
+					
 
 					loadedNodes.get(i).setAttributes(attr);
 

@@ -273,12 +273,29 @@ public class GUIFront extends JFrame {
 		for(MapNode mapnode : globalMap.getMapNodes()){
 			officialName.add(mapnode.getAttributes().getOfficialName());
 		}
+		
+		/*for(MapNode mapnode : globalMap.getMapNodes()){
+			if (mapnode.getAttributes().getAliases() != null){
+				for(String string: mapnode.getAttributes().getAliases()){
+					//System.out.println(string);
+					officialName.add(string);
+				}
+			}
+		}*/
 		start = new JComboBox(officialName.toArray());
 		start.setEditable(true);
 		AutoCompleteSupport.install(start, GlazedLists.eventListOf(officialName.toArray()));
 
 
-		end = new JComboBox();
+		officialName.add(Types.BATHROOM.toString());
+		officialName.add(Types.CLASSROOM.toString());
+		officialName.add(Types.ELEVATOR.toString());
+		officialName.add(Types.FOOD.toString());
+		officialName.add(Types.LAB.toString());
+		officialName.add(Types.OFFICE.toString());
+		officialName.add(Types.PARKING.toString());
+		officialName.add(Types.WATERFOUNTAIN.toString());
+		end = new JComboBox(officialName.toArray());
 		end.setEditable(true);
 		AutoCompleteSupport.install(end, GlazedLists.eventListOf(officialName.toArray()));
 
