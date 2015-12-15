@@ -94,7 +94,7 @@ public class EmailSender {
 			}
 			
 			String bodyStr = "<body>";
-			bodyStr += "<p>custom message</p>";
+			bodyStr += "<p>" + body + "</p>";
 			
 			for (String str : images) {
 				bodyStr += "<p>Step Directions:</p>";
