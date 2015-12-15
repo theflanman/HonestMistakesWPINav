@@ -888,9 +888,14 @@ public class GUIFront extends JFrame {
 						//don't do anything because you should not do anything for the welcome to step in the jlist
 					}
 					else {
+						index3 = index2;
+						ArrayList<MapNode> nodes = new ArrayList<MapNode>();
+						/*for (int i = 0; i < index; i++){
+							for (int )
+						}*/
 						index3 = getListDirections().getSelectedIndex();
 						int indexHelp = 0;
-						if (index3 >= paths.get(index).size()){
+						if (index2 >= paths.get(index).size()){
 							index2 = 0;
 							if (index != 0){
 								for (int i = 0; i < index; i++){
@@ -1022,6 +1027,9 @@ public class GUIFront extends JFrame {
 				if (paths.size() == 3){
 					btnNextMap.setEnabled(false);
 				}
+				if (paths.size() == 4 && index == 2){
+					btnNextMap.setEnabled(false);
+				}
 				
 				drawLine2 = false;
 				drawLine3 = false;
@@ -1131,6 +1139,9 @@ public class GUIFront extends JFrame {
 					if (index2 == paths.get(index).size() - 1 && index == paths.size() - 2){
 						btnNextStep.setEnabled(false);
 					}
+				}
+				if (paths.size() == 4 && index == 2){
+					btnNextStep.setEnabled(false);
 				}
 				if (index2 <= paths.get(index).size() - 1){
 					drawLine2 = true;
