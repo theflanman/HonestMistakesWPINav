@@ -1182,7 +1182,7 @@ public class GUIFront extends JFrame {
 		btnBackToCampus.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				changeMapTo(11, 0, 0, 1);
+				changeMapTo(15, 0, 0, 1);
 			}
 		});
 
