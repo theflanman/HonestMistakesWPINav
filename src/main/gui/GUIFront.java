@@ -1010,7 +1010,6 @@ public class GUIFront extends JFrame {
 		btnNextMap.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent ae){
-				System.out.println(paths.size());
 				index2 = 0;
 				index++;
 
