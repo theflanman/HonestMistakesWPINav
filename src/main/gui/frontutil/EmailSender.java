@@ -20,6 +20,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import main.MapNode;
+import main.StepByStep;
 import main.gui.GUIFront;
 
 public class EmailSender {
@@ -32,8 +33,6 @@ public class EmailSender {
 		String fromEmail = "EraOfNavigation";
 		String pass = "HonestMistakes";
 		String myDirectoryPath = "src/data/pathimages";
-		ArrayList<String> directions = GUIFront.getDirections();
-		ArrayList<MapNode> directionNodes = GUIFront.getNodesForDirections();
 
 		String host = "smtp.gmail.com";
 		props.put("mail.smtp.starttls.enable", "true");
@@ -59,8 +58,8 @@ public class EmailSender {
 			for( int i = 0; i < toAddress.length; i++) {
 				message.addRecipient(Message.RecipientType.TO, toAddress[i]);
 			}
-
 			Multipart multipart = new MimeMultipart();
+			
 			MimeBodyPart messageBodyPart = new MimeBodyPart();
 			// HTML formating of body
 
@@ -98,36 +97,16 @@ public class EmailSender {
 			}
 			
 			String bodyStr = "<body>";
-			bodyStr += "<p>" + body + "</p>";
-			int curIndex = 0;
 			for (String str : images) {
-				System.out.println("hello");
-				bodyStr += "<p>Step Directions:</p>";
-				for (int i = curIndex; i <=directionNodes.size() - 1; i++) {
-					if (i == 0) {
-						System.out.println(directions.get(i));
-						bodyStr += directions.get(i);
-					}
-					else {
-						if (directionNodes.get(i).getLocalMap().equals(directionNodes.get(i - 1).getLocalMap())) {
-							bodyStr += directions.get(i);
-						}
-						else {
-							curIndex = i;
-							break;
-						}
-					}
-				}
-				
 				bodyStr += str;
 			}
 
-			messageBodyPart.setText("<html><head>"
+			messageBodyPart.setText(body.concat("<html><head>"
 					+ "<meta http-equiv=Content-Type content=text/html; charset=utf-8 />"
 					+ "<title>Untitled Document</title>"
 					+ "</head>"
 					+ bodyStr
-					+ "</body></html>", "ascii", "html");
+					+ "</body></html>"), "ascii", "html");
 
 			multipart.addBodyPart(messageBodyPart);
 
