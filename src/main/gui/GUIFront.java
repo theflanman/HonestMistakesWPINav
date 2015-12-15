@@ -236,6 +236,8 @@ public class GUIFront extends JFrame {
 		screenText[23] = "All Blue";
 		screenText[24] = "Languages";
 		screenText[25] = "Distance in Feet";
+		screenText[26] = "Back To Campus Map";
+		screenText[27] = "Change Floors";
 		
 		// main application is invisible during loading screen
 		setVisible(false); 
@@ -1157,7 +1159,7 @@ public class GUIFront extends JFrame {
 		});
 		
 		//button that goes back to the campus map
-		btnBackToCampus = new JButton("Back To Campus Map");
+		btnBackToCampus = new JButton(screenText[26]);
 		btnBackToCampus.setBackground(otherButtonsColor);
 		btnBackToCampus.setEnabled(false);
 		btnBackToCampus.addActionListener(new ActionListener(){
@@ -1166,10 +1168,10 @@ public class GUIFront extends JFrame {
 				changeMapTo(11, 0, 0, 1);
 			}
 		});
-		
+
 		//dropdown for floor selection
-		floorChooser = new JMenu("Change Floors");
-		floorChooser.setSize(new Dimension(95, 25));
+		floorChooser = new JMenu(screenText[27]);
+		floorChooser.setSize(new Dimension(150, 25));
 		floorChooser.setEnabled(false);
 		floorChooserBar = new JMenuBar();
 		floorChooserBar.setMaximumSize(new Dimension(floorChooser.getSize().width, floorChooser.getSize().height + 5));
@@ -1933,6 +1935,8 @@ public class GUIFront extends JFrame {
 		mnOptionList.set(1, languages);
 		
 		getLblDistance().setText(translatedText[25]);
+		btnBackToCampus.setText(translatedText[26]);
+		floorChooser.setText(translatedText[27]);
 	}
 	
 	// {{ Getters and Setters
