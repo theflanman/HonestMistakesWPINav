@@ -177,6 +177,22 @@
 			<artifactId>JTattoo</artifactId>
 			<version>1.6.11</version>
 		</dependency>
+		<dependency>
+			<groupId>de.sciss</groupId>
+			<artifactId>weblaf-core</artifactId>
+			<version>1.28</version>
+		</dependency>
+		<dependency>
+			<groupId>de.sciss</groupId>
+			<artifactId>weblaf</artifactId>
+			<version>1.28</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>de.sciss</groupId>
+			<artifactId>weblaf-ui</artifactId>
+			<version>1.28</version>
+		</dependency>
 	</dependencies>
 
 	<properties>
