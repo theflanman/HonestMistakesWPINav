@@ -142,6 +142,8 @@ public class GUIFront extends JFrame {
 	public static double offsetX = 0;
 	public static double offsetY = 0;
 	public static String[] screenText = new String[Constants.SCREEN_TEXT_SIZE];
+	public static ArrayList<MapNode> nodesOnSameMap = new ArrayList<MapNode>();
+	public static ArrayList<String> directions = new ArrayList<String>();
 
 	public static double[] panNums = {0.0, 0.0};
 	private static AffineTransform transform; // the current state of image transformation
@@ -663,12 +665,11 @@ public class GUIFront extends JFrame {
 					 */				
 					ArrayList<MapNode> getNodesOnSameMap = new ArrayList<MapNode>(); //will add all nodes from the same map to this 
 					ArrayList<ArrayList<String>> stepByStep = new ArrayList<ArrayList<String>>();
-					ArrayList<String> directions = new ArrayList<String>();
 					boolean hasWayPoint = true;
 					for (int i = 0; i < getGlobalMap().getChosenNodes().size() - 1; i++){ //for all nodes in chosen nodes (start, end, and waypoints included) 
 						//if the nodes are on the same map add all those nodes into an arraylist together
 						if (getGlobalMap().getChosenNodes().get(i).getLocalMap() == getGlobalMap().getChosenNodes().get(i + 1).getLocalMap()){
-							ArrayList<MapNode> nodesOnSameMap = backend.runAStar(getGlobalMap().getChosenNodes().get(i), getGlobalMap().getChosenNodes().get(i + 1));
+							nodesOnSameMap = backend.runAStar(getGlobalMap().getChosenNodes().get(i), getGlobalMap().getChosenNodes().get(i + 1));
 							if (getGlobalMap().getChosenNodes().size() == i + 2){
 								directions = backend.displayStepByStep(nodesOnSameMap, false, getLanguage()); //no more waypoints
 							} else {
@@ -2033,4 +2034,11 @@ public class GUIFront extends JFrame {
 	public static void setLanguage(Language language) {
 		GUIFront.language = language;
 	}
+	public static ArrayList<String> getDirections() {
+		return directions;
+	}
+	public static ArrayList<MapNode> getNodesForDirections() {
+		return nodesOnSameMap;
+	}
+	
 }
