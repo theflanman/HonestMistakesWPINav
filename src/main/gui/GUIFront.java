@@ -297,6 +297,7 @@ public class GUIFront extends JFrame {
 			@Override 
 			public void actionPerformed(ActionEvent e)
 			{
+				btnClear.doClick();
 				if (globalMap.getStartNode() != null){
 					LocalMap localmap = globalMap.getStartNode().getLocalMap();
 					if (globalMap.getEndNode() != null){
@@ -887,9 +888,16 @@ public class GUIFront extends JFrame {
 						//don't do anything because you should not do anything for the welcome to step in the jlist
 					}
 					else {
+						index3 = index2;
+						ArrayList<MapNode> nodes = new ArrayList<MapNode>();
+						/*for (int i = 0; i < index; i++){
+							for (int j = 0; j < paths.get(i).size() - 1; j++){
+								nodes.add()
+							}
+						}*/
 						index3 = getListDirections().getSelectedIndex();
 						int indexHelp = 0;
-						if (index3 >= paths.get(index).size()){
+						if (index2 >= paths.get(index).size()){
 							index2 = 0;
 							if (index != 0){
 								for (int i = 0; i < index; i++){
@@ -1007,20 +1015,20 @@ public class GUIFront extends JFrame {
 
 				if (index <= 0){
 					btnPreviousMap.setEnabled(false);
-					btnPreviousStep.setEnabled(false);
 				}
 				if (index >= paths.size() - 1){
 					btnNextMap.setEnabled(false);
-					btnNextStep.setEnabled(false);
 				}
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
-					btnPreviousStep.setEnabled(true);
 				}
 				if (index < paths.size() - 1){
-					btnNextStep.setEnabled(true);
 					btnNextMap.setEnabled(true);
 				}
+				if (paths.size() <= index + 2){
+					btnNextMap.setEnabled(false);
+				}
+				
 				drawLine2 = false;
 				drawLine3 = false;
 				LocalMap localMap = paths.get(index).get(0).getLocalMap();
@@ -1066,16 +1074,13 @@ public class GUIFront extends JFrame {
 				}
 				if (index <= paths.size() - 1){
 					btnNextMap.setEnabled(true);
-					btnNextStep.setEnabled(true);
 				}
 
 				if (index > paths.size() - 1){
 					btnNextMap.setEnabled(false);
-					btnNextStep.setEnabled(false);
 				}
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
-					btnPreviousStep.setEnabled(true);
 				}
 				if (index < paths.size() - 1){
 					index2 = paths.get(index).size() - 1;
@@ -1124,19 +1129,25 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				drawLine3 = false;
 				index2++;
-				index3++;
-				if (!(index2 < paths.get(index).size())){
+				//index3++;
+				if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 					btnNextStep.setEnabled(false);
 				}
-				if (index2 >= paths.get(index).size()){
-					if (index < paths.size() - 1) {
-						btnNextMap.doClick();
+				if (paths.size() <= index + 2){
+					if (index2 == paths.get(index).size() - 1 && index == paths.size() - 2){
+						btnNextStep.setEnabled(false);
 					}
-				} else {
-					//listDirections.setSelectedIndex(index3);
+				}
+				if (index2 <= paths.get(index).size() - 1){
 					drawLine2 = true;
 					btnPreviousStep.setEnabled(true);
 				}
+				if (index2 > paths.get(index).size() - 1){
+					if (index < paths.size() - 1) {
+						index2 = 0;
+						btnNextMap.doClick();
+					}
+				} 
 			}
 		});
 
@@ -1147,13 +1158,19 @@ public class GUIFront extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				drawLine2 = false;
 				index2--;
-				index3--;
-				if (index2 < 0){
-					btnPreviousMap.doClick();
-					drawLine3 = false;
-				} else {
+				if (index == 0){
+					if (index2 == 0){
+						btnPreviousStep.setEnabled(false);
+						btnNextStep.setEnabled(true);
+					} else {
+						drawLine3 = true;
+					}
+				} else if (index2 == 0) {
+						btnPreviousMap.doClick();
+				} else if (index2 > 0 && index2 < paths.get(index).size() - 1) {
 					//listDirections.setSelectedIndex(index3);
 					drawLine3 = true;
+					btnNextStep.setEnabled(true);
 				}
 			}
 		});
