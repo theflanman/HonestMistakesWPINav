@@ -273,7 +273,9 @@ public class GUIFront extends JFrame {
 		setLanguage(Language.ENGLISH);
 		officialName = new ArrayList<String>();
 		for(MapNode mapnode : globalMap.getMapNodes()){
-			officialName.add(mapnode.getAttributes().getOfficialName());
+			if ((! mapnode.getAttributes().getOfficialName().trim().equals("none")) && (! mapnode.getAttributes().getOfficialName().trim().equals(""))) {
+				officialName.add(mapnode.getAttributes().getOfficialName());
+			}
 		}
 		
 		/*for(MapNode mapnode : globalMap.getMapNodes()){
