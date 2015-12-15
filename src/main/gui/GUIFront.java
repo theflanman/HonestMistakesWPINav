@@ -1198,6 +1198,8 @@ public class GUIFront extends JFrame {
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
 		changeMapTo(11, 0, 0, 1);
+		
+		thisGUIFront = this;
 	}
 
 	// Sets Coloring Schemes
