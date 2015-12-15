@@ -1026,8 +1026,8 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
-				if (index < paths.size() - 2){
-					index2 = paths.get(index).size() - 2;
+				if (index < paths.size() - 1){
+					index2 = paths.get(index).size() - 1;
 					drawLine2 = false;
 					drawLine3 = false;
 
@@ -1078,8 +1078,8 @@ public class GUIFront extends JFrame {
 				if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 					btnNextStep.setEnabled(false);
 				}
-				if (paths.size() <= index + 1){
-					if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
+				if (paths.size() <= index + 2){
+					if (index2 == paths.get(index).size() && index == paths.size() - 2){
 						btnNextStep.setEnabled(false);
 					}
 				}
@@ -1114,7 +1114,7 @@ public class GUIFront extends JFrame {
 					}
 				} else if (index2 == 0) {
 						btnPreviousMap.doClick();
-				} else if (index2 > 0 && index2 < paths.get(index).size() - 1) {
+				} else if (index2 > 0 && index2 < paths.get(index).size() - 2) {
 					drawLine3 = true;
 					btnNextStep.setEnabled(true);
 				}
@@ -1583,7 +1583,7 @@ public class GUIFront extends JFrame {
 		}
 
 		//set booleans to show or hide drawn nodes + lines
-		/*ArrayList<LocalMap> localMaps = createListOfMaps(paths);
+		ArrayList<LocalMap> localMaps = createListOfMaps(paths);
 		if(localMaps.contains(backend.getLocalMap())){ // if drawing, and if this map is in the path list, DRAW
 			drawLine = true;
 			drawNodes = true;
@@ -1596,10 +1596,10 @@ public class GUIFront extends JFrame {
 				drawNodes = false;
 				//}
 			}
-		}*/
+		}
 
 		//activate/deactivate back to campus map and floor chooser buttons
-		/*if(index != 15){
+		if(index != 15){
 			btnBackToCampus.setEnabled(true);
 			floorChooser.setEnabled(true);
 
@@ -1611,7 +1611,7 @@ public class GUIFront extends JFrame {
 		else{
 			btnBackToCampus.setEnabled(false);
 			floorChooser.setEnabled(false);
-		}*/
+		}
 	}
 
 	// Enable Actions
