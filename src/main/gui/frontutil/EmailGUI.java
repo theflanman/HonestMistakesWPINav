@@ -165,6 +165,7 @@ public class EmailGUI extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				subject = txtSubject.getText();
 				body = txtBody.getText();
+				body = body.concat("\n".concat(GUIFront.allText));
 				String[] toEmail = txtTo.getText().split(";");
 				email.sendFromGMail(toEmail, subject, body);
 				EmailGUI.this.dispose();;

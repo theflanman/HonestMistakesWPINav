@@ -19,6 +19,10 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import main.MapNode;
+import main.StepByStep;
+import main.gui.GUIFront;
+
 public class EmailSender {
 
 	/*
@@ -54,12 +58,11 @@ public class EmailSender {
 			for( int i = 0; i < toAddress.length; i++) {
 				message.addRecipient(Message.RecipientType.TO, toAddress[i]);
 			}
-
 			Multipart multipart = new MimeMultipart();
+			
 			MimeBodyPart messageBodyPart = new MimeBodyPart();
 			// HTML formating of body
 
-			ArrayList<MimeBodyPart> pathImages = new ArrayList<MimeBodyPart>();
 			ArrayList<String> images = new ArrayList<String>();
 
 			File dir = new File(myDirectoryPath);
@@ -94,19 +97,16 @@ public class EmailSender {
 			}
 			
 			String bodyStr = "<body>";
-			bodyStr += "<p>" + body + "</p>";
-			
 			for (String str : images) {
-				bodyStr += "<p>Step Directions:</p>";
 				bodyStr += str;
 			}
 
-			messageBodyPart.setText("<html><head>"
+			messageBodyPart.setText(body.concat("<html><head>"
 					+ "<meta http-equiv=Content-Type content=text/html; charset=utf-8 />"
 					+ "<title>Untitled Document</title>"
 					+ "</head>"
-					+bodyStr
-					+ "</body></html>", "ascii", "html");
+					+ bodyStr
+					+ "</body></html>"), "ascii", "html");
 
 			multipart.addBodyPart(messageBodyPart);
 
