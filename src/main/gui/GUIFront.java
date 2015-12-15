@@ -757,6 +757,7 @@ public class GUIFront extends JFrame {
 						if (localmap.getStartNode() == null)
 							localmap.setEndNode(paths.get(i).get(0));
 					}
+					
 				
 					//change the street view to the new map
 					GUIFront.changeStreetView(gl_contentPane, paths.get(0).get(0).getLocalMap().getMapImageName());					
@@ -879,99 +880,6 @@ public class GUIFront extends JFrame {
 		getScrollPane().setViewportView(getListDirections());
 		getListDirections().setVisible(false);
 		getListDirections().setVisibleRowCount(10); // only shows 10 directions before scrolling
-
-		getListDirections().addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent evt) {
-			/*	if (evt.getValueIsAdjusting() == false){
-					
-					if (getListDirections().getSelectedIndex() ==  0){
-						//don't do anything because you should not do anything for the welcome to step in the jlist
-					}
-					else {
-						int indexHelp = index3;
-						index3 = getListDirections().getSelectedIndex(); 
-						boolean changeMap = false;
-						int count = -1;
-						for (int i = 0; i < paths.size(); i++){
-							for (int j = 0; j < paths.get(i).size() - 1; j++){
-								count += 1;
-								if (index3 == count){
-									if (index2 >= j){
-										index2 = j - 1;
-									} else if (index2 < j){
-										index2 = j;
-									}
-									if (index != i){
-										changeMap = true;
-										index = i;
-									} 
-								}
-							}
-						}
-						if (index2 == 0 && index == 0) {
-							btnPreviousStep.setEnabled(false);
-						}
-						if (index2 > 0){
-							btnPreviousStep.setEnabled(true);
-						}
-						if (index == 0){
-							btnPreviousMap.setEnabled(false);
-						}
-						if (index >= paths.size() - 1){
-							btnNextMap.setEnabled(false);
-						}
-						if (index > 0){
-							btnPreviousMap.setEnabled(true);
-						}
-						if (index < paths.size() - 1){
-							btnNextMap.setEnabled(true);
-						}
-						if (paths.size() <= index + 2){
-							if (index2 == paths.get(index).size() - 1 && index == paths.size() - 2){
-								btnNextStep.setEnabled(false);
-							}
-							btnNextMap.setEnabled(false);
-						}
-						
-						count = 0;
-						if (changeMap == true){
-							LocalMap localMap = paths.get(index).get(0).getLocalMap();
-							
-							GUIFront.changeStreetView(gl_contentPane, localMap.getMapImageName());
-							panelMap.setMapImage(new ProxyImage(localMap.getMapImageName()));
-							panelMap.setMapNodes(localMap.getMapNodes());
-							String previousMap = backend.getLocalMap().getMapImageName();
-							panValues.put(previousMap, new double[]{panelMap.getPanX(), panelMap.getPanY()});
-							backend.setLocalMap(localMap);
-
-							double[] tempPan = panValues.get(backend.getLocalMap().getMapImageName());
-							panelMap.setPanX(tempPan[0]);
-							panelMap.setPanY(tempPan[1]);
-
-							for(MapNode n : backend.getLocalMap().getMapNodes()){
-								n.setXPos(n.getXPos() - panelMap.getPanX());
-								n.setYPos(n.getYPos() - panelMap.getPanY());
-							}
-
-							panelMap.setPanX(0.0);
-							panelMap.setPanY(0.0);
-							panelMap.setScale(1.0);
-						}
-
-						thisRoute = paths.get(index);
-						drawLine = true;
-						drawNodes = true;
-						if (index3 < indexHelp){
-							drawLine3 = true;
-							drawLine2 = false;
-						} else {
-							drawLine2 = true;
-							drawLine3 = false;
-						}
-					}
-				}*/
-			}
-		});
 		
 		// Distance Label
 		setLblDistance(new JLabel());

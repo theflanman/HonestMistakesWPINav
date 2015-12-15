@@ -727,7 +727,7 @@ public class TweenPanel extends JPanel {
 				graphics.setStroke(new BasicStroke(1));
 				graphics.setColor(startNodeColor);
 				
-				if(GUIFront.drawNodes){
+				//if(GUIFront.drawNodes){
 					IProxyImage startNodeImage = new ProxyImage("startnode.png");
 					IProxyImage endNodeImage = new ProxyImage("endnode.png");
 					IProxyImage waypointNodeImage = new ProxyImage("waypoint.png");
@@ -824,7 +824,7 @@ public class TweenPanel extends JPanel {
 				graphics.setTransform(saveTransform); // reset to original transform to prevent weird border mishaps
 			}
 		}
-	}
+	//}
 
 	public String getID(){
 		return this.panelID;
