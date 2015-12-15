@@ -48,7 +48,7 @@ public class Popup extends JDialog {
 		topPanel.setLayout(null);
 		
 		// Top bar text
-		JLabel lblAbout = new JLabel("About");
+		JLabel lblAbout = new JLabel("Instructions");
 		lblAbout.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblAbout.setForeground(Color.BLACK);
 		lblAbout.setBounds(15, 0, 138, 36);
@@ -61,9 +61,13 @@ public class Popup extends JDialog {
 				+ "     \n1. Click on 2 or more points on any map (using the 'Locations' tab or by clicking on a building)."
 				+ "     \n2. Click the 'Route' button."
 				+ "     \n3. Click 'Next/Previous Step' to step through the total path. Click 'Next/Previous Map' to go to the next map."
-				+ "     \n4. Click "
+				+ "     \n4. Read the Step by Step Instructions. "
+				+ "     \n5. Click the 'Clear All' button to start a new path."
 				+ "\n\n Street View: Click on the 'Street View' tab to see a picture of the location."
 				+ "\n\n Search Bars: Type a name or attribute of a building and press 'Enter.'"
+				+ "\n\n Other:"
+				+ "     \n1. Back to Campus Map: Click to set the map to the main campus map."
+				+ "     \n2. Change Floors: Changes the floor, if in a building."
 				);
 		textArea.setBounds(50, 40, 600, 300);
 		textArea.setEditable(false);
