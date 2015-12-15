@@ -891,7 +891,9 @@ public class GUIFront extends JFrame {
 						index3 = index2;
 						ArrayList<MapNode> nodes = new ArrayList<MapNode>();
 						/*for (int i = 0; i < index; i++){
-							for (int )
+							for (int j = 0; j < paths.get(i).size() - 1; j++){
+								nodes.add()
+							}
 						}*/
 						index3 = getListDirections().getSelectedIndex();
 						int indexHelp = 0;
@@ -1024,10 +1026,7 @@ public class GUIFront extends JFrame {
 				if (index < paths.size() - 1){
 					btnNextMap.setEnabled(true);
 				}
-				if (paths.size() == 3){
-					btnNextMap.setEnabled(false);
-				}
-				if (paths.size() == 4 && index == 2){
+				if (paths.size() <= index + 2){
 					btnNextMap.setEnabled(false);
 				}
 				
@@ -1135,13 +1134,10 @@ public class GUIFront extends JFrame {
 				if (index2 == paths.get(index).size() - 1 && index == paths.size() - 1){
 					btnNextStep.setEnabled(false);
 				}
-				if (paths.size() == 3){
+				if (paths.size() <= index + 2){
 					if (index2 == paths.get(index).size() - 1 && index == paths.size() - 2){
 						btnNextStep.setEnabled(false);
 					}
-				}
-				if (paths.size() == 4 && index == 2){
-					btnNextStep.setEnabled(false);
 				}
 				if (index2 <= paths.get(index).size() - 1){
 					drawLine2 = true;
