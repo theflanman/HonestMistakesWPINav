@@ -10,12 +10,42 @@
 ###########################################
 
 ##sample.png: Sample to use in all tests and such as part of the local map
-
 scale-sample.png : 1.0
 angle-sample.png : 0.0
 xOffset-sample.png : 0.0
 yOffset-sample.png : 0.0
 zHeight-sample.png : 0.0
+
+
+##AH1.png
+scale-AH1.png : .2865 # 45.84ft = 160px
+angle-AH1.png : 1.785
+xOffset-AH1.png : 1258.5
+yOffset-AH1.png: 1336.5
+zHeight-AH1.png: 0.0
+
+
+##AH2.png
+scale-AH2.png : .2865 # 45.84ft = 160px
+angle-AH2.png : 1.785
+xOffset-AH2.png : 1258.5
+yOffset-AH2.png: 1336.5
+zHeight-AH2.png: 13.0
+
+##AHB.png
+scale-AHB.png : .2865 # 45.84ft = 160px
+angle-AHB.png : 1.785
+xOffset-AHB.png : 1258.5
+yOffset-AHB.png: 1336.5
+zHeight-AHB.png: -13.0
+
+##AHSB.png
+scale-AHSB.png : .2865 # 45.84ft = 160px
+angle-AHSB.png : 1.785
+xOffset-AHSB.png : 1258.5
+yOffset-AHSB.png: 1336.5
+zHeight-AHSB.png: -26.0
+
 
 ##AK1.png
 scale-AK1.png : .365 # 155.47ft, 426px
@@ -173,6 +203,34 @@ xOffset-GLSB.png : 1968.0
 yOffset-GLSB.png : 772.5
 zHeight-GLSB.png : -26.0 
 
+##HA1.png
+scale-HA1.png : .2932 # 129ft = 440px
+angle-HA1.png : 0.167
+xOffset-HA1.png : 888.0
+yOffset-HA1.png : 655.5
+zHeight-HA1.png : 0.0 
+
+##HA2.png
+scale-HA2.png : .2932 # 129ft = 440px
+angle-HA2.png : 0.167
+xOffset-HA2.png : 888.0
+yOffset-HA2.png : 655.5
+zHeight-HA2.png : 13.0
+
+##HA3.png
+scale-HA3.png : .2932 # 129ft = 440px
+angle-HA3.png : 0.167
+xOffset-HA3.png : 888.0
+yOffset-HA3.png : 655.5
+zHeight-HA3.png : 26.0 
+
+##HAB.png
+scale-HAB.png : .2932 # 129ft = 440px
+angle-HAB.png : 0.167
+xOffset-HAB.png : 888.0
+yOffset-HAB.png : 655.5
+zHeight-HAB.png : -13.0 
+
 ##HH1.png
 scale-HH1.png : .2295 # 88.81ft, 387px
 angle-HH1.png: 2.178
@@ -207,6 +265,38 @@ angle-HHG2.png: 5.318
 xOffset-HHG2.png : 1275.0
 yOffset-HHG2.png : 364.5
 zHeight-HHG2.png : 26.0 
+
+##HL0.png
+scale-HL0.png : .2745 # 197.64ft = 370px
+angle-HL0.png: 1.785
+xOffset-HL0.png : 1296.0
+yOffset-HL0.png : 966.0
+zHeight-HL0.png : -13.0 
+
+##HL1.png
+scale-HL1.png : .2745 # 197.64ft = 370px
+angle-HL1.png: 1.785
+xOffset-HL1.png : 1296.0
+yOffset-HL1.png : 966.0
+zHeight-HL1.png : 0.0 
+
+##HL2.png
+scale-HL2.png : .2745 # 197.64ft = 370px
+angle-HL2.png: 1.785
+xOffset-HL2.png : 1296.0
+yOffset-HL2.png : 966.0
+zHeight-HL2.png : 13.0 
+
+##HL3.png
+scale-HL3.png : .2745 # 197.64ft = 370px
+angle-HL3.png: 1.785
+xOffset-HL3.png : 1296.0
+yOffset-HL3.png : 966.0
+zHeight-HL3.png : 26.0 
+
+
+
+
 
 ##PC1.png
 scale-PC1.png : .1391 # 92.76ft, 667px
@@ -249,4 +339,77 @@ angle-SHB.png : 1.720
 xOffset-SHB.png : 1482.0
 yOffset-SHB.png : 1065.0
 zHeight-SHB.png : 0.0
+
+##SL0.png
+scale-SL0.png : 0.2680 # 99.17ft = 370px
+angle-SL0.png : 1.785
+xOffset-SL0.png : 1585.5
+yOffset-SL0.png : 786.0
+zHeight-SL0.png : -13.0
+
+
+##SL1.png
+scale-SL1.png : 0.2680 # 99.17ft = 370px
+angle-SL1.png : 1.785
+xOffset-SL1.png : 1585.5
+yOffset-SL1.png : 786.0
+zHeight-SL1.png : 0.0
+
+##SL2.png
+scale-SL2.png : 0.2680 # 99.17ft = 370px
+angle-SL2.png : 1.785
+xOffset-SL2.png : 1585.5
+yOffset-SL2.png : 786.0
+zHeight-SL2.png : 13.0
+
+##SL3.png
+scale-SL3.png : 0.2680 # 99.17ft = 370px
+angle-SL3.png : 1.785
+xOffset-SL3.png : 1585.5
+yOffset-SL3.png : 786.0
+zHeight-SL3.png : 26.0
+
+##SL4.png
+scale-SL4.png : 0.2680 # 99.17ft = 370px
+angle-SL4.png : 1.785
+xOffset-SL4.png : 1585.5
+yOffset-SL4.png : 786.0
+zHeight-SL4.png : 39.0
+
+##SL5.png
+scale-SL5.png : 0.2680 # 99.17ft = 370px
+angle-SL5.png : 1.785
+xOffset-SL5.png : 1585.5
+yOffset-SL5.png : 786.0
+zHeight-SL5.png : 52.0
+
+##WB0.png
+scale-WB0.png : 0.2865 # 126.08ft = 440px
+angle-WB0.png : 1.785
+xOffset-WB0.png : 1578.0
+yOffset-WB0.png : 1071.0
+zHeight-WB0.png : -13.0
+
+##WB1.png
+scale-WB1.png : 0.2865 # 126.08ft = 440px
+angle-WB1.png : 1.785
+xOffset-WB1.png : 1578.0
+yOffset-WB1.png : 1071.0
+zHeight-WB1.png : 0.0
+
+##WB2.png
+scale-WB2.png : 0.2865 # 126.08ft = 440px
+angle-WB2.png : 1.785
+xOffset-WB2.png : 1578.0
+yOffset-WB2.png : 1071.0
+zHeight-WB2.png : 13.0
+
+##WB3.png
+scale-WB3.png : 0.2865 # 126.08ft = 440px
+angle-WB3.png : 1.785
+xOffset-WB3.png : 1578.0
+yOffset-WB3.png : 1071.0
+zHeight-WB3.png : 26.0
+
+
 
