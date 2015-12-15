@@ -1027,7 +1027,7 @@ public class GUIFront extends JFrame {
 				if (index > 0){
 					btnPreviousMap.setEnabled(true);
 				}
-				index2 = paths.get(index).size() - 1;
+				index2 = paths.get(index).size();
 				if (paths.size() == 3){
 					index = 0;
 					index2 = paths.get(index).size() - 2;
