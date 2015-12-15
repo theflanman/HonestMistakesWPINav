@@ -1192,7 +1192,7 @@ public class GUIFront extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); // start the application maximized
-		changeMapTo(11, 0, 0, 1);
+		changeMapTo(15, 0, 0, 1); // change to campus map to force proper reloading of data
 		
 		thisGUIFront = this;
 	}
@@ -1509,21 +1509,25 @@ public class GUIFront extends JFrame {
 		mntmCCM.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){		
-				GUIFront.changeMapTo(11, 0, 0, 1);
+				GUIFront.changeMapTo(15, 0, 0, 1);
 			}
 		});
 
-		mnLocations.add(mnBuildings.get(0)); // indices: 0, 1, 2, 3
-		mnLocations.add(mnBuildings.get(1)); // indices: 4, 5, 6, 7
-		mnLocations.add(mnBuildings.get(2)); // indices: 8, 9, 10
-		mnLocations.add(mntmCCM); // index: 11
-		mnLocations.add(mnBuildings.get(3)); // indices 12, 13, 14, 15, 16
-		mnLocations.add(mnBuildings.get(4)); // indices: 17, 18, 19, 20, 21
-		mnLocations.add(mnBuildings.get(5)); // indices: 22, 23, 24
-		mnLocations.add(mnBuildings.get(6)); //indices: 25, 26
-		mnLocations.add(mnBuildings.get(7)); // indices: 27, 28
-		mnLocations.add(mnBuildings.get(8)); // indices 29, 30, 31, 32
-
+		mnLocations.add(mnBuildings.get(0)); // Alden
+		mnLocations.add(mnBuildings.get(1)); // Atwater
+		mnLocations.add(mnBuildings.get(2)); // Boynton
+		mnLocations.add(mnBuildings.get(3)); // Campus Center
+		mnLocations.add(mntmCCM); // Campus Map
+		mnLocations.add(mnBuildings.get(4)); // Fuller Labs
+		mnLocations.add(mnBuildings.get(5)); // Gordon Library
+		mnLocations.add(mnBuildings.get(6)); // Harrington Auditorium
+		mnLocations.add(mnBuildings.get(7)); // Higgins House
+		mnLocations.add(mnBuildings.get(8)); // Higgins House Garage
+		mnLocations.add(mnBuildings.get(9)); // Higgins Labs
+		mnLocations.add(mnBuildings.get(10)); // Project Center
+		mnLocations.add(mnBuildings.get(11)); // Stratton Hall
+		mnLocations.add(mnBuildings.get(12)); // Salisbury Labs
+		mnLocations.add(mnBuildings.get(13)); // Washburn Shops
 		mnHelp = new JMenu(screenText[4]);
 		menuBar.add(mnHelp);
 	}
@@ -1549,6 +1553,8 @@ public class GUIFront extends JFrame {
 		panelMap.setPanX(defPan[0]);
 		panelMap.setPanY(defPan[1]);
 		panelMap.setScale(defPan[2]);
+		GUIFront.getZoomHandle().setZoomAmount(defPan[2]);
+		
 		offsetX = defPan[0] - tempPan[0];
 		offsetY = defPan[1] - tempPan[1];
 		for(MapNode n : backend.getLocalMap().getMapNodes()){
@@ -1573,7 +1579,7 @@ public class GUIFront extends JFrame {
 		}
 		
 		//activate/deactivate back to campus map and floor chooser buttons
-		if(index != 11){
+		if(index != 15){
 			btnBackToCampus.setEnabled(true);
 			floorChooser.setEnabled(true);
 			
