@@ -612,6 +612,7 @@
             <Neighbor>HA2_24</Neighbor>
             <Neighbor>HA2_25</Neighbor>
             <Neighbor>HA2_24</Neighbor>
+            <Neighbor>HA1_158</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -638,6 +639,9 @@
             <Neighbor>HA2_25</Neighbor>
             <Neighbor>HA2_25</Neighbor>
             <Neighbor>HA2_24</Neighbor>
+            <Neighbor>HA1_159</Neighbor>
+            <Neighbor>HA3_99</Neighbor>
+            <Neighbor>HA3_80</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -766,6 +770,7 @@
             <Neighbor>HA2_30</Neighbor>
             <Neighbor>HA2_30</Neighbor>
             <Neighbor>HA2_31</Neighbor>
+            <Neighbor>HA1_134</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -790,6 +795,7 @@
             <Neighbor>HA2_31</Neighbor>
             <Neighbor>HA2_30</Neighbor>
             <Neighbor>HA2_31</Neighbor>
+            <Neighbor>HA1_135</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2015,6 +2021,7 @@
             <Neighbor>HA2_79</Neighbor>
             <Neighbor>HA2_81</Neighbor>
             <Neighbor>HA2_79</Neighbor>
+            <Neighbor>HA1_76</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2065,6 +2072,7 @@
             <Neighbor>HA2_81</Neighbor>
             <Neighbor>HA2_81</Neighbor>
             <Neighbor>HA2_79</Neighbor>
+            <Neighbor>HA1_77</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2447,6 +2455,7 @@
         <Neighbors>
             <Neighbor>HA2_97</Neighbor>
             <Neighbor>HA2_100</Neighbor>
+            <Neighbor>HA1_108</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2491,6 +2500,7 @@
         <Neighbors>
             <Neighbor>HA2_99</Neighbor>
             <Neighbor>HA2_98</Neighbor>
+            <Neighbor>HA1_107</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

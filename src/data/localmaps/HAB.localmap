@@ -160,9 +160,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -537,9 +535,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -659,9 +655,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -907,9 +901,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1075,9 +1067,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1515,6 +1505,7 @@
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>HAB_58</Neighbor>
+            <Neighbor>HA1_107</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -1578,9 +1569,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1756,9 +1745,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>door</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1907,9 +1894,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2051,9 +2036,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2156,9 +2139,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2474,9 +2455,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2577,9 +2556,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2889,9 +2866,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2965,9 +2940,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3042,9 +3015,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3144,9 +3115,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3521,9 +3490,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3637,9 +3604,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -3944,9 +3909,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4072,9 +4035,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4196,9 +4157,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4348,9 +4307,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4501,9 +4458,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4777,9 +4732,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -4806,9 +4759,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -5156,9 +5107,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -5728,9 +5677,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -5843,9 +5790,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6682,9 +6627,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -6709,9 +6652,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -7150,9 +7091,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -7327,9 +7266,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -7457,9 +7394,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -7585,9 +7520,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -7758,9 +7691,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -7892,9 +7823,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -8064,6 +7993,7 @@
         <Neighbors>
             <Neighbor>HAB_307</Neighbor>
             <Neighbor>HAB_311</Neighbor>
+            <Neighbor>HA1_77</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -8291,9 +8221,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -8601,6 +8529,7 @@
         <ZFeet>-13.0</ZFeet>
         <Neighbors>
             <Neighbor>HAB_230</Neighbor>
+            <Neighbor>HA1_135</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>

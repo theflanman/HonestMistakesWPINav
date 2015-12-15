@@ -108,9 +108,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -506,9 +504,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -533,9 +529,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -874,9 +868,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1677,9 +1669,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -1705,9 +1695,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2064,6 +2052,7 @@
             <Neighbor>HA1_76</Neighbor>
             <Neighbor>HA1_76</Neighbor>
             <Neighbor>HA1_77</Neighbor>
+            <Neighbor>HA2_79</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2088,6 +2077,7 @@
             <Neighbor>HA1_77</Neighbor>
             <Neighbor>HA1_76</Neighbor>
             <Neighbor>HA1_77</Neighbor>
+            <Neighbor>HAB_307</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2599,9 +2589,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
@@ -2945,6 +2933,8 @@
         <Neighbors>
             <Neighbor>HA1_108</Neighbor>
             <Neighbor>HA1_106</Neighbor>
+            <Neighbor>HAB_59</Neighbor>
+            <Neighbor>HA2_100</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -2966,6 +2956,7 @@
         <ZFeet>0.0</ZFeet>
         <Neighbors>
             <Neighbor>HA1_107</Neighbor>
+            <Neighbor>HA2_98</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -3678,6 +3669,7 @@
             <Neighbor>HA1_134</Neighbor>
             <Neighbor>HA1_135</Neighbor>
             <Neighbor>HA1_133</Neighbor>
+            <Neighbor>HA2_30</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -3701,6 +3693,7 @@
             <Neighbor>HA1_134</Neighbor>
             <Neighbor>HA1_135</Neighbor>
             <Neighbor>HA1_136</Neighbor>
+            <Neighbor>HAB_329</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -4391,6 +4384,7 @@
             <Neighbor>HA1_159</Neighbor>
             <Neighbor>HA1_158</Neighbor>
             <Neighbor>HA1_156</Neighbor>
+            <Neighbor>HA2_24</Neighbor>
         </Neighbors>
         <Attributes>
             <OfficialName/>
@@ -6130,9 +6124,7 @@
             <Outside>false</Outside>
             <POI>false</POI>
             <Type>walking</Type>
-            <Aliases>
-                <Alias/>
-            </Aliases>
+            <Aliases>none</Aliases>
         </Attributes>
     </Node>
     <Node>
