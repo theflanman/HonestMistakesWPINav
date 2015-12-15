@@ -873,7 +873,7 @@ public class GUIFront extends JFrame {
 		panelMap.setBackground(backgroundColor);
 		panels.add(panelMap);
 		//panelDirections = new TweenPanel("2");
-        final WebCollapsiblePane leftPane = new WebCollapsiblePane ("Step by Step Directions", createCustomVerContent());
+        final WebCollapsiblePane leftPane = new WebCollapsiblePane (screenText[15], createCustomVerContent());
         if(!leftPane.isExpanded()){
         	JLabel label = new JLabel();
         	label.setIcon(new ImageIcon(Constants.IMAGES_PATH + Constants.DEFAULT_MAP_IMAGE));
