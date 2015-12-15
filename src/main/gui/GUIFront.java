@@ -888,6 +888,7 @@ public class GUIFront extends JFrame {
 						//don't do anything because you should not do anything for the welcome to step in the jlist
 					}
 					else {
+						int indexHelp = index3;
 						index3 = getListDirections().getSelectedIndex(); 
 						boolean changeMap = false;
 						int count = 0;
@@ -897,16 +898,38 @@ public class GUIFront extends JFrame {
 								if (index3 == count){
 									if (index != i){
 										changeMap = true;
-										if (i > index){
-											index++;
-										} else {
-											index--;
-										}
+										index = i;
 									} 
-									index2 = j + 1;
+									index2 = j;
 								}
 							}
 						}
+						if (index2 == 0 && index == 0) {
+							btnPreviousStep.setEnabled(false);
+						}
+						if (index2 > 0){
+							btnPreviousStep.setEnabled(true);
+						}
+						if (index == 0){
+							btnPreviousMap.setEnabled(false);
+						}
+						if (index >= paths.size() - 1){
+							btnNextMap.setEnabled(false);
+						}
+						if (index > 0){
+							btnPreviousMap.setEnabled(true);
+						}
+						if (index < paths.size() - 1){
+							btnNextMap.setEnabled(true);
+						}
+						if (paths.size() <= index + 2){
+							if (index2 == paths.get(index).size() - 1 && index == paths.size() - 2){
+								btnNextStep.setEnabled(false);
+							}
+							btnNextMap.setEnabled(false);
+						}
+						
+						
 						//int ind = index3 - count;
 						
 						//if (index3 >= paths.get(index).size() - 1){
@@ -940,7 +963,13 @@ public class GUIFront extends JFrame {
 						thisRoute = paths.get(index);
 						drawLine = true;
 						drawNodes = true;
-						drawLine2 = true;
+						if (index3 < indexHelp){
+							drawLine3 = true;
+							drawLine2 = false;
+						} else {
+							drawLine2 = true;
+							drawLine3 = false;
+						}
 					}
 				}
 			}
